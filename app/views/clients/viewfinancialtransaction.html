@@ -1,0 +1,77 @@
+
+<div ng-controller="ViewFinancialTranController">
+<div><ul class="breadcrumb">
+  <img ng-hide="imagePresent" src="../app/images/blank_avatar.jpg" alt="Avatar" width="40">
+     <img ng-show="imagePresent" src="{{image}}" alt="Avatar" width="40">
+     <li>
+          <h3>
+            &nbsp;
+            {{displayName}}
+            &nbsp;
+            <i class="icon-circle {{statusActive | StatusLookup}}"></i>
+            &nbsp;
+          </h3>
+        </li>
+        <li><span class="divider">|</span>
+          <i class="icon-barcode"></i>
+          <small>Uniquely identified with {{accountNo}}&nbsp;</small>
+        </li>
+        <li><span class="divider">|</span>
+          <i class="icon-building"></i>
+          <small>Belongs to "{{officeName}}" office</small>
+        </li>
+         <li><span class="divider">|</span>
+          <i></i>
+          <small>Balance:{{balanceAmount}} &nbsp;{{currency}}</small>
+        </li>
+ </ul>
+		<ul class="breadcrumb">
+			<li><a href="#/clients">{{'link.clients' | translate}}</a> <span class="divider">/</span></li>
+			<li><a href="#/viewclient/{{clientId}}">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
+			<li class="active">{{'label.creatticket' | translate}}</li>
+		</ul>
+	</div>
+<div class="row-fluid">
+   
+	<h3>Invoice Details </h3>
+	<table class="table">
+        <thead>
+            <tr class="graybg">
+                    <th>{{'table.heading.chargeid' | translate}}</th>
+					<th>{{'table.heading.chargetype' | translate}}</th>
+					<th>{{'table.heading.chargedescription' | translate}}</th>
+					<th>{{'table.heading.startdate' | translate}}</th>
+					<th>{{'table.heading.enddate' | translate}}</th>
+					<th>{{'table.heading.amount' | translate}}</th>	
+            </tr>
+        </thead>
+        <tbody>
+                    <tr ng-repeat="invoicedetail in invoicedetails">
+                    <td>{{invoicedetail.chargeId}}</td>
+					<td>{{invoicedetail.chargeType}}</td>  
+					<td>{{invoicedetail.chargeDescription}}</td>
+					<td>{{invoicedetail.chargeStartDate | DateFormat}}</td>
+					<td>{{invoicedetail.chargeEndDate | DateFormat }}</td>
+					<td>{{invoicedetail.chargeAmount}}</td> 	       
+            </tr>
+        </tbody>
+    </table>
+    <h3>Tax Details </h3>
+    <table class="table">
+        <thead>
+            <tr class="graybg">
+					<th>{{'table.heading.chargeid' | translate}}</th>
+					<th>{{'table.heading.taxdescription' | translate}}</th>
+					<th>{{'table.heading.taxamount' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+         			<tr ng-repeat="invoicedetail in invoicedetails">
+					<td>{{invoicedetail.chargeId}}</td>
+					<td>{{invoicedetail.chargeDescription}}</td>  
+					<td>{{invoicedetail.taxAmount}}</td>			       
+            </tr>
+        </tbody>
+    </table> 
+</div>
+</div>

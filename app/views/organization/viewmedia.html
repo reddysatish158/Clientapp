@@ -1,0 +1,111 @@
+<div ng-controller="ViewMediaController">
+	<div class="paddedbottom10">
+		<ul class="breadcrumb">
+	        <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
+	        <li><a href="#/media">{{'label.media' | translate}}</a> <span class="divider">/</span></li>
+	        <li class="active">{{media.mediaTitle}}</li>
+	    </ul>
+	    <div class="pull-right">
+	      <div class="btn-group">
+	          <a href="#/editmedia/{{media.mediaId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	         <a ng-click="deletemedia()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
+	         
+	      </div>
+	    </div>
+	</div>
+	<div class="row paddedleft">
+		<h3>{{contractperiod.name}}</h3>
+		<table width="100%">
+			<tr>
+				<td width="20%">{{ 'label.media.title' | translate }}</td>
+				<td width="70%">{{media.mediaTitle}}</td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.mediaType' | translate }}</td>
+				<td><table>
+				<tr ng-repeat="mediaTypeData in mediaTypeDatas">
+							
+							<td >
+                                      <div ng-show="mediaTypeData.id == media.mediatype">
+                                      {{mediaTypeData.value}}
+                                      </div>
+                            </td>
+						</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td>{{'label.media.categeory' | translate }}</td>
+				<td>
+				  <table>
+				     <tr ng-repeat="mediaCategeorydata in mediaCategeorydatas">
+						<td >
+                           <div ng-show="mediaCategeorydata.id == media.catageoryId">
+                                 {{mediaCategeorydata.mCodeValue}}
+                            </div>
+                       </td>
+				   </tr>
+				</table>
+		     </td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.movieduration' | translate }}</td>
+				<td>{{media.duration}}</td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.releasedate' | translate }}</td>
+				<td>{{media.releaseDate | DateFormat}}</td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.status' | translate }}</td>
+				<td>{{media.status}}</td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.subject' | translate }}</td>
+				<td>{{media.subject}}</td>
+			</tr>
+			<tr>
+				<td>{{ 'label.media.overview' | translate }}</td>
+				<td>{{media.overview}}</td>
+			</tr>
+			
+			<tr>
+				<td valign="top">{{ 'label.media.mediadetails' | translate }}</td>
+				<td>
+					<table>
+						<tr ng-repeat="mediaDetail in mediaDetails">
+							<td  ng-repeat="mediaAttribute in mediaAttributes" ng-show="mediaAttribute.id ==mediaDetail.attributeName">
+                                      {{mediaAttribute.mediaName}},
+                                 </td>
+								<td>{{mediaDetail.attributeNickname}},</td>
+								<td>{{mediaDetail.attributeType}},</td>
+                                <td>{{mediaDetail.attributeValue}}</td>
+						</tr>
+					</table>		
+				</td>
+			</tr>
+			<tr>
+				<td valign="top">{{ 'label.media.medialocation' | translate }}</td>
+				<td>
+					<table>
+						<tr ng-repeat="mediaLocationData in mediaLocationDatas">
+							<td>
+								{{mediaLocationData.formatType}},
+								</td>
+				                <td ng-repeat="mediaLanguageData in mediaLanguageDatas" ng-show="mediaLanguageData.id ==mediaLocationData.languageId">
+                                      
+                                      {{mediaLanguageData.mCodeValue}},
+                                      
+				                </td>
+								<td>{{mediaLocationData.location}}</td>
+                                
+							
+						</tr>
+					</table>		
+				</td>
+			</tr>
+			
+			
+		</table>
+	</div>
+</div>
+          
