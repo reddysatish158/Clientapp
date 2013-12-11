@@ -8,6 +8,7 @@
 	    <div class="pull-right">
 	      <div class="btn-group">
 	         <a ng-show="import.processStatus == 'NEW'" ng-click="processFile()" class="btn btn-primary"><i class="icon-play icon-white"></i> Process File</a>
+	         <a ng-show="import.processStatus != 'NEW'" ng-click="logFile()" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i> Log File</a>
 	            <a ng-show="import.processStatus != 'NEW'" ng-click="downloadFile()" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i> Download File</a>
 	         
 	         
