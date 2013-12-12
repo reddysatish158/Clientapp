@@ -397,7 +397,8 @@
 					<td>{{onetimesale.quantity}}</td> 
 					<td>{{onetimesale.totalPrice}}</td> 
 					<td>{{onetimesale.hardwareAllocated}}</td>
-				   <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i></a></td> 
+				    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i></a></td>
+				    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
 				</tr>
 			</tbody>
 		</table>
@@ -658,26 +659,57 @@
       <!-- ************************ end of InVenture code ************************ -->
     </tabset>
     </div>
-    <script type="text/ng-template" id="approve1.html">
+      <script type="text/ng-template" id="approve1.html">
                     <div class="modal-header silver">
-                        <h3 class="bolder">{{'dialog.item.title.message' | translate}}</h3>
+                        <h3 class="bolder">{{'dialog.invoice.title.message' | translate}}</h3>
                     </div>
                     <div class="modal-body modal-big" style="height:270px;">
                        	<div class="control-group">
+							<div class="controls">
+						 	 <label class="control-label" style="color:red;" ng-show="error.length>0">{{error | translate}}</label>
+							</div>	
+						</div>
+						<div class="control-group">
 							<label class="control-label">{{ 'label.processingdate' | translate }}</label>
 							<div class="controls">
 						 		<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened" min="minDate" max="maxDate" date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/> 
 							</div>	
 						</div>
-						<div class="control-group">
-							<div class="controls">
-						 	 <label class="control-label" ng-show="error.length>0"><i class="icon-warning-sign">&nbsp;&nbsp;{{error}}</i></label>
-							</div>	
-						</div>
+						
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
                         <button class="btn btn-primary" ng-click="accept(start.date)">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+      <script type="text/ng-template" id="StatementPop.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.statement.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big" style="height:270px;">
+            			<div class="control-group">
+       						<div class="controls">
+								<span class="control-label" style="color:red;" ng-show="stmError.length>0">{{stmError | translate}}</span>
+                    		</div>
+						</div>            	
+
+						<div class="control-group">
+       						<label class="control-label">{{ 'label.duedate' | translate }}</label>
+       						<div class="controls">
+             					<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened" min="minDate" max="maxDate" 
+             						date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+                    		</div>
+						</div> 
+                		<div class="control-group">
+                  			<label class="control-label">{{ 'label.Promotionalmessage' | translate }}</label>
+                  			<div class="controls">
+                  				<textarea  ng-model="formData.message" style="width: 333px; height: 126px;"></textarea>
+                  			</div>
+                  		</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="acceptStatement()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
 </div>

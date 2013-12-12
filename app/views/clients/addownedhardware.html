@@ -44,7 +44,7 @@
            <tr>
               <td>
                   <div class="control-group">
-                      <label class="control-label">{{ 'label.form.allocationdate' | translate }}</label>
+                      <label class="control-label">{{ 'label.form.allocationdate' | translate }}&nbsp;<span class="required">*</span></label>
                       <div class="controls">
                           <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="first.date" is-open="opened" min="minDate" max="'2020-06-22'" 
                           date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
@@ -55,7 +55,7 @@
            <tr>
               <td>
                 <div class="control-group">
-                  <label class="control-label">{{ 'label.itemtype' | translate }}</label>
+                  <label class="control-label">{{ 'label.itemtype' | translate }}&nbsp;<span class="required">*</span></label>
                   <div class="controls">
                     <select ng-model="formData.itemType"  ng-options="itemtypes.id as itemtypes.itemDescription for itemtypes in itemtypes" value="{{itemtypes.id}}"></select>
                   </div>
@@ -65,7 +65,7 @@
             <tr>
               <td>
                 <div class="control-group">
-                  <label class="control-label">{{ 'lable.serialnumber' | translate }}</label>
+                  <label class="control-label">{{ 'lable.serialnumber' | translate }}&nbsp;<span class="required">*</span></label>
                   <div class="controls">
                     <input type="text" name="serialnumber" ng-model="formData.serialNumber">
                   </div>
@@ -75,7 +75,7 @@
             <tr>
               <td>
                 <div class="control-group">
-                  <label class="control-label">{{ 'lable.provisioningserialnumber' | translate }}</label>
+                  <label class="control-label">{{ 'lable.provisioningserialnumber' | translate }}&nbsp;<span class="required">*</span></label>
                   <div class="controls">
                     <input type="text" name="provisioningserialnumber" ng-model="formData.provisioningSerialNumber">
                   </div>
