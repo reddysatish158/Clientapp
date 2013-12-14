@@ -627,6 +627,9 @@
                oneTimeSaleResource: defineResource(apiVer + "/onetimesales/:clientId", {clientId:'@clientId'}, {
              	getOneTimeSale: {method: 'GET', params: {clientId:'@clientId'}}
                }),
+               deleteOneTimeSaleResource: defineResource(apiVer + "/onetimesales/:saleId", {saleId:'@saleId'}, {
+                  	update: {method: 'PUT', params: {saleId:'@saleId'}}
+                  }),
                oneTimeSaleTemplateResource: defineResource(apiVer + "/onetimesales/template", {}, {
                  getOnetimes: {method: 'GET', params: {}}
                }),
