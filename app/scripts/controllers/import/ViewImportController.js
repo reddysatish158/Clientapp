@@ -26,14 +26,12 @@
             
             scope.downloadFile = function (){ 
             
-           	/* fileDownload("https://localhost:7070/mifosng-provider/api/v1/uploadstatus/"+routeParams.id+"/print?tenantIdentifier=default", {
-                 //preparingMessageHtml: "Please wait while your document is downloaded...",
-                 //failMessageHtml: "There was a problem downloading the document, please try again.",
-                 httpMethod: "GET"*/
-            	//scope.$broadcast("downloadFile",'https://localhost:7070/mifosng-provider/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
-            	  window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
-            // });
-};
+           	 window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
+            };
+            
+			scope.logFile = function (){ 
+					window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/printlog?tenantIdentifier=default');
+			};
            
     }
   });
