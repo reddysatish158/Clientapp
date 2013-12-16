@@ -2,16 +2,38 @@
   mifosX.controllers = _.extend(module, {
 	  ClientInvoiceController: function(scope, routeParams, location, resourceFactory,dateFilter) {
 		
-		  
+		  	scope.formData = {};
  		    scope.start = {};
 	        scope.start.date = new Date();
-      //resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
+	        
+	        /*resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
 			  scope.clientId=routeParams.id;
 			  
 			  scope.formData = {};
-        //});
+      		});*/
 		  
-		  scope.cancel=function() {
+	        $modal.open({
+                templateUrl: 'approve.html',
+                controller: Approve,
+                resolve:{}
+            });
+	        
+	        
+	        var Approve = function ($scope, $modalInstance) {
+                $scope.approve = function (act) {
+                    scope.approveData = {};
+                /*resourceFactory.itemResource.delete({itemId: routeParams.id},{},function(data){
+                        location.path('/inventory');
+
+                });*/
+                    $modalInstance.close('delete');
+                };
+                $scope.cancel = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            };
+	        
+	        scope.cancel=function() {
 	          location.path('/viewclient/' + routeParams.id);
 	        };
 	        scope.submit=function() {  
