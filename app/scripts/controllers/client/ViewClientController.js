@@ -55,7 +55,13 @@
                       }
 
                     if (data.status.value == "Active") {
-                      scope.buttons = [{
+                      scope.buttons = [
+                                       	{
+                                    	  name:"button.eventorder",
+                                    	  href:"#/eventorder",
+                                    	  icon:"icon-barcode"
+                                       	},
+                                      	{
                                         name:"button.neworder",
                                         href:"#/neworder",
                                         icon :"icon-plus-sign"
