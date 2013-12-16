@@ -7,7 +7,8 @@
 	</div>
      
         <fieldset>
-          <legend>{{'label.createclient' | translate}}</legend>
+          <legend>Create client</legend>
+          <legend>{{configs.enabled}}</legend>
         <table>
            <tr>
              <td>
@@ -72,6 +73,14 @@
                 <input type="text" id="email" ng-model="formData.email"/>
               </div>
             </div>
+            
+            <div class="control-group" ng-hide="configurationProperty==false">
+              <label class="control-label">Login<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text" id="login" name="login" ng-model="formData.login"/>
+              </div>
+            </div>
+            
             <div class="control-group">
               <label class="control-label" for="file">{{'label.client.select.image' | translate}}</label>
               <div class="controls">
@@ -122,6 +131,13 @@
              <datalist id="citylist">
                    <option  data-ng-repeat="city in cities" value="{{city}}">
              </datalist>
+             
+             <div class="control-group" ng-hide="configurationProperty==false">
+              <label class="control-label">Password<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text"  ng-model="formData.password"/>
+              </div>
+            </div>
            </td>
            </tr>
            </table> 
