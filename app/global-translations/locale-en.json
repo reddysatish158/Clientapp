@@ -1956,6 +1956,8 @@
  "validation.msg.client.phone.cannot.be.blank":"Phone Number cannot be blank",
  "validation.msg.client.email.cannot.be.blank":"Email cannot be blank",
  "validation.msg.client.phone.exceeds.max.length":"Invalid phone Number",
+ "validation.msg.client.login.cannot.be.blank":"Login cannot be blank",
+ "validation.msg.client.password.cannot.be.blank":"Password cannot be blank",
  "error.msg.client.duplicate.email":"Client with this email already exists",
  "error.msg.regional.price.not.found":"No Regional Price found for this plan",
 

@@ -7,15 +7,19 @@
         scope.first.date = new Date();
         scope.formData = {};
         scope.clientCategoryDatas=[];
+        scope.configurationProperty=[];
+        
         resourceFactory.clientTemplateResource.get(function(data) {
             scope.offices = data.officeOptions;
             scope.staffs = data.staffOptions;
             scope.formData.officeId = scope.offices[0].id;
             scope.clientCategoryDatas=data.clientCategoryDatas;
             scope.cities=data.addressTemplateData.cityData;
+            scope.configurationProperty=data.configurationProperty.enabled;
             scope.formData.clientCategory=scope.clientCategoryDatas[0].id;
         });
         
+       
         scope.changeOffice =function(officeId) {
           resourceFactory.clientTemplateResource.get({staffInSelectedOfficeOnly : false, officeId : officeId
               }, function(data) {
@@ -47,11 +51,13 @@
             }
         };
         scope.submit = function() {
+        	
             var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
             this.formData.locale = 'en';
             this.formData.active = true;
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.activationDate = reqDate;
+            this.formData.flag=scope.configurationProperty;
             resourceFactory.clientResource.save(this.formData,function(data){
               if (scope.file) {
                 http.uploadFile({

@@ -14,6 +14,9 @@
         scope.file = $files[0];
       };
 
+      scope.reset123 = function(){
+      	   webStorage.add("callingTab", {someString: "documents" });
+         };
       scope.submit = function () {
         http.uploadFile({
           url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+scope.clientId+'/documents', 

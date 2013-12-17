@@ -26,6 +26,10 @@
 	 
         });
                  
+        scope.reset123 = function(){
+     	   webStorage.add("callingTab", {someString: "hardware" });
+        };
+        
         scope.submit = function() {
             
             this.formData.locale = 'en';

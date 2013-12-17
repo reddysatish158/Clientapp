@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    CreateItemController: function(scope, resourceFactory, location) {
+    CreateItemController: function(scope,webStorage, resourceFactory, location) {
     	 scope.itemClassDatas = [];
          scope.unitDatas = [];
          scope.chargesDatas = [];
@@ -17,6 +17,9 @@
                     };
         });
         
+        scope.reset123 = function(){
+	    	   webStorage.add("callingTab", {someString: "items" });
+	       };
                 
         scope.submit = function() {
         	delete this.formData.unitData;
@@ -29,7 +32,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('CreateItemController', ['$scope', 'ResourceFactory', '$location', mifosX.controllers.CreateItemController]).run(function($log) {
+  mifosX.ng.application.controller('CreateItemController', ['$scope','webStorage', 'ResourceFactory', '$location', mifosX.controllers.CreateItemController]).run(function($log) {
     $log.info("CreateItemController initialized");
   });
 }(mifosX.controllers || {}));

@@ -170,7 +170,7 @@
                 </div>
           </div>
       </tab>
-      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()">
+      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab.identitiesTab1">
         <div class="pull-right btn-group">
           <a href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -221,7 +221,7 @@
           </span>
         </div>
       </tab> -->
-      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()">
+      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab.documentsTab1">
         <div class="pull-right">
           <a href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
@@ -274,7 +274,7 @@
         </div>
         </ul>
       </tab>
-       <tab heading="Tickets" select="getAllTickets()">
+       <tab heading="Tickets" select="getAllTickets()" active="TicketsTab.TicketsTab1">
      <div class="pull-right">
 		
 		<a href="#/newTicket/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
@@ -333,7 +333,7 @@
           </table>
         </div>
       </tab>
-       <tab heading="My Device" select="getAllOwnHardware()">
+       <tab heading="My Device" select="getAllOwnHardware()" active="hardwareTab.hardwareTab1">
       
       <div class="pull-right">
 		
@@ -366,7 +366,7 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Sale" select="getOneTimeSale()">
+      <tab heading="Sale" select="getOneTimeSale()" active="SaleTab.SaleTab1">
       
       <div class="pull-right">
 		
@@ -465,7 +465,7 @@
         </div>
       </tab> -->
        
-         <tab heading="Statements" select="getClientStatements()">
+         <tab heading="Statements" select="getClientStatements()" active="StatementsTab.StatementsTab1">
              <div class="pull-right">
 		         <a href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
 	        </div>
