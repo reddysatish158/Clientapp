@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location) {
+	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -38,32 +38,134 @@
             });
         };
         
+        
+        scope.reconnect = function (){
+        	scope.errorStatus=[];scope.errorDetails=[];
+        	 $modal.open({
+                 templateUrl: 'ApproveReconnect.html',
+                 controller: ApproveReconnect,
+                 resolve:{}
+             });
+          };
+          
+          
+          scope.orderDisconnect = function(orderDisUrl){
+        	  scope.errorStatus=[];scope.errorDetails=[];
+        	  $modal.open({
+                  templateUrl: 'OrderDisconnect.html',
+                  controller: OrderDisconnectController,
+                  resolve:{}
+              });
+          };
+          
+          scope.orderRenew = function(orderRenewUrl){
+        	  scope.errorStatus=[];scope.errorDetails=[];
+        	  $modal.open({
+        		  templateUrl: 'OrderRenewal.html',
+        		  controller: OrderRenewalController,
+        		  resolve:{}
+        	  });
+          };
+          
+    	var ApproveReconnect = function ($scope, $modalInstance) {
+            $scope.approveReconnect = function () {
+            	if(this.formData == undefined || this.formData == null){
+            		this.formData = {};
+            	}
+            	resourceFactory.OrderreconnectResource.update({orderId: routeParams.id} ,this.formData, function(data) {              	
+            		resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                        scope.orderPriceDatas= data.orderPriceData;
+                        scope.orderHistorydata=data.orderHistory;
+                        scope.orderData=data.orderData;
+                    });
+                    $modalInstance.close('delete');
+                });
+            	
+            };
+            $scope.cancelReconnect = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };
+          
+          
+          var OrderRenewalController = function($scope,$modalInstance){
+        	  $scope.subscriptiondatas = [];
+        	  resourceFactory.OrderrenewalResourceTemplate.get(function(data) {
+                  $scope.subscriptiondatas = data.subscriptiondata;
+              });
+        	  
+        	  $scope.approveRenewal = function(){
+        		  
+        		  if($scope.formData == undefined || $scope.formData == null){
+        			  $scope.formData = {"renewalPeriod":"","description":""};
+        		  }
+        		  
+        		  resourceFactory.OrderrenewalResource.save({'orderId': routeParams.id},this.formData,function(data){
+        	            //location.path('/vieworder/'+data.resourceId);
+        	            
+        	            resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+        	            scope.orderPriceDatas= data.orderPriceData;
+        	            scope.orderHistorydata=data.orderHistory;
+        	            scope.orderData=data.orderData;
+        	            });
+        	             
+        	            $modalInstance.close('delete');
+        	            
+        	        },function(renewalErrorData){
+        	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+        	        });
+        	  };
+        	  $scope.cancelRenewal = function(){
+        		  console.log('cancel renewal');
+        		  $modalInstance.dismiss('cancel');
+        	  };
+          };
+          
+          
+          var OrderDisconnectController = function ($scope, $modalInstance) {
+              
+        	  $scope.disconnectDetails = [];
+              resourceFactory.OrderDisconnectResource.get(function(data) {
+                  $scope.disconnectDetails = data.disconnectDetails;
+              });
+        	  console.log($scope.disconnectDetails);
+        	  
+        	  $scope.approveDisconnection = function () {
+        		  if(this.formData == undefined || this.formData == null){
+        			  this.formData = {"disconnectReason":""};
+        		  }
+        		  resourceFactory.saveOrderResource.update({'clientId': routeParams.id},this.formData,function(data){
+        	            /*location.path('/viewclient/'+scope.orderPriceDatas[0].clientId);
+        	            location.path('/vieworder/'+data.resourceId);*/
+        			  	
+        			  resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+        		            scope.orderPriceDatas= data.orderPriceData;
+        		            scope.orderHistorydata=data.orderHistory;
+        		            scope.orderData=data.orderData;
+        		        });
+        			    console.log(data.resourceId);
+        	            $modalInstance.close('delete');
+        	        },function(orderErrorData){
+        	        	$scope.orderError = orderErrorData.data.errors[0].userMessageGlobalisationCode;
+        	        });
+        		  
+              };
+              $scope.cancelDisconnection = function () {
+                  $modalInstance.dismiss('cancel');
+              };
+              
+              
+          };
+          
+        
+        
         scope.deAssociation=function (){
-        	
         	 resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
+        		 console.log('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
                  location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);           	
             });
         };
-        	
-        
-        scope.reconnect = function (){
-          
-            resourceFactory.OrderreconnectResource.update({orderId: routeParams.id} ,this.formData, function(data) {
-            	
-                 location.path('/viewclient/'+scope.orderPriceDatas[0].clientId);
-             	
-            	
-            });
-          };
-          
-          scope.cancel=function(){
 
-        	  resourceFactory.saveOrderResource.delete({clientId: routeParams.id} , {} , function(data) {
-        		  
-        		    location.path('/viewclient/'+scope.orderPriceDatas[0].clientId);
-                        
-                  });
-          };
           scope.updatePrice = function (id,price){
         	  scope.orderData.locale="en";
         	  scope.orderData.price=price;
@@ -73,6 +175,8 @@
                  
             	  //location.path('/vieworder/'+data.resourceId);
             	
+              },function(error){
+            	  scope.errorStatus=[];scope.errorDetails=[];
               });
         
             };
@@ -83,7 +187,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location', mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal', mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

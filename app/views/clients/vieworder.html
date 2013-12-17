@@ -35,14 +35,16 @@
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	    </div>
+	 </div>
+	    
+	    
    <div class="pull-right"> 
 	      <div class="btn-group">
 	         <!-- <a ng-show="orderData.status == 'ACTIVE'" href="#/editplan/{{plan.id}}" class="btn btn-primary"><i class="icon-wrench icon-white"></i> Update</a> -->
-	         <a ng-show="orderData.status == 'ACTIVE'" href="#/disconnectOrder/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-remove icon-white"></i> Disconnect</a>
+	         <a ng-show="orderData.status == 'ACTIVE'" href="" ng-click="orderDisconnect(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-remove icon-white"></i> Disconnect</a>
 	         <a ng-show="orderData.status == 'DISCONNECTED'" ng-click="reconnect()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Reconnect</a>
-	         <a ng-show="orderData.contractPeriod !='perpetual '  && orderData.isPrepaid == 'N'" href="#/renewalOrder/{{orderPriceDatas[0].orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
-	         <a ng-show="orderData.isPrepaid == 'Y'"  href="#/renewalOrder/{{orderPriceDatas[0].orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-arrow-up icon-white"></i>TopUp</a>
+	         <a ng-show="orderData.contractPeriod != 'Perpectual' && orderData.status == 'ACTIVE' && orderData.isPrepaid == 'N'" href="" ng-click="orderRenew(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
+	         <a ng-show="orderData.isPrepaid == 'Y'"  href="" ng-click="orderRenew(orderPriceDatas[0].orderId)"class="btn btn-primary"><i class="icon-arrow-up icon-white"></i>TopUp</a>
 	         <a ng-show="orderData.provisioningSys =='Comvenient' && orderData.status == 'ACTIVE'"href="#/osdMessage/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> OSDMessage</a>
 	         <a ng-show="orderData.provisioningSys =='Comvenient' && orderData.status == 'ACTIVE'" ng-click="retrack()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Retrack</a>
 	          <a ng-show="orderData.status == 'PENDING'" ng-click="cancel()" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a>
@@ -166,4 +168,78 @@
         </tbody>
     </table>
 </div>
+
+<script type="text/ng-template" id="OrderDisconnect.html">
+		
+	<div class="modal-header silver">
+        <h3 class="bolder">{{'label.disconnectorder' | translate}}</h3>
+    </div>
+    <div class="modal-body modal-big">
+       <fieldset>
+     	<div class="control-group">
+            <label class="control-label" style="color:red;" ng-show="orderError.length>0">{{orderError | translate}}</label>
+            <div class="controls">
+            </div>
+        </div>
+       <div class="control-group">
+            <label class="control-label" for="status">{{ 'label.order.disconnectionreason' | translate }}<span class="required">*</span></label>
+            <div class="controls">
+              <select ng-model="formData.disconnectReason"  ng-options="disconnectDetail.mCodeValue as disconnectDetail.mCodeValue for disconnectDetail in disconnectDetails" value="{{disconnectDetail.mCodeValue}}"></select>
+            </div>
+          </div>
+    </fieldset>
+    </div>
+     <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancelDisconnection()">{{'button.cancel' | translate}}</button>
+     	<button class="btn btn-primary" ng-click="approveDisconnection()">{{'label.confirm' | translate}}</button>
+     </div>
+
+</script>
+
+<script type="text/ng-template" id="OrderRenewal.html">
+		
+	<div class="modal-header silver">
+        <h3 class="bolder">{{'label.renewalorder' | translate}}</h3>
+    </div>
+    <div class="modal-body modal-big">
+       <fieldset>
+		<div class="control-group">
+            <label class="control-label" style="color:red;" ng-show="renewError.length>0">{{renewError | translate}}</label>
+            <div class="controls">
+            </div>
+        </div>
+     	<div class="control-group">
+            <label class="control-label" for="status">{{ 'label.order.renewalperiod' | translate }}</label>
+            <div class="controls">
+              <select ng-model="formData.renewalPeriod"  ng-options="subscriptiondata.id as subscriptiondata.Contractdata for subscriptiondata in subscriptiondatas" value="{{disconnectDetail.mCodeValue}}"></select>
+            </div>
+        </div>
+			<br>
+        <div class="control-group">
+            <label class="control-label" for="status">{{ 'label.order.description' | translate }}</label>
+            <div class="controls">
+             <textarea rows="2" cols="2" ng-model="formData.description" style="width: 333px; height: 126px;"></textarea>
+            </div>
+        </div>
+    </fieldset>
+    </div>
+     <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancelRenewal()">{{'button.cancel' | translate}}</button>
+     	<button class="btn btn-primary" ng-click="approveRenewal()">{{'label.confirm' | translate}}</button>
+     </div>
+
+</script>
+	<script type="text/ng-template" id="ApproveReconnect.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.reconnect.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big">
+                       <h4>Are you sure?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="approveReconnect()">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+      
 </div>

@@ -627,6 +627,9 @@
                oneTimeSaleResource: defineResource(apiVer + "/onetimesales/:clientId", {clientId:'@clientId'}, {
              	getOneTimeSale: {method: 'GET', params: {clientId:'@clientId'}}
                }),
+               deleteOneTimeSaleResource: defineResource(apiVer + "/onetimesales/:saleId", {saleId:'@saleId'}, {
+                  	update: {method: 'PUT', params: {saleId:'@saleId'}}
+                  }),
                oneTimeSaleTemplateResource: defineResource(apiVer + "/onetimesales/template", {}, {
                  getOnetimes: {method: 'GET', params: {}}
                }),
@@ -656,7 +659,10 @@
                 }),
                 eventTemplateResource: defineResource(apiVer + "/eventmaster/template",{},  {
               	  get: {method: 'GET', params: {}}
-                }),    
+                }),
+                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{clientId:'@clientId'},  {
+                	  get: {method: 'GET', params: {clientId:'@clientId'}}
+                  }),
                 eventPriceTemplateResource: defineResource(apiVer + "/eventprice/template/:resourceType",{eventId:'@eventId', resourceType:'@resourceType'},  {
               	  get: {method: 'GET', params: {eventId:'@eventId'}, isArray:true},
               	  getpriceDetails: {method: 'GET', params: {eventId:'@eventId'}}

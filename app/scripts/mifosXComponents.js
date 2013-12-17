@@ -274,7 +274,8 @@ define(['underscore', 'mifosX'], function() {
       'system/EditServiceMappingController',
       'client/AssociationController',
       'client/ViewAssociationController',
-      'client/EditAssociationController'
+      'client/EditAssociationController',
+      'eventorder/EventOrderController'
     ],
     filters: [
       'StatusLookup',
