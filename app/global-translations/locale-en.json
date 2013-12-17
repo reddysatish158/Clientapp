@@ -1605,6 +1605,8 @@
    "table.heading.amount":"Charge Amount",
    "table.heading.taxdescription":"Tax Description",
    "table.heading.taxamount":"Tax Amount",
+   "table.heading.discountamount":"Discount Amount",
+   "table.heading.netchargeamount":"NetCharge Amount",
   
    "#OnetimeSale":"......",
    "table.heading.saledate":"Sale Date",
