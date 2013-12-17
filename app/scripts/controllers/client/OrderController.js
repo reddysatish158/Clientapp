@@ -161,6 +161,7 @@
         
         scope.deAssociation=function (){
         	 resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
+        		 console.log('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
                  location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);           	
             });
         };
