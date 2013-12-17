@@ -52,6 +52,9 @@
 		        });	
 	        }
 	        
+	        scope.reset123 = function(){
+	        	   webStorage.add("callingTab", {someString: "Sale" });
+	           };
 	        scope.submit = function() {  
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";

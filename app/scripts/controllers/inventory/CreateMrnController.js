@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    CreateMrnController: function(scope, resourceFactory, location,dateFilter) {
+    CreateMrnController: function(scope,webStorage, resourceFactory, location,dateFilter) {
     	 scope.officeDatas = [];
     	 scope.itemMasterDatas = [];
     	 scope.first = {};
@@ -11,6 +11,9 @@
         	scope.formData = data;
         });
         
+        scope.reset123 = function(){
+	    	   webStorage.add("callingTab", {someString: "mrn" });
+	       };
         scope.submit = function() {
         	
         	this.formData.locale = 'en';
@@ -34,7 +37,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('CreateMrnController', ['$scope', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.CreateMrnController]).run(function($log) {
+  mifosX.ng.application.controller('CreateMrnController', ['$scope','webStorage', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.CreateMrnController]).run(function($log) {
     $log.info("CreateMrnController initialized");
   });
 }(mifosX.controllers || {}));

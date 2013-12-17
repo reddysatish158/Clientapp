@@ -18,6 +18,9 @@
                 scope.formData.documentTypeId = data.allowedDocumentTypes[0].id;
             });
 
+            scope.reset123 = function(){
+  	    	   webStorage.add("callingTab", {someString: "identities" });
+  	       };
             scope.submit = function () {
                 resourceFactory.clientIdenfierResource.save({clientId:scope.clientId},this.formData,function(data){
                     location.path('/viewclient/' + data.clientId);

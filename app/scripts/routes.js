@@ -766,6 +766,9 @@
       .when('/event', {
         templateUrl: 'views/organization/event.html'
       })
+      .when('/eventorder/:id', {
+        templateUrl: 'views/eventorder/eventorder.html'
+      })
        .when('/createEvent', {
         templateUrl: 'views/organization/createEvent.html'
       })   

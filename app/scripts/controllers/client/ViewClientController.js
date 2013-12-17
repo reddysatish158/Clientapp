@@ -12,6 +12,43 @@
  		scope.start = {};
          scope.start.date = new Date();
         
+         
+         var callingTab = webStorage.get('callingTab',null);
+         if(callingTab == null){
+         	callingTab="";
+         }else{
+ 		  scope.displayTab=callingTab.someString;
+ 		 
+ 		  if( scope.displayTab == "identities"){
+ 			 
+ 			  scope.identitiesTab = {identitiesTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "documents"){
+ 			 
+ 			  scope.documentsTab = {documentsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "Tickets"){
+ 			  scope.TicketsTab = {TicketsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "hardware"){
+ 			  scope.hardwareTab = {hardwareTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "Sale"){
+ 			  scope.SaleTab = {SaleTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }else if(scope.displayTab == "Statements"){
+ 			  scope.StatementsTab = {StatementsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }else
+ 		  {
+ 			  webStorage.remove('callingTab');
+ 		  };
+ 		 
+         }
         
         var getDetails = function(){
         	
@@ -55,7 +92,13 @@
                       }
 
                     if (data.status.value == "Active") {
-                      scope.buttons = [{
+                      scope.buttons = [
+                                       	{
+                                    	  name:"button.eventorder",
+                                    	  href:"#/eventorder",
+                                    	  icon:"icon-barcode"
+                                       	},
+                                      	{
                                         name:"button.neworder",
                                         href:"#/neworder",
                                         icon :"icon-plus-sign"
@@ -332,10 +375,9 @@
                       };        
                
 
-               scope.downloadFile = function (statementId){
-              	 
-                   window.open('https://spark.openbillingsystem.com/mifosng-provider/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
-              };
+         scope.downloadFile = function (statementId){
+              window.open('https://spark.openbillingsystem.com/mifosng-provider/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
+         };
          scope.getAllTickets=function(){      
                resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
    	            scope.tickets = data;

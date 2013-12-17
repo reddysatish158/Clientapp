@@ -8,6 +8,7 @@
             scope.bOfficeName = 'Head Office';
             scope.chartType = 'Days';
             scope.collectionPieData = [];
+           
             scope.formatdate = function(){
                 var bardate = new Date();
                 scope.formattedDate = [];
@@ -21,6 +22,7 @@
                 }
             };scope.formatdate();
 
+            
             scope.getWeek = function() {
                 scope.formattedWeek = [];
                 var checkDate = new Date();
@@ -160,6 +162,7 @@
                 });
             });
 
+          
             resourceFactory.groupTemplateResource.get(function(data) {
                 scope.offices = data.officeOptions;
             });
