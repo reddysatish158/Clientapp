@@ -1409,6 +1409,11 @@
   "label.opttype":"Opt Type",
   "label.formattype":"Format Type",
   "label.events":"Event",
+  "label.eventorder":"Event Order",
+  "validation.msg.eventorder.deviceId.cannot.be.blank":"Device Id cannot be blank",
+  "validation.msg.eventorder.eventId.cannot.be.blank":"Event cannot be blank",
+  "validation.msg.eventorder.formatType.cannot.be.blank":"Format Type cannot be blank",
+  "validation.msg.eventorder.optType.cannot.be.blank":"Opt Type cannot be blank",
   
   
   "#TicketResources":"....",
