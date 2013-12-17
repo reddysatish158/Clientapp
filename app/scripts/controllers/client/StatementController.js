@@ -11,7 +11,8 @@
         });
 		  
 		 scope.cancel = function() {
-              location.path('/viewclient/' +routeParams.id);        
+              location.path('/viewclient/' +routeParams.id);   
+              webStorage.add("callingTab", {someString: "Statements" });
           }
         
          scope.submit = function() {
