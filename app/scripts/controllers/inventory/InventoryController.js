@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    InventoryController: function(scope, routeParams, location, resourceFactory, paginatorService) {
+    InventoryController: function(scope,webStorage, routeParams, location, resourceFactory, paginatorService) {
         scope.items = [];
         scope.grn = [];
         scope.itemdetails = [];
@@ -9,10 +9,45 @@
         scope.supplier = [];
         scope.call={status:""}; 
         
+        
+        var callingTab = webStorage.get('callingTab',null);
+        if(callingTab == null){
+        	callingTab="";
+        }else{
+		  scope.displayTab=callingTab.someString;
+		 
+		  if( scope.displayTab == "items"){
+			 
+			  scope.itemsTab = {itemsTab1: true};
+			  webStorage.remove('callingTab');
+		  }
+		  else if(scope.displayTab == "itemDetails"){
+			 
+			  scope.itemDetailsTab = {itemDetailsTab1: true};
+			  webStorage.remove('callingTab');
+		  }
+		  else if(scope.displayTab == "supplier"){
+			  scope.supplierTab = {supplierTab1: true};
+			  webStorage.remove('callingTab');
+		  }
+		  else if(scope.displayTab == "grn"){
+			  scope.grnTab = {grnTab1: true};
+			  webStorage.remove('callingTab');
+		  }
+		  else if(scope.displayTab == "mrn"){
+			  scope.mrnTab = {mrnTab1: true};
+			  webStorage.remove('callingTab');
+		  }else
+		  {
+			  webStorage.remove('callingTab');
+		  };
+		 
+        }
+        
+        
         scope.itemFetchFunction = function(offset, limit, callback) {
 			resourceFactory.itemResource.getAllItems({offset: offset, limit: limit} , callback);
 		};
-		
 		
         
         scope.itemDetailsFetchFunction = function(offset, limit, callback) {
@@ -31,11 +66,16 @@
 			resourceFactory.supplierResource.getAlldetails({offset: offset, limit: limit} , callback);
 		};
         
-		scope.items = paginatorService.paginate(scope.itemFetchFunction, 14);
+		//scope.items = paginatorService.paginate(scope.itemFetchFunction, 14);
 
         scope.grnDetailsFetchFunction = function(offset, limit, callback) {
 			resourceFactory.grnResource.getAlldetails({offset: offset, limit: limit} , callback);
 		};
+		
+		scope.getItems = function(){
+			scope.items = paginatorService.paginate(scope.itemFetchFunction, 14);
+		};
+		
         scope.getGRNdetails = function () {
         	scope.grn = paginatorService.paginate(scope.grnDetailsFetchFunction, 14);
         };
@@ -127,7 +167,7 @@
        
     }
   });
-  mifosX.ng.application.controller('InventoryController', ['$scope', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
+  mifosX.ng.application.controller('InventoryController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
     $log.info("InventoryController initialized");
   });
 }(mifosX.controllers || {}));

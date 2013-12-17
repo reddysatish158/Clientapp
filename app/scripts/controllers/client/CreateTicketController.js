@@ -25,7 +25,9 @@
               scope.usersDatas=data.usersData;
             });                  
             
-            
+            scope.reset123 = function(){
+         	   webStorage.add("callingTab", {someString: "Tickets" });
+            };
            
 			scope.submit = function() { 
 				this.formData.locale = 'en';

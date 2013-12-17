@@ -12,6 +12,43 @@
  		scope.start = {};
          scope.start.date = new Date();
         
+         
+         var callingTab = webStorage.get('callingTab',null);
+         if(callingTab == null){
+         	callingTab="";
+         }else{
+ 		  scope.displayTab=callingTab.someString;
+ 		 
+ 		  if( scope.displayTab == "identities"){
+ 			 
+ 			  scope.identitiesTab = {identitiesTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "documents"){
+ 			 
+ 			  scope.documentsTab = {documentsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "Tickets"){
+ 			  scope.TicketsTab = {TicketsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "hardware"){
+ 			  scope.hardwareTab = {hardwareTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }
+ 		  else if(scope.displayTab == "Sale"){
+ 			  scope.SaleTab = {SaleTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }else if(scope.displayTab == "Statements"){
+ 			  scope.StatementsTab = {StatementsTab1: true};
+ 			  webStorage.remove('callingTab');
+ 		  }else
+ 		  {
+ 			  webStorage.remove('callingTab');
+ 		  };
+ 		 
+         }
         
         var getDetails = function(){
         	

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  AddGRNController: function(scope, resourceFactory, location,dateFilter) {
+	  AddGRNController: function(scope,webStorage, resourceFactory, location,dateFilter) {
         scope.itemDatas = [];
         scope.officeDatas = [];
         scope.supplierDatas = [];
@@ -13,6 +13,9 @@
             scope.supplierDatas = data.supplierData;
         });
         
+        scope.reset123 = function(){
+	    	   webStorage.add("callingTab", {someString: "grn" });
+	       };
                 
         scope.submit = function() {
         	this.formData.locale = 'en';
@@ -25,7 +28,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('AddGRNController', ['$scope', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.AddGRNController]).run(function($log) {
+  mifosX.ng.application.controller('AddGRNController', ['$scope','webStorage', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.AddGRNController]).run(function($log) {
     $log.info("AddGRNController initialized");
   });
 }(mifosX.controllers || {}));

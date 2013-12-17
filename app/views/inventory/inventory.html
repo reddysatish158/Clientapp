@@ -37,7 +37,7 @@
          </div>
       </tab>	
       
-      <tab heading="{{'tab.item' | translate}}">
+      <tab heading="{{'tab.item' | translate}}" select="getItems()" active="itemsTab.itemsTab1">
  
               <div class="row-fluid">
                       <div class="btn-group pull-right"> 
@@ -86,7 +86,7 @@
                              
                 
                 
-      <tab heading="GRN" select="getGRNdetails()">
+      <tab heading="GRN" select="getGRNdetails()" active="grnTab.grnTab1">
         <div class="pull-right btn-group">
           <a href="#/addgrndetails" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -134,7 +134,7 @@
       
       
       
-      <tab heading="Item Details" select="getItemdetails()">
+      <tab heading="Item Details" select="getItemdetails()" active="itemDetailsTab.itemDetailsTab1">
         <div class="pull-right btn-group">
           <a href="#/createitemdetails/{{itemdetails.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -188,7 +188,7 @@
       
       
       
-      <tab heading="MRN" select="getMRNdetails()">
+      <tab heading="MRN" select="getMRNdetails()" active="mrnTab.mrnTab1">
         <div class="pull-right btn-group">
           <a href="#/createmrn" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
           <a href="#/movemrn" class="btn btn-primary"><i class="icon-move icon-white"></i>{{ 'button.mrn.move' | translate }}</a>

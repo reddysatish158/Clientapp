@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-	    MoveMrnController: function(scope, resourceFactory, location,dateFilter) {
+	    MoveMrnController: function(scope,webStorage, resourceFactory, location,dateFilter) {
 	    	 scope.mrnIds = [];
 	    	 scope.first = {};
 	    	 scope.first.date = new Date();
@@ -18,6 +18,10 @@
 	        scope.getBoth =function(mrnId,description){
 	        	return mrnId+"--"+description;
 	        };
+	        
+	        scope.reset123 = function(){
+		    	   webStorage.add("callingTab", {someString: "mrn" });
+		       };
 	        scope.submit = function() {        	
 	        	scope.formData.locale = 'en';
 	        	var reqDate = scope.first.date.getFullYear()+"-"+(scope.first.date.getMonth()+1)+"-"+scope.first.date.getDate()+" "+scope.first.date.getHours()+":"+scope.first.date.getMinutes()+":"+scope.first.date.getSeconds();
@@ -31,7 +35,7 @@
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('MoveMrnController', ['$scope', 'ResourceFactory','$location','dateFilter', mifosX.controllers.MoveMrnController]).run(function($log) {
+	  mifosX.ng.application.controller('MoveMrnController', ['$scope','webStorage', 'ResourceFactory','$location','dateFilter', mifosX.controllers.MoveMrnController]).run(function($log) {
 	    $log.info("MoveMrnController initialized");
 	  });
 	}(mifosX.controllers || {}));
