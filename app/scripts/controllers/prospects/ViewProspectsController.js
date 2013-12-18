@@ -20,6 +20,16 @@
 	            });
 	          };
 	        */  
+	        
+	        scope.getVal = function(flag){
+	        	if(flag === "Closed" || flag === "Canceled"){
+	        		return false;
+	        	}
+	        	else{
+	        		return true;
+	        	}
+	        };
+	        
 	        scope.convertProspect = function() {  
 	        	
 		            resourceFactory.prospectConvertResource.save({deleteProspectId: routeParams.id} , {} ,function(data){

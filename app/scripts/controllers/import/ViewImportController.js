@@ -25,11 +25,11 @@
             }; 
             
             scope.downloadFile = function (){ 
-           	 window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
+           	 window.open('https://localhost:9554/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
             };
             
             scope.logFile = function (){ 
-	         window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/printlog?tenantIdentifier=default');
+	         window.open('https://localhost:9554/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/printlog?tenantIdentifier=default');
 	    };
            
     }
