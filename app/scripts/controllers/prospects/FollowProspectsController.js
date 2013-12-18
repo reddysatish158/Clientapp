@@ -10,6 +10,7 @@
 		  scope.first.date = new Date();
 		  scope.first.time = scope.first.date.getHours()+":"+scope.first.date.getMinutes();
 		  
+		  scope.minDate = new Date();
 		  
 		  $('#timepicker1').timepicker({
 			  showMeridian:false
