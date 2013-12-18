@@ -290,7 +290,9 @@ define(['underscore', 'mifosX'], function() {
       'OnBlurDirective',
       'LateValidateDirective',
       'TreeviewDirective',
-      'CkEditorDirective'
+      'CkEditorDirective',
+      'ScrollbarTopDirective',
+      'ApiValidationDirective'
     ]
   };
 
