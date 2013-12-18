@@ -16,6 +16,7 @@
             scope.offices = data.officeOptions;
             scope.staffs = data.staffOptions; 
             scope.officeId = data.officeId;
+	    scope.clientCategory=data.categoryType;
             scope.formData = {
               firstname : data.firstname,
               lastname : data.lastname,
