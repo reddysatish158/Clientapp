@@ -14,6 +14,9 @@
 			    scope.imagePresent=clientData.imagePresent;
 			  
 	          scope.data={};
+	          
+	          scope.maxDate = new Date();
+	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	            scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
@@ -32,8 +35,6 @@
 	        		
 	        		scope.formData=data;
 	        		scope.formData.itemId=itemId;
-	        		 var actDate = dateFilter(data.saleDate,'dd MMMM yyyy');
-	                 scope.date.saleDate = new Date(actDate);
 	        		
 		        });	
 	        }
