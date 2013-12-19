@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  CreateHardwarePlanMappingController: function(scope, resourceFactory, location) {
+		  CreateHardwarePlanMappingController: function(scope, webStorage,resourceFactory, location) {
 	        scope.itemDatas = [];
 	        scope.planDatas = [];
 	        
@@ -13,8 +13,12 @@
 	            };
 	        });
 	        
+	        scope.reset123 = function(){
+	       	   webStorage.add("callingTab", {someString: "hardwarePlanMapping" });
+	          };
 	        scope.submit = function() {  
 	        	
+	        	webStorage.add("callingTab", {someString: "hardwarePlanMapping" });
 	            resourceFactory.hardwareMappingResource.save(this.formData,function(data){
 	            	location.path('/mappingconfig');
 	            	
@@ -22,7 +26,7 @@
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('CreateHardwarePlanMappingController', ['$scope', 'ResourceFactory', '$location', mifosX.controllers.CreateHardwarePlanMappingController]).run(function($log) {
+	  mifosX.ng.application.controller('CreateHardwarePlanMappingController', ['$scope', 'webStorage','ResourceFactory', '$location', mifosX.controllers.CreateHardwarePlanMappingController]).run(function($log) {
 	    $log.info("CreateHardwarePlanMappingController initialized");
 	  });
 	}(mifosX.controllers || {}));

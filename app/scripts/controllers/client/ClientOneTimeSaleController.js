@@ -69,6 +69,7 @@
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
 	            	 location.path('/viewclient/' + routeParams.id);
 	          });
+	            webStorage.add("callingTab", {someString: "Sale" });
 	        };
 	    }
 	  });
