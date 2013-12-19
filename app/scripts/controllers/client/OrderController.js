@@ -30,13 +30,13 @@
                 
         
         
-        scope.retrack = function (){
+        /*scope.retrack = function (){
         	scope.redata.message='retrack';
         	//alert(routeParams.id);
         	 resourceFactory.osdResource.getPost({'id': 1 , 'orderId': routeParams.id} , function(data) {
-                 location.path('/vieworder/'+routeParams.id);           	
+                 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);           	
             });
-        };
+        };*/
         
         
         scope.reconnect = function (){
@@ -47,6 +47,15 @@
                  resolve:{}
              });
           };
+          
+          scope.retrack = function (){
+          	scope.errorStatus=[];scope.errorDetails=[];
+          	 $modal.open({
+                   templateUrl: 'ApproveRetrack.html',
+                   controller: ApproveRetrack,
+                   resolve:{}
+               });
+            };
           
           
           scope.orderDisconnect = function(orderDisUrl){
@@ -83,6 +92,23 @@
             	
             };
             $scope.cancelReconnect = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };
+        var ApproveRetrack = function ($scope, $modalInstance) {
+            $scope.approveRetrack = function () {
+            	if(this.formData == undefined || this.formData == null){
+            		this.formData = {};
+            	}
+            	scope.redata.message='retrack';
+            	resourceFactory.osdResource.getPost({'id': 1 , 'orderId': routeParams.id} , function(data) {
+                     location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+                     $modalInstance.close('delete');
+                },function(renewalErrorData){
+    	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+    	        });            	
+            };
+            $scope.cancelRetrack = function () {
                 $modalInstance.dismiss('cancel');
             };
         };

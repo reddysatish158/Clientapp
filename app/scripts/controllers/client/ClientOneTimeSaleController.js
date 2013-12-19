@@ -3,7 +3,7 @@
 		  ClientOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory,dateFilter) {
 		  
 			  scope.clientId=routeParams.id;
-			  
+			  scope.formData = {};
 			  var clientData = webStorage.get('clientData');
 			    scope.displayName=clientData.displayName;
 			    scope.statusActive=clientData.statusActive;
@@ -18,15 +18,14 @@
 	          scope.maxDate = new Date();
 	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
-	            scope.itemDatas = data.itemDatas;
+	            
+	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
+	            scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	            scope.onetimesales=data;
 	            scope.date= {};
-	           
 	            scope.date.saleDate = new Date();
-	            scope.formData = {
-	            		
-	            };
+	            
 	        });
 	        
 	        scope.itemData=function(itemId){
@@ -35,6 +34,7 @@
 	        		
 	        		scope.formData=data;
 	        		scope.formData.itemId=itemId;
+	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 		        });	
 	        }
