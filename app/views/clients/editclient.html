@@ -54,6 +54,19 @@
               </div>
               </td>
             </tr>
+            
+             <tr>
+              <td>
+              <div class="control-group">
+                <label class="control-label">{{'label.clientcategeory' | translate}}<span class="required">*</span></label>
+                <div class="controls">
+                  <select ng-model="clientCategory"  ng-options="clientCategoryData.id as clientCategoryData.categoryType for clientCategoryData in clientCategoryDatas" value="{{clientCategoryData.id}}">
+                </select>
+                </div>
+              </div>
+              </td>
+            </tr>
+            
             <tr>
               <td>
                 <div class="control-group">
@@ -98,18 +111,6 @@
                 </div>
               </td>
             </tr>
-            <!--   <tr>
-                  <td>
-                      <div data-ng-switch on="choice">
-                          <div class="control-group" data-ng-switch-when="1">
-                              <label class="control-label">{{'label.form.activationdate' | translate}}<span class="required">*</span></label>
-                              <div class="controls">
-                                  <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.activationDate" is-open="opened" min="minDate" max="'2020-06-22'" date-disabled="disabled(date, mode)"/>
-                              </div>
-                          </div>
-                      </div>
-                  </td>
-              </tr> -->
                 <tr>
               <td>
                 <div class="control-group">
@@ -148,3 +149,4 @@
           
         </fieldset>
       </form>
+

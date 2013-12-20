@@ -223,7 +223,7 @@
               <select ng-model="formData.renewalPeriod"  ng-options="subscriptiondata.id as subscriptiondata.Contractdata for subscriptiondata in subscriptiondatas" value="{{disconnectDetail.mCodeValue}}"></select>
             </div>
         </div>
-			<br>
+		<hr>
         <div class="control-group">
             <label class="control-label" for="status">{{ 'label.order.description' | translate }}</label>
             <div class="controls">
@@ -248,6 +248,26 @@
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
                         <button class="btn btn-primary" ng-click="approveReconnect()">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+      
+      <script type="text/ng-template" id="ApproveRetrack.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.retrack.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big">
+                       <div class="control-group">
+            				<label class="control-label" style="color:red;" ng-show="renewError.length>0">{{renewError | translate}}</label>
+            			<div class="controls">
+						</div>
+            		   </div>
+        			<div class="control-group">
+            			<label class="control-label"><h4>Are you sure?</h4></label>
+        			</div>
+					</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="cancelRetrack()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="approveRetrack()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       

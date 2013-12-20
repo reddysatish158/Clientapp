@@ -11,6 +11,7 @@
 	        scope.first.date = new Date();
 	        scope.first.time = "10:10";
 	        
+	        scope.minDate = new Date();
 	        
 	        $('#timepicker1').timepicker({
 	        	showInputs:false,
