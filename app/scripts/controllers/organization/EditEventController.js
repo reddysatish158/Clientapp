@@ -52,7 +52,7 @@
 										if (scope.availableServices[j].mediaId == this.allowed[i]) {	
 											
 											var temp = {};
-											temp.id = this.allowed[i];
+											temp.mediaId = this.allowed[i];
 											temp.mediaTitle = scope.availableServices[j].mediaTitle;								
 											scope.selectedServices.push(temp);
 											scope.availableServices.splice(j, 1);
@@ -65,11 +65,11 @@
 									 
 									for ( var j in scope.selectedServices) {
 										 
-										if (scope.selectedServices[j].id == this.restricted[i]) {
+										if (scope.selectedServices[j].mediaId == this.restricted[i]) {
 											
 											var temp = {};
-											temp.id = this.restricted[i];
-											temp.serviceDescription = scope.selectedServices[j].mediaTitle;									
+											temp.mediaId = this.restricted[i];
+											temp.mediaTitle = scope.selectedServices[j].mediaTitle;									
 											scope.availableServices.push(temp);
 											scope.selectedServices.splice(j, 1);
 										}

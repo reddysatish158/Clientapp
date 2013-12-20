@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal) {
+	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -25,7 +25,12 @@
         });
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
-            scope.association = data;                                                
+            scope.association = data;
+            if(data.orderId){
+            	scope.flag=true;
+            }else{
+            	scope.flag=false;
+            }
         });
                 
         
@@ -125,6 +130,8 @@
           var OrderDisconnectController = function ($scope, $modalInstance) {
               
         	  $scope.disconnectDetails = [];
+        	  $scope.start = {};
+        	  $scope.start.date = new Date();
               resourceFactory.OrderDisconnectResource.get(function(data) {
                   $scope.disconnectDetails = data.disconnectDetails;
               });
@@ -134,6 +141,12 @@
         		  if(this.formData == undefined || this.formData == null){
         			  this.formData = {"disconnectReason":""};
         		  }
+        		  
+        		  var reqDate = dateFilter($scope.start.date,'dd MMMM yyyy');
+        	        this.formData.dateFormat = 'dd MMMM yyyy';
+        	        this.formData.disconnectionDate = reqDate;
+        	        this.formData.locale = "en";
+        		  
         		  resourceFactory.saveOrderResource.update({'clientId': routeParams.id},this.formData,function(data){
         	            /*location.path('/viewclient/'+scope.orderPriceDatas[0].clientId);
         	            location.path('/vieworder/'+data.resourceId);*/
@@ -187,7 +200,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal', mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

@@ -236,12 +236,6 @@
             delete this.formData.planId;
             delete this.formData.id;
             delete this.formData.isPrepaid;
-            
-            
-            
-            
-             
-             
             resourceFactory.saveOrderResource.save({'clientId': routeParams.id},this.formData,function(data){
             	
             location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);

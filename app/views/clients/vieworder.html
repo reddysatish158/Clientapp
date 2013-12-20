@@ -115,8 +115,9 @@
 <div class="row-fluid " >
    <div id="msg"></div> 
     <div class="pull-right">
-		         <a ng-show="orderData.status != 'DISCONNECTED'"  href="#/association/{{clientId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a>
-		         <a ng-show="orderData.status == 'DISCONNECTED'" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> De Associate</a>
+		         <a ng-show ="orderData.status != 'DISCONNECTED'"  href="#/association/{{clientId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a>
+		         <a ng-show ="orderData.status == 'DISCONNECTED'" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> De Associate</a>
+		        <a ng-show  ="flag == true" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Hardware Swap</a>
 	        </div>
 	<table class="table">
         <thead>
@@ -174,19 +175,27 @@
 	<div class="modal-header silver">
         <h3 class="bolder">{{'label.disconnectorder' | translate}}</h3>
     </div>
-    <div class="modal-body modal-big">
+    <div class="modal-body modal-big" style="height:270px;">
        <fieldset>
      	<div class="control-group">
             <label class="control-label" style="color:red;" ng-show="orderError.length>0">{{orderError | translate}}</label>
             <div class="controls">
             </div>
         </div>
+<div class="control-group">
+            <label class="control-label" for="status">{{ 'label.order.disconnectionDate' | translate }}<span class="required">*</span></label>
+            <div class="controls">
+              <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened" min="minDate" max="maxDate" 
+                          date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+            </div>
+       </div>
        <div class="control-group">
             <label class="control-label" for="status">{{ 'label.order.disconnectionreason' | translate }}<span class="required">*</span></label>
             <div class="controls">
               <select ng-model="formData.disconnectReason"  ng-options="disconnectDetail.mCodeValue as disconnectDetail.mCodeValue for disconnectDetail in disconnectDetails" value="{{disconnectDetail.mCodeValue}}"></select>
             </div>
-          </div>
+       </div>
+ 
     </fieldset>
     </div>
      <div class="modal-footer">

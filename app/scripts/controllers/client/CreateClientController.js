@@ -61,7 +61,7 @@
             resourceFactory.clientResource.save(this.formData,function(data){
               if (scope.file) {
                 http.uploadFile({
-                  url: 'https://41.75.85.206:8080/obsplatform/api/v1/clients/'+data.clientId+'/images', 
+                  url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+data.clientId+'/images', 
                   data: {},
                   file: scope.file
                 }).then(function(imageData) {

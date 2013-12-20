@@ -517,6 +517,9 @@
        .when('/neworder/:id', {
           templateUrl: 'views/clients/createorder.html'
       })
+      .when('/hardwareswap/:id/:clientId/:orderId', {
+        templateUrl: 'views/clients/hardwareSwap.html'
+      })
      .when('/prices/:id', {
          templateUrl: 'views/organization/prices.html'
       })

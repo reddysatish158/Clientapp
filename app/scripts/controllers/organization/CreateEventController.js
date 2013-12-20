@@ -51,8 +51,8 @@
 									for ( var j in scope.selectedServices) {
 										if (scope.selectedServices[j].id == this.restricted[i]) {
 											var temp = {};
-											temp.id = this.restricted[i];
-											temp.serviceDescription = scope.selectedServices[j].name;
+											temp.mediaId = this.restricted[i];
+											temp.mediaTitle = scope.selectedServices[j].name;
 											// temp.includeInBorrowerCycle =
 											// scope.restrictedProducts[j].includeInBorrowerCycle;
 											scope.availableServices.push(temp);

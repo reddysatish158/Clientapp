@@ -1,5 +1,6 @@
 (function() {
     require.config({
+    	 waitSeconds: 200,
         paths: {
             'jquery':           '../bower_components/jquery/jquery',
             'jquery-ui':        '../bower_components/jquery-ui/ui/jquery-ui',
