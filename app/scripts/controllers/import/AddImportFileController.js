@@ -17,7 +17,7 @@
           
           scope.submit = function () {
               http.uploadFile({/*41.75.85.206:8080*/
-                url: 'https://localhost:9554/obsplatform/api/v1/uploadstatus/documents', 
+                url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/documents', 
                 data: scope.formData,
                 file: scope.file
               }).then(function(data) {

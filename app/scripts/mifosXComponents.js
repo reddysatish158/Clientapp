@@ -271,7 +271,8 @@ define(['underscore', 'mifosX'], function() {
       'client/AssociationController',
       'client/ViewAssociationController',
       'client/EditAssociationController',
-      'eventorder/EventOrderController'
+      'eventorder/EventOrderController',
+      'client/HardwareSwapController'
     ],
     filters: [
       'StatusLookup',
@@ -286,7 +287,9 @@ define(['underscore', 'mifosX'], function() {
       'OnBlurDirective',
       'LateValidateDirective',
       'TreeviewDirective',
-      'CkEditorDirective'
+      'CkEditorDirective',
+      'ScrollbarTopDirective',
+      'ApiValidationDirective'
     ]
   };
 

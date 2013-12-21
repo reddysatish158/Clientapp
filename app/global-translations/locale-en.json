@@ -1416,6 +1416,9 @@
   "validation.msg.eventorder.eventId.cannot.be.blank":"Event cannot be blank",
   "validation.msg.eventorder.formatType.cannot.be.blank":"Format Type cannot be blank",
   "validation.msg.eventorder.optType.cannot.be.blank":"Opt Type cannot be blank",
+  "error.msg.movie.price.not.found":"No Price Found for This Client Type",
+  "error.msg.insufficient.amount.amount":"Insufficient Amount to Book The Order",
+  
   
   
   "#TicketResources":"....",
@@ -1618,6 +1621,8 @@
    "table.heading.amount":"Charge Amount",
    "table.heading.taxdescription":"Tax Description",
    "table.heading.taxamount":"Tax Amount",
+   "table.heading.discountamount":"Discount Amount",
+   "table.heading.netchargeamount":"NetCharge Amount",
   
    "#OnetimeSale":"......",
    "table.heading.saledate":"Sale Date",

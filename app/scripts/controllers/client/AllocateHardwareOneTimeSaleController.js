@@ -60,13 +60,15 @@
 	    			temp["clientId"] = routeParams.clientId;
 	    			temp["status"] = "allocated";
 	    			temp["itemMasterId"] = scope.formData.itemMasterId;
+	    			  
+	    			temp["isNewHw"]="Y";
 	    			temp1.push(temp);
 	        	});
 	        
 	        	
 	            this.formData.serialNumber=temp1;
 	            delete this.formData.serials;
-	            
+	           
 	            resourceFactory.allocateHardwareResource.save(this.formData,function(data){
 	            	//temp1 = undefined; 
 	            	location.path('/viewclient/' + routeParams.clientId);

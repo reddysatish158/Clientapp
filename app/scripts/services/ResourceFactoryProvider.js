@@ -739,6 +739,9 @@
           hardwaretemplateMappingResource: defineResource(apiVer + "/hardwaremapping/template", {}, {
                 getTemplateData: {method: 'GET', params: {}}
          }),
+         hardwareSwapResource: defineResource(apiVer + "/hardwareswapping/:clientId",{clientId:'@clientId'},  {
+       	  get: {method: 'GET', params: {clientId:'@clientId'}}
+         }),
         
          serviceMappingResource: defineResource(apiVer + "/servicemapping/:serviceMappingId", {serviceMappingId: '@serviceMappingId'}, {
        	  getAllServiceMapping: {method: 'GET', params: {}, isArray: true},

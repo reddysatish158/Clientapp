@@ -46,7 +46,7 @@
             </tr>
         </thead>
         <tbody>
-                    <tr ng-repeat="invoicedetail in invoicedetails">
+                    <tr ng-repeat="invoicedetail in invoicedetails" ng-show="invoicedetail.chargeType == 'RC' || invoicedetail.chargeType == 'NRC' || invoicedetail.chargeType == 'DC'">
                     <td>{{invoicedetail.chargeId}}</td>
 					<td>{{invoicedetail.chargeType}}</td>  
 					<td>{{invoicedetail.chargeDescription}}</td>
@@ -66,12 +66,31 @@
             </tr>
         </thead>
         <tbody>
-         			<tr ng-repeat="invoicedetail in invoicedetails">
+         			<tr ng-repeat="invoicedetail in invoicedetails" ng-show="invoicedetail.chargeType == 'Tax'">
 					<td>{{invoicedetail.chargeId}}</td>
 					<td>{{invoicedetail.chargeDescription}}</td>  
 					<td>{{invoicedetail.taxAmount}}</td>			       
             </tr>
         </tbody>
     </table> 
+    <h3>Discount Details </h3>
+    <table class="table">
+        <thead>
+            <tr class="graybg">
+                      <th>{{'table.heading.chargeid' | translate}}</th>
+                       <th>{{'table.heading.chargedescription' | translate}}</th>
+                      <th>{{'table.heading.discountamount' | translate}}</th>
+                       <th>{{'table.heading.netchargeamount' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="invoicedetail in invoicedetails" ng-show="invoicedetail.chargeType == 'Discount'">
+                <td>{{invoicedetail.chargeId}}</td>
+                <td>{{invoicedetail.chargeDescription}}</td>  
+                 <td>{{invoicedetail.discountAmount}}</td>
+                 <td>{{invoicedetail.netChargeAmount}}</td>          
+            </tr>
+        </tbody>
+    </table>
 </div>
 </div>
