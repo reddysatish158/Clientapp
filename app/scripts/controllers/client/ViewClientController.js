@@ -80,12 +80,6 @@
                                         href:"#/client",
                                         subhref:"activate",
                                         icon :"icon-ok-sign"
-                                      },
-                                      {
-                                        name:"button.close",
-                                        href:"#/client",
-                                        subhref:"close",
-                                        icon :"icon-remove-circle"
                                       }]
                                     
                       }
@@ -134,18 +128,6 @@
                                         name:"button.edit",
                                         href:"#/editclient",
                                         icon :"icon-edit"
-                                      },
-                                      
-                                     /* {
-                                        name:"button.transferclient",
-                                        href:"#/transferclient",
-                                        icon :"icon-arrow-right"
-                                      },*/
-                                      {
-                                        name:"button.close",
-                                        href:"#/client",
-                                        subhref:"close",
-                                        icon :"icon-remove-circle"
                                       }]
                     }
 

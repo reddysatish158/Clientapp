@@ -49,7 +49,7 @@
 	        		scope.formData=data;
 	        		scope.formData.quantity=quantity;
 	        		scope.formData.itemId=itemId;
-	        		
+	        		 scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 		        });	
 	        }
 	        
