@@ -509,6 +509,7 @@
   "link.profile" : "Profile",
   "link.settings" : "Settings",
   "link.logout" : "LogOut",
+  
    
   "#groups":"",
   "label.meetingdate.start":"Meeting date start on or after",
@@ -696,6 +697,21 @@
 
   "#Reports Related":"...................",
   "label.report.output.type":"Output Type:",
+  "label.anchor.reports": "Reports",
+  "label.anchor.runreport":"Run Report",
+  "label.button.runreport": "Run Report",
+  "label.button.run": "Run",
+  "label.button.parameters":"Parameters",
+  "label.input.showreport": "Normal format",
+  "label.input.exportexcel": "Excel format",
+  "label.input.exportcsv": "CSV format",
+  "label.input.pdfformat": "PDF format",
+  "label.input.chartformat": "Chart format",
+  "label.all": "All",
+  "label.input.piechart":"Pie Chart",
+  "label.input.barchart":"Bar Chart",
+  "label.error": "Error",
+   "error.message.report.parameter.required":"The parameter `{{params[0].value}}` is required",
 
   "app erros end" :"------------------------------------------------------",
 
