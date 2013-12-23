@@ -21,27 +21,26 @@
  		 
  		  if( scope.displayTab == "identities"){
  			 
- 			  scope.identitiesTab = {identitiesTab1: true};
+ 			  scope.identitiesTab = true;
  			  webStorage.remove('callingTab');
  		  }
  		  else if(scope.displayTab == "documents"){
- 			 
- 			  scope.documentsTab = {documentsTab1: true};
+  			  scope.documentsTab = true;
  			  webStorage.remove('callingTab');
  		  }
  		  else if(scope.displayTab == "Tickets"){
- 			  scope.TicketsTab = {TicketsTab1: true};
+ 			  scope.TicketsTab = true;
  			  webStorage.remove('callingTab');
  		  }
  		  else if(scope.displayTab == "hardware"){
- 			  scope.hardwareTab = {hardwareTab1: true};
+ 			  scope.hardwareTab =  true;
  			  webStorage.remove('callingTab');
  		  }
  		  else if(scope.displayTab == "Sale"){
- 			  scope.SaleTab = {SaleTab1: true};
+ 			  scope.SaleTab =  true;
  			  webStorage.remove('callingTab');
  		  }else if(scope.displayTab == "Statements"){
- 			  scope.StatementsTab = {StatementsTab1: true};
+ 			  scope.StatementsTab =  true;
  			  webStorage.remove('callingTab');
  		  }else
  		  {

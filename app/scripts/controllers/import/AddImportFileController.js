@@ -9,15 +9,23 @@
             scope.file = $files[0];
           };
           
-          scope.downloadFile = function (value){ 
+          /*scope.downloadFile = function (value){ 
          	 // alert(value);
        		window.open("Xls/"+value+".xlsx");
-           };
+           };*/
            
+           scope.downloadFile = function (value){
+           	if(value == "MediaAssets"){
+           		window.open("Xls/"+value+".xlsx");
+                }else
+                {	 
+               	 window.open("csv/"+value+".csv");
+                }
+              	};
           
           scope.submit = function () {
               http.uploadFile({/*41.75.85.206:8080*/
-                url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/documents', 
+                url: 'https://localhost:9554/obsplatform/api/v1/uploadstatus/documents', 
                 data: scope.formData,
                 file: scope.file
               }).then(function(data) {

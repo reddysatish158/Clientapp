@@ -13,7 +13,7 @@
 		 
 		  if( scope.displayTab == "hardwarePlanMapping"){
 			 
-			  scope.hardwarePlanMappingTab = {hardwarePlanMappingTab1: true};
+			  scope.hardwarePlanMappingTab =  true;
 			  webStorage.remove('callingTab');
 		  }else
 		  {
