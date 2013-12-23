@@ -25,6 +25,7 @@
                 resourceFactory.clientIdenfierResource.save({clientId:scope.clientId},this.formData,function(data){
                     location.path('/viewclient/' + data.clientId);
                 });
+                webStorage.add("callingTab", {someString: "identities" });
             };
 
         }

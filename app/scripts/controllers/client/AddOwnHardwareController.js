@@ -45,6 +45,7 @@
             	// alert(routeParams.id);
 	            location.path('/viewclient/' +routeParams.id);
 	          });
+            webStorage.add("callingTab", {someString: "hardware" });
         }; 
             
             
