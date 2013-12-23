@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  StatementController: function(scope, routeParams, location, resourceFactory,dateFilter) {
+	  StatementController: function(scope,webStorage, routeParams, location, resourceFactory,dateFilter) {
 		
 		  
 		    scope.start = {};
@@ -24,10 +24,11 @@
              resourceFactory.statementResource.save({'clientId': routeParams.id},this.formData,function(data) {
              location.path('/billmaster/' +routeParams.id);
           });
+             webStorage.add("callingTab", {someString: "Statements" });
         };
     }
   });
-  mifosX.ng.application.controller('StatementController', ['$scope', '$routeParams',  '$location', 'ResourceFactory', 'dateFilter', mifosX.controllers.StatementController]).run(function($log) {
+  mifosX.ng.application.controller('StatementController', ['$scope','webStorage', '$routeParams',  '$location', 'ResourceFactory', 'dateFilter', mifosX.controllers.StatementController]).run(function($log) {
     $log.info("StatementController initialized");
   });
 }(mifosX.controllers || {}));
