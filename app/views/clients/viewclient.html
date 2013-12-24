@@ -488,6 +488,8 @@
                    <td>{{statement.dueDate | DateFormat}}</td>
                       <td>{{statement.amount}}</td>
                       <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
+<td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
+                ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
     </table>
