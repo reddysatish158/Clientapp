@@ -49,7 +49,7 @@
 	        		scope.formData=data;
 	        		scope.formData.quantity=quantity;
 	        		scope.formData.itemId=itemId;
-	        		
+	        		 scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 		        });	
 	        }
 	        
@@ -70,6 +70,7 @@
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
 	            	 location.path('/viewclient/' + routeParams.id);
 	          });
+	            webStorage.add("callingTab", {someString: "Sale" });
 	        };
 	    }
 	  });

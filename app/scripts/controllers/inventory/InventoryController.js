@@ -18,24 +18,24 @@
 		 
 		  if( scope.displayTab == "items"){
 			 
-			  scope.itemsTab = {itemsTab1: true};
+			  scope.itemsTab = true;
 			  webStorage.remove('callingTab');
 		  }
 		  else if(scope.displayTab == "itemDetails"){
 			 
-			  scope.itemDetailsTab = {itemDetailsTab1: true};
+			  scope.itemDetailsTab =  true;
 			  webStorage.remove('callingTab');
 		  }
 		  else if(scope.displayTab == "supplier"){
-			  scope.supplierTab = {supplierTab1: true};
+			  scope.supplierTab =  true;
 			  webStorage.remove('callingTab');
 		  }
 		  else if(scope.displayTab == "grn"){
-			  scope.grnTab = {grnTab1: true};
+			  scope.grnTab = true;
 			  webStorage.remove('callingTab');
 		  }
 		  else if(scope.displayTab == "mrn"){
-			  scope.mrnTab = {mrnTab1: true};
+			  scope.mrnTab =  true;
 			  webStorage.remove('callingTab');
 		  }else
 		  {

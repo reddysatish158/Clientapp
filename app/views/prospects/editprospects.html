@@ -19,7 +19,6 @@
 				<td>
 					<table>
 						<tr>
-	
 									<td>
 										<div class="control-group">
 		            					<label class="control-label" for="prospectType">{{ 'label.create.type' | translate }}</label>
@@ -30,34 +29,20 @@
 		          						</div>
           									
             						</td>
-            						<td>
-								<div class="control-group">
-            					<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="homePhoneNumber" ng-model="editprospects.homePhoneNumber">
-            					</div>
-          						</div>
-							</td>
-							</tr>
-							<tr>
+            				</tr>
+            				
+            				<tr>
 							<td>
 								<div class="control-group">
-            					<label class="control-label" for="firstName">{{ 'label.firstname' | translate }}</label>
+            					<label class="control-label" for="firstName">{{ 'label.firstname' | translate }}<span class="required">*</span></label>
             					<div class="controls">
               					<input type="text" id="firstName" ng-model="editprospects.firstName">
            						 </div>
           						</div>
 							</td>
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="workPhoneNumber">{{ 'label.officephone' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="workPhoneNumber" ng-model="editprospects.workPhoneNumber">
-            					</div>
-          						</div>
-							</td>
 							</tr>
-							<tr>
+            				
+            				<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="middleName">{{ 'label.middlename' | translate }}</label>
@@ -66,27 +51,59 @@
             					</div>
           						</div>
 							</td>
+							</tr>
+							
+            				<tr>
+								<td>
+									<div class="control-group">
+           					 		<label class="control-label" for="lastName">{{ 'label.lastname' | translate }}<span class="required">*</span></label>
+            						<div class="controls">
+              						<input type="text" id="lastName" ng-model="editprospects.lastName">
+            						</div>
+          							</div>
+								</td>
+								</tr>
+            				</table>
+						</td>
+						<td>
+						<table>
+							<tr>		
+            				<td>
+								<div class="control-group">
+            					<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="homePhoneNumber" ng-model="editprospects.homePhoneNumber">
+            					</div>
+          						</div>
+							</td>
+							</tr>
+							
+							<tr>
 							<td>
 								<div class="control-group">
-            					<label class="control-label" for="mobileNumber">{{ 'label.mobilephone' | translate }}</label>
+            					<label class="control-label" for="workPhoneNumber">{{ 'label.officephone' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="workPhoneNumber" ng-model="editprospects.workPhoneNumber">
+            					</div>
+          						</div>
+							</td>
+							</tr>
+							
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="mobileNumber">{{ 'label.mobilephone' | translate }}<span class="required">*</span></label>
             					<div class="controls">
               					<input type="text" id="mobileNumber" ng-model="editprospects.mobileNumber">
             					</div>
           						</div>
 								</td>
 							</tr>
-							<tr>
+							
+								<tr>
 								<td>
 									<div class="control-group">
-           					 		<label class="control-label" for="lastName">{{ 'label.lastname' | translate }}</label>
-            						<div class="controls">
-              						<input type="text" id="lastName" ng-model="editprospects.lastName">
-            						</div>
-          							</div>
-								</td>
-								<td>
-									<div class="control-group">
-            						<label class="control-label" for="email">{{ 'label.emailid' | translate }}</label>
+            						<label class="control-label" for="email">{{ 'label.emailid' | translate }}<span class="required">*</span></label>
             						<div class="controls">
               						<input type="text" id="email" ng-model="editprospects.email">
             						</div>
@@ -106,12 +123,71 @@
 						<tr>
 							<td>
 								<div class="control-group">
-            					<label class="control-label" for="address">{{ 'label.address' | translate }}</label>
+            					<label class="control-label" for="address">{{ 'label.address' | translate }}<span class="required">*</span></label>
             					<div class="controls">
               					<input type="text" id="address" ng-model="editprospects.address">
             					</div>
           						</div>
 							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="streetArea">{{ 'label.street/area' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="streetArea" ng-model="editprospects.streetArea">
+           						 </div>
+          						</div>
+							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="cityDistrict">{{ 'label.city/district' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+             					 <input type="text" id="city" ng-model="editprospects.cityDistrict" list="citylist" ng-change="getStateAndCountry(editprospects.cityDistrict)">
+            					</div>
+          						</div>
+          						<datalist id="citylist">
+                   								<option  data-ng-repeat="cityData in cityDatas" value="{{cityData}}"></option>
+            				    </datalist>
+							</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="control-group">
+           					 		<label class="control-label" for="state">{{ 'label.state' | translate }}<span class="required">*</span></label>
+            						<div class="controls">
+              						<input type="text" id="state" ng-model="editprospects.state">
+            						</div>
+          							</div>
+								</td>
+								</tr>
+								<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="country">{{ 'label.country' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="country" ng-model="editprospects.country">
+           						 </div>
+          						</div>
+							</td>
+							</tr>
+							<tr>
+								<td>
+								<div class="control-group">
+            					<label class="control-label" for="zipCode">{{ 'label.zipcode' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="text" id="zipCode" ng-model="editprospects.zipCode">
+            					</div>
+          						</div>
+							</td>
+							</tr>
+						</table>
+					 </td>
+					<td>
+					<table>
+							<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="sourceOfPublicity">{{ 'label.source' | translate }}</label>
@@ -122,15 +198,8 @@
           						</div>
 							</td>
 							</tr>
+							
 							<tr>
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="streetArea">{{ 'label.street/area' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="streetArea" ng-model="editprospects.streetArea">
-           						 </div>
-          						</div>
-							</td>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="preferredPlan">{{ 'label.plan' | translate }}</label>
@@ -141,18 +210,8 @@
           						</div>
 							</td>
 							</tr>
+							
 							<tr>
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="cityDistrict">{{ 'label.city/district' | translate }}</label>
-            					<div class="controls">
-             					 <input type="text" id="city" ng-model="editprospects.cityDistrict" list="citylist" ng-change="getStateAndCountry(editprospects.cityDistrict)">
-            					</div>
-          						</div>
-          						<datalist id="citylist">
-                   								<option  data-ng-repeat="cityData in cityDatas" value="{{cityData}}"></option>
-            				    </datalist>
-							</td>
 							<td>
 								<div class="control-group">
 										<label class="control-label">{{ 'label.nextcalltime' |
@@ -170,45 +229,19 @@
 									</div>
 							</td>
 							</tr>
+							
 							<tr>
-								<td>
-									<div class="control-group">
-           					 		<label class="control-label" for="state">{{ 'label.state' | translate }}</label>
-            						<div class="controls">
-              						<input type="text" id="state" ng-model="editprospects.state">
-            						</div>
-          							</div>
-								</td>
 								<td rowspan="3">
 									<div class="control-group">
-      								<label class="control-label" for="note">{{ 'label.note' | translate }}</label>
+      								<label class="control-label" for="note">{{ 'label.note' | translate }}<span class="required">*</span></label>
      								 <div class="controls">
-        								<textarea rows="7" ng-model="editprospects.note" style="width: 291px; height: 122px;"></textarea>
+        								<textarea rows="7" ng-model="editprospects.note" style="width: 240px; height: 110px;"></textarea>
       								 </div>
     								</div>
 								</td>
 							</tr>
-							<tr>
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="country">{{ 'label.country' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="country" ng-model="editprospects.country">
-           						 </div>
-          						</div>
-							</td>
 							
-							</tr>
-							<tr>
-								<td>
-								<div class="control-group">
-            					<label class="control-label" for="zipCode">{{ 'label.zipcode' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="zipCode" ng-model="editprospects.zipCode">
-            					</div>
-          						</div>
-							</td>
-							</tr>
+							
 					</table>
 			
 				</td>

@@ -23,9 +23,7 @@
 	    </div>
         <fieldset>
           <h3>Personal Details</h3>
-			<table>
-			<tr>
-				<td>
+			
 					<table>
 						<tr>
 						<td>
@@ -124,13 +122,9 @@
 						
 					</table>
 			
-				</td>
-			</tr>
-			</table>
+				
 			<h3>Address Details</h3>
-			<table>
-				<tr>
-					<td>
+			
 						<table>
 							<tr>
 								<td>
@@ -249,9 +243,9 @@
 										<tr>
 											<td rowspan="3">
 											<div class="control-group">
-		      								<label class="control-label" for="note">{{ 'label.note' | translate }}</label>
+		      								<label class="control-label" for="note">{{ 'label.note' | translate }}<span class="required">*</span></label>
 		     								 <div class="controls">
-		        								<textarea rows="7" ng-model="formData.note" style="width: 291px; height: 122px;"></textarea>
+		        								<textarea rows="7" ng-model="formData.note" style="width: 240px; height: 100px;"></textarea>
 		      								 </div>
 		    								</div>
 											</td>
@@ -261,9 +255,7 @@
 								</td>
 							</tr>
 						</table>
-					</td>
-				</tr>
-			</table>		
+							
           <div class="offset3">
             <a href="#/prospects"><button type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
             <button type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
