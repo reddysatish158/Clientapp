@@ -662,7 +662,14 @@
                 }),
                 eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{clientId:'@clientId'},  {
                 	  get: {method: 'GET', params: {clientId:'@clientId'}}
-                  }),
+                }),
+                eventOrderPriceTemplateResource: defineResource(apiVer + "/eventorder",{},{
+              	  	getEventPrice: {method: 'GET', params: {clientId:'@clientId',ftype:'@ftype',otype:'@otype'}}
+                }),
+                eventOrderPriceUpdateTemplateResource: defineResource(apiVer + "/eventorder",{},{
+                	update: {method: 'PUT', params: {}}
+                }),
+                
                 eventPriceTemplateResource: defineResource(apiVer + "/eventprice/template/:resourceType",{eventId:'@eventId', resourceType:'@resourceType'},  {
               	  get: {method: 'GET', params: {eventId:'@eventId'}, isArray:true},
               	  getpriceDetails: {method: 'GET', params: {eventId:'@eventId'}}

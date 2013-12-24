@@ -63,15 +63,29 @@
 			<div class="control-group">
 				<label class="control-label">{{ 'label.formattype' | translate }}</label>
 				<div class="controls">
-	                <select ng-model="formData.formatType"  ng-options="code.mCodeValue as code.mCodeValue for code in codes" value="{{code.mCodeValue}}"></select>
+	                <select ng-model="formData.formatType"  ng-change="getEventPrice()" ng-options="code.mCodeValue as code.mCodeValue for code in codes" value="{{code.mCodeValue}}"></select>
 	             </div>
 			</div>
 			
 			<div class="control-group">
 				<label class="control-label">{{ 'label.opttype' | translate }}</label>
 				<div class="controls">
-	                <select ng-model="formData.optType"  ng-options="optType.value as optType.value for optType in optTypes" value="{{optType.value}}"></select>
+	                <select ng-model="formData.optType"  ng-change="getEventPrice()" ng-options="optType.value as optType.value for optType in optTypes" value="{{optType.value}}"></select>
 	             </div>
+			</div>
+			
+			<!-- <div class="control-group">
+				<label class="control-label">{{ 'label.clienttype' | translate }}</label>
+				<div class="controls">
+	                <select ng-model="formData.clientType"  ng-change="getEventPrice()" ng-options="clientType.id as clientType.type for clientType in clientTypes" value="{{clientType.id}}"></select>
+	            </div>	             
+			</div> -->
+			
+			<div class="control-group" ng-show="showPrice">
+					<label class="control-label">{{ 'label.eventprice' | translate }}</label>
+				<div class="controls">
+	                <input type="text" ng-model="price" value="price"/> <span class="btn btn-primary" ng-click="updatePrice()">Update Price</span>
+	            </div>            
 			</div>
 			
 			

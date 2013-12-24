@@ -153,6 +153,7 @@
   "button.reject.transfer":"Reject Transfer",
   "button.undo.transfer":"Undo Transfer",
   "button.eventorder":"Event Order",
+  "label.eventprice":"Event Price",
 
   "#datatable":"",
   "table.heading.datatablename":"Data Table Name",
@@ -1412,6 +1413,7 @@
   "label.formattype":"Format Type",
   "label.events":"Event",
   "label.eventorder":"Event Order",
+  "label.clienttype":"Client Type",
   "validation.msg.eventorder.deviceId.cannot.be.blank":"Device Id cannot be blank",
   "validation.msg.eventorder.eventId.cannot.be.blank":"Event cannot be blank",
   "validation.msg.eventorder.formatType.cannot.be.blank":"Format Type cannot be blank",
