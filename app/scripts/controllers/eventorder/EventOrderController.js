@@ -27,7 +27,7 @@
 
         
         scope.getEventPrice = function(){
-        	resourceFactory.eventOrderPriceTemplateResource.getEventPrice({clientId : routeParams.id,ftype: scope.formData.formatType,otype: scope.formData.optType},function(data){
+        	resourceFactory.eventOrderPriceTemplateResource.getEventPrice({clientId : routeParams.id,ftype: scope.formData.formatType,otype: scope.formData.optType,eventId: scope.formData.eventId},function(data){
         		scope.price = data.eventPrice;
         		scope.showPrice = true;
         	},function(errorData){
@@ -41,6 +41,7 @@
         	fD.price = scope.price;
         	fD.optType = scope.formData.optType;
         	fD.formatType = scope.formData.formatType;
+        	fD.eventId = scope.formData.eventId
         	resourceFactory.eventOrderPriceUpdateTemplateResource.update(fD,function(data){
             	scope.price = data.resourceIdentifier;
             });

@@ -63,7 +63,7 @@
 			<div class="control-group">
 				<label class="control-label">{{ 'label.formattype' | translate }}</label>
 				<div class="controls">
-	                <select ng-model="formData.formatType"  ng-change="getEventPrice()" ng-options="code.mCodeValue as code.mCodeValue for code in codes" value="{{code.mCodeValue}}"></select>
+	                <select ng-model="formData.formatType" ng-options="code.mCodeValue as code.mCodeValue for code in codes" value="{{code.mCodeValue}}"></select>
 	             </div>
 			</div>
 			
@@ -88,7 +88,7 @@
 	            </div>            
 			</div>
 			
-			
+	
 				         
 			<div class="offset3">
 				<a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>

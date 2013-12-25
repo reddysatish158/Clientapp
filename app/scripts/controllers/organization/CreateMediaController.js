@@ -9,27 +9,100 @@
         scope.mediaTypeDatas = [];
         scope.mediaassetAttributes=[];
         scope.mediaAssetLocations=[];
+        scope.gameData=[];
         scope.attributesFormData={};
+        scope.gameAttributesFormData={};
         scope.mediaLocationFormData={};
         scope.release= {};
         scope.release.date = new Date();
-        resourceFactory.mediaTemplateResource.get(function(data) {
-            scope.mediaAttributes = data.mediaAttributes;
-            scope.mediaCategeorydatas = data.mediaCategeorydata;
-            scope.mediaFormats = data.mediaFormat;
-            scope.mediaLanguageDatas = data.mediaLanguageData;
-            scope.mediaStatus = data.mediaStatus;
-            scope.mediaTypeDatas = data.mediaTypeData;
-            scope.attributesFormData.attributeType="Cast";
-            scope.formData = {
-           
-              
-            };
-        });
+        scope.hideForGame = true;
+        scope.counter = 0;
+        
+        var getAll = function(){
+        	
+        	resourceFactory.mediaTemplateResource.get(function(data) {
+                scope.mediaAttributes = data.mediaAttributes;
+                scope.mediaCategeorydatas = data.mediaCategeorydata;
+                scope.mediaFormats = data.mediaFormat;
+                scope.mediaLanguageDatas = data.mediaLanguageData;
+                scope.mediaStatus = data.mediaStatus;
+                scope.mediaTypeDatas = data.mediaTypeData;
+                scope.attributesFormData.attributeType="Cast";
+                scope.formData = {
+               
+                  
+                };
+            });
+        	
+        };
+        
+        getAll();
+        
+        
+        scope.setGameScreen = function(){
+        	resourceFactory.mediaGameTemplateResource.get(function(data) {
+                scope.categorys = data.mediaCategory;
+                scope.mediaContentProviders = data.mediaContentProvider;
+                scope.mediaTypes = data.mediaType;
+                scope.formData = {
+               
+                  
+                };
+            });     
+        	scope.hideForGame = false;
+        };
+        
+        scope.setMovieScreen = function(){
+        	scope.hideForGame = true;
+        	getAll();
+        };
+        
+        
+        scope.addGameMedia = function(){
+        	scope.counter = scope.counter+1;
+        	console.log("Add Game Media: "+scope.counter);
+								        	scope.gameData
+										.push({
+											mediaCategory : scope.gameAttributesFormData.mediaCategory,
+											mediaContentProvider : scope.gameAttributesFormData.mediaContentProvider,
+											mediaType : scope.gameAttributesFormData.mediaType,
+											source : scope.gameAttributesFormData.source,
+											service : scope.gameAttributesFormData.service,
+											amount : scope.gameAttributesFormData.amount,
+											sequence : scope.gameAttributesFormData.sequence=scope.counter 
+										});
+            scope.gameAttributesFormData.mediaCategory = undefined;
+            scope.gameAttributesFormData.mediaContentProvider = undefined;
+            scope.gameAttributesFormData.mediaType = undefined;
+            scope.gameAttributesFormData.source = undefined;
+            scope.gameAttributesFormData.service = undefined;
+            scope.gameAttributesFormData.sequence = undefined;
+            scope.gameAttributesFormData.amount = undefined;
+        };
+
+        scope.removeGameMedia = function(index){	
+        	if(scope.counter>1){
+        		scope.counter = scope.counter-1;
+        	}
+        	scope.gameData.splice(index,1);
+        	console.log("Remove Game Media: "+scope.counter);	
+        };
+        
+        
+        scope.getCount = function(){
+        	return new Array(scope.counter);
+        };
+
         scope.addMedia = function () {
         	if (scope.attributesFormData.attributeName && scope.attributesFormData.attributevalue) {
-              scope.mediaassetAttributes.push({attributeType:scope.attributesFormData.attributeType, attributeName:scope.attributesFormData.attributeName, 
-            	  attributevalue:scope.attributesFormData.attributevalue, attributeNickname:scope.attributesFormData.attributeNickname,attributeImage:scope.attributesFormData.attributeImage});
+									              scope.mediaassetAttributes
+											.push({
+												attributeType : scope.attributesFormData.attributeType,
+												attributeName : scope.attributesFormData.attributeName,
+												attributevalue : scope.attributesFormData.attributevalue,
+												attributeNickname : scope.attributesFormData.attributeNickname,
+												attributeImage : scope.attributesFormData.attributeImage
+											});
             //alert(mediaassetAttributes.attributeName);
             //  scope.attributesFormData.attributeType ="Cast";
               scope.attributesFormData.attributeName = undefined;
@@ -60,9 +133,40 @@
                 scope.mediaAssetLocations.splice(index,1);
               };
             
-        scope.submit = function() {   
+              
+        scope.submitForGame = function(){
+        	scope.formData.gameMediaData = new Array();
+        	if(scope.gameData.length>0){
+        		for(var i in scope.gameData){
+        			scope.formData.gameMediaData.push({
+        				mediaCategory : scope.gameData[i].mediaCategory,
+						mediaContentProvider : scope.gameData[i].mediaContentProvider,
+						mediaType : scope.gameData[i].mediaType,
+						source : scope.gameData[i].source,
+						service : scope.gameData[i].service,
+						sequence : scope.gameData[i].sequence,
+						amount : scope.gameData[i].amount,
+						locale : "en",
+						dateFormat  : "dd MMMM yyyy"
+        			});
+        		}
+        	}
+        	this.formData.dateFormat = 'dd MMMM yyyy';
+            this.formData.locale = 'en';
+        	resourceFactory.saveMediaGameTemplateResource.save(this.formData,function(data){
+                location.path('/viewmedia/' + data.resourceId);
+              });
+        };      
+              
+        scope.submit = function() {
+        	
+        	if(scope.hideForGame == false){
+        		scope.submitForGame();
+        		return undefined;
+        	}
+        	
         	 this.formData.locale = 'en';
-         	var reqDate = dateFilter(scope.release.date,'dd MMMM yyyy');
+         	 var reqDate = dateFilter(scope.release.date,'dd MMMM yyyy');
              this.formData.dateFormat = 'dd MMMM yyyy';
              this.formData.releaseDate = reqDate;
              scope.formData.mediaAssetLocations =new Array();
@@ -70,9 +174,14 @@
              if (scope.mediaassetAttributes.length > 0) {
               
                  for (var i in scope.mediaassetAttributes) {
-                   scope.formData.mediaassetAttributes.push({attributeType:scope.mediaassetAttributes[i].attributeType,attributeName:scope.mediaassetAttributes[i].attributeName, 
-                	   attributevalue:scope.mediaassetAttributes[i].attributevalue,attributeNickname:scope.mediaassetAttributes[i].attributeNickname,
-                	   attributeImage:scope.mediaassetAttributes[i].attributeImage});
+					                   scope.formData.mediaassetAttributes
+												.push({
+													attributeType : scope.mediaassetAttributes[i].attributeType,
+													attributeName : scope.mediaassetAttributes[i].attributeName,
+													attributevalue : scope.mediaassetAttributes[i].attributevalue,
+													attributeNickname : scope.mediaassetAttributes[i].attributeNickname,
+													attributeImage : scope.mediaassetAttributes[i].attributeImage
+												});
                  };
                }
              

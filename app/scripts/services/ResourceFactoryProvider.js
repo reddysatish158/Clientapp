@@ -322,6 +322,12 @@
            mediaTemplateResource: defineResource(apiVer + "/assets/template", {}, {
                get: {method: 'GET', params: {}}
            }),
+           mediaGameTemplateResource: defineResource(apiVer + "/assets/gamedata/template", {}, {
+               get: {method: 'GET', params: {}}
+           }),
+           saveMediaGameTemplateResource: defineResource(apiVer + "/assets/gamedata", {}, {
+               get: {method: 'GET', params: {}}
+           }),
           /* itemResource: defineResource(apiVer + "/items/:itemId", {}, {
         	   getAllItems: {method: 'GET', params: {}, isArray: true},
                get: {method: 'GET', params: {}}
@@ -664,7 +670,7 @@
                 	  get: {method: 'GET', params: {clientId:'@clientId'}}
                 }),
                 eventOrderPriceTemplateResource: defineResource(apiVer + "/eventorder",{},{
-              	  	getEventPrice: {method: 'GET', params: {clientId:'@clientId',ftype:'@ftype',otype:'@otype'}}
+              	  	getEventPrice: {method: 'GET', params: {clientId:'@clientId',ftype:'@ftype',otype:'@otype',eventId:'@eventId'}}
                 }),
                 eventOrderPriceUpdateTemplateResource: defineResource(apiVer + "/eventorder",{},{
                 	update: {method: 'PUT', params: {}}
