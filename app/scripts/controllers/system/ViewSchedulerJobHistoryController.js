@@ -7,7 +7,7 @@
           resourceFactory.jobsResource.getJobHistory({jobId : routeParams.id, resourceType : 'runhistory', offset: offset, limit: limit} , callback);
         };
         scope.logFile = function (path){ 
-	         window.open('https://localhost:8443/obsplatform/api/v1/jobs/printlog?tenantIdentifier=default&path='+path);
+	         window.open('https://localhost:7070/obsplatform/api/v1/jobs/printlog?tenantIdentifier=default&path='+path);
 	    };
         scope.jobhistory = paginatorService.paginate(fetchFunction, 14);
     }

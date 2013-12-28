@@ -334,7 +334,7 @@ function buildReportParms(){
         		scope.hideTable=true;
         		scope.hidePentahoReport = true;
                 scope.hideChartReport = true;
-                scope.baseURL = "https://localhost:5560/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
+                scope.baseURL = "https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
                 scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default&exportCSV=true";
                 var inQueryParameters = buildReportParms();
                 if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -343,7 +343,7 @@ function buildReportParms(){
         		scope.hideTable=true;
         		scope.hidePentahoReport = true;
                 scope.hideChartReport = true;
-                scope.baseURL = "https://localhost:5560/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
+                scope.baseURL = "https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
                 scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default&exportPDF=true";
                 var inQueryParameters = buildReportParms();
                 if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -361,7 +361,7 @@ function buildReportParms(){
             scope.hideTable=true;
             scope.hidePentahoReport = false;
             scope.hideChartReport = true;
-            scope.baseURL ="https://localhost:5560/obsplatform/api/v1/runreports/" + encodeURIComponent(scope.reportName); 
+            scope.baseURL ="https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/" + encodeURIComponent(scope.reportName); 
             scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default";
             var inQueryParameters = buildReportParms();
             if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;

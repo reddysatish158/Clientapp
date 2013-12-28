@@ -60,6 +60,7 @@
 	    			temp["clientId"] = routeParams.clientId;
 	    			temp["status"] = "allocated";
 	    			temp["itemMasterId"] = scope.formData.itemMasterId;
+	    			
 	    			  
 	    			temp["isNewHw"]="Y";
 	    			temp1.push(temp);

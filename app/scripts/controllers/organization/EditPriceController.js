@@ -40,7 +40,7 @@
              
              
              resourceFactory.getPriceResource.update({'priceId':routeParams.id},this.formData,function(data){
-             location.path('/viewprice/' + data.resourceId);
+             location.path('/viewprice/' + data.resourceId+'/'+routeParams.id);
           });
         };
     }

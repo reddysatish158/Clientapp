@@ -38,6 +38,7 @@
         <thead>
             <tr class="graybg">
                     <th>{{'table.heading.chargeid' | translate}}</th>
+                    <th>{{'table.heading.orderid' | translate}}</th>
 					<th>{{'table.heading.chargetype' | translate}}</th>
 					<th>{{'table.heading.chargedescription' | translate}}</th>
 					<th>{{'table.heading.startdate' | translate}}</th>
@@ -48,6 +49,7 @@
         <tbody>
                     <tr ng-repeat="invoicedetail in invoicedetails" ng-show="invoicedetail.chargeType == 'RC' || invoicedetail.chargeType == 'NRC' || invoicedetail.chargeType == 'DC'">
                     <td>{{invoicedetail.chargeId}}</td>
+                     <td>{{invoicedetail.orderId}}</td> 
 					<td>{{invoicedetail.chargeType}}</td>  
 					<td>{{invoicedetail.chargeDescription}}</td>
 					<td>{{invoicedetail.chargeStartDate | DateFormat}}</td>
