@@ -24,16 +24,15 @@
         <fieldset>
           <h3>Personal Details</h3>
 			<table>
-			<tr>
-				<td>
-					<table>
+			
+				
 						<tr>
 						<td>
 							<table>
 								<tr>
 									<td>
 										<div class="control-group">
-		            					<label class="control-label" for="prospectType">{{ 'label.create.type' | translate }}</label>
+		            					<label class="control-label" for="prospectType">{{ 'label.create.type' | translate }}<span class="required">*</span></label>
 		            					<div class="controls">
 		              					<input type="radio" ng-model="formData.prospectType" value="1" ng-change="resetCredits()">Individual
 		              					<input type="radio" ng-model="formData.prospectType" value="2" ng-change="resetCredits()">Corporate
@@ -121,18 +120,13 @@
 						</table>
 						</td>
 						</tr>
-						
-					</table>
-			
-				</td>
-			</tr>
+							
+		
 			</table>
 			<h3>Address Details</h3>
 			<table>
 				<tr>
-					<td>
-						<table>
-							<tr>
+					
 								<td>
 									<table>
 										<tr>
@@ -237,10 +231,11 @@
                         			<div class="controls">
                             		<!-- <input type="text" ng-model="first.date" name="preferredCallingTime"/> -->
                             		<input type="text" id="preferredCallingTime" min="minDate" datepicker-pop="dd MMMM yyyy" ng-model="first.date" required late-Validate style="width:130px;background-color:#FFFFFF;" />
-                            		 <div class="input-append bootstrap-timepicker">
+                            		 
 										<input id="timepicker1" type="text" readonly ng-model="first.time" style="width:60px;background-color:#FFFFFF;">
+										<!-- <div class="input-append bootstrap-timepicker">
 										<span class="add-on"><i class="icon-time"></i></span>
-									</div>
+									</div> -->
                         			</div>
           						</div>	
           						
@@ -251,7 +246,7 @@
 											<div class="control-group">
 		      								<label class="control-label" for="note">{{ 'label.note' | translate }}</label>
 		     								 <div class="controls">
-		        								<textarea rows="7" ng-model="formData.note" style="width: 291px; height: 122px;"></textarea>
+		        								<textarea rows="7" ng-model="formData.note" style="width: 211px; height: 121px;"></textarea> <!-- style="width: 291px; height: 122px;" -->
 		      								 </div>
 		    								</div>
 											</td>
@@ -260,9 +255,7 @@
 									</table>
 								</td>
 							</tr>
-						</table>
-					</td>
-				</tr>
+				
 			</table>		
           <div class="offset3">
             <a href="#/prospects"><button type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
