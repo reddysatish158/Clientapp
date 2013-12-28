@@ -17,11 +17,15 @@
           
           
           scope.processFile = function (){
-              resourceFactory.importProcessResource.update({uploadfileId: routeParams.id} , {} , function(data) {
-            	   location.path('/importing');
+        	  scope.loading = true;
+        	                   
+                  resourceFactory.importProcessResource.update({uploadfileId: routeParams.id} , {} , function(data) {
+                	  location.path('/importing');
+                	  scope.loading = false;
+          
                     // added dummy request param because Content-Type header gets removed 
-                    // if the request does not contain any data (a request body)        
-              });
+                    // if the request does not contain any data (a request body)   
+                  });
             }; 
             
             scope.downloadFile = function (){ 
