@@ -21,7 +21,7 @@
 									<tr>
 										<td>
 										<div class="control-group">
-			            				 <label class="control-label" for="prospectType">{{ 'label.create.type' | translate }}</label>
+			            				 <label class="control-label" for="prospectType">{{ 'label.create.type' | translate }}<span class="required">*</</span></label>
 				            				<div class="controls">
 				              					<input type="radio" ng-model="editprospects.prospectType" value="1" ng-change="resetCredits()">Individual
 				              					<input type="radio" ng-model="editprospects.prospectType" value="2" ng-change="resetCredits()">Corporate
@@ -32,10 +32,10 @@
 									<tr>
 										<td>
 										<div class="control-group">
-            					<label class="control-label" for="firstName">{{ 'label.firstname' | translate }}</label>
+            					<label class="control-label" for="firstName">{{ 'label.firstname' | translate }}<span class="required">*</span></label>
 
             					<div class="controls">
-             					 <input type="text" id="middleName" ng-model="editprospects.middleName">
+             					 <input type="text" id="firstName" ng-model="editprospects.firstName">
             					</div>
           						</div>
 
@@ -54,7 +54,7 @@
 									<tr>
 										<td>
 										<div class="control-group">
-		           					 		<label class="control-label" for="lastName">{{ 'label.lastname' | translate }}</label>
+		           					 		<label class="control-label" for="lastName">{{ 'label.lastname' | translate }}<span class="required">*</span></label>
 		            						<div class="controls">
 		              						<input type="text" id="lastName" ng-model="editprospects.lastName">
 		            						</div>
@@ -68,7 +68,7 @@
             						<tr>
             							<td>
             								<div class="control-group">
-			           						<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}</label>
+			           						<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}<span class="required">*</span></label>
 			            					<div class="controls">
 			              						<input type="text" id="homePhoneNumber" ng-model="editprospects.homePhoneNumber">
 			            					</div>
@@ -78,7 +78,7 @@
             						<tr>
             							<td>
             							<div class="control-group">
-			            					<label class="control-label" for="workPhoneNumber">{{ 'label.officephone' | translate }}</label>
+			            					<label class="control-label" for="workPhoneNumber">{{ 'label.officephone' | translate }}<span class="required">*</span></label>
 			            					<div class="controls">
 			              					<input type="text" id="workPhoneNumber" ng-model="editprospects.workPhoneNumber">
 			            					</div>
@@ -88,7 +88,7 @@
             						<tr>
             							<td>
             								<div class="control-group">
-			            					<label class="control-label" for="mobileNumber">{{ 'label.mobilephone' | translate }}</label>
+			            					<label class="control-label" for="mobileNumber">{{ 'label.mobilephone' | translate }}<span class="required">*</span></label>
 			            					<div class="controls">
 			              					<input type="text" id="mobileNumber" ng-model="editprospects.mobileNumber">
 			            					</div>
@@ -98,7 +98,7 @@
             						<tr>
             							<td>
 	            							<div class="control-group">
-		            						<label class="control-label" for="email">{{ 'label.emailid' | translate }}</label>
+		            						<label class="control-label" for="email">{{ 'label.emailid' | translate }}<span class="required">*</span></label>
 		            						<div class="controls">
 		              						<input type="text" id="email" ng-model="editprospects.email">
 		            						</div>
@@ -118,7 +118,7 @@
 								<tr>
 									<td>
 										<div class="control-group">
-		            					<label class="control-label" for="address">{{ 'label.address' | translate }}</label>
+		            					<label class="control-label" for="address">{{ 'label.address' | translate }}<span class="required">*</span></label>
 		            					<div class="controls">
 		              					<input type="text" id="address" ng-model="editprospects.address">
 		            					</div>
@@ -128,7 +128,7 @@
 								<tr>
 									<td>
 										<div class="control-group">
-		            					<label class="control-label" for="streetArea">{{ 'label.street/area' | translate }}</label>
+		            					<label class="control-label" for="streetArea">{{ 'label.street/area' | translate }}<span class="required">*</span></label>
 		            					<div class="controls">
 		              					<input type="text" id="streetArea" ng-model="editprospects.streetArea">
 		           						 </div>
@@ -138,9 +138,9 @@
 								<tr>
 									<td>
 										<div class="control-group">
-		            					<label class="control-label" for="cityDistrict">{{ 'label.city/district' | translate }}</label>
+		            					<label class="control-label" for="cityDistrict">{{ 'label.city/district' | translate }}<span class="required">*</span></label>
 		            					<div class="controls">
-		             					 <input type="text" id="city" ng-model="editprospects.cityDistrict" list="citylist" ng-change="getStateAndCountry(editprospects.cityDistrict)">
+		             					 <input type="text" id="cityDistrict" ng-model="editprospects.cityDistrict" list="citylist" ng-change="getStateAndCountry(editprospects.cityDistrict)">
 		            					</div>
 		          						</div>
 		          						<datalist id="citylist">
@@ -151,7 +151,7 @@
 								<tr>
 									<td>
 										<div class="control-group">
-	           					 		<label class="control-label" for="state">{{ 'label.state' | translate }}</label>
+	           					 		<label class="control-label" for="state">{{ 'label.state' | translate }}<span class="required">*</span></label>
 	            						<div class="controls">
 	              						<input type="text" id="state" ng-model="editprospects.state">
 	            						</div>
@@ -161,7 +161,7 @@
 								<tr>
 									<td>
 									<div class="control-group">
-	            					<label class="control-label" for="country">{{ 'label.country' | translate }}</label>
+	            					<label class="control-label" for="country">{{ 'label.country' | translate }}<span class="required">*</span></label>
 	            					<div class="controls">
 	              					<input type="text" id="country" ng-model="editprospects.country">
 	           						 </div>
@@ -171,7 +171,7 @@
 								<tr>
 									<td>
 										<div class="control-group">
-		            					<label class="control-label" for="zipCode">{{ 'label.zipcode' | translate }}</label>
+		            					<label class="control-label" for="zipCode">{{ 'label.zipcode' | translate }}<span class="required">*</span></label>
 		            					<div class="controls">
 		              					<input type="text" id="zipCode" ng-model="editprospects.zipCode">
 		            					</div>
@@ -223,9 +223,9 @@
 								<tr>
 									<td rowspan="3">
 										<div class="control-group">
-	      								<label class="control-label" for="note">{{ 'label.note' | translate }}</label>
+	      								<label class="control-label" for="note">{{ 'label.note' | translate }}<span class="required">*</span></label>
 	     								 <div class="controls">
-	        								<textarea rows="7" ng-model="editprospects.note" style="width: 211px; height: 121px;"></textarea>
+	        								<textarea id="note" rows="7" ng-model="editprospects.note" style="width: 211px; height: 121px;"></textarea>
 	      								 </div>
 	    								</div>
 									</td>
