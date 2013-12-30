@@ -29,6 +29,7 @@
           }
           location.path('/viewclient/'+scope.clientId);
         });
+        webStorage.add("callingTab", {someString: "documents" });
       };
     }
   });

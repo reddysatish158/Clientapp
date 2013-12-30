@@ -170,7 +170,7 @@
                 </div>
           </div>
       </tab>
-      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab.identitiesTab1">
+      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab">
         <div class="pull-right btn-group">
           <a href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -221,7 +221,7 @@
           </span>
         </div>
       </tab> -->
-      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab.documentsTab1">
+      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab">
         <div class="pull-right">
           <a href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
@@ -274,7 +274,7 @@
         </div>
         </ul>
       </tab>
-       <tab heading="Tickets" select="getAllTickets()" active="TicketsTab.TicketsTab1">
+       <tab heading="Tickets" select="getAllTickets()" active="TicketsTab">
      <div class="pull-right">
 		
 		<a href="#/newTicket/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
@@ -333,7 +333,7 @@
           </table>
         </div>
       </tab>
-       <tab heading="My Device" select="getAllOwnHardware()" active="hardwareTab.hardwareTab1">
+       <tab heading="My Device" select="getAllOwnHardware()" active="hardwareTab">
       
       <div class="pull-right">
 		
@@ -366,7 +366,7 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Sale" select="getOneTimeSale()" active="SaleTab.SaleTab1">
+      <tab heading="Sale" select="getOneTimeSale()" active="SaleTab">
       
       <div class="pull-right">
 		
@@ -465,7 +465,7 @@
         </div>
       </tab> -->
        
-         <tab heading="Statements" select="getClientStatements()" active="StatementsTab.StatementsTab1">
+         <tab heading="Statements" select="getClientStatements()" active="StatementsTab">
              <div class="pull-right">
 		         <a href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
 	        </div>
@@ -488,6 +488,8 @@
                    <td>{{statement.dueDate | DateFormat}}</td>
                       <td>{{statement.amount}}</td>
                       <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
+<td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
+                ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
     </table>

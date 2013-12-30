@@ -12,6 +12,7 @@
                 <th>{{'table.heading.runstarttime' | translate}}</th>
                 <th>{{'table.heading.status' | translate}}</th>
                 <th>{{'table.heading.runtype' | translate}}</th>
+                <th>LogFile</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,8 @@
                 <td>{{history.jobRunStartTime}}</td>  
                 <td>{{history.status}}</td>
                 <td>{{history.triggerType}}</td>
+                <td><a ng-click="logFile(history.runFilePath)"><i class=" icon-download-alt icon-white"></i> Download</a></td>
+                <!-- <td>{{history.runFilePath}}</td> -->
             </tr>
         </tbody>
     </table>
