@@ -16,13 +16,14 @@
         scope.start={};
          scope.start.date = new Date();
         resourceFactory.paymentsTemplateResource.getPayments(function(data){
-          scope.payments = data;
-          scope.data = data.data;
-       
+        	scope.payments = data;
+            scope.data = data.data;
           
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
 
+        
+        
         scope.submit = function() {
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";

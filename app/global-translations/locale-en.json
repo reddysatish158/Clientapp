@@ -469,7 +469,7 @@
   "#transaction table":"",
   "table.heading.transactionId":"Transaction Id",
   "table.heading.transactiondate":"Transaction Date",
-  "table.heading.transactiontype":"Type",
+  "table.heading.transactiontype":"Transaction Type",
   "table.heading.amount":"Amount",
   "table.heading.breakdown":"Breakdown",
   "table.heading.principal":"principal",
