@@ -89,9 +89,9 @@
         	scope.mrn = paginatorService.paginate(scope.mrnDetailsFetchFunction, 14);
         };
         
-        scope.getitemhistorydetails = function () {
+        /*scope.getitemhistorydetails = function () {
             scope.itemhistory = paginatorService.paginate(scope.itemHistoryFetchFunction, 14);
-        };
+        };*/
         
         scope.getsupplierdetails = function () {
                 scope.supplier = paginatorService.paginate(scope.supplierFetchFunction, 14);          
@@ -160,7 +160,13 @@
 					          };
 					  		
 					  		scope.searchHistory = function(filterText) {
-					  			scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
+					  			
+					  			if(filterText=undefined || filterText==""){
+					  				
+					  			}else{
+					  				
+					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
+					  			}
 					  		};		
         
         
