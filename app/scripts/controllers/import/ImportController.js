@@ -5,6 +5,7 @@
         resourceFactory.importResource.getAllimportfiles(function(data) {
             scope.imports= data;
         });
+     
     }
   });
   mifosX.ng.application.controller('ImportController', ['$scope', 'ResourceFactory', mifosX.controllers.ImportController]).run(function($log) {
