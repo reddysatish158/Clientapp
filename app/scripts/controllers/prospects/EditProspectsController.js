@@ -23,7 +23,7 @@
 	        
 	        
 	        resourceFactory.prospectViewResource.getViewProspects({id: routeParams.id} , function(data) {
-	        	//alert('discountController,' +data);
+	        	
 	            scope.editprospects = data;
 	            scope.sourceOfPublicityDatas = data.sourceOfPublicityData;
 	            scope.planDatas = data.planData;
@@ -35,7 +35,7 @@
 		        
 	        });
 	        
-	        $("#city").change(function(){
+	        $("#cityDistrict").change(function(){
             	resourceFactory.AddressTemplateResource.get({city : scope.editprospects.cityDistrict}, function(data) {
             		scope.formData.state = data.state;
             		scope.formData.country = data.country;
@@ -52,8 +52,7 @@
 	        	scope.editprospects.locale = 'en';
 	        	delete scope.editprospects.sourceOfPublicityData;
 	        	var reqDate = dateFilter(new Date(scope.first.date),'yyyy-MM-dd');
-	        	console.log(reqDate);
-	        	console.log(scope.first.date);
+
 	        	scope.editprospects.preferredCallingTime = reqDate+" "+$('#timepicker1').val()+":00";//scope.first.date.getHours()+":"+scope.first.date.getMinutes()+":"+scope.first.date.getSeconds();
 	        	
 	        	scope.editprospects.sourceOfPublicity = scope.editprospects.sourceOfPublicityInt;

@@ -7,8 +7,15 @@
 			scope.format=[];
 			scope.discountdata=[];
 			scope.formData={};
+			scope.hideForGame = true;
 			resourceFactory.eventPriceTemplateResource.getpriceDetails({eventId: routeParams.id} ,function(data) {
-				scope.formData=data;				
+				
+				scope.catId = data.categoryId;
+				scope.formData=data;
+				if(scope.catId == '999991'){
+					scope.hideForGame = false;
+					scope.formData.formatType='SD';
+				}
 				scope.OptTypes = data.optTypes;				
 				scope.Format = data.format;				
 				scope.Discountdatas = data.discountdata;				
@@ -21,6 +28,7 @@
 				delete this.formData.discountdata;
 				delete this.formData.format;
 				delete this.formData.clientTypes;
+				delete this.formData.categoryId;
 				 this.formData.locale = 'en';
 				resourceFactory.eventpriceResource.save({'eventId': routeParams.id}, this.formData,
 						function(data) {
