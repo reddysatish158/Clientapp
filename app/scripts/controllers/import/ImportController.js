@@ -33,10 +33,9 @@
                 },function(errorData){
                 	route.reload();
                 });
-                
-                setTimeout("getAllFiles()",3000);
-                
+                route.reload();     
         }; 
+        
         
         scope.downloadFile = function (id){ 
             	 window.open('https://localhost:9554/obsplatform/api/v1/uploadstatus/'+id+'/print?tenantIdentifier=default');
