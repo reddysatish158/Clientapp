@@ -1154,6 +1154,7 @@
   "link.import":"Bulk Upload",
   "link.create.new.file":"Upload File",
   "table.import.uploadprocess":"Upload Process",
+  "table.import.downloads":"Downloads",
   "table.import.uploadfilepath":"Upload FilePath",
   "table.import.processdate":"Process Date",
   "table.import.process.totalrecords":"Process/Total Records",
