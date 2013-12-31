@@ -742,7 +742,10 @@
          hardwareSwapResource: defineResource(apiVer + "/hardwareswapping/:clientId",{clientId:'@clientId'},  {
        	  get: {method: 'GET', params: {clientId:'@clientId'}}
          }),
-        
+       
+         activationProcessResource: defineResource(apiVer + "/activationprocess",{},  {
+         	  get: {method: 'GET', params: {clientId:'@clientId'}}
+           }),
          serviceMappingResource: defineResource(apiVer + "/servicemapping/:serviceMappingId", {serviceMappingId: '@serviceMappingId'}, {
        	  getAllServiceMapping: {method: 'GET', params: {}, isArray: true},
        	//  get: {method: 'GET', params: {}},

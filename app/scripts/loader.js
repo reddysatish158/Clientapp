@@ -48,6 +48,7 @@
             'ngSanitize':{deps:['angular'],exports:'ngSanitize'},
             'bootstraptimepicker':{deps:['jquery']},
             'ckEditor':{deps:['jquery']},
+            'jquery-jWizard': { deps: ['angular','jquery','angularui','angular-translate'] },
             'mifosX': {
                 deps: [
                     'angular',

@@ -58,6 +58,7 @@
    	  delete this.formData.queryData;
    	  delete this.formData.jobparameters;
    	  delete this.formData.nextRunTime;
+   	  delete this.formData.billingMessageDatas;
    	  
           
         resourceFactory.jobsparameters.update({jobId: routeParams.id}, this.formData, function(data){

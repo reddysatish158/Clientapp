@@ -26,7 +26,7 @@
 	        
 	        scope.getData = function(query){
 	        	if(query.length>0){
-	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId: routeParams.id,query: query}, function(data) { 	        	
+	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:  scope.formData.itemMasterId,query: query}, function(data) { 	        	
 	     	            scope.itemDetails = data.serials;
 	     	        }); 
 	        	}else{
@@ -60,8 +60,6 @@
 	    			temp["clientId"] = routeParams.clientId;
 	    			temp["status"] = "allocated";
 	    			temp["itemMasterId"] = scope.formData.itemMasterId;
-	    			
-	    			  
 	    			temp["isNewHw"]="Y";
 	    			temp1.push(temp);
 	        	});

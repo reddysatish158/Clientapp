@@ -190,7 +190,8 @@
         		  
               };
               $scope.cancelDisconnection = function () {
-                  $modalInstance.dismiss('cancel');
+                  
+            	  $modalInstance.dismiss('cancel');
               };
               
               

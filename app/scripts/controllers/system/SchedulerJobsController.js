@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    SchedulerJobsController: function(scope, resourceFactory, route,location) {
+    SchedulerJobsController: function(scope, resourceFactory, route,location,$modal) {
       var jobIdArray = [];
+      var jobNameArray = [];
       scope.formData={};
       resourceFactory.jobsResource.get(function(data) {
           scope.jobs = data;
@@ -16,6 +17,7 @@
         if(selectAll == 'true') {
           for(var i in scope.jobs) {
             jobIdArray.push(scope.jobs[i].jobId);
+            
           }
         } else {
           for(var i in scope.jobs) {
@@ -36,28 +38,62 @@
         
     	  
       };
-      scope.runJobSelected = function(jobId, active) {
+      scope.runJobSelected = function(job, active) {
         if(active == 'true') {
-          jobIdArray.push(jobId);
+        	if(job.displayName == "Messanger"){
+        		jobNameArray.push(job.jobId);
+        	
+        	}
+          jobIdArray.push(job.jobId);
         } else {
-          jobIdArray = _.without(jobIdArray,jobId);
+          jobIdArray = _.without(jobIdArray,job.jobId);
         }
       }
 
       scope.runSelectedJobs = function() {
-        scope.sentForExecution = [];
-        for(var i in jobIdArray) {
-          for(var j in scope.jobs) {
-            if(scope.jobs[j].jobId == jobIdArray[i]) {
-              scope.sentForExecution.push(scope.jobs[j].displayName);
+    	  scope.sentForExecution = [];
+    	  var jobidd;
+          for(var i in jobIdArray) {
+            for(var j in scope.jobs) {
+            	
+              if(scope.jobs[j].jobId == jobIdArray[i]) {
+            	 
+            	 
+                scope.sentForExecution.push(scope.jobs[j].displayName);
+            	 
+              }
             }
           }
-        }
 
-        for(var i in jobIdArray) {
-          resourceFactory.jobsResource.save({jobId: jobIdArray[i], command : 'executeJob'}, {}, function(data){
-          });
-        }
+          for(var i in jobIdArray) {
+        	 
+        	           if(jobNameArray[i] == jobIdArray[i]){
+        	        	   
+        	            		  jobidd=scope.jobs[j].jobId;
+        	            		  $modal.open(
+        	                			  {
+        	                          templateUrl: 'approve1.html',
+        	                          controller: Approve,
+        	                          resolve:{
+        	                        	  name:function(){
+        	                        		return jobIdArray[i];
+        	                        	  }
+        	                          }
+        	                      });
+        	            		 
+        	           }else{
+        	    
+        	    	resourceFactory.jobsResource.save({jobId: jobIdArray[i], command : 'executeJob'}, {}, function(data){
+        	    
+            });
+        	           }
+        	    
+        	    
+          }
+      
+    	 
+    	  
+      
       }
 
       scope.suspendJobs = function() {
@@ -75,9 +111,42 @@
       scope.refresh = function() {
         route.reload();
       }
+      
+      var Approve = function($scope,$modalInstance,name){
+    	
+    	var a=name;
+    
+    	
+    	$scope.jobParams=[];
+    	$scope.reportDatas=[];
+    	$scope.billingMessageDatas=[];
+    	 
+    	  resourceFactory.jobsparameters.get({jobId : a}, function(data) {
+    		  $scope.reportDatas = data.queryData;
+    		  $scope.billingMessageDatas=data.billingMessageDatas;
+    	       
+    	      });
+			$scope.accept = function(date){
+			        	this.formData.jobName="Messanger";
+			        	this.formData.dateFormat="dd MMMM yyyy";
+			        	this.formData.locale="en";
+			            resourceFactory.jobsparameters.update({jobId:a}, this.formData, function(data){
+			            	$modalInstance.dismiss('delete');
+			              },function(errData){
+			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
+			        	  
+			        	  
+			          });
+			            resourceFactory.jobsResource.save({jobId: a, command : 'executeJob'}, {}, function(data){
+	                      });    
+			};
+			$scope.reject = function(){
+				$modalInstance.dismiss('cancel');
+			};
+		};
     }
   });
-  mifosX.ng.application.controller('SchedulerJobsController', ['$scope', 'ResourceFactory', '$route', '$location', mifosX.controllers.SchedulerJobsController]).run(function($log) {
+  mifosX.ng.application.controller('SchedulerJobsController', ['$scope', 'ResourceFactory', '$route', '$location','$modal', mifosX.controllers.SchedulerJobsController]).run(function($log) {
     $log.info("SchedulerJobsController initialized");
   });
 }(mifosX.controllers || {}));

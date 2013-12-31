@@ -46,6 +46,7 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewClientOneTimeSaleController',
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
+      'client/CreateClientControllerwizard',
       /*'product/LoanProductController',
       'product/CreateLoanProductController',
       'product/CreateSavingProductController',

@@ -153,6 +153,7 @@
   "button.reject.transfer":"Reject Transfer",
   "button.undo.transfer":"Undo Transfer",
   "button.eventorder":"Event Order",
+  "table.heading.orderid":"Order Id",
 
   "#datatable":"",
   "table.heading.datatablename":"Data Table Name",
@@ -200,7 +201,7 @@
   
   "#Job Parameters":".....",
   "label.editschedulerjobparameters":"Edit Job Parameters",
-  "label.job.reportname":"Report Name",
+  "label.job.reportname":"Batch",
   "label.job.processdate":"Process Date",
   "label.job.duedate":"Due Date",
   "label.job.promotionalmessage":"Promotional Message",

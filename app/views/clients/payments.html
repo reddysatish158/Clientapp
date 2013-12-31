@@ -88,7 +88,17 @@
          						</div>
 							</td>
 						</tr>
-							
+							<tr>
+			  <td>
+			  <div class="control-group">
+           					 <label class="control-label">{{'label.notes' | translate}}</label>
+            					<div class="controls">
+             					  <textarea ng-model="formData.remarks"></textarea>
+           						</div>
+         						</div>
+			
+	        </td>
+	        </tr>
 					</table>
 			
 				</td>
@@ -129,6 +139,7 @@
 				</tr>
 				<tr>
 							<td>
+							
 								<div class="control-group">
            					 	<label class="control-label" for="branchName">{{ 'label.branchname' | translate }}</label>
             					<div class="controls">
@@ -142,13 +153,9 @@
 				</div>
 				</td>
 			</tr>
+			
 			</table>
-			<div class="control-group">
-	          	<label class="control-label">{{'label.notes' | translate}}</label>
-		        <div class="controls">
-		          <textarea ng-model="formData.remarks"></textarea>
-		        </div>
-	        </div>
+			
 			
   			
           <div class="offset3">

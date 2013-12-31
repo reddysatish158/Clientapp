@@ -6,8 +6,8 @@
         var fetchFunction = function(offset, limit, callback) {
           resourceFactory.jobsResource.getJobHistory({jobId : routeParams.id, resourceType : 'runhistory', offset: offset, limit: limit} , callback);
         };
-        scope.logFile = function (path){ 
-	         window.open('https://localhost:7070/obsplatform/api/v1/jobs/printlog?tenantIdentifier=default&path='+path);
+        scope.logFile = function (id){ 
+	         window.open('https://localhost:7070/obsplatform/api/v1/jobs/printlog/'+id+'?tenantIdentifier=default');
 	    };
         scope.jobhistory = paginatorService.paginate(fetchFunction, 14);
     }
