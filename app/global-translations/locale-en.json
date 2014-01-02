@@ -2095,7 +2095,9 @@
 "table.provisioningsystem.paramType":"Param Type",
 "label.viewProvisioningmapping":"View Provisioning",
 "label.editprovisioningmapping":"Edit Provisioning",
-"label.viewprovisioningmapping":"View Provisioning"
+"label.viewprovisioningmapping":"View Provisioning",
+"validation.msg.order.message.exceeds.max.length":"message length not exceeds 160 characters",
+"dialog.provisioning.title.message":"Provisioning Commands"
   
    
 }

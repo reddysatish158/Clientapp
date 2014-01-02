@@ -89,14 +89,18 @@
         						function(data) {
         					 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
         					 $modalInstance.close('delete');
-        						});	
+        				     },function(renewalErrorData){
+            	         	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+            						});
           		}
           		else{
           		    this.provisioning.commandName=this.formData.commandname.commandName;
           			resourceFactory.osdResource.getPost({'orderId': routeParams.id} ,this.provisioning, function(data) {
                         location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
                         $modalInstance.close('delete');           
-       	            }); 
+          			 },function(renewalErrorData){
+         	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+         						});
           		}
           		  
           	};

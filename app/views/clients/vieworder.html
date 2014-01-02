@@ -255,6 +255,12 @@
                         <h3 class="bolder">{{'dialog.provisioning.title.message' | translate}}</h3>
                     </div>
                     <div class="modal-body modal-big" style="height:270px;">
+
+                         <div class="error" ng-show="errorStatus || errorDetails">
+		                 <label>{{'label.contract.error' | translate}}</label>
+		                 <label ng-show="errorStatus">{{errorStatus}}</label>
+		                 <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	                     </div>
                         <div class="control-group">
                             <label class="control-label" for="status">{{ 'label.order.renewalperiod' | translate }}</label>
                             <div class="controls">
