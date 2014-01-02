@@ -18,6 +18,7 @@
                 <th>{{ 'table.import.processdate' | translate }}</th>
                 <th>{{ 'table.import.process.totalrecords' | translate }}</th>
                 <th>{{ 'table.import.status' | translate }}</th>
+                <th>{{ 'table.import.downloads' | translate }}</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,13 @@
                 <td>{{import.processDate | DateFormat}}</td>         
                 <td>{{import.processRecords}}/{{import.totalRecords}}</td>
                 <td>{{import.processStatus}}</td>
+              
+              	<td>
+              	<a ng-show="getProcessStatus(import.processStatus)" ng-click="processFile(import.id)" popover="Process File" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>
+              	<a ng-show="getLogStatus(import.processStatus)" ng-click="logFile(import.id)" popover="Download Log File" popover-trigger="mouseenter"><i class=" icon-download-alt icon-white"></i> </a>
+             	<a ng-show="getLogStatus(import.processStatus)" ng-click="downloadFile(import.id)" popover="Download Uploaded File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a>
+              	</td>
+              
             </tr>
         </tbody>
     </table>
