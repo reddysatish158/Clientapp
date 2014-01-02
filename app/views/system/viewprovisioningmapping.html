@@ -1,0 +1,39 @@
+<div ng-controller="ViewProvisioningMappingController"> 
+
+    <div class="paddedbottom10">
+        <ul class="breadcrumb">
+          <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+          <li><a href="#/mappingconfig">{{'label.managemappingconfigurations' | translate}}</a> <span class="divider">/</span></li>
+          <li class="active">{{'label.viewprovisioningmapping' | translate}}</li>
+        </ul>
+	    <div class="pull-right">
+	      <div class="btn-group">
+	          <a href="#/editProvisioningMapping/{{provisiongdata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	          <a ng-click="deleteProvisioning()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>        
+	      </div>
+	    </div>
+	</div>
+
+	<div class="row paddedleft">
+					<h3>{{'label.viewprovisioningmapping' | translate}}</h3>	
+                        <table  width="100%" >                     
+                             <tr>
+                              <td>{{'table.provisioningcommands.id' | translate}}</td>
+                              <td>{{provisiongdata.id}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{ 'table.provisioningcommands.provisioningsystem' | translate }}</td>
+                              <td>{{provisiongdata.provisioningSystem}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{ 'table.provisioningcommands.commandname' | translate }}</td>
+                              <td>{{provisiongdata.commandName}}</td>
+                            </tr>
+                            <tr>
+                              <td>{{ 'table.provisioningcommands.status' | translate }}</td>
+                              <td>{{provisiongdata.status}}</td>
+                            </tr>                                                                                                                  
+                          </table>
+     </div>                    
+                                     
+    </div>
