@@ -72,6 +72,33 @@
          </div>
       </tab>
       			
+      				
+      	<tab heading="Provisioning Commands" select="getProvisiongCommandData()">
+        <div class="pull-right btn-group">
+          <a href="#/createProvisioningmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+        </div>
+        <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+        <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.provisioningcommands.id' | translate}}</th>
+                <th>{{'table.provisioningcommands.provisioningsystem' | translate}}</th>
+                <th>{{'table.provisioningcommands.commandname' | translate}}</th>
+                <th>{{'table.provisioningcommands.status' | translate}}</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="provisiongdata in provisiongsystemData  | filter:filterText">
+                <td><a href="#/viewprovisioningmapping/{{provisiongdata.id}}">{{provisiongdata.id}}</a></td>        
+                <td><a href="#/viewprovisioningmapping/{{provisiongdata.id}}">{{provisiongdata.provisioningSystem}}</a></td>
+                <td>{{provisiongdata.commandName}}</td>
+                <td>{{provisiongdata.status}}</td>
+     		 </tbody>
+          </table>
+         </div>
+      </tab>	
       		
 
 

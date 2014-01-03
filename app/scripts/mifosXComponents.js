@@ -262,7 +262,10 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewAssociationController',
       'client/EditAssociationController',
       'eventorder/EventOrderController',
-      'client/HardwareSwapController'
+      'client/HardwareSwapController',
+      'system/CreateProvisioningMappingController',
+      'system/EditProvisioningMappingController',
+      'system/ViewProvisioningMappingController'
     ],
     filters: [
       'StatusLookup',

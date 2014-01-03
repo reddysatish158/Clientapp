@@ -17,7 +17,7 @@
         </li>
         <li><span class="divider">|</span>
           <i class="icon-building"></i>
-          <small>Office "{{officeName}}" </small>
+          <small>Belongs  "{{officeName}}" office</small>
         </li>
          <li><span class="divider">|</span>
           <i></i>
@@ -45,9 +45,8 @@
 	         <a ng-show="orderData.status == 'DISCONNECTED'" ng-click="reconnect()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Reconnect</a>
 	         <a ng-show="orderData.contractPeriod != 'Perpectual' && orderData.status == 'ACTIVE' && orderData.isPrepaid == 'N'" href="" ng-click="orderRenew(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
 	         <a ng-show="orderData.isPrepaid == 'Y'"  href="" ng-click="orderRenew(orderPriceDatas[0].orderId)"class="btn btn-primary"><i class="icon-arrow-up icon-white"></i>TopUp</a>
-	         <a ng-show="orderData.provisioningSys =='Comvenient' && orderData.status == 'ACTIVE'"href="#/osdMessage/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> OSDMessage</a>
-	         <a ng-show="orderData.provisioningSys =='Comvenient' && orderData.status == 'ACTIVE'" ng-click="retrack()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Retrack</a>
-	          <a ng-show="orderData.status == 'PENDING'" ng-click="cancel()" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a>
+	         <a ng-show="orderData.status == 'ACTIVE'" ng-click="CommandCenter(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Command Center</a>
+	         <a ng-show="orderData.status == 'PENDING'" ng-click="cancel()" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a>
 	      </div>
 	    </div>
 </div>
@@ -251,23 +250,35 @@
                     </div>
       </script>
       
-      <script type="text/ng-template" id="ApproveRetrack.html">
+      <script type="text/ng-template" id="ProvisioningSystemPop.html">
                     <div class="modal-header silver">
-                        <h3 class="bolder">{{'dialog.retrack.title.message' | translate}}</h3>
+                        <h3 class="bolder">{{'dialog.provisioning.title.message' | translate}}</h3>
                     </div>
-                    <div class="modal-body modal-big">
-                       <div class="control-group">
-            				<label class="control-label" style="color:red;" ng-show="renewError.length>0">{{renewError | translate}}</label>
-            			<div class="controls">
-						</div>
-            		   </div>
-        			<div class="control-group">
-            			<label class="control-label"><h4>Are you sure?</h4></label>
-        			</div>
-					</div>
+                    <div class="modal-body modal-big" style="height:270px;">
+
+                         <div class="error" ng-show="errorStatus || errorDetails">
+		                 <label>{{'label.contract.error' | translate}}</label>
+		                 <label ng-show="errorStatus">{{errorStatus}}</label>
+		                 <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	                     </div>
+                        <div class="control-group">
+                            <label class="control-label" for="status">{{ 'label.order.renewalperiod' | translate }}</label>
+                            <div class="controls">
+                             <select ng-model="formData.commandname" ng-change="commandName(formData.commandname)" ng-options="commanddata.commandName for commanddata in commandData" value="{{commanddata.commandName}}"></select>
+                            </div>
+
+                         </div>
+
+                         <div class="control-group" id="commandName">
+                  			<label class="control-label">{{ 'label.Promotionalmessage' | translate }}</label>
+                  			<div class="controls">
+                  				<textarea ng-model="formData.message" style="width: 333px; height: 126px;"></textarea>
+                  			</div>
+                  		</div>		
+                    </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="cancelRetrack()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="approveRetrack()">{{'label.confirm' | translate}}</button>
+                        <button class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="acceptProvisioning()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       

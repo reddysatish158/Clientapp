@@ -852,6 +852,15 @@
       })
         .when('/editServiceMapping/:id', {
             templateUrl: 'views/system/editServiceMapping.html'
+         })
+         .when('/createProvisioningmapping', {
+             templateUrl: 'views/system/createProvisioningmapping.html'
+         })  
+         .when('/viewprovisioningmapping/:id', {
+             templateUrl: 'views/system/viewprovisioningmapping.html'
+         })  
+        .when('/editProvisioningMapping/:id', {
+             templateUrl: 'views/system/editProvisioningMapping.html'
          });
     $locationProvider.html5Mode(false);
   };
