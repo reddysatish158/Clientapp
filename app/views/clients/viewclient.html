@@ -419,16 +419,20 @@
                 <th>Debit Amount</th>
             </tr>
         </thead>
-        <tbody>
+         <tbody>
             <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
+            
                 
-               <td ng-show="financialtransaction.transactionType =='INVOICE'">
+                <td ng-show="financialtransaction.transactionType =='INVOICE'">
                 <a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transactionId}}</a></td>
                 <td ng-show="financialtransaction.transactionType =='INVOICE'">
                 <a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a></td>
-  
+                
+                
                 <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td>
                 <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transDate | DateFormat}}</td>
+                
+       
                 <td>{{financialtransaction.transactionType}}</td>
                 <td>{{financialtransaction.creditAmount}}</td>
                 <td>{{financialtransaction.amount}}</td>

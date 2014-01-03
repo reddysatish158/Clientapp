@@ -228,6 +228,7 @@
   "button.adjustments":"Post Adjustment",
   "button.payments":"Make Payment",
   "button.invoice":"Do Invoice",
+  "label.invoicedetails":"Invoice Details",
   "button.statement":"Statement",
   "tab.general":"General",
   "label.firstname":"First Name:",
@@ -2094,7 +2095,7 @@
 "label.heading.status": "Status",
 "label.heading.role": "Role",
 "label.heading.description": "Description",
-"label.button.viewpermissions":"View Permissions"  
+"label.button.viewpermissions":"View Permissions",  
 
 "dialog.reconnect.title.message":"Reconnect"  ,
 
