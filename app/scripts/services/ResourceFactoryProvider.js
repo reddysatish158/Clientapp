@@ -766,7 +766,16 @@
            }),
            serviceMappingtemplateResource: defineResource(apiVer + "/servicemapping/template", {}, {
            	  getAllserviceMapping: {method: 'GET', params: {}}
-             })
+             }),
+             
+             provisioningMappingResource: defineResource(apiVer + "/provisionings/:provisioningId", {provisioningId: '@provisioningId'}, {
+             	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+                get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+           }),
+           provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
+            	  get: {method: 'GET', params: {}}
+           })  
                
 
         };

@@ -3,7 +3,7 @@
 	  MappingController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
         scope.servicemappingdatas = [];
         scope.hardwaremappingdatas= [];
-        
+        scope.provisiongsystemData= [];
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
@@ -33,6 +33,14 @@
            });
         	
         };
+        
+        
+        scope.getProvisiongCommandData=function(data){
+          	 
+          	 resourceFactory.provisioningMappingResource.getprovisiongData(function(data) {
+              	 scope.provisiongsystemData=data; 
+              });
+          };
         
     }
   });

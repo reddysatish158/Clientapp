@@ -2082,7 +2082,22 @@
 "dialog.item.title.message":"Delete Item",  
 "dialog.invoice.title.message":"Do Invoice",
 "dialog.statement.title.message":"Prepare Statement",  
-"dialog.reconnect.title.message":"Reconnect"  
+"dialog.reconnect.title.message":"Reconnect"  ,
+
+"#ProvisioningCommands":"...",
+"table.provisioningcommands.id":"Id",
+"table.provisioningcommands.provisioningsystem":"Provisioning System",
+"table.provisioningcommands.commandname":"Command Name",
+"table.provisioningcommands.status":"Status",
+"label.createProvisioningmapping":"Create Provisioning", 
+"table.provisioningsystem.parameters":"Command Parameters",
+"table.provisioningsystem.commandParam":"Command Param",
+"table.provisioningsystem.paramType":"Param Type",
+"label.viewProvisioningmapping":"View Provisioning",
+"label.editprovisioningmapping":"Edit Provisioning",
+"label.viewprovisioningmapping":"View Provisioning",
+"validation.msg.order.message.exceeds.max.length":"message length not exceeds 160 characters",
+"dialog.provisioning.title.message":"Provisioning Commands"
   
    
 }
