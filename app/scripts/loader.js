@@ -23,6 +23,7 @@
             'styles':           '../styles',
             'test':             '../../test/functional',
             'notificationWidget':'../scripts/modules/notificationWidget',
+            'frAngular':        '../scripts/modules/KeyboardManager',
             'modified.datepicker':'../scripts/modules/datepicker',
             'angularFileUpload':'../bower_components/angularjs-file-upload/angular-file-upload',
             'ngSanitize':       '../bower_components/angular-sanitize/angular-sanitize',
@@ -47,6 +48,7 @@
             'modified.datepicker':{deps: ['angular']},
             'ngSanitize':{deps:['angular'],exports:'ngSanitize'},
             'bootstraptimepicker':{deps:['jquery']},
+            'frAngular':{deps:['angular']},
             'ckEditor':{deps:['jquery']},
             'jquery-jWizard': { deps: ['angular','jquery','angularui','angular-translate'] },
             'mifosX': {
@@ -68,7 +70,8 @@
                     'modified.datepicker',
                     'ngSanitize',
                     'bootstraptimepicker',
-                    'ckEditor'
+                    'ckEditor',
+                    'frAngular'
                 ],
                 exports: 'mifosX'
             }

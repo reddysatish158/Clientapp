@@ -28,6 +28,10 @@
         if(data.jobparameters.isDynamic=="Y"){
         	scope.formData.isDynamic=true;
         }
+        
+        if(data.jobparameters.isAutoRenewal=="Y"){
+        	scope.formData.isAutoRenewal=true;
+        }
       
       });
        
@@ -59,6 +63,7 @@
    	  delete this.formData.jobparameters;
    	  delete this.formData.nextRunTime;
    	  delete this.formData.billingMessageDatas;
+   	  delete this.formData.historyId;
    	  
           
         resourceFactory.jobsparameters.update({jobId: routeParams.id}, this.formData, function(data){

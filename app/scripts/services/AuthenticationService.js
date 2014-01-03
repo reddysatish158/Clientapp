@@ -3,6 +3,7 @@
     AuthenticationService: function(scope, httpService,resourceFactory,webStorage) {
       var onSuccess = function(data) {
         scope.$broadcast("UserAuthenticationSuccessEvent", data);
+        webStorage.add("userData",data);
         resourceFactory.configurationResource.get(function(data) {
         	for(var i in data.globalConfiguration){
                 if(data.globalConfiguration[i].name=="DateFormat"){

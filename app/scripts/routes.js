@@ -77,6 +77,9 @@
       .when('/addclientdocument/:clientId', {
           templateUrl: 'views/clients/addclientdocument.html'
       })
+       .when('/profile',{
+        templateUrl: 'views/profile.html'
+      })
       .when('/addclientidentifier/:clientId', {
         templateUrl: 'views/clients/addclientidentifier.html'
       })

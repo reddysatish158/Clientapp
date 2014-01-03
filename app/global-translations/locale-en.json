@@ -211,6 +211,7 @@
   "label.job.messagetemplate":"Message Template",
   "label.job.exipirydate":"Exipiry Date",
   "label.job.isDynamic":"Is Dynamic",
+  "label.job.isautorenewal":"Auto Renewal",
   
 
   "#view employee":"....",
@@ -2081,8 +2082,17 @@
 "#Dialog":"...",
 "dialog.item.title.message":"Delete Item",  
 "dialog.invoice.title.message":"Do Invoice",
+"dialog.invoice.title.job":"Job Parameters",
 "dialog.statement.title.message":"Prepare Statement",  
-"dialog.reconnect.title.message":"Reconnect"  
-  
+"dialog.reconnect.title.message":"Reconnect",  
+
+"#Profile":"......",
+"label.heading.userid":"User ID",
+"label.heading.username":"User Name",
+"label.heading.office": "Office",
+"label.heading.status": "Status",
+"label.heading.role": "Role",
+"label.heading.description": "Description",
+"label.button.viewpermissions":"View Permissions"  
    
 }

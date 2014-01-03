@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="import in imports | filter:filterText">
-                <td><a href="#/viewimportfile/{{import.id}}">{{import.uploadProcess}}</a></td>            
+                <td>{{import.uploadProcess}}</td>            
                 <td>{{import.uploadFilePath}}</td>        
                 <td>{{import.processDate | DateFormat}}</td>         
                 <td>{{import.processRecords}}/{{import.totalRecords}}</td>

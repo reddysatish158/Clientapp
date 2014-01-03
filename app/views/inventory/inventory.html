@@ -3,7 +3,7 @@
     <div>
       <tabset  style="margin-bottom: 0px;">
       
-      	 <tab heading="Item Details" select="getItemdetails()" active="itemDetailsTab">
+      	 <tab heading="Item Details" select="getItemdetails()">
         <div class="pull-right btn-group">
           <a href="#/createitemdetails/{{itemdetails.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
@@ -197,7 +197,7 @@
     </tab>
       
       
-      <tab heading="Supplier" select="getsupplierdetails()">
+      <tab heading="Supplier" select="getsupplierdetails()" active="supplierTab">
         <div class="pull-right btn-group">
           <a href="#/createsupplier" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>

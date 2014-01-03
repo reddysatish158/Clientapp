@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MainController: function(scope, location, sessionManager, translate) {
+    MainController: function(scope, location, sessionManager, translate,keyboardManager) {
       
       scope.leftnav = false;
 
@@ -62,6 +62,41 @@
           }
       };
 
+      keyboardManager.bind('ctrl+shift+c', function() {
+          location.path('/createclient');
+      });
+      
+      keyboardManager.bind('ctrl+shift+n', function() {
+          location.path('/nav/offices');
+      });
+      
+      keyboardManager.bind('ctrl+shift+r', function() {
+          location.path('/reports/all');
+      });
+      keyboardManager.bind('ctrl+s', function() {
+          document.getElementById('submit').click();
+      });
+      
+      keyboardManager.bind('ctrl+r', function() {
+          document.getElementById('run').click();
+      });
+      keyboardManager.bind('ctrl+shift+x', function() {
+          document.getElementById('cancel').click();
+      });
+      keyboardManager.bind('ctrl+shift+l', function() {
+          document.getElementById('logout').click();
+      });
+      keyboardManager.bind('alt+x', function() {
+          document.getElementById('search').focus();
+      });
+      
+      keyboardManager.bind('ctrl+n', function() {
+          document.getElementById('next').click();
+      });
+      keyboardManager.bind('ctrl+p', function() {
+          document.getElementById('prev').click();
+      });
+      
       scope.changeLang = function (lang) {
           translate.uses(lang.code);
           scope.optlang = lang;
@@ -77,6 +112,7 @@
     '$location',
     'SessionManager',
     '$translate',
+    'keyboardManager',
     mifosX.controllers.MainController
   ]).run(function($log) {
     $log.info("MainController initialized");
