@@ -18,7 +18,15 @@
         resourceFactory.paymentsTemplateResource.getPayments(function(data){
         	scope.payments = data;
             scope.data = data.data;
-          
+          scope.paymentTypeData=function(value){
+            	
+            	for(var i=0;i<scope.data.length;i++){
+            		
+            		if(scope.data[i].id==value){
+            			scope.paymentType=scope.data[i].mCodeValue;
+            		}
+            	}
+            };
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
 

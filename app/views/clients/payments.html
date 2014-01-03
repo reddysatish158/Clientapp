@@ -60,7 +60,7 @@
 								<div class="control-group">
             					<label class="control-label" for="paymentCode">{{ 'label.paymentType' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.paymentCode" ng-options="data.id as data.mCodeValue for data in data" value="{{data.id}}">
+             					 <select ng-model="formData.paymentCode" ng-options="data.id as data.mCodeValue for data in data" value="{{data.id}}" ng-change="paymentTypeData(formData.paymentCode)">
              					 </select>
             					</div>
           						</div>		
@@ -106,7 +106,7 @@
 				</td>
 				
 				<td>
-				<div ng-show="formData.paymentCode == '24'">
+				<div ng-show="paymentType == 'Cheque'">
 				<table>
 				<tr>
 							<td>
