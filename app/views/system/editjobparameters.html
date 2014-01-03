@@ -47,7 +47,7 @@
                  <div class="control-group" ng-show="formData.displayName =='Messanger'">
                 <label class="control-label">{{ 'label.job.messagetemplate' | translate }}<span class="required">*</span></label>
                 <div class="controls">
-                  <select ng-model="jobparameters.messageTempalate"  ng-options="billingMessageData.templateDescription as billingMessageData.templateDescription for billingMessageData in billingMessageDatas" value="{{office.id}}">
+                  <select ng-model="jobparameters.messageTemplate"  ng-options="billingMessageData.templateDescription as billingMessageData.templateDescription for billingMessageData in billingMessageDatas" value="{{office.id}}">
                 </select>
                 </div>
               </div>
