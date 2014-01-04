@@ -45,7 +45,7 @@
     	  this.formData.dateFormat = 'dd MMMM yyyy';
     	  this.formData.locale = 'en';
     	  this.formData.reportName=this.formData.jobparameters.batchName;
-    	  this.formData.messageTempalate=this.formData.jobparameters.messageTempalate;
+    	  this.formData.messageTemplate=this.formData.jobparameters.messageTemplate;
     	  
     	  if(this.formData.name == "Invoice"){this.formData.processDate = dateFilter(scope.date.processDate,'dd MMMM yyyy');}
     	  if(this.formData.name== "Generate Statment"){this.formData.dueDate = dateFilter(scope.date.dueDate,'dd MMMM yyyy');}
@@ -64,6 +64,7 @@
    	  delete this.formData.nextRunTime;
    	  delete this.formData.billingMessageDatas;
    	  delete this.formData.historyId;
+   	  delete this.formData.initializingError;
    	  
           
         resourceFactory.jobsparameters.update({jobId: routeParams.id}, this.formData, function(data){
