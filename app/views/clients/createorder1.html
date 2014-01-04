@@ -1,4 +1,4 @@
-<form class="form-horizontal1 well" ng-submit="submit4()" >
+<form class="form-horizontal well" ng-submit="submit4()" >
  <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -8,9 +8,9 @@
         <fieldset>
           <legend>{{'label.createorder' | translate}}</legend>
          <legend>{{'label.postpaidplans' | translate}}</legend>
-          <table width="100%" >
+          <table>
             <tr>
-              <td width="50%">
+              <td>
              <table class="table table-striped table-condensed table-hover" ng-style="{ width:400 }">
                 <thead>
                     <tr>
@@ -105,7 +105,7 @@
                 </tbody>
             </table>
               </td>
-              <td width="40%" align="top">
+              <td align="top">
                       <div class="control-group">
                           <label class="control-label" for="startDate">{{ 'label.order.startdate' | translate }}</label>
                             <div class="controls">
@@ -113,24 +113,24 @@
                           date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
                           </div>
                         </div>
-                       <div class="control-group1">
+                       <div class="control-group">
                          <label class="control-label" for="contractPeriod">{{ 'label.order.contractperiod' | translate }}</label>
 
                            <div class="controls">
-                              <select   ng-disabled="formData3.isPrepaid == 'Y'" ng-model="formData3.contractPeriod"  ng-options="subscriptiondata.id as subscriptiondata.Contractdata for subscriptiondata in subscriptiondatas" value="{{billRuleData.id}}"></select>
+                              <select   ng-disabled="formData4.isPrepaid == 'Y'" ng-model="formData4.contractPeriod"  ng-options="subscriptiondata.id as subscriptiondata.Contractdata for subscriptiondata in subscriptiondatas" value="{{billRuleData.id}}"></select>
                            </div>
                         </div>
-                        <div class="control-group1" ng-hide="formData3.isPrepaid == 'Y'">
+                        <div class="control-group" ng-hide="formData4.isPrepaid == 'Y'">
                           <label class="control-label" for="paytermCode">{{ 'label.order.billingfrequency' | translate }}</label>
                              <div class="controls">
-                                <select ng-model="formData3.paytermCode"  ng-options="paytermdata.paytermtype as paytermdata.paytermtype for paytermdata in paytermdatas" value="{{billRuleData.id}}"></select>
+                                <select ng-model="formData4.paytermCode"  ng-options="paytermdata.paytermtype as paytermdata.paytermtype for paytermdata in paytermdatas" value="{{billRuleData.id}}"></select>
                             </div>
                           </div>
-                        <div class="control-group1" ng-hide="formData3.isPrepaid == 'Y'">
+                        <div class="control-group" ng-hide="formData4.isPrepaid == 'Y'">
                             <label class="control-label" for="billAlign">{{ 'label.order.billalign' | translate }}</label>
                         <div class="controls">
                             <label class="checkbox">
-                              <input type="checkbox" ng-model="formData3.billAlign">
+                              <input type="checkbox" ng-model="formData4.billAlign">
                        </label>
             </div>
           </div>
@@ -138,19 +138,12 @@
             </tr>
           </table>
      
-          <!-- <div class="offset3">
-            <a href="#/viewclient/{{clientId}}"><button type="reset" class="btn">Cancel</button></a>
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div> -->
         </fieldset>
          <div class="jw-footer ui-widget-header ui-corner-bottom">
               <div class="jw-buttons ui-helper-clearfix">
                  <a href="#/clients"><button type="reset" class="btn">Cancel</button></a>
                  <a href=""><button  class="jw-button-prev btn btn-primary" type="button" ng-show="previous" ng-click="previousStepmain()" style="display: inline-block;">Previous</button></a>
-                 <!-- <a href=""><button class="ui-priority-primary ui-state-highlight jw-button-finish ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" type="submit" ng-show="finish" ng-click="finishClient()" style="display: block;">
-                 <span class="ui-button-text">Finish</span>
-                 <span class="ui-button-icon-secondary ui-icon ui-icon-circle-check"></span>
-             </button></a> -->
+                 
              <button type="submit" class="jw-button-next btn btn-primary"  ng-show="finish">Finish</button>
              </div>
           </div>

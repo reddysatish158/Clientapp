@@ -39,6 +39,7 @@
   "label.annualfeeon":"Annual fees on:",
   "label.advancedaccountingrules":"Advanced accounting rules",
   "label.heading.configurefundsourcesforpaymentchannels":"Configure Fund sources for payment channels",
+  
 
  "# common table headings":"....",
   "table.heading.officename":"Office name",
@@ -1343,6 +1344,7 @@
   "validation.msg.countrycurrency.country.cannot.be.blank":"Country cannot be blank",
  "validation.msg.countrycurrency.currency.cannot.be.blank":"Currency cannot be blank",
  "validation.msg.countrycurrency.status.cannot.be.blank":"Status cannot be blank",
+ 
   "#Payments":"...........",
   "label.adjustments":"Adjustments",
   "label.payments":"Payments",
@@ -1351,6 +1353,7 @@
   "label.adjustmentdate":"Adjustment Date",
   "label.adjustmentamount":"Adjustment Amount",
   "validation.msg.adjustment.adjustment_code.cannot.be.blank":"Adjustment Code Cannot be blank",
+  "validation.msg.payment.receiptNo.cannot.be.blank":"Receipt Number cannot be blank",
   "label.paymentdate":"Payment Date",
   "label.chequeno":"Cheque No",
   "label.paymentType":"Payment Type",

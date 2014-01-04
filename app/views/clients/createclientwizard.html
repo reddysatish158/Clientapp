@@ -1,41 +1,41 @@
 
-   <div class="ui-widget jw-widget jw-hasmenu jw-hasprogress" ng-controller="CreateClientControllerwizard">
-      <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
-         <div class="jw-title">{{header}}</div>
-         <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all jw-progress" role="progressbar" aria-valuemin="0" aria-valuemax="4" aria-valuenow="0">
-             <div id="progress" class="ui-progressbar-value ui-widget-header ui-corner-left" style="display: none; width: 0%;"></div>
-                <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>
+   <div class="jw-widget jw-hasmenu jw-hasprogress" ng-controller="CreateClientControllerwizard">
+       <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
+         
+         <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
+             <div id="progress4" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
+             <span id="progressno4" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active4">4.Order</span></span>
+             <!-- <div id="progress" class="ui-progressbar-value ui-widget-header" style="display: block; width: 0%;"></div>
+                <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>-->
+          </div> 
+          <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
+              <div id="progress3" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
+               <span id="progressno3" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active3">3.Assign Device</span></span>
           </div>
-       </div>
+          <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
+             <div id="progress2" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
+             <span id="progressno2" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active2">2.Item Sale</span></span>
+          </div>
+          <div class="ui-progressbar  ui-widget-content ui-corner-all-progressfirst jw-progress">
+             <div id="progress1" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #FFA500;"></div>
+             <span id="progressno1" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;"><span id="active1">1.Client Information</span></span>
+          </div>
+       </div> 
        <div class="jw-content ui-widget-content ui-helper-clearfix">
-          <div class="jw-menu-wrap">
-             <ol id="ui-id-1" class="jw-menu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" tabindex="0">
-				<li class="ui-menu-item ui-state-disabled" role="presentation" >
-					<a id="ui-id-2" class="ui-corner-all" ng-click="anchor1()" href="" tabindex="-1" role="menuitem">Create Client</a>
-				</li>
-				<li class="ui-menu-item ui-state-disabled" role="presentation">
-					<a id="ui-id-3" class="ui-corner-all" ng-click="anchor2()" href="" tabindex="-1" role="menuitem">One Time Sale</a>
-				</li>
-				<li class="ui-menu-item ui-state-disabled" role="presentation" >
-					<a id="ui-id-4" class="ui-corner-all" ng-click="anchor3()" href="" tabindex="-1" role="menuitem">Allocation Order</a>
-				</li>
-				<li class="ui-menu-item ui-state-disabled" role="presentation">
-					<a id="ui-id-5" class="ui-corner-all" ng-click="anchor4()" href="" tabindex="-1" role="menuitem">Book Order</a>
-				</li>
-			</ol>
-		  </div>
 		 <div class="jw-steps-wrap" >
 		     <div id="test1-step1" class="jw-step" ng-show="step1"  style="display: block;">
 				<div ng-include="'views/clients/createclient1.html'"></div>
    			</div>
 			<div class="jw-step" ng-show="step2" style="display: block;">
-				<div ng-include="'views/clients/addonetimesale1.html'"></div>
+				<div ng-include src="template2" ></div>
 			</div>
-			<div class="jw-step" ng-show="step3" style="display: block;">
-				<div ng-include="'views/clients/allocatehardwareonetimesale1.html'"></div>
-			</div>
+			
+			 <div class="jw-step" ng-show="step3" style="display: block;">
+				<div ng-include src="template3" ></div>
+			</div> 
+			
 			<div class="jw-step" ng-show="step4" style="display: block;">
-				<div ng-include="'views/clients/createorder1.html'"></div>
+				<div ng-include src="template4" ></div>
 			</div>
 		  </div>
        </div> 
@@ -48,141 +48,3 @@
 
 
 
-
-<!-- <li class="ui-menu-item ui-state-disabled" role="presentation">
-					<a id="ui-id-3" class="ui-corner-all" href="javascript:void(0);" tabindex="-1" role="menuitem">Step 1</a>
-				</li>
-				<li class="ui-menu-item ui-state-disabled" role="presentation">
-					<a id="ui-id-4" class="ui-corner-all" href="javascript:void(0);" tabindex="-1" role="menuitem">Step 2</a>
-				</li>
-				<li class="ui-menu-item ui-state-disabled" role="presentation">
-					<a id="ui-id-5" class="ui-corner-all" href="javascript:void(0);" tabindex="-1" role="menuitem">Finish</a>
-				</li> -->
-
-
-
-
-<!-- <div  class="ui-widget jw-widget  jw-hasprogress" ng-controller="CreateClientControllerwizard">
-      <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
-        <div class="jw-title" >{{header}}</div>
-        <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all jw-progress">
-            <div id="progress" class="ui-progressbar-value ui-widget-header ui-corner-left" style="display: none; width: 0%;"></div>
-               <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>
-        </div>
-     </div> 
-     <div class="jw-content ui-widget-content ui-helper-clearfix">
-           
-           
-       
-      </div>
-  </div>
-  -->
-
-
-<!-- <tabset>
-         <tab heading="Create Client" active="documentsTab.documentsTab1">
-                <div ng-include="'views/clients/createclient1.html'" ></div> 
-        </tab>
-        
-         
-       </tabset>  -->
-
-
-
-<!--   <div ng-controller="CreateClientControllerwizard">
-  <div  class="ui-widget jw-widget  jw-hasprogress">
-     <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
-        <div class="jw-title" >{{header}}</div>
-        <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all jw-progress">
-            <div id="progress" class="ui-progressbar-value ui-widget-header ui-corner-left" style="display: none; width: 0%;"></div>
-               <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>
-        </div>
-     </div> 
-     <div class="jw-content ui-widget-content ui-helper-clearfix">
-      	 <tabset>
-        	<tab heading="Create Client" >
-          	 	 <div ng-include="'views/clients/createclient1.html'" ></div> 
-          	 	 
-        	</tab>
-        	<tab heading="One Time Sale" >
-          	 	 <div ng-include="'views/clients/createclient1.html'"></div> 
-        	</tab>
-        	<tab heading="Allocation Order" >
-          	 	 <div ng-include="'views/clients/createclient1.html'"></div> 
-        	</tab>
-        	<tab heading="Book Order" >
-          	 	 <div ng-include="'views/clients/createclient1.html'"></div> 
-        	</tab>
-   		 </tabset>
-   	 </div>
-    </div>
-</div>  -->
-
-<!--<div class="jw-content ui-widget-content ui-helper-clearfix">
-<div class="jw-menu-wrap">
-<ol id="ui-id-1" class="jw-menu ui-menu ui-widget ui-widget-content ui-corner-all" role="menu" tabindex="0">
- <li class="ui-menu-item ui-state-highlight ui-state-disabled" role="presentation">
-<a id="ui-id-2" class="ui-corner-all" href="javascript:void(0);" tabindex="-1" role="menuitem">Welcome</a>
-</li> 
- -->
-
-
-
-
-<!-- <div ng-controller="CreateClientControllerwizard">
-<div  class="ui-widget jw-widget jw-hasmenu jw-hasprogress">
-     <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
-        <div class="jw-title" >{{header}}</div>
-        <div class="ui-progressbar ui-widget ui-widget-content ui-corner-all jw-progress">
-            <div id="progress" class="ui-progressbar-value ui-widget-header ui-corner-left" style="display: none; width: 0%;"></div>
-               <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>
-        </div>
-     </div>
-     <div class="jw-content ui-widget-content ui-helper-clearfix">
-       <div class="jw-menu-wrap">
-         <ol id="ui-id-1" class="jw-menu ui-menu ui-widget ui-widget-content ui-corner-all">
-            <li  class="ui-menu-item  ui-state-disabled" ng-repeat="list in lists">
-                <a id="ui-id-{{list.id}}" class="ui-corner-all" href="javascript:void(0);">{{list.name}}</a>
-            </li>
-        </ol>
-     </div>
-     <div class="jw-steps-wrap" >
-        <div  class="jw-step" ng-show="step1" style="display: block;">
-            <div ng-include="'views/clients/createclient1.html'"></div> 
-           
-        </div>
-        <div class="jw-step" ng-show="step2" style="display: block;" >
-          <h5>55555</h5> 
-       </div>
-       <div class="jw-step" ng-show="step3" style="display: block;">
-         <h1>{{name}}</h1> 
-      </div>
-       <div class="jw-step" ng-show="step4" style="display: block;">
-           <div ng-include="'views/clients/createorder1.html'"></div>
-      </div>
-     </div>
-   </div>
-   <div class="jw-footer ui-widget-header ui-corner-bottom">
-      <div class="jw-buttons ui-helper-clearfix">
-        <a href="#/clients" >  <button id="cancelbtnid" class="ui-priority-secondary jw-button-cancel ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"  type="reset">
-              <span class="ui-button-icon-primary ui-icon ui-icon-circle-close"></span>
-              <a href="#/clients"><button type="reset" class="btn">Cancel</button></a>
-              <span class="ui-button-text">Cancel</span>
-          </button>
-        </a>
-          <button id="prevbtnid" class="jw-button-prev ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" ng-show="previous" ng-click="previousStep()" type="button" style="display: inline-block;">
-             <span class="ui-button-icon-primary ui-icon ui-icon-circle-triangle-w"></span>
-             <span class="ui-button-text">Previous</span>
-          </button>
-          <button id="nextbtnid" class="jw-button-next ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" ng-click="nextStep()" ng-show="next"  type="submit"  style="display: block;">
-              <span class="ui-button-text">Next</span>
-              <span class="ui-button-icon-secondary ui-icon ui-icon-circle-triangle-e"></span>
-          </button>
-          <button  class="ui-priority-primary ui-state-highlight jw-button-finish ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-secondary" ng-show="finish" type="submit" style="display: block;">
-             <span class="ui-button-text">Finish</span>
-             <span class="ui-button-icon-secondary ui-icon ui-icon-circle-check"></span>
-          </button>
-      </div>
-   </div>
-</div>
- </div> -->

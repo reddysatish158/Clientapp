@@ -1,18 +1,16 @@
 
-<form class="form-horizontal1 well" ng-submit="submit2()">
+<form class="form-horizontal well" ng-submit="submit2()">
 	 <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
 	<fieldset>
-		<legend>{{'label.add.client.onetimesale' | translate}}</legend>
-
-			
-					<table width="100%">
+	<legend>{{'label.add.client.onetimesale' | translate}}</legend>
+			<table>
 						<tr>
-							<td width="60%">
-								<div class="control-group1">
+							<td >
+								<div class="control-group">
                         		<label class="control-label">{{ 'label.saleDate' | translate }}</label>
                         		<div class="controls">
                             	<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.saleDate" is-open="opened2" max="maxDate" 
@@ -20,58 +18,58 @@
                         		</div>
           						</div>
 							</td>
-							<td width="40%">
-								<div class="control-group1">
+							<td>
+								<div class="control-group">
             					<label class="control-label" for="chargeCode">{{ 'label.chargeCode' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="chargeCode" ng-model="formData4.chargeCode">
+              					<input type="text" id="chargeCode" ng-model="formData2.chargeCode">
             					</div>
           						</div>
 							</td>
 							</tr>
 							<tr>
 							<td>
-								<div class="control-group1">
+								<div class="control-group">
             					<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData4.itemId" ng-change="itemData(formData4.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
+             					 <select ng-model="formData2.itemId" ng-change="itemData(formData2.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
              					 </select>
             					</div>
           						</div>
 							</td>
 							<td>
-								<div class="control-group1">
+								<div class="control-group">
             					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="totalPrice" ng-model="formData4.totalPrice">
+              					<input type="text" id="totalPrice" ng-model="formData2.totalPrice">
             					</div>
           						</div>
 							</td>
 							</tr>
 							<tr>
 							<td>
-								<div class="control-group1">
+								<div class="control-group">
             					<label class="control-label" for="quantity">{{ 'label.quantity' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="quantity" ng-change="itemDataQuantity(formData4.quantity,formData4.itemId)" ng-model="formData4.quantity">
+              					<input type="text" id="quantity" ng-change="itemDataQuantity(formData2.quantity,formData2.itemId)" ng-model="formData2.quantity">
             					</div>
           						</div>
 							</td>
 							<td>
-								<div class="control-group1">
+								<div class="control-group">
             					<label class="control-label" for="unitPrice">{{ 'label.unitPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="unitPrice" ng-model="formData4.unitPrice">
+              					<input type="text" id="unitPrice" ng-model="formData2.unitPrice">
             					</div>
           						</div>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<div class="control-group1">
+									<div class="control-group">
             					<label class="control-label" for="discountId">{{ 'label.discountCode' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData4.discountId"  ng-options="discountMasterData.discountMasterId as discountMasterData.discountDescription for discountMasterData in discountMasterDatas" value="{{discountMasterData.id}}">
+             					 <select ng-model="formData2.discountId"  ng-options="discountMasterData.discountMasterId as discountMasterData.discountDescription for discountMasterData in discountMasterDatas" value="{{discountMasterData.id}}">
              					 </select>
             					</div>
           						</div>
@@ -79,9 +77,6 @@
 								
 							</tr>
 					</table>
-			
-				
-			
 	</fieldset>
 	<div class="jw-footer ui-widget-header ui-corner-bottom">
               <div class="jw-buttons ui-helper-clearfix">

@@ -419,18 +419,20 @@
                 <th>Debit Amount</th>
             </tr>
         </thead>
-         <tbody>
+        <tbody>
             <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
             
                 
-                <td ng-show="financialtransaction.transactionType =='INVOICE'">
-                <a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transactionId}}</a></td>
-                <td ng-show="financialtransaction.transactionType =='INVOICE'">
-                <a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a></td>
+                <td >
+                <a ng-show="financialtransaction.transactionType =='INVOICE'" href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transactionId}}</a>
+                <any ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</any>
+                </td>
+                <td >
+                <a  ng-show="financialtransaction.transactionType =='INVOICE'" href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a>
                 
                 
-                <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td>
-                <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transDate | DateFormat}}</td>
+                <!-- <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td> -->
+                <any ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transDate | DateFormat}}</any></td>
                 
        
                 <td>{{financialtransaction.transactionType}}</td>

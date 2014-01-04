@@ -3,7 +3,6 @@
 	  CreateClientControllerwizard: function(scope,routeParams, resourceFactory, location, http,filter, dateFilter,webStorage) {
 		  
 		  scope.header="Create Client";
-		  scope.lists=[{name:"Create Client",id:"2"},{name:"One Time Sale",id:"3"},{name:"Allocation Order",id:"4"},{name:"Book Order",id:"5"}];
 		  scope.no=0;
 		  scope.nextcount=0;
 		  scope.next=true;
@@ -17,14 +16,7 @@
 		  scope.ActivationData.sale = [];
 		  scope.ActivationData.allocate = [];
 		  scope.ActivationData.bookorder = [];
-		  /*scope.ActivationData.clientDatas.push({
-	            title: "Tab No:4 " ,
-	            content: "Lores sum ep sum news test33333",
-	            selected: true
-	        });*/
-		  var clientdata;
-		  var onetime;
-		  var allocation;
+		  
 		  scope.nextStepmain=function(){
 			  if(scope.nextcount<3){
 			    scope.nextcount=scope.nextcount+1;
@@ -36,42 +28,41 @@
 				  scope.step2=true;
 				  scope.step3=false;
 				  scope.step4=false;
+				scope.template2="views/clients/addonetimesale1.html";
 			  	scope.header="One Time Sale";
-			  	$("#progress").css({"display":"block","width":"25%"});
-			  		scope.no=1;
-			  	$("#progressno").css("top","-28.7px");
-			  	$("ol li:eq(0)").removeClass( "ui-state-disabled" );
-				 $("ol li:eq(1)").addClass("ui-state-highlight");
-				  /*clientdata =webStorage.get("clientDetails");
-				  
-				  
-			  	scope.clientTotalData=clientdata.clientDetails1;
-			  	alert("data-->"+scope.clientTotalData);
-			  	resourceFactory.clientResource.save(scope.clientTotalData,function(data){
-			  		alert("haii");
-			  	});
-			  	webStorage.remove("clientDetails");*/
+			  	$('#active1').html('1.Client Information');
+			  	$('#active2').html('2.Item Sale');
+			  	$('#active3').html('3.Assign Device');
+			  	$('#active4').html('4.Order');
+			  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
+			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+			  	/*$("ol li:eq(0)").removeClass( "ui-state-disabled" );
+				 $("ol li:eq(1)").addClass("ui-state-highlight");*/
+				 
 			  }
 			  if(scope.nextcount==2){
 				  scope.step1=false;
 				  scope.step2=false;
 				  scope.step3=true;
 				  scope.step4=false;
+				  scope.template3="views/clients/allocatehardwareonetimesale1.html";
 				  	scope.header="Allocation Order";
-				  	$("#progress").css({"display":"block","width":"50%"});
-				  		scope.no=2;
-				  	$("ol li:eq(1)").removeClass( "ui-state-disabled" );
+				  	$('#active1').html('1.Client Information');
+				  	$('#active2').html('2.Item Sale');
+				  	$('#active3').html('3.Assign Device');
+				  	$('#active4').html('4.Order');
+				  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
+				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+				  	/*$("ol li:eq(1)").removeClass( "ui-state-disabled" );
 					$("ol li:eq(1)").removeClass( "ui-state-highlight" );
-					$("ol li:eq(2)").addClass("ui-state-highlight");
-					/*onetime =webStorage.get("onetimesaleDetails");
-					  webStorage.remove("onetimesaleDetails");
-					  scope.clientonetimeData=onetime.onetimesaleDetails;
-					  scope.id=onetime.clientid;
-					  	alert("onetime"+scope.clientonetimeData);
-					  	resourceFactory.oneTimeSaleResource.save({clientId:scope.id},scope.clientonetimeData,function(data){
-			            	 alert("oneTimesucucess");
-			          });*/
-				  		
+					$("ol li:eq(2)").addClass("ui-state-highlight");*/
+					
+					
+					
 				}
 			  if(scope.nextcount==3){
 				  scope.step1=false;
@@ -79,23 +70,21 @@
 				  scope.step3=false;
 				  scope.step4=true;
 				  	scope.header="Book Order";
-				  	$("#progress").css({"display":"block","width":"75%"});
-				  		scope.no=3;
-				  		$("ol li:eq(2)").removeClass( "ui-state-disabled" );
+				  	scope.template4="views/clients/createorder1.html";
+				  	$('#active1').html('1.Client Information');
+				  	$('#active2').html('2.Item Sale');
+				  	$('#active3').html('3.Assign Device');
+				  	$('#active4').html('4.Order');
+				  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #FFA500"});
+				  		/*$("ol li:eq(2)").removeClass( "ui-state-disabled" );
 						 $("ol li:eq(2)").removeClass( "ui-state-highlight" );
-						 $("ol li:eq(3)").addClass("ui-state-highlight");
+						 $("ol li:eq(3)").addClass("ui-state-highlight");*/
 						 scope.next=false;
 						 scope.finish=true;
-						 /*allocation =webStorage.get("allocationDetails");
-						  webStorage.remove("allocationDetails");
-						  scope.clienallocationData=allocation.allocationDetails;
-						  
-						  	alert("allocation"+scope.clienallocationData);
-						  	
-						  	resourceFactory.allocateHardwareResource.save(scope.clienallocationData,function(data){
-				            	//temp1 = undefined; 
-				            	alert("allocation sssssss");
-				            });*/
+						 
 				}
           };
 		  
@@ -112,47 +101,67 @@
 				if(scope.previouscount==2){
 					scope.step4=false;
 					scope.step3=true;
-					
+					$('#active1').html('1.Client Information');
+				  	$('#active2').html('2.Item Sale');
+				  	$('#active3').html('3.Assign Device');
+				  	$('#active4').html('4.Order');
+					$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
+				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 					scope.header="Allocation Order";
-					$("ol li:eq(3)").removeClass("ui-state-highlight");
+					/*$("ol li:eq(3)").removeClass("ui-state-highlight");
 					$("ol li:eq(2)").addClass( "ui-state-highlight" );
-					$("ol li:eq(2)").addClass( "ui-state-disabled" );
-					$("#progress").css({"display":"block","width":"50%"});
-					scope.no=2;
-					$("#progressno").css("top","-28.7px");
+					$("ol li:eq(2)").addClass( "ui-state-disabled" );*/
+					$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
 				}
 				
 				if(scope.previouscount==1){
 					scope.step3=false;
 					scope.step2=true;
-					
+					$('#active1').html('1.Client Information');
+				  	$('#active2').html('2.Item Sale');
+				  	$('#active3').html('3.Assign Device');
+				  	$('#active4').html('4.Order');
+					$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
+				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 					scope.header="One Time Sale";
-					$("ol li:eq(2)").removeClass("ui-state-highlight");
+					/*$("ol li:eq(2)").removeClass("ui-state-highlight");
 					$("ol li:eq(1)").addClass( "ui-state-highlight" );
 					$("ol li:eq(1)").addClass( "ui-state-disabled" );
-					$("#progress").css({"display":"block","width":"25%"});
-					scope.no=1;
-					$("#progressno").css("top","-28.7px");
+					$("#progress").css({"display":"block","width":"25%"});*/
 				}
 				if(scope.previouscount==0){
 					scope.step2=false;
 					scope.step1=true;
-					
+					$('#active1').html('1.Client Information');
+				  	$('#active2').html('2.Item Sale');
+				  	$('#active3').html('3.Assign Device');
+				  	$('#active4').html('4.Order');
+					$("#progress1").css({"background":"none repeat scroll 0% 0% #FFA500"});
+				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 					scope.header="CreateClient";
-					$("ol li:eq(1)").removeClass("ui-state-highlight");
-					$("ol li:eq(0)").addClass( "ui-state-disabled" );
-					$("#progress").css({"display":"none","width":"0%"});
-					scope.no=0;
-					$("#progressno").css("top","6.5px");
-					
+					/*$("ol li:eq(1)").removeClass("ui-state-highlight");
+					$("ol li:eq(0)").addClass( "ui-state-disabled" );*/
 					scope.previous=false;
 				}
-			}
+			};
           
-          scope.anchor1=function(){
+          /*scope.anchor1=function(){
 			   
 			  scope.header="Create Client";
-			  $("#progress").css({"display":"none","width":"0%"});
+			  $('#active1').html('1 Step is active');
+			  	$('#active2').html('2 Step is Inactive');
+			  	$('#active3').html('3 Step is Inactive');
+			  	$('#active4').html('4 Step is Inactive');
+			  $("#progress1").css({"background":"none repeat scroll 0% 0% #FFA500"});
+			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 				scope.no=0;
 				$("#progressno").css("top","6.5px");
 				$("ol li:eq(0)").addClass( "ui-state-disabled" );
@@ -172,8 +181,10 @@
 			  scope.finish=false;
 			  
 		  };
+		  
+			 
 		  scope.anchor2=function(){
-			  
+			  if(scope.nextcount>=1){  
 			  scope.previous=true;
 			  scope.next=true;
 			  scope.finish=false;
@@ -182,7 +193,14 @@
 			  scope.step3=false;
 			  scope.step4=false;
 			  scope.header="One Time Sale";
-			  	$("#progress").css({"display":"block","width":"25%"});
+			  $('#active1').html('1 Step is Done');
+			  	$('#active2').html('2 Step is active');
+			  	$('#active3').html('3 Step is Inactive');
+			  	$('#active4').html('4 Step is Inactive');
+			  $("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
+			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
+			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 			  		scope.no=1;
 			  	$("#progressno").css("top","-28.7px");
 			  	$("ol li:eq(0)").removeClass( "ui-state-disabled" );
@@ -195,10 +213,12 @@
 			  scope.nextcount=1;
 			  scope.previouscount=1;
 			  
-			  
+			  }  
 		  };
+		 
+		 
 		  scope.anchor3=function(){
-			  anchorclick=1;
+			  if(scope.nextcount>=2){ 
 			  scope.previous=true;
 			  scope.next=true;
 			  scope.finish=false;
@@ -207,7 +227,14 @@
 			  scope.step3=true;
 			  scope.step4=false;
 			  	scope.header="Allocation Order";
-			  	$("#progress").css({"display":"block","width":"50%"});
+			  	$('#active1').html('1 Step is Done');
+			  	$('#active2').html('2 Step is Done');
+			  	$('#active3').html('3 Step is active');
+			  	$('#active4').html('4 Step is Inactive');
+			  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
+			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
+			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
+			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 			  		scope.no=2;
 			  	$("ol li:eq(0)").removeClass( "ui-state-disabled" );
 			  	$("ol li:eq(1)").removeClass( "ui-state-disabled" );
@@ -219,8 +246,9 @@
 				$("ol li:eq(3)").addClass( "ui-state-disabled" );
 			  scope.nextcount=2;
 			  scope.previouscount=2;
-			  
-		  };
+			  }
+		  };*/
+		
 		  
 		  
 //create client controller
@@ -252,14 +280,7 @@
             });
           };
 
-        /*  $("#city").change(function(){
-          	
-          	resourceFactory.AddressTemplateResource.get({city : scope.formData1.city}, function(data) {
-          		scope.formData1.state = data.state;
-          		scope.formData1.country = data.country;
-           
-          });
-          });*/
+        
           $("#city").change(function(){
         	  alert(scope.formData1.city);
           	resourceFactory.AddressTemplateResource.get({city : scope.formData1.city}, function(data) {
@@ -285,30 +306,22 @@
                   scope.choice = 0;
               }
           };
-          scope.submit1 = function() {/*
-          	//alert("submit");
-              var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
-              this.formData1.locale = 'en';
-              this.formData1.active = true;
-              this.formData1.dateFormat = 'dd MMMM yyyy';
-              this.formData1.activationDate = reqDate;
-              this.formData1.flag=scope.configurationProperty;
-              
-              //webStorage.add("clientDetails",{clientDetails1:this.formData1});
-              
-            */};
+          scope.submit1 = function() {
+        	  
+          };
 		  
-		  
+  
 //onetimsale controller
+      	
 			  scope.clientId=routeParams.id;
-			  scope.formData4 = {};
+			  scope.formData2 = {};
 	          scope.data={};
 	          scope.maxDate = new Date();
 	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
-	            scope.formData4.discountId = scope.discountMasterDatas[0].discountMasterId;
+	            scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	            scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
@@ -318,86 +331,55 @@
 	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
 	        		
-	        		scope.formData4=data;
-	        		scope.formData4.itemId=itemId;
-	        		scope.formData4.discountId = scope.discountMasterDatas[0].discountMasterId;
+	        		scope.formData2=data;
+	        		scope.formData2.itemId=itemId;
+	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 		        });	
-	        }
+	        };
 	        scope.itemDataQuantity=function(quantity,itemId){
-	        	this.data.unitPrice=this.formData4.unitPrice;
+	        	this.data.unitPrice=this.formData2.unitPrice;
 	        	this.data.locale="en";
 	        	this.data.quantity=quantity;
+	        	
 	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleQuantityResource.get({quantity: quantity,itemId:itemId},this.data, function(data) {
-	        		scope.formData4=data;
-	        		scope.formData4.quantity=quantity;
-	        		scope.formData4.itemId=itemId;
+	        		scope.formData2=data;
+	        		scope.formData2.quantity=quantity;
+	        		scope.formData2.itemId=itemId;
+	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 		        });	
-	        }
-	        scope.submit2 = function() {/*  
-	        	 this.formData4.locale = "en";
-	             this.formData4.dateFormat = "dd MMMM yyyy";
-	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
-	             this.formData4.saleDate=actDate;
-	             delete this.formData4.discountMasterDatas;   
-	             delete this.formData4.warranty;
-	             delete this.formData4.itemDatas;
-	             delete this.formData4.units;
-	             delete this.formData4.itemCode;
-	             delete this.formData4.id;
-	             
-	             //webStorage.add("onetimesaleDetails",{onetimesaleDetails:this.formData4,clientid:routeParams.id});
-	            
-	        */};
+	        	 
+	        	scope.formData3.quantity=this.data.quantity;
+	        	
+	        };
+	       
+	        scope.submit2 = function() {
+	        };
+
 //allocation  controller
-			  scope.formData2 = {};
+	          scope.formData3 = {};
 			  scope.clientId=routeParams.clientId;
-			 /* resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId:scope.formData4.itemId}, function(data) {
-	 	          scope.formData2=data;
-	 	    });*/ 
 			 
-			  
 	        scope.getData = function(query){
 	        	if(query.length>0){
-	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData4.itemId,query: query}, function(data) { 	        	
+	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData2.itemId,query: query}, function(data) { 	        	
 	     	            scope.itemDetails = data.serials;
 	     	          
 	     	        }); 
 	        	}else{
 	            	
 	        	}
-            }
-	        scope.getNumber = function(num) {
-	             return new Array(num);   
+            };
+            
+            scope.getNumber= function(num) {
+	             return new Array(parseInt(num));   
 	         };
-	        scope.submit3 = function() {/*  
-	        	alert('allocate');
-	        	var temp1 = new Array();
 	        
-	        	$("input[name='serialNumber']").each(function(){
-	        		var temp = {};
-	    			temp["serialNumber"] = $(this).val();
-	    			temp["orderId"] = routeParams.id;
-	    			temp["clientId"] = routeParams.clientId;
-	    			temp["status"] = "allocated";
-	    			temp["itemMasterId"] = scope.formData2.itemMasterId;
-	    			  
-	    			temp["isNewHw"]="Y";
-	    			temp1.push(temp);
-	        	});
-	        
+	        scope.submit3 = function() {
 	        	
-	            this.formData2.serialNumber=temp1;
-	           
-	          
-	           // webStorage.add("allocationDetails",{allocationDetails:this.formData2});
-	           
-	           // temp1 = undefined;
-	            console.log("asjhj");
-	            
-	        */};
+	        };
           
   //createorder controller
 	        scope.plandatas = [];
@@ -415,19 +397,19 @@
 	        scope.prepaidPlanspagedItems = [];
 	        scope.currentPage = 0;
 	        scope.items =[];
-	        scope.formData3 =[];
+	        scope.formData4 =[];
 	       
 	        resourceFactory.orderTemplateResource.get(function(data) {
 	        	 
 	          scope.plandatas = data.plandata;
 	          scope.items = data.plandata;
 	          scope.prepaidPlansitems = data.plandata;
-	        //  scope.formData3=data;
+	        //  scope.formData4=data;
 	          scope.subscriptiondatas=data.subscriptiondata;
 	          scope.paytermdatas=data.paytermdata;
 	          scope.clientId = routeParams.id;
 	      
-	          scope.formData3 = {
+	          scope.formData4 = {
 	            		billAlign: false,
 	            		
 	                  };
@@ -490,13 +472,13 @@
 	        		 
 	        		 scope.paytermdatas=data.paytermdata;
 	        		
-	        		 scope.formData3.isPrepaid=data.isPrepaid;
-	        		 scope.formData3.planCode=value;
+	        		 scope.formData4.isPrepaid=data.isPrepaid;
+	        		 scope.formData4.planCode=value;
 	        		 
 	        		  for (var i in data.subscriptiondata) {
 	                 	
 	                 	if(data.subscriptiondata[i].Contractdata == data.contractPeriod){
-	                 		 scope.formData3.contractPeriod=data.subscriptiondata[i].id; 
+	                 		 scope.formData4.contractPeriod=data.subscriptiondata[i].id; 
 	                 	}
 	                   
 	                  };
@@ -615,16 +597,16 @@
 	       };
 	        scope.submit4 = function() {   
 	        	
-	        	this.formData3.locale = 'en';
+	        	this.formData4.locale = 'en';
 	        	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
-	            this.formData3.dateFormat = 'dd MMMM yyyy';
-	            this.formData3.start_date = reqDate;
-	            if(this.formData3.isPrepaid == 'Y'){
-	            this.formData3.paytermCode='Monthly';
+	            this.formData4.dateFormat = 'dd MMMM yyyy';
+	            this.formData4.start_date = reqDate;
+	            if(this.formData4.isPrepaid == 'Y'){
+	            this.formData4.paytermCode='Monthly';
 	            }
-	            delete this.formData3.planId;
-	            delete this.formData3.id;
-	            delete this.formData3.isPrepaid;
+	            delete this.formData4.planId;
+	            delete this.formData4.id;
+	            delete this.formData4.isPrepaid;
 	           
 	            
 	            	scope.ActivationData = {};
@@ -641,16 +623,16 @@
 	                  this.formData1.flag=scope.configurationProperty;
 	                  
 	                  
-	 	        	 this.formData4.locale = "en";
-	 	             this.formData4.dateFormat = "dd MMMM yyyy";
+	 	        	 this.formData2.locale = "en";
+	 	             this.formData2.dateFormat = "dd MMMM yyyy";
 	 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
-	 	             this.formData4.saleDate=actDate;
-	 	             delete this.formData4.discountMasterDatas;   
-	 	             delete this.formData4.warranty;
-	 	             delete this.formData4.itemDatas;
-	 	             delete this.formData4.units;
-	 	             delete this.formData4.itemCode;
-	 	             delete this.formData4.id;
+	 	             this.formData2.saleDate=actDate;
+	 	             delete this.formData2.discountMasterDatas;   
+	 	             delete this.formData2.warranty;
+	 	             delete this.formData2.itemDatas;
+	 	             delete this.formData2.units;
+	 	             delete this.formData2.itemCode;
+	 	             delete this.formData2.id;
 	 	             
 	 	            
 	 	        	
@@ -662,45 +644,31 @@
 	 	    			temp["orderId"] = routeParams.id;
 	 	    			temp["clientId"] = routeParams.clientId;
 	 	    			temp["status"] = "allocated";
-	 	    			temp["itemMasterId"] = scope.formData4.itemId;
+	 	    			temp["itemMasterId"] = scope.formData2.itemId;
 	 	    			  
 	 	    			temp["isNewHw"]="Y";
 	 	    			temp1.push(temp);
 	 	        	});
 	 	        
-	 	        	 scope.formData2.itemMasterId=scope.formData4.itemId;
-	 				  scope.formData2.quantity=1;
-	 	            this.formData2.serialNumber=temp1;
+	 	        	 scope.formData3.itemMasterId=scope.formData2.itemId;
+	 				  //scope.formData3.quantity=1;
+	 	            this.formData3.serialNumber=temp1;
+
+	 	            // temp1 = undefined;
 	 	           
-	 	          
-	 	           // webStorage.add("allocationDetails",{allocationDetails:this.formData2});
-	 	           
-	 	           // temp1 = undefined;
-	 	            console.log("asjhj");
 	 	            
-	 	        
-	 	             //webStorage.add("onetimesaleDetails",{onetimesaleDetails:this.formData4,clientid:routeParams.id});
-	 	            
-	 	        
-	                  //webStorage.add("clientDetails",{clientDetails1:this.formData1});
-	                  
-	                
-	            	 scope.ActivationData.bookorder.push(this.formData3);
-	 	            scope.ActivationData.allocate.push(this.formData2);
-	 	            scope.ActivationData.sale.push(this.formData4);
+	 	  	        scope.ActivationData.bookorder.push(this.formData4);
+	 	            scope.ActivationData.allocate.push(this.formData3);
+	 	            scope.ActivationData.sale.push(this.formData2);
 	 	             scope.ActivationData.client.push(this.formData1);
-	 	            delete this.formData2.serials;
-	 	            delete this.formData4.pageItems;
-	 	            delete this.formData4.totalFilteredRecords;
+	 	            delete this.formData3.serials;
+	 	            delete this.formData2.pageItems;
+	 	            delete this.formData2.totalFilteredRecords;
 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
 	            	
 	            	  location.path('/viewclient/' + data.resourceId);
 	            });
-	            
-	            /*resourceFactory.saveOrderResource.save({'clientId': routeParams.id},this.formData3,function(data){
-	            	
-	            location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
-	          });*/
+	           
 	        };
     	  
 		  
