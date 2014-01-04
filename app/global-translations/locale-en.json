@@ -2098,6 +2098,7 @@
 "label.heading.status": "Status",
 "label.heading.role": "Role",
 "label.heading.description": "Description",
+
 "label.button.viewpermissions":"View Permissions",  
 
 "dialog.reconnect.title.message":"Reconnect"  ,
