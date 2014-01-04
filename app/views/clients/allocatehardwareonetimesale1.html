@@ -1,6 +1,6 @@
 
 <form class="form-horizontal well"  ng-submit="submit3()">
-	 <div ng-repeat="i in getNumber(quantity)">
+	 
 	  <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -8,9 +8,14 @@
 	    </div>
 	 
 	 <fieldset>
-		<legend>{{'label.assignserialnumber' | translate}}</legend>
-		
-		<div class="control-group" ng-repeat="item in getNumber(formData2.quantity)" name="serialNumberDiv">
+	
+		<table align="center">
+		 <tr>
+		    <td> <legend>{{'label.assignserialnumber' | translate}}</legend></td>
+		  </tr>
+		  <tr>
+		     <td>
+		<div class="control-group" ng-repeat="item in getNumber(formData3.quantity)" name="serialNumberDiv">
             <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
             <div class="controls">
              	<!-- <select ng-model="itemDetail"  name="serialNumber" ng-options="itemDetail as itemDetail for itemDetail in itemDetails" value="{{itemDetail}}" >
@@ -18,7 +23,7 @@
              	<input type="text" ng-model="itemDetail" name="serialNumber" ng-change="getData(itemDetail)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
             </div>
         </div>	
-        <!--  <div class="control-group" ng-repeat="item in getNumber(formData2.quantity)">
+        <!--  <div class="control-group" ng-repeat="item in getNumber(formData3.quantity)">
         <input type="text" ng-model="itemDetail" list="allocatehardware" name="serialNumber"></br>
         
         </div>
@@ -31,10 +36,13 @@
 			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn">{{'button.cancel' | translate}}</button></a>
 			<button type="submit" class="btn btn-primary">{{'button.save' | translate}}</button>
 		</div> -->
+		    </td>
+		   </tr>
+		</table>
 	</fieldset>
+	  
 	    
-	    
-	 </div>
+	 
 	<div class="jw-footer ui-widget-header ui-corner-bottom">
               <div class="jw-buttons ui-helper-clearfix">
                  <a href="#/clients"><button type="reset" class="btn">Cancel</button></a>
