@@ -64,7 +64,7 @@
                     if (data.imagePresent) {
                       http({
                         method:'GET',
-                        url: 'https://spark.openbillingsystem.com/mifosng-provider/api/v1/clients/'+routeParams.id+'/images'
+                        url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+routeParams.id+'/images'
                       }).then(function(imageData) {
                         scope.image = imageData.data;
                       });
@@ -330,7 +330,7 @@
           scope.selectedTemplate = templateId;
           http({
             method:'POST',
-            url: 'https://spark.openbillingsystem.com/mifosng-provider/api/v1/templates/'+templateId+'?clientId='+routeParams.id,
+            url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/templates/'+templateId+'?clientId='+routeParams.id,
             data: {}
           }).then(function(data) {
             scope.template = data.data;
@@ -357,7 +357,7 @@
                
 
          scope.downloadFile = function (statementId){
-              window.open('https://spark.openbillingsystem.com/mifosng-provider/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
+              window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
          scope.getAllTickets=function(){      
                resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
