@@ -1492,6 +1492,7 @@
   "table.heading.billfrequencycode":"Bill Frequency code",
   "validation.msg.chargecode.chargeType.cannot.be.blank":"Please select Charge Type",
   "validation.msg.chargecode.durationType.cannot.be.blank":"Please Select Duration Type",
+  "error.msg.chargecode.duplicate.name":"Charge Code already exist with this name",
   
   
   "#taxmapping":"....",
@@ -2117,7 +2118,8 @@
 "label.editprovisioningmapping":"Edit Provisioning",
 "label.viewprovisioningmapping":"View Provisioning",
 "validation.msg.order.message.exceeds.max.length":"message length not exceeds 160 characters",
-"dialog.provisioning.title.message":"Provisioning Commands"
+"dialog.provisioning.title.message":"Provisioning Commands",
+"validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero"
 
    
 }

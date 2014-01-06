@@ -1,9 +1,7 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  CreateClientControllerwizard: function(scope,routeParams, resourceFactory, location, http,filter, dateFilter,webStorage) {
-		  
-		  scope.header="Create Client";
-		  scope.no=0;
+	  CreateClientControllerwizard: function(scope,routeParams, resourceFactory, location, http,filter, dateFilter) {
+		 
 		  scope.nextcount=0;
 		  scope.next=true;
 		  scope.step1=true;
@@ -28,8 +26,7 @@
 				  scope.step2=true;
 				  scope.step3=false;
 				  scope.step4=false;
-				scope.template2="views/clients/addonetimesale1.html";
-			  	scope.header="One Time Sale";
+				scope.template2="views/clients/addonetimesalewizard.html";
 			  	$('#active1').html('1.Client Information');
 			  	$('#active2').html('2.Item Sale');
 			  	$('#active3').html('3.Assign Device');
@@ -38,17 +35,14 @@
 			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
 			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  	/*$("ol li:eq(0)").removeClass( "ui-state-disabled" );
-				 $("ol li:eq(1)").addClass("ui-state-highlight");*/
-				 
+			   
 			  }
 			  if(scope.nextcount==2){
 				  scope.step1=false;
 				  scope.step2=false;
 				  scope.step3=true;
 				  scope.step4=false;
-				  scope.template3="views/clients/allocatehardwareonetimesale1.html";
-				  	scope.header="Allocation Order";
+				  scope.template3="views/clients/allocatehardwareonetimesalewizard.html";
 				  	$('#active1').html('1.Client Information');
 				  	$('#active2').html('2.Item Sale');
 				  	$('#active3').html('3.Assign Device');
@@ -57,20 +51,14 @@
 				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
 				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
 				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				  	/*$("ol li:eq(1)").removeClass( "ui-state-disabled" );
-					$("ol li:eq(1)").removeClass( "ui-state-highlight" );
-					$("ol li:eq(2)").addClass("ui-state-highlight");*/
-					
-					
-					
+				  
 				}
 			  if(scope.nextcount==3){
 				  scope.step1=false;
 				  scope.step2=false;
 				  scope.step3=false;
 				  scope.step4=true;
-				  	scope.header="Book Order";
-				  	scope.template4="views/clients/createorder1.html";
+				  scope.template4="views/clients/createorderwizard.html";
 				  	$('#active1').html('1.Client Information');
 				  	$('#active2').html('2.Item Sale');
 				  	$('#active3').html('3.Assign Device');
@@ -79,9 +67,6 @@
 				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
 				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #90EE90"});
 				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  		/*$("ol li:eq(2)").removeClass( "ui-state-disabled" );
-						 $("ol li:eq(2)").removeClass( "ui-state-highlight" );
-						 $("ol li:eq(3)").addClass("ui-state-highlight");*/
 						 scope.next=false;
 						 scope.finish=true;
 						 
@@ -109,11 +94,6 @@
 				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
 				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
 				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-					scope.header="Allocation Order";
-					/*$("ol li:eq(3)").removeClass("ui-state-highlight");
-					$("ol li:eq(2)").addClass( "ui-state-highlight" );
-					$("ol li:eq(2)").addClass( "ui-state-disabled" );*/
-					$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
 				}
 				
 				if(scope.previouscount==1){
@@ -127,11 +107,7 @@
 				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
 				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-					scope.header="One Time Sale";
-					/*$("ol li:eq(2)").removeClass("ui-state-highlight");
-					$("ol li:eq(1)").addClass( "ui-state-highlight" );
-					$("ol li:eq(1)").addClass( "ui-state-disabled" );
-					$("#progress").css({"display":"block","width":"25%"});*/
+					
 				}
 				if(scope.previouscount==0){
 					scope.step2=false;
@@ -144,112 +120,9 @@
 				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
 				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-					scope.header="CreateClient";
-					/*$("ol li:eq(1)").removeClass("ui-state-highlight");
-					$("ol li:eq(0)").addClass( "ui-state-disabled" );*/
 					scope.previous=false;
 				}
 			};
-          
-          /*scope.anchor1=function(){
-			   
-			  scope.header="Create Client";
-			  $('#active1').html('1 Step is active');
-			  	$('#active2').html('2 Step is Inactive');
-			  	$('#active3').html('3 Step is Inactive');
-			  	$('#active4').html('4 Step is Inactive');
-			  $("#progress1").css({"background":"none repeat scroll 0% 0% #FFA500"});
-			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				scope.no=0;
-				$("#progressno").css("top","6.5px");
-				$("ol li:eq(0)").addClass( "ui-state-disabled" );
-				$("ol li:eq(1)").removeClass("ui-state-highlight");
-				$("ol li:eq(1)").addClass( "ui-state-disabled" );
-				$("ol li:eq(2)").removeClass("ui-state-highlight");
-				$("ol li:eq(2)").addClass( "ui-state-disabled" );
-				$("ol li:eq(3)").removeClass("ui-state-highlight");
-				$("ol li:eq(3)").addClass( "ui-state-disabled" );
-			  scope.nextcount=0;
-			  scope.next=true;
-			  scope.step1=true;
-			  scope.step2=false;
-			  scope.step3=false;
-			  scope.step4=false;
-			  scope.previous=false;
-			  scope.finish=false;
-			  
-		  };
-		  
-			 
-		  scope.anchor2=function(){
-			  if(scope.nextcount>=1){  
-			  scope.previous=true;
-			  scope.next=true;
-			  scope.finish=false;
-			  scope.step1=false;
-			  scope.step2=true;
-			  scope.step3=false;
-			  scope.step4=false;
-			  scope.header="One Time Sale";
-			  $('#active1').html('1 Step is Done');
-			  	$('#active2').html('2 Step is active');
-			  	$('#active3').html('3 Step is Inactive');
-			  	$('#active4').html('4 Step is Inactive');
-			  $("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
-			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  		scope.no=1;
-			  	$("#progressno").css("top","-28.7px");
-			  	$("ol li:eq(0)").removeClass( "ui-state-disabled" );
-				$("ol li:eq(1)").addClass("ui-state-highlight");
-				$("ol li:eq(1)").addClass( "ui-state-disabled" );
-				$("ol li:eq(2)").addClass( "ui-state-disabled" );
-				$("ol li:eq(3)").addClass( "ui-state-disabled" );
-				$("ol li:eq(2)").removeClass("ui-state-highlight");
-				$("ol li:eq(3)").removeClass("ui-state-highlight");
-			  scope.nextcount=1;
-			  scope.previouscount=1;
-			  
-			  }  
-		  };
-		 
-		 
-		  scope.anchor3=function(){
-			  if(scope.nextcount>=2){ 
-			  scope.previous=true;
-			  scope.next=true;
-			  scope.finish=false;
-			  scope.step1=false;
-			  scope.step2=false;
-			  scope.step3=true;
-			  scope.step4=false;
-			  	scope.header="Allocation Order";
-			  	$('#active1').html('1 Step is Done');
-			  	$('#active2').html('2 Step is Done');
-			  	$('#active3').html('3 Step is active');
-			  	$('#active4').html('4 Step is Inactive');
-			  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
-			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
-			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  		scope.no=2;
-			  	$("ol li:eq(0)").removeClass( "ui-state-disabled" );
-			  	$("ol li:eq(1)").removeClass( "ui-state-disabled" );
-				$("ol li:eq(1)").removeClass( "ui-state-highlight" );
-				$("ol li:eq(1)").removeClass("ui-state-highlight");
-			    $("ol li:eq(2)").addClass( "ui-state-highlight" );
-				$("ol li:eq(2)").addClass( "ui-state-disabled" );
-				$("ol li:eq(3)").removeClass("ui-state-highlight");
-				$("ol li:eq(3)").addClass( "ui-state-disabled" );
-			  scope.nextcount=2;
-			  scope.previouscount=2;
-			  }
-		  };*/
-		
-		  
 		  
 //create client controller
           scope.offices = [];
@@ -259,7 +132,6 @@
           scope.formData1 = {};
           scope.clientCategoryDatas=[];
           scope.configurationProperty=[];
-         
           
           resourceFactory.clientTemplateResource.get(function(data) {
               scope.offices = data.officeOptions;
@@ -279,7 +151,6 @@
              
             });
           };
-
         
           $("#city").change(function(){
         	  alert(scope.formData1.city);
@@ -311,7 +182,7 @@
           };
 		  
   
-//onetimsale controller
+//addonetimsale controller
       	
 			  scope.clientId=routeParams.id;
 			  scope.formData2 = {};
@@ -322,11 +193,12 @@
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
 	            scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
-	            scope.onetimesales=data;
+                    scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
 	            
 	        });
+	       
 	        scope.itemData=function(itemId){
 	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
@@ -334,6 +206,7 @@
 	        		scope.formData2=data;
 	        		scope.formData2.itemId=itemId;
 	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
+	        		
 	        		
 		        });	
 	        };
@@ -404,7 +277,6 @@
 	          scope.plandatas = data.plandata;
 	          scope.items = data.plandata;
 	          scope.prepaidPlansitems = data.plandata;
-	        //  scope.formData4=data;
 	          scope.subscriptiondatas=data.subscriptiondata;
 	          scope.paytermdatas=data.paytermdata;
 	          scope.clientId = routeParams.id;
@@ -651,11 +523,9 @@
 	 	        	});
 	 	        
 	 	        	 scope.formData3.itemMasterId=scope.formData2.itemId;
-	 				  //scope.formData3.quantity=1;
 	 	            this.formData3.serialNumber=temp1;
 
 	 	            // temp1 = undefined;
-	 	           
 	 	            
 	 	  	        scope.ActivationData.bookorder.push(this.formData4);
 	 	            scope.ActivationData.allocate.push(this.formData3);
@@ -675,7 +545,7 @@
 	
     }
   });
-  mifosX.ng.application.controller('CreateClientControllerwizard', ['$scope', '$routeParams','ResourceFactory', '$location', '$http','$filter', 'dateFilter','webStorage', mifosX.controllers.CreateClientControllerwizard]).run(function($log) {
+  mifosX.ng.application.controller('CreateClientControllerwizard', ['$scope', '$routeParams','ResourceFactory', '$location', '$http','$filter', 'dateFilter', mifosX.controllers.CreateClientControllerwizard]).run(function($log) {
     $log.info("CreateClientControllerwizard initialized");
   });
 }(mifosX.controllers || {}));
