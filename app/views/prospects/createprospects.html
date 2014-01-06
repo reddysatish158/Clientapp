@@ -15,7 +15,7 @@
           <li class="active">{{'label.createprospect' | translate}}</li>
         </ul>
       </div>
-      <form class="form-horizontal well" ng-controller="CreateProspectsController" ng-submit="submit()">
+      <form name="createprospectsform" class="form-horizontal well" ng-controller="CreateProspectsController" ng-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -48,7 +48,13 @@
 								<div class="control-group">
             					<label class="control-label" for="firstName">{{ 'label.firstname' | translate }}<span class="required">*</span></label>
             					<div class="controls">
-              					<input type="text" id="firstName" ng-model="formData.firstName">
+              					<input type="text" id="firstName" ng-model="formData.firstName" ng-pattern="/^[a-zA-Z0-9\s]+$/" name="firstname" late-Validate>
+              					<div ng-show="createprospectsform.firstname.$dirty && createprospectsform.firstname.$invalid">
+              							<small class="error" ng-show="createprospectsform.firstname.$error.pattern">alphanumeric and spaces only!</small>
+              					  		<small class="error" ng-show="createprospectsform.firstname.$error.req">
+                        					Required Field
+                    					</small>
+              						</div>
            						 </div>
           						</div>
 							</td>
@@ -69,7 +75,13 @@
 									<div class="control-group">
            					 		<label class="control-label" for="lastName">{{ 'label.lastname' | translate }}<span class="required">*</span></label>
             						<div class="controls">
-              						<input type="text" id="lastName" ng-model="formData.lastName">
+              						<input type="text" id="lastName" ng-model="formData.lastName" ng-pattern="/^[a-zA-Z0-9\s]+$/" name="lastname" late-Validate>
+              						<div ng-show="createprospectsform.lastname.$dirty && createprospectsform.lastname.$invalid">
+              							<small class="error" ng-show="createprospectsform.lastname.$error.pattern">alphanumeric and spaces only!</small>
+              					  		<small class="error" ng-show="createprospectsform.lastname.$error.req">
+                        					Required Field
+                    					</small>
+              						</div>
             						</div>
           							</div>
 								</td>
@@ -103,7 +115,10 @@
 								<div class="control-group">
             					<label class="control-label" for="mobileNumber">{{ 'label.mobilephone' | translate }}<span class="required">*</span></label>
             					<div class="controls">
-              					<input type="text" id="mobileNumber" ng-model="formData.mobileNumber">
+              					<input type="text" id="mobileNumber" ng-model="formData.mobileNumber" ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" name="mobilenumber">
+              					<div ng-show="createprospectsform.mobilenumber.$dirty && createprospectsform.mobilenumber.$invalid">
+        							<small class="error" ng-show="createprospectsform.mobilenumber.$error.pattern">wrong input or accepts only digits !</small>
+    							</div>
             					</div>
           						</div>
 								</td>
@@ -114,7 +129,10 @@
 									<div class="control-group">
             						<label class="control-label" for="email">{{ 'label.emailid' | translate }}<span class="required">*</span></label>
             						<div class="controls">
-              						<input type="text" id="email" ng-model="formData.email">
+              						<input type="email" id="email" ng-model="formData.email" name="email">
+              						<div ng-show="createprospectsform.email.$dirty && createprospectsform.email.$invalid">
+              						<small class="error" ng-show="createprospectsform.email.$error.email">Invalid Email</small>
+              						</div>
             						</div>
           							</div>
 								</td>
@@ -193,7 +211,9 @@
 												<div class="control-group">
             									<label class="control-label" for="zipCode">{{ 'label.zipcode' | translate }}<span class="required">*</span></label>
             									<div class="controls">
-              									<input type="text" id="zipCode" ng-model="formData.zipCode">
+              									<input type="number" id="zipCode" ng-model="formData.zipCode" name="zipcode" ng-pattern="/^[0-9]+$/">
+              									<div ng-show="createprospectsform.zipcode.$dirty && createprospectsform.zipcode.$invalid" >
+              										<small class="error" ng-show="createprospectsform.zipcode.$error.pattern">digits only!!</small>
             									</div>
           										</div>
 											</td>
