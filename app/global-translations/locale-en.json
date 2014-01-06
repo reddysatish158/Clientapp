@@ -1178,6 +1178,7 @@
   "error.msg.document.file.too.big":"File is too big",
   "error.msg.file.duplicate.name":"File is already exist with this name",
   "validation.msg.UploadStatus.description.cannot.be.blank":"Description Cannot be blank",
+  "validation.msg.UploadStatus.fileName.cannot.be.blank":"File name Cannot be blank",
   
   "#Order":".....",
   "label.createorder":"Create New Order",

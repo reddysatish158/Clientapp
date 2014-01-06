@@ -15,7 +15,6 @@
     	}else{ 
     		return scope.regXForEmail.test(emailData); 
     	}    	
-    	
     };
     
     this.validateZipCode = function(zipCodeData){ 
@@ -25,7 +24,6 @@
 	 	}else{ 
 	 		return scope.regXForZipCode.test(zipCodeData); 
 	 	}  
-    	
     };
     
     this.regXForMobileNumber = function(numberData){ 
@@ -35,7 +33,6 @@
     	}else{ 
     		return scope.regXForMobileNumber.test(numberData); 
     	}    	
-    	
     };
     
     	

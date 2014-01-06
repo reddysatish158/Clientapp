@@ -75,7 +75,7 @@
               </div>
             </div>
             
-            <div class="control-group" ng-hide="configurationProperty.enabled==false">
+            <div class="control-group" ng-hide="configurationProperty==false">
               <label class="control-label">Login<span class="required">*</span></label>
               <div class="controls">
                 <input type="text" id="login" name="login" ng-model="formData1.login"/>
@@ -91,13 +91,13 @@
            </td>
            <td>
             <div class="control-group">
-              <label class="control-label">{{'label.address1' | translate}}<span class="required">*</span></label>
+              <label class="control-label">{{'label.address1' | translate}}</label>
               <div class="controls">
                 <input type="text" id="addressNo" ng-model="formData1.addressNo"/>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">{{'label.street' | translate}}</label>
+              <label class="control-label">{{'label.street' | translate}}<span class="required">*</span></label>
               <div class="controls">
                 <input type="text" id="street" ng-model="formData1.street"/>
               </div>
@@ -133,7 +133,7 @@
                    <option  data-ng-repeat="city in cities" value="{{city}}">
              </datalist>
              
-             <div class="control-group" ng-hide="configurationProperty.enabled==false">
+             <div class="control-group" ng-hide="configurationProperty==false">
               <label class="control-label">Password<span class="required">*</span></label>
               <div class="controls">
                 <input type="password"  ng-model="formData1.password"/>
