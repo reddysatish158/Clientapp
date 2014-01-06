@@ -69,27 +69,13 @@
                         scope.image = imageData.data;
                       });
                     }
-                    if (data.status.value == "Pending") {
-                      scope.buttons = [{
-                                        name:"button.edit",
-                                        href:"#/editclient",
-                                        icon :"icon-edit"
-                                      },
-                                      {
-                                        name:"button.activate",
-                                        href:"#/client",
-                                        subhref:"activate",
-                                        icon :"icon-ok-sign"
-                                      }]
-                                    
-                      }
+                  
 
                     if (data.status.value == "Active") {
-                      scope.buttons = [
-                                      	{
-                                        name:"button.neworder",
-                                        href:"#/neworder",
-                                        icon :"icon-plus-sign"
+                      scope.buttons = [{
+                                          name:"button.neworder",
+                                          href:"#/neworder",
+                                          icon :"icon-plus-sign"
                                         },
                                         {
                                       	  name:"button.eventorder",
@@ -97,38 +83,42 @@
                                       	  icon:"icon-barcode"
                                          	},
                                         {
-                                            name:"button.newTicket",
-                                            href:"#/newTicket",
-                                            icon :"icon-flag"
-                                          },
+                                          name:"button.newTicket",
+                                          href:"#/newTicket",
+                                          icon :"icon-flag"
+                                        },
                                         
                                         {
-                                            name:"button.payments",
-                                            href:"#/payments",
-                                            icon :"icon-money"
-                                         },
-                                         {
-                                             name:"button.adjustments",
-                                             href:"#/adjustments",
-                                             icon :"icon-adjust"
-                                         },
-                                         {
-                                             name:"button.invoice",
-                                             href:"#/clientinvoice",
-                                             icon :"icon-play"
-                                          },
-                                          {
-                                             name:"button.statement",
-                                             href:"#/statement",
-                                             icon :"icon-file"
-                                         },
-                                           
-                                     
+                                          name:"button.payments",
+                                          href:"#/payments",
+                                          icon :"icon-money"
+                                        },
                                         {
-                                        name:"button.edit",
-                                        href:"#/editclient",
-                                        icon :"icon-edit"
-                                      }]
+                                          name:"button.adjustments",
+                                          href:"#/adjustments",
+                                          icon :"icon-adjust"
+                                        },
+                                        {
+                                          name:"button.invoice",
+                                          href:"#/clientinvoice",
+                                          icon :"icon-play"
+                                        },
+                                        {
+                                          name:"button.statement",
+                                          href:"#/statement",
+                                          icon :"icon-file"
+                                        },
+                                        {
+                                          name:"button.edit",
+                                          href:"#/editclient",
+                                          icon :"icon-edit"
+                                      }/*,
+                                      {
+                                          name:"button.refresh",
+                                          href:"#/viewclient",
+                                          icon :"icon-refresh"
+                                           
+                                          }*/]
                     }
 
                     if (data.status.value == "Transfer in progress") {

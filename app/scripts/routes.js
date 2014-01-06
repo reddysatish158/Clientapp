@@ -80,6 +80,10 @@
        .when('/profile',{
         templateUrl: 'views/profile.html'
       })
+      
+       .when('/messanger',{
+        templateUrl: 'views/messanger.html'
+      })
       .when('/addclientidentifier/:clientId', {
         templateUrl: 'views/clients/addclientidentifier.html'
       })
