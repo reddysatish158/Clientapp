@@ -2118,7 +2118,17 @@
 "label.viewprovisioningmapping":"View Provisioning",
 "validation.msg.order.message.exceeds.max.length":"message length not exceeds 160 characters",
 "dialog.provisioning.title.message":"Provisioning Commands",
-"validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero"
+"validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
+
+"#PaymentGatewayCommands":"...",
+"label.managepaymentgateway":"Payment Gateway",
+"table.paymentgateway.id":"id",
+"table.paymentgateway.serialNo":"SerialNo",
+"table.paymentgateway.status":"Status",
+"table.paymentgateway.paymentId":"PaymentId",
+"table.paymentgateway.amountPaid":"Amount Paid",
+"table.paymentgateway.paymentDate":"Payment Date",
+"table.paymentgateway.receiptNo":"ReceiptNo"
 
    
 }
