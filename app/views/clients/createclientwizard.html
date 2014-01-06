@@ -1,50 +1,171 @@
 
-   <div class="jw-widget jw-hasmenu jw-hasprogress" ng-controller="CreateClientControllerwizard">
-       <div class="jw-header ui-widget-header ui-corner-top ui-helper-clearfix">
-         
-         <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
-             <div id="progress4" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
-             <span id="progressno4" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active4">4.Order</span></span>
-             <!-- <div id="progress" class="ui-progressbar-value ui-widget-header" style="display: block; width: 0%;"></div>
-                <span id="progressno" class="ui-progressbar-label" style="position: relative; top: 6.5px; left: 9.50006px;">{{no}} of 4 Complete</span>-->
-          </div> 
-          <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
-              <div id="progress3" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
-               <span id="progressno3" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active3">3.Assign Device</span></span>
+<form name="createclientform" novalidate="" class="form-horizontal well"  ng-submit="submit1()">
+       
+        <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	</div>
+     
+        <fieldset>
+          <legend>Create client</legend>
+          <legend>{{configs.enabled}}</legend>
+        <table>
+           <tr>
+             <td>
+          
+            <div class="control-group">
+              <label class="control-label">{{'label.office' | translate}}<span class="required">*</span></label>
+              <div class="controls">
+                <select ng-model="formData1.officeId"  ng-options="office.id as office.name for office in offices" value="{{office.id}}" ng-change="changeOffice(formData1.officeId)"></select>
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label">{{'label.clientcategeory' | translate}}<span class="required">*</span></label>
+              <div class="controls">
+                <select ng-model="formData1.clientCategory"  ng-options="clientCategoryData.id as clientCategoryData.categoryType for clientCategoryData in clientCategoryDatas" value="{{clientCategoryDatas.id}}"></select>
+              </div>
+            </div>
+  		      <div class="control-group">
+              <label class="control-label" for="firstname">{{'label.firstname' | translate}}<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text" id="firstname" name="firstname" ng-model="formData1.firstname" required ng-minlength=3 late-Validate/>
+                <span  ng-show="createclientform.firstname.$invalid">
+                    <small class="error" ng-show="createclientform.firstname.$error.req">
+                        Required Field
+                    </small>
+                    <small class="error" ng-show="createclientform.firstname.$error.minlength && !createclientform.firstname.$error.req">Name is required at least 3 characters</small>
+                </span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="middlename">{{'label.middlename' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="middlename" ng-model="formData1.middlename"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="lastname">{{'label.lastname' | translate}}<span class="required">*</span></label></label>
+              <div class="controls">
+                <input type="text" id="lastname" name="lastname" ng-model="formData1.lastname" required ng-minlength=3 late-Validate/>
+                <span  ng-show="createclientform.lastname.$invalid">
+                    <small class="error" ng-show="createclientform.lastname.$error.req">
+                        Required Field!
+                    </small>
+                    <small class="error" ng-show="createclientform.lastname.$error.minlength && !createclientform.lastname.$error.req">Name is required at least 3 characters</small>
+                </span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="phone">{{'label.phone' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="phone" ng-model="formData1.phone" ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="10" name="phone"/>
+                
+           <div ng-show="createclientform.phone.$dirty && createclientform.phone.$invalid">
+              
+               <span class="error" ng-show="createclientform.phone.$error.pattern">digits only !</span>
+               <span class="error" ng-show="createclientform.phone.$error.maxlength">Exceeded max limit!</span>
+           </div>
+              </div>
+            </div>
+             <div class="control-group">
+              <label class="control-label" for="email">{{'label.email' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="email" ng-model="formData1.email"/>
+              </div>
+            </div>
+            
+            <div class="control-group" ng-hide="configurationProperty==false">
+              <label class="control-label">Login<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text" id="login" name="login" ng-model="formData1.login" required late-Validate/>
+                <span  ng-show="createclientform.login.$invalid">
+                    <small class="error" ng-show="createclientform.login.$error.req">
+                        Required Field!
+                    </small>
+                </span>
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label class="control-label" for="file">{{'label.client.select.image' | translate}}</label>
+              <div class="controls">
+                <input type="file" ng-file-select="onFileSelect($files)">
+              </div>
+            </div>
+           </td>
+           <td>
+            <div class="control-group">
+              <label class="control-label">{{'label.address1' | translate}}<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text" id="addressNo" name="address" ng-model="formData1.addressNo" required late-Validate/>
+                <span  ng-show="createclientform.address.$invalid">
+                    <small class="error" ng-show="createclientform.address.$error.req">
+                        Required Field!
+                    </small>
+                </span>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{'label.street' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="street" ng-model="formData1.street"/>
+              </div>
+            </div>
+  		      <div class="control-group">
+              <label class="control-label" for="city">{{'label.city' | translate}}<span class="required">*</span></label>
+              <div class="controls">
+                <input type="text" id="city" name="city" ng-model="formData1.city" list ="citylist" ng-change="getStateAndCountry(formData1.city)" required />
+               
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="state">{{'label.state' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="state" ng-model="formData1.state"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="country">{{'label.country' | translate}}<span class="required">*</span></label></label>
+              <div class="controls">
+                <input type="text" id="country" name="country" ng-model="formData1.country" required/>
+              
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label">{{'label.zipcode' | translate}}</label>
+              <div class="controls">
+                <input type="text" id="zipCode" ng-model="formData1.zipCode"/>
+              </div>
+              
+            </div>
+             <datalist id="citylist">
+                   <option  data-ng-repeat="city in cities" value="{{city}}">
+             </datalist>
+             
+             <div class="control-group" ng-hide="configurationProperty==false">
+              <label class="control-label">Password<span class="required">*</span></label>
+              <div class="controls">
+                <input type="password" name="password" ng-model="formData1.password" required late-Validate/>
+                <span  ng-show="createclientform.password.$invalid">
+                    <small class="error" ng-show="createclientform.password.$error.req">
+                        Required Field!
+                    </small>
+                </span>
+              </div>
+            </div>
+           </td>
+           </tr>
+           </table> 
+           
+            
+        </fieldset>
+         <div class="jw-footer ui-widget-header ui-corner-bottom">
+              <div class="jw-buttons ui-helper-clearfix">
+                 <a href="#/clients"><button type="reset" class="btn">Cancel</button></a>
+                 <a href=""><button  class="jw-button-prev btn btn-primary" type="button" ng-show="previous" ng-click="previousStepmain()" style="display: inline-block;">Previous</button></a>
+                 <button type="submit" class="jw-button-next btn btn-primary" ng-disabled="!createclientform.$valid" ng-show="next" ng-click="nextStepmain()">Next</button>
+             </div>
           </div>
-          <div class="ui-progressbar  ui-widget-content ui-corner-all-progress jw-progress">
-             <div id="progress2" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #E5E4E2;"></div>
-             <span id="progressno2" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;margin-left:12px"><span id="active2">2.Item Sale</span></span>
-          </div>
-          <div class="ui-progressbar  ui-widget-content ui-corner-all-progressfirst jw-progress">
-             <div id="progress1" class="ui-progressbar-value ui-widget-header" style="display: block; width: 100%;background: none repeat scroll 0% 0% #FFA500;"></div>
-             <span id="progressno1" class="ui-progressbar-label" style="position: relative; top: -26px; left: 9.50006px;"><span id="active1">1.Client Information</span></span>
-          </div>
-       </div> 
-       <div class="jw-content ui-widget-content ui-helper-clearfix">
-		 <div class="jw-steps-wrap" >
-		     <div id="test1-step1" class="jw-step" ng-show="step1"  style="display: block;">
-				<div ng-include="'views/clients/createclient1.html'"></div>
-   			</div>
-			<div class="jw-step" ng-show="step2" style="display: block;">
-				<div ng-include src="template2" ></div>
-			</div>
-			
-			 <div class="jw-step" ng-show="step3" style="display: block;">
-				<div ng-include src="template3" ></div>
-			</div> 
-			
-			<div class="jw-step" ng-show="step4" style="display: block;">
-				<div ng-include src="template4" ></div>
-			</div>
-		  </div>
-       </div> 
-
-   </div>
-
-
-
-
-
-
-
+   </form>
+            

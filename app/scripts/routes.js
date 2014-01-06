@@ -847,8 +847,8 @@
         .when('/viewServiceMapping/:id', {
         templateUrl: 'views/system/viewServiceMapping.html'
         })
-          .when('/createclientwizard', {
-        templateUrl: 'views/clients/createclientwizard.html'  
+          .when('/createclientnewwizard', {
+        templateUrl: 'views/clients/createclientnewwizard.html'  
       })
         .when('/editServiceMapping/:id', {
             templateUrl: 'views/system/editServiceMapping.html'
