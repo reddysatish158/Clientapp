@@ -22,14 +22,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="discount in discounts | filter:filterText">
-                <td>{{discount.discountMasterId}}</td>
-                <td><a href="#/viewdiscounts/{{discount.discountMasterId}}">{{discount.discountCode}}</a></td>
-                <td><a href="#/viewdiscounts/{{discount.discountMasterId}}">{{discount.discountDescription}}</a></td>       
-                <td>{{discount.discounType}}</td>         
-                <td>{{discount.discountRate}}</td>        
-                <td>{{discount.discountStartDate|DateFormat}}</td>         
-                <td>{{discount.discountstatus}}</td>               
+            <tr class="pointer-main" ng-repeat="discount in discounts | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountMasterId}}</td>
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountCode}}</td>
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountDescription}}</td>       
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discounType}}</td>         
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountRate}}</td>        
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountStartDate|DateFormat}}</td>         
+                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{discount.discountstatus}}</td>               
             </tr>
         </tbody>
     </table>

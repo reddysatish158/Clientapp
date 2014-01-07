@@ -19,11 +19,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="region in regions | filter:filterText">
+            <tr class="pointer-main" ng-repeat="region in regions | filter:filterText">
                        
-                <td><a href="#/viewregions/{{region.id}}">{{region.id}}</a></td>        
-                <td><a href="#/viewregions/{{region.id}}">{{region.regionCode}}</a></td>  
-                <td>{{region.regionName}}</td>                    
+                <td class="pointer" data-ng-click="routeTo(region.id)">{{region.id}}</td>        
+                <td class="pointer" data-ng-click="routeTo(region.id)">{{region.regionCode}}</td>  
+                <td class="pointer" data-ng-click="routeTo(region.id)">{{region.regionName}}</td>                    
             </tr>
         </tbody>
     </table>

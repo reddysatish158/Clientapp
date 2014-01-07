@@ -48,7 +48,23 @@
  		  };
  		 
          }
-        
+         
+         scope.routeTogeneral = function(orderid,clientid){
+             location.path('/vieworder/'+orderid+'/'+clientid);
+           };
+         scope.routeToticket = function(clientId,ticketid){
+               location.path('/viewTicket/'+clientId+'/'+ticketid);
+         };
+         scope.routeTosale = function(onetimesaleid,clientid){
+             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
+         };
+         scope.routeTostatement = function(statementid){
+             location.path('/viewstatement/'+statementid);
+        };
+        scope.routeTofinancial = function(transactionId,clientid){
+            location.path('/viewfinancialtran/'+transactionId+'/'+clientid);
+        }; 
+       
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {

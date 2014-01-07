@@ -8,18 +8,13 @@
       
       scope.login = function() {
         authenticationService.authenticateWithUsernamePassword(scope.loginCredentials);
-        /*resourceFactory.configurationResource.get(function(data) {
         
-          	  for(var i in data.globalConfiguration){
-                    scope.configs.push(data.globalConfiguration[i]);
-                    webStorage.add("globalConfiguration", {
-                    	name: data.globalConfiguration[i].name, 
-                    	displayName:globalConfiguration[i].name});
-                }
-          	 
-            });*/
       };
-     
+      $('#pwd').keypress(function(e) {
+          if(e.which == 13) {
+              scope.login();
+          }
+        });
       scope.$on("UserAuthenticationFailureEvent", function(data) {
         scope.authenticationFailed = true;
       });

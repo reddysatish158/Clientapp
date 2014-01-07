@@ -2135,6 +2135,9 @@
 "dialog.provisioning.title.message":"Provisioning Commands",
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
+"label.searchorpress":"Click to focus or press alt+x",
+
+
 "#PaymentGatewayCommands":"...",
 "label.managepaymentgateway":"Payment Gateway",
 "table.paymentgateway.id":"id",
@@ -2152,6 +2155,7 @@
 "label.create.new.EventMapping":"Create EventAction Mapping",
 "label.edit.new.EventMapping":"Edit EventAction Mapping",
 "error.msg.event.name.already.configured":"Event Name Already configured with this Action"
+
 
    
 }

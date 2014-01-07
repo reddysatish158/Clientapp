@@ -20,11 +20,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="media in media | filter:filterText">
-                <td><a href="#/viewmedia/{{media.mediaId}}">{{media.mediaTitle}}</a></td>            
-                <td>{{media.mediaRating}}</td>        
-                <td>{{media.releaseDate | DateFormat}}</td>         
-                <td>{{media.status}}</td>
+            <tr class="pointer-main" ng-repeat="media in media | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.mediaTitle}}</td>            
+                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.mediaRating}}</td>        
+                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.releaseDate | DateFormat}}</td>         
+                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.status}}</td>
             </tr>
         </tbody>
     </table>

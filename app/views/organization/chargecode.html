@@ -25,15 +25,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="chargecode in chargecodes | filter:filterText">
+            <tr class="pointer-main" ng-repeat="chargecode in chargecodes | filter:filterText">
                         
-                <td><a href="#/viewchargecode/{{chargecode.id}}">{{chargecode.chargeCode}}</td>        
-                <td>{{chargecode.chargeDescription}}</td>        
-                <td>{{chargecode.chargeType}}</td>
-                <td>{{chargecode.chargeDuration}}</td> 
-                <td>{{chargecode.durationType}}</td> 
-                <td>{{chargecode.taxInclusive}}</td> 
-                <td>{{chargecode.billFrequencyCode}}</td> 
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.chargeCode}}</td>        
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.chargeDescription}}</td>        
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.chargeType}}</td>
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.chargeDuration}}</td> 
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.durationType}}</td> 
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.taxInclusive}}</td> 
+                <td class="pointer" data-ng-click="routeTo(chargecode.id)">{{chargecode.billFrequencyCode}}</td> 
                              
             </tr>
         </tbody>

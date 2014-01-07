@@ -19,10 +19,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="employee in employees | filter:filterText">
-                <td><a href="#/viewContract/{{employee.id}}">{{employee.subscription_period}}</a></td>            
-                <td>{{employee.subscription_type}}</td>        
-                <td>{{employee.units}}</td>         
+            <tr class="pointer-main" ng-repeat="employee in employees | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscription_period}}</td>            
+                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscription_type}}</td>        
+                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.units}}</td>         
             </tr>
         </tbody>
     </table>

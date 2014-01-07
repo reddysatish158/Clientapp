@@ -1,17 +1,16 @@
 (function(module) {
     mifosX.filters = _.extend(module, {
-        DateFormat: function (dateFilter,webStorage) {
+        DateFormat: function (dateFilter,localStorageService) {
             return function(input) {
                 if(input){
-                	var dateFormater=webStorage.get("dateFormater");
                     var tDate = new Date(input);
-                    return dateFilter(tDate,dateFormater);
+                    return dateFilter(tDate,localStorageService.get('dateformat'));
                 }
 
             }
         }
     });
-    mifosX.ng.application.filter('DateFormat', ['dateFilter','webStorage',mifosX.filters.DateFormat]).run(function($log) {
+    mifosX.ng.application.filter('DateFormat', ['dateFilter','localStorageService',mifosX.filters.DateFormat]).run(function($log) {
         $log.info("DateFormat filter initialized");
     });
 }(mifosX.filters || {}));

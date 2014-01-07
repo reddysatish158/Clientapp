@@ -27,17 +27,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="itemdetail in itemdetails.currentPageItems  | filter:filterText">
-                <td>{{itemdetail.id}}</td><!-- <a href="#/viewitemdetails/{{itemdetails.id}}"></a> -->
-                <td>{{itemdetail.officeName}}</td>
-                <td>{{itemdetail.itemDescription}}</td>
-                <td>{{itemdetail.serialNumber}}</td>
-                <td style="text-align: center">{{itemdetail.grnId}}</td>
-                <td>{{itemdetail.supplier}}</td>
-                <td>{{itemdetail.quality}}</td>
-                <td>{{itemdetail.status}}</td>
-                <td ng-show="itemdetail.clientId"><a href="#/viewclient/{{itemdetail.clientId}}">{{itemdetail.accountNumber}}</a></td>
-                <td ng-show="!itemdetail.clientId">Unallocated</td>
+              <tr class="pointer-main" ng-repeat="itemdetail in itemdetails.currentPageItems  | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.id}}</td><!-- <a href="#/viewitemdetails/{{itemdetails.id}}"></a> -->
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.officeName}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.itemDescription}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.serialNumber}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" style="text-align: center">{{itemdetail.grnId}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.supplier}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.quality}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.status}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="itemdetail.clientId">{{itemdetail.accountNumber}}</td>
+                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="!itemdetail.clientId">Unallocated</td>
                 <!-- <td>
                 	<span ng-if="itemdetails.clientId > '0'">
                 	Yes
@@ -81,17 +81,17 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="g in grn.currentPageItems | filter:filterText">
-                <td><a href="#/viewgrn/{{g.id}}">{{g.id}}</a></td>
-                <td><a href="#/viewgrn/{{g.id}}">{{g.officeName}}</a></td>
-                <td><a href="#/viewgrn/{{g.id}}">{{g.purchaseDate | DateFormat}}</a></td>
-                <td>{{g.supplierName}}</td>
-                <td>{{g.itemDescription}}</td>
-                <td style="text-align: center">{{g.orderdQuantity}}</td>
-                <td style="text-align: center">{{g.receivedQuantity}}</td>
-                <td style="text-align: center">{{g.balanceQuantity}}</td>
-                <td style="text-align: center" ng-show="g.orderdQuantity != g.receivedQuantity">Pending</td>
-                <td style="text-align: center" ng-show="g.orderdQuantity == g.receivedQuantity">Completed</td>
+              <tr class="pointer-main" ng-repeat="g in grn.currentPageItems | filter:filterText">
+                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.id}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.officeName}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.purchaseDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.supplierName}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.itemDescription}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center">{{g.orderdQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center">{{g.receivedQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center">{{g.balanceQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center" ng-show="g.orderdQuantity != g.receivedQuantity">Pending</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center" ng-show="g.orderdQuantity == g.receivedQuantity">Completed</td>
            
      		 </tbody>
           </table>
@@ -128,15 +128,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="m in mrn.currentPageItems  | filter:filterText">
-                <td><a href="#/viewmrn/{{m.id}}">{{m.id}}</a></td>
-                <td><a href="#/viewmrn/{{m.id}}">{{m.requestedDate | DateFormat}}</a></td>
-                <td><a href="#/viewmrn/{{m.id}}">{{m.itemDescription}}</a></td>
-                <td>{{m.fromOffice}}</td>
-                <td>{{m.toOffice}}</td>
-                <td style="text-align: center">{{m.orderdQuantity}}</td>
-                <td style="text-align: center">{{m.receivedQuantity}}</td>
-                <td>{{m.status}}</td>
+              <tr class="pointer-main" ng-repeat="m in mrn.currentPageItems  | filter:filterText">
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.id}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.requestedDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.itemDescription}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.fromOffice}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.toOffice}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align: center">{{m.orderdQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align: center">{{m.receivedQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.status}}</td>
                 
             
      		 </tbody>
@@ -178,13 +178,13 @@
 						</tr>
 					</thead>
              	 <tbody>
-             		 <tr ng-repeat="item in items.currentPageItems | filter:filterText">    
-              	  		<td><a href="#/viewitem/{{item.id}}">{{item.id}}</a></td>        
-               			<td><a href="#/viewitem/{{item.id}}">{{item.itemCode}}</a></td>        
-                		<td><a href="#/viewitem/{{item.id}}">{{item.itemDescription}}</a></td> 
-                		<td>{{item.units}}</td>
-                		<td>{{item.unitPrice}}</td> 
-                		<td>{{item.warranty}}</td> 
+             		 <tr class="pointer-main" ng-repeat="item in items.currentPageItems | filter:filterText">    
+              	  		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.id}}</td>        
+               			<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.itemCode}}</td>        
+                		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.itemDescription}}</td> 
+                		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.units}}</td>
+                		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.unitPrice}}</td> 
+                		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.warranty}}</td> 
              		</tr>
             	</tbody>
        			</table>

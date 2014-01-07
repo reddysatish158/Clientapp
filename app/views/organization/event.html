@@ -20,11 +20,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="event in events | filter:filterText">
-			    <td><a href="#/viewEvent/{{event.id}}">{{event.id}}</a></td>
-				<td><a href="#/viewEvent/{{event.id}}">{{event.eventName}}</a></td>
-				<td>{{event.eventDescription}}</td>				
-				<td>{{event.status}}</td>
+			<tr class="pointer-main" ng-repeat="event in events | filter:filterText">
+			    <td class="pointer" data-ng-click="routeTo(event.id)">{{event.id}}</td>
+				<td class="pointer" data-ng-click="routeTo(event.id)">{{event.eventName}}</td>
+				<td class="pointer" data-ng-click="routeTo(event.id)">{{event.eventDescription}}</td>				
+				<td class="pointer" data-ng-click="routeTo(event.id)">{{event.status}}</td>
 			</tr>
 		</tbody>
 	</table>
