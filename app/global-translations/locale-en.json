@@ -2150,7 +2150,8 @@
 "table.eventactionmapping.action":"Action",
 "table.eventactionmapping.process":"Process",
 "label.create.new.EventMapping":"Create EventAction Mapping",
-"label.edit.new.EventMapping":"Edit EventAction Mapping"
+"label.edit.new.EventMapping":"Edit EventAction Mapping",
+"error.msg.event.name.already.configured":"Event Name Already configured with this Action"
 
    
 }
