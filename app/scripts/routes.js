@@ -865,9 +865,20 @@
          .when('/paymentGateway', {
           templateUrl: 'views/paymentgateway/paymentGateway.html'
          })
-         .when('/editPaymentGateway/:id', {
+
+	    .when('/createeventactionmapping', {
+        templateUrl: 'views/system/createeventactionmapping.html'
+    	})
+    	.when('/vieweventactionmapping/:id', {
+        templateUrl: 'views/system/vieweventactionmapping.html'
+    	})
+    	.when('/editeventactionmapping/:id', {
+        templateUrl: 'views/system/editeventactionmapping.html'
+    	})
+    	.when('/editPaymentGateway/:id', {
           templateUrl: 'views/paymentgateway/editPaymentGateway.html'
          });
+
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

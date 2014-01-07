@@ -266,7 +266,11 @@ define(['underscore', 'mifosX'], function() {
       'system/CreateProvisioningMappingController',
       'system/EditProvisioningMappingController',
       'paymentgateway/PaymentGatewayController',
+      'system/CreateEventActionMappingController',
+      'system/ViewEventActionMappingController',
+      'system/EditEventActionMappingController',
       'paymentgateway/EditPaymentGatewayController'
+
       
     ],
     filters: [
