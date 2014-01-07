@@ -27,12 +27,12 @@
               </tr>
             </thead>
             <tbody>
-             <tr ng-repeat="servicemappingdata in servicemappingdatas  | filter:filterText">
-                <td><a href="#/viewServiceMapping/{{servicemappingdata.id}}">{{servicemappingdata.id}}</a></td>
-                <td><a href="#/viewServiceMapping/{{servicemappingdata.id}}">{{servicemappingdata.serviceCode}}</a></td>
-                <td>{{servicemappingdata.serviceIdentification}}</td>
-                <td>{{servicemappingdata.status}}</td>
-                <td>{{servicemappingdata.image}}</td>
+             <tr class="pointer-main" ng-repeat="servicemappingdata in servicemappingdatas  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.id}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceCode}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceIdentification}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.status}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.image}}</td>
    			</tr>
      		 </tbody>
           </table>
@@ -59,10 +59,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="hardwaremappingdata in hardwaremappingdatas  | filter:filterText">
-              <td><a href="#/viewhardwareplanmapping/{{hardwaremappingdata.id}}">{{hardwaremappingdata.id}}</a></td>        
-                <td><a href="#/viewhardwareplanmapping/{{hardwaremappingdata.id}}">{{hardwaremappingdata.planCode}}</a></td>
-                <td>{{hardwaremappingdata.itemCode}}</td>
+              <tr class="pointer-main" ng-repeat="hardwaremappingdata in hardwaremappingdatas  | filter:filterText">
+              <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.id}}</td>        
+                <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.planCode}}</td>
+                <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.itemCode}}</td>
      		 </tbody>
           </table>
        		<!-- 	<ul class="pager">
@@ -90,11 +90,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="provisiongdata in provisiongsystemData  | filter:filterText">
-                <td><a href="#/viewprovisioningmapping/{{provisiongdata.id}}">{{provisiongdata.id}}</a></td>        
-                <td><a href="#/viewprovisioningmapping/{{provisiongdata.id}}">{{provisiongdata.provisioningSystem}}</a></td>
-                <td>{{provisiongdata.commandName}}</td>
-                <td>{{provisiongdata.status}}</td>
+              <tr class="pointer-main" ng-repeat="provisiongdata in provisiongsystemData  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.id}}</td>        
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.provisioningSystem}}</td>
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.commandName}}</td>
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.status}}</td>
      		 </tbody>
           </table>
          </div>

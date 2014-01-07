@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AccCoaController: function(scope, resourceFactory) {
+    AccCoaController: function(scope, resourceFactory,location) {
       scope.coadata = [];
       scope.isTreeView = false;
 
@@ -20,7 +20,11 @@
              return out;
          }
          return obj;
-      }
+      };
+      
+      scope.routeTo = function(id){
+          location.path('/viewglaccount/'+ id);
+        };
 
       resourceFactory.accountCoaResource.getAllAccountCoas(function(data) {
           scope.coadatas = scope.deepCopy(data);
@@ -86,7 +90,7 @@
       });
     }
   });
-  mifosX.ng.application.controller('AccCoaController', ['$scope', 'ResourceFactory', mifosX.controllers.AccCoaController]).run(function($log) {
+  mifosX.ng.application.controller('AccCoaController', ['$scope', 'ResourceFactory','$location', mifosX.controllers.AccCoaController]).run(function($log) {
     $log.info("AccCoaController initialized");
   });
 }(mifosX.controllers || {}));

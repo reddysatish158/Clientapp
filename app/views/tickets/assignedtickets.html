@@ -16,14 +16,14 @@
             </tr>	
         </thead>
         <tbody>
-            <tr ng-repeat="ticket in tickets.currentPageItems  | filter:filterText">      
-               <td><a href="#/viewclient/{{ticket.clientId}}">{{ticket.clientName}}</a></td>  
-                 <td>{{ticket.ticketDate | DateFormat}}</td> 
-                 <td>{{ticket.problemDescription}}</td>       
-                <td>{{ticket.priority}}</td>
-                   <td>{{ticket.userName}}</td>
-                <td>{{ticket.status}}</td>
-                     <td>{{ticket.timeElapsed}}</td>     
+            <tr class="pointer-main" ng-repeat="ticket in tickets.currentPageItems  | filter:filterText">      
+               <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                 <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                   <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                     <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
             </tr>
         </tbody> 
     </table>

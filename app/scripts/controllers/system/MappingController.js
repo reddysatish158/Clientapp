@@ -48,7 +48,15 @@
               	 scope.provisiongsystemData=data; 
               });
           };
-        
+          scope.routeToservice = function(id){
+              location.path('/viewServiceMapping/'+ id);
+            };
+         scope.routeTohardware = function(id){
+             location.path('/viewhardwareplanmapping/'+ id);
+          };
+          scope.routeToprovisioning = function(id){
+              location.path('/viewprovisioningmapping/'+ id);
+           };
     }
   });
   mifosX.ng.application.controller('MappingController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.MappingController]).run(function($log) {

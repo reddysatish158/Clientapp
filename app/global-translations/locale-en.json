@@ -2142,6 +2142,7 @@
 "label.create.new.EventMapping":"Create EventAction Mapping",
 "label.edit.new.EventMapping":"Edit EventAction Mapping",
 "error.msg.event.name.already.configured":"Event Name Already configured with this Action",
+"label.searchorpress":"Click to focus or press alt+x",
 
 "#PaymentGatewayCommands":"...",
 "link.paymentgateway":"PaymentGateway",
@@ -2157,6 +2158,7 @@
 "table.paymentgateway.paymentDate":"Payment Date",
 "table.paymentgateway.receiptNo":"ReceiptNo",
 "label.paymentgateway.status":"Status"
+
 
 
 

@@ -25,15 +25,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="prospect in prospects.currentPageItems | filter:filterText">
+            <tr class="pointer-main" ng-repeat="prospect in prospects.currentPageItems | filter:filterText">
                         
-                <td>{{prospect.id}}</td>
-                <td><a href="#/viewprospects/{{prospect.id}}">{{prospect.firstName}}&nbsp{{prospect.lastName}}</a></td>
-                <td><a href="#/viewprospects/{{prospect.id}}">{{prospect.email}}</a></td>         
-                <td>{{prospect.mobileNumber}}</td>  
-                <td>{{prospect.address}},{{prospect.streetArea}},{{prospect.cityDistrict}}</td>        
-                <td>{{prospect.status}}</td>                      
-            </tr>
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.firstName}}&nbsp{{prospect.lastName}}</td>
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.email}}</td>         
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.mobileNumber}}</td>  
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.address}},{{prospect.streetArea}},{{prospect.cityDistrict}}</td>        
+                <td class="pointer" data-ng-click="routeTo(prospect.id)">{{prospect.status}}</td>                      
+            </tr>	
+            
         </tbody>
     </table>
     <ul class="pager">

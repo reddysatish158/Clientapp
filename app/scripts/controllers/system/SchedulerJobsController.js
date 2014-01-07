@@ -7,6 +7,9 @@
       resourceFactory.jobsResource.get(function(data) {
           scope.jobs = data;
       });
+      scope.routeTo = function(jobid){
+          location.path('/viewschedulerjob/'+ jobid);
+        };
 
       resourceFactory.schedulerResource.get(function(data) {
           scope.schedulerstatus = data.active == true ? 'Active' :'Standby';

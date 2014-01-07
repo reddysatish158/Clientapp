@@ -32,7 +32,7 @@
 								<div class="control-group">
             					<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}<span class="required">*</span></label>
             					<div class="controls">
-             					 <select ng-model="formData2.itemId" name="itemcode" ng-change="itemData(formData2.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}" required late-Validate>
+             					 <select ng-model="formData2.itemId" name="itemcode" ng-change="itemData(formData2.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
              					 </select>
             					</div>
           						</div>
@@ -78,11 +78,11 @@
 							</tr>
 					</table>
 	</fieldset>
-	<div class="jw-footer ui-widget-header ui-corner-bottom">
+	<div class="jw-footer ui-widget-header ui-corner-bottom"> 
               <div class="jw-buttons ui-helper-clearfix">
                  <a href="#/clients"><button type="reset" class="btn">Cancel</button></a>
                  <a href=""><button  class="jw-button-prev btn btn-primary" type="button" ng-show="previous" ng-click="previousStepmain()" style="display: inline-block;">Previous</button></a>
-                 <button type="submit" class="jw-button-next btn btn-primary" ng-disabled="(!onetimesaleform.$valid)||(errorStatus || errorDetails)" ng-show="next" ng-click="nextStepmain()">Next</button>
+                 <button type="submit" class="jw-button-next btn btn-primary" ng-disabled="!onetimesaleform.$valid" ng-show="next" ng-click="nextStepmain()">Next</button>
              </div>
           </div>
 </form>

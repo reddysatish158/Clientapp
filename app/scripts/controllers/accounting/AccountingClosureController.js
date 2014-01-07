@@ -8,6 +8,10 @@
               scope.offices = data;
             });
             
+            scope.routeTo = function(id){
+                location.path('/view_close_accounting/'+ id);
+              };
+            
             var params = {}
             if (routeParams.officeId != undefined) {
               params.officeId = routeParams.officeId;

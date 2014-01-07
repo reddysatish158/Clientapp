@@ -16,9 +16,9 @@
         </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="code in codes">
-                <td><a href="#/viewcode/{{code.id}}">{{code.name}}</a></td>
-                <td>{{code.systemDefined}}</td>
+            <tr class="pointer-main" data-ng-repeat="code in codes">
+                <td class="pointer" data-ng-click="routeTo(code.id)">{{code.name}}</td>
+                <td class="pointer" data-ng-click="routeTo(code.id)">{{code.systemDefined}}</td>
             </tr>
 
         </tbody>
