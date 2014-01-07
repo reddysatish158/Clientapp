@@ -99,9 +99,37 @@
           </table>
          </div>
       </tab>	
-      		
+      	
 
-
+<tab heading="EventAction Mapping" select="getEventActionMappingData()">
+        <div class="pull-right btn-group">
+          <a href="#/createeventactionmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+        </div>
+        <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+                   
+        <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.hardwaremapping.id' | translate}}</th>
+                <th>{{'table.eventactionmapping.event' | translate}}</th>
+                <th>{{'table.eventactionmapping.action' | translate}}</th>
+                <th>{{'table.eventactionmapping.process' | translate}}</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="data in datas  | filter:filterText">
+              <td><a href="#/vieweventactionmapping/{{data.id}}">{{data.id}}</a></td>        
+                <td><a href="#/vieweventactionmapping/{{data.id}}">{{data.eventName}}</a></td>
+                <td>{{data.actionName}}</td>
+                <td>{{data.process}}</td>
+     		 </tbody>
+          </table>
+      
+         </div>
+      </tab>
+	
     </tabset>
     </div>
   </div>

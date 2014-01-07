@@ -34,6 +34,13 @@
         	
         };
         
+	scope.getEventActionMappingData=function(data){
+        	
+        	resourceFactory.EventActionMappingResource.get(function(data) {
+           	 scope.datas=data; 
+           });
+        	
+        };
         
         scope.getProvisiongCommandData=function(data){
           	 
