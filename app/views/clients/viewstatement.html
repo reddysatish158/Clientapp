@@ -37,7 +37,7 @@
 	      </div>
 	    </div>
 	</div>
-
+    
 	
     <table width="100%">
 			<tr>
@@ -45,34 +45,33 @@
 				<td width="70%">{{statementDatas[0].dueDate | DateFormat}}</td>
 			</tr>
 			<tr>
-				<td>{{ 'label.statement.dueamount' | translate }}</td>
-				<td>{{statementDatas[0].dueAmount}}</td>
+				<td width="20%">{{ 'label.statement.dueamount' | translate }}</td>
+				<td width="70%">{{statementDatas[0].dueAmount}}</td>
 			</tr>
 			<tr>
-				<td>{{ 'label.statement.billperiod' | translate }}</td>
-				<td>{{statementDatas[0].billPeriod}}</td>
-				<br>
+				<td width="20%">{{ 'label.statement.billperiod' | translate }}</td>
+				<td width="70%">{{statementDatas[0].billPeriod}}</td>
 			</tr>
-			
-			<tr>
-				<td valign="top"  class="graybg">{{ 'label.statement.transactions' | translate }}</td>
-				</tr>
-				<tr>
-				<td>
-					<table width="100%">
+	   </table>
+	   <br/>
+	   <span style="margin-left:20px">{{ 'label.statement.transactions' | translate }}</span>
+	   <br/>
+	   <br/>
+			<div class="row-fluid span" style="margin-left:20px;margin-top: -20px">
+		        <div class="span6">	
+					<table width="100%" class="table table-striped table-bordered">
 					  <thead>
                            <tr>
-                               <td>{{ 'label.statement.transactiontype' | translate }}</td>
-                               <td>{{ 'table.statement.amount' | translate }}</td>
-                              </tr>
+                               <td width="40%">{{ 'label.statement.transactiontype' | translate }}</td>
+                               <td width="70%">{{ 'table.statement.amount' | translate }}</td>
+                           </tr>
                        </thead>
 						<tr ng-repeat="statementData in statementDatas">
-							 <td>{{statementData.transaction}}</td>        
-                              <td>{{statementData.amount}}</td>         
+							 <td width="40%">{{statementData.transaction}}</td>        
+                              <td width="70%">{{statementData.amount}}</td>         
 						</tr>
-					</table>		
-				</td>
-			</tr>
-			
-		</table>
+					 </table>		
+				  </div>
+		     </div>
+		
     </div>

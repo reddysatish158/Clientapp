@@ -12,7 +12,6 @@
       this.clear = function() {
         webStorage.remove("sessionData");
         webStorage.remove("clientData");
-        webStorage.remove("dateFormater");
         httpService.cancelAuthorization();
         return EMPTY_SESSION;
       };

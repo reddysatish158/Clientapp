@@ -44,6 +44,18 @@
 		 
         }
         
+        scope.routeTo = function(id){
+            location.path('/viewclient/'+ parseInt(id));
+          };
+        scope.routeTogrn = function(id){
+              location.path('/viewgrn/'+ parseInt(id));
+           };
+         scope.routeTomrn = function(id){
+             location.path('/viewmrn/'+ parseInt(id));
+           };
+        scope.routeToitem = function(id){
+            location.path('/viewitem/'+ parseInt(id));
+          };
         
         scope.itemFetchFunction = function(offset, limit, callback) {
 			resourceFactory.itemResource.getAllItems({offset: offset, limit: limit} , callback);

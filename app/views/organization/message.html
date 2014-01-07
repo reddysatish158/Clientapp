@@ -26,15 +26,15 @@
 	      
         </thead>
         <tbody>
-            <tr ng-repeat="messaging in message  | filter:filterText">
-                <td><a href="#/viewmessage/{{messaging.id}}">{{messaging.id}}</a></td>
-                <td><a href="#/viewmessage/{{messaging.id}}">{{messaging.templateDescription}}</a></td>  
-                <td>{{messaging.subject}}</td>
-                <td>{{messaging.messageType}}</td>
-                <td>{{messaging.header}}</td>
-                <td>{{messaging.body}}</td>  
-                <td>{{messaging.footer}}</td>
-                <td>{{messaging.messageParameters}}</td>
+            <tr class="pointer-main" ng-repeat="messaging in message  | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.templateDescription}}</td>  
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.subject}}</td>
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.messageType}}</td>
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.header}}</td>
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.body}}</td>  
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.footer}}</td>
+                <td class="pointer" data-ng-click="routeTo(messaging.id)">{{messaging.messageParameters}}</td>
             </tr>
         </tbody>
     </table>

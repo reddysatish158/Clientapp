@@ -1,7 +1,7 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MainController: function(scope, location, sessionManager, translate,keyboardManager) {
-      
+    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,localStorageService) {
+
       scope.leftnav = false;
 
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
@@ -12,6 +12,7 @@
       scope.search = function(){
           location.path('/search/' + scope.search.query );
       };
+      
 
       scope.logout = function() {
         scope.currentSession = sessionManager.clear();
@@ -113,6 +114,8 @@
     'SessionManager',
     '$translate',
     'keyboardManager',
+    '$rootScope',
+    'localStorageService',
     mifosX.controllers.MainController
   ]).run(function($log) {
     $log.info("MainController initialized");

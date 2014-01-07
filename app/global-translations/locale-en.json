@@ -2140,6 +2140,7 @@
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
 
+
 "#userChat":".............",
 "label.heading.usernotification":"User Notification",
 "button.addmessage":"New Message",
@@ -2149,6 +2150,10 @@
 "validation.msg.userchat.message.cannot.be.blank":"Message cannot be blank",
 "validation.msg.userchat.messageDate.cannot.be.blank":"System Date cannot be blank",
 
+"label.searchorpress":"Click to focus or press alt+x",
+
+
+
 "#PaymentGatewayCommands":"...",
 "label.managepaymentgateway":"Payment Gateway",
 "table.paymentgateway.id":"id",
@@ -2157,7 +2162,16 @@
 "table.paymentgateway.paymentId":"PaymentId",
 "table.paymentgateway.amountPaid":"Amount Paid",
 "table.paymentgateway.paymentDate":"Payment Date",
-"table.paymentgateway.receiptNo":"ReceiptNo"
+"table.paymentgateway.receiptNo":"ReceiptNo",
+
+"#EventAction Mapping":"...",
+"table.eventactionmapping.event":"Event",
+"table.eventactionmapping.action":"Action",
+"table.eventactionmapping.process":"Process",
+"label.create.new.EventMapping":"Create EventAction Mapping",
+"label.edit.new.EventMapping":"Edit EventAction Mapping",
+"error.msg.event.name.already.configured":"Event Name Already configured with this Action"
+
 
 
    

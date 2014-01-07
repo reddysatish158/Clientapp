@@ -28,7 +28,8 @@
             'angularFileUpload':'../bower_components/angularjs-file-upload/angular-file-upload',
             'ngSanitize':       '../bower_components/angular-sanitize/angular-sanitize',
             'bootstraptimepicker':	'../bower_components/bootstrap-timepicker/js/bootstrap-timepicker',
-            'ckEditor':         '../bower_components/ckeditor/ckeditor'
+            'ckEditor':         '../bower_components/ckeditor/ckeditor',
+            'LocalStorageModule':'../scripts/modules/localstorage'
         },
         shim: {
             'angular': { exports: 'angular' },
@@ -50,7 +51,7 @@
             'bootstraptimepicker':{deps:['jquery']},
             'frAngular':{deps:['angular']},
             'ckEditor':{deps:['jquery']},
-            'jquery-jWizard': { deps: ['angular','jquery','angularui','angular-translate'] },
+            'LocalStorageModule':{deps:['angular']},
             'mifosX': {
                 deps: [
                     'angular',
@@ -71,7 +72,8 @@
                     'ngSanitize',
                     'bootstraptimepicker',
                     'ckEditor',
-                    'frAngular'
+                    'frAngular',
+                    'LocalStorageModule'
                 ],
                 exports: 'mifosX'
             }

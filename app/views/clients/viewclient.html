@@ -159,16 +159,14 @@
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
-                        <tr ng-repeat="order in orders | filter:filterText" >
-                          <td>{{order.id}}</td>
-                          <td>
-                            <a href="#/vieworder/{{order.id}}/{{client.id}}">{{order.planCode}}</a>
-                          </td>
-                          <td>{{order.contractPeriod}}</td>
-                          <td>{{order.startDate | DateFormat}}</td>
-                          <td>{{order.endDate | DateFormat}}</td> 
-                          <td>{{order.price}}</td>
-                            <td>{{order.status}}</td>
+                        <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.id}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
+                            <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.status}}</td>
                         </tr>
                         <tr><td colspan="7">&nbsp;</td></tr>
                        
@@ -302,14 +300,14 @@
 	      
         </thead>
         <tbody>
-            <tr ng-repeat="ticket in tickets  | filter:filterText">
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.id}}</a></td>
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.priority}}</a></td>  
-                <td>{{ticket.ticketDate | DateFormat}}</td>
-                <td>{{ticket.problemDescription}}</td>
-                <td>{{ticket.status}}</td>
-                <td>{{ticket.userName}}</td>  
-                <td>{{ticket.lastComment}}</td>          
+            <tr class="pointer-main" ng-repeat="ticket in tickets  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.id}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.priority}}</td>  
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.ticketDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.problemDescription}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.status}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.userName}}</td>  
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.lastComment}}</td>          
             </tr>
         </tbody>
     </table>
@@ -392,17 +390,18 @@
 					<th>{{'table.heading.totalprice' | translate}}</th>
 					<th>{{'table.heading.allocate' | translate}}</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="onetimesale in onetimesales  | filter:filterText">
-					<td>{{onetimesale.id}}</td>
-					<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.saleDate | DateFormat}}</a></td>
-					<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.itemCode}}</a></td>
-					<td>{{onetimesale.chargeCode}}</td>
-					<td>{{onetimesale.quantity}}</td> 
-					<td>{{onetimesale.totalPrice}}</td> 
-					<td>{{onetimesale.hardwareAllocated}}</td>
+				<tr class="pointer-main" ng-repeat="onetimesale in onetimesales  | filter:filterText">
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.id}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.saleDate | DateFormat}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.itemCode}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.chargeCode}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.quantity}}</td> 
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.totalPrice}}</td> 
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.hardwareAllocated}}</td>
 				    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i></a></td>
 				    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
 				</tr>
@@ -426,7 +425,43 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
+          <tr class="pointer-main" ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'">
+              
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transactionId}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transDate | DateFormat}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transactionType}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.creditAmount}}
+              </td>
+               <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.amount}}
+              </td>
+           </tr>
+           <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'"> 
+               <td>
+                  <any>{{financialtransaction.transactionId}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.transDate | DateFormat}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.transactionType}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.creditAmount}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.amount}}</any>
+              </td>
+            </tr>
+            
+             <!-- <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
             
                 
                 <td >
@@ -437,7 +472,7 @@
                 <a  ng-show="financialtransaction.transactionType =='INVOICE'" href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a>
                 
                 
-                <!-- <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td> -->
+                <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td>
                 <any ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transDate | DateFormat}}</any></td>
                 
        
@@ -445,7 +480,9 @@
                 <td>{{financialtransaction.creditAmount}}</td>
                 <td>{{financialtransaction.amount}}</td>
 
-            </tr>
+            </tr> -->
+
+            
         </tbody>
     </table>
     <ul class="pager">
@@ -496,14 +533,15 @@
                 <th>Due Date</th>
                 <th>amount</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="statement in states  | filter:filterText">                 
-                <td>{{statement.id}}</td>
-                <td><a href="#/viewstatement/{{statement.id}}">{{statement.billDate | DateFormat}}</a></td>
-                   <td>{{statement.dueDate | DateFormat}}</td>
-                      <td>{{statement.amount}}</td>
+            <tr class="pointer-main" ng-repeat="statement in states  | filter:filterText">                 
+                <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.id}}</td>
+                <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
+                   <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.dueDate | DateFormat}}</td>
+                      <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount}}</td>
                       <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
 <td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
                 ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>

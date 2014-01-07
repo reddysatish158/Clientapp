@@ -871,7 +871,16 @@
          })
          .when('/paymentGateway', {
           templateUrl: 'views/paymentgateway/paymentGateway.html'
-         });
+         })
+	.when('/createeventactionmapping', {
+        templateUrl: 'views/system/createeventactionmapping.html'
+    	})
+    	.when('/vieweventactionmapping/:id', {
+        templateUrl: 'views/system/vieweventactionmapping.html'
+    	})
+    	.when('/editeventactionmapping/:id', {
+        templateUrl: 'views/system/editeventactionmapping.html'
+    	});
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

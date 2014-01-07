@@ -5,6 +5,11 @@
 
       scope.reports = [];
       scope.type = routeParams.type;
+      
+      scope.routeToviewreport = function(name,id,type){
+    	  
+          location.url('/run_report/'+name+'?reportId='+id+'&type='+type);
+        };
 
       //to display type of report on breadcrumb
       var typeReport = routeParams.type.replace(routeParams.type[0], routeParams.type[0].toUpperCase()) + " " + "Reports";

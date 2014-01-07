@@ -266,7 +266,10 @@ define(['underscore', 'mifosX'], function() {
       'client/HardwareSwapController',
       'system/CreateProvisioningMappingController',
       'system/EditProvisioningMappingController',
-      'paymentgateway/PaymentGatewayController'
+      'paymentgateway/PaymentGatewayController',
+      'system/CreateEventActionMappingController',
+      'system/ViewEventActionMappingController',
+      'system/EditEventActionMappingController'
       
     ],
     filters: [
