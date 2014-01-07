@@ -73,10 +73,12 @@
                 </li>
               </ul>
           </span> 
-	    </div><hr>
+
+	    </div><hr/>
 
 <div>
-<div class="row paddedleft">
+<div class="row-fluid span" style="margin-left:-1px;margin-top: -20px">
+
 		<div class="span6">
 		<table width="100%" class="table table-striped table-bordered">
 			<tr>
@@ -104,38 +106,47 @@
 	</div>
 
 <div class="row paddedleft">
-      <hr class="marginbottom"/>
-      <tabset >	
-      
+  <hr class="marginbottom"/>
+    <tabset >	
       <tab heading="Order Info">
-        <div> 
-            <table class="table">
-        <thead>
-            <tr class="graybg">
-                <th>{{ 'table.order.id' | translate }}</th>
-                <th>{{ 'table.order.price' | translate }}</th>
-                <th>{{ 'table.order.status' | translate }}</th>
-                <th>{{ 'table.order.startDate' | translate }}</th>
-                <th>{{ 'table.order.currentDate' | translate }}</th>
-                <th>{{ 'table.order.cancelledStatus' | translate }}</th>
-                <th>{{ 'table.order.contractPeriod' | translate }}</th>
-                <th>{{ 'table.order.provisioningSys' | translate }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{orderData.id}}</td>
-                <td>{{orderData.price}}</td>
-                <td>{{orderData.status}}</td>
-                <td>{{orderData.startDate | DateFormat}}</td>
-                <td>{{orderData.currentDate | DateFormat}}</td>
-                <td>{{orderData.cancelledStatus}}</td>
-                <td>{{orderData.contractPeriod}}</td>
-                <td>{{orderData.provisioningSys}}</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
+      	<div class="span8" style="margin-left: 10px;margin-top: 30px;"> 
+            <table class="table table-bordered view-table">
+            	
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.id' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.id}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.price' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.price}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.status' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.status}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.startDate' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.startDate | DateFormat}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.currentDate' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.currentDate | DateFormat}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.cancelledStatus' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.cancelledStatus}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.contractPeriod' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.contractPeriod}}</span></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: normal" class="table-bold-ord">{{ 'table.order.provisioningSys' | translate }}</td>
+                  <td><span class="padded-td">{{orderData.provisioningSys}}</span></td>
+                </tr>
+                
+            </table>
+          </div>
       </tab>
       
       <tab heading="Order Services">
@@ -277,6 +288,7 @@
 	</tab>
 	</tabset>
 	</div>
+
 </div>	
 	
 	

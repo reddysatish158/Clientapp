@@ -991,3 +991,8 @@ nav:hover:after{
 .highlight-row:hover{
     background-color: deepskyblue;
 }
+
+.table-bold-ord {
+    background-color: #F5F5F5;
+    width: 180px !important;
+}
