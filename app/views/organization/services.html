@@ -21,13 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="service in services  | filter:filterText">      
+            <tr class="pointer-main" ng-repeat="service in services  | filter:filterText">      
               
-                 <td><a href="#/viewservice/{{service.id}}">{{service.serviceCode}}</a></td>            
-                <td>{{service.serviceDescription}}</td>
-                <td>{{service.serviceType}}</td>
-                   <td>{{service.serviceStatus}}</td>
-                      <td>{{service.isOptional}}</td>
+                 <td class="pointer" data-ng-click="routeTo(service.id)">{{service.serviceCode}}</td>            
+                <td class="pointer" data-ng-click="routeTo(service.id)">{{service.serviceDescription}}</td>
+                <td class="pointer" data-ng-click="routeTo(service.id)">{{service.serviceType}}</td>
+                   <td class="pointer" data-ng-click="routeTo(service.id)">{{service.serviceStatus}}</td>
+                      <td class="pointer" data-ng-click="routeTo(service.id)">{{service.isOptional}}</td>
             </tr>
         </tbody>
     </table>
