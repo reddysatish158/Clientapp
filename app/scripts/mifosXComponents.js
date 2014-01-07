@@ -265,7 +265,9 @@ define(['underscore', 'mifosX'], function() {
       'client/HardwareSwapController',
       'system/CreateProvisioningMappingController',
       'system/EditProvisioningMappingController',
-      'system/ViewProvisioningMappingController'
+      'paymentgateway/PaymentGatewayController',
+      'paymentgateway/EditPaymentGatewayController'
+      
     ],
     filters: [
       'StatusLookup',

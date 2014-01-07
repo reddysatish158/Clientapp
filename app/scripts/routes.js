@@ -861,6 +861,12 @@
          })  
         .when('/editProvisioningMapping/:id', {
              templateUrl: 'views/system/editProvisioningMapping.html'
+         })
+         .when('/paymentGateway', {
+          templateUrl: 'views/paymentgateway/paymentGateway.html'
+         })
+         .when('/editPaymentGateway/:id', {
+          templateUrl: 'views/paymentgateway/editPaymentGateway.html'
          });
     $locationProvider.html5Mode(false);
   };

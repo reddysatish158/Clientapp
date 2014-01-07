@@ -775,6 +775,11 @@
            }),
            provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
             	  get: {method: 'GET', params: {}}
+           }),
+           paymentGatewayResource: defineResource(apiVer + "/paymentgateways/:id", {id: '@id'}, {
+        	   get: {method: 'GET', params: {}, isArray: true},
+        	   getData: {method: 'GET', params: {id:'@id'}},
+        	   update: { method: 'PUT' }
            })  
                
 

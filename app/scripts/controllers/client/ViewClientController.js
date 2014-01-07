@@ -121,14 +121,18 @@
                                              name:"button.statement",
                                              href:"#/statement",
                                              icon :"icon-file"
-                                         },
-                                           
-                                     
+                                         },                                                                              
+                                         {
+	                                        name:"button.edit",
+	                                        href:"#/editclient",
+	                                        icon :"icon-edit"
+                                        },
                                         {
-                                        name:"button.edit",
-                                        href:"#/editclient",
-                                        icon :"icon-edit"
-                                      }]
+	                                          name:"button.refresh",	
+	                                          href:"#/viewclient",
+	                                          icon :"icon-edit"
+                                        }
+                                      ]
                     }
 
                     if (data.status.value == "Transfer in progress") {
@@ -206,6 +210,8 @@
                     controller: StatementPopController,
                     resolve:{}
                 });
+        	}else if(href=="#/viewclient"){
+        		route.reload();
         	}else{
         		location.path(url);
         	}
