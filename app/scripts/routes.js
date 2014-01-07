@@ -84,6 +84,9 @@
        .when('/messanger',{
         templateUrl: 'views/messanger.html'
       })
+       .when('/addnewmesage',{
+        templateUrl: 'views/addmessage.html'
+      })
       .when('/addclientidentifier/:clientId', {
         templateUrl: 'views/clients/addclientidentifier.html'
       })
@@ -865,6 +868,9 @@
          })  
         .when('/editProvisioningMapping/:id', {
              templateUrl: 'views/system/editProvisioningMapping.html'
+         })
+         .when('/paymentGateway', {
+          templateUrl: 'views/paymentgateway/paymentGateway.html'
          });
     $locationProvider.html5Mode(false);
   };

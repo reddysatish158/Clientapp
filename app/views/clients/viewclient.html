@@ -84,7 +84,13 @@
                           </table>
                       </div>
                       <div class="span5">
+                              
                         <table  width="100%" >
+                             <tr>
+                               <td colspan="2">
+                               {{'label.Device' | translate}} <strong>:</strong>{{client.hwSerialNumber}}
+                               </td>
+                             </tr>
                             <tr>
                               <td width="35%">{{'label.Address' | translate}}</td>
                               <td width="65%"> {{client.addressNo}}<strong>,</strong>{{client.street}}</td>
@@ -366,7 +372,7 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Sale" select="getOneTimeSale()" active="SaleTab">
+      <tab heading="Item Sale" select="getOneTimeSale()" active="SaleTab">
       
       <div class="pull-right">
 		

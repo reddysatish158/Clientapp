@@ -7,7 +7,7 @@
           resourceFactory.jobsResource.getJobHistory({jobId : routeParams.id, resourceType : 'runhistory', offset: offset, limit: limit} , callback);
         };
         scope.logFile = function (id){ 
-	         window.open('https://localhost:7070/obsplatform/api/v1/jobs/printlog/'+id+'?tenantIdentifier=default');
+	         window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/jobs/printlog/'+id+'?tenantIdentifier=default');
 	    };
         scope.jobhistory = paginatorService.paginate(fetchFunction, 14);
     }

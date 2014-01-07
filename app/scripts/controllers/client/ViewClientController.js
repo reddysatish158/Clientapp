@@ -89,36 +89,38 @@
                                         },
                                         
                                         {
-                                          name:"button.payments",
-                                          href:"#/payments",
-                                          icon :"icon-money"
+
+                                            name:"button.payments",
+                                            href:"#/payments",
+                                            icon :"icon-money"
+                                         },
+                                         {
+                                             name:"button.adjustments",
+                                             href:"#/adjustments",
+                                             icon :"icon-adjust"
+                                         },
+                                         {
+                                             name:"button.invoice",
+                                             href:"#/clientinvoice",
+                                             icon :"icon-play"
+                                          },
+                                          {
+                                             name:"button.statement",
+                                             href:"#/statement",
+                                             icon :"icon-file"
+                                         },                                                                              
+                                         {
+	                                        name:"button.edit",
+	                                        href:"#/editclient",
+	                                        icon :"icon-edit"
                                         },
                                         {
-                                          name:"button.adjustments",
-                                          href:"#/adjustments",
-                                          icon :"icon-adjust"
-                                        },
-                                        {
-                                          name:"button.invoice",
-                                          href:"#/clientinvoice",
-                                          icon :"icon-play"
-                                        },
-                                        {
-                                          name:"button.statement",
-                                          href:"#/statement",
-                                          icon :"icon-file"
-                                        },
-                                        {
-                                          name:"button.edit",
-                                          href:"#/editclient",
-                                          icon :"icon-edit"
-                                      }/*,
-                                      {
-                                          name:"button.refresh",
-                                          href:"#/viewclient",
-                                          icon :"icon-refresh"
-                                           
-                                          }*/]
+	                                          name:"button.refresh",	
+	                                          href:"#/viewclient",
+	                                          icon :"icon-edit"
+                                        }
+                                      ]
+
                     }
 
                     if (data.status.value == "Transfer in progress") {
@@ -196,6 +198,8 @@
                     controller: StatementPopController,
                     resolve:{}
                 });
+        	}else if(href=="#/viewclient"){
+        		route.reload();
         	}else{
         		location.path(url);
         	}

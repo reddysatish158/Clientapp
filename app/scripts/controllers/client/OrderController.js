@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter) {
+	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter,paginatorService) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -23,8 +23,11 @@
             scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+            scope.orderServicesData=data.orderServices;
+            scope.orderDiscountDatas=data.orderDiscountDatas;
           
         });
+       
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
             scope.association = data;
@@ -139,7 +142,7 @@
             };
         };
         
-          
+
           
           var OrderRenewalController = function($scope,$modalInstance){
         	  $scope.subscriptiondatas = [];
@@ -248,7 +251,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter',mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

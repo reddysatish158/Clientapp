@@ -66,6 +66,7 @@
   "label.phone":"Phone:",
   "label.email":"Email:",
   "label.name":"Name:",
+  "label.Device":"Device",
   "label.Address":"Address:",
   "label.province":"Province:",
   "label.country":"Country:",
@@ -1200,6 +1201,20 @@
   "table.order.actualdate":"Actual Date",
   "table.order.processorderid":"ProcessOrder Id",
   "table.order.transactiontype":"Transaction Type",
+  "table.order.id":"Id",
+  "table.order.discountcode":"Discount Code",
+  "table.order.discountdescription":"Discount Description",
+  "table.order.discountType":"Discount Type",
+  "table.order.discountAmount":"Discount Amount",
+  "table.order.servicecode":"Service Code",
+  "table.order.serviceDescription":"Service Description",
+  "table.order.serviceType":"Service Type",
+  "table.order.startDate":"Start Date",
+  "table.order.currentDate":"Current Date",
+  "table.order.provisioningSys":"Provisioning Sys",
+  "table.order.status":"Status",
+  "table.order.cancelledStatus":"Cancelled Status",
+  "table.order.contractPeriod":"Contract Period",
   "label.order.status":"Status",
   "label.order.useraction":"User Action",
   "label.disconnectorder":"Disconnect Order",
@@ -1207,6 +1222,7 @@
   "label.renewalorder":"Renewal Order",
   "label.order.renewalperiod":"Renewal Period",
   "label.order.description":"Description",
+  "label.button.more":"More",
   "label.order.disconnectionDate":"Disconnection Date",
   "validation.msg.order.paytermCode.cannot.be.blank":"Please Select Billing frequency",
   "label.osdmessage.message":"message",
@@ -2090,7 +2106,8 @@
 "dialog.item.title.message":"Delete Item",  
 "dialog.invoice.title.message":"Do Invoice",
 "dialog.invoice.title.job":"Job Parameters",
-"dialog.statement.title.message":"Prepare Statement",  
+"dialog.statement.title.message":"Prepare Statement",
+  
 
 "dialog.reconnect.title.message":"Reconnect",  
 
@@ -2122,13 +2139,26 @@
 "dialog.provisioning.title.message":"Provisioning Commands",
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
+
 "#userChat":".............",
 "label.heading.usernotification":"User Notification",
+"button.addmessage":"New Message",
 "label.user.name":"User Name",
 "label.systemdatetime":"System Datetime",
 "validation.msg.userchat.userName.cannot.be.blank":"User Name cannot be blank",
 "validation.msg.userchat.message.cannot.be.blank":"Message cannot be blank",
-"validation.msg.userchat.messageDate.cannot.be.blank":"System Date cannot be blank"
+"validation.msg.userchat.messageDate.cannot.be.blank":"System Date cannot be blank",
+
+"#PaymentGatewayCommands":"...",
+"label.managepaymentgateway":"Payment Gateway",
+"table.paymentgateway.id":"id",
+"table.paymentgateway.serialNo":"SerialNo",
+"table.paymentgateway.status":"Status",
+"table.paymentgateway.paymentId":"PaymentId",
+"table.paymentgateway.amountPaid":"Amount Paid",
+"table.paymentgateway.paymentDate":"Payment Date",
+"table.paymentgateway.receiptNo":"ReceiptNo"
+
 
    
 }
