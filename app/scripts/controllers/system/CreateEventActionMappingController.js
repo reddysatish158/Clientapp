@@ -14,7 +14,6 @@
         
                 
         scope.submit = function() {
-        	this.formData.process="workflow_events";
             resourceFactory.EventActionMappingResource.save(this.formData,function(data){
             location.path('/vieweventactionmapping/'+data.resourceId);
           });
