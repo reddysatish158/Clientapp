@@ -1,0 +1,51 @@
+<div  ng-controller="EditPaymentGatewayController">
+<div>
+    <ul class="breadcrumb">
+        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+        <li><a href="#/paymentGateway">{{'link.paymentgateway' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.editpaymentgateway' | translate}}</li>
+    </ul>
+</div>
+<form class="form-horizontal well" ng-submit="submit()">
+	 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+	<fieldset>
+		<legend>{{'label.editpaymentgateway' | translate}}</legend>
+		<table width="100%">
+		 
+		 <tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="status">{{ 'label.paymentgateway.status' | translate }}</label>
+						<div class="controls">
+							<select ng-model="formData.status"
+								ng-options="statusdata.code as statusdata.value for statusdata in statusData"
+								value="{{statusdata.code}}" >
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="remarks"> {{ 'label.paymentgateway.remarks' | translate }} </label>
+						<div class="controls">
+							<textarea ng-model="formData.remarks" style="width: 250px; height: 70px;"></textarea>
+						</div>
+					</div>
+				</td>
+			</tr>
+	
+		</table>
+		
+		<div class="offset3">
+			<a href="#/viewmessage/{{formData.id}}"><button type="reset" class="btn">Cancel</button></a>
+			<button type="submit" class="btn btn-primary">Save</button>
+		</div>
+	</fieldset>
+</form>
+</div>

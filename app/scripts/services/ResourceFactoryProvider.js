@@ -786,19 +786,21 @@
            provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),
-           paymentGatewayResource: defineResource(apiVer + "/paymentgateways", {}, {
-        	   get: {method: 'GET', params: {}, isArray: true}
-           }),
-	EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
+
+	       EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
                get: {method: 'GET', params: {}, isArray: true},
                getDetails: {method: 'GET', params: {}},
                update: { method: 'PUT'}
            }),
            EventActionMappingTemplateResource: defineResource(apiVer + "/eventactionmapping/template", {}, {
          	  get: {method: 'GET', params: {}}
-        })  
+           })  ,
+           paymentGatewayResource: defineResource(apiVer + "/paymentgateways/:id", {id: '@id'}, {
+     	   get: {method: 'GET', params: {}, isArray: true},
+     	   getData: {method: 'GET', params: {id:'@id'}},
+     	   update: { method: 'PUT' }
+           })  
                
-
         };
       }];
     }

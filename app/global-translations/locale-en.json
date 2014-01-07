@@ -2139,6 +2139,7 @@
 "dialog.provisioning.title.message":"Provisioning Commands",
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
+<<<<<<< HEAD
 
 
 "#userChat":".............",
@@ -2154,7 +2155,22 @@
 
 
 
+
+"#EventAction Mapping":"...",
+"table.eventactionmapping.event":"Event",
+"table.eventactionmapping.action":"Action",
+"table.eventactionmapping.process":"Process",
+"label.create.new.EventMapping":"Create EventAction Mapping",
+"label.edit.new.EventMapping":"Edit EventAction Mapping",
+"error.msg.event.name.already.configured":"Event Name Already configured with this Action",
+"label.searchorpress":"Click to focus or press alt+x",
+
+
 "#PaymentGatewayCommands":"...",
+"link.paymentgateway":"PaymentGateway",
+"label.managepaymentgateway":"Payment Gateway",
+"label.editpaymentgateway":"Edit PaymentGateway",
+"label.paymentgateway.remarks":"Remarks",
 "label.managepaymentgateway":"Payment Gateway",
 "table.paymentgateway.id":"id",
 "table.paymentgateway.serialNo":"SerialNo",
@@ -2163,14 +2179,10 @@
 "table.paymentgateway.amountPaid":"Amount Paid",
 "table.paymentgateway.paymentDate":"Payment Date",
 "table.paymentgateway.receiptNo":"ReceiptNo",
+"label.paymentgateway.status":"Status"
 
-"#EventAction Mapping":"...",
-"table.eventactionmapping.event":"Event",
-"table.eventactionmapping.action":"Action",
-"table.eventactionmapping.process":"Process",
-"label.create.new.EventMapping":"Create EventAction Mapping",
-"label.edit.new.EventMapping":"Edit EventAction Mapping",
-"error.msg.event.name.already.configured":"Event Name Already configured with this Action"
+
+
 
 
 
