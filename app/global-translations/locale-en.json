@@ -2139,9 +2139,6 @@
 "dialog.provisioning.title.message":"Provisioning Commands",
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
-<<<<<<< HEAD
-
-
 "#userChat":".............",
 "label.heading.usernotification":"User Notification",
 "button.addmessage":"New Message",
@@ -2153,9 +2150,6 @@
 
 "label.searchorpress":"Click to focus or press alt+x",
 
-
-
-
 "#EventAction Mapping":"...",
 "table.eventactionmapping.event":"Event",
 "table.eventactionmapping.action":"Action",
@@ -2164,7 +2158,6 @@
 "label.edit.new.EventMapping":"Edit EventAction Mapping",
 "error.msg.event.name.already.configured":"Event Name Already configured with this Action",
 "label.searchorpress":"Click to focus or press alt+x",
-
 
 "#PaymentGatewayCommands":"...",
 "link.paymentgateway":"PaymentGateway",
