@@ -21,7 +21,7 @@
 					<div class="control-group">
 						<label class="control-label" for="status">{{ 'label.paymentgateway.status' | translate }}</label>
 						<div class="controls">
-							<select ng-model="formData.status"
+							<select ng-model="formData.paymentdata"
 								ng-options="statusdata.code as statusdata.value for statusdata in statusData"
 								value="{{statusdata.code}}" >
 							</select>
