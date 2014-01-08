@@ -19,10 +19,6 @@
 		  };
 		 
         }
-        
-
-
-
         resourceFactory.paymentGatewayResource.get(function(data) {
         	 scope.paymentgatewaydatas=data; 
         });
