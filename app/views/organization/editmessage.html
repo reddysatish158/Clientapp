@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<td width="50%">
-						<div class="control-group" ng-show="formData.messageType !='M'">
+						<div class="control-group" ng-hide="formData.messageType !='E'">
 						<label class="control-label" for="header"> {{'label.message.header' | translate}} </label>
 						<div class="controls">
 							<input type="text" id="header" ng-model="formData.header">
@@ -65,18 +65,17 @@
 			<tr>
 				<td width="50%">
 					<div class="control-group">
-						<label class="control-label" for="body"> {{ 'label.message.body' | translate }} </label>
+						<label class="control-label" for="body">{{ 'label.message.body' | translate }}</label>
 						<div class="controls">
-							<input type="text" id="body" ng-model="formData.body">
+							 <textarea ng-model="formData.body"></textarea>
 						</div>
 					</div>
 				</td>
-			</tr>
-			
+			</tr>	
 			
 			<tr>
 				<td width="50%">
-						<div class="control-group" ng-show="formData.messageType !='M'">
+						<div class="control-group" ng-hide="formData.messageType !='E'">
 						<label class="control-label" for="footer"> {{ 'label.message.footer' | translate }} </label>
 						<div class="controls">
 							<input type="text" id="footer" ng-model="formData.footer">
