@@ -3,6 +3,26 @@
 	  PaymentGatewayController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
         scope.paymentgatewaydatas = [];
 
+      
+        var callingTab = webStorage.get('callingTab',null);
+        if(callingTab == null){
+        	callingTab="";
+        }else{
+		  scope.displayTab=callingTab.someString;
+		 
+		  if( scope.displayTab == "hardwarePlanMapping"){		 
+			  scope.hardwarePlanMappingTab =  true;
+			  webStorage.remove('callingTab');
+		  }else
+		  {
+			  webStorage.remove('callingTab');
+		  };
+		 
+        }
+        
+
+
+
         resourceFactory.paymentGatewayResource.get(function(data) {
         	 scope.paymentgatewaydatas=data; 
         });

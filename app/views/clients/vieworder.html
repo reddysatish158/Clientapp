@@ -41,10 +41,10 @@
    <div   class="row-fluid primarydiv"> 
 	       <span class="pull-right">
 	       <div class="btn-group">
-	         <a ng-show="orderData.status == 'ACTIVE'" href="#/editplan/{{plan.id}}" class="btn btn-primary"><i class="icon-wrench icon-white"></i> Update</a>
+	         
 	         <a ng-show="orderData.status == 'ACTIVE'" href="" ng-click="orderDisconnect(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-remove icon-white"></i> Disconnect</a>
 	         <a ng-show="orderData.status == 'DISCONNECTED'" ng-click="reconnect()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Reconnect</a>
-	         <a ng-show="orderData.contractPeriod != 'Perpectual' && orderData.status == 'ACTIVE' && orderData.isPrepaid == 'N'" href="" ng-click="orderRenew(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
+	         <a ng-show="orderData.contractPeriod != 'Perpetual' && orderData.status == 'ACTIVE' && orderData.isPrepaid == 'N'" href="" ng-click="orderRenew(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
 	         <a ng-show="orderData.isPrepaid == 'Y'"  href="" ng-click="orderRenew(orderPriceDatas[0].orderId)"class="btn btn-primary"><i class="icon-arrow-up icon-white"></i>TopUp</a>
 	        <!--  <a ng-show="orderData.status == 'ACTIVE'" ng-click="CommandCenter(orderPriceDatas[0].orderId)" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Command Center</a> -->
 	         <a ng-show="orderData.status == 'PENDING'" ng-click="cancel()" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a>
@@ -458,10 +458,16 @@
 
 </script>
 	<script type="text/ng-template" id="ApproveReconnect.html">
+
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.reconnect.title.message' | translate}}</h3>
                     </div>
                     <div class="modal-body modal-big">
+       <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
                        <h4>Are you sure?</h4>
                     </div>
                     <div class="modal-footer">

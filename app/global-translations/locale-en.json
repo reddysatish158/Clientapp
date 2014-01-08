@@ -66,6 +66,7 @@
   "label.phone":"Phone:",
   "label.email":"Email:",
   "label.name":"Name:",
+  "label.Device":"Device",
   "label.Address":"Address:",
   "label.province":"Province:",
   "label.country":"Country:",
@@ -154,9 +155,8 @@
   "button.reject.transfer":"Reject Transfer",
   "button.undo.transfer":"Undo Transfer",
   "button.eventorder":"Event Order",
-
+  "button.refresh":"Refresh",
   "table.heading.orderid":"Order Id",
-
   "label.eventprice":"Event Price",
 
   "#datatable":"",
@@ -513,7 +513,9 @@
   "link.admin.products" : "Products",
   "link.admin.configuration":"Configurations",
   "link.admin.mappingconfiguration":"Mapping Configurations",
+  "label.heading.userprofile":"User Profile",
   "link.profile" : "Profile",
+  "link.messanger":"Messanger",
   "link.settings" : "Settings",
   "link.logout" : "LogOut",
   
@@ -1178,6 +1180,7 @@
   "error.msg.document.file.too.big":"File is too big",
   "error.msg.file.duplicate.name":"File is already exist with this name",
   "validation.msg.UploadStatus.description.cannot.be.blank":"Description Cannot be blank",
+  "validation.msg.UploadStatus.fileName.cannot.be.blank":"File name Cannot be blank",
   
   "#Order":".....",
   "label.createorder":"Create New Order",
@@ -2103,7 +2106,8 @@
 "dialog.item.title.message":"Delete Item",  
 "dialog.invoice.title.message":"Do Invoice",
 "dialog.invoice.title.job":"Job Parameters",
-"dialog.statement.title.message":"Prepare Statement",  
+"dialog.statement.title.message":"Prepare Statement",
+  
 
 "dialog.reconnect.title.message":"Reconnect",  
 
@@ -2135,6 +2139,23 @@
 "dialog.provisioning.title.message":"Provisioning Commands",
 "validation.msg.onetimesale.unitPrice.not.greater.than.zero":"Quantity must be greater than zero",
 
+<<<<<<< HEAD
+
+
+"#userChat":".............",
+"label.heading.usernotification":"User Notification",
+"button.addmessage":"New Message",
+"label.user.name":"User Name",
+"label.systemdatetime":"System Datetime",
+"validation.msg.userchat.userName.cannot.be.blank":"User Name cannot be blank",
+"validation.msg.userchat.message.cannot.be.blank":"Message cannot be blank",
+"validation.msg.userchat.messageDate.cannot.be.blank":"System Date cannot be blank",
+
+"label.searchorpress":"Click to focus or press alt+x",
+
+
+
+
 "#EventAction Mapping":"...",
 "table.eventactionmapping.event":"Event",
 "table.eventactionmapping.action":"Action",
@@ -2143,6 +2164,7 @@
 "label.edit.new.EventMapping":"Edit EventAction Mapping",
 "error.msg.event.name.already.configured":"Event Name Already configured with this Action",
 "label.searchorpress":"Click to focus or press alt+x",
+
 
 "#PaymentGatewayCommands":"...",
 "link.paymentgateway":"PaymentGateway",
@@ -2160,6 +2182,7 @@
 "label.paymentgateway.status":"Status",
 "validation.msg.paymentgateway.remarks.cannot.be.blank":"Remarks cannot be blank",
 "validation.msg.paymentgateway.status.cannot.be.blank":"Please select Status"
+
 
 
 

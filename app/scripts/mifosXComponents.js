@@ -20,6 +20,7 @@ define(['underscore', 'mifosX'], function() {
       'main/SearchController',
       'main/NavigationController',
       'main/ProfileController',
+      'main/MessangerController',
       'prospects/ProspectsController',
       'prospects/ViewProspectsController',
       'prospects/CreateProspectsController',

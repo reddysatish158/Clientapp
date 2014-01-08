@@ -30,7 +30,7 @@
 			<li class="active">{{'label.payments' | translate}}</li>
 		</ul>
 	</div>
-      <form class="form-horizontal well" ng-submit="submit()">
+      <form name="paymentForm" class="form-horizontal well" ng-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -81,9 +81,14 @@
 							<tr>
 							<td>
 								<div class="control-group">
-           					 	<label class="control-label" for="receiptNo">{{ 'label.receiptno' | translate }}</label>
+           					 	<label class="control-label" for="receiptNo">{{ 'label.receiptno' | translate }}<span class="required">*</span></label>
             					<div class="controls">
-             					 <input type="text" id="receiptNo" ng-model="formData.receiptNo">
+             					 <input type="text" id="receiptNo" name="receiptno" ng-model="formData.receiptNo"  late-Validate>
+             					  <span  ng-show="paymentForm.receiptno.$invalid">
+                                  <small class="error" ng-show="paymentForm.receiptno.$error.req">
+                                    Required Field
+                                  </small>
+                                 </span>
            						</div>
          						</div>
 							</td>

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  PaymentsClientController: function(scope,webStorage, resourceFactory, routeParams, location,dateFilter) {
+	  PaymentsClientController: function(scope,webStorage, resourceFactory, routeParams, location,dateFilter,validator) {
 
         scope.formData = {};
         scope.clientId = routeParams.id;
@@ -37,7 +37,7 @@
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
           this.formData.paymentDate= paymentDate;
-         
+          var res1 = validator.validateZipCode(scope.formData.receiptNo);
           resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
             location.path('/viewclient/'+routeParams.id);
           });
@@ -45,7 +45,7 @@
 
     }
   });
-  mifosX.ng.application.controller('PaymentsClientController', ['$scope','webStorage', 'ResourceFactory', '$routeParams', '$location','dateFilter', mifosX.controllers.PaymentsClientController]).run(function($log) {
+  mifosX.ng.application.controller('PaymentsClientController', ['$scope','webStorage', 'ResourceFactory', '$routeParams', '$location','dateFilter','HTValidationService', mifosX.controllers.PaymentsClientController]).run(function($log) {
     $log.info("PaymentsClientController initialized");
   });
 }(mifosX.controllers || {}));

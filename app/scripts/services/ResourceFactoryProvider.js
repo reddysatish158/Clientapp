@@ -296,6 +296,16 @@
                     getAllPrices: {method: 'GET', params: {}, isArray: true},
                     update: { method: 'PUT' }
            }),
+           userChatResource: defineResource(apiVer + "/userchats", {}, {
+               get: {method: 'GET', params: {}, isArray: false},
+               update: { method: 'PUT' }
+           }),
+           
+           userSentMessageResource: defineResource(apiVer + "/userchats/sentmessages/", {}, {
+               get: {method: 'GET', params: {}, isArray: false},
+               update: { method: 'PUT' }
+           }),
+
            itemResourceTemplate: defineResource(apiVer + "/ownedhardware/template", {}, {
                getAll: {method: 'GET', params: {}}
               }),
