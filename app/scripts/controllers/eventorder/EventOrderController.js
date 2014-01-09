@@ -25,7 +25,7 @@
         	scope.clientTypes = data.clientType;
         });
 
-        
+       /* 
         scope.getEventPrice = function(){
         	resourceFactory.eventOrderPriceTemplateResource.getEventPrice({clientId : routeParams.id,ftype: scope.formData.formatType,otype: scope.formData.optType,eventId: scope.formData.eventId},function(data){
         		scope.price = data.eventPrice;
@@ -33,9 +33,9 @@
         	},function(errorData){
         		scope.showPrice = false;
         	});
-        };
+        };*/
         
-        scope.updatePrice = function(){
+       /* scope.updatePrice = function(){
         	var fD = {};
         	fD.clientId = routeParams.id;
         	fD.price = scope.price;
@@ -45,7 +45,7 @@
         	resourceFactory.eventOrderPriceUpdateTemplateResource.update(fD,function(data){
             	scope.price = data.resourceIdentifier;
             });
-        };
+        };*/
         
         scope.submit = function() {
           this.formData.locale = "en";

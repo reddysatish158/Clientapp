@@ -1399,6 +1399,7 @@
   "validation.msg.payment.paymentCode.cannot.be.blank":"Please Select Payment Type",
   "validation.msg.adjustment.adjustment_code.cannot.be.blan":"Adjustment Code cannot be blank",
   "validation.msg.adjustment.adjustment_type.cannot.be.blank":"Adjustment Type cannot be blank",
+  "error.msg.payments.duplicate.receiptNo":"Receipt is Already exist with this number",
   
    "#service ":"....",
   "label.manageservices":"Manage Services",

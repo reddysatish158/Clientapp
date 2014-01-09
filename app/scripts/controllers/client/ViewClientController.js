@@ -9,11 +9,10 @@
          scope.staffData = {};
          scope.orders = [];
          scope.formData = {};
- 		scope.start = {};
+ 		 scope.start = {};
          scope.start.date = new Date();
         
-         
-         var callingTab = webStorage.get('callingTab',null);
+            var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
          }else{
@@ -38,6 +37,12 @@
  		  }
  		  else if(scope.displayTab == "Sale"){
  			  scope.SaleTab =  true;
+ 			  scope.eventsaleC="active";
+ 			  scope.eventorderC="";
+ 			 resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
+                 scope.onetimesales = data.oneTimeSaleData;
+                 scope.eventOrders = data.eventOrdersData;
+               });
  			  webStorage.remove('callingTab');
  		  }else if(scope.displayTab == "Statements"){
  			  scope.StatementsTab =  true;
@@ -394,10 +399,20 @@
    	            scope.clientId= routeParams.id;	  
    	        });
          };
-
+         scope.eventsaleTab = function(){
+        	 scope.eventsaleC="active";
+        	 scope.eventorderC="";
+         }
+         scope.eventorderCTab = function(){
+        	 scope.eventsaleC="";
+        	 scope.eventorderC="active";
+         }
                scope.getOneTimeSale = function () {
+            	   scope.eventsaleC="active";
+                	 scope.eventorderC="";
                    resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
                      scope.onetimesales = data.oneTimeSaleData;
+                     scope.eventOrders = data.eventOrdersData;
                    });
                  };
         scope.dataTableChange = function(clientdatatable) {

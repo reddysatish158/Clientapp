@@ -48,7 +48,7 @@
               <div class="control-group">
                 <label class="control-label">{{ 'label.office' | translate }}<span class="required">*</span></label>
                 <div class="controls">
-                  <select ng-model="officeId"  ng-options="office.id as office.name for office in offices" value="{{office.id}}" disabled="disabled">
+                  <select ng-model="officeId"  ng-options="office.id as office.name for office in offices" value="{{office.id}}">
                 </select>
                 </div>
               </div>
@@ -119,6 +119,16 @@
                   <label class="control-label">{{ 'label.phone' | translate }}</label>
                   <div class="controls">
                     <input type="text" ng-model="formData.phone">
+                  </div>
+                </div>
+              </td>
+            </tr>
+             <tr>
+              <td>
+                <div class="control-group">
+                  <label class="control-label">{{ 'label.homephone' | translate }}</label>
+                  <div class="controls">
+                    <input type="text" ng-model="formData.homePhoneNumber">
                   </div>
                 </div>
               </td>
