@@ -209,18 +209,18 @@
         <table class="table">
             <thead>
               <tr class="graybg">
-                <th>{{'table.supplier.id' | translate}}</th>
-                <th>{{'table.supplier.supplierCode' | translate}}</th>
-                <th>{{'table.supplier.supplierDescription' | translate}}</th>
-                <th>{{'table.supplier.supplierAddress' | translate}}</th>
+                <th style="text-align: center">{{'table.supplier.id' | translate}}</th>
+                <th style="text-align: center">{{'table.supplier.supplierCode' | translate}}</th>
+                <th style="text-align: center">{{'table.supplier.supplierDescription' | translate}}</th>
+                <th style="text-align: center">{{'table.supplier.supplierAddress' | translate}}</th>
               </tr>
             </thead>
             <tbody>
              <tr ng-repeat="su in supplier.currentPageItems  | filter:filterText">
-                <td>{{su.id}}</td>
-                <td>{{su.supplierCode}}</td>
-                <td>{{su.supplierDescription}}</td>
-                <td>{{su.supplierAddress}}</td>
+                <td style="text-align: center">{{su.id}}</td>
+                <td style="text-align: center">{{su.supplierCode}}</td>
+                <td style="text-align: center">{{su.supplierDescription}}</td>
+                <td style="text-align: center">{{su.supplierAddress}}</td>
    			</tr>
      		 </tbody>
           </table>

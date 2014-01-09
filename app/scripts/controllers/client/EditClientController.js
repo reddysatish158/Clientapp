@@ -26,7 +26,8 @@
               accountNo : data.accountNo, 
               staffId : data.staffId,
               email:data.email,
-              phone:data.phone
+              phone:data.phone,
+              homePhoneNumber:data.homePhoneNumber
             };
             var actDate = dateFilter(data.activationDate,'dd MMMM yyyy');
             scope.date.activationDate = new Date(actDate);
@@ -41,6 +42,8 @@
         };
         
         scope.submit = function() {
+	     this.formData.officeId=scope.officeId;
+             this.formData.clientCategory=scope.clientCategory;
              this.formData.locale = 'en';
              this.formData.dateFormat = 'dd MMMM yyyy';
              if(scope.date.activationDate){this.formData.activationDate = dateFilter(scope.date.activationDate,'dd MMMM yyyy');}
