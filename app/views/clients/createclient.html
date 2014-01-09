@@ -71,9 +71,15 @@
             </div>
             
             <div class="control-group">
-            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}</label>
+            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}<span class="required">*</span></label>
             		<div class="controls">
-              			<input type="text" id="homePhoneNumber" ng-model="formData.homePhoneNumber" >
+              			<input type="text" name="homePhone" id="homePhoneNumber" ng-model="formData.homePhoneNumber" required  late-Validate>
+              			<span  ng-show="createclientform.homePhone.$invalid">
+                    <small class="error" ng-show="createclientform.homePhone.$error.req">
+                        Required Field
+                    </small>
+                    
+                </span>
             		</div>
           	</div>
             
