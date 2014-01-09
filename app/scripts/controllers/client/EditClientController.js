@@ -26,7 +26,8 @@
               accountNo : data.accountNo, 
               staffId : data.staffId,
               email:data.email,
-              phone:data.phone
+              phone:data.phone,
+              homePhoneNumber:data.homePhoneNumber
             };
             var actDate = dateFilter(data.activationDate,'dd MMMM yyyy');
             scope.date.activationDate = new Date(actDate);
