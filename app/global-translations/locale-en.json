@@ -2176,6 +2176,8 @@
 "label.paymentgateway.status":"Status",
 "validation.msg.paymentgateway.remarks.cannot.be.blank":"Remarks cannot be blank",
 "validation.msg.paymentgateway.status.cannot.be.blank":"Please select Status",
-"validation.msg.message.body.exceeds.max.length":"message length not exceeds 160 characters"
+"validation.msg.message.body.exceeds.max.length":"message length not exceeds 160 characters",
+"validation.msg.client.homePhoneNumber.exceeds.max.length" : "Home Phone Number exceeds maximum length",
+"invalid.serial.no" : "Invalid Serial Number"
 
 }
