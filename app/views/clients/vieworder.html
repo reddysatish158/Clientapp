@@ -210,8 +210,8 @@
 	<div class="row-fluid " >
    <div id="msg"></div> 
     <div class="pull-right">
-		         <a ng-show ="orderData.status != 'DISCONNECTED'"  href="#/association/{{clientId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a>
-		         <a ng-show ="orderData.status == 'DISCONNECTED'" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> De Associate</a>
+		         <a ng-show ="orderData.status == 'DISCONNECTED' && association.orderId == null"  href="#/association/{{clientId}}/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a>
+		         <a ng-show ="orderData.status == 'DISCONNECTED' && association.orderId != null" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> De Associate</a>
 		        <a ng-show  ="flag == true" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Hardware Swap</a>
 	        </div>
 	<table class="table">

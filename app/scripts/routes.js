@@ -836,7 +836,7 @@
       .when('/edithardwareplanmapping/:id', {
           templateUrl : 'views/system/edithardwareplanmapping.html'
         })
-        .when('/association/:id', {
+        .when('/association/:id/:orderId', {
           templateUrl : 'views/clients/association.html'
         })
          .when('/viewAssociation/:clientId/:id', {

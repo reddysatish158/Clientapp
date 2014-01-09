@@ -991,7 +991,7 @@ nav:hover:after{
 .highlight-row:hover{
     background-color: deepskyblue;
 }
-<<<<<<< HEAD
+
 .span3 {
   width: 220px;
 }
@@ -1034,11 +1034,11 @@ input#search:-ms-input-placeholder {
 input.span3,
 textarea.span3,
 .uneditable-input.span3 {
-  width: 185px;
-=======
+  width: 150px;
+
 
 .table-bold-ord {
     background-color: #F5F5F5;
     width: 180px !important;
->>>>>>> upstream/master
+
 }

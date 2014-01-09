@@ -131,9 +131,9 @@
 	                                        icon :"icon-edit"
                                         },
                                         {
-	                                          name:"button.refresh",	
+	                                          name:"",	
 	                                          href:"#/viewclient",
-	                                          icon :"icon-edit"
+	                                          icon :"icon-refresh"
                                         }
                                       ]
 
@@ -173,11 +173,8 @@
                       scope.orders = data.clientOrders;
                   });
                 });
-        	
         };
-        
         getDetails();
-        
         var Approve = function($scope,$modalInstance){
 			$scope.accept = function(date){
 			        	scope.formData.locale = 'en';
@@ -189,16 +186,38 @@
 			            	getDetails();
 			          },function(errData){
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
-			        	  
-			        	  
 			          });
-			        
 			};
 			$scope.reject = function(){
 				$modalInstance.dismiss('cancel');
 			};
 		};
-        
+		
+		  var CancelPayment = function($scope,$modalInstance,getPaymentId){
+				$scope.accept = function(cancelRemark){
+					var paymentId=getPaymentId;
+					scope.formData.cancelRemark=cancelRemark;
+				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
+				            	$modalInstance.close('delete');
+				            	getDetails();
+				          });
+				};
+				$scope.reject = function(){
+					$modalInstance.dismiss('cancel');
+				};
+			};
+			
+        scope.cancelPayment=function(id){
+        	$modal.open({
+                templateUrl: 'cancelpayment.html',
+                controller: CancelPayment,
+                resolve:{
+                	 getPaymentId:function(){
+                 		return id;
+                 	  }
+                }
+            });
+        }
 		scope.getMe = function(href,cId,subHref){
         	var url = href.replace("#","")+"/"+cId+""+(subHref==undefined?"":"/"+subHref);
         	console.log(url);

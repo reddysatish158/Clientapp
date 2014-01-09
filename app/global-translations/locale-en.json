@@ -1678,6 +1678,9 @@
    "table.heading.taxamount":"Tax Amount",
    "table.heading.discountamount":"Discount Amount",
    "table.heading.netchargeamount":"NetCharge Amount",
+   "label.remark":"Remarks",
+   "dialog.cancelpayment.title.message":"Cancel Payment",
+   "label.cancelremark":"Remarks",
   
    "#OnetimeSale":"......",
    "table.heading.saledate":"Sale Date",

@@ -67,11 +67,8 @@
               }
             }
           }
-
           for(var i in jobIdArray) {
-        	 
         	           if(jobNameArray[i] == jobIdArray[i]){
-        	        	   
         	            		  jobidd=scope.jobs[j].jobId;
         	            		  $modal.open(
         	                			  {
@@ -85,18 +82,10 @@
         	                      });
         	            		 
         	           }else{
-        	    
         	    	resourceFactory.jobsResource.save({jobId: jobIdArray[i], command : 'executeJob'}, {}, function(data){
-        	    
             });
         	           }
-        	    
-        	    
           }
-      
-    	 
-    	  
-      
       }
 
       scope.suspendJobs = function() {

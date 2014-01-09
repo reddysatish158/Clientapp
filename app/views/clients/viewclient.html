@@ -422,6 +422,7 @@
                 <th>Transaction Type</th>
                 <th>Credit Amount</th>
                 <th>Debit Amount</th>
+                 <th></th>
             </tr>
         </thead>
         <tbody>
@@ -443,7 +444,7 @@
                  {{financialtransaction.amount}}
               </td>
            </tr>
-           <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'"> 
+           <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='CANCEL PAYMENT'"> 
                <td>
                   <any>{{financialtransaction.transactionId}}</any>
               </td>
@@ -458,6 +459,9 @@
               </td>
               <td>
                   <any>{{financialtransaction.amount}}</any>
+              </td>
+              <td>
+                <a ng-hide="financialtransaction.transactionType =='CANCEL PAYMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
               </td>
             </tr>
             
@@ -539,11 +543,11 @@
         <tbody>
             <tr class="pointer-main" ng-repeat="statement in states  | filter:filterText">                 
                 <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.id}}</td>
-                <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
+                 <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
                    <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.dueDate | DateFormat}}</td>
                       <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount}}</td>
-                      <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
-<td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
+                        <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
+                          <td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
                 ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
@@ -758,7 +762,7 @@
                     		</div>
 						</div> 
                 		<div class="control-group">
-                  			<label class="control-label">{{ 'label.Promotionalmessage' | translate }}</label>
+                  			<label class="control-label">{{ 'label.remark' | translate }}</label>
                   			<div class="controls">
                   				<textarea  ng-model="formData.message" style="width: 333px; height: 126px;"></textarea>
                   			</div>
@@ -767,6 +771,29 @@
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
                         <button class="btn btn-primary" ng-click="acceptStatement()">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+            <script type="text/ng-template" id="cancelpayment.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.cancelpayment.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big" style="height:270px;">
+                       	<div class="control-group">
+							<div class="controls">
+						 	 <label class="control-label" style="color:red;" ng-show="error.length>0">{{error | translate}}</label>
+							</div>	
+						</div>
+						<div class="control-group">
+							<label class="control-label">{{ 'label.cancelremark' | translate }}</label>
+							<div class="controls">
+						 		<input type="text" ng-model="formData.cancelRemark" required late-Validate style="background-color:#FFFFFF;"/> 
+							</div>	
+						</div>
+						
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="accept(formData.cancelRemark)">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
 </div>

@@ -16,18 +16,7 @@
 	<fieldset>
 		<legend>{{'label.createassociation' | translate}}</legend>
 		<table width="100%">
-			<tr>
-				<td width="50%">
-					<div class="control-group">
-						<label class="control-label" for="status"> {{'label.association.plancode' | translate}} </label>
-						<div class="controls">
-							<select ng-model="formData.planId" ng-change="orderId(formData.planId)"
-								ng-options="planData.planId as planData.planCode for planData in planData" 
-								value="{{planData.planCode}}"></select>
-						</div>
-					</div>
-				
-			</tr>
+	
 			<tr>
 				<td width="50%">
 					<div class="control-group">

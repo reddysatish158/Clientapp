@@ -490,10 +490,14 @@
                     get: {method: 'GET', params: {}, isArray: true},
                     update: { method: 'PUT'}
                 }),
-            clientInvoiceResource: defineResource(apiVer + "/billingorder/:clientId", {clientId:'@clientId'}, {
+                clientInvoiceResource: defineResource(apiVer + "/billingorder/:clientId", {clientId:'@clientId'}, {
                     get: {method: 'GET', params: {}},
                     update: { method: 'PUT'}
                 }),
+                cancelPaymentResource: defineResource(apiVer + "/payments/cancelpayment/:paymentId", {paymentId:'@paymentId'}, {
+                    get: {method: 'GET', params: {}},
+                    update: { method: 'PUT'}
+                }),  
                 messageTemplateResource: defineResource(apiVer + "/messages/template",{},  {
               	  getTemplate: {method: 'GET', params: {}}
                 }),
