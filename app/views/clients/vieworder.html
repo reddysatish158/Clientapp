@@ -488,7 +488,7 @@
 		                 <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	                     </div>
                         <div class="control-group">
-                            <label class="control-label" for="status">{{ 'label.order.renewalperiod' | translate }}</label>
+                            <label class="control-label" for="status">{{ 'label.provisioning.commandname' | translate }}</label>
                             <div class="controls">
                              <select ng-model="formData.commandname" ng-change="commandName(formData.commandname)" ng-options="commanddata.commandName for commanddata in commandData" value="{{commanddata.commandName}}"></select>
                             </div>

@@ -13,60 +13,67 @@
       <tab heading="Payment Gateway" select="getPaymentGateway()">
         <div class="row-fluid">
                    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
-        <table class="table">
+         <table class="table">
             <thead>
               <tr class="graybg">
-                <th>{{'table.paymentgateway.id' | translate}}</th>      
+                <th>{{'table.paymentgateway.id' | translate}}</th>    
+                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>  
                 <th>{{'table.paymentgateway.serialNo' | translate}}</th>
-                <th>{{'table.paymentgateway.status' | translate}}</th>
-                <th>{{'table.paymentgateway.paymentId' | translate}}</th>
                 <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
-                <th>{{'table.paymentgateway.paymentDate' | translate}}</th>
-                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>
-              </tr>
-            </thead>
-            <tbody>
-             <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas  | filter:filterText" ng-show="paymentgatewaydata.status=='Success'">
+                <th>{{'table.paymentgateway.phoneno' | translate}}</th>
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>
+                <th>{{'table.paymentgateway.status' | translate}}</th>
+                           
+               
                 
-                <td>{{paymentgatewaydata.id}}</td>
-                <td>{{paymentgatewaydata.serialNo}}</td>
-                <td>{{paymentgatewaydata.status}}</td>
-                <td>{{paymentgatewaydata.paymentId}}</td>
-                <td>{{paymentgatewaydata.amountPaid}}</td>
-                <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
-                <td>{{paymentgatewaydata.receiptNo}}</td>       
-   			</tr>
-     		 </tbody>
-          </table>
-         </div>
-      </tab>	
-      
-      <tab heading="Hardware Mapping" active="hardwarePlanMappingTab">
-       <div class="row-fluid">
-                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
-        <table class="table">
-            <thead>
-              <tr class="graybg">
-                <th>{{'table.paymentgateway.id' | translate}}</th>      
-                <th>{{'table.paymentgateway.serialNo' | translate}}</th>
-                <th>{{'table.paymentgateway.status' | translate}}</th>
-                <th>{{'table.paymentgateway.paymentId' | translate}}</th>
-                <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
-                <th>{{'table.paymentgateway.paymentDate' | translate}}</th>
-                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>
               </tr>
             </thead>
             <tbody>
              <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas  | filter:filterText" ng-show="paymentgatewaydata.status=='Failure'">
                 
                 <td>{{paymentgatewaydata.id}}</td>
+                <td>{{paymentgatewaydata.receiptNo}}</td> 
                 <td>{{paymentgatewaydata.serialNo}}</td>
-                <td>{{paymentgatewaydata.status}}</td>
-                <td>{{paymentgatewaydata.paymentId}}</td>
                 <td>{{paymentgatewaydata.amountPaid}}</td>
-                <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>    
-                <td>{{paymentgatewaydata.receiptNo}}</td>            
+                <td>{{paymentgatewaydata.phoneNo}}</td>
+                <td>{{paymentgatewaydata.remarks}}</td>
+                <td>{{paymentgatewaydata.status}}</td>                                     
                 <td><a href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a></td>       
+   			</tr>
+     		 </tbody>
+          </table>
+         </div>
+      </tab>	
+      
+      <tab heading="Hardware Mapping" active="ProvisioningTab">
+       <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+       <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.paymentgateway.id' | translate}}</th> 
+                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>     
+                <th>{{'table.paymentgateway.serialNo' | translate}}</th>
+                <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
+                <th>{{'table.paymentgateway.phoneno' | translate}}</th>
+                <th>{{'table.paymentgateway.status' | translate}}</th>
+                <th>{{'table.paymentgateway.paymentId' | translate}}</th>        
+                <th>{{'table.paymentgateway.paymentDate' | translate}}</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+             <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas  | filter:filterText" ng-show="paymentgatewaydata.status=='Success'">
+                
+                <td>{{paymentgatewaydata.id}}</td>
+                 <td>{{paymentgatewaydata.receiptNo}}</td>       
+                <td>{{paymentgatewaydata.serialNo}}</td>
+                <td>{{paymentgatewaydata.amountPaid}}</td>
+                <td>{{paymentgatewaydata.phoneNo}}</td>
+                <td>{{paymentgatewaydata.status}}</td>
+                <td>{{paymentgatewaydata.paymentId}}</td>              
+                <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
+               
    			</tr>
      		 </tbody>
           </table>

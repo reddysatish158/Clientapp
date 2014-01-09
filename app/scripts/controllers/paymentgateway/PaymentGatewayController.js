@@ -1,16 +1,16 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
 	  PaymentGatewayController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
+		  
         scope.paymentgatewaydatas = [];
 
-      
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
         	callingTab="";
         }else{
 		  scope.displayTab=callingTab.someString;
 		 
-		  if( scope.displayTab == "hardwarePlanMapping"){		 
+		  if( scope.displayTab == "ProvisioningTab"){		 
 			  scope.hardwarePlanMappingTab =  true;
 			  webStorage.remove('callingTab');
 		  }else
