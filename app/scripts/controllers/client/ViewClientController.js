@@ -39,14 +39,15 @@
  			  scope.SaleTab =  true;
  			  scope.eventsaleC="active";
  			  scope.eventorderC="";
- 			 resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
-                 scope.onetimesales = data.oneTimeSaleData;
-                 scope.eventOrders = data.eventOrdersData;
-               });
  			  webStorage.remove('callingTab');
  		  }else if(scope.displayTab == "Statements"){
  			  scope.StatementsTab =  true;
  			  webStorage.remove('callingTab');
+ 		  }else if(scope.displayTab == "eventOrders"){
+ 			scope.SaleTab = true;
+ 			scope.eventsaleC="";
+ 			scope.eventorderC="active";
+ 			webStorage.remove('callingTab');
  		  }else
  		  {
  			  webStorage.remove('callingTab');
@@ -98,7 +99,10 @@
                                           href:"#/neworder",
                                           icon :"icon-plus-sign"
                                         },
-                                     /*   {
+
+
+                                        /*{
+
                                       	  name:"button.eventorder",
                                       	  href:"#/eventorder",
                                       	  icon:"icon-barcode"
@@ -409,7 +413,11 @@
          }
                scope.getOneTimeSale = function () {
             	   scope.eventsaleC="active";
-                	 scope.eventorderC="";
+            	   scope.eventorderC="";
+            	   if(scope.displayTab == "eventOrders"){
+            		   scope.eventsaleC="";
+                	   scope.eventorderC="active";
+            	   }
                    resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
                      scope.onetimesales = data.oneTimeSaleData;
                      scope.eventOrders = data.eventOrdersData;

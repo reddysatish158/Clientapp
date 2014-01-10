@@ -167,17 +167,20 @@
                 scope.offices = data.officeOptions;
             });
 
-            resourceFactory.runReportsResource.get({reportSource: 'Demand_Vs_Collection',R_officeId:1, genericResultSet:false} , function(data) {
-                scope.collectionPieData = data[0];
-                scope.showCollectionerror = false;
-                if(data[0].AmountPaid == 0 && data[0].AmountDue == 0){
+            resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:1, genericResultSet:false} , function(data) {
+            	
+            	scope.collectionPieData = data;
+            	scope.showCollectionerror = false;
+            	if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0){
                     scope.showCollectionerror = true;
                 }
-                scope.collectedData = [
-                    {key:"Collected", y:scope.collectionPieData.AmountPaid},
-                    {key:"Pending", y:scope.collectionPieData.AmountDue}
-                ];
+            	scope.collectedData = [
+            	                       {key:"Cash", y:scope.collectionPieData[0].Collection},
+            	                       {key:"M-pesa", y:scope.collectionPieData[1].Collection},
+            	                       {key:"Online Payment", y:scope.collectionPieData[2].Collection}
+            	                   ];
             });
+            
             resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:1, genericResultSet:false} , function(data) {
                 scope.disbursedPieData = data[0];
                 scope.showDisbursementerror = false;
@@ -320,17 +323,19 @@
                         scope.cOfficeName = scope.offices[i].name;
                     }
                 }
-                resourceFactory.runReportsResource.get({reportSource: 'Demand_Vs_Collection',R_officeId:this.officeIdCollection, genericResultSet:false} , function(data) {
-                    scope.showCollectionerror = false;
-                    scope.collectionPieData = data[0];
-                    if(data[0].AmountPaid == 0 && data[0].AmountDue == 0){
+                resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:this.officeIdCollection, genericResultSet:false} , function(data) {
+                    
+                	scope.showCollectionerror = false;
+                	scope.collectionPieData = data;
+                	if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0){
                         scope.showCollectionerror = true;
                     }
-                    scope.collectedData = [
-                    {key:"Collected", y:scope.collectionPieData.AmountPaid},
-                    {key:"Pending", y:scope.collectionPieData.AmountDue}
-                    ];
-
+                	scope.collectedData = [
+                                           {key:"Cash", y:scope.collectionPieData[0].Collection},
+                	                       {key:"M-pesa", y:scope.collectionPieData[1].Collection},
+                	                       {key:"Online Payment", y:scope.collectionPieData[2].Collection}
+                	                   ];
+                
                 });
 
             };
@@ -366,7 +371,7 @@
                 };
             };
             var colorArray = ['#0f82f5', '#008000', '#808080', '#000000', '#FFE6E6'];
-            var colorArrayPie =['#008000','#ff4500'];
+            var colorArrayPie =['#008000','#ff4500','#0f82f5'];
             scope.colorFunction = function() {
                 return function(d, i) {
                     return colorArray[i];

@@ -374,8 +374,8 @@
       <hr>
  		<div class="tabbable">
   			<ul class="nav nav-tabs">
-				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Event Sale</a></li>
-    				<li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Order</a></li>
+				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Item Sale</a></li>
+    				<li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li>
 			    </ul>
 			<div class="tab-content">
   
@@ -421,7 +421,9 @@
 			    
 			    <div id="pane2" class="tab-pane" ng-class="{active: eventorderC}">
 			    <div class="pull-right">
-					<a href="#/eventorder/{{client.id}}" class="btn btn-primary"><i class="icon-barcode icon-white"></i> Add Event Order</a>
+
+					<a href="#/eventorder/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Event Order</a>
+
 				</div>
 			    	<div>
 					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
@@ -429,11 +431,11 @@
 						<thead>
 							<tr class="graybg">
 							 	<th>{{'table.heading.id' | translate}}</th>
-								<th>{{'table.heading.saledate' | translate}}</th>
-								<th>{{'table.heading.itemcode' | translate}}</th>
+								<th>{{'table.heading.eventName' | translate}}</th>
+								<th>{{'table.heading.bookedDate' | translate}}</th>
 								<th>{{'table.heading.chargecode' | translate}}</th>
-								<th>{{'table.heading.quantity' | translate}}</th>
-								<th>{{'table.heading.totalprice' | translate}}</th>
+								<th>{{'table.heading.eventPrice' | translate}}</th>
+								<th>{{'table.heading.status' | translate}}</th>
 								
 							</tr>
 						</thead>

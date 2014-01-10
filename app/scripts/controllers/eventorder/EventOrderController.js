@@ -46,6 +46,9 @@
             	scope.price = data.resourceIdentifier;
             });
         };*/
+        scope.reset123 = function(){
+        	  webStorage.add("callingTab", {someString: "eventOrders" });
+        }
         
         scope.submit = function() {
           this.formData.locale = "en";
