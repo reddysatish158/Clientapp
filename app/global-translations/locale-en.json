@@ -2179,6 +2179,9 @@
 "validation.msg.message.body.exceeds.max.length":"message length not exceeds 160 characters",
 "label.provisioning.commandname":"Command",
 "table.paymentgateway.phoneno":"Phone MSISDN",
-"table.paymentgateway.remarks":"Remarks"
+"table.paymentgateway.remarks":"Remarks",
+"validation.msg.client.homePhoneNumber.exceeds.max.length" : "Home Phone Number exceeds maximum length",
+"invalid.serial.no" : "Invalid Serial Number"
+
 
 }
