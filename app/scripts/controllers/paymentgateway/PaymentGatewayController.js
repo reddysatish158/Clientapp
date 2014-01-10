@@ -20,10 +20,10 @@
 		 
         }
 
-        resourceFactory.paymentGatewayResource.get(function(data) {
+   /*     resourceFactory.paymentGatewayResource.get(function(data) {
         	 scope.paymentgatewaydatas=data; 
         });
-
+*/
 	  		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
 	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Failure'} , callback);
 	 		};

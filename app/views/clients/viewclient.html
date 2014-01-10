@@ -396,7 +396,8 @@
 								<th>{{'table.heading.quantity' | translate}}</th>
 								<th>{{'table.heading.totalprice' | translate}}</th>
 								<th>{{'table.heading.allocate' | translate}}</th>
-								<th></th>
+								<th>&nbsp;</th>
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -408,7 +409,7 @@
 								<td>{{onetimesale.quantity}}</td> 
 								<td>{{onetimesale.totalPrice}}</td> 
 								<td>{{onetimesale.hardwareAllocated}}</td>
-							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i></a></td>
+							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
 							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
 							</tr>
 						</tbody>
@@ -420,7 +421,7 @@
 			    
 			    <div id="pane2" class="tab-pane" ng-class="{active: eventorderC}">
 			    <div class="pull-right">
-					<a href="" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Event Order</a>
+					<a href="#/eventorder/{{client.id}}" class="btn btn-primary"><i class="icon-barcode icon-white"></i> Add Event Order</a>
 				</div>
 			    	<div>
 					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">

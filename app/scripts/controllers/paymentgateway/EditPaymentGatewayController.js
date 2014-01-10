@@ -14,7 +14,7 @@
             	this.updateData.status=this.formData.paymentdata;
             	this.updateData.remarks=this.formData.remarks;
             resourceFactory.paymentGatewayResource.update({'id': routeParams.id},this.updateData,function(data){
-                location.path('/system');
+                location.path('/paymentGateway');
              });
         };
     }

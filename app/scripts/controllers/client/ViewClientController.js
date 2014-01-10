@@ -98,11 +98,11 @@
                                           href:"#/neworder",
                                           icon :"icon-plus-sign"
                                         },
-                                        {
+                                     /*   {
                                       	  name:"button.eventorder",
                                       	  href:"#/eventorder",
                                       	  icon:"icon-barcode"
-                                         	},
+                                         	},*/
                                         {
                                           name:"button.newTicket",
                                           href:"#/newTicket",

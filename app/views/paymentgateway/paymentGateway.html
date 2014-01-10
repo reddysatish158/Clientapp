@@ -24,7 +24,8 @@
                 <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
                 <th>{{'table.paymentgateway.phoneno' | translate}}</th>
                 <th>{{'table.paymentgateway.remarks' | translate}}</th>
-                <th>{{'table.paymentgateway.status' | translate}}</th>          
+                <th>{{'table.paymentgateway.status' | translate}}</th>
+                <th>&nbsp;</th>          
               </tr>
             </thead>
             <tbody>
@@ -49,7 +50,7 @@
          </div>
       </tab>	
       
-      <tab heading="Success" select="getPaymentGatewaySuccess()">
+<tab heading="Success" select="getPaymentGatewaySuccess()">
        <div class="row-fluid">
            <form ng-submit="searchSuccessPaymentId(filterText)">
                <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -63,9 +64,10 @@
                 <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
                 <th>{{'table.paymentgateway.phoneno' | translate}}</th>
                 <th>{{'table.paymentgateway.status' | translate}}</th>
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>
                 <th>{{'table.paymentgateway.paymentId' | translate}}</th>        
-                <th>{{'table.paymentgateway.paymentDate' | translate}}</th>
-                
+                <th>{{'table.paymentgateway.paymentDate' | translate}}</th>               
+                <th> &nbsp;</th>
               </tr>
             </thead>
             <tbody>
@@ -77,9 +79,10 @@
                 <td>{{paymentgatewaydata.amountPaid}}</td>
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.status}}</td>
+                <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.paymentId}}</td>              
                 <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
-               
+               <td><a href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -89,6 +92,7 @@
            </ul>
          </div>
       </tab>
+
    
     </tabset>
     </div>
