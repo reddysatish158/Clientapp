@@ -999,11 +999,7 @@ nav:hover:after{
   width: 23.404255319148934%;
   *width: 23.351063829787233%;
 }
-/* input.span3,
-textarea.span3,
-.uneditable-input.span3 {
-  width: 206px;
-} */
+
 .table td.span3,
 .table th.span3 {
   float: none;
@@ -1034,9 +1030,7 @@ input#search:-ms-input-placeholder {
 input.span3,
 textarea.span3,
 .uneditable-input.span3 {
-
   width: 150px;
-
 
 .table-bold-ord {
     background-color: #F5F5F5;

@@ -166,7 +166,7 @@
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
-                            <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.status}}</td>
+                            <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
                         </tr>
                         <tr><td colspan="7">&nbsp;</td></tr>
                        
