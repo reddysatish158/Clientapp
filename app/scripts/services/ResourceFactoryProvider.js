@@ -800,10 +800,11 @@
          	  get: {method: 'GET', params: {}}
            })  ,
            paymentGatewayResource: defineResource(apiVer + "/paymentgateways/:id", {id: '@id'}, {
-     	   get: {method: 'GET', params: {}, isArray: true},
+     	   get: {method: 'GET', params: {}},
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
            })  
+           
                
         };
       }];
