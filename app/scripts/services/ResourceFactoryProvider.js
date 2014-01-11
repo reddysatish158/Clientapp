@@ -602,7 +602,11 @@
                  }),
                  itemDetailsResource: defineResource(apiVer + "/itemdetails/:itemId/:anotherresource", {itemId:'@itemId',anotherresource:'@anotherresource'}, {
                	  getAlldetails: {method: 'GET', params: {}},
-                     get: {method: 'GET', params: {}}
+                     get: {method: 'GET', params: {}},
+		  update: {method: 'PUT', params: {}}
+                 }),
+		itemQualityResource: defineResource(apiVer + "/itemdetails/itemquality", {}, {
+                     get: {method: 'GET', params: {}}	
                  }),	
                  itemResource: defineResource(apiVer + "/items/:itemId", {itemId:'@itemId'}, {
                 	   getAllItems: {method: 'GET', params: {}},
