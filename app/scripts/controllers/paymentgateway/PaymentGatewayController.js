@@ -4,40 +4,15 @@
 		  
         scope.paymentgatewaydatas = [];
         
-        var callingTab = webStorage.get('callingTab',null);
-        if(callingTab == null){
-        	callingTab="";
-        }else{
-		  scope.displayTab=callingTab.someString;
-		 
-		  if( scope.displayTab == "ProvisioningTab"){		 
-			  scope.hardwarePlanMappingTab =  true;
-			  webStorage.remove('callingTab');
-		  }else
-		  {
-			  webStorage.remove('callingTab');
-		  };
-		 
-        }
-
-   /*     resourceFactory.paymentGatewayResource.get(function(data) {
-        	 scope.paymentgatewaydatas=data; 
-        });
-*/
-	  		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
+	 		//for Failure tab
+	 		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
 	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Failure'} , callback);
 	 		};
 	  		
 	  		scope.getPaymentGateway = function () {
 	        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayFailureData, 14);
 	        };
-	        
-	        scope.getPaymentGatewaySuccess = function () {
-	        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewaySuccessData, 14);
-	        };
-	        scope.paymentGatewaySuccessData = function(offset, limit, callback) {
-	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Success'} , callback);
-	 		};
+	 		
 	 		
 	 		scope.searchFailedPaymentData = function(offset, limit, callback) { 
 		    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
@@ -48,6 +23,17 @@
 		  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchFailedPaymentData, 14);
 		  		};
 		  		
+		  		
+		  	// for success Tab       
+		   
+		    scope.paymentGatewaySuccessData = function(offset, limit, callback) {
+		  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Success'} , callback);
+		 		};
+		 		
+		 	scope.getPaymentGatewaySuccess = function () {
+			        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewaySuccessData, 14);
+			        };
+			        
 		  	scope.searchSuccessPaymentData = function(offset, limit, callback) { 
 			    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
 			    		  sqlSearch: scope.filterText, tabType: 'Success'} , callback);
@@ -57,7 +43,45 @@
 			  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchSuccessPaymentData, 14);
 			  		};		
 
-        
+		   // for Finished Tab
+			  		
+		    scope.paymentGatewayFinishedData = function(offset, limit, callback) {
+			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Finished'} , callback);
+			 		};
+			  		
+		    scope.getFinishedPaymentGateway = function () {
+			        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayFinishedData, 14);
+			        };
+			        
+			        
+			scope.searchFinishedPaymentData = function(offset, limit, callback) { 
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+				    		  sqlSearch: scope.filterText, tabType: 'Finished'} , callback);
+				          };
+				  		
+			scope.searchFinishedPaymentId = function(filterText) {
+				  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchFinishedPaymentData, 14);
+				  		};
+			
+		  // for Invalid Tab
+			        
+			scope.paymentGatewayInvalidData = function(offset, limit, callback) {
+			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Invalid'} , callback);
+			 		};  
+			 		
+			scope.getInvalidPaymentGateway = function () {
+			        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayInvalidData, 14);
+			        };
+			        
+			scope.searchInvalidPaymentData = function(offset, limit, callback) { 
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+				    		  sqlSearch: scope.filterText, tabType: 'Invalid'} , callback);
+				          };
+				  		
+			scope.searchInvalidPaymentId = function(filterText) {
+				  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchInvalidPaymentData, 14);
+				  		};
+          
     }
   });
   mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
