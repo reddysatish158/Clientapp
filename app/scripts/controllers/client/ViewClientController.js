@@ -210,6 +210,8 @@
 				            	$modalInstance.close('delete');
 				            	getDetails();
 				          });
+				            scope.getAllFineTransactions();
+				            
 				};
 				$scope.reject = function(){
 					$modalInstance.dismiss('cancel');
