@@ -1037,3 +1037,9 @@ textarea.span3,
     width: 180px !important;
 
 }
+
+.ui-widget-contentclass {
+	border: 0px solid #aaaaaa/*{borderColorContent}*/;
+	background: #ffffff/*{bgColorContent}*/ ;
+	color: #222222/*{fcContent}*/;
+}

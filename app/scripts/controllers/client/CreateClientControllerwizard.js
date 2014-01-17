@@ -152,14 +152,14 @@
             });
           };
         
-          $("#city").change(function(){
-        	  alert(scope.formData1.city);
+          /*$("#city").change(function(){
+        	 
           	resourceFactory.AddressTemplateResource.get({city : scope.formData1.city}, function(data) {
           		scope.formData1.state = data.state;
           		scope.formData1.country = data.country;
            
           });
-          });
+          });*/
           scope.getStateAndCountry=function(city){
         	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
             		scope.formData1.state = data.state;
@@ -467,8 +467,14 @@
 	           else
 	               $('th.'+'planCode'+' i').removeClass().addClass('icon-chevron-down');
 	       };
+	       scope.dbClick = function(){
+	        	console.log("dbclick");
+	        	return false;
+	        };
+
 	        scope.submit4 = function() {   
-	        	
+	        	scope.flag = true;
+
 	        	this.formData4.locale = 'en';
 	        	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
 	            this.formData4.dateFormat = 'dd MMMM yyyy';
@@ -521,7 +527,7 @@
 	 	    			temp["isNewHw"]="Y";
 	 	    			temp1.push(temp);
 	 	        	});
-	 	        
+	 	            
 	 	        	 scope.formData3.itemMasterId=scope.formData2.itemId;
 	 	            this.formData3.serialNumber=temp1;
 
@@ -535,9 +541,12 @@
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
-	            	
+	            	scope.flag = false;
 	            	  location.path('/viewclient/' + data.resourceId);
+	            },function(errData){
+	          	  scope.flag = false;
 	            });
+
 	           
 	        };
     	  

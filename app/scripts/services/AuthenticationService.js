@@ -11,9 +11,7 @@
             scope.activityQueue = localStorageService.get('Location');
         }
         scope.setDf = function(){
-            if(localStorageService.get('dateformat')){
-                scope.dateformat = localStorageService.get('dateformat');
-            }else{
+            
             	resourceFactory.configurationResource.get(function(data) {
                 	for(var i in data.globalConfiguration){
                         if(data.globalConfiguration[i].name=="DateFormat"){
@@ -24,7 +22,7 @@
                    
                 });
                 
-            }
+            
             scope.df = scope.dateformat;
         };
         scope.setDf();
