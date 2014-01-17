@@ -33,6 +33,9 @@
                 <th>{{'table.heading.previousrun' | translate}}</th>
                 <th>{{'table.heading.previousrunstatus' | translate}}</th>
                 <th>{{'table.heading.currentstatus' | translate}}</th>
+		<th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +49,9 @@
                 <td class="pointer" data-ng-click="routeTo(job.jobId)">{{job.lastRunHistory.jobRunStartTime | DateFormat}}</td>
                 <td class="pointer" data-ng-click="routeTo(job.jobId)">{{job.lastRunHistory.jobRunStartTime| DateFormat}}</td>
                 <td class="pointer" data-ng-click="routeTo(job.jobId)">{{job.currentlyRunning}}</td>
+		<td><a href="#/editschedulerjob/{{job.jobId}}" style='color:#000000' ><i class="icon-edit"></i> Edit</a></td>
+          		<td><a  ng-hide="job.displayName == 'Requestor' || job.displayName =='Responser'" href="#/editjobparameters/{{job.jobId}}" style='color:#000000'><i class="icon-edit"></i>Edit Job Parameters</a></td>
+          		<td><a href="#/viewhistory/{{job.jobId}}" style='color:#3104B4'>view history</a></td>
             </tr>
         </tbody>
     </table>

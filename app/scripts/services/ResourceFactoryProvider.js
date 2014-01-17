@@ -807,7 +807,10 @@
      	   get: {method: 'GET', params: {}},
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
-           })  
+           }) ,
+	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
+           	get: {method: 'GET', params: {}, }
+         }) 
            
                
         };
