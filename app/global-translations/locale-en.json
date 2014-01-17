@@ -213,6 +213,8 @@
   "label.job.exipirydate":"Exipiry Date",
   "label.job.isDynamic":"Is Dynamic",
   "label.job.isautorenewal":"Auto Renewal",
+  "label.job.emailid":"Email Id",
+  "validation.msg.schedulerjob.emailId.cannot.be.blank":"emailId cannot be blank",
   
 
   "#view employee":"....",

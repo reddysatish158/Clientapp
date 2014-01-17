@@ -58,13 +58,11 @@
                  <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.exipiryDate" is-open="opened" min="minDate" max="'2020-06-22'" date-disabled="disabled(date, mode)"/>
             </div>
            </div>
-           <div class="control-group" ng-show="formData.displayName =='Auto Exipiry'">
-                <label class="control-label" for="isDynamic">{{ 'label.job.isautorenewal' | translate }}</label>
-                   <div class="controls">
-                      <label class="checkbox">
-                          <input type="checkbox" ng-model="formData.isAutoRenewal">
-                      </label>
-                   </div>
+           <div class="control-group" ng-show="formData.displayName =='Report Email'">
+               <label class="control-label">{{ 'label.job.emailid' | translate }}<span class="required">*</span></label>
+                <div class="controls">
+                <input type="text" ng-model="jobparameters.emailId">
+                </div>
            </div>
            <div class="control-group">
                 <label class="control-label" for="isDynamic">{{ 'label.job.isDynamic' | translate }}</label>
