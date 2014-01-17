@@ -524,7 +524,7 @@
           templateUrl: 'views/organization/editplan.html'
       })
       
-       .when('/neworder/:id', {
+       .when('/neworder/:planId/:id', {
           templateUrl: 'views/clients/createorder.html'
       })
       .when('/hardwareswap/:id/:clientId/:orderId', {

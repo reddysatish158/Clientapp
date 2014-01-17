@@ -5,11 +5,10 @@
 		<label>{{'label.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	</div>
+	    </div>
      
         <fieldset>
           <legend>Create client</legend>
-          <legend>{{configs.enabled}}</legend>
         <table>
            <tr>
              <td>
@@ -29,8 +28,9 @@
   		      <div class="control-group">
               <label class="control-label" for="firstname">{{'label.firstname' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="firstname" name="firstname" ng-model="formData1.firstname" required ng-minlength=3 late-Validate/>
+                <input type="text" id="firstname" name="firstname" ng-model="formData1.firstname" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
                 <span  ng-show="createclientform.firstname.$invalid">
+                	<small class="error" ng-show="createclientform.firstname.$error.pattern">alphanumeric and spaces only!</small>
                     <small class="error" ng-show="createclientform.firstname.$error.req">
                         Required Field
                     </small>
@@ -47,22 +47,28 @@
             <div class="control-group">
               <label class="control-label" for="lastname">{{'label.lastname' | translate}}<span class="required">*</span></label></label>
               <div class="controls">
-                <input type="text" id="lastname" name="lastname" ng-model="formData1.lastname" required ng-minlength=3 late-Validate/>
+                <input type="text" id="lastname" name="lastname" ng-model="formData1.lastname" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
                 <span  ng-show="createclientform.lastname.$invalid">
+                	<small class="error" ng-show="createclientform.lastname.$error.pattern">alphanumeric and spaces only!</small>
                     <small class="error" ng-show="createclientform.lastname.$error.req">
-                        Required Field!
+                        Required Field
                     </small>
                     <small class="error" ng-show="createclientform.lastname.$error.minlength && !createclientform.lastname.$error.req">Name is required at least 3 characters</small>
                 </span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="phone">{{'label.phone' | translate}}</label>
+              <label class="control-label" for="phone">{{'label.phone' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="phone" ng-model="formData1.phone" ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="10" name="phone"/>
+                <input type="text" id="phone" ng-model="formData1.phone" ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="10" name="phone" required  late-Validate/>
+                <span ng-show="createclientform.phone.$invalid">
+                   <small class="error" ng-show="createclientform.phone.$error.req">
+                        Required Field
+                   </small>
+                </span>
                 
            <div ng-show="createclientform.phone.$dirty && createclientform.phone.$invalid">
-              
+               
                <span class="error" ng-show="createclientform.phone.$error.pattern">digits only !</span>
                <span class="error" ng-show="createclientform.phone.$error.maxlength">Exceeded max limit!</span>
            </div>
@@ -70,14 +76,9 @@
             </div>
             
             <div class="control-group">
-            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}<span class="required">*</span></label>
+            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}</label>
             		<div class="controls">
-              			<input type="text" name="homephone" id="homePhoneNumber" ng-model="formData1.homePhoneNumber" required  late-Validate/>
-              			<span  ng-show="createclientform.homephone.$invalid">
-                           <small class="error" ng-show="createclientform.homephone.$error.req">
-                                    Required Field
-                           </small>
-                         </span>
+              			<input type="text" name="homephone" id="homePhoneNumber" ng-model="formData1.homePhoneNumber"/>
             		</div>
           	</div>
           	
@@ -129,13 +130,13 @@
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="state">{{'label.state' | translate}}</label>
+              <label class="control-label" for="state">{{'label.state' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="state" ng-model="formData1.state"/>
+                <input type="text" id="state" ng-model="formData1.state" required/>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="country">{{'label.country' | translate}}<span class="required">*</span></label></label>
+              <label class="control-label" for="country">{{'label.country' | translate}}<span class="required">*</span></label>
               <div class="controls">
                 <input type="text" id="country" name="country" ng-model="formData1.country" required/>
               

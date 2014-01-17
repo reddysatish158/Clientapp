@@ -107,7 +107,7 @@
                         <div class="pagination pull-right">
                             <ul>
                                 <li ng-class="{disabled: currentPage == 0}">
-                                    <a href ng-click="prevPage()">« Prev</a>
+                                    <a href ng-click="prevPage()">ï¿½ Prev</a>
                                 </li>
                                 <li ng-repeat="n in range(prepaidPlanspagedItems.length)"
                                     ng-class="{active: n == currentPage}"
@@ -115,7 +115,7 @@
                                     <a href ng-bind="n + 1">1</a>
                                 </li>
                                 <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                                    <a href ng-click="nextPage()">Next »</a>
+                                    <a href ng-click="nextPage()">Next ï¿½</a>
                                 </li>
                             </ul>
                         </div>
@@ -173,7 +173,8 @@
      
           <div class="offset3">
             <a href="#/viewclient/{{clientId}}"><button type="reset" class="btn">Cancel</button></a>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" ng-dblclick="dbClick()" ng-disabled="flag">Save</button>
+
           </div>
         </fieldset>
          

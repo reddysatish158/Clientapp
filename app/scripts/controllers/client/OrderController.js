@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter,paginatorService) {
+	  OrderController: function(scope,webStorage,routeParams, resourceFactory,route,location,$modal,dateFilter,paginatorService) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -8,6 +8,7 @@
         scope.formData=[];
         scope.provisioning={};
         scope.commandData = [];
+       // scope.isPrepaid=[];
         var orderId=routeParams.id;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
@@ -18,13 +19,19 @@
          scope.balanceAmount=clientData.balanceAmount;
          scope.currency=clientData.currency;
          scope.imagePresent=clientData.imagePresent;
-         
+         webStorage.add("orderId",routeParams.id);
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
             scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+            
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
+            if(data.orderData.isPrepaid == 'Y'){
+            	scope.formData.isPrepaid="Pre Paid";
+            }else{
+            	scope.formData.isPrepaid="Post Paid";
+            }
           
         });
        
@@ -221,12 +228,20 @@
               
           };
           
-        
+          scope.cancel=function(){
+          	
+              resourceFactory.saveOrderResource.delete({'clientId':routeParams.id},{},function(data){
+            	  location.path('/viewClient/'+scope.orderPriceDatas[0].clientId);  
+              });
+              }
         
         scope.deAssociation=function (){
         	 resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
         		 console.log('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
-                 location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);           	
+
+           
+        		 route.reload();
+
             });
         };
 
@@ -251,7 +266,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

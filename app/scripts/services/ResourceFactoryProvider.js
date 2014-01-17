@@ -358,18 +358,22 @@
         	 get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
-         orderTemplateResource: defineResource(apiVer + "/orders/template", {}, {
+         orderTemplateResource: defineResource(apiVer + "/orders/template", {planId:'@orderId'}, {
            get: {method: 'GET', params: {}}
          }),
          orderResource: defineResource(apiVer + "/orders/:planId/template", {planId:'@planId'}, {
          get: {method: 'GET', params: {}},
         }),
-        
         saveOrderResource: defineResource(apiVer + "/orders/:clientId", {clientId:'@clientId'}, {
            get: {method: 'GET', params: {}},
            update: { method: 'PUT' }
           
         }),
+        changeOrderResource: defineResource(apiVer + "/orders/changePlan/:orderId", {orderId:'@orderId'}, {
+            get: {method: 'GET', params: {}},
+            update: { method: 'PUT' }
+           
+         }),
         getOrderResource: defineResource(apiVer + "/orders/:clientId/orders", {clientId:'@clientId'}, {
     	  getAllOrders: {method: 'GET', params: {}},
         }),
@@ -602,7 +606,11 @@
                  }),
                  itemDetailsResource: defineResource(apiVer + "/itemdetails/:itemId/:anotherresource", {itemId:'@itemId',anotherresource:'@anotherresource'}, {
                	  getAlldetails: {method: 'GET', params: {}},
-                     get: {method: 'GET', params: {}}
+                     get: {method: 'GET', params: {}},
+		  update: {method: 'PUT', params: {}}
+                 }),
+		itemQualityResource: defineResource(apiVer + "/itemdetails/itemquality", {}, {
+                     get: {method: 'GET', params: {}}	
                  }),	
                  itemResource: defineResource(apiVer + "/items/:itemId", {itemId:'@itemId'}, {
                 	   getAllItems: {method: 'GET', params: {}},
@@ -803,7 +811,10 @@
      	   get: {method: 'GET', params: {}},
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
-           })  
+           }) ,
+	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
+           	get: {method: 'GET', params: {}, }
+         }) 
            
                
         };
