@@ -92,6 +92,84 @@
            </ul>
          </div>
       </tab>
+      
+      
+      <tab heading="Finished" select="getFinishedPaymentGateway()">
+        <div class="row-fluid">                
+           <form ng-submit="searchFinishedPaymentId(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+         <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.paymentgateway.id' | translate}}</th>    
+                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>  
+                <th>{{'table.paymentgateway.serialNo' | translate}}</th>
+                <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
+                <th>{{'table.paymentgateway.phoneno' | translate}}</th>
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>
+                <th>{{'table.paymentgateway.status' | translate}}</th>                        
+              </tr>
+            </thead>
+            <tbody>
+            <!--  -->
+             <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas.currentPageItems  | filter:filterText" ng-show="paymentgatewaydata.status=='Finished'">
+                
+                <td>{{paymentgatewaydata.id}}</td>
+                <td>{{paymentgatewaydata.receiptNo}}</td> 
+                <td>{{paymentgatewaydata.serialNo}}</td>
+                <td>{{paymentgatewaydata.amountPaid}}</td>
+                <td>{{paymentgatewaydata.phoneNo}}</td>
+                <td>{{paymentgatewaydata.remarks}}</td>
+                <td>{{paymentgatewaydata.status}}</td>                                                   
+   			</tr>
+     		 </tbody>
+          </table>
+          <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="paymentgatewaydatas.previous()" href="" ng-disabled="!paymentgatewaydatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="paymentgatewaydatas.next()" href="" ng-disabled="!paymentgatewaydatas.hasNext()">Next &rarr;</a></li>
+         </ul>
+         </div>
+      </tab>	
+      
+     <tab heading="Invalid" select="getInvalidPaymentGateway()">
+       <div class="row-fluid">
+           <form ng-submit="searchInvalidPaymentId(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+       <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.paymentgateway.id' | translate}}</th> 
+                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>     
+                <th>{{'table.paymentgateway.serialNo' | translate}}</th>
+                <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
+                <th>{{'table.paymentgateway.phoneno' | translate}}</th>             
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>   
+                <th>{{'table.paymentgateway.status' | translate}}</th>  
+                                           
+              </tr>
+            </thead>
+            <tbody>
+             <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas.currentPageItems  | filter:filterText" ng-show="paymentgatewaydata.status=='Invalid'">
+                
+                <td>{{paymentgatewaydata.id}}</td>
+                 <td>{{paymentgatewaydata.receiptNo}}</td>       
+                <td>{{paymentgatewaydata.serialNo}}</td>
+                <td>{{paymentgatewaydata.amountPaid}}</td>
+                <td>{{paymentgatewaydata.phoneNo}}</td>
+                <td>{{paymentgatewaydata.remarks}}</td> 
+                <td>{{paymentgatewaydata.status}}</td>
+                             
+   			</tr>
+     		 </tbody>
+          </table>
+           <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="paymentgatewaydatas.previous()" href="" ng-disabled="!paymentgatewaydatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="paymentgatewaydatas.next()" href="" ng-disabled="!paymentgatewaydatas.hasNext()">Next &rarr;</a></li>
+           </ul>
+         </div>
+      </tab>
 
    
     </tabset>
