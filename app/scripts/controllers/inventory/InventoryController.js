@@ -202,6 +202,7 @@
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      
 					        	          $modalInstance.close('delete');
+								location.path("/viewitemdetails/"+data.resourceId);
 					        	        });
 					              };
 					              $scope.cancelQuality = function () {
