@@ -215,6 +215,13 @@
   "label.job.isautorenewal":"Auto Renewal",
   "label.job.emailid":"Email Id",
   "validation.msg.schedulerjob.emailId.cannot.be.blank":"emailId cannot be blank",
+  "label.job.ProvSystem":"Provisioning System",
+  "label.job.url":"Url",
+  "label.job.username":"User Name",
+  "label.job.password":"Password",
+  "validation.msg.schedulerjob.Username.cannot.be.blank":"Username cannot be blank",
+  "validation.msg.schedulerjob.Password.cannot.be.blank":"Password cannot be blank",
+  "validation.msg.schedulerjob.URL.cannot.be.blank":"Url cannot be blank",
   
 
   "#view employee":"....",
