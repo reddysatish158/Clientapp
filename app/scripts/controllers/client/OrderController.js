@@ -64,7 +64,12 @@
         		  resolve:{}
         	  });
           };
-          
+          scope.cancelOrder=function(){
+        	  
+        	    resourceFactory.saveOrderResource.delete({'clientId':routeParams.id},{},function(data){
+        	    	 location.path('/viewclient/' + routeParams.clientId);
+                });
+          }
           scope.CommandCenter = function(CommandCenterUrl){
         	  scope.errorStatus=[];scope.errorDetails=[];
           	  $modal.open({

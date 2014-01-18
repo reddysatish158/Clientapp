@@ -39,7 +39,7 @@
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.status}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="itemdetail.clientId">{{itemdetail.accountNumber}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="!itemdetail.clientId">Unallocated</td>
-		<td><a ng-click="editQuality(itemdetail.id)"><i class="icon-edit icon-white"></i>edit</a></td>
+		<td ng-show="!itemdetail.clientId"><a ng-click="editQuality(itemdetail.id)"><i class="icon-edit icon-white" ></i>edit</a></td>
                 <!-- <td>
                 	<span ng-if="itemdetails.clientId > '0'">
                 	Yes
