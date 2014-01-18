@@ -69,7 +69,6 @@
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
-	            	scope.flag = false;
 	            	 location.path('/viewclient/' + routeParams.id);
 	          },function(errData){
 	        	  scope.flag = false;
