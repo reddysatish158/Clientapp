@@ -86,10 +86,9 @@
                       <div class="span5">
                               
                         <table  width="100%" >
-                             <tr>
-                               <td colspan="2">
-                               {{'label.Device' | translate}} <strong>:</strong>{{client.hwSerialNumber}}
-                               </td>
+                               <tr>
+                               <td >{{'label.Device' | translate}}</td>
+                               <td>{{client.hwSerialNumber}}</td>
                              </tr>
                             <tr>
                               <td width="35%">{{'label.Address' | translate}}</td>
@@ -104,8 +103,8 @@
                               <td valign="top">{{client.country}}<strong>,</strong>{{client.zip}}</td>
                             </tr>
                             <tr>
-                            <td colspan="2"><a href="#/editAddress/{{client.id}}">Edit Address</a><span class="divider">|</span>
-                             <a href="#/editAddress/{{client.id}}">Add Other Address</a></td>
+                            <td colspan="2"><a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-edit icon-white" ></i>Edit Address</button></a>
+                             <a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Add Other Address</button></a></td>
                             </tr>
                           </table>
                       </div>
@@ -545,7 +544,7 @@
                  					{{financialtransaction.amount}}
               					</td>
            					</tr>
-           					<tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='CANCEL PAYMENT'"> 
+           					<tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='PAYMENT CANCELED'"> 
                					<td>
                   					<any>{{financialtransaction.userName}}</any>
               					</td>
@@ -565,7 +564,7 @@
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
               					<td>
-                					<a ng-hide="financialtransaction.transactionType =='CANCEL PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+                					<a ng-hide="financialtransaction.transactionType =='PAYMENT CANCELED' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
               					</td>
             				</tr>
 						</tbody>
@@ -596,7 +595,7 @@
 						</thead>
 						<tbody>
 						
-							<tr ng-repeat="financialtransaction in financialPayments.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='CANCEL PAYMENT'"> 
+							<tr ng-repeat="financialtransaction in financialPayments.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='PAYMENT CANCELED'"> 
                					<td>
                   					<any>{{financialtransaction.userName}}</any>
               					</td>
@@ -1054,7 +1053,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="accept(start.date)">{{'label.confirm' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flag">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       <script type="text/ng-template" id="StatementPop.html">

@@ -228,10 +228,11 @@
               
           };
           
-          scope.cancel=function(){
-          	
+          scope.cancelOrder=function(){
+        	  
               resourceFactory.saveOrderResource.delete({'clientId':routeParams.id},{},function(data){
-            	  location.path('/viewClient/'+scope.orderPriceDatas[0].clientId);  
+            	  
+            	  location.path('/viewClient/'+routeParams.id);  
               });
               }
         

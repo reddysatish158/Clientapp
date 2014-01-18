@@ -32,7 +32,13 @@
 
         
         
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
+        
         scope.submit = function() {
+        	scope.flag = false;
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
@@ -40,6 +46,8 @@
           var res1 = validator.validateZipCode(scope.formData.receiptNo);
           resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
             location.path('/viewclient/'+routeParams.id);
+          },function(errData){
+        	  scope.flag = false;
           });
         };
 

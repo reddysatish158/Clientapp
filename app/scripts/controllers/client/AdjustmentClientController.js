@@ -23,7 +23,13 @@
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
 
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
+
         scope.submit = function() {
+        	scope.flag = true;
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var adjustmentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
@@ -31,6 +37,8 @@
          // this.formData.adjustment_type = "CREDIT";
           resourceFactory.adjustmentResource.save({clientId : routeParams.id}, this.formData, function(data){
             location.path('/viewclient/'+routeParams.id);
+          },function(errData){
+        	  scope.flag = false;
           });
         };
 

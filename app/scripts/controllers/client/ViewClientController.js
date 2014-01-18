@@ -187,7 +187,9 @@
         };
         getDetails();
         var Approve = function($scope,$modalInstance){
+        	
 			$scope.accept = function(date){
+				scope.flag = true;
 			        	scope.formData.locale = 'en';
 			        	var reqDate = dateFilter(date,'dd MMMM yyyy');
 			            scope.formData.dateFormat = 'dd MMMM yyyy';
@@ -196,6 +198,7 @@
 			            	$modalInstance.close('delete');
 			            	getDetails();
 			          },function(errData){
+			        		scope.flag = false;
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
 			          });
 			};
