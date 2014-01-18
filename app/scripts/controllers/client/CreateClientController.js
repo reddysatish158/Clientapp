@@ -72,7 +72,6 @@
             this.formData.activationDate = reqDate;
             this.formData.flag=scope.configurationProperty;
             resourceFactory.clientResource.save(this.formData,function(data){
-
               if (scope.file) {
                 http.uploadFile({
                   url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+data.clientId+'/images', 

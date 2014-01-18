@@ -40,12 +40,13 @@
       }; 
 
       scope.submit = function() {
-    	  
+    	
     	  this.formData.jobName=this.formData.name;
     	  this.formData.dateFormat = 'dd MMMM yyyy';
     	  this.formData.locale = 'en';
     	  this.formData.reportName=this.formData.jobparameters.batchName;
     	  this.formData.messageTemplate=this.formData.jobparameters.messageTemplate;
+    	  this.formData.emailId=this.formData.jobparameters.emailId;
     	  
     	  if(this.formData.name == "Invoice"){this.formData.processDate = dateFilter(scope.date.processDate,'dd MMMM yyyy');}
     	  if(this.formData.name== "Generate Statment"){this.formData.dueDate = dateFilter(scope.date.dueDate,'dd MMMM yyyy');}
