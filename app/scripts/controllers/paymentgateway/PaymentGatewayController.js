@@ -5,7 +5,7 @@
         scope.paymentgatewaydatas = [];
 	        
 	      //for All tab
-        
+
 			 scope.paymentGatewayAllData = function(offset, limit, callback) {
 	 			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
 			};
