@@ -22,6 +22,10 @@
          
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
 
         scope.dbClick = function(){
         	console.log("dbclick");
@@ -36,6 +40,7 @@
           this.formData.adjustment_date = adjustmentDate;
          // this.formData.adjustment_type = "CREDIT";
           resourceFactory.adjustmentResource.save({clientId : routeParams.id}, this.formData, function(data){
+        	  scope.flag = false;
             location.path('/viewclient/'+routeParams.id);
           },function(errData){
         	  scope.flag = false;

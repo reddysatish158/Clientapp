@@ -224,11 +224,13 @@
            else
                $('th.'+'planCode'+' i').removeClass().addClass('icon-chevron-down');
        };
+
        
        scope.dbClick = function(){
          	console.log("dbclick");
          	return false;
          };
+
         scope.submit = function() {   
         	scope.flag = true;
         	this.formData.locale = 'en';
@@ -241,6 +243,7 @@
             delete this.formData.planId;
             delete this.formData.id;
             delete this.formData.isPrepaid;
+
             var orderId = webStorage.get('orderId');
             
             if(routeParams.planId == 0){
@@ -262,6 +265,7 @@
             	
             }
             
+
         };
     }
   });

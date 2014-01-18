@@ -30,7 +30,10 @@
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
 
-        
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
         
         scope.dbClick = function(){
         	console.log("dbclick");
@@ -45,6 +48,7 @@
           this.formData.paymentDate= paymentDate;
           var res1 = validator.validateZipCode(scope.formData.receiptNo);
           resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
+        	  scope.flag = false;
             location.path('/viewclient/'+routeParams.id);
           },function(errData){
         	  scope.flag = false;
