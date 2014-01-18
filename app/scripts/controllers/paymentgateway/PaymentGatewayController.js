@@ -3,13 +3,35 @@
 	  PaymentGatewayController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
 		  
         scope.paymentgatewaydatas = [];
+	        
+	      //for All tab
+        
+			 scope.paymentGatewayAllData = function(offset, limit, callback) {
+	 			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
+			};
+	 		
+	 		scope.getPaymentGateway = function () {
+	       	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayAllData, 14);
+	       };
+			
+			
+			scope.searchAllPaymentData = function(offset, limit, callback) { 
+		    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+		    		  sqlSearch: scope.filterText} , callback);
+		          };
+		  		
+		  	scope.searchPaymentId = function(filterText) {
+		  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchAllPaymentData, 14);
+		  		};
+	  		
         
 	 		//for Failure tab
+		  		
 	 		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
-	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
+	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Failure'} , callback);
 	 		};
 	  		
-	  		scope.getPaymentGateway = function () {
+	  		scope.getPaymentGatewayFailure = function () {
 	        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayFailureData, 14);
 	        };
 	 		
