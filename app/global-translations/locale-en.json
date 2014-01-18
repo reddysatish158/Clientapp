@@ -1229,6 +1229,8 @@
   "label.renewalorder":"Renewal Order",
   "label.order.renewalperiod":"Renewal Period",
   "label.order.description":"Description",
+  "label.order.Promotion":"Promotion Code",
+  "label.promo":"Apply Promo",
   "label.button.more":"More",
   "label.order.disconnectionDate":"Disconnection Date",
   "validation.msg.order.paytermCode.cannot.be.blank":"Please Select Billing frequency",

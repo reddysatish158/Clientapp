@@ -73,13 +73,49 @@
           scope.CommandCenter = function(CommandCenterUrl){
         	  scope.errorStatus=[];scope.errorDetails=[];
           	  $modal.open({
-                  templateUrl: 'ProvisioningSystemPop.html',
+                  templateUrl: 'Promo.html',
+                  controller: applyPromoController,
+                  resolve:{}
+              });
+          	
+          };
+          
+          scope.applyPromo= function(){
+        	  scope.errorStatus=[];
+        	  scope.errorDetails=[];
+          	  $modal.open({
+                  templateUrl: 'Promo.html',
                   controller: ProvisioningSystemPopController,
                   resolve:{}
               });
           	
           };
           
+          
+      var applyPromoController=function($scope,$modalInstance){
+    	  
+    	  resourceFactory.promotionCodeResource.get(function(data) {
+      		
+      		 $scope.promoDatas=data; 
+          });
+      	 
+       	$scope.accept = function(){
+
+       		resourceFactory.applyPromotionCodeResource.update({'orderId': routeParams.id},this.formData,
+     		function(data) {
+     			 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+     			 $modalInstance.close('delete');
+     			     },function(errData){
+         	         	//$scope.renewError = errData.data.errors[0].userMessageGlobalisationCode;
+         		});
+    	  
+      };  
+      
+  	$scope.rejectProvisioning = function(){
+  		$modalInstance.dismiss('cancel');
+  	};
+      };
+       		
      var ProvisioningSystemPopController = function($scope,$modalInstance){
          	 resourceFactory.provisioningMappingResource.getprovisiongData(function(data) {
          		 $('#commandName').hide();

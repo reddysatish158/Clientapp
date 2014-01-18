@@ -51,9 +51,11 @@
 	         <a ng-show ="association.orderId == null"  href="#/association/{{clientId}}/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Pairing</a>
 		     <a ng-show ="orderData.status == 'DISCONNECTED' && association.orderId != null" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Un Pairing</a>
 		     <a ng-show  ="flag == true" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Hardware Swap</a>
+		     <a ng-show ="orderData.status == 'ACTIVE'" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-briefcase"></i>Apply Promo</a>
 		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
+		    
 	      
-	      <span  class="btn-group">
+	        <span  class="btn-group">
               <a class="btn btn-primary dropdown-toggle" ng-show="orderData.status == 'ACTIVE'">
                 {{ 'label.button.more' | translate}}
                 <span class="caret"></span>
@@ -462,5 +464,29 @@
                         <button class="btn btn-primary" ng-click="acceptProvisioning()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
+      
+<script type="text/ng-template" id="Promo.html">
+		
+	<div class="modal-header silver">
+        <h3 class="bolder">{{'label.promo' | translate}}</h3>
+    </div>
+    <div class="modal-body modal-big">
+       <fieldset>
+		<div class="control-group">
+            <label class="control-label" style="color:red;" ng-show="renewError.length>0">{{renewError | translate}}</label>
+            <div class="controls">
+            </div>
+        </div>
+     	<div class="control-group">
+            <label class="control-label" for="status">{{ 'label.order.Promotion' | translate }}</label>
+            <div class="controls">
+              <select ng-model="formData.promoId"  ng-options="promoData.id as promoData.promotionDescription for promoData in promoDatas" value="{{disconnectDetail.mCodeValue}}"></select>
+            </div>
+        </div>
+                <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="accept()">{{'label.confirm' | translate}}</button>
+                    </div>
+</script>      
       
 </div>
