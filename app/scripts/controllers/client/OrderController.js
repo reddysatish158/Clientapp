@@ -11,6 +11,7 @@
         var orderId=routeParams.id;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
+         webStorage.add("orderId",routeParams.id);
          scope.displayName=clientData.displayName;
          scope.statusActive=clientData.statusActive;
          scope.accountNo=clientData.accountNo;
@@ -27,7 +28,6 @@
             scope.orderDiscountDatas=data.orderDiscountDatas;
           
         });
-       
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
             scope.association = data;
@@ -73,8 +73,8 @@
           scope.CommandCenter = function(CommandCenterUrl){
         	  scope.errorStatus=[];scope.errorDetails=[];
           	  $modal.open({
-                  templateUrl: 'Promo.html',
-                  controller: applyPromoController,
+                  templateUrl: 'ProvisioningSystemPop.html',
+                  controller: ProvisioningSystemPopController,
                   resolve:{}
               });
           	
@@ -85,7 +85,7 @@
         	  scope.errorDetails=[];
           	  $modal.open({
                   templateUrl: 'Promo.html',
-                  controller: ProvisioningSystemPopController,
+                  controller:applyPromoController ,
                   resolve:{}
               });
           	
