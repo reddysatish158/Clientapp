@@ -28,20 +28,25 @@
         if(data.jobparameters.isDynamic=="Y"){
         	scope.formData.isDynamic=true;
         }
+        
+        if(data.jobparameters.isAutoRenewal=="Y"){
+        	scope.formData.isAutoRenewal=true;
+        }
       
       });
        
       scope.cancel = function() {
-        location.path('/viewschedulerjob/'+routeParams.id);
+        location.path('/jobs');
       }; 
 
       scope.submit = function() {
-    	  
+    	
     	  this.formData.jobName=this.formData.name;
     	  this.formData.dateFormat = 'dd MMMM yyyy';
     	  this.formData.locale = 'en';
     	  this.formData.reportName=this.formData.jobparameters.batchName;
-    	  this.formData.messageTempalate=this.formData.jobparameters.messageTempalate;
+    	  this.formData.messageTemplate=this.formData.jobparameters.messageTemplate;
+    	  this.formData.emailId=this.formData.jobparameters.emailId;
     	  
     	  if(this.formData.name == "Invoice"){this.formData.processDate = dateFilter(scope.date.processDate,'dd MMMM yyyy');}
     	  if(this.formData.name== "Generate Statment"){this.formData.dueDate = dateFilter(scope.date.dueDate,'dd MMMM yyyy');}
@@ -58,6 +63,9 @@
    	  delete this.formData.queryData;
    	  delete this.formData.jobparameters;
    	  delete this.formData.nextRunTime;
+   	  delete this.formData.billingMessageDatas;
+   	  delete this.formData.historyId;
+   	  delete this.formData.initializingError;
    	  
           
         resourceFactory.jobsparameters.update({jobId: routeParams.id}, this.formData, function(data){

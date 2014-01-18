@@ -7,7 +7,9 @@ define(['underscore'], function() {
       'app',
       'nv.d3',
       'style',
-      'bootstrap-timepicker'
+      'bootstrap-timepicker',
+      'jquery-ui',
+      'jquery.jWizard.min'
     ],
     less: [
       'mifosX'

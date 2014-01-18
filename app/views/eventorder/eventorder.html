@@ -70,7 +70,7 @@
 			<div class="control-group">
 				<label class="control-label">{{ 'label.opttype' | translate }}</label>
 				<div class="controls">
-	                <select ng-model="formData.optType"  ng-options="optType.value as optType.value for optType in optTypes" value="{{optType.value}}"></select>
+	                <select ng-model="formData.optType"   ng-options="optType.value as optType.value for optType in optTypes" value="{{optType.value}}"></select>
 	             </div>
 			</div>
 			
@@ -91,7 +91,7 @@
 	
 				         
 			<div class="offset3">
-				<a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
+				<a href='#/viewclient/{{clientId}}' class="btn" ng-click="reset123()">Cancel</a>
 				<button type="submit" class="btn btn-primary">Save</button>
 			</div>
 

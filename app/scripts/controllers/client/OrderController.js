@@ -1,11 +1,13 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter) {
+	  OrderController: function(scope,webStorage,routeParams,route,resourceFactory,location,$modal,dateFilter,paginatorService) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
         scope.redata={};
         scope.formData=[];
+        scope.provisioning={};
+        scope.commandData = [];
         var orderId=routeParams.id;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
@@ -21,8 +23,11 @@
             scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+            scope.orderServicesData=data.orderServices;
+            scope.orderDiscountDatas=data.orderDiscountDatas;
           
         });
+       
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
             scope.association = data;
@@ -32,17 +37,6 @@
             	scope.flag=false;
             }
         });
-                
-        
-        
-        /*scope.retrack = function (){
-        	scope.redata.message='retrack';
-        	//alert(routeParams.id);
-        	 resourceFactory.osdResource.getPost({'id': 1 , 'orderId': routeParams.id} , function(data) {
-                 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);           	
-            });
-        };*/
-        
         
         scope.reconnect = function (){
         	scope.errorStatus=[];scope.errorDetails=[];
@@ -52,16 +46,6 @@
                  resolve:{}
              });
           };
-          
-          scope.retrack = function (){
-          	scope.errorStatus=[];scope.errorDetails=[];
-          	 $modal.open({
-                   templateUrl: 'ApproveRetrack.html',
-                   controller: ApproveRetrack,
-                   resolve:{}
-               });
-            };
-          
           
           scope.orderDisconnect = function(orderDisUrl){
         	  scope.errorStatus=[];scope.errorDetails=[];
@@ -79,6 +63,68 @@
         		  controller: OrderRenewalController,
         		  resolve:{}
         	  });
+          };
+          scope.cancelOrder=function(){
+        	  
+        	    resourceFactory.saveOrderResource.delete({'clientId':routeParams.id},{},function(data){
+        	    	 location.path('/viewclient/' + routeParams.clientId);
+                });
+          }
+          scope.CommandCenter = function(CommandCenterUrl){
+        	  scope.errorStatus=[];scope.errorDetails=[];
+          	  $modal.open({
+                  templateUrl: 'ProvisioningSystemPop.html',
+                  controller: ProvisioningSystemPopController,
+                  resolve:{}
+              });
+          	
+          };
+          
+     var ProvisioningSystemPopController = function($scope,$modalInstance){
+         	 resourceFactory.provisioningMappingResource.getprovisiongData(function(data) {
+         		 $('#commandName').hide();
+         		 $scope.commandData=data; 
+             });
+         	 
+          	$scope.acceptProvisioning = function(){
+          		if(this.provisioning == undefined || this.provisioning == null){
+              		this.provisioning = {};
+              	} 		
+          		if(this.formData.commandname.commandName=='OSM'){
+          			  this.provisioning.commandName=this.formData.commandname.commandName;
+          			  this.provisioning.message=this.formData.message;
+        				resourceFactory.osdResource.save({'orderId': routeParams.id},this.provisioning,
+        						function(data) {
+        					 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+        					 $modalInstance.close('delete');
+        				     },function(renewalErrorData){
+            	         	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+            						});
+          		}
+          		else{
+          		    this.provisioning.commandName=this.formData.commandname.commandName;
+          			resourceFactory.osdResource.getPost({'orderId': routeParams.id} ,this.provisioning, function(data) {
+                        location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+                        $modalInstance.close('delete');           
+          			 },function(renewalErrorData){
+         	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
+         						});
+          		}
+          		  
+          	};
+          	
+          	$scope.commandName=function(name){
+          		if(this.formData.commandname.commandName=='OSM'){
+          			$('#commandName').show();
+          		}else{
+          			$('#commandName').hide();
+          		}
+          		
+          	};
+          	
+          	$scope.rejectProvisioning = function(){
+          		$modalInstance.dismiss('cancel');
+          	};
           };
           
     	var ApproveReconnect = function ($scope, $modalInstance) {
@@ -100,24 +146,8 @@
                 $modalInstance.dismiss('cancel');
             };
         };
-        var ApproveRetrack = function ($scope, $modalInstance) {
-            $scope.approveRetrack = function () {
-            	if(this.formData == undefined || this.formData == null){
-            		this.formData = {};
-            	}
-            	scope.redata.message='retrack';
-            	resourceFactory.osdResource.getPost({'id': 1 , 'orderId': routeParams.id} , function(data) {
-                     location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
-                     $modalInstance.close('delete');
-                },function(renewalErrorData){
-    	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
-    	        });            	
-            };
-            $scope.cancelRetrack = function () {
-                $modalInstance.dismiss('cancel');
-            };
-        };
-          
+        
+
           
           var OrderRenewalController = function($scope,$modalInstance){
         	  $scope.subscriptiondatas = [];
@@ -199,9 +229,11 @@
         
         
         scope.deAssociation=function (){
-        	 resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
+        	
+        	resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
         		 console.log('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
-                 location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);           	
+             
+        		 route.reload();
             });
         };
 
@@ -226,7 +258,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter',mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

@@ -101,13 +101,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="data in searchData">
-                <td>{{data.id}}</td>
-                <td>{{data.processingResult}}</td>
-                <td>{{data.maker}}</td>
-                <td>{{data.actionName}}</td>
-                <td>{{data.entityName}}</td>
-                <td><a href="#/viewaudit/{{data.id}}" class="pointer required">Details</a></td>
+            <tr class="pointer-main" ng-repeat="data in searchData">
+                <td class="pointer" data-ng-click="routeTo(data.id)">{{data.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(data.id)">{{data.processingResult}}</td>
+                <td class="pointer" data-ng-click="routeTo(data.id)">{{data.maker}}</td>
+                <td class="pointer" data-ng-click="routeTo(data.id)">{{data.actionName}}</td>
+                <td class="pointer" data-ng-click="routeTo(data.id)">{{data.entityName}}</td>
+                <td class="pointer required" data-ng-click="routeTo(data.id)">Details</td>
             </tr>
             </tbody>
         </table>

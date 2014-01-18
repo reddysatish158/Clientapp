@@ -5,6 +5,11 @@
 
       scope.reports = [];
       scope.type = routeParams.type;
+      
+      scope.routeToviewreport = function(name,id,type){
+    	  
+          location.url('/run_report/'+name+'?reportId='+id+'&type='+type);
+        };
 
       //to display type of report on breadcrumb
       var typeReport = routeParams.type.replace(routeParams.type[0], routeParams.type[0].toUpperCase()) + " " + "Reports";
@@ -23,10 +28,12 @@
           scope.reports = scope.getReports(data);
         });
       } else if (routeParams.type == 'tickets') {
-        resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Fund', parameterType : true, genericResultSet : false}, function(data){
-          scope.reports = scope.getReports(data);
-        });
-      } else if (routeParams.type == 'accounting') {
+
+          resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Client Ticket', parameterType : true, genericResultSet : false}, function(data){
+              scope.reports = scope.getReports(data);
+            });
+          } else if (routeParams.type == 'accounting') {
+
         resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Accounting', parameterType : true, genericResultSet : false}, function(data){
           scope.reports = scope.getReports(data);
         });

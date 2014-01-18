@@ -9,11 +9,12 @@
          scope.staffData = {};
          scope.orders = [];
          scope.formData = {};
- 		scope.start = {};
+ 		 scope.start = {};
          scope.start.date = new Date();
-        
-         
-         var callingTab = webStorage.get('callingTab',null);
+         scope.payment="PAYMENT";
+         scope.invoice="INVOICE";
+         scope.adjustment="ADJUSTMENT";
+            var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
          }else{
@@ -38,17 +39,40 @@
  		  }
  		  else if(scope.displayTab == "Sale"){
  			  scope.SaleTab =  true;
+ 			  scope.eventsaleC="active";
+ 			  scope.eventorderC="";
  			  webStorage.remove('callingTab');
  		  }else if(scope.displayTab == "Statements"){
  			  scope.StatementsTab =  true;
  			  webStorage.remove('callingTab');
+ 		  }else if(scope.displayTab == "eventOrders"){
+ 			scope.SaleTab = true;
+ 			scope.eventsaleC="";
+ 			scope.eventorderC="active";
+ 			webStorage.remove('callingTab');
  		  }else
  		  {
  			  webStorage.remove('callingTab');
  		  };
  		 
          }
-        
+         
+         scope.routeTogeneral = function(orderid,clientid){
+             location.path('/vieworder/'+orderid+'/'+clientid);
+           };
+         scope.routeToticket = function(clientId,ticketid){
+               location.path('/viewTicket/'+clientId+'/'+ticketid);
+         };
+         scope.routeTosale = function(onetimesaleid,clientid){
+             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
+         };
+         scope.routeTostatement = function(statementid){
+             location.path('/viewstatement/'+statementid);
+        };
+        scope.routeTofinancial = function(transactionId,clientid){
+            location.path('/viewfinancialtran/'+transactionId+'/'+clientid);
+        }; 
+       
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
@@ -64,45 +88,35 @@
                     if (data.imagePresent) {
                       http({
                         method:'GET',
-                        url: 'https://spark.openbillingsystem.com/mifosng-provider/api/v1/clients/'+routeParams.id+'/images'
+                        url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+routeParams.id+'/images'
                       }).then(function(imageData) {
                         scope.image = imageData.data;
                       });
                     }
-                    if (data.status.value == "Pending") {
-                      scope.buttons = [{
-                                        name:"button.edit",
-                                        href:"#/editclient",
-                                        icon :"icon-edit"
-                                      },
-                                      {
-                                        name:"button.activate",
-                                        href:"#/client",
-                                        subhref:"activate",
-                                        icon :"icon-ok-sign"
-                                      }]
-                                    
-                      }
+                  
 
                     if (data.status.value == "Active") {
-                      scope.buttons = [
-                                      	{
-                                        name:"button.neworder",
-                                        href:"#/neworder",
-                                        icon :"icon-plus-sign"
+                      scope.buttons = [{
+                                          name:"button.neworder",
+                                          href:"#/neworder/0",
+                                          icon :"icon-plus-sign"
                                         },
-                                        {
+
+
+                                        /*{
+
                                       	  name:"button.eventorder",
                                       	  href:"#/eventorder",
                                       	  icon:"icon-barcode"
-                                         	},
+                                         	},*/
                                         {
-                                            name:"button.newTicket",
-                                            href:"#/newTicket",
-                                            icon :"icon-flag"
-                                          },
+                                          name:"button.newTicket",
+                                          href:"#/newTicket",
+                                          icon :"icon-flag"
+                                        },
                                         
                                         {
+
                                             name:"button.payments",
                                             href:"#/payments",
                                             icon :"icon-money"
@@ -121,14 +135,19 @@
                                              name:"button.statement",
                                              href:"#/statement",
                                              icon :"icon-file"
-                                         },
-                                           
-                                     
+                                         },                                                                              
+                                         {
+	                                        name:"button.edit",
+	                                        href:"#/editclient",
+	                                        icon :"icon-edit"
+                                        },
                                         {
-                                        name:"button.edit",
-                                        href:"#/editclient",
-                                        icon :"icon-edit"
-                                      }]
+	                                          name:"",	
+	                                          href:"#/viewclient",
+	                                          icon :"icon-refresh"
+                                        }
+                                      ]
+
                     }
 
                     if (data.status.value == "Transfer in progress") {
@@ -165,13 +184,12 @@
                       scope.orders = data.clientOrders;
                   });
                 });
-        	
         };
-        
         getDetails();
-        
         var Approve = function($scope,$modalInstance){
+        	
 			$scope.accept = function(date){
+				scope.flag = true;
 			        	scope.formData.locale = 'en';
 			        	var reqDate = dateFilter(date,'dd MMMM yyyy');
 			            scope.formData.dateFormat = 'dd MMMM yyyy';
@@ -180,17 +198,44 @@
 			            	$modalInstance.close('delete');
 			            	getDetails();
 			          },function(errData){
+
+			        		scope.flag = false;
+
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
-			        	  
-			        	  
 			          });
-			        
 			};
 			$scope.reject = function(){
 				$modalInstance.dismiss('cancel');
 			};
 		};
-        
+		
+		  var CancelPayment = function($scope,$modalInstance,getPaymentId){
+				$scope.accept = function(cancelRemark){
+					var paymentId=getPaymentId;
+					scope.formData.cancelRemark=cancelRemark;
+				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
+				            	$modalInstance.close('delete');
+				            	getDetails();
+				          });
+				            scope.getAllFineTransactions();
+				            
+				};
+				$scope.reject = function(){
+					$modalInstance.dismiss('cancel');
+				};
+			};
+			
+        scope.cancelPayment=function(id){
+        	$modal.open({
+                templateUrl: 'cancelpayment.html',
+                controller: CancelPayment,
+                resolve:{
+                	 getPaymentId:function(){
+                 		return id;
+                 	  }
+                }
+            });
+        }
 		scope.getMe = function(href,cId,subHref){
         	var url = href.replace("#","")+"/"+cId+""+(subHref==undefined?"":"/"+subHref);
         	console.log(url);
@@ -206,6 +251,8 @@
                     controller: StatementPopController,
                     resolve:{}
                 });
+        	}else if(href=="#/viewclient"){
+        		route.reload();
         	}else{
         		location.path(url);
         	}
@@ -330,7 +377,7 @@
           scope.selectedTemplate = templateId;
           http({
             method:'POST',
-            url: 'https://spark.openbillingsystem.com/mifosng-provider/api/v1/templates/'+templateId+'?clientId='+routeParams.id,
+            url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/templates/'+templateId+'?clientId='+routeParams.id,
             data: {}
           }).then(function(data) {
             scope.template = data.data;
@@ -357,7 +404,7 @@
                
 
          scope.downloadFile = function (statementId){
-              window.open('https://spark.openbillingsystem.com/mifosng-provider/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
+              window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
          scope.getAllTickets=function(){      
                resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
@@ -365,10 +412,53 @@
    	            scope.clientId= routeParams.id;	  
    	        });
          };
-
+	
+	scope.financialsummeryTab = function(){
+        	 scope.financialsummaryC="active";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="";
+        	 scope.adjustmentsC="";
+        	 scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
+         }
+         scope.invoicesTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.paymentsC="";
+        	 scope.invoicesC="active";
+        	 scope.adjustmentsC="";
+        	 scope.financialtransactions1 = paginatorService.paginate(scope.ge111, 14);
+         }
+         scope.paymentsTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="active";
+        	 scope.adjustmentsC="";
+        	 scope.financialPayments = paginatorService.paginate(scope.getPayments, 14);
+         }
+         scope.adjustmentsTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="";
+        	 scope.adjustmentsC="active";
+        	 scope.financialAdjustments = paginatorService.paginate(scope.getAdjustments, 14);
+         }
+         scope.eventsaleTab = function(){
+        	 scope.eventsaleC="active";
+        	 scope.eventorderC="";
+         }
+         scope.eventorderCTab = function(){
+        	 scope.eventsaleC="";
+        	 scope.eventorderC="active";
+         }
                scope.getOneTimeSale = function () {
+            	   scope.eventsaleC="active";
+            	   scope.eventorderC="";
+            	   if(scope.displayTab == "eventOrders"){
+            		   scope.eventsaleC="";
+                	   scope.eventorderC="active";
+            	   }
                    resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
                      scope.onetimesales = data.oneTimeSaleData;
+                     scope.eventOrders = data.eventOrdersData;
                    });
                  };
         scope.dataTableChange = function(clientdatatable) {
@@ -460,7 +550,23 @@
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
+	
+	scope.ge111 = function(offset, limit, callback,invoice) {
+  	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.invoice} , callback);
+  	  		};
+  			
+  	  		scope.getPayments = function(offset, limit, callback,payment) {
+	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.payment} , callback);
+	  		};
+	  		
+	  		scope.getAdjustments = function(offset, limit, callback,adjustment) {
+  	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.adjustment} , callback);
+  	  		};
           scope.getAllFineTransactions = function () {
+		  scope.financialsummaryC="active";
+       	   	  scope.invoicesC="";
+       	   	  scope.paymentsC="";
+       	   	  scope.adjustmentsC="";
           	scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
           };
           

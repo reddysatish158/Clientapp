@@ -19,6 +19,8 @@ define(['underscore', 'mifosX'], function() {
       'main/TaskController',
       'main/SearchController',
       'main/NavigationController',
+      'main/ProfileController',
+      'main/MessangerController',
       'prospects/ProspectsController',
       'prospects/ViewProspectsController',
       'prospects/CreateProspectsController',
@@ -46,6 +48,7 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewClientOneTimeSaleController',
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
+      'client/CreateClientControllerwizard',
       /*'product/LoanProductController',
       'product/CreateLoanProductController',
       'product/CreateSavingProductController',
@@ -260,7 +263,16 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewAssociationController',
       'client/EditAssociationController',
       'eventorder/EventOrderController',
-      'client/HardwareSwapController'
+      'client/HardwareSwapController',
+      'system/CreateProvisioningMappingController',
+      'system/EditProvisioningMappingController',
+      'paymentgateway/PaymentGatewayController',
+      'system/CreateEventActionMappingController',
+      'system/ViewEventActionMappingController',
+      'system/EditEventActionMappingController',
+      'paymentgateway/EditPaymentGatewayController'
+
+      
     ],
     filters: [
       'StatusLookup',

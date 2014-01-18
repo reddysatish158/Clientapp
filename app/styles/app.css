@@ -391,7 +391,8 @@ a:hover
 }
 
 tr.pointer-main:hover {
-        color: #007FFF;
+      background-color: #007FFF;
+    color: #ffffff !important;
 }
 
 .grbgcolor {
@@ -989,4 +990,56 @@ nav:hover:after{
 
 .highlight-row:hover{
     background-color: deepskyblue;
+}
+
+.span3 {
+  width: 220px;
+}
+.row-fluid .span3 {
+  width: 23.404255319148934%;
+  *width: 23.351063829787233%;
+}
+
+.table td.span3,
+.table th.span3 {
+  float: none;
+  width: 204px;
+  margin-left: 0;
+}
+#search:focus{
+    background-color: white;
+    color: #000000;
+}
+input#search::-webkit-input-placeholder{
+    font-size: 12px;
+    color: #ffffff;
+}
+input#search:-moz-placeholder{
+    font-size: 12px;
+    color: #ffffff;
+}
+input#search::-moz-placeholder {
+    font-size: 12px;
+    color: #ffffff;
+}
+input#search:-ms-input-placeholder {
+    font-size: 12px;
+    color: #ffffff;
+}
+
+input.span3,
+textarea.span3,
+.uneditable-input.span3 {
+  width: 150px;
+
+.table-bold-ord {
+    background-color: #F5F5F5;
+    width: 180px !important;
+
+}
+
+.ui-widget-contentclass {
+	border: 0px solid #aaaaaa/*{borderColorContent}*/;
+	background: #ffffff/*{bgColorContent}*/ ;
+	color: #222222/*{fcContent}*/;
 }

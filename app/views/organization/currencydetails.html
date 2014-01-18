@@ -20,12 +20,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="currencydetail in currencydetails | filter:filterText">
+            <tr class="pointer-main" ng-repeat="currencydetail in currencydetails | filter:filterText">
             
-                <td><a href="#/viewcurrencydetails/{{currencydetail.id}}">{{currencydetail.id}}</a></td>  
-                <td><a href="#/viewcurrencydetails/{{currencydetail.id}}">{{currencydetail.country}}</a></td>            
-                <td>{{currencydetail.currency}}</td> 
-                <td>{{currencydetail.status}}</td>                   
+                <td class="pointer" data-ng-click="routeTo(currencydetail.id)">{{currencydetail.id}}</td>  
+                <td class="pointer" data-ng-click="routeTo(currencydetail.id)">{{currencydetail.country}}</td>            
+                <td class="pointer" data-ng-click="routeTo(currencydetail.id)">{{currencydetail.currency}}</td> 
+                <td class="pointer" data-ng-click="routeTo(currencydetail.id)">{{currencydetail.status}}</td>                   
             </tr>
         </tbody>
     </table>

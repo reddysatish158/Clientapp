@@ -8,6 +8,7 @@
         scope.formData = {};
         scope.clientCategoryDatas=[];
         scope.configurationProperty=[];
+       
         
         resourceFactory.clientTemplateResource.get(function(data) {
             scope.offices = data.officeOptions;
@@ -28,17 +29,23 @@
           });
         };
 
-        $("#city").change(function(){
+       /* $("#city").change(function(){
         	
         	resourceFactory.AddressTemplateResource.get({city : scope.formData.city}, function(data) {
         		scope.formData.state = data.state;
         		scope.formData.country = data.country;
          
         });
-        });
+        });*/
         /*scope.getStateAndCountry=function(city){
         	alert(1);
         };*/
+      scope.getStateAndCountry=function(city){
+      	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
+          		scope.formData.state = data.state;
+          		scope.formData.country = data.country;
+      	  });
+        };
         scope.onFileSelect = function($files) {
           scope.file = $files[0];
         };
@@ -50,8 +57,13 @@
                 scope.choice = 0;
             }
         };
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
+
         scope.submit = function() {
-        	scope.submitFlag = true;
+        	 scope.flag = true;
             var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
             this.formData.locale = 'en';
             this.formData.active = true;
@@ -59,6 +71,8 @@
             this.formData.activationDate = reqDate;
             this.formData.flag=scope.configurationProperty;
             resourceFactory.clientResource.save(this.formData,function(data){
+            	scope.flag = false;
+
               if (scope.file) {
                 http.uploadFile({
                   url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+data.clientId+'/images', 
@@ -74,9 +88,8 @@
               } else{
                 location.path('/viewclient/' + data.resourceId);
               }
-              scope.submitFlag = false;
             },function(errData){
-            	scope.submitFlag = false;
+          	  scope.flag = false;
             });
           };
     }

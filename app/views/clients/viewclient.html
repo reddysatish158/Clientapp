@@ -84,7 +84,13 @@
                           </table>
                       </div>
                       <div class="span5">
+                              
                         <table  width="100%" >
+                             <tr>
+
+                               <td >{{'label.Device' | translate}}</td>
+                               <td>{{client.hwSerialNumber}}</td>
+                             </tr>
                             <tr>
                               <td width="35%">{{'label.Address' | translate}}</td>
                               <td width="65%"> {{client.addressNo}}<strong>,</strong>{{client.street}}</td>
@@ -97,9 +103,10 @@
                               <td>{{ 'label.country' | translate }}</td>
                               <td valign="top">{{client.country}}<strong>,</strong>{{client.zip}}</td>
                             </tr>
-                            <tr>
-                            <td colspan="2"><a href="#/editAddress/{{client.id}}">Edit Address</a><span class="divider">|</span>
-                             <a href="#/editAddress/{{client.id}}">Add Other Address</a></td>
+                             <tr>
+
+                            <td colspan="2"><a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-edit icon-white" ></i>Edit Address</button></a>
+                             <a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Add Other Address</button></a></td>
                             </tr>
                           </table>
                       </div>
@@ -153,16 +160,14 @@
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
-                        <tr ng-repeat="order in orders | filter:filterText" >
-                          <td>{{order.id}}</td>
-                          <td>
-                            <a href="#/vieworder/{{order.id}}/{{client.id}}">{{order.planCode}}</a>
-                          </td>
-                          <td>{{order.contractPeriod}}</td>
-                          <td>{{order.startDate | DateFormat}}</td>
-                          <td>{{order.endDate | DateFormat}}</td> 
-                          <td>{{order.price}}</td>
-                            <td>{{order.status}}</td>
+                        <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.id}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
+                            <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
                         </tr>
                         <tr><td colspan="7">&nbsp;</td></tr>
                        
@@ -296,14 +301,14 @@
 	      
         </thead>
         <tbody>
-            <tr ng-repeat="ticket in tickets  | filter:filterText">
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.id}}</a></td>
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.priority}}</a></td>  
-                <td>{{ticket.ticketDate | DateFormat}}</td>
-                <td>{{ticket.problemDescription}}</td>
-                <td>{{ticket.status}}</td>
-                <td>{{ticket.userName}}</td>  
-                <td>{{ticket.lastComment}}</td>          
+            <tr class="pointer-main" ng-repeat="ticket in tickets  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.id}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.priority}}</td>  
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.ticketDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.problemDescription}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.status}}</td>
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.userName}}</td>  
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.lastComment}}</td>          
             </tr>
         </tbody>
     </table>
@@ -366,9 +371,93 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Sale" select="getOneTimeSale()" active="SaleTab">
-      
-      <div class="pull-right">
+      <tab heading="Item Sale" select="getOneTimeSale()" active="SaleTab">
+      <hr>
+ 		<div class="tabbable">
+  			<ul class="nav nav-tabs">
+				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Item Sale</a></li>
+    				<li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li>
+			    </ul>
+			<div class="tab-content">
+  
+		    <div id="pane1" class="tab-pane" ng-class="{active: eventsaleC}">
+				<div class="pull-right">
+					<a href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
+				</div>
+    
+			    <div>
+					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+							 	<th>{{'table.heading.id' | translate}}</th>
+								<th>{{'table.heading.saledate' | translate}}</th>
+								<th>{{'table.heading.itemcode' | translate}}</th>
+								<th>{{'table.heading.chargecode' | translate}}</th>
+								<th>{{'table.heading.quantity' | translate}}</th>
+								<th>{{'table.heading.totalprice' | translate}}</th>
+								<th>{{'table.heading.allocate' | translate}}</th>
+								<th>&nbsp;</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="onetimesale in onetimesales  | filter:filterText">
+								<td>{{onetimesale.id}}</td>
+								<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.saleDate | DateFormat}}</a></td>
+								<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.itemCode}}</a></td>
+								<td>{{onetimesale.chargeCode}}</td>
+								<td>{{onetimesale.quantity}}</td> 
+								<td>{{onetimesale.totalPrice}}</td> 
+								<td>{{onetimesale.hardwareAllocated}}</td>
+							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
+							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			  </div>
+			    
+			    
+			    
+			    <div id="pane2" class="tab-pane" ng-class="{active: eventorderC}">
+			    <div class="pull-right">
+
+					<a href="#/eventorder/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Event Order</a>
+
+				</div>
+			    	<div>
+					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+							 	<th>{{'table.heading.id' | translate}}</th>
+								<th>{{'table.heading.eventName' | translate}}</th>
+								<th>{{'table.heading.bookedDate' | translate}}</th>
+								<th>{{'table.heading.chargecode' | translate}}</th>
+								<th>{{'table.heading.eventPrice' | translate}}</th>
+								<th>{{'table.heading.status' | translate}}</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="eventOrders in eventOrders  | filter:filterText">
+								<td>{{eventOrders.id}}</td>
+								<td>{{eventOrders.eventName}}</td>
+								<td>{{eventOrders.bookedDate | DateFormat}}</td>
+								<td>{{eventOrders.chargeCode}}</td>
+								<td>{{eventOrders.eventPrice}}</td> 
+								<td>{{eventOrders.status}}</td> 
+								
+							</tr>
+						</tbody>
+					</table>
+					</div>
+			    </div>
+			    
+			  </div>
+			</div>
+      <!-- <div class="pull-right">
 		
 		<a href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
 	</div>
@@ -386,25 +475,254 @@
 					<th>{{'table.heading.totalprice' | translate}}</th>
 					<th>{{'table.heading.allocate' | translate}}</th>
 					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="onetimesale in onetimesales  | filter:filterText">
-					<td>{{onetimesale.id}}</td>
-					<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.saleDate | DateFormat}}</a></td>
-					<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.itemCode}}</a></td>
-					<td>{{onetimesale.chargeCode}}</td>
-					<td>{{onetimesale.quantity}}</td> 
-					<td>{{onetimesale.totalPrice}}</td> 
-					<td>{{onetimesale.hardwareAllocated}}</td>
+				<tr class="pointer-main" ng-repeat="onetimesale in onetimesales  | filter:filterText">
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.id}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.saleDate | DateFormat}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.itemCode}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.chargeCode}}</td>
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.quantity}}</td> 
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.totalPrice}}</td> 
+					<td class="pointer" data-ng-click="routeTosale(onetimesale.id,client.id)">{{onetimesale.hardwareAllocated}}</td>
 				    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i></a></td>
 				    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
 				</tr>
 			</tbody>
 		</table>
-	</div>
+	</div> -->
 </tab>
+
 <tab heading="Financial Summary" select="getAllFineTransactions()">
+      <hr>
+ 		<div class="tabbable">
+  				<ul class="nav nav-tabs">
+				    <li class={{financialsummaryC}}><a ng-click="financialsummeryTab()" data-toggle="tab" >Financial summary</a></li>
+				    <li class={{paymentsC}}><a ng-click="paymentsTab()" data-toggle="tab">Payments</a></li>
+    			 	<li class={{invoicesC}}><a ng-click="invoicesTab()" data-toggle="tab">Invoices</a></li>
+    			 	<li class={{adjustmentsC}}><a ng-click="adjustmentsTab()" data-toggle="tab">Adjustments</a></li>
+			    </ul>
+			<div class="tab-content">
+  
+		    <div id="pane1" class="tab-pane" ng-class="{active: financialsummaryC}">
+				
+			    <div>
+					<form ng-submit="searchFinancialTransactions(filterText)">
+     					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Id">
+	  				</form>
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+								<th>Username</th>
+							 	<th>Transaction Id</th>
+                				<th>Transaction Date</th>
+                				<th>Transaction Type</th>
+                				<th>Credit Amount</th>
+                				<th>Debit Amount</th>
+                 				<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							 <tr class="pointer-main" ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'">
+              					
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 					{{financialtransaction.userName}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 					{{financialtransaction.transactionId}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 					{{financialtransaction.transDate | DateFormat}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                					{{financialtransaction.transactionType}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 					{{financialtransaction.creditAmount}}
+              					</td>
+               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 					{{financialtransaction.amount}}
+              					</td>
+           					</tr>
+           					<tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='PAYMENT CANCELED'"> 
+               					<td>
+                  					<any>{{financialtransaction.userName}}</any>
+              					</td>
+               					<td>
+                  					<any>{{financialtransaction.transactionId}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transDate | DateFormat}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.creditAmount}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.amount}}</any>
+              					</td>
+              					<td>
+                					<a ng-hide="financialtransaction.transactionType =='PAYMENT CANCELED' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+              					</td>
+            				</tr>
+						</tbody>
+					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialtransactions.previous()" href="" ng-disabled="!financialtransactions.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialtransactions.next()" href="" ng-disabled="!financialtransactions.hasNext()">Next &rarr;</a></li>
+    				</ul>
+				</div>
+			  </div>
+			    
+			    
+			    <div id="pane2" class="tab-pane" ng-class="{active: paymentsC}">
+			    
+			    	<div>
+					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+								<th>Username</th>
+							 	<th>Transaction Id</th>
+                				<th>Transaction Date</th>
+                				<th>Transaction Type</th>
+                				<th>Credit Amount</th>
+                				<th>Debit Amount</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr ng-repeat="financialtransaction in financialPayments.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='PAYMENT CANCELED'"> 
+               					<td>
+                  					<any>{{financialtransaction.userName}}</any>
+              					</td>
+               					<td>
+                  					<any>{{financialtransaction.transactionId}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transDate | DateFormat}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.creditAmount}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.amount}}</any>
+              					</td>
+              					
+            				</tr>
+						</tbody>
+					</table>
+					</div>
+			    </div>
+			    
+			    
+			    
+			      <div id="pane3" class="tab-pane" ng-class="{active: invoicesC}" select="getAllFine()">
+			    
+			    	<div>
+					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+								<th>Username</th>
+							 	<th>Transaction Id</th>
+                				<th>Transaction Date</th>
+                				<th>Transaction Type</th>
+                				<th>Credit Amount</th>
+                				<th>Debit Amount</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr ng-repeat="financialtransaction in financialtransactions1.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
+               					<td>
+                  					<any>{{financialtransaction.userName}}</any>
+              					</td>
+               					<td>
+                  					<any>{{financialtransaction.transactionId}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transDate | DateFormat}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.creditAmount}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.amount}}</any>
+              					</td>
+              					
+            				</tr>
+						</tbody>
+					</table>
+					</div>
+			    </div>
+			    
+			
+			    
+			    
+			    <div id="pane4" class="tab-pane" ng-class="{active: adjustmentsC}">
+			    
+			    	<div>
+					<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+					<table class="table">
+						<thead>
+							<tr class="graybg">
+								<th>Username</th>
+							 	<th>Transaction Id</th>
+                				<th>Transaction Date</th>
+                				<th>Transaction Type</th>
+                				<th>Credit Amount</th>
+                				<th>Debit Amount</th>
+								
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr ng-repeat="financialtransaction in financialAdjustments.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='ADJUSTMENT'"> 
+               					<td>
+                  					<any>{{financialtransaction.userName}}</any>
+              					</td>
+               					<td>
+                  					<any>{{financialtransaction.transactionId}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transDate | DateFormat}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.creditAmount}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.amount}}</any>
+              					</td>
+              					
+            				</tr>
+						</tbody>
+					</table>
+					</div>
+			    </div>
+			    
+			    
+			  </div>
+			</div>
+			</tab>
+
+
+<!-- <tab heading="Financial Summary" select="getAllFineTransactions()">
     <div>
     <form ng-submit="searchFinancialTransactions(filterText)">
      <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Id">
@@ -417,18 +735,73 @@
                 <th>Transaction Type</th>
                 <th>Credit Amount</th>
                 <th>Debit Amount</th>
+                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
+          <tr class="pointer-main" ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'">
+              
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transactionId}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transDate | DateFormat}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.transactionType}}
+              </td>
+              <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.creditAmount}}
+              </td>
+               <td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                 {{financialtransaction.amount}}
+              </td>
+           </tr>
+           <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='CANCEL PAYMENT'"> 
+               <td>
+                  <any>{{financialtransaction.transactionId}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.transDate | DateFormat}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.transactionType}} </any>
+				
+             
+              </td>
+              <td>
+                  <any>{{financialtransaction.creditAmount}}</any>
+              </td>
+              <td>
+                  <any>{{financialtransaction.amount}}</any>
+              </td>
+              <td>
+                <a ng-hide="financialtransaction.transactionType =='CANCEL PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+              </td>
+            </tr>
+            
+             <!-- <tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
+            
                 
-                <td><a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transactionId}}</a></td>
-                <td><a href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a></td>
+                <td >
+                <a ng-show="financialtransaction.transactionType =='INVOICE'" href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transactionId}}</a>
+                <any ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</any>
+                </td>
+                <td >
+                <a  ng-show="financialtransaction.transactionType =='INVOICE'" href="#/viewfinancialtran/{{financialtransaction.transactionId}}/{{client.id}}">{{financialtransaction.transDate | DateFormat}}</a>
+                
+                
+                <td ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transactionId}}</td>
+                <any ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT'">{{financialtransaction.transDate | DateFormat}}</any></td>
+                
+       
                 <td>{{financialtransaction.transactionType}}</td>
                 <td>{{financialtransaction.creditAmount}}</td>
                 <td>{{financialtransaction.amount}}</td>
 
-            </tr>
+            </tr> 
+
+            
         </tbody>
     </table>
     <ul class="pager">
@@ -436,7 +809,7 @@
         			<li class="next" ><a ng-click="financialtransactions.next()" href="" ng-disabled="!financialtransactions.hasNext()">Next &rarr;</a></li>
     			</ul>
 </div>
- </tab>  
+ </tab>  -->
 
      
      <!--  <tab heading="{{'tab.closedaccount' | translate}}">
@@ -479,16 +852,17 @@
                 <th>Due Date</th>
                 <th>amount</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="statement in states  | filter:filterText">                 
-                <td>{{statement.id}}</td>
-                <td><a href="#/viewstatement/{{statement.id}}">{{statement.billDate | DateFormat}}</a></td>
-                   <td>{{statement.dueDate | DateFormat}}</td>
-                      <td>{{statement.amount}}</td>
-                      <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
-<td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
+            <tr class="pointer-main" ng-repeat="statement in states  | filter:filterText">                 
+                <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.id}}</td>
+                 <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
+                   <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.dueDate | DateFormat}}</td>
+                      <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount}}</td>
+                        <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
+                          <td><a class="btn btn-primary" href="https://www.sandbox.paypal.com/cgi-bin/webscr?rm=2&cmd=_xclick&business=testshaik@gmail.com&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
                 ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
@@ -681,7 +1055,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="accept(start.date)">{{'label.confirm' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flag">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       <script type="text/ng-template" id="StatementPop.html">
@@ -703,7 +1077,7 @@
                     		</div>
 						</div> 
                 		<div class="control-group">
-                  			<label class="control-label">{{ 'label.Promotionalmessage' | translate }}</label>
+                  			<label class="control-label">{{ 'label.remark' | translate }}</label>
                   			<div class="controls">
                   				<textarea  ng-model="formData.message" style="width: 333px; height: 126px;"></textarea>
                   			</div>
@@ -712,6 +1086,29 @@
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
                         <button class="btn btn-primary" ng-click="acceptStatement()">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+            <script type="text/ng-template" id="cancelpayment.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.cancelpayment.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big" style="height:270px;">
+                       	<div class="control-group">
+							<div class="controls">
+						 	 <label class="control-label" style="color:red;" ng-show="error.length>0">{{error | translate}}</label>
+							</div>	
+						</div>
+						<div class="control-group">
+							<label class="control-label">{{ 'label.cancelremark' | translate }}</label>
+							<div class="controls">
+						 		<input type="text" ng-model="formData.cancelRemark" required late-Validate style="background-color:#FFFFFF;"/> 
+							</div>	
+						</div>
+						
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="accept(formData.cancelRemark)">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
 </div>

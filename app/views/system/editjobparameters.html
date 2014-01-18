@@ -9,7 +9,7 @@
 		<ul class="breadcrumb">
 	        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
 	        <li><a href="#/jobs">{{'label.manageschedulerjobs' | translate}}</a> <span class="divider">/</span></li>
-	        <li><a href="#/viewschedulerjob/{{formData.jobId}}">{{formData.displayName}}</a> <span class="divider">/</span></li>
+	      <!--  <li><a href="#/viewschedulerjob/{{formData.jobId}}">{{formData.displayName}}</a> <span class="divider">/</span></li>-->
 	        <li class="active">{{'label.editschedulerjobparameters' | translate}}</li>
 	    </ul>
 	</div>
@@ -47,7 +47,7 @@
                  <div class="control-group" ng-show="formData.displayName =='Messanger'">
                 <label class="control-label">{{ 'label.job.messagetemplate' | translate }}<span class="required">*</span></label>
                 <div class="controls">
-                  <select ng-model="jobparameters.messageTempalate"  ng-options="billingMessageData.templateDescription as billingMessageData.templateDescription for billingMessageData in billingMessageDatas" value="{{office.id}}">
+                  <select ng-model="jobparameters.messageTemplate"  ng-options="billingMessageData.templateDescription as billingMessageData.templateDescription for billingMessageData in billingMessageDatas" value="{{office.id}}">
                 </select>
                 </div>
               </div>
@@ -57,6 +57,12 @@
             <div class="controls">
                  <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.exipiryDate" is-open="opened" min="minDate" max="'2020-06-22'" date-disabled="disabled(date, mode)"/>
             </div>
+           </div>
+           <div class="control-group" ng-show="formData.displayName =='Report Email'">
+               <label class="control-label">{{ 'label.job.emailid' | translate }}<span class="required">*</span></label>
+                <div class="controls">
+                <input type="text" ng-model="jobparameters.emailId">
+                </div>
            </div>
            <div class="control-group">
                 <label class="control-label" for="isDynamic">{{ 'label.job.isDynamic' | translate }}</label>

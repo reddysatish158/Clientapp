@@ -82,9 +82,8 @@
 									<div class="control-group">
 										<label class="control-label" for="quality">{{'label.itemdetail.quality' | translate }}</label>
 										<div class="controls">
-											<select ng-model="itemDetailsData.quality">
-												<option value="">Good</option>
-												<option value="Defective">Defective</option>
+											<select ng-model="itemDetailsData.quality"  ng-options="q.mCodeValue as q.mCodeValue for q in quality" value="{{q.mCodeValue}}">
+												<option value="">{{'label.select.one' | translate}}</option>
 											</select>
 										</div>
 									</div>

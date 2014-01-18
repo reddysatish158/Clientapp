@@ -77,6 +77,16 @@
       .when('/addclientdocument/:clientId', {
           templateUrl: 'views/clients/addclientdocument.html'
       })
+       .when('/profile',{
+        templateUrl: 'views/profile.html'
+      })
+      
+       .when('/messanger',{
+        templateUrl: 'views/messanger.html'
+      })
+       .when('/addnewmesage',{
+        templateUrl: 'views/addmessage.html'
+      })
       .when('/addclientidentifier/:clientId', {
         templateUrl: 'views/clients/addclientidentifier.html'
       })
@@ -514,7 +524,7 @@
           templateUrl: 'views/organization/editplan.html'
       })
       
-       .when('/neworder/:id', {
+       .when('/neworder/:planId/:id', {
           templateUrl: 'views/clients/createorder.html'
       })
       .when('/hardwareswap/:id/:clientId/:orderId', {
@@ -826,7 +836,7 @@
       .when('/edithardwareplanmapping/:id', {
           templateUrl : 'views/system/edithardwareplanmapping.html'
         })
-        .when('/association/:id', {
+        .when('/association/:id/:orderId', {
           templateUrl : 'views/clients/association.html'
         })
          .when('/viewAssociation/:clientId/:id', {
@@ -844,9 +854,38 @@
         .when('/viewServiceMapping/:id', {
         templateUrl: 'views/system/viewServiceMapping.html'
         })
+          .when('/createclientnewwizard', {
+        templateUrl: 'views/clients/createclientnewwizard.html'  
+      })
         .when('/editServiceMapping/:id', {
             templateUrl: 'views/system/editServiceMapping.html'
+         })
+         .when('/createProvisioningmapping', {
+             templateUrl: 'views/system/createProvisioningmapping.html'
+         })  
+         .when('/viewprovisioningmapping/:id', {
+             templateUrl: 'views/system/viewprovisioningmapping.html'
+         })  
+        .when('/editProvisioningMapping/:id', {
+             templateUrl: 'views/system/editProvisioningMapping.html'
+         })
+         .when('/paymentGateway', {
+          templateUrl: 'views/paymentgateway/paymentGateway.html'
+         })
+
+	    .when('/createeventactionmapping', {
+        templateUrl: 'views/system/createeventactionmapping.html'
+    	})
+    	.when('/vieweventactionmapping/:id', {
+        templateUrl: 'views/system/vieweventactionmapping.html'
+    	})
+    	.when('/editeventactionmapping/:id', {
+        templateUrl: 'views/system/editeventactionmapping.html'
+    	})
+    	.when('/editPaymentGateway/:id', {
+          templateUrl: 'views/paymentgateway/editPaymentGateway.html'
          });
+
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

@@ -12,7 +12,7 @@
       });
        
       scope.cancel = function() {
-        location.path('/viewschedulerjob/'+routeParams.id);
+        location.path('/jobs');
       } 
 
       scope.submit = function() {

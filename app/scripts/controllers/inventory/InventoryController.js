@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    InventoryController: function(scope,webStorage, routeParams, location, resourceFactory, paginatorService) {
+    InventoryController: function(scope,webStorage, routeParams, location,$modal, resourceFactory, paginatorService) {
         scope.items = [];
         scope.grn = [];
         scope.itemdetails = [];
@@ -44,6 +44,23 @@
 		 
         }
         
+        scope.routeTo = function(id){
+        	if(id != 0){
+            location.path('/viewclient/'+ parseInt(id));
+        	}else{
+        		 location.path('/createclient');
+        		
+        	}
+          };
+        scope.routeTogrn = function(id){
+              location.path('/viewgrn/'+ parseInt(id));
+           };
+         scope.routeTomrn = function(id){
+             location.path('/viewmrn/'+ parseInt(id));
+           };
+        scope.routeToitem = function(id){
+            location.path('/viewitem/'+ parseInt(id));
+          };
         
         scope.itemFetchFunction = function(offset, limit, callback) {
 			resourceFactory.itemResource.getAllItems({offset: offset, limit: limit} , callback);
@@ -167,13 +184,44 @@
 					  				
 					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
 					  			}
-					  		};		
+					  		};
+							scope.editQuality = function(itemId){
+					            scope.itemid=itemId;
+					        	  scope.errorStatus=[];scope.errorDetails=[];
+					        	  $modal.open({
+					                  templateUrl: 'EditQuality.html',
+					                  controller: EditQualityController,
+					                  resolve:{}
+					              });
+					          };
+					          var EditQualityController = function ($scope, $modalInstance) {
+
+					          	resourceFactory.itemQualityResource.get(function(data) {
+					                  $scope.quality = data.quality;
+					              });
+					        	  $scope.approveQuality = function () {
+					        		
+					        		  if(this.formData == undefined || this.formData == null){
+					        			  this.formData = {"quality":""};
+					        		  }
+					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
+					        	      
+					        	          $modalInstance.close('delete');
+								location.path("/viewitemdetails/"+data.resourceId);
+					        	        });
+					              };
+					              $scope.cancelQuality = function () {
+					                  $modalInstance.dismiss('cancel');
+					              };
+					              
+					              
+					          };		
         
         
        
     }
   });
-  mifosX.ng.application.controller('InventoryController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
+  mifosX.ng.application.controller('InventoryController', ['$scope','webStorage', '$routeParams', '$location','$modal', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
     $log.info("InventoryController initialized");
   });
 }(mifosX.controllers || {}));

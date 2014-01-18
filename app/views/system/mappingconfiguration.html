@@ -27,12 +27,12 @@
               </tr>
             </thead>
             <tbody>
-             <tr ng-repeat="servicemappingdata in servicemappingdatas  | filter:filterText">
-                <td><a href="#/viewServiceMapping/{{servicemappingdata.id}}">{{servicemappingdata.id}}</a></td>
-                <td><a href="#/viewServiceMapping/{{servicemappingdata.id}}">{{servicemappingdata.serviceCode}}</a></td>
-                <td>{{servicemappingdata.serviceIdentification}}</td>
-                <td>{{servicemappingdata.status}}</td>
-                <td>{{servicemappingdata.image}}</td>
+             <tr class="pointer-main" ng-repeat="servicemappingdata in servicemappingdatas  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.id}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceCode}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceIdentification}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.status}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.image}}</td>
    			</tr>
      		 </tbody>
           </table>
@@ -59,10 +59,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="hardwaremappingdata in hardwaremappingdatas  | filter:filterText">
-              <td><a href="#/viewhardwareplanmapping/{{hardwaremappingdata.id}}">{{hardwaremappingdata.id}}</a></td>        
-                <td><a href="#/viewhardwareplanmapping/{{hardwaremappingdata.id}}">{{hardwaremappingdata.planCode}}</a></td>
-                <td>{{hardwaremappingdata.itemCode}}</td>
+              <tr class="pointer-main" ng-repeat="hardwaremappingdata in hardwaremappingdatas  | filter:filterText">
+              <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.id}}</td>        
+                <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.planCode}}</td>
+                <td class="pointer" data-ng-click="routeTohardware(hardwaremappingdata.id)">{{hardwaremappingdata.itemCode}}</td>
      		 </tbody>
           </table>
        		<!-- 	<ul class="pager">
@@ -72,9 +72,64 @@
          </div>
       </tab>
       			
-      		
+      				
+      	<tab heading="Provisioning Commands" select="getProvisiongCommandData()">
+        <div class="pull-right btn-group">
+          <a href="#/createProvisioningmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+        </div>
+        <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+        <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.provisioningcommands.id' | translate}}</th>
+                <th>{{'table.provisioningcommands.provisioningsystem' | translate}}</th>
+                <th>{{'table.provisioningcommands.commandname' | translate}}</th>
+                <th>{{'table.provisioningcommands.status' | translate}}</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pointer-main" ng-repeat="provisiongdata in provisiongsystemData  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.id}}</td>        
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.provisioningSystem}}</td>
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.commandName}}</td>
+                <td class="pointer" data-ng-click="routeToprovisioning(provisiongdata.id)">{{provisiongdata.status}}</td>
+     		 </tbody>
+          </table>
+         </div>
+      </tab>	
+      	
 
-
+<tab heading="EventAction Mapping" select="getEventActionMappingData()">
+        <div class="pull-right btn-group">
+          <a href="#/createeventactionmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+        </div>
+        <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+                   
+        <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.hardwaremapping.id' | translate}}</th>
+                <th>{{'table.eventactionmapping.event' | translate}}</th>
+                <th>{{'table.eventactionmapping.action' | translate}}</th>
+                <th>{{'table.eventactionmapping.process' | translate}}</th>
+               
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="data in datas  | filter:filterText">
+              <td><a href="#/vieweventactionmapping/{{data.id}}">{{data.id}}</a></td>        
+                <td><a href="#/vieweventactionmapping/{{data.id}}">{{data.eventName}}</a></td>
+                <td>{{data.actionName}}</td>
+                <td>{{data.process}}</td>
+     		 </tbody>
+          </table>
+      
+         </div>
+      </tab>
+	
     </tabset>
     </div>
   </div>

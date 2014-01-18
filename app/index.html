@@ -5,6 +5,9 @@
     <link rel="icon" type="image/png" href="./images/favicon.ico" />
     <title>{{ 'label.product.title' | translate }}</title>
     <style>[data-ng-cloak] { display: none !important; }</style>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});
+</script>
 </head>
 <body  class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80" data-ng-cloak data-ng-controller="MainController">
 <!-- Login Form  -->
@@ -28,7 +31,7 @@
         <br/><br/>
         <div class="pull-right">
             <input type="text" data-ng-model="loginCredentials.username"   placeholder="{{ 'label.username' | translate }}" value="billing" class="input-small" required>
-            <input type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
+            <input id="pwd" type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
             <button class="btn btn-success" type="submit" data-ng-click="login()">{{ 'label.signin' | translate }}</button>
         </div>
         <div class="pull-right" data-ng-show="authenticationFailed">
@@ -58,12 +61,13 @@
     <nav>
         <ul class="margin-nav nav-list ext-sidenav">
             <li><a href="#/nav/offices"><i class="icon-compass icon-large"></i> Navigation</a></li>
-           <!--  <li class="divider"></li>
-            <li><a href="#/tasks"><i class="icon-bell-alt icon-large"></i> Tasks</a></li> -->
-          <!--   <li class="divider"></li>
-            <li><a href="#/entercollectionsheet"><i class="icon-tasks icon-large"></i> Collection Sheet</a></li> -->
+             <li class="divider"></li>
+            <li> <a href="#/createprospects"><i class="icon-user icon-large"></i>+ Prospect</a></li> 
+              
             <li class="divider"></li>
             <li><a href="#/createclient"><i class="icon-user icon-large"></i> + Client </a></li>
+            <li class="divider"></li>
+            <li><a href="#/createclientnewwizard"><i class="icon-tasks icon-large"></i>  + New Activation</a></li>
             <!-- <li class="divider"></li>
             <li><a href="#/creategroup"><i class="icon-group icon-large"></i> + Group </a></li>
             <li class="divider"></li>
@@ -100,9 +104,12 @@
                                 <li><a href="#/users">{{ 'link.admin.users' | translate }}</a></li>
                                 <li><a href="#/organization">{{ 'link.admin.organisation' | translate }}</a></li>
                                 <li><a href="#/system">{{ 'link.admin.system' | translate }}</a></li>
-                               <!--  <li><a href="#/products">{{ 'link.admin.products' | translate }}</a></li> -->
-                                <li><a href="#/templates">{{ 'link.admin.templates' | translate }}</a></li>
+                               <!--  <li><a href="#/products">{{ 'link.admin.products' | translate }}</a></li>
+                                <li><a href="#/templates">{{ 'link.admin.templates' | translate }}</a></li> -->
+                                  <li><a href="#/importing">{{'link.import' | translate }}</a></li>
+                                    <li><a href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
+                                <li><a href="#/paymentGateway">PaymentGateway</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -111,14 +118,15 @@
                         <li class="dropdown" id="preview-menu">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{currentSession.user.name}}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#"><i class="icon-user"></i>{{ 'link.profile' | translate }}</a></li>
+                                <li><a href="#/profile"><i class="icon-user"></i>{{ 'link.profile' | translate }}</a></li>
+                                 <li><a href="#/messanger"><i class="icon-envelope"></i>{{ 'link.messanger' | translate }}</a></li>
                                 <li><a href="#/usersetting"><i class="icon-cog"></i>{{ 'link.settings' | translate }}</a></li>
-                                <li><a data-ng-click="logout()"><i class="icon-off"></i>{{ 'link.logout' | translate }}</a></li>
+                                <li><a id="logout" data-ng-click="logout()"><i class="icon-off"></i>{{ 'link.logout' | translate }}</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form ng-submit="search()" class="navbar-search pull-right ng-pristine ng-valid">
-                    <input data-ng-model="search.query" type="text" placeholder="Search" class="search-query span2">
+                    <form ng-submit="search()" class="navbar-search pull-left ng-pristine ng-valid">
+                    <input id="search" data-ng-model="search.query" type="text" placeholder="{{ 'label.searchorpress' | translate }}" class="search-query span3">
                     </form>
                 </div>
             </div>

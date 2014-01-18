@@ -29,7 +29,7 @@
 
 
         scope.submit = function() { 
-        
+           this.formData.orderId=routeParams.orderId;
             resourceFactory.associationSaveResource.save({clientId: routeParams.id},this.formData,function(data){
            	 location.path('/viewclient/' +scope.clientId);
               

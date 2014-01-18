@@ -21,19 +21,23 @@
           _.each(['get', 'delete', 'head'], function(method) {
             self[method] = function(url) {
               var config = getConfig({
+            	  
                 method: method.toUpperCase(),
                 url: url
               });
+           
               return http(config);
             };
           });
           _.each(['post', 'put'], function(method) {
             self[method] = function(url, data) {
+            	
               var config = getConfig({
                 method: method.toUpperCase(),
                 url: url,
                 data: data
               });
+             
               return http(config);
             };
           });
