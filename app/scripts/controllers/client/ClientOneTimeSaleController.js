@@ -53,10 +53,13 @@
 		        });	
 	        }
 	        
+	        
+	        
 	        scope.reset123 = function(){
 	        	   webStorage.add("callingTab", {someString: "Sale" });
 	           };
-	        scope.submit = function() {  
+	        scope.submit = function() {
+	        	scope.submitFlag = true;
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
@@ -69,6 +72,9 @@
 	             delete this.formData.id;
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
 	            	 location.path('/viewclient/' + routeParams.id);
+	            	 scope.submitFlag = false;
+	          },function(errData){
+	        	  scope.submitFlag = false;
 	          });
 	            webStorage.add("callingTab", {someString: "Sale" });
 	        };

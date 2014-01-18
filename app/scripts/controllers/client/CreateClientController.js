@@ -51,7 +51,7 @@
             }
         };
         scope.submit = function() {
-        	
+        	scope.submitFlag = true;
             var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
             this.formData.locale = 'en';
             this.formData.active = true;
@@ -74,7 +74,9 @@
               } else{
                 location.path('/viewclient/' + data.resourceId);
               }
-              
+              scope.submitFlag = false;
+            },function(errData){
+            	scope.submitFlag = false;
             });
           };
     }

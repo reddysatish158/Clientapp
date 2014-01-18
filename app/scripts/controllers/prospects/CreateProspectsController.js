@@ -46,12 +46,10 @@
 	        	var res2 = validator.regXForMobileNumber(scope.formData.homePhoneNumber);
 	        	var res3 = validator.validateZipCode(scope.formData.zipCode);
 	        	
-	        	/*if(res1 == false || res2 ==false || res3 == false){
-	        		console.log("res1: "+res1);
-	        		console.log("res2: "+res2);
-	        		console.log("res3: "+res3);
+	        	if(res1 == false || res2 ==false || res3 == false){
+	        		
 	        		return undefined;
-	        	}*/
+	        	}
 	        	
 	        	 this.formData.locale = "en";
 	        	 var reqDate = dateFilter(scope.first.date,'yyyy-MM-dd');
