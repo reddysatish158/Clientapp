@@ -1085,7 +1085,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="acceptStatement()">{{'label.confirm' | translate}}</button>
+                        <button class="btn btn-primary" ng-click="acceptStatement()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
             <script type="text/ng-template" id="cancelpayment.html">

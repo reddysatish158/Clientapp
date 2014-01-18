@@ -69,13 +69,8 @@
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
-	            	scope.flag = false;
 	            	 location.path('/viewclient/' + routeParams.id);
 	          },function(errData){
-<<<<<<< HEAD
-=======
-	        	  
->>>>>>> b1f069539fa95f08dbe4de7d0fa5cf12763fc37d
 	        	  scope.flag = false;
 	          });
 	            webStorage.add("callingTab", {someString: "Sale" });

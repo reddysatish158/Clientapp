@@ -189,18 +189,18 @@
         var Approve = function($scope,$modalInstance){
         	
 			$scope.accept = function(date){
-				scope.flag = true;
+				$scope.flag = true;
 			        	scope.formData.locale = 'en';
 			        	var reqDate = dateFilter(date,'dd MMMM yyyy');
 			            scope.formData.dateFormat = 'dd MMMM yyyy';
 			            scope.formData.systemDate=reqDate;
 			            resourceFactory.clientInvoiceResource.save({'clientId': routeParams.id},scope.formData,function(data,putResponseHeaders){
-			            	scope.flag = false;
+			            	$scope.flag = false;
 			            	$modalInstance.close('delete');
 			            	getDetails();
 			          },function(errData){
 
-			        		scope.flag = false;
+			        		$scope.flag = false;
 
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
 			          });
