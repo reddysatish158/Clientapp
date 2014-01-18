@@ -72,6 +72,7 @@
             this.formData.activationDate = reqDate;
             this.formData.flag=scope.configurationProperty;
             resourceFactory.clientResource.save(this.formData,function(data){
+
             	scope.flag = false;
 
               if (scope.file) {
