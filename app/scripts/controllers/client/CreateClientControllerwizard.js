@@ -541,7 +541,6 @@
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
-	            	scope.flag = false;
 	            	  location.path('/viewclient/' + data.resourceId);
 	            },function(errData){
 	          	  scope.flag = false;
