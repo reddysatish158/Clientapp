@@ -35,6 +35,11 @@
         	return false;
         };
         
+        scope.dbClick = function(){
+        	console.log("dbclick");
+        	return false;
+        };
+        
         scope.submit = function() {
         	scope.flag = false;
           this.formData.locale = "en";

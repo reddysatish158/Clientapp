@@ -224,10 +224,13 @@
            else
                $('th.'+'planCode'+' i').removeClass().addClass('icon-chevron-down');
        };
+
+       
        scope.dbClick = function(){
-          	console.log("dbclick");
-          	return false;
-          };
+         	console.log("dbclick");
+         	return false;
+         };
+
         scope.submit = function() {   
         	scope.flag = true;
         	this.formData.locale = 'en';

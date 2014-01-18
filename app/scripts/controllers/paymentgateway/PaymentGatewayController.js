@@ -5,6 +5,7 @@
         scope.paymentgatewaydatas = [];
 	        
 	      //for All tab
+
 			 scope.paymentGatewayAllData = function(offset, limit, callback) {
 	 			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
 			};
@@ -25,6 +26,7 @@
 	  		
         
 	 		//for Failure tab
+		  		
 	 		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
 	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Failure'} , callback);
 	 		};

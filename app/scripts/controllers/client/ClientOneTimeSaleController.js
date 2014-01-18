@@ -72,7 +72,7 @@
 	            	scope.flag = false;
 	            	 location.path('/viewclient/' + routeParams.id);
 	          },function(errData){
-	        	  
+
 	        	  scope.flag = false;
 	          });
 	            webStorage.add("callingTab", {someString: "Sale" });
