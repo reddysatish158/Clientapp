@@ -108,11 +108,12 @@
 
        		resourceFactory.applyPromotionCodeResource.update({'orderId': routeParams.id},this.formData,
      		function(data) {
-     			 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
-     			 $modalInstance.close('delete');
+     			 
      			     },function(errData){
          	         	//$scope.renewError = errData.data.errors[0].userMessageGlobalisationCode;
          		});
+       		 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+			 $modalInstance.close('delete');
     	  
       };  
       
@@ -179,6 +180,7 @@
                         scope.orderHistorydata=data.orderHistory;
                         scope.orderData=data.orderData;
                     });
+            		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
                     $modalInstance.close('delete');
                 });
             	
