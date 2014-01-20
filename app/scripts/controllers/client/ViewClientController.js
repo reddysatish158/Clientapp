@@ -532,13 +532,22 @@
         
         scope.cancelSale = function(otsId,index){
         	resourceFactory.deleteOneTimeSaleResource.update({saleId: otsId} , function(data) {
+        		console.log(index)
         		scope.onetimesales.splice(index, 1);
         		getDetails();
             },function(errorData){
             	
             });
         };
-        
+        scope.unallocateDevice = function(otsId,serialNo){
+        	this.formData.clientId=routeParams.id;
+        	this.formData.serialNo=serialNo;
+        	resourceFactory.unallocateDeviceResource.update({allocationId: otsId} ,this.formData,function(data) {
+        		route.reload();
+            },function(errorData){
+            	
+            });
+        }; 
         /*scope.getAllFineTransactions = function () {
               resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id} , function(data) {
                 scope.financialtransactions = data;

@@ -658,6 +658,9 @@
                deleteOneTimeSaleResource: defineResource(apiVer + "/onetimesales/:saleId", {saleId:'@saleId'}, {
                   	update: {method: 'PUT', params: {saleId:'@saleId'}}
                   }),
+              unallocateDeviceResource: defineResource(apiVer + "/itemdetails/deallocate/:allocationId", {allocationId:'@allocationId'}, {
+                    	update: {method: 'PUT', params: {saleId:'@saleId'}}
+                    }),   
                oneTimeSaleTemplateResource: defineResource(apiVer + "/onetimesales/template", {}, {
                  getOnetimes: {method: 'GET', params: {}}
                }),

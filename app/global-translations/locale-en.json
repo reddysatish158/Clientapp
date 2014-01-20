@@ -1421,6 +1421,7 @@
   "validation.msg.adjustment.adjustment_code.cannot.be.blan":"Adjustment Code cannot be blank",
   "validation.msg.adjustment.adjustment_type.cannot.be.blank":"Adjustment Type cannot be blank",
   "error.msg.payments.duplicate.receiptNo":"Receipt is Already exist with this number",
+  "error.msg.billing.active.plans.found":"Active Plans are Paired with this device",
   
    "#service ":"....",
   "label.manageservices":"Manage Services",

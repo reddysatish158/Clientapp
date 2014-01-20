@@ -27,6 +27,11 @@
         </li>
   </ul>
     <div>
+      <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
       <tabset  style="margin-bottom: 0px;">
       <tab heading="{{'tab.general' | translate}}">
               <div class="row-fluid">
@@ -399,6 +404,7 @@
 								<th>{{'table.heading.allocate' | translate}}</th>
 								<th>&nbsp;</th>
 								<th>&nbsp;</th>
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -412,6 +418,7 @@
 								<td>{{onetimesale.hardwareAllocated}}</td>
 							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
 							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
+							     <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="onetimesale.hardwareAllocated == 'ALLOCATED'" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>Unallocate Device</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -519,6 +526,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
                  				<th></th>
@@ -538,6 +546,9 @@
               					</td>
               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                 					{{financialtransaction.transactionType}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                					{{financialtransaction.transactionCategory}}
               					</td>
               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                  					{{financialtransaction.creditAmount}}
@@ -560,13 +571,16 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
               					<td>
-                					<a ng-hide="financialtransaction.transactionType =='PAYMENT CANCELED' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+                					<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
               					</td>
             				</tr>
 						</tbody>
@@ -590,9 +604,10 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
-								
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -611,12 +626,17 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
-              					
+              						<td>
+                					<a ng-hide="financialtransaction.flag=='false'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+              					</td>
             				</tr>
 						</tbody>
 					</table>
@@ -640,6 +660,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
 								
@@ -659,6 +680,9 @@
               					</td>
               					<td>
                   					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
@@ -691,6 +715,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
 								
@@ -710,6 +735,9 @@
               					</td>
               					<td>
                   					<any>{{financialtransaction.transactionType}}</any>
+              					</td>
+              					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
