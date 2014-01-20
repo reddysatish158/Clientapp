@@ -185,8 +185,9 @@
 					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
 					  			}
 					  		};
-							scope.editQuality = function(itemId){
+							scope.editQuality = function(itemId,valueQuality){
 					            scope.itemid=itemId;
+					            scope.valueQuality=valueQuality;
 					        	  scope.errorStatus=[];scope.errorDetails=[];
 					        	  $modal.open({
 					                  templateUrl: 'EditQuality.html',
@@ -197,13 +198,14 @@
 					          var EditQualityController = function ($scope, $modalInstance) {
 
 					          	resourceFactory.itemQualityResource.get(function(data) {
-					                  $scope.quality = data.quality;
+					                  $scope.qualityData = data.quality;
+					                  $scope.quality=scope.valueQuality;
 					              });
-					        	  $scope.approveQuality = function () {
+					        	  $scope.approveQuality = function (value) {
 					        		
-					        		  if(this.formData == undefined || this.formData == null){
-					        			  this.formData = {"quality":""};
-					        		  }
+					        		  //if(this.formData == undefined || this.formData == null){
+					        			  this.formData = {"quality":value};
+					        		  //}
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      
 					        	          $modalInstance.close('delete');
