@@ -70,7 +70,10 @@
                  scope.errorDetailscust.push(errorObj);
         		
         	}
-        	if(scope.receiptalue==undefined){
+
+        	if(scope.receiptalue==undefined||scope.receiptalue==""){
+
+
         		scope.validerror=false;
         		 var fieldId="#receiptNo";
         		 $(fieldId).addClass("validationerror");
@@ -116,7 +119,8 @@
         	scope.errorDetailscust = [];
             removeErrors();
             parameterValidationErrors();
-            
+ 
+
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');

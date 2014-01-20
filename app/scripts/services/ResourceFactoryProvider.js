@@ -826,7 +826,10 @@
            }) ,
 	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
-         }) 
+         }) ,
+         promotionResource: defineResource(apiVer + "/promotioncode", {}, {
+        	  get: {method: 'GET', params: {}, isArray: true}
+          })  
            
                
         };
