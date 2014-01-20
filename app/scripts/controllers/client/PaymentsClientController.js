@@ -70,7 +70,10 @@
                  scope.errorDetailscust.push(errorObj);
         		
         	}
+
         	if(scope.receiptalue==undefined||scope.receiptalue==""){
+
+
         		scope.validerror=false;
         		 var fieldId="#receiptNo";
         		 $(fieldId).addClass("validationerror");
@@ -109,12 +112,15 @@
         };
         
         scope.submit = function() {
+
         	scope.amountvalue=this.formData.amountPaid;
         	scope.receiptalue=this.formData.receiptNo;
         	scope.validDate = dateFilter(scope.start.date,'dd-MM-yyyy');
         	scope.errorDetailscust = [];
             removeErrors();
             parameterValidationErrors();
+ 
+
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');

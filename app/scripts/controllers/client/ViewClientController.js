@@ -425,7 +425,7 @@
         	 scope.paymentsC="";
         	 scope.invoicesC="active";
         	 scope.adjustmentsC="";
-        	 scope.financialtransactions1 = paginatorService.paginate(scope.ge111, 14);
+        	 scope.financialInvoices = paginatorService.paginate(scope.getInvoice, 14);
          }
          scope.paymentsTab = function(){
         	 scope.financialsummaryC="";
@@ -551,7 +551,7 @@
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
 	
-	scope.ge111 = function(offset, limit, callback,invoice) {
+  			scope.getInvoice = function(offset, limit, callback,invoice) {
   	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.invoice} , callback);
   	  		};
   			
