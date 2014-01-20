@@ -270,7 +270,9 @@ define(['underscore', 'mifosX'], function() {
       'system/CreateEventActionMappingController',
       'system/ViewEventActionMappingController',
       'system/EditEventActionMappingController',
-      'paymentgateway/EditPaymentGatewayController'
+      'paymentgateway/EditPaymentGatewayController',
+      'organization/CreatePromotionController'
+      
 
       
     ],

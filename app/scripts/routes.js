@@ -884,7 +884,10 @@
     	})
     	.when('/editPaymentGateway/:id', {
           templateUrl: 'views/paymentgateway/editPaymentGateway.html'
-         });
+         })
+       .when('/createpromotion', {
+    	templateUrl: 'views/organization/createpromotioncode.html'
+       });
 
     $locationProvider.html5Mode(false);
   };
