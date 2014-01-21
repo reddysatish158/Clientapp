@@ -100,7 +100,7 @@
           
       var applyPromoController=function($scope,$modalInstance){
     	  
-    	  resourceFactory.promotionCodeResource.get(function(data) {
+    	  resourceFactory.promotionResource.get(function(data) {
       		
       		 $scope.promoDatas=data; 
           });

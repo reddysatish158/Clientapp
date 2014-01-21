@@ -22,7 +22,7 @@
 								<div class="control-group">
            					 	<label class="control-label" for="promotionCode">Promotion Code</label>
             					<div class="controls">
-             					 <input type="text" id="promotionCode" ng-model="formData.promotionCode"/>
+             					 <input type="text" id="promotionCode" ng-model="formData.promotioncode"/>
            						</div>
          						</div>	
 							 </td>
@@ -30,7 +30,7 @@
 								<div class="control-group">
             					<label class="control-label" for="discountType">{{ 'label.discountType' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.discountType"  ng-options="discounTypeData.mCodeValue as discounTypeData.mCodeValue for discounTypeData in discountTypeDatas" value="{{discounTypeData.mCodeValue}}">
+             					 <select ng-model="formData.discounttype"  ng-options="promotiondata.mCodeValue as promotiondata.mCodeValue for promotiondata in promotiondatas" value="{{discounTypeData.mCodeValue}}">
              					 </select>
             					</div>
           						</div>
@@ -41,50 +41,41 @@
 								<div class="control-group">
             					<label class="control-label" for="promotiondesc">Promotion Description</label>
             					<div class="controls">
-             					 <input type="text" id="promotiondesc" ng-model="formData.promotiondesc"/>
+             					 <input type="text" id="promotiondesc" ng-model="formData.description"/>
            						</div>
           						</div>
 							</td>
+								<td>
+								<div class="control-group">
+            					<label class="control-label" for="discountRate">{{ 'label.discountRate' | translate }}</label>
+            					<div class="controls">
+              					<input type="text" id="discountRate" ng-model="formData.discountrate">
+            					</div>
+          						</div>
+							</td>
+							
+							</tr>
+							<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="promotionduration">Duration Type</label>
             					<div class="controls">
-              					<input type="text" id="promotionduration" ng-model="formData.promotionduration">
+              					 <select ng-model="formData.durationtype"  ng-options="durationType.subscriptionType as durationType.subscriptionType for durationType in durationTypes" value="{{discounTypeData.mCodeValue}}">
+             					 </select>
             					</div>
           						</div>
 							</td>
-							</tr>
-							<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="promotionduration">Duration</label>
             					<div class="controls">
-              					<input type="text" id="promotionduration" ng-model="formData.promotionduration">
-           						 </div>
-          						</div>
-							</td>
-							
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="promotiontype">Promotion Type</label>
-            					<div class="controls">
-              					<input type="text" id="promotiontype" ng-model="formData.promotiontype">
+              					<input type="text" id="promotionduration" ng-model="formData.duration">
            						 </div>
           						</div>
 							</td>
 							
 							</tr>
 							<tr>
-							
-							<td>
-								<div class="control-group">
-            					<label class="control-label" for="discountRate">{{ 'label.discountRate' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="discountRate" ng-model="formData.discountRate">
-            					</div>
-          						</div>
-							</td>
-							
 							<td>
 								<div class="control-group">
                         		<label class="control-label">{{ 'label.startDate' | translate }}</label>

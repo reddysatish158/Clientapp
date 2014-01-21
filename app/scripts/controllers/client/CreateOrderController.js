@@ -16,6 +16,7 @@
         scope.prepaidPlanspagedItems = [];
         scope.currentPage = 0;
         scope.items =[];
+        scope.clientId=routeParams.id;
         scope.formData =[];
         var clientData = webStorage.get('clientData');
         scope.displayName=clientData.displayName;

@@ -9,7 +9,7 @@
 </div>
 <div class="row-fluid" ng-controller="DiscountsController">
 <tabset  style="margin-bottom: 0px;">
-     <tab heading="Dicount" select="getDicounts()" active="DicountTab">
+     <tab heading="Discounts" select="getDicounts()" active="DicountTab">
         <div class="pull-right">
         <a href="#/creatediscounts" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.discount' | translate }}</a>
        </div> 
@@ -63,13 +63,13 @@
         </thead>
         <tbody>
             <tr class="pointer-main" ng-repeat="promotiondadata in promotiondatas | filter:filterText">
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.id}}</td>
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.promotionCode}}</td>
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.promotionDescription}}</td>       
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.durationType}}</td>         
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.duration}}</td>  
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.promotionType}}</td> 
-                <td class="pointer" data-ng-click="routeTo(discount.discountMasterId)">{{promotiondadata.discountRate}}</td>         
+                <td class="pointer">{{promotiondadata.id}}</td>
+                <td class="pointer" >{{promotiondadata.promotionCode}}</td>
+                <td class="pointer" >{{promotiondadata.promotionDescription}}</td>       
+                <td class="pointer" >{{promotiondadata.durationType}}</td>         
+                <td class="pointer" >{{promotiondadata.duration}}</td>  
+                <td class="pointer" >{{promotiondadata.promotionType}}</td> 
+                <td class="pointer" >{{promotiondadata.discountRate}}</td>         
                              
             </tr>
         </tbody>

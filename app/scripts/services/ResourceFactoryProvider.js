@@ -807,10 +807,10 @@
                getDetails: {method: 'GET', params: {}},
                update: { method: 'PUT'}
            }),
-           promotionCodeResource: defineResource(apiVer + "/promotioncodes", {}, {
+         /*  promotionCodeResource: defineResource(apiVer + "/promotioncodes", {}, {
                get: {method: 'GET', params: {}, isArray: true},
                
-           }),
+           }),*/
            applyPromotionCodeResource: defineResource(apiVer + "/orders/applypromo/:orderId", {orderId:'@orderId'}, {
                get: {method: 'GET', params: {}, isArray: true},
                update: { method: 'PUT' }
@@ -829,6 +829,10 @@
          }) ,
          promotionResource: defineResource(apiVer + "/promotioncode", {}, {
         	  get: {method: 'GET', params: {}, isArray: true}
+          }),  
+          
+          promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
+        	  get: {method: 'GET', params: {}}
           })  
            
                
