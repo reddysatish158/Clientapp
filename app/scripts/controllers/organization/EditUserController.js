@@ -13,6 +13,7 @@
             scope.selectedRoles = data.selectedRoles;
 
         });
+        
         scope.submit = function() {
              delete this.formData.allowedOffices; // removing allowed office list
              delete this.formData.availableRoles; // removing allowed roles list 
