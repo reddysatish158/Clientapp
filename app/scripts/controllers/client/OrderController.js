@@ -25,6 +25,7 @@
         	scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+            scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
 	    if(data.orderData.isPrepaid == 'Y'){
@@ -115,7 +116,8 @@
          	         	//$scope.renewError = errData.data.errors[0].userMessageGlobalisationCode;
          		});
 
-       		 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+       		    route.reload();
+       		 //location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
 			 $modalInstance.close('delete');
 
     	  

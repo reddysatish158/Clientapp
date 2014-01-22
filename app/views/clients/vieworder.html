@@ -51,7 +51,7 @@
 	         <a ng-show ="association.orderId == null"  href="#/association/{{clientId}}/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Pairing</a>
 		     <a ng-show ="orderData.status == 'DISCONNECTED' && association.orderId != null" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Un Pairing</a>
 		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Hardware Swap</a>
-		     <a ng-show ="orderData.status == 'ACTIVE' && formData.flag == true" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-gift"></i>Apply Promo</a>
+		     <a ng-show ="orderData.status == 'ACTIVE' && formData.flag == false" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-gift"></i>Apply Promo</a>
 		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
 		    
 	      
