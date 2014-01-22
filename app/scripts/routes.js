@@ -893,6 +893,9 @@
       })
        .when('/editpromotioncode/:id', {
         templateUrl: 'views/organization/editpromotioncode.html'
+      }) 
+      .when('/smartSearch', {
+        templateUrl: 'views/system/smartSearch.html'
       });
 
     $locationProvider.html5Mode(false);
