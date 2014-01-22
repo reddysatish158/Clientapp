@@ -4,30 +4,21 @@
 		  
 		
         scope.discounts = [];
-        
-        resourceFactory.discountsResource.getDiscount(function(data) {
-            scope.discounts = data;
-        });
-        resourceFactory.promotionResource.get(function(data) {
-            scope.promotiondatas = data;
-        });
+        scope.promotiondatas=[];
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
         	callingTab="";
-        }else{
+        }
+        else{
 		  scope.displayTab=callingTab.someString;
 		 
-		  if( scope.displayTab == "Discount"){
-			 
-			  scope.DicountTab = true;
-			  webStorage.remove('callingTab');
-		  }
-		  else if(scope.displayTab == "Promotioncode"){
-			 
+		  if(scope.displayTab == "Promotioncode"){
+				 
 			  scope.PromotionCodeTab =  true;
 			  webStorage.remove('callingTab');
 		  }
+        }
         
         scope.getDicounts=function(){
         	resourceFactory.discountsResource.getDiscount(function(data) {
@@ -42,11 +33,12 @@
         	
         };
         
-        }
-        
-        scope.routeTo = function(id){
+        scope.routeToDiscounts = function(id){
             location.path('/viewdiscounts/'+ id);
           };
+        scope.routeToPromotion = function(id){
+             location.path('/viewpromotioncode/'+ id);
+        };
 	  }
   });
   mifosX.ng.application.controller('DiscountsController', ['$scope', 'ResourceFactory','$location','webStorage', mifosX.controllers.DiscountsController]).run(function($log) {

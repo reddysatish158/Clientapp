@@ -32,8 +32,8 @@
 
              this.formData.roles = roles;
 
-             resourceFactory.userListResource.update({'userId': userId},this.formData,function(data){
-                location.path('/viewuser/' + data.resourceId);
+             resourceFactory.userListResource.update({'userId': routeParams.id},this.formData,function(data){
+                location.path('/viewuser/' + routeParams.id);
              });
         };
     }

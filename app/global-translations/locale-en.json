@@ -2211,7 +2211,26 @@
 "error.message.paymenttypeval.required" : "Please Select Payment Type",
 "error.message.amountval.required" : "Amount cannot be blank",
 "error.message.receiptNo.required" : "Receipt Number cannot be blank",
-"error.message.futuredate.required" : "Future dated transactions are not allowed"
-
+"error.message.futuredate.required" : "Future dated transactions are not allowed",
+"error.msg.receipt.no.duplicate.exception" : "Receipt Number is Already Exist",
+"tab.discount" : "Discounts",
+"tab.PromotionCode" : "Promotion Codes",
+"link.create.new.PromotionCode" : "Create Promotioncode",
+"table.heading.PromotionCode" : "Promotion Code",
+"table.heading.promotionDescription"   : "Promotion Description",
+"table.heading.DurationType" : "Duration Type",
+"table.heading.Duration"  : "Duration",
+"label.createpromotioncode" : "Create Promotion Code",
+"label.promotionCode" : "Promotion Code",
+"label.promotionDescription" : "Promotion Description",
+"label.duration" : "Duration",
+"label.viewPromotioncode" : "View Promotioncode",
+"label.editpromotioncode" : "Edit PromotionCode",
+"validation.msg.promotioncodes.promotioncode.cannot.be.blank" : "Promotion Code cannot be blank",
+"validation.msg.promotioncodes.description.cannot.be.blank" : "Promotion Description cannot be blank",
+"validation.msg.promotioncodes.durationtype.cannot.be.blank" : "Duration Type cannot be blank",
+"validation.msg.promotioncodes.duration.cannot.be.blank" : "Duration cannot be blank",
+"validation.msg.promotioncodes.discounttype.cannot.be.blank" : "Discount Type cannot be blank",
+"validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank"
 
 }

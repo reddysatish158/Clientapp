@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  CreateDiscountsController: function(scope, resourceFactory, location,dateFilter,webStorage) {
+		  CreateDiscountsController: function(scope, resourceFactory, location,dateFilter) {
 	        scope.discountTypeDatas = [];
 	        scope.statuses = [];
 	        scope.start={};
@@ -12,11 +12,7 @@
 	            		
 	            };
 	        });
-	      scope.reset123 = function(){
-	        	   webStorage.add("callingTab", {someString: "Discount" });
-	        	   
-	           };
-	        
+	     
 	        scope.submit = function() {  
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
@@ -26,12 +22,11 @@
 	            resourceFactory.discountResource.save(this.formData,function(data){
 	            	location.path('/viewdiscounts/'+data.resourceId);
 	          });
-	           webStorage.add("callingTab", {someString: "Discount" });
-	           
+	          
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('CreateDiscountsController', ['$scope', 'ResourceFactory', '$location','dateFilter','webStorage', mifosX.controllers.CreateDiscountsController]).run(function($log) {
+	  mifosX.ng.application.controller('CreateDiscountsController', ['$scope', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.CreateDiscountsController]).run(function($log) {
 	    $log.info("CreateDiscountsController initialized");
 	  });
 	}(mifosX.controllers || {}));

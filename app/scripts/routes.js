@@ -887,7 +887,13 @@
          })
        .when('/createpromotion', {
     	templateUrl: 'views/organization/createpromotioncode.html'
-       });
+       })
+       .when('/viewpromotioncode/:id', {
+        templateUrl: 'views/organization/viewpromotioncode.html'
+      })
+       .when('/editpromotioncode/:id', {
+        templateUrl: 'views/organization/editpromotioncode.html'
+      });
 
     $locationProvider.html5Mode(false);
   };
