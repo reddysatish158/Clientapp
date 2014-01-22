@@ -1,19 +1,21 @@
+    <div ng-controller="EditPromotioncodeController">
       <div>
         <ul class="breadcrumb">
           <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
-         <li><a href="#/discounts">{{'label.managediscounts' | translate}}</a> <span class="divider">/</span></li>
-          <li class="active">{{'label.createpromotioncode' | translate}}</li>
+          <li><a href="#/discounts">{{'label.managediscounts' | translate}}</a> <span class="divider">/</span></li>
+          <li><a href="#/viewpromotioncode/{{promotiondata.id}}">{{promotiondata.id}}</a> <span class="divider">/</span></li>
+          <li class="active">{{'label.editpromotioncode' | translate}}</li>
         </ul>
       </div>
-      <form class="form-horizontal well" ng-controller="CreatePromotionController" ng-submit="submit()">
-         <div class="error" ng-show="errorStatus || errorDetails">
-		   <label>{{'label.contract.error' | translate}}</label>
-		   <label ng-show="errorStatus">{{errorStatus}}</label>
-		   <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	    </div>
+      <form class="form-horizontal well" ng-submit="submit()">
+          <div class="error" ng-show="errorStatus || errorDetails">
+			<label>{{'label.contract.error' | translate}}</label>
+			<label ng-show="errorStatus">{{errorStatus}}</label>
+			<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	      </div>
         <fieldset>
-          <legend>{{'label.createpromotioncode' | translate}}</legend>
-			<table>
+          <legend>{{'label.editpromotioncode' | translate}}</legend>
+ 		<table>
 			<tr>
 				<td>
 					<table>
@@ -93,11 +95,11 @@
 				</td>
 			</tr>
 			</table>
-  			
+ 
           <div class="offset3">
-            <a href="#/discounts"><button type="reset" ng-click="reset123()" class="btn">{{'button.cancel'| translate}}</button></a>
-            <button type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+            <a href="#/viewpromotioncode/{{promotiondata.id}}"><button type="reset" class="btn">{{'label.cancel' | translate}}</button></a>
+            <button type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
           </div>
-          
         </fieldset>
       </form>
+    </div>

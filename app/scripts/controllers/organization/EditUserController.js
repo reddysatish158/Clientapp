@@ -33,7 +33,8 @@
              delete this.formData.selectedRoles;
              this.formData.roles = roles;
 
-             resourceFactory.userListResource.update({'userId':  routeParams.id},this.formData,function(data){
+             resourceFactory.userListResource.update({'userId': routeParams.id},this.formData,function(data){
+
                 location.path('/viewuser/' + routeParams.id);
              });
         };

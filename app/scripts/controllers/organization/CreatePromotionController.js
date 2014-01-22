@@ -3,15 +3,12 @@
 		  CreatePromotionController: function(scope, resourceFactory, location,dateFilter,webStorage) {
 	        scope.promotiondatas = [];
 	        scope.durationTypes = [];
-	        scope.statuses = [];
 	        scope.start={};
 	        scope.start.date = new Date();
 	        resourceFactory.promotionTemplateResource.get(function(data) {
 	            scope.promotiondatas = data.discounTypeData;
-	            scope.durationTypes=data.durationTypes;
-	           	            scope.formData = {
-	            		
-	            };
+	            scope.durationTypes=data.contractTypedata;
+	           	scope.formData = {};
 	        });
 	      scope.reset123 = function(){
 	        	   webStorage.add("callingTab", {someString: "Promotioncode" });
@@ -22,7 +19,7 @@
 	             this.formData.dateFormat = "dd MMMM yyyy";
 	             var startdate = dateFilter(scope.start.date,'dd MMMM yyyy');
 	         //    this.formData.paymentDate= startDate;
-	             this.formData.startdate=startdate;
+	             this.formData.startDate=startdate;
 	            resourceFactory.promotionResource.save(this.formData,function(data){
 	            	location.path('/discounts');
 	          });

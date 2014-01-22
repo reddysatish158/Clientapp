@@ -827,8 +827,10 @@
 	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
          }) ,
-         promotionResource: defineResource(apiVer + "/promotioncode", {}, {
-        	  get: {method: 'GET', params: {}, isArray: true}
+         promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
+        	  get: {method: 'GET', params: {}, isArray: true},
+        	  getPrmotioncodeDetails: {method: 'GET', params: {promotioncodeId:'@promotioncodeId'}},
+        	  update: { method: 'PUT' }
           }),  
           
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
