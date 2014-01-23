@@ -11,7 +11,9 @@
          scope.formData = {};
  		 scope.start = {};
          scope.start.date = new Date();
-        
+         scope.payment="PAYMENT";
+         scope.invoice="INVOICE";
+         scope.adjustment="ADJUSTMENT";
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
@@ -210,6 +212,8 @@
 				            	$modalInstance.close('delete');
 				            	getDetails();
 				          });
+				            scope.getAllFineTransactions();
+				            
 				};
 				$scope.reject = function(){
 					$modalInstance.dismiss('cancel');
@@ -403,6 +407,35 @@
    	            scope.clientId= routeParams.id;	  
    	        });
          };
+	
+	scope.financialsummeryTab = function(){
+        	 scope.financialsummaryC="active";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="";
+        	 scope.adjustmentsC="";
+        	 scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
+         }
+         scope.invoicesTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.paymentsC="";
+        	 scope.invoicesC="active";
+        	 scope.adjustmentsC="";
+        	 scope.financialtransactions1 = paginatorService.paginate(scope.ge111, 14);
+         }
+         scope.paymentsTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="active";
+        	 scope.adjustmentsC="";
+        	 scope.financialPayments = paginatorService.paginate(scope.getPayments, 14);
+         }
+         scope.adjustmentsTab = function(){
+        	 scope.financialsummaryC="";
+        	 scope.invoicesC="";
+        	 scope.paymentsC="";
+        	 scope.adjustmentsC="active";
+        	 scope.financialAdjustments = paginatorService.paginate(scope.getAdjustments, 14);
+         }
          scope.eventsaleTab = function(){
         	 scope.eventsaleC="active";
         	 scope.eventorderC="";
@@ -512,7 +545,23 @@
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
+	
+	scope.ge111 = function(offset, limit, callback,invoice) {
+  	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.invoice} , callback);
+  	  		};
+  			
+  	  		scope.getPayments = function(offset, limit, callback,payment) {
+	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.payment} , callback);
+	  		};
+	  		
+	  		scope.getAdjustments = function(offset, limit, callback,adjustment) {
+  	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.adjustment} , callback);
+  	  		};
           scope.getAllFineTransactions = function () {
+		  scope.financialsummaryC="active";
+       	   	  scope.invoicesC="";
+       	   	  scope.paymentsC="";
+       	   	  scope.adjustmentsC="";
           	scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
           };
           

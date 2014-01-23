@@ -10,7 +10,9 @@
         resourceFactory.grnIdResource.get(function(data) {
         	scope.grnIds = data;      	
         });
-        
+        resourceFactory.itemQualityResource.get(function(data) {
+            scope.quality = data.quality;
+        });
         scope.changeGrn = function(testId) {
         	
             resourceFactory.grnSingleTemplateResource.get({grnId: testId}, function(data) {

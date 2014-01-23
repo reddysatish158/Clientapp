@@ -606,7 +606,11 @@
                  }),
                  itemDetailsResource: defineResource(apiVer + "/itemdetails/:itemId/:anotherresource", {itemId:'@itemId',anotherresource:'@anotherresource'}, {
                	  getAlldetails: {method: 'GET', params: {}},
-                     get: {method: 'GET', params: {}}
+                     get: {method: 'GET', params: {}},
+		  update: {method: 'PUT', params: {}}
+                 }),
+		itemQualityResource: defineResource(apiVer + "/itemdetails/itemquality", {}, {
+                     get: {method: 'GET', params: {}}	
                  }),	
                  itemResource: defineResource(apiVer + "/items/:itemId", {itemId:'@itemId'}, {
                 	   getAllItems: {method: 'GET', params: {}},
@@ -807,7 +811,10 @@
      	   get: {method: 'GET', params: {}},
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
-           })  
+           }) ,
+	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
+           	get: {method: 'GET', params: {}, }
+         }) 
            
                
         };

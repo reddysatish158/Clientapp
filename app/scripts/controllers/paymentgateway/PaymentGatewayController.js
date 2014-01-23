@@ -6,7 +6,7 @@
         
 	 		//for Failure tab
 	 		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
-	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Failure'} , callback);
+	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
 	 		};
 	  		
 	  		scope.getPaymentGateway = function () {
@@ -34,7 +34,7 @@
 			        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewaySuccessData, 14);
 			        };
 			        
-		  	scope.searchSuccessPaymentData = function(offset, limit, callback) { 
+		  	scope.searchSuccessPaymentData = function(offset, limit, callback) {
 			    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
 			    		  sqlSearch: scope.filterText, tabType: 'Success'} , callback);
 			          };

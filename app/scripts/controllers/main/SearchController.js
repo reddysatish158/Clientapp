@@ -14,8 +14,12 @@
               scope.client = data;
               scope.center = '';
             });
-            resourceFactory.clientAccountResource.get({clientId: clientId} , function(data) {
+            /*resourceFactory.clientAccountResource.get({clientId: clientId} , function(data) {
               scope.clientAccounts = data;
+            });*/
+            scope.orders = [];
+            resourceFactory.getOrderResource.getAllOrders({clientId: clientId} , function(data) {
+                scope.orders = data.clientOrders;
             });
         };
 
