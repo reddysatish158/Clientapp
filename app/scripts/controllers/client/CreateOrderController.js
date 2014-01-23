@@ -26,7 +26,7 @@
         scope.currency=clientData.currency;
         scope.imagePresent=clientData.imagePresent;
         
-        resourceFactory.orderTemplateResource.get(function(data) {
+        resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
         	 
           scope.plandatas = data.plandata;
           scope.items = data.plandata;
@@ -236,10 +236,23 @@
             delete this.formData.planId;
             delete this.formData.id;
             delete this.formData.isPrepaid;
-            resourceFactory.saveOrderResource.save({'clientId': routeParams.id},this.formData,function(data){
+            var orderId = webStorage.get('orderId');
+            
+            if(routeParams.planId == 0){
+
+            	resourceFactory.saveOrderResource.save({'clientId': routeParams.id},this.formData,function(data){
+                    location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
+                  });
+            
+            }else{
+            	this.formData.disconnectionDate= reqDate;
+            	this.formData.disconnectReason= "Not Interested";
+            	resourceFactory.changeOrderResource.update({'orderId':orderId},this.formData,function(data){
+                    location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
+                  });
             	
-            location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
-          });
+            }
+            
         };
     }
   });

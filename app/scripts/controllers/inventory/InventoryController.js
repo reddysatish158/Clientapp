@@ -45,7 +45,12 @@
         }
         
         scope.routeTo = function(id){
+        	if(id != 0){
             location.path('/viewclient/'+ parseInt(id));
+        	}else{
+        		 location.path('/createclient');
+        		
+        	}
           };
         scope.routeTogrn = function(id){
               location.path('/viewgrn/'+ parseInt(id));

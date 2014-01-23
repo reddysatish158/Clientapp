@@ -96,7 +96,7 @@
                     if (data.status.value == "Active") {
                       scope.buttons = [{
                                           name:"button.neworder",
-                                          href:"#/neworder",
+                                          href:"#/neworder/0",
                                           icon :"icon-plus-sign"
                                         },
 

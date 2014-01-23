@@ -358,18 +358,22 @@
         	 get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
-         orderTemplateResource: defineResource(apiVer + "/orders/template", {}, {
+         orderTemplateResource: defineResource(apiVer + "/orders/template", {planId:'@orderId'}, {
            get: {method: 'GET', params: {}}
          }),
          orderResource: defineResource(apiVer + "/orders/:planId/template", {planId:'@planId'}, {
          get: {method: 'GET', params: {}},
         }),
-        
         saveOrderResource: defineResource(apiVer + "/orders/:clientId", {clientId:'@clientId'}, {
            get: {method: 'GET', params: {}},
            update: { method: 'PUT' }
           
         }),
+        changeOrderResource: defineResource(apiVer + "/orders/changePlan/:orderId", {orderId:'@orderId'}, {
+            get: {method: 'GET', params: {}},
+            update: { method: 'PUT' }
+           
+         }),
         getOrderResource: defineResource(apiVer + "/orders/:clientId/orders", {clientId:'@clientId'}, {
     	  getAllOrders: {method: 'GET', params: {}},
         }),

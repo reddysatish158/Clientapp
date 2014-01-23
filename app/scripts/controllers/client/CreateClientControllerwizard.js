@@ -272,7 +272,7 @@
 	        scope.items =[];
 	        scope.formData4 =[];
 	       
-	        resourceFactory.orderTemplateResource.get(function(data) {
+	        resourceFactory.orderTemplateResource.get({planId:'0'},function(data) {
 	        	 
 	          scope.plandatas = data.plandata;
 	          scope.items = data.plandata;

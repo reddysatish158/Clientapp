@@ -163,9 +163,9 @@
             });
 
           
-            resourceFactory.groupTemplateResource.get(function(data) {
+/*            resourceFactory.groupTemplateResource.get(function(data) {
                 scope.offices = data.officeOptions;
-            });
+            });*/
 
             resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:1, genericResultSet:false} , function(data) {
             	

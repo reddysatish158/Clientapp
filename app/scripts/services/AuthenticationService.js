@@ -4,6 +4,7 @@
     	scope.activity = {};
         scope.activityQueue = [];
       var onSuccess = function(data) {
+    	
         scope.$broadcast("UserAuthenticationSuccessEvent", data);
         webStorage.add("userData",data);
         
@@ -11,9 +12,7 @@
             scope.activityQueue = localStorageService.get('Location');
         }
         scope.setDf = function(){
-            if(localStorageService.get('dateformat')){
-                scope.dateformat = localStorageService.get('dateformat');
-            }else{
+         
             	resourceFactory.configurationResource.get(function(data) {
                 	for(var i in data.globalConfiguration){
                         if(data.globalConfiguration[i].name=="DateFormat"){
@@ -24,7 +23,7 @@
                    
                 });
                 
-            }
+            
             scope.df = scope.dateformat;
         };
         scope.setDf();
@@ -42,9 +41,10 @@
           localStorageService.add('Location',scope.activityQueue);
       });
       var apiVer = '/obsplatform/api/v1';
-
+    
       this.authenticateWithUsernamePassword = function(credentials) {
         scope.$broadcast("UserAuthenticationStartEvent");
+       
         httpService.post(apiVer + "/authentication?username="+ credentials.username+ "&password=" + credentials.password)
           .success(onSuccess)
           .error(onFailure);
