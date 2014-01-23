@@ -57,6 +57,7 @@
 	        	   webStorage.add("callingTab", {someString: "Sale" });
 	           };
 	        scope.submit = function() {  
+	        	scope.flag = true;
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
@@ -68,7 +69,11 @@
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
+	            	scope.flag = false;
 	            	 location.path('/viewclient/' + routeParams.id);
+	          },function(errData){
+	        	  
+	        	  scope.flag = false;
 	          });
 	            webStorage.add("callingTab", {someString: "Sale" });
 	        };

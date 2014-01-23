@@ -8,7 +8,6 @@
      
         <fieldset>
           <legend>Create client</legend>
-          <legend>{{configs.enabled}}</legend>
         <table>
            <tr>
              <td>
@@ -34,7 +33,7 @@
                     <small class="error" ng-show="createclientform.firstname.$error.req">
                         Required Field
                     </small>
-                    <small class="error" ng-show="createclientform.firstname.$error.minlength && !createclientform.firstname.$error.req">Your name is required to be at least 3 characters</small>
+                    <small class="error" ng-show="createclientform.firstname.$error.minlength && !createclientform.firstname.$error.req">Name is required at least 3 characters</small>
                 </span>
               </div>
             </div>
@@ -53,17 +52,22 @@
                     <small class="error" ng-show="createclientform.lastname.$error.req">
                         Required Field
                     </small>
-                    <small class="error" ng-show="createclientform.lastname.$error.minlength && !createclientform.lastname.$error.req">Your name is required to be at least 3 characters</small>
+                    <small class="error" ng-show="createclientform.lastname.$error.minlength && !createclientform.lastname.$error.req">Name is required at least 3 characters</small>
                 </span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="phone">{{'label.phone' | translate}}</label>
+              <label class="control-label" for="phone">{{'label.phone' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="phone" ng-model="formData.phone" ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="10" name="phone"/>
+                <input type="text" id="phone" ng-model="formData.phone" ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="10" name="phone" required  late-Validate/>
+                <span ng-show="createclientform.phone.$invalid">
+                   <small class="error" ng-show="createclientform.phone.$error.req">
+                        Required Field
+                   </small>
+                </span>
                 
            <div ng-show="createclientform.phone.$dirty && createclientform.phone.$invalid">
-              
+             
                <span class="error" ng-show="createclientform.phone.$error.pattern">digits only !</span>
                <span class="error" ng-show="createclientform.phone.$error.maxlength">Exceeded max limit!</span>
            </div>
@@ -72,16 +76,9 @@
             
             <div class="control-group">
 
-            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}<span class="required">*</span></label>
+            	<label class="control-label" for="homePhoneNumber">{{ 'label.homephone' | translate }}</label>
             		<div class="controls">
-              			<input type="text" name="homePhone" id="homePhoneNumber" ng-model="formData.homePhoneNumber" required  late-Validate>
-              			<span  ng-show="createclientform.homePhone.$invalid">
-                    <small class="error" ng-show="createclientform.homePhone.$error.req">
-                        Required Field
-                    </small>
-                    
-                </span>
-
+              			<input type="text" name="homePhone" id="homePhoneNumber" ng-model="formData.homePhoneNumber"/>
             		</div>
           	</div>
             
@@ -108,13 +105,18 @@
            </td>
            <td>
             <div class="control-group">
-              <label class="control-label">{{'label.address1' | translate}}</label>
+              <label class="control-label">{{'label.address1' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="addressNo" ng-model="formData.addressNo"/>
+                <input type="text" id="addressNo" name="address" ng-model="formData.addressNo" required late-Validate/>
+                <span  ng-show="createclientform.address.$invalid">
+                    <small class="error" ng-show="createclientform.address.$error.req">
+                        Required Field!
+                    </small>
+                </span>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label">{{'label.street' | translate}}<span class="required">*</span></label>
+              <label class="control-label">{{'label.street' | translate}}</label>
               <div class="controls">
                 <input type="text" id="street" ng-model="formData.street"/>
               </div>
@@ -127,13 +129,13 @@
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="state">{{'label.state' | translate}}</label>
+              <label class="control-label" for="state">{{'label.state' | translate}}<span class="required">*</span></label>
               <div class="controls">
-                <input type="text" id="state" ng-model="formData.state"/>
+                <input type="text" id="state" ng-model="formData.state" required/>
               </div>
             </div>
             <div class="control-group">
-              <label class="control-label" for="country">{{'label.country' | translate}}<span class="required">*</span></label></label>
+              <label class="control-label" for="country">{{'label.country' | translate}}<span class="required">*</span></label>
               <div class="controls">
                 <input type="text" id="country" name="country" ng-model="formData.country" required/>
               
@@ -161,7 +163,7 @@
            </table> 
             <div class="offset3">
               <a href="#/clients"><button id="cancel" type="reset" class="btn">Cancel</button></a>
-              <button id="save" type="submit" ng-disabled="!createclientform.$valid" class="btn btn-primary">Save</button>
+              <button id="save" type="submit"  ng-dblclick="dbClick()" ng-disabled="(!createclientform.$valid)||(flag)" class="btn btn-primary">Save</button>
             </div>
         </fieldset>
       </form>

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams, resourceFactory,location,$modal,dateFilter,paginatorService) {
+	  OrderController: function(scope,webStorage,routeParams, resourceFactory,route,location,$modal,dateFilter,paginatorService) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -238,8 +238,10 @@
         scope.deAssociation=function (){
         	 resourceFactory.deAssociationResource.update({id:scope.association.id} , function(data) {
         		 console.log('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
-                 location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);         
-                 
+
+           
+        		 route.reload();
+
             });
         };
 
@@ -264,7 +266,7 @@
   
  
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));
