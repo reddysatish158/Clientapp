@@ -273,7 +273,8 @@ define(['underscore', 'mifosX'], function() {
       'paymentgateway/EditPaymentGatewayController',
       'organization/CreatePromotionController',
       'organization/ViewPromotioncodeController',
-      'organization/EditPromotioncodeController'
+      'organization/EditPromotioncodeController',
+      'system/SmartSearchController'
       
 
       
