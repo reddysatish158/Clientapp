@@ -72,22 +72,22 @@
             <thead>
               <tr class="graybg">
                 <th>{{'table.grn.id' | translate}}</th>
-                <th>{{'table.grn.officeName' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.officeName' | translate}}</th>
                 <th>{{'table.grn.purchaseDate' | translate}}</th>
-                <th>{{'table.grn.supplierName' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.supplierName' | translate}}</th>
                 <th>{{'table.grn.itemDescription' | translate}}</th>
-                <th>{{'table.grn.orderedQuantity' | translate}}</th>
-                <th>{{'table.grn.receivedQuantity' | translate}}</th>
-                <th>{{'table.grn.balanceQuantity' | translate}}</th>
-                <th>{{'table.grn.status' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.orderedQuantity' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.receivedQuantity' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.balanceQuantity' | translate}}</th>
+                <th style="text-align:center">{{'table.grn.status' | translate}}</th>
               </tr>
             </thead>
             <tbody>
               <tr class="pointer-main" ng-repeat="g in grn.currentPageItems | filter:filterText">
                 <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.id}}</td>
-                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.officeName}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align:center">{{g.officeName}}</td>
                 <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.purchaseDate | DateFormat}}</td>
-                <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.supplierName}}</td>
+                <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align:center">{{g.supplierName}}</td>
                 <td class="pointer" data-ng-click="routeTogrn(g.id)">{{g.itemDescription}}</td>
                 <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center">{{g.orderdQuantity}}</td>
                 <td class="pointer" data-ng-click="routeTogrn(g.id)" style="text-align: center">{{g.receivedQuantity}}</td>
@@ -124,8 +124,8 @@
                 <th>{{'table.mrn.itemDescription' | translate}}</th>
                 <th>{{'table.mrn.fromOffice' | translate}}</th>
                 <th>{{'table.mrn.toOffice' | translate}}</th>
-                <th>{{'label.mrn.orderedquantity' | translate}}</th>
-                <th>{{'table.mrn.receivedQuantity' | translate}}</th>
+                <th style="text-align:center">{{'label.mrn.orderedquantity' | translate}}</th>
+                <th style="text-align:center">{{'table.mrn.receivedQuantity' | translate}}</th>
                 <th>{{'table.mrn.status' | translate}}</th>
               </tr>
             </thead>
@@ -136,8 +136,8 @@
                 <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.itemDescription}}</td>
                 <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.fromOffice}}</td>
                 <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.toOffice}}</td>
-                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align: center">{{m.orderdQuantity}}</td>
-                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align: center">{{m.receivedQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align:center">{{m.orderdQuantity}}</td>
+                <td class="pointer" data-ng-click="routeTomrn(m.id)" style="text-align:center">{{m.receivedQuantity}}</td>
                 <td class="pointer" data-ng-click="routeTomrn(m.id)">{{m.status}}</td>
                 
             
@@ -176,7 +176,7 @@
                           <th>{{ 'label.item.itemdescription' | translate }}</th>
                           <th>{{ 'label.item.units' | translate }}</th>
                           <th>{{ 'label.item.unitprice' | translate }}</th>
-                          <th>{{ 'label.item.warranty' | translate }}</th>
+                          <th style="text-align:center">{{ 'label.item.warranty' | translate }}</th>
 						</tr>
 					</thead>
              	 <tbody>
@@ -186,7 +186,7 @@
                 		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.itemDescription}}</td> 
                 		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.units}}</td>
                 		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.unitPrice}}</td> 
-                		<td class="pointer" data-ng-click="routeToitem(item.id)">{{item.warranty}}</td> 
+                		<td class="pointer" data-ng-click="routeToitem(item.id)" style="text-align:center">{{item.warranty}}</td> 
              		</tr>
             	</tbody>
        			</table>

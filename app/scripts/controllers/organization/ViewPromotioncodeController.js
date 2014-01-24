@@ -6,7 +6,7 @@
         resourceFactory.promotionResource.getPrmotioncodeDetails({promotioncodeId: routeParams.id} , function(data) {
             scope.promotiondata = data;                                                
         });
-      scope.deletemessage = function (){
+      scope.deletePromotion = function (){
             resourceFactory.promotionResource.delete({promotioncodeId: routeParams.id} , {} , function(data) {
             	 webStorage.add("callingTab", {someString: "Promotioncode" });
                   location.path('/discounts');
@@ -14,6 +14,9 @@
                  
             });
           };
+      scope.changeToSameTab = function(){
+    	  webStorage.add("callingTab", {someString: "Promotioncode" });
+      }
     }
   });
   mifosX.ng.application.controller('ViewPromotioncodeController', ['$scope', '$routeParams', '$location', 'ResourceFactory','webStorage', mifosX.controllers.ViewPromotioncodeController]).run(function($log) {
