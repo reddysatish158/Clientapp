@@ -896,6 +896,9 @@
       }) 
       .when('/smartSearch', {
         templateUrl: 'views/system/smartSearch.html'
+      })
+      .when('/help',{
+        templateUrl: 'views/help.html'
       });
 
     $locationProvider.html5Mode(false);
