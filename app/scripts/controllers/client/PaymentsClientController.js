@@ -15,6 +15,8 @@
         //scope.datass = {};
         scope.start={};
          scope.start.date = new Date();
+         scope.maxDate= scope.start.date;
+         scope.minDate= scope.start.date;
          
         resourceFactory.paymentsTemplateResource.getPayments(function(data){
         	scope.payments = data;

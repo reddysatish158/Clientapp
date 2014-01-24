@@ -2232,6 +2232,28 @@
 "validation.msg.promotioncodes.durationtype.cannot.be.blank" : "Duration Type cannot be blank",
 "validation.msg.promotioncodes.duration.cannot.be.blank" : "Duration cannot be blank",
 "validation.msg.promotioncodes.discounttype.cannot.be.blank" : "Discount Type cannot be blank",
-"validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank"
+"validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank",
+"error.msg.cund.unknown.data.integrity.issue" : "Duplicate entry  for Promotion Code",
+"label.anchor.help" : "Help",
+"label.heading.keyboarshortcuts":"Keyboard Shortcuts",
+"label.heading.navigation":"Navigation Page",
+"label.heading.tasks":"Checker Inbox & Pending Tasks",
+"label.heading.collectionsheet":"Collection Sheet",
+"label.heading.frequentposting":"Frequent Posting",
+"label.heading.closureentries":"Closure Entries",
+"label.heading.journalentry":"Journal Entry",
+"label.heading.reports":"Reports",
+"label.heading.saveorsubmit":"Save/Submit Forms",
+"label.heading.cancel":"Cancel",
+"label.heading.runreport":"Run Report",
+"label.heading.logout":"Logout",
+"label.heading.search":"Search",
+"label.heading.createclient":"Create Client",
+"label.heading.creategroup": "Create Group",
+"label.heading.createcenter": "Create Center",
+"label.heading.help":"Help",
+"label.heading.next":"Pagination: Next",
+"label.heading.prev":"pagination: Previous"
+   
 
 }

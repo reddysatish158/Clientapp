@@ -14,7 +14,7 @@
 			    scope.imagePresent=clientData.imagePresent;
 			  
 	          scope.data={};
-	          
+	          scope.minDate=new Date();
 	          scope.maxDate = new Date();
 	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {

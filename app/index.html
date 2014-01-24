@@ -68,6 +68,8 @@
             <li><a href="#/createclient"><i class="icon-user icon-large"></i> + Client </a></li>
             <li class="divider"></li>
             <li><a href="#/createclientnewwizard"><i class="icon-tasks icon-large"></i>  + New Activation</a></li>
+            <li class="divider"></li>
+            <li><a class="bolder black" href="#/help"><i class="icon-question-sign icon-large"></i>&nbsp;&nbsp;&nbsp;{{ 'label.anchor.help' | translate }}</a></li>
             <!-- <li class="divider"></li>
             <li><a href="#/creategroup"><i class="icon-group icon-large"></i> + Group </a></li>
             <li class="divider"></li>
@@ -119,6 +121,7 @@
                         <li class="dropdown" id="preview-menu">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{currentSession.user.name}}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a id="help" href="#/help"><i class="icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
                                 <li><a href="#/profile"><i class="icon-user"></i>{{ 'link.profile' | translate }}</a></li>
                                  <li><a href="#/messanger"><i class="icon-envelope"></i>{{ 'link.messanger' | translate }}</a></li>
                                 <li><a href="#/usersetting"><i class="icon-cog"></i>{{ 'link.settings' | translate }}</a></li>

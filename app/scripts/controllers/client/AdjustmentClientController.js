@@ -15,6 +15,8 @@
         //scope.datass = {};
         scope.start={};
         scope.start.date = new Date();
+        scope.minDate= scope.start.date;
+        
         resourceFactory.adjustmentTemplateResource.get(function(data){
           scope.discountOptions = data.discountOptions;
           scope.data = data.data;

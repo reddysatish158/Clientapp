@@ -26,6 +26,7 @@
         scope.balanceAmount=clientData.balanceAmount;
         scope.currency=clientData.currency;
         scope.imagePresent=clientData.imagePresent;
+        scope.minDate=scope.start.date;
         
         resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
         	 

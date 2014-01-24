@@ -1043,3 +1043,15 @@ textarea.span3,
 	background: #ffffff/*{bgColorContent}*/ ;
 	color: #222222/*{fcContent}*/;
 }
+
+.hotkey{
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.table-bold-acc{
+    width:180px !important;
+    background-color: #F5F5F5;
+}
