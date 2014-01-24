@@ -8,6 +8,8 @@
         scope.formData=[];
         scope.provisioning={};
         scope.commandData = [];
+        scope.start = {};
+        scope.start.date = new Date();
         var orderId=routeParams.id;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
@@ -107,7 +109,10 @@
           });
       	 
        	$scope.accept = function(){
-
+       		var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+            this.formData.dateFormat = 'dd MMMM yyyy';
+            this.formData.locale='en';
+            this.formData.startDate = reqDate;
        		resourceFactory.applyPromotionCodeResource.update({'orderId': routeParams.id},this.formData,
        				
      		function(data) {

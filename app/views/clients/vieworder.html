@@ -50,8 +50,8 @@
 	         <a ng-show="orderData.status == 'PENDING'" ng-click="cancelOrder()" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a>
 	         <a ng-show ="association.orderId == null"  href="#/association/{{clientId}}/{{orderPriceDatas[0].orderId}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Pairing</a>
 		     <a ng-show ="orderData.status == 'DISCONNECTED' && association.orderId != null" ng-click="deAssociation()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Un Pairing</a>
-		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Hardware Swap</a>
-		     <a ng-show ="orderData.status == 'ACTIVE' && formData.flag == true" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-gift"></i>Apply Promo</a>
+		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/hardwareswap/{{association.saleId}}/{{clientId}}/{{association.orderId}}" class="btn btn-primary"><i class="icon-move"></i>Device Swap</a>
+		     <a ng-show ="orderData.status == 'ACTIVE' && orderData.flag == true" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-gift"></i>Apply Promo</a>
 		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
 		    
 	      
@@ -377,8 +377,8 @@
     </fieldset>
     </div>
      <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancelDisconnection()">{{'button.cancel' | translate}}</button>
-     	<button class="btn btn-primary" ng-click="approveDisconnection()">{{'label.confirm' | translate}}</button>
+        <button id="cancel" class="btn btn-warning" ng-click="cancelDisconnection()">{{'button.cancel' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveDisconnection()">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>
@@ -411,8 +411,8 @@
     </fieldset>
     </div>
      <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancelRenewal()">{{'button.cancel' | translate}}</button>
-     	<button class="btn btn-primary" ng-click="approveRenewal()">{{'label.confirm' | translate}}</button>
+        <button id="cancel" class="btn btn-warning" ng-click="cancelRenewal()">{{'button.cancel' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveRenewal()">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>
@@ -430,8 +430,8 @@
                        <h4>Are you sure?</h4>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="approveReconnect()">{{'label.confirm' | translate}}</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="approveReconnect()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       
@@ -462,8 +462,8 @@
                   		</div>		
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="acceptProvisioning()">{{'label.confirm' | translate}}</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="acceptProvisioning()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       
@@ -479,6 +479,13 @@
             <div class="controls">
             </div>
         </div>
+             <div class="control-group">
+                <label class="control-label" for="startDate">{{ 'label.order.startdate' | translate }}</label>
+                  <div class="controls">
+                    <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened" min="minDate" max="maxDate" 
+                  date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+              </div>
+           </div>
      	<div class="control-group">
             <label class="control-label" for="status">{{ 'label.order.Promotion' | translate }}</label>
             <div class="controls">
@@ -488,8 +495,8 @@
 		</fieldset>
     </div>
    <div class="modal-footer">
-         <button class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
-         <button class="btn btn-primary" ng-click="accept()">{{'label.confirm' | translate}}</button>
+         <button id="cancel" class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
+         <button id="submit" class="btn btn-primary" ng-click="accept()">{{'label.confirm' | translate}}</button>
    </div>
 </script>      
       

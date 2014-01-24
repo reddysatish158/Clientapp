@@ -120,9 +120,9 @@
 
 
 		<div class="offset3">
-			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+			<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
 
-				<button type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button>
+				<button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button>
 
 		</div>
 	</fieldset>

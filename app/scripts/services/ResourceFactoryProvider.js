@@ -176,6 +176,13 @@
             reverse: {method: 'POST', params:{command:'reverse'}},
             search:{method: 'GET', params: {}}
           }),
+          
+          smartSearchResource: defineResource(apiVer + "/smartsearch", {}, {
+              get: {method: 'GET', params: {transactionId:'@transactionId'}},
+              reverse: {method: 'POST', params:{command:'reverse'}},
+              search:{method: 'GET', params: {}}
+            }),
+            
           accountingClosureResource: defineResource(apiVer + "/glclosures/:accId", {accId:"@accId"}, {
             get: {method: 'GET', params: {}, isArray:true},
             getView: {method: 'GET', params: {}}

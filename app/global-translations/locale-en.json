@@ -2200,6 +2200,7 @@
 "table.paymentgateway.amountPaid":"Amount Paid",
 "table.paymentgateway.paymentDate":"Payment Date",
 "table.paymentgateway.receiptNo":"ReceiptNo",
+"table.paymentgateway.paymentdate":"Payment Date",
 "label.paymentgateway.status":"Status",
 "validation.msg.paymentgateway.remarks.cannot.be.blank":"Remarks cannot be blank",
 "validation.msg.paymentgateway.status.cannot.be.blank":"Please select Status",

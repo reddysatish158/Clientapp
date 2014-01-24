@@ -81,7 +81,7 @@
                     scope.statusActive=scope.client.status.code;
                                 
                     webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,
-                     statusActive: scope.statusActive, accountNo: data.accountNo, officeName: data.officeName,
+                     statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent });
                     
                     scope.staffData.staffId = data.staffId;
@@ -95,7 +95,7 @@
                     }
                   
 
-                    if (data.status.value == "Active") {
+                    //if (data.status.value == "Active") {
                       scope.buttons = [{
                                           name:"button.neworder",
                                           href:"#/neworder/0",
@@ -119,7 +119,7 @@
 
                                             name:"button.payments",
                                             href:"#/payments",
-                                            icon :"icon-money"
+                                            icon :"icon-usd"
                                          },
                                          {
                                              name:"button.adjustments",
@@ -148,7 +148,7 @@
                                         }
                                       ]
 
-                    }
+                   
 
                     if (data.status.value == "Transfer in progress") {
                       scope.buttons = [{

@@ -1,15 +1,12 @@
 <div ng-controller="SmartSearchController">
-    <div>
-      <ul class="breadcrumb">
-        <li><a href="#/accounting">{{'link.accounting' | translate}}</a> <span class="divider">/</span></li>
-        <li class="active">{{'label.searchjournalentries' | translate}}</li>
-      </ul>
-    </div><br>
+   <br>
     <div class="row-fluid" >
         <span class="input-append grpinputicons" >
-                <input ng-model="formData.transactionId" type="text" placeholder="Search by transaction #" />
+        <form ng-submit="searchTransaction()">
+                <input ng-model="formData.searchText" type="text" placeholder="Search Receipt#" />
                 <span><a ng-click="isCollapsed = !isCollapsed" class="btn  control"><i class="icon-chevron-down"></i></a></span>
                 <span><a ng-click="searchTransaction()" class="btn btn-primary control"><i class="icon-search icon-white"></i></a></span>
+              </form>  
         </span>
     </div>
     <div collapse="isCollapsed" class="blockoverlay" width="100%" style="overflow-y: scroll">
@@ -23,34 +20,27 @@
         </div>
     </div>
 
-    <!-- <div ng-show="displayResults" class="row-fluid">
+     <div ng-show="displayResults" class="row-fluid">
     	<table class="table">
             <thead>
                 <tr class="graybg">
-                    <th>Office</th>
-                    <th>Transaction Date</th>
-                    <th>Type</th>
-                    <th>Account</th>
-                    <th>Debit</th>
-                    <th>Credit</th>
+                    <th>Client Id</th>
+                    <th>Client Name</th>
+                    <th>Payment Date</th>
+                    <th>Payment Type</th>
+                    <th>Receipt Number</th>
+                    <th>Amount</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="transaction in transactions.currentPageItems">
-                    <td>{{transaction.officeName}}</td>
-                    <td>{{transaction.transactionDate | DateFormat}}</td>
-                    <td>{{transaction.glAccountType.value}}</td>
-                    <td>{{transaction.glAccountName}}({{transaction.glAccountCode}})</td>
-                    <td>
-                        <div ng-show="transaction.entryType.value == 'CREDIT'">
-                            {{transaction.amount}}
-                        </div>
-                    </td>
-                    <td>
-                        <div ng-show="transaction.entryType.value == 'DEBIT'">
-                            {{transaction.amount}}
-                        </div>
-                    </td>
+                <tr class="pointer-main" ng-repeat="transaction in transactions.currentPageItems">
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.clientId}}</td>
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.clientName}}</td>
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.paymentDate | DateFormat}}</td>
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.paymenttype}}</td>
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.receiptNo}}</td>
+                    <td class="pointer" data-ng-click="routeTo(transaction.clientId)">{{transaction.amount}}</td>
+                   
                 </tr>
             </tbody>
         </table>
@@ -58,5 +48,5 @@
             <li class="previous"><a ng-click="transactions.previous()" href="" ng-disabled="!transactions.hasPrevious()">&larr; Prev</a></li>
             <li class="next" ><a ng-click="transactions.next()" href="" ng-disabled="!transactions.hasNext()">Next &rarr;</a></li>
         </ul>
-    </div> -->
+    </div>
 </div>
