@@ -210,11 +210,21 @@
 										<div class="control-group">
 		            					<label class="control-label" for="sourceOfPublicity">{{ 'label.source' | translate }}</label>
 		            					<div class="controls">
-		              					<select ng-model="editprospects.sourceOfPublicityInt"  ng-options="sourceOfPublicityData.id as sourceOfPublicityData.mCodeValue for sourceOfPublicityData in sourceOfPublicityDatas" value="{{sourceOfPublicityData.id}}">
+		              					<select ng-model="editprospects.sourceOfPublicity"  ng-options="sourceOfPublicityData.mCodeValue as sourceOfPublicityData.mCodeValue for sourceOfPublicityData in sourceOfPublicityDatas" value="{{sourceOfPublicityData.mCodeValue}}">
 		             					 </select>
 		            					</div>
 		            					</div>
 									</td>
+								</tr>
+								<tr ng-show="editprospects.sourceOfPublicity == 'Other'">
+									<td>
+										<div class="control-group">
+										<label class="control-label">{{ 'label.prospect.other' | translate }}</label>
+            							<div class="controls">
+          								<input type="text" id="sourceOther" ng-model="editprospects.sourceOther">
+            							</div>
+          								</div>
+          							</td>
 								</tr>
 								<tr>
 									<td>

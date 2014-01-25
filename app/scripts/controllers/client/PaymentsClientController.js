@@ -31,12 +31,11 @@
         });
 
         scope.dbClick = function(){
-        	console.log("dbclick");
         	return false;
         };
         
         scope.submit = function() {
-        	scope.flag = false;
+          scope.flag = true;
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
