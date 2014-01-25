@@ -5,6 +5,7 @@
 		  scope.reportDatas =[];
 		  scope.billingMessageDatas=[];
 		  scope.jobparameters=[];
+		  scope.provisionSysData=[];
 		  scope.formData=[];
 		  scope.date={};
 		//  scope.start.date = new Date();
@@ -15,6 +16,7 @@
         scope.reportDatas = data.queryData;
         scope.billingMessageDatas=data.billingMessageDatas;
         scope.jobparameters=data.jobparameters;
+        scope.provisionSysData=data.provisionSysData;
         scope.formData=data;
         var actDate = dateFilter(scope.jobparameters.processDate,'dd MMMM yyyy');
         scope.date.processDate = new Date(actDate);
@@ -47,6 +49,10 @@
     	  this.formData.reportName=this.formData.jobparameters.batchName;
     	  this.formData.messageTemplate=this.formData.jobparameters.messageTemplate;
     	  this.formData.emailId=this.formData.jobparameters.emailId;
+    	  this.formData.URL=this.formData.jobparameters.url;
+    	  this.formData.ProvSystem=this.formData.jobparameters.provSystem;
+    	  this.formData.Username=this.formData.jobparameters.username;
+    	  this.formData.Password=this.formData.jobparameters.password;
     	  
     	  if(this.formData.name == "Invoice"){this.formData.processDate = dateFilter(scope.date.processDate,'dd MMMM yyyy');}
     	  if(this.formData.name== "Generate Statment"){this.formData.dueDate = dateFilter(scope.date.dueDate,'dd MMMM yyyy');}
@@ -66,6 +72,7 @@
    	  delete this.formData.billingMessageDatas;
    	  delete this.formData.historyId;
    	  delete this.formData.initializingError;
+   	  delete this.formData.provisionSysData;
    	  
           
         resourceFactory.jobsparameters.update({jobId: routeParams.id}, this.formData, function(data){

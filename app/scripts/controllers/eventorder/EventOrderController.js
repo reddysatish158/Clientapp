@@ -17,6 +17,8 @@
         //scope.datass = {};
         scope.start={};
         scope.start.date = new Date();
+        scope.minDate= scope.start.date;
+        
         resourceFactory.eventOrderTemplateResource.get({clientId : routeParams.id},function(data){
         	scope.devices = data.devices;
         	scope.events = data.events;

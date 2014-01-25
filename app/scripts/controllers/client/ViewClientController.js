@@ -81,7 +81,7 @@
                     scope.statusActive=scope.client.status.code;
                                 
                     webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,
-                     statusActive: scope.statusActive, accountNo: data.accountNo, officeName: data.officeName,
+                     statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent });
                     
                     scope.staffData.staffId = data.staffId;
@@ -95,7 +95,7 @@
                     }
                   
 
-                    if (data.status.value == "Active") {
+                    //if (data.status.value == "Active") {
                       scope.buttons = [{
                                           name:"button.neworder",
                                           href:"#/neworder/0",
@@ -119,7 +119,7 @@
 
                                             name:"button.payments",
                                             href:"#/payments",
-                                            icon :"icon-money"
+                                            icon :"icon-usd"
                                          },
                                          {
                                              name:"button.adjustments",
@@ -148,7 +148,7 @@
                                         }
                                       ]
 
-                    }
+                   
 
                     if (data.status.value == "Transfer in progress") {
                       scope.buttons = [{
@@ -189,7 +189,7 @@
         var Approve = function($scope,$modalInstance){
         	
 			$scope.accept = function(date){
-				scope.flag = true;
+				$scope.flag = true;
 			        	scope.formData.locale = 'en';
 			        	var reqDate = dateFilter(date,'dd MMMM yyyy');
 			            scope.formData.dateFormat = 'dd MMMM yyyy';
@@ -199,7 +199,7 @@
 			            	getDetails();
 			          },function(errData){
 
-			        		scope.flag = false;
+			        		$scope.flag = false;
 
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
 			          });
@@ -425,7 +425,7 @@
         	 scope.paymentsC="";
         	 scope.invoicesC="active";
         	 scope.adjustmentsC="";
-        	 scope.financialtransactions1 = paginatorService.paginate(scope.ge111, 14);
+        	 scope.financialInvoices = paginatorService.paginate(scope.getInvoice, 14);
          }
          scope.paymentsTab = function(){
         	 scope.financialsummaryC="";
@@ -532,26 +532,35 @@
         
         scope.cancelSale = function(otsId,index){
         	resourceFactory.deleteOneTimeSaleResource.update({saleId: otsId} , function(data) {
+        		console.log(index)
         		scope.onetimesales.splice(index, 1);
         		getDetails();
             },function(errorData){
             	
             });
         };
-        
-        /*scope.getAllFineTransactions = function () {
+        scope.unallocateDevice = function(otsId,serialNo){
+        	this.formData.clientId=routeParams.id;
+        	this.formData.serialNo=serialNo;
+        	resourceFactory.unallocateDeviceResource.update({allocationId: otsId} ,this.formData,function(data) {
+        		route.reload();
+            },function(errorData){
+            	
+            });
+        }; 
+       scope.getAllFineTransactions = function () {
               resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id} , function(data) {
                 scope.financialtransactions = data;
                 
                 
              });
-            };*/
+            };
           
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
 	
-	scope.ge111 = function(offset, limit, callback,invoice) {
+  			scope.getInvoice = function(offset, limit, callback,invoice) {
   	  			resourceFactory.Filetrans.get({clientId: routeParams.id ,offset: offset, limit: limit,type:scope.invoice} , callback);
   	  		};
   			

@@ -15,6 +15,8 @@
         //scope.datass = {};
         scope.start={};
         scope.start.date = new Date();
+        scope.minDate= scope.start.date;
+        
         resourceFactory.adjustmentTemplateResource.get(function(data){
           scope.discountOptions = data.discountOptions;
           scope.data = data.data;
@@ -35,7 +37,6 @@
           this.formData.adjustment_date = adjustmentDate;
          // this.formData.adjustment_type = "CREDIT";
           resourceFactory.adjustmentResource.save({clientId : routeParams.id}, this.formData, function(data){
-        	  scope.flag = false;
             location.path('/viewclient/'+routeParams.id);
           },function(errData){
         	  scope.flag = false;

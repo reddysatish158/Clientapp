@@ -176,6 +176,13 @@
             reverse: {method: 'POST', params:{command:'reverse'}},
             search:{method: 'GET', params: {}}
           }),
+          
+          smartSearchResource: defineResource(apiVer + "/smartsearch", {}, {
+              get: {method: 'GET', params: {transactionId:'@transactionId'}},
+              reverse: {method: 'POST', params:{command:'reverse'}},
+              search:{method: 'GET', params: {}}
+            }),
+            
           accountingClosureResource: defineResource(apiVer + "/glclosures/:accId", {accId:"@accId"}, {
             get: {method: 'GET', params: {}, isArray:true},
             getView: {method: 'GET', params: {}}
@@ -658,6 +665,9 @@
                deleteOneTimeSaleResource: defineResource(apiVer + "/onetimesales/:saleId", {saleId:'@saleId'}, {
                   	update: {method: 'PUT', params: {saleId:'@saleId'}}
                   }),
+              unallocateDeviceResource: defineResource(apiVer + "/itemdetails/deallocate/:allocationId", {allocationId:'@allocationId'}, {
+                    	update: {method: 'PUT', params: {saleId:'@saleId'}}
+                    }),   
                oneTimeSaleTemplateResource: defineResource(apiVer + "/onetimesales/template", {}, {
                  getOnetimes: {method: 'GET', params: {}}
                }),
@@ -804,6 +814,15 @@
                getDetails: {method: 'GET', params: {}},
                update: { method: 'PUT'}
            }),
+         /*  promotionCodeResource: defineResource(apiVer + "/promotioncodes", {}, {
+               get: {method: 'GET', params: {}, isArray: true},
+               
+           }),*/
+           applyPromotionCodeResource: defineResource(apiVer + "/orders/applypromo/:orderId", {orderId:'@orderId'}, {
+               get: {method: 'GET', params: {}, isArray: true},
+               update: { method: 'PUT' }
+           }),
+           
            EventActionMappingTemplateResource: defineResource(apiVer + "/eventactionmapping/template", {}, {
          	  get: {method: 'GET', params: {}}
            })  ,
@@ -814,7 +833,16 @@
            }) ,
 	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
-         }) 
+         }) ,
+         promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
+        	  get: {method: 'GET', params: {}, isArray: true},
+        	  getPrmotioncodeDetails: {method: 'GET', params: {promotioncodeId:'@promotioncodeId'}},
+        	  update: { method: 'PUT' }
+          }),  
+          
+          promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
+        	  get: {method: 'GET', params: {}}
+          })  
            
                
         };

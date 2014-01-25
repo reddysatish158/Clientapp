@@ -15,7 +15,7 @@
 	</div>
   	<form class="form-horizontal" ng-submit="submit()">
 	    <fieldset>
-	       <div class="control-group">
+	       <div class="control-group" ng-show="formData.displayName !='Middleware'" >
                 <label class="control-label">{{'label.job.reportname' | translate }}<span class="required">*</span></label>
                 <div class="controls">
                   <select ng-model="jobparameters.batchName"  ng-options="reportData.batchName as reportData.batchName for reportData in reportDatas" value="{{office.id}}" >
@@ -64,6 +64,34 @@
                 <input type="text" ng-model="jobparameters.emailId">
                 </div>
            </div>
+           <div class="control-group" ng-show="formData.displayName =='Middleware'">             
+               <label class="control-label">{{ 'label.job.ProvSystem' | translate }}<span class="required">*</span></label>
+                <!-- <div class="controls">
+                <input type="text" ng-model="jobparameters.provSystem">
+                </div> -->          
+                <div class="controls">
+                  <select ng-model="jobparameters.provSystem"  ng-options="provisionSystemData.provisioingSystem as provisionSystemData.provisioingSystem for provisionSystemData in provisionSysData" value="{{provisionSystemData.provisioingSystem}}">
+                </select>
+                </div>    
+           </div>
+           <div class="control-group" ng-show="formData.displayName =='Middleware'">              
+               <label class="control-label">{{ 'label.job.url' | translate }}<span class="required">*</span></label>
+                <div class="controls">
+                <input type="text" ng-model="jobparameters.url">
+                </div>               
+           </div>
+           <div class="control-group" ng-show="formData.displayName =='Middleware'">              
+                <label class="control-label">{{ 'label.job.username' | translate }}<span class="required">*</span></label>
+                <div class="controls">
+                <input type="text" ng-model="jobparameters.username">
+                </div>          
+           </div>
+           <div class="control-group" ng-show="formData.displayName =='Middleware'">              
+                <label class="control-label">{{ 'label.job.password' | translate }}<span class="required">*</span></label>
+                <div class="controls">
+                <input type="text" ng-model="jobparameters.password">
+                </div>              
+           </div>
            <div class="control-group">
                 <label class="control-label" for="isDynamic">{{ 'label.job.isDynamic' | translate }}</label>
                    <div class="controls">
@@ -73,8 +101,8 @@
                    </div>
            </div>
 	      <div class="offset3">
-	        <button type="reset" ng-click="cancel()" class="btn">{{'label.cancel' | translate}}</button></a>
-	        <button type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+	        <button  id="cancel" type="reset" ng-click="cancel()" class="btn">{{'label.cancel' | translate}}</button></a>
+	        <button id="submit" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
 	      </div>
 	    </fieldset>
   </form>

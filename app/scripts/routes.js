@@ -884,7 +884,22 @@
     	})
     	.when('/editPaymentGateway/:id', {
           templateUrl: 'views/paymentgateway/editPaymentGateway.html'
-         });
+         })
+       .when('/createpromotion', {
+    	templateUrl: 'views/organization/createpromotioncode.html'
+       })
+       .when('/viewpromotioncode/:id', {
+        templateUrl: 'views/organization/viewpromotioncode.html'
+      })
+       .when('/editpromotioncode/:id', {
+        templateUrl: 'views/organization/editpromotioncode.html'
+      }) 
+      .when('/smartSearch', {
+        templateUrl: 'views/system/smartSearch.html'
+      })
+      .when('/help',{
+        templateUrl: 'views/help.html'
+      });
 
     $locationProvider.html5Mode(false);
   };

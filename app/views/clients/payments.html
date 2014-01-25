@@ -31,10 +31,18 @@
 		</ul>
 	</div>
       <form name="paymentForm" class="form-horizontal well" ng-submit="submit()">
-       <div class="error" ng-show="errorStatus || errorDetails">
+      
+       <div class="error" ng-show="errorDetailscust">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorDetailscust" ng-repeat="error in errorDetailscust">{{error.code | translate}}</label>
+	   </div>
+	   
+	   <div ng-show="validerror">
+	     <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div> 
 	    </div>
         <fieldset>
           <legend>Make Payment</legend>
@@ -48,7 +56,7 @@
 								<div class="control-group">
            					 	<label class="control-label" for="paymentDate">{{ 'label.paymentdate' | translate }}</label>
             					<div class="controls">
-             					  <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="'2020-06-22'" 
+             					  <input id="dateid" type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="maxDate" 
              					  date-disabled="disabled(date, mode)"  style="background-color:#FFFFFF;"  readonly />
            						</div>
          						</div>	
@@ -60,7 +68,7 @@
 								<div class="control-group">
             					<label class="control-label" for="paymentCode">{{ 'label.paymentType' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.paymentCode" ng-options="data.id as data.mCodeValue for data in data" value="{{data.id}}" ng-change="paymentTypeData(formData.paymentCode)">
+             					 <select id="paymenttypeval" ng-model="formData.paymentCode" ng-options="data.id as data.mCodeValue for data in data" value="{{data.id}}" ng-change="paymentTypeData(formData.paymentCode)">
              					 </select>
             					</div>
           						</div>		
@@ -83,12 +91,12 @@
 								<div class="control-group">
            					 	<label class="control-label" for="receiptNo">{{ 'label.receiptno' | translate }}<span class="required">*</span></label>
             					<div class="controls">
-             					 <input type="text" id="receiptNo" name="receiptno" ng-model="formData.receiptNo"  late-Validate>
-             					  <span  ng-show="paymentForm.receiptno.$invalid">
+             					 <input type="text" id="receiptNo" name="receiptno" ng-model="formData.receiptNo">
+             					  <!-- <span  ng-show="paymentForm.receiptno.$invalid">
                                   <small class="error" ng-show="paymentForm.receiptno.$error.req">
                                     Required Field
                                   </small>
-                                 </span>
+                                 </span> -->
            						</div>
          						</div>
 							</td>
@@ -167,7 +175,7 @@
   			
           <div class="offset3">
             <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
-           <button type="submit" class="btn btn-primary" ng-dblclick="dbClick()" ng-disabled="flag">{{'button.save'| translate}}</button>
+           <button id="submit" type="submit" class="btn btn-primary" ng-dblclick="dbClick()" ng-disabled="flag">{{'button.save'| translate}}</button>
           </div>
           
         </fieldset>

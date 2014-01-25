@@ -12,7 +12,7 @@
 	            		
 	            };
 	        });
-	        
+	     
 	        scope.submit = function() {  
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
@@ -22,6 +22,7 @@
 	            resourceFactory.discountResource.save(this.formData,function(data){
 	            	location.path('/viewdiscounts/'+data.resourceId);
 	          });
+	          
 	        };
 	    }
 	  });

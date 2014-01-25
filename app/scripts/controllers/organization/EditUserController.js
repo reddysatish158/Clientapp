@@ -13,12 +13,13 @@
             scope.selectedRoles = data.selectedRoles;
 
         });
+        
         scope.submit = function() {
              delete this.formData.allowedOffices; // removing allowed office list
              delete this.formData.availableRoles; // removing allowed roles list 
              delete this.formData.officeName;     //
             // delete this.formData.id;     //
-             delete this.formData.selectedRoles;  // removing elected roles to re-format
+            // removing elected roles to re-format
 
              // reformatting selected roles
              var userId = this.formData.id;
@@ -26,14 +27,16 @@
 
              var roles = [];
              
-             for(var i=0; i< scope.selectedRoles.length; i++){
-                    roles.push(scope.selectedRoles[i].id);
+             for(var i=0; i< this.formData.selectedRoles.length; i++){
+            	
+                    roles.push(this.formData.selectedRoles[i].id);
              }
-
+             delete this.formData.selectedRoles;
              this.formData.roles = roles;
 
-             resourceFactory.userListResource.update({'userId': userId},this.formData,function(data){
-                location.path('/viewuser/' + data.resourceId);
+             resourceFactory.userListResource.update({'userId': routeParams.id},this.formData,function(data){
+
+                location.path('/viewuser/' + routeParams.id);
              });
         };
     }

@@ -48,7 +48,7 @@
 								<div class="control-group">
                         		<label class="control-label">{{ 'label.saleDate' | translate }}</label>
                         		<div class="controls">
-                            	<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.saleDate" is-open="opened2" max="maxDate" 
+                            	<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.saleDate" is-open="opened2" min="minDate" max="maxDate" 
                             	date-disabled="disabled(date, mode)"  style="background-color:#FFFFFF;"  readonly/>
                         		</div>
           						</div>
@@ -57,7 +57,7 @@
 								<div class="control-group">
             					<label class="control-label" for="chargeCode">{{ 'label.chargeCode' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="chargeCode" ng-model="formData.chargeCode">
+              					<input type="text" id="chargeCode" ng-model="formData.chargeCode" style="background-color:#FFFFFF;" readonly>
             					</div>
           						</div>
 							</td>
@@ -76,7 +76,7 @@
 								<div class="control-group">
             					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="totalPrice" ng-model="formData.totalPrice">
+              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" style="background-color:#FFFFFF;" readonly>
             					</div>
           						</div>
 							</td>
@@ -94,7 +94,7 @@
 								<div class="control-group">
             					<label class="control-label" for="unitPrice">{{ 'label.unitPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="unitPrice" ng-model="formData.unitPrice">
+              					<input type="text" id="unitPrice" ng-model="formData.unitPrice" style="background-color:#FFFFFF;" readonly>
             					</div>
           						</div>
 								</td>
@@ -120,8 +120,9 @@
 
 
 		<div class="offset3">
-			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
-				<button type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button>
+			<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+
+				<button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button>
 		</div>
 	</fieldset>
 </form>

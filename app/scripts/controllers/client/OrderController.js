@@ -8,9 +8,12 @@
         scope.formData=[];
         scope.provisioning={};
         scope.commandData = [];
+        scope.start = {};
+        scope.start.date = new Date();
         var orderId=routeParams.id;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
+         webStorage.add("orderId",routeParams.id);
          scope.displayName=clientData.displayName;
          scope.statusActive=clientData.statusActive;
          scope.accountNo=clientData.accountNo;
@@ -18,16 +21,22 @@
          scope.balanceAmount=clientData.balanceAmount;
          scope.currency=clientData.currency;
          scope.imagePresent=clientData.imagePresent;
-         
+         webStorage.add("orderId",routeParams.id);
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
-            scope.orderPriceDatas= data.orderPriceData;
+           
+        	scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+            scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
+	    if(data.orderData.isPrepaid == 'Y'){
+            	scope.formData.isPrepaid="Pre Paid";
+            }else{
+            	scope.formData.isPrepaid="Post Paid";
+            }
           
         });
-       
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
             scope.association = data;
@@ -80,6 +89,50 @@
           	
           };
           
+          scope.applyPromo= function(){
+        	  scope.errorStatus=[];
+        	  scope.errorDetails=[];
+          	  $modal.open({
+                  templateUrl: 'Promo.html',
+                  controller:applyPromoController ,
+                  resolve:{}
+              });
+          	
+          };
+          
+          
+      var applyPromoController=function($scope,$modalInstance){
+    	  
+    	  resourceFactory.promotionResource.get(function(data) {
+      		
+      		 $scope.promoDatas=data; 
+          });
+      	 
+       	$scope.accept = function(){
+       		var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+            this.formData.dateFormat = 'dd MMMM yyyy';
+            this.formData.locale='en';
+            this.formData.startDate = reqDate;
+       		resourceFactory.applyPromotionCodeResource.update({'orderId': routeParams.id},this.formData,
+       				
+     		function(data) {
+     			 
+     			     },function(errData){
+         	         	//$scope.renewError = errData.data.errors[0].userMessageGlobalisationCode;
+         		});
+
+       		    route.reload();
+       		 //location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+			 $modalInstance.close('delete');
+
+    	  
+      };  
+      
+  	$scope.rejectProvisioning = function(){
+  		$modalInstance.dismiss('cancel');
+  	};
+      };
+       		
      var ProvisioningSystemPopController = function($scope,$modalInstance){
          	 resourceFactory.provisioningMappingResource.getprovisiongData(function(data) {
          		 $('#commandName').hide();
@@ -138,6 +191,7 @@
                         scope.orderHistorydata=data.orderHistory;
                         scope.orderData=data.orderData;
                     });
+            		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
                     $modalInstance.close('delete');
                 });
             	
@@ -226,7 +280,11 @@
               
           };
           
-        
+        scope.cancel=function(){
+            resourceFactory.saveOrderResource.delete({'clientId':routeParams.id},{},function(data){
+            		location.path('/viewClient/'+scope.orderPriceDatas[0].clientId);  
+            	});
+          }
         
         scope.deAssociation=function (){
         	

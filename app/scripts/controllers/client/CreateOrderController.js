@@ -16,6 +16,7 @@
         scope.prepaidPlanspagedItems = [];
         scope.currentPage = 0;
         scope.items =[];
+        scope.clientId=routeParams.id;
         scope.formData =[];
         var clientData = webStorage.get('clientData');
         scope.displayName=clientData.displayName;
@@ -25,6 +26,7 @@
         scope.balanceAmount=clientData.balanceAmount;
         scope.currency=clientData.currency;
         scope.imagePresent=clientData.imagePresent;
+        scope.minDate=scope.start.date;
         
         resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
         	 

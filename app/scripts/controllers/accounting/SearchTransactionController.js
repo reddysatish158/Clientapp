@@ -18,15 +18,15 @@
         resourceFactory.officeResource.getAllOffices(function(data){
           scope.offices = data;  
         });
-
+      
        var fetchFunction = function(offset, limit, callback) {
-          var reqFirstDate = dateFilter(scope.date.first,'dd MMMM yyyy');
-          var reqSecondDate = dateFilter(scope.date.second,'dd MMMM yyyy');
+          var reqFirstDate = dateFilter(scope.date.first,'yyyy-MM-dd');
+          var reqSecondDate = dateFilter(scope.date.second,'yyyy-MM-dd');
           var params = {};
           params.offset = offset;
           params.limit = limit;
           params.locale = "en";
-          params.dateFormat = "dd MMMM yyyy";
+          params.dateFormat = "'yyyy-MM-dd'";
 
           if (scope.formData.transactionId) { params.transactionId = scope.formData.transactionId; };
 

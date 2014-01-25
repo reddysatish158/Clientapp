@@ -8,6 +8,8 @@
 			scope.usersDatas=[];
 			 scope.start = {};
 			 scope.start.date = new Date();
+			 scope.minDate= scope.start.date;
+			 
 			 scope.clientId=routeParams.id;
 			 var clientData = webStorage.get('clientData');
 			    scope.displayName=clientData.displayName;

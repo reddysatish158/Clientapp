@@ -9,7 +9,7 @@
             &nbsp;
             {{client.displayName}}
             &nbsp;
-            <i class="icon-circle {{client.status.code | StatusLookup}}"></i>
+            <i class="icon-circle {{client.status.value | StatusLookup}}"></i>
             &nbsp;
           </h3>
         </li>
@@ -27,6 +27,11 @@
         </li>
   </ul>
     <div>
+      <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
       <tabset  style="margin-bottom: 0px;">
       <tab heading="{{'tab.general' | translate}}">
               <div class="row-fluid">
@@ -342,7 +347,7 @@
       
       <div class="pull-right">
 		
-		<a href="#/addownedhardware/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Owned Hardware</a>
+		<a href="#/addownedhardware/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Device</a>
 	</div>
     
     <div>
@@ -399,6 +404,7 @@
 								<th>{{'table.heading.allocate' | translate}}</th>
 								<th>&nbsp;</th>
 								<th>&nbsp;</th>
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -412,6 +418,7 @@
 								<td>{{onetimesale.hardwareAllocated}}</td>
 							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
 							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
+							     <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="onetimesale.hardwareAllocated == 'ALLOCATED'" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>UnAssign Device</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -519,6 +526,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
                  				<th></th>
@@ -538,6 +546,9 @@
               					</td>
               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                 					{{financialtransaction.transactionType}}
+              					</td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+                					{{financialtransaction.transactionCategory}}
               					</td>
               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                  					{{financialtransaction.creditAmount}}
@@ -560,13 +571,16 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
               					<td>
-                					<a ng-hide="financialtransaction.transactionType =='PAYMENT CANCELED' || financialtransaction.transactionType =='ADJUSTMENT'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+                					<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
               					</td>
             				</tr>
 						</tbody>
@@ -590,9 +604,10 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
-								
+								<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -611,15 +626,24 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
-              					
+              						<td>
+                					<a ng-hide="financialtransaction.flag=='false'" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+              					</td>
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialPayments.previous()" href="" ng-disabled="!financialPayments.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialPayments.next()" href="" ng-disabled="!financialPayments.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -636,6 +660,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
 								
@@ -643,7 +668,7 @@
 						</thead>
 						<tbody>
 						
-							<tr ng-repeat="financialtransaction in financialtransactions1.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
+							<tr ng-repeat="financialtransaction in financialInvoices.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
                					<td>
                   					<any>{{financialtransaction.userName}}</any>
               					</td>
@@ -657,6 +682,9 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
@@ -666,6 +694,10 @@
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialInvoices.previous()" href="" ng-disabled="!financialInvoices.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialInvoices.next()" href="" ng-disabled="!financialInvoices.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -683,6 +715,7 @@
 							 	<th>Transaction Id</th>
                 				<th>Transaction Date</th>
                 				<th>Transaction Type</th>
+                				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
 								
@@ -704,6 +737,9 @@
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
               					<td>
+                  					<any>{{financialtransaction.transactionCategory}}</any>
+              					</td>
+              					<td>
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
               					<td>
@@ -713,6 +749,10 @@
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialAdjustments.previous()" href="" ng-disabled="!financialAdjustments.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialAdjustments.next()" href="" ng-disabled="!financialAdjustments.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -1039,7 +1079,7 @@
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.invoice.title.message' | translate}}</h3>
                     </div>
-                    <div class="modal-body modal-big" style="height:270px;">
+                    <div class="modal-body" style="height:285px;">
                        	<div class="control-group">
 							<div class="controls">
 						 	 <label class="control-label" style="color:red;" ng-show="error.length>0">{{error | translate}}</label>
@@ -1054,15 +1094,15 @@
 						
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flag">{{'label.confirm' | translate}}</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flag">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       <script type="text/ng-template" id="StatementPop.html">
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.statement.title.message' | translate}}</h3>
                     </div>
-                    <div class="modal-body modal-big" style="height:270px;">
+                    <div class="modal-body" style="height:255px;">
             			<div class="control-group">
        						<div class="controls">
 								<span class="control-label" style="color:red;" ng-show="stmError.length>0">{{stmError | translate}}</span>
@@ -1084,8 +1124,8 @@
                   		</div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="acceptStatement()">{{'label.confirm' | translate}}</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="acceptStatement()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
             <script type="text/ng-template" id="cancelpayment.html">
@@ -1107,8 +1147,8 @@
 						
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button class="btn btn-primary" ng-click="accept(formData.cancelRemark)">{{'label.confirm' | translate}}</button>
+                        <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
 </div>
