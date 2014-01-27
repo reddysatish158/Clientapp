@@ -50,7 +50,7 @@
              resourceFactory.clientResource.update({'clientId': routeParams.id},this.formData,function(data){
               if (scope.file) {
                 http.uploadFile({
-                  url: 'https://spark.openbillingsystem.com/mifosng-provider/api/v1/clients/'+data.clientId+'/images', 
+                  url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+data.clientId+'/images', 
                   data: {},
                   file: scope.file
                 }).then(function(imageData) {
