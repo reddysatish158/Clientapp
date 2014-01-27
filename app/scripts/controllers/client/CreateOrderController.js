@@ -98,11 +98,10 @@
         });
         
         scope.setBillingFrequency = function(value) {
+        	  $('plancode').css({"color":"red"});
         	scope.paytermdatas=undefined;
         	 resourceFactory.orderResource.get({planId:value, template: 'true'} , function(data) {
-        		 
         		 scope.paytermdatas=data.paytermdata;
-        		
         		 scope.formData.isPrepaid=data.isPrepaid;
         		 scope.formData.planCode=value;
         		 

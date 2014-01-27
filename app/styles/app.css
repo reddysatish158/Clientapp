@@ -926,6 +926,17 @@ nav:hover:after{
     cursor: text;
 }
 
+.hotkey{
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.table-bold-acc{
+    width:180px !important;
+    background-color: #F5F5F5;
+}
 .selected-row{
     background-color: deepskyblue !important;
 }
@@ -1038,20 +1049,14 @@ textarea.span3,
 
 }
 
+.active{
+color:green;
+}
+
 .ui-widget-contentclass {
 	border: 0px solid #aaaaaa/*{borderColorContent}*/;
 	background: #ffffff/*{bgColorContent}*/ ;
 	color: #222222/*{fcContent}*/;
 }
 
-.hotkey{
-    font-weight: bold;
-    color: red;
-    font-style: italic;
-    font-size: 20px;
-}
 
-.table-bold-acc{
-    width:180px !important;
-    background-color: #F5F5F5;
-}

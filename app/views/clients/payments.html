@@ -56,7 +56,7 @@
 								<div class="control-group">
            					 	<label class="control-label" for="paymentDate">{{ 'label.paymentdate' | translate }}</label>
             					<div class="controls">
-             					  <input id="dateid" type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="maxDate" 
+             					  <input id="dateid" type="text" ng-change="test()" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="maxDate" 
              					  date-disabled="disabled(date, mode)"  style="background-color:#FFFFFF;"  readonly />
            						</div>
          						</div>	
