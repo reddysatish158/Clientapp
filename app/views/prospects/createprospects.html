@@ -227,11 +227,20 @@
 												<div class="control-group">
             									<label class="control-label" for="sourceOfPublicity">{{ 'label.source' | translate }}</label>
             									<div class="controls">
-              									<select ng-model="formData.sourceOfPublicity"  ng-options="sourceOfPublicityData.id as sourceOfPublicityData.mCodeValue for sourceOfPublicityData in sourceOfPublicityDatas" value="{{sourceOfPublicityData.id}}">
+              									<select ng-model="formData.sourceOfPublicity"  ng-options="sourceOfPublicityData.mCodeValue as sourceOfPublicityData.mCodeValue for sourceOfPublicityData in sourceOfPublicityDatas" value="{{sourceOfPublicityData.mCodeValue}}">
              					 				</select>
-             									<div ng-show="formData.sourceOfPublicity == '70'">
-          										<input type="text" id="sourceOther" ng-model="formData.sourceOther">
+             									
+            									</div>
           										</div>
+          						
+											</td>
+										</tr>
+										<tr ng-show="formData.sourceOfPublicity == 'Other'">
+											<td>
+												<div class="control-group">
+												<label class="control-label">{{ 'label.prospect.other' | translate }}</label>
+            									<div class="controls">
+          										<input type="text" id="sourceOther" ng-model="formData.sourceOther">
             									</div>
           										</div>
           						

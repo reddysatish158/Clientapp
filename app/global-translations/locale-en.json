@@ -1312,6 +1312,7 @@
   "link.prospects" : "Prospects",
   "link.viewprospects" : "View Prospects",
   "label.prospects":"Prospects",
+  "label.prospect.other":"Other",
   "label.viewprospects":"View Prospects",
   "label.createprospect":"Create Prospect",
   "label.create.type":"Type",

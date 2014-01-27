@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    CreateMrnController: function(scope,webStorage, resourceFactory, location,dateFilter) {
+    CreateMrnController: function(scope,webStorage, resourceFactory, location,dateFilter,$rootScope) {
     	 scope.officeDatas = [];
     	 scope.itemMasterDatas = [];
     	 scope.first = {};
@@ -37,7 +37,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('CreateMrnController', ['$scope','webStorage', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.CreateMrnController]).run(function($log) {
+  mifosX.ng.application.controller('CreateMrnController', ['$scope','webStorage', 'ResourceFactory', '$location','dateFilter','$rootScope', mifosX.controllers.CreateMrnController]).run(function($log) {
     $log.info("CreateMrnController initialized");
   });
 }(mifosX.controllers || {}));

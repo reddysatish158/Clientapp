@@ -30,8 +30,8 @@
         </div>
         <br/><br/>
         <div class="pull-right">
-            <input type="text" data-ng-model="loginCredentials.username"   placeholder="{{ 'label.username' | translate }}" value="billing" class="input-small" required>
-            <input id="pwd" type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
+            <input type="text" ng-init="loginCredentials.username='billing'" data-ng-model="loginCredentials.username"   placeholder="{{ 'label.username' | translate }}" value="billing" class="input-small" required>
+            <input id="pwd" ng-init="loginCredentials.password='password'" type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
             <button class="btn btn-success" type="submit" data-ng-click="login()">{{ 'label.signin' | translate }}</button>
         </div>
         <div class="pull-right" data-ng-show="authenticationFailed">
