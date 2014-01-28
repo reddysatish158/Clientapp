@@ -64,7 +64,6 @@
 
         scope.submit = function() {
         	 scope.flag = true;
-
             var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
             this.formData.locale = 'en';
             this.formData.active = true;
@@ -88,8 +87,6 @@
               } else{
                 location.path('/viewclient/' + data.resourceId);
               }
-              
-              
             },function(errData){
           	  scope.flag = false;
             });

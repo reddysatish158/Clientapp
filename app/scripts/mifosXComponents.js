@@ -293,6 +293,7 @@ define(['underscore', 'mifosX'], function() {
       'LateValidateDirective',
       'TreeviewDirective',
       'CkEditorDirective',
+      'FormSubmitValidateDirective',
       'ScrollbarTopDirective',
       'ApiValidationDirective'
     ]

@@ -75,15 +75,18 @@
                     </td>
                 </tfoot>
                 <tbody>
-                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse"  ng-show="item.isPrepaid == 'N'" STYLE="cursor:pointer;">
-                        <td  >
-                       <input id="plancode" type="radio" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'>{{plandata.planCode}}
+
+                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse"  ng-show="item.isPrepaid == 'N'">
+                        <td >
+                       <input type="radio" id="{{item.id}}" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'>{{plandata.planCode}}
                        </td>
-                        <td   ng-show="item.isPrepaid == 'N'" ng-click='setBillingFrequency(item.id)' active-link="active">{{item.planCode}}-
+                        <td ng-show="item.isPrepaid == 'N'"><label for="{{item.id}}" >{{item.planCode}}-
+
                          <any ng-repeat="services in item.availableServices">
                          {{services.serviceDescription}} 
                          <any ng-show="services">,</any>
-                        
+                         </any>
+                        </label>
                          <td>
                         </td>
                         
@@ -123,14 +126,17 @@
                 </tfoot> -->
                 <tbody>
                     <tr ng-repeat="item in prepaidPlanspagedItems[currentPage] | orderBy:sortingOrder:reverse " ng-show="item.isPrepaid == 'Y'">
-                        <td  cursor="pointer">
-                       <label><input  cursor="pointer"type="radio" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'/>{{plandata.planCode}}
-                       </label> </td>
-                        <td  cursor="pointer" name="planCode" ng-show="item.isPrepaid == 'Y'">{{item.planCode}}-
+
+                        <td >
+                       <input type="radio" id="{{item.id}}" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'>{{plandata.planCode}}
+                       </td>
+                        <td ng-show="item.isPrepaid == 'Y'"><label for="{{item.id}}" >{{item.planCode}}-
+
                          <any ng-repeat="services in item.availableServices">
                          {{services.serviceDescription}} 
                          <any>,</any>
                         </any>
+                        </label>
                          <td>
                         </td>
                         
@@ -171,7 +177,7 @@
             </tr>
           </table>
      
-          <div class="offset3">
+          <div class="pull-right">
             
                <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
            <button id="submit" type="submit" class="btn btn-primary" ng-dblclick="dbClick()" ng-disabled="flag">Save</button>

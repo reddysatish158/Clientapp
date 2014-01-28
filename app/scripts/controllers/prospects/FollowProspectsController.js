@@ -30,11 +30,14 @@
         
         
         scope.submit = function() {
+        	scope.flag = true;
         	this.formData.locale="en";
         	var reqDate = dateFilter(scope.first.date,'yyyy-MM-dd');
         	this.formData.preferredCallingTime = reqDate+" "+$('#timepicker1').val()+":00";
           resourceFactory.prospectTemplateResource.update({clientProspectId: routeParams.id}, this.formData,function(data){
             location.path('/viewprospects/'+data.resourceId);
+          },function(errData){
+        	  scope.flag = false;
           });
         };
     }

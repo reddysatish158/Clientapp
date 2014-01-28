@@ -13,7 +13,7 @@
 	        scope.first = {};
 	        scope.first.time = {};
 	        scope.first.date = new Date();
-	        
+	        scope.publicityFlag = false;
 	        scope.minDate = new Date();
 	       
 	        $('#timepicker1').timepicker({
@@ -31,8 +31,23 @@
 		        scope.stateDatas = data.stateData;
 		        scope.cityDatas = data.cityData;
 		        scope.first.date = scope.getDateData(data.preferredCallingTime);
+		        for(var i=0;i<scope.sourceOfPublicityDatas.length;i++){
+		        	console.log(scope.sourceOfPublicityDatas[i]);
+		        	console.log(scope.editprospects.sourceOfPublicityInt);
+		        	if(scope.sourceOfPublicityDatas[i].mCodeValue == scope.editprospects.sourceOfPublicityInt){
+		        		scope.publicityFlag = true;
+		        		console.log(i);
+		        	}
 		        	
-		        
+		        }
+		        if(scope.publicityFlag == true){
+		        	scope.editprospects.sourceOfPublicity = scope.editprospects.sourceOfPublicityInt;
+		        	console.log(true);
+		        }else if(scope.publicityFlag == false){
+		        	scope.editprospects.sourceOther = scope.editprospects.sourceOfPublicityInt;
+	        		scope.editprospects.sourceOfPublicity = "Other";
+	        		console.log(false);
+		        }
 	        });
 	        
 	        $("#cityDistrict").change(function(){
@@ -49,16 +64,23 @@
 	        	delete scope.editprospects.countryData;
 	        	delete scope.editprospects.stateData;
 	        	delete scope.editprospects.cityData;
+	        	
+	        	delete scope.editprospects.sourceOfPublicityInt;
+	        	
+	        	if(scope.editprospects.sourceOfPublicity!='Other'){
+	        		delete scope.editprospects.sourceOther;
+	        	}
+	        	
 	        	scope.editprospects.locale = 'en';
 	        	delete scope.editprospects.sourceOfPublicityData;
 	        	var reqDate = dateFilter(new Date(scope.first.date),'yyyy-MM-dd');
 
 	        	scope.editprospects.preferredCallingTime = reqDate+" "+$('#timepicker1').val()+":00";//scope.first.date.getHours()+":"+scope.first.date.getMinutes()+":"+scope.first.date.getSeconds();
 	        	
-	        	scope.editprospects.sourceOfPublicity = scope.editprospects.sourceOfPublicityInt;
+	        	/*scope.editprospects.sourceOfPublicity = scope.editprospects.sourceOfPublicityInt;*/
 	        	scope.editprospects.preferredPlan = scope.editprospects.preferredPlanInt; 
-	        	scope.editprospects.sourceOfPublicityInt;
-	        	scope.editprospects.preferredPlanInt;
+	        	
+	        	
 	        	
 	        	resourceFactory.prospectEditResource.update({id: routeParams.id} , scope.editprospects ,function(data){
 	            	location.path('/viewprospects/'+data.resourceId);
@@ -81,14 +103,13 @@
 			    	var time = splitedString[3];
 			    	month = scope.getFullName(month);
 			    	day = day.length<2?"0"+day:day;
-			    	console.log("month: "+month);console.log("day: "+day);
 			    	dateData = day+" "+month+" "+year;
 			    	scope.first.time = time.substring(0,time.lastIndexOf(":"));
 			    	return dateData;
 			    };   
 			    
 			    scope.getFullName = function(month){
-			        	  console.log(month);
+			        	  
 			        	  var x = undefined;
 			        	  if(month == "Jan")
 			        	  x = "January";

@@ -109,7 +109,6 @@
           }
 
         scope.dbClick = function(){
-        	console.log("dbclick");
         	return false;
         };
         
@@ -121,8 +120,6 @@
         	scope.errorDetailscust = [];
             removeErrors();
             parameterValidationErrors();
- 
-
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
       	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
