@@ -926,6 +926,17 @@ nav:hover:after{
     cursor: text;
 }
 
+.hotkey{
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.table-bold-acc{
+    width:180px !important;
+    background-color: #F5F5F5;
+}
 .selected-row{
     background-color: deepskyblue !important;
 }
@@ -1049,6 +1060,10 @@ textarea.span3,
     background-color: #F5F5F5;
     width: 180px !important;
 
+}
+
+.active{
+color:green;
 }
 
 .ui-widget-contentclass {

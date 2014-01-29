@@ -308,6 +308,11 @@
                update: { method: 'PUT' }
            }),
            
+           updateUserChatResource: defineResource(apiVer + "/userchats/:messageId", {messageId:'@messageId'}, {
+               get: {method: 'GET', params: {}, isArray: false},
+               update: { method: 'PUT' }
+           }),
+           
            userSentMessageResource: defineResource(apiVer + "/userchats/sentmessages/", {}, {
                get: {method: 'GET', params: {}, isArray: false},
                update: { method: 'PUT' }

@@ -52,6 +52,8 @@
 		        });	
 	        }
 	        
+	        
+	        
 	        scope.reset123 = function(){
 	        	   webStorage.add("callingTab", {someString: "Sale" });
 	           };
