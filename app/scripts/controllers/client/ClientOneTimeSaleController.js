@@ -16,7 +16,7 @@
 		        scope.email=clientData.email;
 		        scope.phone=clientData.phone;
 	          scope.data={};
-	          scope.minDate=new Date();
+	        //  scope.minDate=new Date();
 	          scope.maxDate = new Date();
 	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {

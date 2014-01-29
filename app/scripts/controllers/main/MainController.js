@@ -7,6 +7,7 @@
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
         scope.currentSession = sessionManager.get(data);
         location.path('/home').replace();
+        scope.unreadMessage=data.unReadMessages;
       });
 
       scope.search = function(){
@@ -74,6 +75,15 @@
       keyboardManager.bind('ctrl+shift+r', function() {
           location.path('/reports/all');
       });
+      
+      keyboardManager.bind('ctrl+shift+u', function() {
+          location.path('/importing');
+      });
+      
+      keyboardManager.bind('alt+f', function() {
+          location.path('/smartSearch');
+      });
+      
       keyboardManager.bind('ctrl+s', function() {
           document.getElementById('submit').click();
       });
@@ -84,11 +94,21 @@
       keyboardManager.bind('ctrl+shift+x', function() {
           document.getElementById('cancel').click();
       });
+      keyboardManager.bind('ctrl+shift+p', function() {
+    	  location.path('/createPlan');
+      });
+      keyboardManager.bind('ctrl+shift+s', function() {
+    	  location.path('/createservice');
+      });
       keyboardManager.bind('ctrl+shift+l', function() {
           document.getElementById('logout').click();
       });
       keyboardManager.bind('alt+x', function() {
           document.getElementById('search').focus();
+      });
+      
+      keyboardManager.bind('alt+n', function() {
+    	  location.path('/inventory');
       });
       
       keyboardManager.bind('ctrl+n', function() {

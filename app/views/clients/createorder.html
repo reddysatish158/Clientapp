@@ -105,7 +105,7 @@
                 <tfoot>
                     <td colspan="2">
                         <div class="pagination pull-right">
-                            <ul>
+                            <ul >
                                 <li ng-class="{disabled: currentPage == 0}">
                                     <a href ng-click="prevPage()" class="icon-chevron-left"></a>
                                 </li>
@@ -122,11 +122,13 @@
                     </td>
                 </tfoot>
                 <tbody>
+
                     <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse"  ng-show="item.isPrepaid == 'N'">
                         <td >
                        <input type="radio" id="{{item.id}}" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'>{{plandata.planCode}}
                        </td>
                         <td ng-show="item.isPrepaid == 'N'"><label for="{{item.id}}" >{{item.planCode}}-
+
                          <any ng-repeat="services in item.availableServices">
                          {{services.serviceDescription}} 
                          <any ng-show="services">,</any>
@@ -171,10 +173,12 @@
                 </tfoot> -->
                 <tbody>
                     <tr ng-repeat="item in prepaidPlanspagedItems[currentPage] | orderBy:sortingOrder:reverse " ng-show="item.isPrepaid == 'Y'">
+
                         <td >
                        <input type="radio" id="{{item.id}}" name="planCode" value="item.id" ng-click='setBillingFrequency(item.id)'>{{plandata.planCode}}
                        </td>
                         <td ng-show="item.isPrepaid == 'Y'"><label for="{{item.id}}" >{{item.planCode}}-
+
                          <any ng-repeat="services in item.availableServices">
                          {{services.serviceDescription}} 
                          <any>,</any>
