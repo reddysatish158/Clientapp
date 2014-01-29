@@ -43,6 +43,7 @@
           }
           
           for(i=0;i<data.length;i++){
+        	  
             if (data[i].type.value == "ASSET") {
               if (data[i].parentId == null)  data[i].parentId = -1;
             } else if (data[i].type.value == "LIABILITY") {
@@ -73,6 +74,7 @@
 
           var root = [];
           for(var i = 0; i < glAccountsArray.length; i++) {
+        	 
             var currentObj = glAccountsArray[i];
               if(currentObj.children){
                   currentObj.collapsed = "true";

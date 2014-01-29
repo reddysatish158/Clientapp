@@ -31,19 +31,13 @@
 		</ul>
 	</div>
       <form name="paymentForm" class="form-horizontal well" ng-submit="submit()">
-      
-       <div class="error" ng-show="errorDetailscust">
-		<label>{{'label.contract.error' | translate}}</label>
-		<label ng-show="errorDetailscust" ng-repeat="error in errorDetailscust">{{error.code | translate}}</label>
-	   </div>
-	   
-	   <div ng-show="validerror">
+	  
 	     <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div> 
-	    </div>
+	    
         <fieldset>
           <legend>Make Payment</legend>
           

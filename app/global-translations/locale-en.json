@@ -1948,7 +1948,7 @@
 "validation.msg.payment.bankName.cannot.be.blank":"Bank Name cannot be blank",
 "validation.msg.payment.branchName.cannot.be.blank":"Branch Name cannot be blank",
 "validation.msg.payment.receiptNo.cannot.be.blank ":"Receipt No cannot be blank",
-"validation.msg.payment.amountPaid.cannot.be.blank":"Payment field cannot be blank",
+"validation.msg.payment.amountPaid.cannot.be.blank":"Amount field cannot be blank",
 
 
 "validation.msg.onetimesale.itemId.cannot.be.blank":"Item Code cannot be blank",
@@ -2256,7 +2256,11 @@
 "label.heading.createcenter": "Create Center",
 "label.heading.help":"Help",
 "label.heading.next":"Pagination: Next",
-"label.heading.prev":"pagination: Previous"
+"label.heading.prev":"pagination: Previous",
+"label.manageaddresses" : "Manage Addresses",
+"table.heading.countryName" : "Country Name",
+"table.heading.StateName" : "State Name",
+"table.heading.cityName" : "City Name"
    
 
 }
