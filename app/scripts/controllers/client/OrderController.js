@@ -21,6 +21,9 @@
          scope.balanceAmount=clientData.balanceAmount;
          scope.currency=clientData.currency;
          scope.imagePresent=clientData.imagePresent;
+         scope.categoryType=clientData.categoryType;
+         scope.email=clientData.email;
+         scope.phone=clientData.phone;
          webStorage.add("orderId",routeParams.id);
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
            

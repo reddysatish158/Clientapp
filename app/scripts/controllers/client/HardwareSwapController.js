@@ -12,7 +12,9 @@
 	            scope.balanceAmount=clientData.balanceAmount;
 	            scope.currency=clientData.currency;
 	            scope.imagePresent=clientData.imagePresent;
-
+	            scope.categoryType=clientData.categoryType;
+	            scope.email=clientData.email;
+	            scope.phone=clientData.phone;
 	            resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.orderId} , function(data) {
 	                scope.association = data;                                                
 	            });

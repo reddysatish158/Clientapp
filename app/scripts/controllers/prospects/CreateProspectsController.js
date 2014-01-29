@@ -42,14 +42,14 @@
 	         
 	        scope.submit = function() {
 	        	
-	        	var res1 = validator.validateEmail(scope.formData.email);
+	        	/*var res1 = validator.validateEmail(scope.formData.email);
 	        	var res2 = validator.regXForMobileNumber(scope.formData.homePhoneNumber);
 	        	var res3 = validator.validateZipCode(scope.formData.zipCode);
 	        	
 	        	if(res1 == false || res2 ==false || res3 == false){
 	        		
 	        		return undefined;
-	        	}
+	        	}*/
 	        	
 	        	 this.formData.locale = "en";
 	        	 var reqDate = dateFilter(scope.first.date,'yyyy-MM-dd');
