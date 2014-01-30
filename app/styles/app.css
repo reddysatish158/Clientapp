@@ -1011,6 +1011,19 @@ nav:hover:after{
   *width: 23.351063829787233%;
 }
 
+.hotkey{
+    font-weight: bold;
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.table-bold-acc{
+    width:180px !important;
+    background-color: #F5F5F5;
+}
+
+
 .table td.span3,
 .table th.span3 {
   float: none;
@@ -1058,5 +1071,4 @@ color:green;
 	background: #ffffff/*{bgColorContent}*/ ;
 	color: #222222/*{fcContent}*/;
 }
-
 

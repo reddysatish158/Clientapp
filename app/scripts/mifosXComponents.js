@@ -274,7 +274,8 @@ define(['underscore', 'mifosX'], function() {
       'organization/CreatePromotionController',
       'organization/ViewPromotioncodeController',
       'organization/EditPromotioncodeController',
-      'system/SmartSearchController'
+      'system/SmartSearchController',
+      'organization/AddressManageController',
       
 
       

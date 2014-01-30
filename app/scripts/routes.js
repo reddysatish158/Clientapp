@@ -899,6 +899,9 @@
       })
       .when('/help',{
         templateUrl: 'views/help.html'
+      })
+       .when('/addressmanage', {
+        templateUrl: 'views/organization/addressManage.html'
       });
 
     $locationProvider.html5Mode(false);

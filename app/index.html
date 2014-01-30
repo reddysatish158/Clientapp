@@ -5,9 +5,9 @@
     <link rel="icon" type="image/png" href="./images/favicon.ico" />
     <title>{{ 'label.product.title' | translate }}</title>
     <style>[data-ng-cloak] { display: none !important; }</style>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});
-</script>
+</script> -->
 </head>
 <body  class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80" data-ng-cloak data-ng-controller="MainController">
 <!-- Login Form  -->
@@ -30,8 +30,8 @@
         </div>
         <br/><br/>
         <div class="pull-right">
-            <input type="text" ng-init="loginCredentials.username='billing'" data-ng-model="loginCredentials.username"   placeholder="{{ 'label.username' | translate }}" value="billing" class="input-small" required>
-            <input id="pwd" ng-init="loginCredentials.password='password'" type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
+            <input type="text"  data-ng-model="loginCredentials.username"   placeholder="{{ 'label.username' | translate }}" value="billing" class="input-small" required>
+            <input id="pwd"  type="password" data-ng-model="loginCredentials.password"   placeholder="{{ 'label.password' | translate }}" value="password" class="input-small"  required>
             <button class="btn btn-success" type="submit" data-ng-click="login()">{{ 'label.signin' | translate }}</button>
         </div>
         <div class="pull-right" data-ng-show="authenticationFailed">

@@ -188,7 +188,6 @@
 			  scope.formData2 = {};
 	          scope.data={};
 	          scope.maxDate = new Date();
-	          scope.minDateOnTimeSale=new Date();
 	          
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	        	scope.itemDatas = data.itemDatas;
@@ -261,7 +260,6 @@
 	        scope.paytermdatas=[];
 	        scope.start = {};
 	        scope.start.date = new Date();
-	        scope.minDateOrder=new Date();
 	        scope.sortingOrder = 'planCode';
 	        scope.reverse = false;
 	        scope.filteredItems = [];
