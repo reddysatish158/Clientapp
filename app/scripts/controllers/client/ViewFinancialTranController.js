@@ -14,6 +14,9 @@
             scope.balanceAmount=clientData.balanceAmount;
             scope.currency=clientData.currency;
             scope.imagePresent=clientData.imagePresent;
+            scope.categoryType=clientData.categoryType;
+            scope.email=clientData.email;
+            scope.phone=clientData.phone;
             resourceFactory.financialResource.getAllDetails({'transactionId': routeParams.transactionId},function(data){
                 scope.invoicedetails = data.transactionsDatas;
             }); 

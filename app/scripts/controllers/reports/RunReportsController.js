@@ -264,7 +264,7 @@ function buildReportParms(){
     		  for(var j=0;j<scope.exportReportParameters.length;j++){
     			  var tempParam=scope.exportReportParameters[j];
     			  if (reqField.name == tempParam.parameterName) {
-    	              var paramName = "R_"+tempParam.reportParameterName;
+    	              var paramName = "R_"+reqField.variable;
     	              if (paramCount > 1) reportParams += "&"
     	              reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.formData[scope.reqFields[i].inputName]);
     	              paramCount = paramCount + 1;
@@ -405,7 +405,9 @@ function buildReportParms(){
              errorObj.args.params.push({value : scope.reportType});
              scope.errorDetails.push(errorObj);
         }
-        
+        window.setTimeout(function() {
+            scope.baseURL = "";
+         }, 1000);
       }
     };
    }

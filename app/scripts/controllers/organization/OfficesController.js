@@ -35,6 +35,7 @@
           idToNodeMap[data[i].id] = data[i];
         }
         function sortByParentId(a, b){
+        	
           return a.parentId - b.parentId;
         }
         data.sort(sortByParentId);
