@@ -12,6 +12,9 @@
         scope.balanceAmount=clientData.balanceAmount;
         scope.currency=clientData.currency;
         scope.imagePresent=clientData.imagePresent;
+        scope.categoryType=clientData.categoryType;
+        scope.email=clientData.email;
+        scope.phone=clientData.phone;
         resourceFactory.clientResource.get({clientId: routeParams.id, template: 'true'} , function(data) {
             scope.offices = data.officeOptions;
             scope.staffs = data.staffOptions; 

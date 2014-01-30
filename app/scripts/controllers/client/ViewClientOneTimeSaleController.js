@@ -13,6 +13,9 @@
         scope.balanceAmount=clientData.balanceAmount;
         scope.currency=clientData.currency;
         scope.imagePresent=clientData.imagePresent;
+        scope.categoryType=clientData.categoryType;
+        scope.email=clientData.email;
+        scope.phone=clientData.phone;
         resourceFactory.oneTimeSaleAllocation.get({orderId: routeParams.id} , function(data) {
         	//alert('discountController,' +data);
         	scope.isDefault='false';

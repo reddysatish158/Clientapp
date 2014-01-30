@@ -1,8 +1,19 @@
 (function(module) {
 	mifosX.controllers = _.extend(module,{
-		EditTicketController : function(scope,routeParams,resourceFactory, location, http) {
+		EditTicketController : function(scope,webStorage,routeParams,resourceFactory, location, http) {
 							scope.formData = {};	
 							scope.data={};
+							var clientData = webStorage.get('clientData');
+						    scope.displayName=clientData.displayName;
+						    scope.statusActive=clientData.statusActive;
+						    scope.accountNo=clientData.accountNo;
+						    scope.officeName=clientData.officeName;
+						    scope.balanceAmount=clientData.balanceAmount;
+						    scope.currency=clientData.currency;
+						    scope.imagePresent=clientData.imagePresent;
+						    scope.categoryType=clientData.categoryType;
+					        scope.email=clientData.email;
+					        scope.phone=clientData.phone;
 							resourceFactory.editTicketResource.get({clientId: routeParams.clientId, id: routeParams.id} , function(data) {	
                                 scope.formData=data;                            
 								scope.statusTypes = data.statusType;
@@ -34,7 +45,7 @@
 							};
 						}
 					});
-	mifosX.ng.application.controller('EditTicketController', ['$scope', '$routeParams', 'ResourceFactory', '$location', '$http', mifosX.controllers.EditTicketController]).run(function($log) {
+	mifosX.ng.application.controller('EditTicketController', ['$scope','webStorage' ,'$routeParams', 'ResourceFactory', '$location', '$http', mifosX.controllers.EditTicketController]).run(function($log) {
 	    $log.info("EditTicketController initialized");
 	  });
 	

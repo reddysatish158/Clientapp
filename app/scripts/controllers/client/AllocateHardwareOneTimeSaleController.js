@@ -11,7 +11,9 @@
 	            scope.balanceAmount=clientData.balanceAmount;
 	            scope.currency=clientData.currency;
 	            scope.imagePresent=clientData.imagePresent;
-
+	            scope.categoryType=clientData.categoryType;
+	            scope.email=clientData.email;
+	            scope.phone=clientData.phone;
 			  
 	        /*resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId: routeParams.id}, function(data) {
 	        	
