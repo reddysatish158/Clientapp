@@ -1,6 +1,6 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-    	MessangerController: function(scope,webStorage,resourceFactory,dateFilter,location) {
+    	MessangerController: function(scope,webStorage,route,resourceFactory,dateFilter,location) {
     		scope.userChatDatas=[];
     		 scope.first = {};
    		  scope.first.date = new Date();
@@ -15,13 +15,13 @@
 			  showMeridian:false
 		  });
     		
-		scope.updateRead=function(){
+	/*	scope.updateRead=function(){
 			var id='1';
 			resourceFactory.updateUserChatResource.update({messageId:'1'},id , function(data){
                 	
               });
 		};
-	        
+	        */
             resourceFactory.userChatResource.get({} , function(data) {
             	scope.userChatDatas = data.userChatDatas;
             	scope.appUserDatas=data.appUserDatas;
@@ -34,7 +34,13 @@
 	           });
 	        	
 	        };
-	        
+	        scope.updateFlag =function(id){
+	        	
+	        	resourceFactory.updateUserChatResource.update({messageId:id},function(data){
+	        		location.path("/messanger");
+	        		route.reload();
+	          });
+	        };
             scope.saveMessage = function() {   
             	scope.flag=false; 
             	this.formData.locale="en";
@@ -57,7 +63,7 @@
             
         }
     });
-    mifosX.ng.application.controller('MessangerController', ['$scope', 'webStorage','ResourceFactory','dateFilter','$location', mifosX.controllers.MessangerController]).run(function($log) {
+    mifosX.ng.application.controller('MessangerController', ['$scope', 'webStorage','$route','ResourceFactory','dateFilter','$location', mifosX.controllers.MessangerController]).run(function($log) {
         $log.info("MessangerController initialized");
     });
 }(mifosX.controllers || {}));
