@@ -11,7 +11,9 @@
       
       <tab heading="Inbox" select="updateRead()">
       
-       
+       <div class="pull-right btn-group">
+          <a href="#/addnewmesage" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.addmessage' | translate }}</a>
+        </div>
         <div ng-repeat="userChatData in userChatDatas | orderBy:predicate:reverse">
           <div>
            
@@ -26,11 +28,7 @@
       </tab>	
       
       <tab heading="Sent Messages" select="getSentMessages()">
-        <div class="pull-right btn-group">
-          <a href="#/addnewmesage" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.addmessage' | translate }}</a>
-        </div>
-  
-     
+       
         <div ng-repeat="userChatData in userSentmessageDatas | orderBy:predicate:reverse">
           <div>
            

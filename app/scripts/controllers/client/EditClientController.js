@@ -21,6 +21,11 @@
             scope.officeId = data.officeId;
 	    scope.clientCategory=data.categoryType;
 	    scope.clientCategoryDatas=data.clientCategoryDatas;
+	    for(var i=0;i<scope.clientCategoryDatas.length;i++){
+	    	if(scope.clientCategoryDatas[i].categoryType==data.categoryType){
+	    		scope.clientCategory=scope.clientCategoryDatas[i].id;
+	    	}
+	    }
             scope.formData = {
               firstname : data.firstname,
               lastname : data.lastname,
