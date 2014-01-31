@@ -4,7 +4,7 @@
           <li class="active">{{'label.create.new.addgrn' | translate}}</li>
         </ul>
       </div>
-      <form name="AddGRNForm" novalidate=""  class="form-horizontal well" ng-controller="AddGRNController" ng-submit="submit()">
+      <form class="form-horizontal well" ng-controller="AddGRNController" ng-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
