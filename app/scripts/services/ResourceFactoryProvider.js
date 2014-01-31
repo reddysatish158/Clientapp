@@ -752,6 +752,7 @@
             	  getAll: {method: 'GET', params: {clientId:'@clientId'}}
               }),
            addressResource: defineResource(apiVer + "/address/:clientId",{clientId:'@clientId'},  {
+        	   getAllAddresses: {method: 'GET', params: {}},
             	update: {method: 'PUT', params: {}}        	 
           }),
           osdResource:  defineResource(apiVer + "/orders/retrackOsdmessage/:id/:orderId",{id:'@id',orderId:'@orderId'},  {
@@ -848,10 +849,6 @@
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
           }),  
-          addressManageResource: defineResource(apiVer + "/addressmanage/:officeId", {officeId:"@officeId"}, {
-        	  getAllAddresses: {method: 'GET', params: {}},
-              update: { method: 'PUT'}
-            }), 
                
         };
       }];
