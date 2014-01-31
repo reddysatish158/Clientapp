@@ -24,7 +24,7 @@
           return obj;
         };
         
-        resourceFactory.addressManageResource.getAllAddresses(function(data){
+        resourceFactory.addressResource.getAllAddresses(function(data){
         	 scope.addressManages = scope.deepCopy(data.pageItems);
         	
         	 var stateObject=[];
@@ -48,7 +48,6 @@
          cityObject=_.uniq(cityObject,function(item,key,id){
              return item.id;
          });
-          console.log(cityObject);
           
           for(var i in countryObject){ 
             rootArray.push(countryObject[i]);
@@ -97,12 +96,12 @@
         
       
       /*scope.addressManagesFetchFunction = function(offset, limit, callback) {
-          resourceFactory.addressManageResource.getAllAddresses({offset: offset, limit: limit} , callback);
+          resourceFactory.addressResource.getAllAddresses({offset: offset, limit: limit} , callback);
       };      
       scope.addressManages = paginatorService.paginate(scope.addressManagesFetchFunction, 14);
       
       scope.searchAddressManagesInputText = function(offset, limit, callback) {
-    	  resourceFactory.addressManageResource.getAllAddresses({offset: offset, limit: limit , 
+    	  resourceFactory.addressResource.getAllAddresses({offset: offset, limit: limit , 
     		  sqlSearch: scope.filterText } , callback); 
           };
    		

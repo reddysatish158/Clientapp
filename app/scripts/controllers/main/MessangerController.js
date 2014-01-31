@@ -6,7 +6,7 @@
    		  scope.first.date = new Date();
    		  scope.appUserDatas=[];
    		scope.userSentmessageDatas=[];
-   		 
+   		  
    		scope.flag=false;
    		// scope.formData=[];
    		  scope.first.time = scope.first.date.getHours()+":"+scope.first.date.getMinutes();
@@ -15,12 +15,7 @@
 			  showMeridian:false
 		  });
     		
-		scope.updateRead=function(){
-			var id='1';
-			resourceFactory.updateUserChatResource.update({messageId:'1'},id , function(data){
-                	
-              });
-		};
+		  
 	        
             resourceFactory.userChatResource.get({} , function(data) {
             	scope.userChatDatas = data.userChatDatas;
@@ -61,4 +56,3 @@
         $log.info("MessangerController initialized");
     });
 }(mifosX.controllers || {}));
-

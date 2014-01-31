@@ -5,7 +5,7 @@
         <li class="active">{{'label.addcode' | translate}}</li>
     </ul>
 </div>
-<form class="form-horizontal well" ng-controller="AddCodeController" ng-submit="submit()">
+<form name="addCodeForm" class="form-horizontal well" novalidate="" ng-controller="AddCodeController" ng-submit="submit()">
 <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -16,12 +16,13 @@
         <div>
             <label class="control-label" for="codename">Code Name</label>
             <div class="controls">
-                <input type="text" id="codename" ng-model="formData.name">
+                <input type="text" id="codename" name="codenamevalue" ng-model="formData.name">
+                 <form-validate valattributeform="addCodeForm" valattribute="codenamevalue"/>
             </div>
         </div><br>
         <div class="offset3">
             <a href="#/codes"><button id="cancel" class="btn">{{'label.cancel' | translate}}</button></a>
-            <button id="submit" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+            <button id="save" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
         </div>
 
     </fieldset>
