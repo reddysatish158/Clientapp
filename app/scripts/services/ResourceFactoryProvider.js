@@ -847,8 +847,11 @@
           
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
-          })  
-           
+          }),  
+          addressManageResource: defineResource(apiVer + "/addressmanage/:officeId", {officeId:"@officeId"}, {
+        	  getAllAddresses: {method: 'GET', params: {}},
+              update: { method: 'PUT'}
+            }), 
                
         };
       }];

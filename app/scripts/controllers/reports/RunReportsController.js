@@ -264,7 +264,7 @@ function buildReportParms(){
     		  for(var j=0;j<scope.exportReportParameters.length;j++){
     			  var tempParam=scope.exportReportParameters[j];
     			  if (reqField.name == tempParam.parameterName) {
-    	              var paramName = "R_"+tempParam.reportParameterName;
+    	              var paramName = "R_"+reqField.variable;
     	              if (paramCount > 1) reportParams += "&"
     	              reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.formData[scope.reqFields[i].inputName]);
     	              paramCount = paramCount + 1;
@@ -334,7 +334,7 @@ function buildReportParms(){
         		scope.hideTable=true;
         		scope.hidePentahoReport = true;
                 scope.hideChartReport = true;
-                scope.baseURL = "https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
+                scope.baseURL = "https://localhost:7070/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
                 scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default&exportCSV=true";
                 var inQueryParameters = buildReportParms();
                 if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -405,7 +405,9 @@ function buildReportParms(){
              errorObj.args.params.push({value : scope.reportType});
              scope.errorDetails.push(errorObj);
         }
-        
+        window.setTimeout(function() {
+            scope.baseURL = "";
+         }, 1000);
       }
     };
    }
