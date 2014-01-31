@@ -181,6 +181,8 @@
   "link.create.new.employee":"Create Employee",
 
   "#jobs":"",
+  "label.button.suspend": "Suspend",
+  "label.button.activate": "Activate",
   "table.heading.active":"Is Active",
   "table.heading.status":"Status",
   "table.heading.nextrun":"Next run",

@@ -282,6 +282,7 @@ define(['underscore', 'mifosX'], function() {
     ],
     filters: [
       'StatusLookup',
+      'YesOrNo',
       'DateFormat'
     ],
     directives: [

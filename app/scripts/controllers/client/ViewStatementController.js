@@ -26,7 +26,7 @@
 
  scope.downloadFile = function (){
 	 
-     window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/billmaster/'+routeParams.id+'/print?tenantIdentifier=default');
+     window.open('https://localhost:7070/obsplatform/api/v1/billmaster/'+routeParams.id+'/print?tenantIdentifier=default');
 };
        
     }
