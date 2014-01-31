@@ -82,7 +82,7 @@
                                 
                     webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,
                      statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
-                     currency: data.currency, imagePresent: data.imagePresent });
+                     currency: data.currency, imagePresent: data.imagePresent,phone:data.phone,email:data.email,categoryType:data.categoryType });
                     
                     scope.staffData.staffId = data.staffId;
                     if (data.imagePresent) {
