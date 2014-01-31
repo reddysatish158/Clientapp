@@ -16,17 +16,17 @@
 		<table class="table">
 			<thead>
 				<tr class="graybg">
-					<th>{{table.heading.countryName | translate}}</th>
-					<th>{{table.heading.stateName | translate}}</th>
-					<th>{{table.heading.cityName | translate}}</th>
+					<th>{{'table.heading.countryName' | translate}}</th>
+					<th>{{'table.heading.StateName' | translate}}</th>
+					<th>{{'table.heading.cityName' | translate}}</th>
 					
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="pointer-main" ng-repeat="addressManage in addressManages | filter:filterText">
-					<td class="pointer" >{{addressManage.countryName}}</td>
-					<td class="pointer" >{{addressManage.stateName}}</td>  
-					<td class="pointer" >{{addressManage.cityName}}</td>
+				<tr  ng-repeat="addressManage in addressManages | filter:filterText">
+					<td >{{addressManage.countryName}}</td>
+					<td >{{addressManage.stateName}}</td>  
+					<td >{{addressManage.cityName}}</td>
 					
 				</tr>
 			</tbody>
