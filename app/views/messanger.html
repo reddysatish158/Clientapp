@@ -19,7 +19,7 @@
            	  <p>&nbsp;</p>
               <p>{{userChatData.message}}
               		<button type="button" class="btn btn-success flag pull-right" data-ng-hide="userChatData.isRead" data-ng-click="updateFlag(userChatData.id)"><i class="icon-flag-alt"></i></button>
-                	<button type="button" class="btn btn-danger flag pull-right" data-ng-show="userChatData.isRead"><i class="icon-remove"></i></button></p>
+                	<button type="button" class="btn btn-danger flag pull-right" data-ng-show="userChatData.isRead" data-ng-click="deleteFlag(userChatData.id)"><i class="icon-remove"></i></button>
               </p>
               <blockquote>
             
