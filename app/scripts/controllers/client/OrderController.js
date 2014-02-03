@@ -112,6 +112,7 @@
           });
       	 
        	$scope.accept = function(){
+       		$scope.flagPromo=true;
        		var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.locale='en';
@@ -121,6 +122,7 @@
      		function(data) {
      			 
      			     },function(errData){
+     			    	$scope.flagPromo=false;
          	         	//$scope.renewError = errData.data.errors[0].userMessageGlobalisationCode;
          		});
 
@@ -143,6 +145,7 @@
              });
          	 
           	$scope.acceptProvisioning = function(){
+          		$scope.flagProvisioningSystemPop=true;
           		if(this.provisioning == undefined || this.provisioning == null){
               		this.provisioning = {};
               	} 		
@@ -154,6 +157,7 @@
         					 location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
         					 $modalInstance.close('delete');
         				     },function(renewalErrorData){
+        				    	 $scope.flagProvisioningSystemPop=false;
             	         	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
             						});
           		}
@@ -163,6 +167,7 @@
                         location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
                         $modalInstance.close('delete');           
           			 },function(renewalErrorData){
+          				$scope.flagProvisioningSystemPop=false;
          	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
          						});
           		}
@@ -184,6 +189,7 @@
           };
           
     	var ApproveReconnect = function ($scope, $modalInstance) {
+    		$scope.flagApproveReconnect=true;
             $scope.approveReconnect = function () {
             	if(this.formData == undefined || this.formData == null){
             		this.formData = {};
@@ -196,7 +202,9 @@
                     });
             		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
                     $modalInstance.close('delete');
-                });
+                },function(errData){
+	        		$scope.flagApproveReconnect = false;
+		          });
             	
             };
             $scope.cancelReconnect = function () {
@@ -213,6 +221,7 @@
               });
         	  
         	  $scope.approveRenewal = function(){
+        		  $scope.flagOrderRenewal=true;
         		  
         		  if($scope.formData == undefined || $scope.formData == null){
         			  $scope.formData = {"renewalPeriod":"","description":""};
@@ -230,6 +239,7 @@
         	            $modalInstance.close('delete');
         	            
         	        },function(renewalErrorData){
+        	      	  $scope.flagOrderRenewal=false;
         	        	$scope.renewError = renewalErrorData.data.errors[0].userMessageGlobalisationCode;
         	        });
         	  };
@@ -251,6 +261,7 @@
         	  console.log($scope.disconnectDetails);
         	  
         	  $scope.approveDisconnection = function () {
+        		  $scope.flagOrderDisconnect=true;
         		  if(this.formData == undefined || this.formData == null){
         			  this.formData = {"disconnectReason":""};
         		  }
@@ -272,6 +283,7 @@
         			    console.log(data.resourceId);
         	            $modalInstance.close('delete');
         	        },function(orderErrorData){
+        	        	 $scope.flagOrderDisconnect=false;
         	        	$scope.orderError = orderErrorData.data.errors[0].userMessageGlobalisationCode;
         	        });
         		  

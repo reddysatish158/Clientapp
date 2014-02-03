@@ -302,7 +302,7 @@
     </div>
      <div class="modal-footer">
         <button id="cancel" class="btn btn-warning" ng-click="cancelQuality()">{{'button.cancel' | translate}}</button>
-     	<button id="submit" class="btn btn-primary" ng-click="approveQuality(quality)">{{'label.confirm' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveQuality(quality)" ng-disabled="flagEditQuality">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>

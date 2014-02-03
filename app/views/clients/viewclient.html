@@ -1151,7 +1151,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button id="submit" class="btn btn-primary" ng-click="accept(start.date)">{{'label.confirm' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flagapprove1">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       <script type="text/ng-template" id="StatementPop.html">
@@ -1181,7 +1181,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="rejectStatement()">{{'button.cancel' | translate}}</button>
-                        <button id="submit" class="btn btn-primary" ng-click="acceptStatement()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="acceptStatement()" ng-disabled="flagStatementPop">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
             <script type="text/ng-template" id="cancelpayment.html">
@@ -1204,7 +1204,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-                        <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)">{{'label.confirm' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)" ng-disabled="flagcancelpayment">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
 </div>

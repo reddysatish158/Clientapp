@@ -189,7 +189,7 @@
         var Approve = function($scope,$modalInstance){
         	
 			$scope.accept = function(date){
-				$scope.flag = true;
+				$scope.flagapprove1 = true;
 			        	scope.formData.locale = 'en';
 			        	var reqDate = dateFilter(date,'dd MMMM yyyy');
 			            scope.formData.dateFormat = 'dd MMMM yyyy';
@@ -199,7 +199,7 @@
 			            	getDetails();
 			          },function(errData){
 
-			        		$scope.flag = false;
+			        		$scope.flagapprove1 = false;
 
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
 			          });
@@ -211,12 +211,15 @@
 		
 		  var CancelPayment = function($scope,$modalInstance,getPaymentId){
 				$scope.accept = function(cancelRemark){
+					$scope.flagcancelpayment=true;
 					var paymentId=getPaymentId;
 					scope.formData.cancelRemark=cancelRemark;
 				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
 				            	$modalInstance.close('delete');
 				            	getDetails();
 				            	scope.getAllFineTransactions();
+				          },function(errData){
+				        		$scope.flagcancelpayment = false;
 				          });
 				            
 				            
@@ -265,6 +268,7 @@
         	
             $scope.start.date = new Date();
         	$scope.acceptStatement = function(){
+        		$scope.flagStatementPop = true;
         		console.log("Accept Statement");
         		
         		
@@ -277,6 +281,7 @@
                     location.path('/billmaster/' +routeParams.id);
                     $modalInstance.close('delete');
                 },function(errorData){
+                	$scope.flagStatementPop = false;
                 	$scope.stmError = errorData.data.errors[0].userMessageGlobalisationCode;
                 	console.log(errorData);
                 	console.log($scope.stmError);
