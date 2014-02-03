@@ -41,6 +41,12 @@
 	        		route.reload();
 	          });
 	        };
+	        scope.deleteFlag =function(did){
+	        	resourceFactory.updateUserChatResource.delete({messageId:did},{},function(data){
+	        		location.path("/messanger");
+	        		route.reload();
+	          });
+	        };
             scope.saveMessage = function() {   
             	scope.flag=false; 
             	this.formData.locale="en";
