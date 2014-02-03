@@ -1,7 +1,7 @@
 <div  ng-controller="ViewGrnController">
 	<div class="paddedbottom10">
 		<ul class="breadcrumb">
-	        <li><a href="#/inventory">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
+	        <li><a href="#/inventory" ng-click="selectedGRN()">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
 	        <li class="active">{{grn.id}}&nbsp;&nbsp;</li>
 	    </ul>
 	    <div class="pull-right">

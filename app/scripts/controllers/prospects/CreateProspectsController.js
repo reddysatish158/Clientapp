@@ -29,14 +29,14 @@
 	            scope.formData = {
 	            		
 	            };
-	            $("#city").change(function(){
+	            scope.getStateAndCountry=function(city){
 	            	
 	            	resourceFactory.AddressTemplateResource.get({city : scope.formData.city}, function(data) {
 	            		scope.formData.state = data.state;
 	            		scope.formData.country = data.country;
 	             
 	            });
-	            });
+	            };
 	            
 	        });
 	         

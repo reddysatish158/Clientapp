@@ -63,15 +63,15 @@
          scope.routeToticket = function(clientId,ticketid){
                location.path('/viewTicket/'+clientId+'/'+ticketid);
          };
-         scope.routeTosale = function(onetimesaleid,clientid){
-             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
-         };
          scope.routeTostatement = function(statementid){
              location.path('/viewstatement/'+statementid);
         };
         scope.routeTofinancial = function(transactionId,clientid){
             location.path('/viewfinancialtran/'+transactionId+'/'+clientid);
         }; 
+        scope.routeToItemSale = function(onetimesaleid,clientid){
+            location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
+        };
        
         var getDetails = function(){
         	
@@ -216,8 +216,9 @@
 				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
 				            	$modalInstance.close('delete');
 				            	getDetails();
+				            	scope.getAllFineTransactions();
 				          });
-				            scope.getAllFineTransactions();
+				            
 				            
 				};
 				$scope.reject = function(){
@@ -346,7 +347,7 @@
         scope.getClientTemplateDocuments = function() {
           resourceFactory.templateResource.get({entityId : 0, typeId : 0}, function(data) {
             scope.clientTemplateData = data;
-          })
+          });
         }
 
         /*scope.getTransactionHistory = function () {
@@ -548,13 +549,13 @@
             	
             });
         }; 
-       scope.getAllFineTransactions = function () {
+       /*scope.getAllFineTransactions = function () {
               resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id} , function(data) {
                 scope.financialtransactions = data;
                 
                 
              });
-            };
+            };*/
           
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);

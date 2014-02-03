@@ -20,12 +20,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="price in prices | filter:filterText">
-                <td><a href="#/viewprice/{{price.id}}/{{planId}}">{{price.serviceCode}}</a></td>            
-                <td>{{price.chargeCode}}</td>        
-                <td>{{price.chargeVariant}}</td>
-                <td>{{price.price}}</td>      
-                <td>{{price.priceregion}}</td>               
+            <tr class="pointer-main" ng-repeat="price in prices | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(price.id,planId)">{{price.serviceCode}}</td>            
+                <td class="pointer" data-ng-click="routeTo(price.id,planId)">{{price.chargeCode}}</td>        
+                <td class="pointer" data-ng-click="routeTo(price.id,planId)">{{price.chargeVariant}}</td>
+                <td class="pointer" data-ng-click="routeTo(price.id,planId)">{{price.price}}</td>      
+                <td class="pointer" data-ng-click="routeTo(price.id,planId)">{{price.priceregion}}</td>               
             </tr>
         </tbody>
     </table>

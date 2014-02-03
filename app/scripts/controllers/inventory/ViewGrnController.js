@@ -1,7 +1,11 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  ViewGrnController: function(scope, routeParams , resourceFactory ,location) {
+		  ViewGrnController: function(scope, routeParams , resourceFactory ,location,webStorage) {
 			  scope.grn = [];
+			  
+			  scope.selectedGRN=function(){
+		        	webStorage.add("callingTab", {someString: "grn" });
+		        }
 	        resourceFactory.grnSingleTemplateResource.get({grnId: routeParams.id} , function(data) {
 	        	scope.grn = data;
 	        });
@@ -14,7 +18,7 @@
 	        }
 	    }
 	  });
-	  mifosX.ng.application.controller('ViewGrnController', ['$scope', '$routeParams','ResourceFactory', '$location',mifosX.controllers.ViewGrnController]).run(function($log) {
+	  mifosX.ng.application.controller('ViewGrnController', ['$scope', '$routeParams','ResourceFactory', '$location','webStorage',mifosX.controllers.ViewGrnController]).run(function($log) {
 	    $log.info("ViewGrnController initialized");
 	  });
 	}(mifosX.controllers || {}));

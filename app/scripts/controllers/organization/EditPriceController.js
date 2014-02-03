@@ -14,16 +14,14 @@
             scope.priceRegionDatas=data.priceRegionData;
             scope.chargevariants=data.chargevariant;
             scope.discountdatas=data.discountdata;
-
+            
 
         });
        
         
         scope.submit = function() {
         	
-        //	this.formData.chargeCode=this.formData.chargeId;
-        	this.formData.chargevariant=this.formData.chargeVariantId;
-        	this.formData.serviceCode=scope.serviceDatas[0].serviceCode;//this.formData.serviceId;
+        	this.formData.chargevariant= scope.formData.chargeVariantId;
         	
         	this.formData.locale = 'en';
              delete this.formData.chargeData; 

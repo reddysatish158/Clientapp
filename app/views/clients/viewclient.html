@@ -464,17 +464,17 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="onetimesale in onetimesales  | filter:filterText">
-								<td>{{onetimesale.id}}</td>
-								<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.saleDate | DateFormat}}</a></td>
-								<td><a href="#/viewonetimesale/{{onetimesale.id}}/{{client.id}}">{{onetimesale.itemCode}}</a></td>
-								<td>{{onetimesale.chargeCode}}</td>
-								<td>{{onetimesale.quantity}}</td> 
-								<td>{{onetimesale.totalPrice}}</td> 
-								<td>{{onetimesale.hardwareAllocated}}</td>
+							<tr class="pointer-main" ng-repeat="onetimesale in onetimesales  | filter:filterText">
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.id}}</td>
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.saleDate | DateFormat}}</a></td>
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.itemCode}}</a></td>
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.chargeCode}}</td>
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.quantity}}</td> 
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.totalPrice}}</td> 
+								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.hardwareAllocated}}</td>
 							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
 							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
-							     <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="onetimesale.hardwareAllocated == 'ALLOCATED'" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>UnAssign Device</a></td>
+							    <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="onetimesale.hardwareAllocated == 'ALLOCATED'" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>UnAssign Device</a></td>
 							</tr>
 						</tbody>
 					</table>
