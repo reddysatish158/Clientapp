@@ -20,7 +20,6 @@
                 compile: function (cElement, cAttributes, transclude) {
                     return {
                         pre: function(scope, formElement, attributes, controllers) {
-                        	console.log("pre");
                             var submitController = controllers[0];
                             var formController = (controllers.length > 1) ? controllers[1] : null;
                             
@@ -30,21 +29,20 @@
                             scope.rc[attributes.name] = submitController;
                         },
                         post: function(scope, formElement, attributes, controllers, event) {
-                        	console.log("post");
                             var submitController = controllers[0];
-                            console.log(JSON.stringify(submitController));
                             var formController = (controllers.length > 1) ? controllers[1] : null;
-                            console.log(JSON.stringify(formController));
                             var fn = $parse(attributes.rcSubmit);
-                            console.log(JSON.stringify(fn));
                             formElement.bind('submit', function () {
                                 submitController.setAttempted();
-                                if (!scope.$$phase) scope.$apply();
+                                if (!scope.$$phase){
+                                	scope.$apply();
+                                }
                                 if (!formController.$valid) {
                                     return false;
                                 }
                                 scope.$apply(function() {
                                     fn(scope, {$event:event});
+                                    
                                 });
                             });
                         }
