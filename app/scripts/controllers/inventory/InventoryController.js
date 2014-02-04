@@ -202,7 +202,8 @@
 					                  $scope.quality=scope.valueQuality;
 					              });
 					        	  $scope.approveQuality = function (value) {
-					        		
+					        		  
+					        		  $scope.flagEditQuality=true;
 					        		  //if(this.formData == undefined || this.formData == null){
 					        			  this.formData = {"quality":value};
 					        		  //}
@@ -210,7 +211,9 @@
 					        	      
 					        	          $modalInstance.close('delete');
 								location.path("/viewitemdetails/"+data.resourceId);
-					        	        });
+					        	        },function(errData){
+							        		$scope.flagEditQuality = false;
+							          });
 					              };
 					              $scope.cancelQuality = function () {
 					                  $modalInstance.dismiss('cancel');

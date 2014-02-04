@@ -11,6 +11,9 @@
         	scope.formData = data;
         });
         
+        scope.selectedMRN=function(){
+        	webStorage.add("callingTab", {someString: "mrn" });
+        };
         scope.reset123 = function(){
 	    	   webStorage.add("callingTab", {someString: "mrn" });
 	       };

@@ -1,10 +1,11 @@
 <div ng-controller="ViewProspectsController"> 
-
+   
     <div class="paddedbottom10">
 		<ul class="breadcrumb">
 	        <li><a href="#/prospects">{{'link.prospects' | translate}}</a> <span class="divider">/</span></li>
 	        <li class="active">{{prospects.firstName}}&nbsp{{prospects.lastName}}</li>
 	    </ul>
+	    
 	    <div class="pull-right">
 	      <div class="btn-group">
 	          <a href="#/followprospects/{{prospects.id}}" ng-show="getVal(prospects.status)" class="btn btn-primary"><i class="icon-edit icon-white"></i> FollowUp</a>
@@ -15,6 +16,14 @@
 	          
 	      </div>
 	    </div>
+	</div>
+	<div ng-show="errorStatus || errorDetails">
+	<br><br>
+	<div class="error">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	</div>
 	</div>
 
 	<div class="row paddedleft">

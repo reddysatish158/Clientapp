@@ -1,7 +1,7 @@
 <div  ng-controller="ViewMrnController">
 	<div class="paddedbottom10">
 		<ul class="breadcrumb">
-	        <li><a href="#/inventory">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
+	        <li><a href="#/inventory" ng-click="selectedMRN()">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
 	        <li class="active">{{mrn.id}}&nbsp;&nbsp;</li>
 	    </ul>
 	    <div class="pull-right">

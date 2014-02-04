@@ -12,6 +12,9 @@
             scope.officeDatas = data.officeData;
             scope.supplierDatas = data.supplierData;
         });
+        scope.selectedGRN=function(){
+        	webStorage.add("callingTab", {someString: "grn" });
+        }
         
         scope.reset123 = function(){
 	    	   webStorage.add("callingTab", {someString: "grn" });

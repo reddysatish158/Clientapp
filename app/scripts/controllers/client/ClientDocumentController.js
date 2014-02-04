@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ClientDocumentController: function(scope,webStorage, location, http, routeParams) {
+    ClientDocumentController: function(scope,webStorage, location, http, routeParams,API_VERSION,$rootScope) {
       scope.clientId = routeParams.clientId;
       var clientData = webStorage.get('clientData');
       scope.displayName=clientData.displayName;
@@ -22,7 +22,7 @@
          };
       scope.submit = function () {
         http.uploadFile({
-          url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+scope.clientId+'/documents', 
+          url: $rootScope.hostUrl+ API_VERSION +'/clients/'+scope.clientId+'/documents', 
           data: scope.formData,
           file: scope.file
         }).then(function(data) {
@@ -36,7 +36,7 @@
       };
     }
   });
-  mifosX.ng.application.controller('ClientDocumentController', ['$scope','webStorage', '$location', '$http', '$routeParams', mifosX.controllers.ClientDocumentController]).run(function($log) {
+  mifosX.ng.application.controller('ClientDocumentController', ['$scope','webStorage', '$location', '$http', '$routeParams','API_VERSION','$rootScope', mifosX.controllers.ClientDocumentController]).run(function($log) {
     $log.info("ClientDocumentController initialized"); 
   });
 }(mifosX.controllers || {}));

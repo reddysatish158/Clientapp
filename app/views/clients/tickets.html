@@ -23,14 +23,14 @@
 	      
         </thead>
         <tbody>
-            <tr ng-repeat="ticket in tickets  | filter:filterText">
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.id}}</a></td>
-                <td><a href="#/viewTicket/{{clientId}}/{{ticket.id}}">{{ticket.priority}}</a></td>  
-                <td>{{ticket.ticketDate | DateFormat}}</td>
-                <td>{{ticket.problemDescription}}</td>
-                <td>{{ticket.status}}</td>
-                <td>{{ticket.userName}}</td>  
-                <td>{{ticket.lastComment}}</td>          
+            <tr class="pointer-main" ng-repeat="ticket in tickets  | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.priority}}</td>  
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.ticketDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.problemDescription}}</td>
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.status}}</td>
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.userName}}</td>  
+                <td class="pointer" data-ng-click="routeTo(clientId,ticket.id)">{{ticket.lastComment}}</td>          
             </tr>
         </tbody>
     </table>

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    UploadClientIdentifierDocumentController: function(scope, location, http, routeParams) {
+    UploadClientIdentifierDocumentController: function(scope, location, http, routeParams,API_VERSION,$rootScope) {
       scope.clientId = routeParams.clientId;
       
       
@@ -10,7 +10,7 @@
 
       scope.submit = function () {
         http.uploadFile({
-          url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/client_identifiers/'+scope.resourceId+'/documents', 
+          url: $rootScope.hostUrl+ API_VERSION +'/client_identifiers/'+scope.resourceId+'/documents', 
           data: scope.formData,
           file: scope.file
         }).then(function(data) {
@@ -23,7 +23,7 @@
       };
     }
   });
-  mifosX.ng.application.controller('UploadClientIdentifierDocumentController', ['$scope', '$location', '$http', '$routeParams', mifosX.controllers.UploadClientIdentifierDocumentController]).run(function($log) {
+  mifosX.ng.application.controller('UploadClientIdentifierDocumentController', ['$scope', '$location', '$http', '$routeParams','API_VERSION','$rootScope', mifosX.controllers.UploadClientIdentifierDocumentController]).run(function($log) {
     $log.info("UploadClientIdentifierDocumentController initialized"); 
   });
 }(mifosX.controllers || {}));

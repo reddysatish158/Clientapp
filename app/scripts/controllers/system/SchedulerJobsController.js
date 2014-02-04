@@ -119,12 +119,14 @@
     	       
     	      });
 			$scope.accept = function(date){
+				$scope.flagapprove=true;
 			        	this.formData.jobName="Messanger";
 			        	this.formData.dateFormat="dd MMMM yyyy";
 			        	this.formData.locale="en";
 			            resourceFactory.jobsparameters.update({jobId:a}, this.formData, function(data){
 			            	$modalInstance.dismiss('delete');
 			              },function(errData){
+			            	  $scope.flagapprove=false;
 			        	  $scope.error = errData.data.errors[0].userMessageGlobalisationCode;
 			        	  
 			        	  
