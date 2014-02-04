@@ -5,7 +5,7 @@
 		  scope.durationTypes=[];
 		  scope.promotiondata = [];
 		  scope.start={};
-		  scope.start.date = new Date();;
+		  scope.start.date = new Date();
 		  
 	        resourceFactory.promotionResource.getPrmotioncodeDetails({promotioncodeId: routeParams.id} , function(data) {
 	            scope.promotiondata = data;  

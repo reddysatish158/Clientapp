@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    EditClientController: function(scope,webStorage, routeParams, resourceFactory, location, http,dateFilter) {
+    EditClientController: function(scope,webStorage, routeParams, resourceFactory, location, http,dateFilter,API_VERSION,$rootScope) {
         scope.offices = [];
         scope.date = {};
         scope.clientId = routeParams.id;
@@ -62,7 +62,7 @@
              resourceFactory.clientResource.update({'clientId': routeParams.id},this.formData,function(data){
               if (scope.file) {
                 http.uploadFile({
-                  url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+data.clientId+'/images', 
+                  url: $rootScope.hostUrl+ API_VERSION +'/clients/'+data.clientId+'/images', 
                   data: {},
                   file: scope.file
                 }).then(function(imageData) {
@@ -79,7 +79,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('EditClientController', ['$scope','webStorage', '$routeParams', 'ResourceFactory', '$location', '$http','dateFilter', mifosX.controllers.EditClientController]).run(function($log) {
+  mifosX.ng.application.controller('EditClientController', ['$scope','webStorage', '$routeParams', 'ResourceFactory', '$location', '$http','dateFilter','API_VERSION','$rootScope', mifosX.controllers.EditClientController]).run(function($log) {
     $log.info("EditClientController initialized");
   });
 }(mifosX.controllers || {}));

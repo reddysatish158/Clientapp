@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AddImportFileController: function(scope, resourceFactory,http,location) {
+    AddImportFileController: function(scope, resourceFactory,http,location,API_VERSION,$rootScope) {
         scope.subscriptions = [];
         scope.formData={};
         scope.formData.status="-1";
@@ -25,7 +25,7 @@
           
           scope.submit = function () {
               http.uploadFile({/*41.75.85.206:8080*/
-                url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/documents', 
+                url: $rootScope.hostUrl+ API_VERSION +'/uploadstatus/documents', 
                 data: scope.formData,
                 file: scope.file
               }).then(function(data) {
@@ -38,7 +38,7 @@
             };
     }
   });
-  mifosX.ng.application.controller('AddImportFileController', ['$scope', 'ResourceFactory', '$http', '$location', mifosX.controllers.AddImportFileController]).run(function($log) {
+  mifosX.ng.application.controller('AddImportFileController', ['$scope', 'ResourceFactory', '$http', '$location','API_VERSION','$rootScope', mifosX.controllers.AddImportFileController]).run(function($log) {
     $log.info("AddImportFileController initialized");
   });
 }(mifosX.controllers || {}));

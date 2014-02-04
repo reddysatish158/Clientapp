@@ -424,7 +424,7 @@
     </div>
      <div class="modal-footer">
         <button id="cancel" class="btn btn-warning" ng-click="cancelDisconnection()">{{'button.cancel' | translate}}</button>
-     	<button id="submit" class="btn btn-primary" ng-click="approveDisconnection()">{{'label.confirm' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveDisconnection()" ng-disabled="flagOrderDisconnect">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>
@@ -458,7 +458,7 @@
     </div>
      <div class="modal-footer">
         <button id="cancel" class="btn btn-warning" ng-click="cancelRenewal()">{{'button.cancel' | translate}}</button>
-     	<button id="submit" class="btn btn-primary" ng-click="approveRenewal()">{{'label.confirm' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveRenewal()" ng-disabled="flagOrderRenewal">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>
@@ -477,7 +477,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
-                        <button id="submit" class="btn btn-primary" ng-click="approveReconnect()">{{'label.confirm' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="approveReconnect()" ng-disabled="flagApproveReconnect">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       
@@ -509,7 +509,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
-                        <button id="submit" class="btn btn-primary" ng-click="acceptProvisioning()">{{'label.confirm' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="acceptProvisioning()" ng-disabled="flagProvisioningSystemPop">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
       
@@ -542,7 +542,7 @@
     </div>
    <div class="modal-footer">
          <button id="cancel" class="btn btn-warning" ng-click="rejectProvisioning()">{{'button.cancel' | translate}}</button>
-         <button id="submit" class="btn btn-primary" ng-click="accept()">{{'label.confirm' | translate}}</button>
+         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flagPromo">{{'label.confirm' | translate}}</button>
    </div>
 </script>      
       

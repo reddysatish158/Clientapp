@@ -1,7 +1,7 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
 
-	  RunReportsController: function(scope, routeParams, resourceFactory, location, dateFilter) {
+	  RunReportsController: function(scope, routeParams, resourceFactory, location, dateFilter,API_VERSION,$rootScope) {
 
       scope.isCollapsed = false; //displays options div on startup
       scope.hideTable = true; //hides the results div on startup
@@ -334,7 +334,7 @@ function buildReportParms(){
         		scope.hideTable=true;
         		scope.hidePentahoReport = true;
                 scope.hideChartReport = true;
-                scope.baseURL = "https://localhost:7070/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
+                scope.baseURL = $rootScope.hostUrl+ API_VERSION +"/runreports/"+ encodeURIComponent(scope.reportName); 
                 scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default&exportCSV=true";
                 var inQueryParameters = buildReportParms();
                 if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -343,7 +343,7 @@ function buildReportParms(){
         		scope.hideTable=true;
         		scope.hidePentahoReport = true;
                 scope.hideChartReport = true;
-                scope.baseURL = "https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/"+ encodeURIComponent(scope.reportName); 
+                scope.baseURL = $rootScope.hostUrl+ API_VERSION+"/runreports/"+ encodeURIComponent(scope.reportName); 
                 scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default&exportPDF=true";
                 var inQueryParameters = buildReportParms();
                 if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -361,7 +361,7 @@ function buildReportParms(){
             scope.hideTable=true;
             scope.hidePentahoReport = false;
             scope.hideChartReport = true;
-            scope.baseURL ="https://spark.openbillingsystem.com/obsplatform/api/v1/runreports/" + encodeURIComponent(scope.reportName); 
+            scope.baseURL =$rootScope.hostUrl+ API_VERSION+"/runreports/" + encodeURIComponent(scope.reportName); 
             scope.baseURL += "?output-type="+encodeURIComponent(scope.formData.outputType)+"&tenantIdentifier=default";
             var inQueryParameters = buildReportParms();
             if (inQueryParameters > "") scope.baseURL += "&" + inQueryParameters;
@@ -412,7 +412,7 @@ function buildReportParms(){
     };
    }
   });
-  mifosX.ng.application.controller('RunReportsController', ['$scope', '$routeParams', 'ResourceFactory', '$location', 'dateFilter', mifosX.controllers.RunReportsController]).run(function($log) {
+  mifosX.ng.application.controller('RunReportsController', ['$scope', '$routeParams', 'ResourceFactory', '$location', 'dateFilter','API_VERSION','$rootScope', mifosX.controllers.RunReportsController]).run(function($log) {
     $log.info("RunReportsController initialized");
   });
 }(mifosX.controllers || {}));

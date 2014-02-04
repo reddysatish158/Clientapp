@@ -1,6 +1,6 @@
 (function(module) {
 	mifosX.controllers = _.extend(module,{
-		EditTicketController : function(scope,webStorage,routeParams,resourceFactory, location, http) {
+		EditTicketController : function(scope,webStorage,routeParams,resourceFactory, location, http,API_VERSION,$rootScope) {
 							scope.formData = {};	
 							scope.data={};
 							var clientData = webStorage.get('clientData');
@@ -32,7 +32,7 @@
 								this.data.comments=this.formData.comments;
 								this.data.status=this.formData.status;
 						        http.uploadFile({
-						          url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+routeParams.clientId+'/documents/'+routeParams.id+'/attachment', 
+						          url: $rootScope.hostUrl+ API_VERSION +'/clients/'+routeParams.clientId+'/documents/'+routeParams.id+'/attachment', 
 						          data: scope.data,
 						          file: scope.file
 						        }).then(function(data) {
@@ -45,7 +45,7 @@
 							};
 						}
 					});
-	mifosX.ng.application.controller('EditTicketController', ['$scope','webStorage' ,'$routeParams', 'ResourceFactory', '$location', '$http', mifosX.controllers.EditTicketController]).run(function($log) {
+	mifosX.ng.application.controller('EditTicketController', ['$scope','webStorage' ,'$routeParams', 'ResourceFactory', '$location', '$http','API_VERSION','$rootScope', mifosX.controllers.EditTicketController]).run(function($log) {
 	    $log.info("EditTicketController initialized");
 	  });
 	
