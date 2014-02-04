@@ -216,8 +216,9 @@
 				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
 				            	$modalInstance.close('delete');
 				            	getDetails();
+				            	  scope.getAllFineTransactions();
 				          });
-				            scope.getAllFineTransactions();
+				          
 				            
 				};
 				$scope.reject = function(){
@@ -548,14 +549,14 @@
             	
             });
         }; 
-       scope.getAllFineTransactions = function () {
+       /*scope.getAllFineTransactions = function () {
               resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id} , function(data) {
                 scope.financialtransactions = data;
                 
                 
              });
             };
-          
+       */   
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};

@@ -80,11 +80,7 @@
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.startDate = reqDate;
             this.formData.endDate = reqEndDate;
-        	 //this.formData.locale = 'en';
-             //this.formData.dateFormat = 'dd MMMM yyyy';
-             //this.formData.startDate = '05 August 2013';
              var temp = [];
-             var final = {};
              for(var i in scope.selectedServices){
                  temp[i] = scope.selectedServices[i].id;
                
