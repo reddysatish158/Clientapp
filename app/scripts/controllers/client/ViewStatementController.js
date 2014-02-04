@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewStatementController: function(scope,webStorage, routeParams , route, location, resourceFactory, http) {
+	  ViewStatementController: function(scope,webStorage, routeParams , route, location, resourceFactory, http,API_VERSION,$rootScope) {
 		 // alert("hh");
         scope.statementDatas = [];    
         scope.id=routeParams.id;
@@ -26,12 +26,12 @@
 
  scope.downloadFile = function (){
 	 
-     window.open('https://localhost:7070/obsplatform/api/v1/billmaster/'+routeParams.id+'/print?tenantIdentifier=default');
+     window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+routeParams.id+'/print?tenantIdentifier=default');
 };
        
     }
   });
-  mifosX.ng.application.controller('ViewStatementController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewStatementController]).run(function($log) {
+  mifosX.ng.application.controller('ViewStatementController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','API_VERSION','$rootScope', mifosX.controllers.ViewStatementController]).run(function($log) {
     $log.info("ViewStatementController initialized");
   });
 }(mifosX.controllers || {}));

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter) {
+    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope) {
     	 scope.client = [];
          scope.error = {};
          scope.identitydocuments = [];
@@ -88,7 +88,7 @@
                     if (data.imagePresent) {
                       http({
                         method:'GET',
-                        url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/clients/'+routeParams.id+'/images'
+                        url: $rootScope.hostUrl+ API_VERSION +'/clients/'+routeParams.id+'/images'
                       }).then(function(imageData) {
                         scope.image = imageData.data;
                       });
@@ -383,7 +383,7 @@
           scope.selectedTemplate = templateId;
           http({
             method:'POST',
-            url: 'https://spark.openbillingsystem.com/obsplatform/api/v1/templates/'+templateId+'?clientId='+routeParams.id,
+            url: $rootScope.hostUrl+ API_VERSION +'/templates/'+templateId+'?clientId='+routeParams.id,
             data: {}
           }).then(function(data) {
             scope.template = data.data;
@@ -410,7 +410,7 @@
                
 
          scope.downloadFile = function (statementId){
-              window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/billmaster/'+statementId+'/print?tenantIdentifier=default');
+              window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
          scope.getAllTickets=function(){      
                resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
@@ -708,7 +708,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter', mifosX.controllers.ViewClientController]).run(function($log) {
+  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope', mifosX.controllers.ViewClientController]).run(function($log) {
     $log.info("ViewClientController initialized");
   });
 }(mifosX.controllers || {}));

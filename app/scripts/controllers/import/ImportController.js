@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ImportController: function(scope, resourceFactory,route) {
+	  ImportController: function(scope, resourceFactory,route,API_VERSION,$rootScope) {
         scope.imports = [];
         
         
@@ -38,15 +38,15 @@
         
         
         scope.downloadFile = function (id){ 
-            	 window.open('https://localhost:9554/obsplatform/api/v1/uploadstatus/'+id+'/print?tenantIdentifier=default');
+            	 window.open($rootScope.hostUrl+ API_VERSION +'/uploadstatus/'+id+'/print?tenantIdentifier=default');
         };
              
         scope.logFile = function (id){ 
-        		window.open('https://localhost:9554/obsplatform/api/v1/uploadstatus/'+id+'/printlog?tenantIdentifier=default');
+        		window.open($rootScope.hostUrl+ API_VERSION +'/uploadstatus/'+id+'/printlog?tenantIdentifier=default');
         };
     }
   });
-  mifosX.ng.application.controller('ImportController', ['$scope', 'ResourceFactory','$route', mifosX.controllers.ImportController]).run(function($log) {
+  mifosX.ng.application.controller('ImportController', ['$scope', 'ResourceFactory','$route','API_VERSION','$rootScope', mifosX.controllers.ImportController]).run(function($log) {
     $log.info("ImportController initialized");
   });
 }(mifosX.controllers || {}));

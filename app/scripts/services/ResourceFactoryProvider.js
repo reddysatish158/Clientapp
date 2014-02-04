@@ -3,8 +3,10 @@
     ResourceFactoryProvider: function() {
       var baseUrl = "" , apiVer = "/obsplatform/api/v1";
       this.setBaseUrl = function(url) {baseUrl = url;};
-      this.$get = ['$resource', function(resource) {
+      this.$get = ['$resource','$rootScope', function(resource,$rootScope) {
         var defineResource = function(url, paramDefaults, actions) {
+        	var tempUrl = baseUrl;
+        	$rootScope.hostUrl = tempUrl;
           return resource(baseUrl + url, paramDefaults, actions);
         };
         return {
