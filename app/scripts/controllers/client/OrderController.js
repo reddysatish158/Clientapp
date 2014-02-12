@@ -189,8 +189,9 @@
           };
           
     	var ApproveReconnect = function ($scope, $modalInstance) {
-    		$scope.flagApproveReconnect=true;
+    	
             $scope.approveReconnect = function () {
+            	$scope.flagApproveReconnect=true;
             	if(this.formData == undefined || this.formData == null){
             		this.formData = {};
             	}
@@ -309,7 +310,8 @@
         		 route.reload();
             });
         };
-
+        
+      
           scope.updatePrice = function (id,price){
         	  scope.orderData.locale="en";
         	  scope.orderData.price=price;
@@ -328,8 +330,6 @@
   
   
   });
-  
- 
   
   mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");

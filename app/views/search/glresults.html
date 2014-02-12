@@ -42,14 +42,14 @@
               <br/>
               <table width="100%" class="table">
                         <tr class="graybg">
-                              <th>ID</th>
+                              <th>Order No</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
                         <tr ng-repeat="order in orders | filter:filterText" >
-                          <td>{{order.id}}</td>
+                          <td>{{order.orderNo}}</td>
                           <td>{{order.planCode}}</td>
                           <td>{{order.contractPeriod}}</td>
                           <td>{{order.price}}</td>

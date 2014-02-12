@@ -476,6 +476,7 @@
 	        	scope.flag = true;
 
 	        	this.formData4.locale = 'en';
+	        	this.formData4.isNewplan=true;
 	        	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
 	            this.formData4.dateFormat = 'dd MMMM yyyy';
 	            this.formData4.start_date = reqDate;

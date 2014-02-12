@@ -89,26 +89,7 @@
              }
             scope.treedata = root;
         });
-        
-        
-        
-        
-        
-      
-      /*scope.addressManagesFetchFunction = function(offset, limit, callback) {
-          resourceFactory.addressResource.getAllAddresses({offset: offset, limit: limit} , callback);
-      };      
-      scope.addressManages = paginatorService.paginate(scope.addressManagesFetchFunction, 14);
-      
-      scope.searchAddressManagesInputText = function(offset, limit, callback) {
-    	  resourceFactory.addressResource.getAllAddresses({offset: offset, limit: limit , 
-    		  sqlSearch: scope.filterText } , callback); 
-          };
-   		
-   		scope.searchAddressManages = function(filterText) {
-   			scope.addressManages = paginatorService.paginate(scope.searchAddressManagesInputText, 14);
-   		};*/
-
+    
     
      }
   });

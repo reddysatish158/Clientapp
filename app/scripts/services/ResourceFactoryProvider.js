@@ -55,28 +55,11 @@
           clientIdenfierResource: defineResource(apiVer + "/clients/:clientId/identifiers/:id", {clientId:'@clientId', id: '@id'}, {
             get: {method: 'GET', params: {}}
           }),
-          groupResource: defineResource(apiVer + "/groups/:groupId/:anotherresource", {groupId:'@groupId',anotherresource:'@anotherresource'}, {
-              get: {method: 'GET', params: {}},
-              update: { method: 'PUT'}
-          }),
+        
           groupSummaryResource: defineResource(apiVer + "/runreports/:reportSource",{reportSource: '@reportSource'}, {
               getSummary: {method: 'GET', params: {}}
           }),
-          groupAccountResource: defineResource(apiVer + "/groups/:groupId/accounts", {groupId:'@groupId'}, {
-              getAll: {method: 'GET', params: {}}
-          }),
-          groupNotesResource: defineResource(apiVer + "/groups/:groupId/notes/:noteId", {groupId:'@groupId',noteId:'@noteId'}, {
-              getAllNotes: {method: 'GET', params: {}, isArray:true}
-          }),
-          groupTemplateResource: defineResource(apiVer + "/groups/template", {}, {
-              get: {method: 'GET', params: {}}
-          }),
-          groupMeetingResource:defineResource(apiVer + "/groups/:groupId/meetings/:templateSource", {groupId:'@groupId',templateSource:'@templateSource'}, {
-              getMeetingInfo: {method:'GET', params: {}}
-          }),
-          attachMeetingResource:defineResource(apiVer + "/:groupOrCenter/:groupOrCenterId/calendars/:templateSource", {groupOrCenter:'@groupOrCenter', groupOrCenterId:'@groupOrCenterId',
-          templateSource:'@templateSource'}, {
-          }),
+        
           runReportsResource: defineResource(apiVer + "/runreports/:reportSource", {reportSource : '@reportSource'}, {
             get: {method: 'GET', params: {}, isArray:true},
             getReport: {method: 'GET', params: {}}
@@ -92,11 +75,7 @@
             getTableDetails: {method: 'GET', params: {}},
             update: {method: 'PUT'}
           }),
-          loanProductResource: defineResource(apiVer + "/loanproducts/:loanProductId/:resourceType", {resourceType:'@resourceType', loanProductId:'@loanProductId'}, {
-            getAllLoanProducts: {method: 'GET', params: {}, isArray:true},
-            getProductmix: {method: 'GET', params: {}},
-            put: {method: 'PUT', params: {}}
-          }),
+         
           chargeResource: defineResource(apiVer + "/charges/:chargeId", {chargeId:'@chargeId'}, {
             getAllCharges: {method: 'GET', params: {}, isArray:true},
             getCharge: {method: 'GET', params: {}},
@@ -105,32 +84,6 @@
           chargeTemplateResource: defineResource(apiVer + "/charges/template", {
             get: {method: 'GET', params: {}, isArray:true},
             getChargeTemplates: {method: 'GET', params: {}},
-          }),
-          savingProductResource: defineResource(apiVer + "/savingsproducts/:savingProductId/:resourceType", {savingProductId:'@savingProductId', resourceType:'@resourceType'}, {
-            getAllSavingProducts: {method: 'GET', params: {}, isArray:true},
-            update: {method: 'PUT', params: {}}
-          }),
-          loanResource: defineResource(apiVer + "/loans/:loanId/:resourceType/:resourceId", {resourceType:'@resourceType', loanId:'@loanId', resourceId:'@resourceId'}, {
-            getAllLoans: {method: 'GET', params: {}},
-            put: {method: 'PUT', params: {}}
-          }),
-          loanChargeTemplateResource: defineResource(apiVer + "/loans/:loanId/charges/template", {loanId:'@loanId'}, {
-            get: {method: 'GET', params: {}},
-          }),
-          loanCollateralTemplateResource: defineResource(apiVer + "/loans/:loanId/collaterals/template", {loanId:'@loanId'}, {
-            get: {method: 'GET', params: {}},
-          }),
-          loanTrxnsTemplateResource: defineResource(apiVer + "/loans/:loanId/transactions/template", {loanId:'@loanId'}, {
-              get: {method: 'GET', params: {}}
-          }),
-          loanTrxnsResource: defineResource(apiVer + "/loans/:loanId/transactions/:transactionId", {loanId:'@loanId', transactionId:'@transactionId'}, {
-              get: {method: 'GET', params: {}}
-          }),
-          LoanAccountResource: defineResource(apiVer + "/loans/:loanId/:resourceType/:chargeId", {loanId:'@loanId', resourceType:'@resourceType', chargeId:'@chargeId'}, {
-            getLoanAccountDetails: {method: 'GET', params: {}}
-          }),
-          LoanDocumentResource: defineResource(apiVer + "/loans/:loanId/documents/:documentId", {loanId:'@loanId',documentId:'@documentId'}, {
-            getLoanDocuments: {method: 'GET', params: {} , isArray: true}
           }),
           currencyConfigResource: defineResource(apiVer + "/currencies", {}, {
             get: {method: 'GET', params: {}},
@@ -196,49 +149,14 @@
             getAllCodeValues: {method: 'GET', params: {}, isArray:true},
             update: { method: 'PUT', params: {}, isArray:true }
           }),
-          holResource: defineResource(apiVer + "/holidays", {}, {
-              getAllHols: {method: 'GET', params: {}, isArray: true}
-          }),
-          holValueResource: defineResource(apiVer + "/holidays/:holId", {holId:'@holId'}, {
-              getholvalues: {method: 'GET', params: {}}
-          }),
-          savingsTemplateResource: defineResource(apiVer + "/savingsaccounts/template", {}, {
-              get: {method: 'GET', params: {}}
-          }),
-          savingsResource: defineResource(apiVer + "/savingsaccounts/:accountId/:resourceType/:chargeId",
-            {accountId:'@accountId', resourceType:'@resourceType', chargeId:'@chargeId'}, {
-              get: {method: 'GET', params: {}},
-              update: {method: 'PUT'}
-          }),
-          savingsChargeResource: defineResource(apiVer + "/savingsaccounts/:accountId/charges/:resourceType",{accountId:'@accountId', resourceType:'@resourceType'}, {
-              get: {method: 'GET', params: {}},
-              update: {method: 'PUT'}
-          }),
-          savingsTrxnsTemplateResource: defineResource(apiVer + "/savingsaccounts/:savingsId/transactions/template", {savingsId:'@savingsId'}, {
-              get: {method: 'GET', params: {savingsId:'@savingsId'}}
-          }),
-          savingsTrxnsResource: defineResource(apiVer + "/savingsaccounts/:savingsId/transactions/:transactionId", {savingsId:'@savingsId', transactionId:'@transactionId'}, {
-              get: {method: 'GET', params: {savingsId:'@savingsId', transactionId:'@transactionId'}}
-          }),
+        
           accountTransferResource: defineResource(apiVer + "/accounttransfers/:transferId", {transferId:'@transferId'}, {
               get: {method: 'GET', params: {transferId:'@transferId'}}
           }),
           accountTransfersTemplateResource: defineResource(apiVer + "/accounttransfers/template", {}, {
               get: {method: 'GET', params: {}}
           }),
-          centerAccountResource: defineResource(apiVer + "/centers/:centerId/accounts", {centerId:'@centerId'}, {
-              getAll: {method: 'GET', params: {}, isArray: true}
-          }),
-          centerResource: defineResource(apiVer + "/centers/:centerId/:anotherresource", {centerId:'@centerId',anotherresource:'@anotherresource'}, {
-            get: {method: 'GET', params: {}},
-            update: { method: 'PUT'}
-          }),
-          centerMeetingResource:defineResource(apiVer + "/centers/:centerId/meetings/:templateSource", {centerId:'@centerId',templateSource:'@templateSource'}, {
-            getMeetingInfo: {method:'GET', params: {}}
-          }),
-          centerTemplateResource: defineResource(apiVer + "/centers/template", {}, {
-            get: {method: 'GET', params: {}}
-          }),
+       
           jobsResource: defineResource(apiVer + "/jobs/:jobId/:resourceType", {jobId : '@jobId',resourceType : '@resourceType'}, {
             get: {method: 'GET', params: {}, isArray: true},
             getJobDetails: {method: 'GET', params: {}},
@@ -254,9 +172,7 @@
           schedulerResource: defineResource(apiVer + "/scheduler", {}, {
             get: {method: 'GET', params: {}}
           }),
-          assignStaffResource:defineResource(apiVer + "/:groupOrCenter/:groupOrCenterId", {groupOrCenter:'@groupOrCenter', groupOrCenterId:'@groupOrCenterId'}, {
-            get: {method: 'GET', params: {}}
-          }),
+         
           configurationResource:defineResource(apiVer + "/configurations",{}, {
             get: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}}
@@ -270,20 +186,12 @@
             getTemplateDetails: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}},
           }),
-          loanProductTemplateResource: defineResource(apiVer + "/loanproducts/template", {}, {
-           get: {method: 'GET', params: {}}
-          }),
-          loanReassignmentResource: defineResource(apiVer + "/loans/loanreassignment/:templateSource", {templateSource:'@templateSource'}, {
-           get: {method: 'GET', params: {}}
-          }),
+       
           auditResource: defineResource(apiVer + "/audits/:templateResource", {templateResource:'@templateResource'}, {
             get: {method: 'GET', params: {}},
             search: {method: 'GET', params: {},isArray:true}
           }),
-          guarantorResource: defineResource(apiVer + "/loans/:loanId/guarantors/:templateResource", {loanId:'@loanId',templateResource:'@templateResource'}, {
-            get: {method: 'GET', params: {}},
-            update: {method: 'PUT', params: {}}
-          }),
+        
           
           contractTemplateResource: defineResource(apiVer + "/subscriptions/template", {}, {
               get: {method: 'GET', params: {}}
@@ -822,10 +730,7 @@
                getDetails: {method: 'GET', params: {}},
                update: { method: 'PUT'}
            }),
-         /*  promotionCodeResource: defineResource(apiVer + "/promotioncodes", {}, {
-               get: {method: 'GET', params: {}, isArray: true},
-               
-           }),*/
+       
            applyPromotionCodeResource: defineResource(apiVer + "/orders/applypromo/:orderId", {orderId:'@orderId'}, {
                get: {method: 'GET', params: {}, isArray: true},
                update: { method: 'PUT' }
@@ -839,7 +744,7 @@
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
            }) ,
-	Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
+	       Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
          }) ,
          promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
