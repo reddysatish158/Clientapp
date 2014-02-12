@@ -17,7 +17,7 @@ angular.module('ContextMenuDirective', []).
               //console.log($('#'+iAttrs.context));
             $(iElement).mousedown(function(event) {
              if(event.button==2){
-            	console.log(iElement.context);
+            	console.log(iElement.context.id);
             	for(var i in scope.countryObject){
             		if(iElement.context.id==scope.countryObject[i].id){
             			var id=scope.countryObject[i].id;
