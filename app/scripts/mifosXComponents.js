@@ -298,7 +298,9 @@ define(['underscore', 'mifosX'], function() {
       'FormSubmitValidateDirective',
       'FormValidateDirective',
       'ScrollbarTopDirective',
-      'ApiValidationDirective'
+      'ApiValidationDirective',
+      'RightClickDirective'
+      
       
     ]
   };

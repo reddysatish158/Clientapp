@@ -15,7 +15,7 @@
                             '<i class="collapsed" data-ng-show="node.' + nodeChildren + '.length && node.collapsed" data-ng-click="' + treeId + '.selectNodeHead(node)"></i>' +
                             '<i class="expanded" data-ng-show="node.' + nodeChildren + '.length && !node.collapsed" data-ng-click="' + treeId + '.selectNodeHead(node)"></i>' +
                             '<i class="normal" data-ng-hide="node.' + nodeChildren + '.length"></i> ' +
-                            '<span data-ng-class="node.selected" data-ng-click="' + treeId + '.selectNodeLabel(node)">{{node.' + nodeLabel + '}}</span>' +
+                            '<span context="context1" ng-right-click="elementSelect(node.id,node.name)" id="{{node.id}}" data-ng-class="node.selected" data-ng-click="' + treeId + '.selectNodeLabel(node)">{{node.' + nodeLabel + '}}</span>' +
                             '<div data-ng-hide="node.collapsed"  data-tree-id="'+treeId+'" data-tree-model="node.' + nodeChildren + '" data-node-id="' + nodeId +'" data-node-label="' + nodeLabel + '" data-node-children="' + nodeChildren + '"></div>' +
                             '</li>' +
                             '</ul>';
@@ -31,6 +31,7 @@
                                 selectedNode.collapsed = !selectedNode.collapsed;
                             };
                             scope[treeId].selectNodeLabel = scope[treeId].selectNodeLabel || function( selectedNode ){
+                            	
                                 selectedNode.collapsed = !selectedNode.collapsed;
                                 if( scope[treeId].currentNode && scope[treeId].currentNode.selected ) {
                                     scope[treeId].currentNode.selected = undefined;

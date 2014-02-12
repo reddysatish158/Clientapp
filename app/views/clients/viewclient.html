@@ -724,26 +724,26 @@
 						</thead>
 						<tbody>
 						
-							<tr ng-repeat="financialtransaction in financialInvoices.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
-               					<td>
+							<tr class="pointer-main" ng-repeat="financialtransaction in financialInvoices.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
+               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.userName}}</any>
               					</td>
-               					<td>
+               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.transactionId}}</any>
               					</td>
-              					<td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.transDate | DateFormat}}</any>
               					</td>
-              					<td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.transactionType}}</any>
               					</td>
-              					<td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.transactionCategory}}</any>
               					</td>
-              					<td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.creditAmount}}</any>
               					</td>
-              					<td>
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
               					
