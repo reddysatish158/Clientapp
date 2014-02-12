@@ -136,7 +136,7 @@
 		<table width="100%" class="table table-striped table-bordered" width="0px">
 			<tr>
 				<td width="50%">{{ 'label.order.orderId' | translate }}</td>
-				<td width="50%">{{orderData.id}}</td>
+				<td width="50%">{{orderData.orderNo}}</td>
 			</tr>
 			<tr>
 				<td width="30%">{{ 'label.order.contractperiod' | translate }}</td>
@@ -176,7 +176,7 @@
 			</tr>
 			<tr>
 				<td width="30%">{{ 'table.order.invoicetilldate' | translate }}</td>
-				<td width="70%">{{orderPriceData.invoiceTillDate| DateFormat}}</td>
+				<td width="70%">{{orderPriceDatas[0].invoiceTillDate| DateFormat}}</td>
 			</tr>
 		</table>
 	</div>			

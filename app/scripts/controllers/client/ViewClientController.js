@@ -217,11 +217,12 @@
 				            resourceFactory.cancelPaymentResource.update({'paymentId':paymentId},scope.formData,function(data){
 				            	$modalInstance.close('delete');
 				            	getDetails();
+
 				            	scope.getAllFineTransactions();
 				          },function(errData){
 				        		$scope.flagcancelpayment = false;
 				          });
-				            
+
 				            
 				};
 				$scope.reject = function(){
@@ -560,8 +561,9 @@
                 
                 
              });
+
             };*/
-          
+
           scope.getFinancialTransactionsFetchFunction = function(offset, limit, callback) {
   			resourceFactory.FineTransactionResource.getAllFineTransactions({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};

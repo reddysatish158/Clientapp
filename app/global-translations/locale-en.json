@@ -157,7 +157,7 @@
   "button.undo.transfer":"Undo Transfer",
   "button.eventorder":"Event Order",
   "button.refresh":"Refresh",
-  "table.heading.orderid":"Order Id",
+  "table.heading.orderid":"Order No",
   "label.eventprice":"Event Price",
 
   "#datatable":"",
@@ -1206,7 +1206,7 @@
   "label.prepaidplans":"Prepaid Plans",
   "label.order.startdate":"Start Date",
   "label.order.contractperiod":"Contract Period",
-  "label.order.orderId":"OrderId",
+  "label.order.orderId":"Order NO",
   "label.order.ordertype":"Order Type",
   "label.order.billingfrequency":"Billing Frequency",
   "label.order.billalign":"Align Billing Cycle",
