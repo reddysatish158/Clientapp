@@ -30,8 +30,7 @@
             'bootstraptimepicker':	'../bower_components/bootstrap-timepicker/js/bootstrap-timepicker',
             'ckEditor':         '../bower_components/ckeditor/ckeditor',
             'LocalStorageModule':'../scripts/modules/localstorage',
-            'configurations':'../scripts/modules/configurations',
-            'ContextMenuDirective':'../scripts/directives/ContextMenuDirective'
+            'configurations':'../scripts/modules/configurations'
         },
         shim: {
             'angular': { exports: 'angular' },
@@ -55,7 +54,6 @@
             'ckEditor':{deps:['jquery']},
             'LocalStorageModule':{deps:['angular']},
             'configurations':{deps: ['angular']},
-            'ContextMenuDirective': {deps: ['angular']},
             'mifosX': {
                 deps: [
                     'angular',
@@ -78,8 +76,7 @@
                     'ckEditor',
                     'frAngular',
                     'LocalStorageModule',
-                    'configurations',
-                    'ContextMenuDirective'
+                    'configurations'
                 ],
                 exports: 'mifosX'
             }

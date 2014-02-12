@@ -1,8 +1,9 @@
-angular.module('ContextMenuDirective', []).
-  directive('context', [function() {
-    return {
-      restrict    : 'A',
-      scope       : '@&', 
+ (function(module) {
+    mifosX.directives = _.extend(module, {
+        ContextMenuDirective: function () {
+           return {
+                restrict: 'A',
+                scope       : '@&', 
       compile: function compile(tElement, tAttrs, transclude) {
         return {
           post: function postLink(scope, iElement, iAttrs, controller) {
@@ -68,8 +69,8 @@ angular.module('ContextMenuDirective', []).
             
             $(document).click(function(event) {
             	document.oncontextmenu = function() {return false;};
-              var target = $(event.target);
-              if(!target.is(".popover") && !target.parents().is(".popover")) {
+            	var target = $(event.target);
+            	if(!target.is(".popover") && !target.parents().is(".popover")) {
             	  if(event.button==2){
                   	return ;
                      /*if(last === event.timeStamp){
@@ -77,20 +78,27 @@ angular.module('ContextMenuDirective', []).
                 	    return; 
                       }*/
                    }
-                ul1.css({
-                  'display' : 'none'
-                });
-                ul2.css({
+            	  ul1.css({
+            		  'display' : 'none'
+            	  });
+            	  ul2.css({
                     'display' : 'none'
                   });
-                ul3.css({
+            	  ul3.css({
                     'display' : 'none'
                   });
-              }
-             
+            	}
             });
           }
         };
       }
     };
-  }]);
+   }
+});
+}(mifosX.directives || {}));
+
+mifosX.ng.application.directive("context", ['$parse', mifosX.directives.ContextMenuDirective]).run(function($log) {
+    $log.info("ContextMenuDirective initialized");
+});
+
+/*}]);*/
