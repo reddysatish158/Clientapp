@@ -902,6 +902,9 @@
       })
        .when('/addressmanage', {
         templateUrl: 'views/organization/addressManage.html'
+      })
+       .when('/addresstreeview', {
+        templateUrl: 'views/organization/addressTreeview.html'
       });
 
     $locationProvider.html5Mode(false);
