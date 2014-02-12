@@ -276,6 +276,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/EditPromotioncodeController',
       'system/SmartSearchController',
       'organization/AddressManageController',
+      'organization/AddressTreeviewController',
       
 
       
@@ -298,8 +299,9 @@ define(['underscore', 'mifosX'], function() {
       'FormSubmitValidateDirective',
       'FormValidateDirective',
       'ScrollbarTopDirective',
-      'ApiValidationDirective'
-      
+      'ApiValidationDirective',
+      'RightClickDirective',
+      'ContextMenuDirective'
     ]
   };
 
