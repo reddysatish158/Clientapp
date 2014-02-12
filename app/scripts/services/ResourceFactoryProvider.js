@@ -755,12 +755,29 @@
           
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
-          }),  
-          addressManageResource: defineResource(apiVer + "/addressmanage/:officeId", {officeId:"@officeId"}, {
-        	  getAllAddresses: {method: 'GET', params: {}},
-              update: { method: 'PUT'}
-            }), 
-               
+          }),
+          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
+        	  get: {method: 'POST', params: {}}
+         }),
+         editCountryResource: defineResource(apiVer + "/address/editCountry/:id",{id: '@id'},  {
+        	 update: { method: 'PUT' }
+         }),
+         addStateResource: defineResource(apiVer + "/address/state/new",{},  {
+       	  get: {method: 'POST', params: {}}
+       	  
+        }),
+        editStateResource: defineResource(apiVer + "/address/editState/:id",{id: '@id'},  {
+        	update: { method: 'PUT' }
+         	  
+         }),
+        addCityResource: defineResource(apiVer + "/address/city/new",{},  {
+         	  get: {method: 'POST', params: {}}
+         	  
+          }),
+          editCityResource: defineResource(apiVer + "/address/editCity/:id",{id: '@id'},  {
+        	  update: { method: 'PUT' }
+         	  
+          }),
         };
       }];
     }

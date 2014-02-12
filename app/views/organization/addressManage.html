@@ -7,11 +7,11 @@
 
 <div class="row-fluid" ng-controller="AddressManageController">
 	<div class="pull-right">
-		<a ng-show="isTreeView" ng-click="isTreeView=!isTreeView" class="btn btn-primary"><i class="icon-list icon-white"></i>List View</a>
-		<a ng-hide="isTreeView" ng-click="isTreeView=!isTreeView" class="btn btn-primary"><i class="icon-sitemap icon-white"></i>Tree View</a>
-		
+		<a href="#/addresstreeview" class="btn btn-primary"><i class="icon-sitemap icon-white"></i>Tree View</a>
 	</div>
-     <div ng-hide="isTreeView">
+	
+     <!-- <div ng-hide="isTreeView"> -->
+     <div>
 		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by Country/State/City Name">
 		<table class="table">
 			<thead>
@@ -23,26 +23,39 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr  ng-repeat="addressManage in addressManages | filter:filterText">
+				<tr  ng-repeat="addressManage in addressManages.currentPageItems | filter:filterText">
 					<td >{{addressManage.countryName}}</td>
 					<td >{{addressManage.stateName}}</td>  
 					<td >{{addressManage.cityName}}</td>
 					
 				</tr>
 			</tbody>
-			
 		</table>
-		
+		<ul class="pager">
+        			<li class="previous"><a ng-click="addressManages.previous()" href="" ng-disabled="!addressManages.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="addressManages.next()" href="" ng-disabled="!addressManages.hasNext()">Next &rarr;</a></li>
+    			</ul>
 	</div>
- 
-	<div ng-show="isTreeView">
-	  <div
-		data-angular-treeview="true"
-		data-tree-id="treeview"
-		data-tree-model="treedata"
-		data-node-id="id"
-		data-node-label="name"
-		data-node-children="children" >
-		</div>
-	</div>
- </div>
+ </div> 
+    
+    
+    
+    
+    <!-- <div >
+      <span context="context2">Item three</span> 
+    </div>  -->   
+   
+    <!--  <ul id="context2" class="dropdown-menu">
+      <li><a >ADD</a></li>
+      <li><a>Edit</a></li>
+      <li><a >Delete</a></li>
+    </ul> -->
+  <!--  <div dropdown classlink="dropdownLink" linktext='treedata' classmenu="dropdownMenu">
+  <a href="http://www.google.com/">Google</a>
+  <a href="http://www.facebook.com/">Facebook</a>
+  <a href="http://www.amazon.com/">Amazon</a>
+  </div>   -->     
+          
+          
+          
+	

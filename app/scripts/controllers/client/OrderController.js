@@ -189,8 +189,9 @@
           };
           
     	var ApproveReconnect = function ($scope, $modalInstance) {
-    	
+    		
             $scope.approveReconnect = function () {
+
             	$scope.flagApproveReconnect=true;
             	if(this.formData == undefined || this.formData == null){
             		this.formData = {};
