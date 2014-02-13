@@ -236,9 +236,13 @@
          };
 
         scope.submit = function() {   
+        	this.formData.isNewplan =false;
+        	if(routeParams.planId == 0){
+        		this.formData.isNewplan =true;
+        	}
         	scope.flag = true;
         	this.formData.locale = 'en';
-        	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+           	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.start_date = reqDate;
             if(this.formData.isPrepaid == 'Y'){

@@ -8,8 +8,8 @@
         	 scope.allowedperiods= data.allowedperiods;
           scope.formData =
           {
-        		  subscriptionPeriod:data.subscription_period,
-        		  subscriptionType:data.subscription_type,
+        		  subscriptionPeriod:data.subscriptionPeriod,
+        		  subscriptionType:data.subscriptionType,
         		  units:data.units
         		
           };

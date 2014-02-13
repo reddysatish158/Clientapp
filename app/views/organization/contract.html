@@ -20,8 +20,8 @@
         </thead>
         <tbody>
             <tr class="pointer-main" ng-repeat="employee in employees | filter:filterText">
-                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscription_period}}</td>            
-                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscription_type}}</td>        
+                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscriptionPeriod}}</td>            
+                <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.subscriptionType}}</td>        
                 <td class="pointer" data-ng-click="routeTo(employee.id)">{{employee.units}}</td>         
             </tr>
         </tbody>
