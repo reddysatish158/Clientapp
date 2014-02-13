@@ -3,7 +3,7 @@
         ContextMenuDirective: function () {
            return {
                 restrict: 'A',
-                scope       : '@&', 
+                scope  : '@&', 
       compile: function compile(tElement, tAttrs, transclude) {
         return {
           post: function postLink(scope, iElement, iAttrs, controller) {
@@ -18,10 +18,11 @@
               //console.log($('#'+iAttrs.context));
             $(iElement).mousedown(function(event) {
              if(event.button==2){
-            	console.log(iElement.context.id);
+            	//console.log(iElement.context.id);
+            	 console.log("iAttrs.id::"+iAttrs.id);
+            	
             	for(var i in scope.countryObject){
-            		if(iElement.context.id==scope.countryObject[i].id){
-            			var id=scope.countryObject[i].id;
+            		if(iAttrs.id == scope.countryObject[i].id){
             			ul1.css({
                             position: "fixed",
                             display: "block",
@@ -35,7 +36,7 @@
             		}
           	     }
             	for(var j in scope.stateObject){
-            		if(iElement.context.id==scope.stateObject[j].id){
+            		if(iAttrs.id == scope.stateObject[j].id){
             			ul2.css({
                             position: "fixed",
                             display: "block",
@@ -50,7 +51,7 @@
             		}
           	      }
             	for(var k in scope.cityObject){
-            		if(iElement.context.id==scope.cityObject[k].id){
+            		if(iAttrs.id == scope.cityObject[k].id){
             			ul3.css({
                             position: "fixed",
                             display: "block",
