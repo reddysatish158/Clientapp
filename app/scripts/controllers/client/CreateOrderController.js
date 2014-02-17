@@ -107,10 +107,10 @@
         		 scope.paytermdatas=data.paytermdata;
         		 scope.formData.isPrepaid=data.isPrepaid;
         		 scope.formData.planCode=value;
-        		 
+        		 scope.formData.contractPeriod=data.contractPeriod;
         		  for (var i in data.subscriptiondata) {
                  	
-                 	if(data.subscriptiondata[i].Contractdata == data.contractPeriod){
+                 	if(data.subscriptiondata[i].id == data.contractPeriod){
                  		 scope.formData.contractPeriod=data.subscriptiondata[i].id; 
                  	}
                    
@@ -120,10 +120,10 @@
         
        var searchMatch = function (haystack, needle) {
            if (!needle) {
-               return true;
+               return true;e
            }
           
-           return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+           return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;e
        };
        
        var searchMatch1 = function (haystack, needle) {
