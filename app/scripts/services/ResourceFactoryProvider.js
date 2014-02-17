@@ -759,14 +759,14 @@
           addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
         	  get: {method: 'POST', params: {}}
          }),
-         editCountryResource: defineResource(apiVer + "/address/editCountry/:id",{id: '@id'},  {
+         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
         	 update: { method: 'PUT' }
          }),
          addStateResource: defineResource(apiVer + "/address/state/new",{},  {
        	  get: {method: 'POST', params: {}}
        	  
         }),
-        editStateResource: defineResource(apiVer + "/address/editState/:id",{id: '@id'},  {
+        editStateResource: defineResource(apiVer + "/address/state/:id",{id: '@id'},  {
         	update: { method: 'PUT' }
          	  
          }),
@@ -774,7 +774,7 @@
          	  get: {method: 'POST', params: {}}
          	  
           }),
-          editCityResource: defineResource(apiVer + "/address/editCity/:id",{id: '@id'},  {
+          editCityResource: defineResource(apiVer + "/address/city/:id",{id: '@id'},  {
         	  update: { method: 'PUT' }
          	  
           }),
