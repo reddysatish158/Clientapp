@@ -246,7 +246,7 @@ define(['underscore', 'mifosX'], function() {
       'TreeviewDirective',
       'CkEditorDirective',
       'FormSubmitValidateDirective',
-      'FormValidateDirective',
+      'FormValidationsDirective',
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',

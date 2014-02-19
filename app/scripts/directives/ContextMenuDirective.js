@@ -19,7 +19,7 @@
             $(iElement).mousedown(function(event) {
              if(event.button==2){
             	//console.log(iElement.context.id);
-            	 console.log("iAttrs.id::"+iAttrs.id);
+            	 //console.log("iAttrs.id::"+iAttrs.id);
             	
             	for(var i in scope.countryObject){
             		if(iAttrs.id == scope.countryObject[i].id){
@@ -102,4 +102,3 @@ mifosX.ng.application.directive("context", ['$parse', mifosX.directives.ContextM
     $log.info("ContextMenuDirective initialized");
 });
 
-/*}]);*/
