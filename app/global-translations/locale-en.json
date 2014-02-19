@@ -215,6 +215,7 @@
   "label.job.messagetemplate":"Message Template",
   "label.job.exipirydate":"Exipiry Date",
   "label.job.isDynamic":"Is Dynamic",
+  "label.job.isautorenwalactive":"Is Auto Renewal",
   "label.job.isautorenewal":"Auto Renewal",
   "label.job.emailid":"Email Id",
   "validation.msg.schedulerjob.emailId.cannot.be.blank":"emailId cannot be blank",
@@ -1802,7 +1803,6 @@
   "label.tickethistory.comments":"Comments",
   "label.tickethistory.problemdescription":"Problem Description",
   
-  
   "#address":".........",
   "label.viewclient":"View Client",
   "label.editaddress":"Edit Address",
@@ -1813,10 +1813,6 @@
   "label.addresstype":"Address Type",
   "label.addressno":"Address No",
   "error.msg.billing.address.city.not.found":"City Not Found",
-  
-  
-
-  
   
   "#link.scheduler":"....",
   "link.scheduler":"Scheduler",
@@ -2013,7 +2009,7 @@
 "validation.msg.plan.duration.cannot.be.blank":"Duration cannot be blank",
 "validation.msg.plan.volume.cannot.be.blank":"Volume cannot be blank",
 "validation.msg.plan.units.cannot.be.blank":"Units cannot be blank",
-"plan.is.already.exists.with.charge.code":"Plan is already exist with same charge code {0}",
+"plan.is.already.exists.with.charge.code":"Price is already exist with same charge code",
 "validation.msg.plan.provisioingSystem.cannot.be.blank":"Provisioning System cannot be blank",
 "validation.msg.plan.status.cannot.be.blank":"Plan Status cannot be blank",
 "validation.msg.plan.planDescription.cannot.be.blank":"Plan Description cannot be blank",
@@ -2110,8 +2106,9 @@
   "validation.msg.ServiceMapping.serviceIdentification.cannot.be.blank":"Service Identification cannot be blank",
   "validation.msg.ServiceMapping.status.cannot.be.blank":"Status cannot be blank",
   "validation.msg.ServiceMapping.image.cannot.be.blank":"Image cannot be blank", 
- "validation.msg.planmappig.planCode.cannot.be.blank":"Plan Code cannot be blank",
- "validation.msg.planmappig.itemCode.cannot.be.blank":"Item Code cannot be blank",
+  "validation.msg.planmappig.planCode.cannot.be.blank":"Plan Code cannot be blank",
+  "validation.msg.planmappig.itemCode.cannot.be.blank":"Item Code cannot be blank",
+  "error.msg.service.mapping.duplicate":"Mapping has already done with this service",
   
   "#HardWareMapping":"...........",
   "table.hardwaremapping.id":"Id",
@@ -2241,7 +2238,7 @@
 "validation.msg.promotioncodes.duration.cannot.be.blank" : "Duration cannot be blank",
 "validation.msg.promotioncodes.discounttype.cannot.be.blank" : "Discount Type cannot be blank",
 "validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank",
-"error.msg.cund.unknown.data.integrity.issue" : "Duplicate entry  for Promotion Code",
+
 "label.anchor.help" : "Help",
 "label.heading.keyboarshortcuts":"Keyboard Shortcuts",
 "label.heading.navigation":"Navigation Page",
