@@ -2265,7 +2265,8 @@
 "label.manageaddresses" : "Manage Addresses",
 "table.heading.countryName" : "Country Name",
 "table.heading.StateName" : "State Name",
-"table.heading.cityName" : "City Name"
+"table.heading.cityName" : "City Name",
+"button.payInvoice" : "Pay Invoice"
    
 
 }

@@ -4,7 +4,7 @@
             return {
                 restrict: 'A',
                 link: function ( scope, element, attrs ) {
-                        var treeId = attrs.treeId;
+                	    var treeId = attrs.treeId;
                         var treeModel = attrs.treeModel;
                         var nodeId = attrs.nodeId || 'id';
                         var nodeLabel = attrs.nodeLabel || 'label';

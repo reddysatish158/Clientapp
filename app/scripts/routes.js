@@ -768,6 +768,9 @@
       })
        .when('/addresstreeview', {
         templateUrl: 'views/organization/addressTreeview.html'
+      }) 
+      .when('/payinvoice/:id', {
+        templateUrl : 'views/clients/payInvoice.html'
       });
 
     $locationProvider.html5Mode(false);

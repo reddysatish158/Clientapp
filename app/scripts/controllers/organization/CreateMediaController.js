@@ -94,7 +94,8 @@
         };
 
         scope.addMedia = function () {
-        	if (scope.attributesFormData.attributeName && scope.attributesFormData.attributevalue) {
+        	if (scope.attributesFormData.attributeName && scope.attributesFormData.attributevalue 
+        			&& scope.attributesFormData.attributeNickname && scope.attributesFormData.attributeImage) {
 									              scope.mediaassetAttributes
 											.push({
 												attributeType : scope.attributesFormData.attributeType,
@@ -113,7 +114,7 @@
           };
           
           scope.addMediaLocation = function () {
-          //	if (scope.mediaLocationFormData.languageId && scope.mediaLocationFormData.location) {
+           if (scope.mediaLocationFormData.languageId && scope.mediaLocationFormData.location && scope.mediaLocationFormData.formatType) {
                 scope.mediaAssetLocations.push({languageId:scope.mediaLocationFormData.languageId, location:scope.mediaLocationFormData.location, 
                 	formatType:scope.mediaLocationFormData.formatType});
               
@@ -121,7 +122,7 @@
                 scope.mediaLocationFormData.location = undefined;
                 scope.mediaLocationFormData.formatType = undefined;
                 
-          	//}
+          	}
             };
 		
           

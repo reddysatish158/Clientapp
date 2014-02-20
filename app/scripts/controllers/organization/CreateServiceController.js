@@ -3,10 +3,12 @@
 CreateServiceController: function(scope, resourceFactory, location) {
 	  scope.services = [];
       scope.statuses = [];
+      
         resourceFactory.serviceTemplateResource.get(function(data) {
         	 scope.services= data.serviceTypes;
         	 scope.statuses= data.status;
-             scope.formData = {   };
+             scope.formData = {};
+             
         });
         
         scope.submit = function() {   
