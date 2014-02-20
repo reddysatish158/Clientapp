@@ -228,6 +228,7 @@ define(['underscore', 'mifosX'], function() {
       'system/SmartSearchController',
       'organization/AddressManageController',
       'organization/AddressTreeviewController',
+      'client/PayInvoiceController',
 
     ],
     filters: [

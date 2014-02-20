@@ -122,6 +122,13 @@
                                             icon :"icon-usd"
                                          },
                                          {
+
+                                             name:"button.payInvoice",
+                                             href:"#/payinvoice",
+                                             icon :"icon-usd"
+                                          },
+                                          
+                                         {
                                              name:"button.adjustments",
                                              href:"#/adjustments",
                                              icon :"icon-adjust"

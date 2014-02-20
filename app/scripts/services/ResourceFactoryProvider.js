@@ -778,6 +778,10 @@
         	  update: { method: 'PUT' }
          	  
           }),
+          payInvoiceTemplateResource: defineResource(apiVer + "/invoice/:invoiceId",{invoiceId: '@invoiceId'},  {
+        	  getPayInvoices: { method: 'GET', params: {},isArray: true }
+         	  
+          }),
         };
       }];
     }
