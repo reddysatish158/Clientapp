@@ -6,7 +6,7 @@
           <li class="active">{{'label.editservice' | translate}}</li>
         </ul>
       </div>
-      <form class="form-horizontal well" ng-submit="submit()">
+      <form name="EditServiceForm" novalidate="" class="form-horizontal well" rc-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -18,7 +18,8 @@
           <div class="control-group">
             <label class="control-label" for="serviceCode">Service Code</label>
             <div class="controls">
-              <input type="text" id="serviceCode"ng-model="formData.serviceCode">
+              <input type="text" name="serviceCode" id="serviceCode"ng-model="formData.serviceCode" ng-maxlength="10"/>
+              <form-validate formName="EditServiceForm"  fieldName="serviceCode" maxLenMsg="10 characters"/>
             </div>
           </div>
           
@@ -57,7 +58,7 @@
 
           <div class="offset3">
             <a href="#/viewservice/{{serviceId}}"><button id="cancel" type="reset" class="btn">{{'label.cancel' | translate}}</button></a>
-            <button id="submit" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+            <button id="submit" type="submit" class="btn btn-primary" >{{'label.save' | translate}}</button>
           </div>
         </fieldset>
       </form>

@@ -208,8 +208,8 @@
                     <form>
                       <select ng-model="mediaLocationFormData.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaLanguageData.languageId}}">
                       </select>&nbsp;&nbsp;
-                      <select ng-model="mediaLocationFormData.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaFormat.mediaName}}">
-                      </select>&nbsp;&nbsp;&nbsp;
+                      <select  class="input-medium" ng-model="mediaLocationFormData.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaFormat.mediaName}}">
+                      </select>&nbsp;&nbsp;
                       <input type="text" ng-model="mediaLocationFormData.location" placeholder="{{'label.media.location' | translate}}">
                       <a ng-click="addMediaLocation()">&nbsp;<i class="icon-plus icon-white"></i></a>
                     </form>
@@ -222,7 +222,7 @@
                     <tr ng-repeat="mediaAssetLocation in mediaAssetLocations" >
                       <td><select ng-model="mediaAssetLocation.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaAssetLocation.languageId}}">
                       </select></td>
-                      <td><select ng-model="mediaAssetLocation.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaAssetLocation.formatType}}">
+                      <td><select  class="input-medium" ng-model="mediaAssetLocation.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaAssetLocation.formatType}}">
                       </select></td>
                       <td> <input type="text" ng-model="mediaAssetLocation.location" placeholder="{{'label.media.location' | translate}}"></td>
                       <td><a ng-click="removeMediaLocation($index)"><i class="icon-remove icon-white"></i></a></td>

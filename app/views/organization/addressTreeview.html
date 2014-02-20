@@ -78,11 +78,11 @@
         <div class="modal-header silver">
           <h3 class="bolder">Edit Country</h3>
         </div>
-	<form name="editcountryform" novalidate="" class="" ng-submit="submit(entity.code,entity.name)">
-        <div class="modal-body">
+	<form name="editcountryform" novalidate="" class="form-horizontal well" ng-submit="submit(entity.code,entity.name)">
+        <div class="modal-body" >
  		  <fieldset>
            	<div class="control-group">
-				<label class="control-label" for="entityCode">Enter New Country Code<span class="required">*</span> :</label>
+				<label class="control-label" for="entityCode">New Country Code<span class="required">*</span> :</label>
 			 	<div class="controls">
               		<input  type="text" name="countryCode" ng-model="entity.code" placeholder="enter code here" required late-Validate/><br>
 					<span  ng-show="editcountryform.countryCode.$invalid">
@@ -93,7 +93,7 @@
             	</div>
            	</div>
           	<div class="control-group">
-            	 <label class="control-label" for="entityName">Enter New Country Name<span class="required">*</span> :</label>
+            	 <label class="control-label" for="entityName">New Country Name<span class="required">*</span> :</label>
 			 	 <div class="controls">
               		<input  type="text" name="countryName" ng-model="entity.name" placeholder="enter name here" required late-Validate/><br>
 					<span  ng-show="editcountryform.countryName.$invalid">
@@ -209,7 +209,7 @@
                     <div class="modal-header silver">
                         <h3 class="bolder">Delete State</h3>
                     </div>
-                    <div class="modal-body" style="height:60px;">
+                    <div class="modal-body" modal-middle>
                        <h4>Are you sure?</h4>
                     </div>
                     <div class="modal-footer">
@@ -302,7 +302,7 @@
                     <div class="modal-header silver">
                         <h3 class="bolder">Delete City</h3>
                     </div>
-                    <div class="modal-body" style="height:60px;">
+                    <div class="modal-body" modal-middle>
                        <h4>Are you sure?</h4>
                     </div>
                     <div class="modal-footer">
@@ -310,6 +310,27 @@
                         <button class="btn btn-primary" ng-click="approveDeleteCity()">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
-     
+      <script type="text/ng-template" id="countryAlert.html">
+					<div class="modal-header silver">
+                        <h3 class="bolder">Warning</h3>
+                    </div>
+                    <div class="modal-body" modal-middle>
+                       <i class="icon-warning-sign error"></i>Unable to delete <span style='color:blue;font-size:15px;'><strong>"{{countryName}}"</strong></span>,it seems have some states.
+                    </div>
+                    <div class="modal-footer">
+						<button class="btn btn-primary" ng-click="approve()">ok</button>
+                    </div>
+      </script>
+     <script type="text/ng-template" id="stateAlert.html">
+					<div class="modal-header silver">
+                        <h3 class="bolder">Warning</h3>
+                    </div>
+                    <div class="modal-body" modal-middle>
+                       <i class="icon-warning-sign error"></i>Unable to delete <span style='color:blue;font-size:15px;'><strong>"{{stateName}}"</strong></span>,it seems have some cities. 
+                    </div>
+                    <div class="modal-footer">
+						<button class="btn btn-primary" ng-click="approve()">ok</button>
+                    </div>
+      </script>
  </div> 
    

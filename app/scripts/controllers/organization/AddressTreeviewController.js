@@ -1,34 +1,15 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  AddressTreeviewController: function(scope, resourceFactory,location,paginatorService,$modal,routeParams,route) {
-
-      //scope.addressManages = [];
-      scope.isTreeView = false;
+	  AddressTreeviewController: function(scope, resourceFactory,$modal,route) {
+     
       var idToNodeMap = {};
-    
-      scope.deepCopy = function (obj) {
-          if (Object.prototype.toString.call(obj) === '[object Array]') {
-            var out = [], i = 0, len = obj.length;
-            for ( ; i < len; i++ ) {
-              out[i] = arguments.callee(obj[i]);
-            }
-            return out;
-          }
-          if (typeof obj === 'object') {
-            var out = {}, i;
-            for ( i in obj ) {
-              out[i] = arguments.callee(obj[i]);
-            }
-            return out;
-          }
-          return obj;
-        };
         
         scope.elementSelect = function(id,nodeName,nodeCode){
+        	scope.nodeId = id;
         	scope.nodeName = nodeName;
         	scope.nodeCode = nodeCode;
         	scope.elementId = id.split("-");
-        }
+        };
         scope.addCountry = function(){
         	
       	  $modal.open({
@@ -46,12 +27,26 @@
               });
           };
           scope.deleteCountry = function(){
-          	
-        	  $modal.open({
-                  templateUrl: 'deleteCountry.html',
-                  controller: deleteCountryController,
-                  resolve:{}
-              });
+        	  var stateCount = 0;
+        	  for (var i in scope.stateObject){
+        		  if(scope.nodeId == scope.stateObject[i].parentId){
+        			  stateCount++;
+        			  break;
+        		  }
+        	 	}
+        		 if(stateCount)
+        			 $modal.open({
+        				 templateUrl: 'countryAlert.html',
+        				 controller: countryAlertController,
+        				 resolve:{}
+        			 });
+        		 else
+        			 $modal.open({
+        				 templateUrl: 'deleteCountry.html',
+        				 controller: deleteCountryController,
+        				 resolve:{}
+        			 });
+        	
           };
         scope.addState = function(){
         	  $modal.open({
@@ -70,11 +65,25 @@
           };
           scope.deleteState = function(){
             	
-        	  $modal.open({
-                  templateUrl: 'deleteState.html',
-                  controller: deleteStateController,
-                  resolve:{}
-              });
+        	  var cityCount = 0;
+        	  for (var i in scope.cityObject){
+        		  if(scope.nodeId == scope.cityObject[i].parentId){
+        			  cityCount++;
+        			  break;
+        		  }
+        	 	}
+        	  if(cityCount)
+        		  $modal.open({
+        			  templateUrl: 'stateAlert.html',
+        			  controller: stateAlertController,
+        			  resolve:{}
+        		  });
+        	  else
+        		  $modal.open({
+        			  templateUrl: 'deleteState.html',
+        			  controller: deleteStateController,
+        			  resolve:{}
+        		  });
           };
           scope.addCity = function(){
         	  $modal.open({
@@ -150,6 +159,13 @@
               };
           };
           
+          var countryAlertController = function ($scope, $modalInstance) {
+        	  $scope.countryName = scope.nodeName;
+        	  $scope.approve = function () {
+        		  $modalInstance.close('delete');
+              };
+          };
+          
           var addStateController = function ($scope, $modalInstance) {
         	  $scope.nodeName=scope.nodeName;
 	        	  $scope.submit = function (newCode,newName) {
@@ -198,6 +214,12 @@
 	                  $modalInstance.dismiss('cancel');
 	              };
 	        };
+	        var stateAlertController = function ($scope, $modalInstance) {
+	        	  $scope.stateName = scope.nodeName;
+	        	  $scope.approve = function () {
+	        		  $modalInstance.close('delete');
+	              };
+	          };
 
 	        var addCityController = function ($scope, $modalInstance) {
 	        	  $scope.nodeName=scope.nodeName;
@@ -249,9 +271,7 @@
 			   };
 	         
         resourceFactory.addressResource.getAllAddresses(function(data){
-        	scope.deepCopy(data.pageItems);
-        	 //scope.addressManages = scope.deepCopy(data.pageItems);
-        	
+        	        	
         	 scope.stateObject=[];
         	 scope.cityObject=[];
         	 scope.countryObject=[];
@@ -263,7 +283,6 @@
         	  if(data.pageItems[i].cityId!=0)
         		  scope.cityObject.push({id:"C-"+data.pageItems[i].cityId,code:data.pageItems[i].cityCode,name:data.pageItems[i].cityName,parentId:"B-"+data.pageItems[i].stateId,children:[]});
           }
-          
           
           scope.rootArray=[];
          scope.stateObject=_.uniq(scope.stateObject,function(item,key,id){
@@ -325,7 +344,7 @@
         
      }
   });
-  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$location','PaginatorService','$modal','$routeParams','$route', mifosX.controllers.AddressTreeviewController]).run(function($log) {
+  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$modal','$route', mifosX.controllers.AddressTreeviewController]).run(function($log) {
     $log.info("AddressTreeviewController initialized");
   });
 }(mifosX.controllers || {}));

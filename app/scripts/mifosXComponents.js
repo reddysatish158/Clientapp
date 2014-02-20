@@ -228,6 +228,7 @@ define(['underscore', 'mifosX'], function() {
       'system/SmartSearchController',
       'organization/AddressManageController',
       'organization/AddressTreeviewController',
+      'client/PayInvoiceController',
 
     ],
     filters: [
@@ -246,7 +247,7 @@ define(['underscore', 'mifosX'], function() {
       'TreeviewDirective',
       'CkEditorDirective',
       'FormSubmitValidateDirective',
-      'FormValidateDirective',
+      'FormValidationsDirective',
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
