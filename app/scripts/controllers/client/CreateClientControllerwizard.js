@@ -349,7 +349,7 @@
 	        		 
 	        		  for (var i in data.subscriptiondata) {
 	                 	
-	                 	if(data.subscriptiondata[i].Contractdata == data.contractPeriod){
+	                 	if(data.subscriptiondata[i].id == data.contractPeriod){
 	                 		 scope.formData4.contractPeriod=data.subscriptiondata[i].id; 
 	                 	}
 	                   

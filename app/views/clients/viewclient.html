@@ -216,21 +216,23 @@
                               <th>Order NO</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
-                            <th>Start Date</th>
+                            <th>Activation Date</th>
+                            <th>Start/Renwal Date</th>
                             <th>End Date</th>
                             <th>Price</th>
                             <th>Status</th>
                         </tr>
-                        <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
+                          <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.activeDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
-                            <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
+                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
                         </tr>
-                        <tr><td colspan="7">&nbsp;</td></tr>
+                        <tr><td colspan="8">&nbsp;</td></tr>
                        
                     </table>
                 </div>
@@ -589,56 +591,31 @@
 							</tr>
 						</thead>
 						<tbody>
-							 <tr class="pointer-main" ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'">
+							 <tr class="pointer-main" ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText">
               					
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.userName}}
               					</td>
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.transactionId}}
               					</td>
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.transDate | DateFormat}}
               					</td>
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                 					{{financialtransaction.transactionType}}
               					</td>
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                 					{{financialtransaction.transactionCategory}}
               					</td>
-              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+              					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.creditAmount}}
               					</td>
-               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,client.id)">
+               					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.amount}}
               					</td>
            					</tr>
-           					<tr ng-repeat="financialtransaction in financialtransactions.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='PAYMENT' || financialtransaction.transactionType =='ADJUSTMENT' || financialtransaction.transactionType =='PAYMENT CANCELED'"> 
-               					<td>
-                  					<any>{{financialtransaction.userName}}</any>
-              					</td>
-               					<td>
-                  					<any>{{financialtransaction.transactionId}}</any>
-              					</td>
-              					<td>
-                  					<any>{{financialtransaction.transDate | DateFormat}}</any>
-              					</td>
-              					<td>
-                  					<any>{{financialtransaction.transactionType}}</any>
-              					</td>
-              					<td>
-                  					<any>{{financialtransaction.transactionCategory}}</any>
-              					</td>
-              					<td>
-                  					<any>{{financialtransaction.creditAmount}}</any>
-              					</td>
-              					<td>
-                  					<any>{{financialtransaction.amount}}</any>
-              					</td>
-              					<td>
-                					<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
-              					</td>
-            				</tr>
+           					
 						</tbody>
 					</table>
 					<ul class="pager">
