@@ -69,6 +69,14 @@
 			<tr>
 				<td>
 					<table>
+					<tr>
+			 			 <td>
+			 			 <div class="control-group">
+			  				<input  id = "" type="radio" name ="selectType"  ng-click = "selectedAccount()"/>Account&nbsp;&nbsp;
+						  	<input  id = "" type="radio" name ="selectType"  ng-click = "selectedInvoice()"/>Invoice
+						  	</div>
+			 			 </td>
+					</tr>
 						<tr>
 							<td>
 								<div class="control-group">
@@ -98,7 +106,7 @@
 								<div class="control-group">
            					 	<label class="control-label" for="amountPaid">{{ 'label.amount' | translate }}</label>
             					<div class="controls">
-             					 <input type="text" id="amountPaid" ng-model="formData.amountPaid" readonly/>
+             					 <input type="text" id="amountPaid" ng-model="formData.amountPaid"/>
            						</div>
          						</div>
 							</td>
@@ -177,8 +185,12 @@
 			</tr>
 			
 			</table>
+			<div class="offset3" ng-show = "selectAccount">
+            <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
+          <button id="submit" type="submit" class="btn btn-primary" ng-click = "submitAccount()">{{'button.save'| translate}}</button>
+          </div>
 			<br>
-			<div class="control-group">
+			<div class="control-group" ng-show = "selectInvoice">
           		<label class="control-label">Show Invoice Details</label>
          		 <div class="controls">
             		<a class="btn btn-primary" ng-click="showInvoiceDetails=!showInvoiceDetails">
@@ -210,16 +222,21 @@
                  <td>{{invoiceData.amount}}</td>
                 <td>{{invoiceData.dueAmount}}</td>
                 <td>
-             		<span ng-show = "(invoiceData.dueAmount == 0) && (value == invoiceData.id)" style = "color : green;">Paid</span>
+
+             		<span style = "color : green;" ng-show = "paidRow = (invoiceData.dueAmount == 0) && (value == invoiceData.id)">Paid</span>
              		<input ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
-           		</td> 
-                 
-                <td><button ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submit()">Pay</button></td>
+           		</td>
+                 <td>
+                    <button ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submitInvoice()">Pay</button>
+           		</td >
+
             </tr>
             
         </tbody>
     </table>
  </div> 
+ 
+ 	
 			
         </fieldset>
       </form>
