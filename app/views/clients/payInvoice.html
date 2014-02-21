@@ -197,8 +197,8 @@
                 <th>Invoice Date</th>
                 <th>Invoice Amount</th>
                 <th>Due Amount</th>
-                <th >Amount</th>
-                <th ></th>
+                <th>Amount</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -209,10 +209,13 @@
                 <td>{{invoiceData.billDate | DateFormat}}</td>
                  <td>{{invoiceData.amount}}</td>
                 <td>{{invoiceData.dueAmount}}</td>
-                <td>
-             		<input ng-show = "value == invoiceData.id" class="input-small" type="text" ng-model ="amount" ng-change="amountField(amount)">
-           		</td>
-                <td><button ng-show = "value == invoiceData.id" class="btn btn-primary"  ng-click="submit()">Pay</button></td>
+                <td ng-show = "(invoiceData.dueAmount == 0) && (value == invoiceData.id)">
+             		<span style = "color : green;">Paid</span>
+           		</td> 
+                 <td ng-show = "invoiceData.dueAmount != 0">
+             		<input ng-show = "value == invoiceData.id" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
+           		</td >
+                <td ng-show = "invoiceData.dueAmount != 0"><button ng-show = "value == invoiceData.id" class="btn btn-primary"  ng-click="submit()">Pay</button></td>
             </tr>
             
         </tbody>
@@ -221,4 +224,15 @@
 			
         </fieldset>
       </form>
+      <script type="text/ng-template" id="alert.html">
+					<div class="modal-header silver">
+                        <h3 class="bolder">Warning</h3>
+                    </div>
+                    <div class="modal-body" modal-middle>
+                       <i class="icon-warning-sign error"></i>Amount cann't be greater than <span style='color:blue;font-size:15px;'>"Due Amount"</span>.
+                    </div>
+                    <div class="modal-footer">
+						<button class="btn btn-primary" ng-click="approve()">ok</button>
+                    </div>
+      </script>
 </div>
