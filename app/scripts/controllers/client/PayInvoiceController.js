@@ -21,6 +21,8 @@
          scope.maxDate= scope.start.date;
          scope.invoiceDatas = [];
          scope.showInvoiceDetails=false;
+         scope.selectAccount = false;
+         scope.selectInvoice = false;
         resourceFactory.paymentsTemplateResource.getPayments(function(data){
         	scope.payments = data;
             scope.data = data.data;
@@ -37,19 +39,27 @@
         resourceFactory.payInvoiceTemplateResource.getPayInvoices({invoiceId : routeParams.id},function(data){
         		scope.invoiceDatas = data;
         	});
-        
+        scope.selectedAccount = function(){
+        	$("#amountPaid").removeAttr("readonly");
+        	scope.selectAccount = true; 
+        	scope.selectInvoice = false;  
+        };
+        scope.selectedInvoice = function(){
+        	$("#amountPaid").attr("readonly","readonly");
+        	scope.selectInvoice = true; 
+        	scope.selectAccount = false; 
+        };
         scope.amountField = function(amount,dueAmount){
         	scope.formData.amountPaid = amount;
-        	if(amount > dueAmount){
+        	if(amount > dueAmount)
         		$modal.open({
        			 templateUrl: 'alert.html',
        			 controller: alertController,
        			 resolve:{}
        		 });
-        	}
+        	
         };
         var alertController = function ($scope, $modalInstance) {
-        	  $scope.countryName = scope.nodeName;
         	  $scope.approve = function () {
         		  $modalInstance.close('delete');
               };
@@ -58,11 +68,23 @@
         	delete this.formData.amount;
         	delete this.formData.amountPaid;
         	scope.value = id;
-        	scope.selectedValue = true;
         	scope.invoiceId = id;
         };
         
-        scope.submit = function() {
+        scope.submitAccount = function() {
+
+            this.formData.locale = "en";
+            this.formData.dateFormat = "dd MMMM yyyy";
+        	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+            this.formData.paymentDate= paymentDate;
+            var res1 = validator.validateZipCode(scope.formData.receiptNo);
+            this.formData.invoiceId =	 scope.invoiceId ; 
+            resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
+          	  route.reload();
+            });
+         };
+            
+        scope.submitInvoice = function() {
 
           this.formData.locale = "en";
           this.formData.dateFormat = "dd MMMM yyyy";
