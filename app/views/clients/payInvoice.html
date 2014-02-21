@@ -209,13 +209,12 @@
                 <td>{{invoiceData.billDate | DateFormat}}</td>
                  <td>{{invoiceData.amount}}</td>
                 <td>{{invoiceData.dueAmount}}</td>
-                <td ng-show = "(invoiceData.dueAmount == 0) && (value == invoiceData.id)">
-             		<span style = "color : green;">Paid</span>
+                <td>
+             		<span ng-show = "(invoiceData.dueAmount == 0) && (value == invoiceData.id)" style = "color : green;">Paid</span>
+             		<input ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
            		</td> 
-                 <td ng-show = "invoiceData.dueAmount != 0">
-             		<input ng-show = "value == invoiceData.id" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
-           		</td >
-                <td ng-show = "invoiceData.dueAmount != 0"><button ng-show = "value == invoiceData.id" class="btn btn-primary"  ng-click="submit()">Pay</button></td>
+                 
+                <td><button ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submit()">Pay</button></td>
             </tr>
             
         </tbody>
