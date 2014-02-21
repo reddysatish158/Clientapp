@@ -66,8 +66,11 @@
          scope.routeTostatement = function(statementid){
              location.path('/viewstatement/'+statementid);
         };
-        scope.routeTofinancial = function(transactionId,clientid){
-            location.path('/viewfinancialtran/'+transactionId+'/'+clientid);
+        scope.routeTofinancial = function(transactionId,transtype,clientid){
+        	
+        	if(transtype == 'INVOICE'){
+               location.path('/viewfinancialtran/'+transactionId+'/'+clientid);
+        	}
         }; 
         scope.routeToItemSale = function(onetimesaleid,clientid){
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);

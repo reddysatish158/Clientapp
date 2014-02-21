@@ -15,10 +15,10 @@
         <table class="table">
             <thead>
               <tr class="graybg">
-                <th>{{'table.itemdetails.id' | translate}}</th>
                 <th>{{'table.itemdetails.officeName' | translate}}</th>
                 <th>{{'table.itemdetails.itemDescription' | translate}}</th>
                 <th>{{'table.itemdetails.serialNumber' | translate}}</th>
+                <th>{{'table.itemdetails.provserialNumber' | translate}}</th>
                 <th>{{'table.itemdetails.grnId' | translate}}</th>
                 <th>{{'table.itemdetails.supplier' | translate}}</th>
                 <th>{{'table.itemdetails.quality' | translate}}</th>
@@ -29,10 +29,10 @@
             </thead>
             <tbody>
               <tr class="pointer-main" ng-repeat="itemdetail in itemdetails.currentPageItems  | filter:filterText">
-                <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.id}}</td><!-- <a href="#/viewitemdetails/{{itemdetails.id}}"></a> -->
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.officeName}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.itemDescription}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.serialNumber}}</td>
+                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.provisioningSerialNumber}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" style="text-align: center">{{itemdetail.grnId}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.supplier}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.quality}}</td>
