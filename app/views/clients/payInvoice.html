@@ -70,10 +70,12 @@
 				<td>
 					<table>
 					<tr>
-			 			 <td>
+					<td>
 			 			 <div class="control-group">
-			  				<input  id = "" type="radio" name ="selectType"  ng-click = "selectedAccount()"/>Account&nbsp;&nbsp;
-						  	<input  id = "" type="radio" name ="selectType"  ng-click = "selectedInvoice()"/>Invoice
+			 			  	<div class="controls">
+			  				<input  id = "" type="radio" name ="selectType"  ng-click = "selectedAccount()"/>&nbsp;&nbsp;Account&nbsp;&nbsp;
+						  	<input  id = "" type="radio" name ="selectType"  ng-click = "selectedInvoice()"/>&nbsp;&nbsp;Invoice
+						  	</div>
 						  	</div>
 			 			 </td>
 					</tr>
@@ -200,7 +202,7 @@
           		</div>
         	</div>
 			<br>
-<div collapse = "!showInvoiceDetails">
+<div collapse = "!showInvoiceDetails" ng-show = "selectInvoice">
 			<table class="table" >
         <thead>
             <tr class="graybg">

@@ -41,11 +41,13 @@
         	});
         scope.selectedAccount = function(){
         	$("#amountPaid").removeAttr("readonly");
+        	delete this.formData.amountPaid;
         	scope.selectAccount = true; 
         	scope.selectInvoice = false;  
         };
         scope.selectedInvoice = function(){
         	$("#amountPaid").attr("readonly","readonly");
+        	delete this.formData.amount;
         	scope.selectInvoice = true; 
         	scope.selectAccount = false; 
         };
