@@ -130,6 +130,12 @@
                                              href:"#/payinvoice",
                                              icon :"icon-usd"
                                           },
+                                          {
+
+                                              name:"button.distribution",
+                                              href:"#/creditDistribution",
+                                              icon :"icon-usd"
+                                           },
                                           
                                          {
                                              name:"button.adjustments",

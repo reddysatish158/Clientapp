@@ -771,6 +771,9 @@
       }) 
       .when('/payinvoice/:id', {
         templateUrl : 'views/clients/payInvoice.html'
+      })
+      .when('/creditDistribution/:id', {
+        templateUrl : 'views/clients/creditDistribution.html'
       });
 
     $locationProvider.html5Mode(false);

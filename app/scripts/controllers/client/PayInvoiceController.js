@@ -41,22 +41,29 @@
         	});
         scope.selectedAccount = function(){
         	$("#amountPaid").removeAttr("readonly");
+        	delete this.formData.amountPaid;
+        	scope.showInvoiceDetails == false ? scope.showInvoiceDetails = false : scope.showInvoiceDetails = false;
         	scope.selectAccount = true; 
         	scope.selectInvoice = false;  
         };
         scope.selectedInvoice = function(){
         	$("#amountPaid").attr("readonly","readonly");
+        	delete this.formData.amount;
         	scope.selectInvoice = true; 
         	scope.selectAccount = false; 
         };
         scope.amountField = function(amount,dueAmount){
         	scope.formData.amountPaid = amount;
-        	if(amount > dueAmount)
+        	if(amount > dueAmount){
         		$modal.open({
        			 templateUrl: 'alert.html',
        			 controller: alertController,
        			 resolve:{}
        		 });
+        		 scope.formData.amountPaid = dueAmount;
+         		scope.formData.amount=dueAmount;
+        }
+        	
         	
         };
         var alertController = function ($scope, $modalInstance) {
