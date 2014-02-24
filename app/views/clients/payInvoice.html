@@ -224,12 +224,14 @@
                  <td>{{invoiceData.amount}}</td>
                 <td>{{invoiceData.dueAmount}}</td>
                 <td>
+
              		<span style = "color : green;" ng-show = "paidRow = (invoiceData.dueAmount == 0) && (value == invoiceData.id)">Paid</span>
              		<input ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
            		</td>
                  <td>
                     <button ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submitInvoice()">Pay</button>
            		</td >
+
             </tr>
             
         </tbody>
