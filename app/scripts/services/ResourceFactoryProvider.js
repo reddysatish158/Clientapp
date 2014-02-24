@@ -782,6 +782,13 @@
         	  getPayInvoices: { method: 'GET', params: {},isArray: true }
          	  
           }),
+          creditDistributionTemplateResource: defineResource(apiVer + "/creditdistributions/template/:clientId",{clientId:'@clientId'},  {
+        	  get: { method: 'GET', params: {}}
+          }),
+          creditDistributionResource: defineResource(apiVer + "/creditdistributions/:clientId",{clientId:'@clientId'}, {
+        	  get: { method: 'POST', params: {}}
+         	  
+          }),
         };
       }];
     }

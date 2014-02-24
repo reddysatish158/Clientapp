@@ -42,6 +42,9 @@
         scope.selectedAccount = function(){
         	$("#amountPaid").removeAttr("readonly");
         	delete this.formData.amountPaid;
+
+        	scope.showInvoiceDetails == false ? scope.showInvoiceDetails = false : scope.showInvoiceDetails = false;
+
         	scope.selectAccount = true; 
         	scope.selectInvoice = false;  
         };
@@ -53,12 +56,16 @@
         };
         scope.amountField = function(amount,dueAmount){
         	scope.formData.amountPaid = amount;
-        	if(amount > dueAmount)
+        	if(amount > dueAmount){
         		$modal.open({
        			 templateUrl: 'alert.html',
        			 controller: alertController,
        			 resolve:{}
        		 });
+        		 scope.formData.amountPaid = dueAmount;
+         		scope.formData.amount=dueAmount;
+        }
+        	
         	
         };
         var alertController = function ($scope, $modalInstance) {
