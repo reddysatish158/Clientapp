@@ -105,7 +105,8 @@
           
           
       var applyPromoController=function($scope,$modalInstance){
-    	  
+    	  $scope.start = {};
+    	  $scope.start.date = new Date();
     	  resourceFactory.promotionResource.get(function(data) {
       		
       		 $scope.promoDatas=data; 

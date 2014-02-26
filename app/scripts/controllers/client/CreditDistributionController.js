@@ -19,11 +19,13 @@
         scope.showInvoiceDetails = false;
         scope.invoiceDatas = [];
         scope.paymentDatas = [];
-        var invoiceIdArray = [];
+        scope.invoiceIdArray = [];
         var InvoiceAmount = 0;
+       
         var paymentAmount;
         var paymentId;
-        scope.creditDistributions = [];
+        var paymentIndex=0;
+        scope.creditdistributions = [];
         
        resourceFactory.creditDistributionTemplateResource.get({clientId : routeParams.id},function(data){
     		scope.invoiceDatas = data.invoiceDatas;
@@ -36,15 +38,22 @@
         	scope.showInvoiceDetails = false;
         };
         
-        scope.seletedPayment = function(id,amount){
+        scope.seletedPayment = function(id,amount,availableAmount,index){
         	paymentId = id;
         	paymentAmount = amount;
+        	paymentIndex=index;
+        	scope.showInvoiceDetails=true; 
+        	
         };
         
-        scope.selectedInvoices = function(invoiceId,amount,active){
+        scope.selectedInvoices = function(invoiceId,amount,active,index){
+        	
         	if(active == true){
-        		InvoiceAmount += amount;
-        		if(InvoiceAmount > paymentAmount){
+        		/*InvoiceAmount += amount;
+        		scope.paymentDatas[paymentIndex].availAmount -=InvoiceAmount;*/
+        		//InvoiceAmount += amount;
+        		if(scope.paymentDatas[paymentIndex].availAmount == 0){
+        			
         			scope.active = "NO";
         			console.log("invoice amount high");
         			$modal.open({
@@ -52,13 +61,54 @@
               			 controller: alertController,
               			 resolve:{}
               		 });
-        		}
+        		}else if(amount >= paymentAmount){
+        			
+        			InvoiceAmount += paymentAmount;
+        			
+        			scope.paymentDatas[paymentIndex].availAmount =0;//InvoiceAmount;
+        		//	scope.avialableAmount =0;
+        			scope.creditdistributions.push({
+        				invoiceId : invoiceId,
+        				amount : paymentAmount,
+        				paymentId : paymentId,
+						clientId  : parseInt(routeParams.id),
+						locale    : "en"
+						
+        				});
+        			/*
+        			
+        			scope.active = "NO";
+        			console.log("invoice amount high");
+        			$modal.open({
+              			 templateUrl: 'alert.html',
+              			 controller: alertController,
+              			 resolve:{}
+              		 });
+        		*/}
         		else{
-        			invoiceIdArray.push({invoiceId : invoiceId,amount : amount});
+        			alert('avial'+scope.paymentDatas[paymentIndex].availAmount);
+        			InvoiceAmount += amount;
+        			alert('invoic'+InvoiceAmount);
+            		scope.paymentDatas[paymentIndex].availAmount -=amount;
+        			
+        			scope.creditdistributions.push({
+        				invoiceId : invoiceId,
+        				amount : amount,
+        				paymentId : paymentId,
+						clientId  : parseInt(routeParams.id),
+						locale    : "en"
+						
+        				});
         		}
         	}
         	else{
+        		
+        		scope.paymentDatas[paymentIndex].availAmount +=amount;
+        		scope.creditdistributions.splice(index,1);
+        		
+        		//scope.creditdistributions = _.without(scope.creditdistributions,invoiceId);
         		InvoiceAmount -= amount;
+        		
         	}
         };
         var alertController = function ($scope, $modalInstance) {
@@ -67,22 +117,26 @@
             };
         };
         scope.submit = function(){
-        	console.log(invoiceIdArray);
-        	for(var i in invoiceIdArray){
-        		scope.creditDistributions.push ({
-        											invoiceId : invoiceIdArray[i].invoiceId,
+        	console.log(scope.invoiceIdArray);
+        	/*for(var i in scope.invoiceIdArray){
+        		scope.creditdistributions.push ({
+        											invoiceId : scope.invoiceIdArray[i].invoiceId,
         											paymentId : paymentId,
         											clientId  : parseInt(routeParams.id),
-        											amount    : invoiceIdArray[i].amount,
+        											amount    : scope.invoiceIdArray[i].amount,
         											locale    : "en"
         		});
-        	}
-        	scope.avialableAmount -= InvoiceAmount;
+        	}*/
+        	
+        //	scope.formData.creditdistributions=scope.creditdistributions;
+        	scope.avialableAmount = scope.paymentDatas[paymentIndex].availAmount; 
         	scope.formData.avialableAmount = scope.avialableAmount;
         	scope.formData.paymentId = paymentId;
-        	scope.formData.creditDistributions = scope.creditDistributions;
+        	scope.formData.locale= "en",
+        	scope.formData.creditdistributions = scope.creditdistributions;
+        	scope.avialableAmount=null;
         	resourceFactory.creditDistributionResource.get({clientId : routeParams.id},scope.formData,function(data){
-        		location.path('/viewclient/routeParams.id');
+        		location.path('/viewclient/'+routeParams.id);
         	});
         };
 	  }
