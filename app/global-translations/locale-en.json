@@ -1701,6 +1701,7 @@
    "label.form.allocationdate":"Allocation Date",
    "lable.serialnumber":"Serial Number",
    "lable.provisioningserialnumber":"Provisioning SerialNumber",
+   "link.view.ownhardware":"View Ownhardware",
   "#FinancialTransactions":"....",
    "table.heading.chargeid":"Charge Id",
    "table.heading.chargetype":"Charge Type",

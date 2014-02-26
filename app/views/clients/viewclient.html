@@ -413,7 +413,7 @@
 		<table class="table">
 			<thead>
 				<tr class="graybg">
-				 <th>{{'table.heading.id' | translate}}</th>
+				 	<th>{{'table.heading.id' | translate}}</th>
 					<th>{{'table.heading.serialnumber' | translate}}</th>
 					<th>{{'table.heading.provisioningserialnumber' | translate}}</th>
 					<th>{{'table.heading.allocationdate' | translate}}</th>
@@ -423,10 +423,10 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="ownhardware in ownhardwares  | filter:filterText">
-					<td>{{ownhardware.id}}</td>
-					<td>{{ownhardware.serialNumber}}</td>  
-					<td>{{ownhardware.provisioningSerialNumber}}</td>
-					<td>{{ownhardware.allocationDate | DateFormat}}</td>
+					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.id}}</td>
+					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.serialNumber}}</td>  
+					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.provisioningSerialNumber}}</td>
+					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.allocationDate | DateFormat}}</td>
 					<td>{{ownhardware.status}}</td> 
 					<td>{{ownhardware.itemType}}</td> 
 				</tr>
