@@ -630,6 +630,12 @@
       .when('/addownedhardware/:id', {
         templateUrl: 'views/clients/addownedhardware.html'  
       })
+      .when('/viewownhardware/:id', {
+        templateUrl: 'views/clients/viewownhardware.html'
+      })
+      .when('/editownhardware/:id', {
+        templateUrl: 'views/clients/editownhardware.html'
+      })
        .when('/addonetimesale/:id', {
         templateUrl: 'views/clients/addonetimesale.html'
       })

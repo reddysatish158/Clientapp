@@ -570,6 +570,10 @@
                 HardwareResource: defineResource(apiVer + "/ownedhardware/:clientId", {clientId:'@clientId'}, {
                  	  getAllOwnHardware: {method: 'GET', params: {}, isArray: true}
                  }),
+                ownHardwareResource: defineResource(apiVer + "/ownedhardware/own/:id", {id:'@id'}, {
+                	 getSingleOwnHardware: {method: 'GET', params: {}},
+                     update: {method: 'PUT', params: {id:'@id'}}
+                }),
                
                 financialResource: defineResource(apiVer + "/financialTransactions/:transactionId/invoice", {transactionId:'@transactionId'}, {
              	  getAllDetails: {method: 'GET', params: {}}

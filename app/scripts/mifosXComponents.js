@@ -183,6 +183,8 @@ define(['underscore', 'mifosX'], function() {
       'inventory/CreateMrnController',
       'inventory/CreateSupplierController',
       'client/AddOwnHardwareController',
+      'client/ViewOwnHardwareController',
+      'client/EditOwnHardwareController',
       'inventory/CreateMrnController',
       'inventory/ViewMrnController',
       'inventory/MoveMrnController',
