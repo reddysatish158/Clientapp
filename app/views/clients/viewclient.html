@@ -422,7 +422,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="ownhardware in ownhardwares  | filter:filterText">
+				<tr class="pointer-main" ng-repeat="ownhardware in ownhardwares  | filter:filterText">
 					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.id}}</td>
 					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.serialNumber}}</td>  
 					<td class="pointer" data-ng-click="routeToOwnHardware(ownhardware.id)">{{ownhardware.provisioningSerialNumber}}</td>

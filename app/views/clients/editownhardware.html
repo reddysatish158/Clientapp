@@ -50,7 +50,7 @@
 		<ul class="breadcrumb">
 			<li><a href="#/clients">{{'link.clients' | translate}}</a> <span class="divider">/</span></li>
 			<li><a href="#/viewclient/{{clientId}}">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
-			<li class="active">{{'link.add.ownhardware' | translate}}</li>
+			<li class="active">{{'link.edit.ownhardware' | translate}}</li>
 		</ul>
 	</div>
      
@@ -62,7 +62,7 @@
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
         <fieldset>
-          <legend>{{'label.ownedhardware' | translate}}</legend>
+          <legend>{{'link.edit.ownhardware' | translate}}</legend>
           <table>
            <tr>
               <td>
@@ -78,7 +78,7 @@
            <tr>
               <td>
                 <div class="control-group">
-                  <label class="control-label">{{formData.itemType}}{{ 'label.itemtype' | translate }}&nbsp;<span class="required">*</span></label>
+                  <label class="control-label">{{ 'label.itemtype' | translate }}&nbsp;<span class="required">*</span></label>
                   <div class="controls">
                     <select ng-model="formData.itemType"  ng-options="itemtypes.id as itemtypes.itemDescription for itemtypes in itemtypes" value="{{itemtypes.id}}"></select>
                   </div>
