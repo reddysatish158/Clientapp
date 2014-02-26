@@ -36,13 +36,17 @@
         scope.showPayments = function(){
         	scope.showPaymentsDetails = ! scope.showPaymentsDetails;
         	scope.showInvoiceDetails = false;
+        	
         };
         
         scope.seletedPayment = function(id,amount,availableAmount,index){
+        	$('.unCheck').prop('checked',false);
+        	scope.creditdistributions = [];
+        	scope.showInvoices = true;
         	paymentId = id;
         	paymentAmount = amount;
         	paymentIndex=index;
-        	scope.showInvoiceDetails=true; 
+        	scope.showInvoiceDetails=false; 
         	
         };
         
@@ -53,7 +57,7 @@
         		scope.paymentDatas[paymentIndex].availAmount -=InvoiceAmount;*/
         		//InvoiceAmount += amount;
         		if(scope.paymentDatas[paymentIndex].availAmount == 0){
-        			
+        			$('#'+invoiceId).prop('checked',false);
         			scope.active = "NO";
         			console.log("invoice amount high");
         			$modal.open({
@@ -75,6 +79,7 @@
 						locale    : "en"
 						
         				});
+        			
         			/*
         			
         			scope.active = "NO";
@@ -86,9 +91,8 @@
               		 });
         		*/}
         		else{
-        			alert('avial'+scope.paymentDatas[paymentIndex].availAmount);
+        		
         			InvoiceAmount += amount;
-        			alert('invoic'+InvoiceAmount);
             		scope.paymentDatas[paymentIndex].availAmount -=amount;
         			
         			scope.creditdistributions.push({
@@ -105,6 +109,11 @@
         		
         		scope.paymentDatas[paymentIndex].availAmount +=amount;
         		scope.creditdistributions.splice(index,1);
+        		
+        		
+        		scope.creditdistributions = _.filter(scope.creditdistributions, function(item) {
+                    return item.invoiceId != invoiceId;
+               });
         		
         		//scope.creditdistributions = _.without(scope.creditdistributions,invoiceId);
         		InvoiceAmount -= amount;

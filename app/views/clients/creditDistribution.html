@@ -100,7 +100,7 @@
 			
 	</div>
 	 <br>
-          <div class="control-group" ng-show = "showPaymentsDetails">
+          <div class="control-group" ng-show = "showInvoices && showPaymentsDetails">
           		<label class="control-label">Show Invoice Details</label>
          		 <div class="controls">
             		<a class="btn btn-primary" ng-click="showInvoiceDetails=!showInvoiceDetails">
@@ -109,7 +109,7 @@
             		</a>
           		</div>
         	</div>
-       <div collapse = "!showInvoiceDetails" ng-show = "showPaymentsDetails"> 
+       <div collapse = "!showInvoiceDetails"> 
 		 <table class="table">
 			  <thead>
             	<tr class="graybg">
@@ -124,7 +124,7 @@
         	<tbody>
             	 <tr ng-repeat="invoiceData in invoiceDatas" >
            
-            		<td> <input type="checkbox" ng-model="active" ng-click="selectedInvoices(invoiceData.id,invoiceData.dueAmount,active,$index)"></td>
+            		<td> <input id="{{invoiceData.id}}" class="unCheck" type="checkbox" ng-model="active" ng-click="selectedInvoices(invoiceData.id,invoiceData.dueAmount,active,$index)"></td>
             		<td>{{invoiceData.id}}</td>
                 	<td>{{invoiceData.billDate | DateFormat}}</td>
                 	<td>{{invoiceData.amount}}</td>
