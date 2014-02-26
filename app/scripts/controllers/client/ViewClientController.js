@@ -60,6 +60,11 @@
          scope.routeTogeneral = function(orderid,clientid){
              location.path('/vieworder/'+orderid+'/'+clientid);
            };
+           
+         scope.routeToOwnHardware = function(id){
+               location.path('/viewownhardware/'+ id);
+             };
+           
          scope.routeToticket = function(clientId,ticketid){
                location.path('/viewTicket/'+clientId+'/'+ticketid);
          };
