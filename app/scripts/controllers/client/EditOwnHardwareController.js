@@ -30,6 +30,7 @@
             scope.first.date=dateFilter(new Date(scope.formData.allocationDate),'dd MMMM yyyy');
             scope.itemtypes=data.itemDatas;
             scope.clientId =scope.formData.clientId;
+            scope.formData.itemType=parseInt(data.ownedHardwareDatas[0].itemType);
         });
                  
         scope.reset123 = function(){
@@ -37,17 +38,14 @@
         };
         
         scope.submit = function() {
-            
+        	
             this.formData.locale = 'en';
             var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.allocationDate = reqDate;
             delete this.formData.id;
             delete this.formData.clientId;
-            //this.formData.status = "ACTIVE";
-//            delete this.formData.preferredCallingTime;
-            	
-            resourceFactory.HardwareResource.update({'id':routeParams.id},this.formData,function(data){
+            resourceFactory.ownHardwareResource.update({'id':routeParams.id},this.formData,function(data){
             	// alert(routeParams.id);
             	location.path('/viewownhardware/' +routeParams.id);
 	           

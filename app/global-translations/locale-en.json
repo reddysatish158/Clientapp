@@ -1691,6 +1691,7 @@
     
   "#Ownhardware":"....",
    "link.add.ownhardware":"Add Owned Hardware",
+   "link.edit.ownhardware":"Edit Owned Hardware",
    "table.heading.serialnumber":"Serial Number",
    "table.heading.provisioningserialnumber":"Provisioning SerialNumber",
    "table.heading.allocationdate":"Allocation Date",
