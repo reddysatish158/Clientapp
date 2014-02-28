@@ -19,6 +19,7 @@
         scope.start={};
          scope.start.date = new Date();
          scope.maxDate= scope.start.date;
+         
          scope.invoiceDatas = [];
          scope.showInvoiceDetails=false;
          scope.selectAccount = false;
@@ -44,11 +45,11 @@
         	delete this.formData.amountPaid;
 
         	scope.showInvoiceDetails == false ? scope.showInvoiceDetails = false : scope.showInvoiceDetails = false;
-
         	scope.selectAccount = true; 
         	scope.selectInvoice = false;  
         };
         scope.selectedInvoice = function(){
+        	delete this.formData.amountPaid;
         	$("#amountPaid").attr("readonly","readonly");
         	delete this.formData.amount;
         	scope.selectInvoice = true; 
@@ -84,10 +85,11 @@
 
             this.formData.locale = "en";
             this.formData.dateFormat = "dd MMMM yyyy";
-        	  var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+        	var paymentDate = dateFilter(scope.start.date,'dd MMMM yyyy');
             this.formData.paymentDate= paymentDate;
+            delete this.formData.amount;
+            delete this.formData.invoiceId;
             var res1 = validator.validateZipCode(scope.formData.receiptNo);
-            this.formData.invoiceId =	 scope.invoiceId ; 
             resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
           	  route.reload();
             });
@@ -105,7 +107,7 @@
           resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
         	  route.reload();
           });
-          };
+        };
     }
   });
   mifosX.ng.application.controller('PayInvoiceController', ['$scope','webStorage', 'ResourceFactory', '$routeParams', '$location','dateFilter','HTValidationService','$route','$modal', mifosX.controllers.PayInvoiceController]).run(function($log) {

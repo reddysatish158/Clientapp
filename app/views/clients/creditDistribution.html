@@ -56,11 +56,11 @@
 	</div>
 	 <form name="creditDistributionForm" class="form-horizontal well" ng-submit = "submit()">
 	  
-	     <!-- <div class="error" ng-show="errorStatus || errorDetails">
+	    <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	    </div>  -->
+	    </div>  
 	    
         <fieldset>
           <legend>Credit Distribution</legend>
@@ -136,7 +136,7 @@
 		<br>
 		<div class="offset3">
             <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
-          <button id="submit" type="submit" ng-disabled = "distribute" class="btn btn-primary">Distribute</button>
+          <button id="submit" type="submit" class="btn btn-primary">Distribute</button>
           </div>	
 	</div>
 		</fieldset>
