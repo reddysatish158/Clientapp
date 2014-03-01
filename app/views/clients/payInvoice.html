@@ -54,7 +54,7 @@
 			<li class="active">Pay Invoice</li>
 		</ul>
 	</div>
-      <form name="payInvoiceForm" class="form-horizontal well" >
+      <form name="payInvoiceForm" class="form-horizontal well" ng-submit="submit()">
 	  
 	     <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
@@ -74,8 +74,8 @@
 			 			 <div class="control-group">
 			 			  	<div class="controls">
 
-			  				<input  id = "" type="radio" name ="selectType"  ng-click = "selectedAccount()"/>&nbsp;&nbsp;Account&nbsp;&nbsp;
-						  	<input  id = "" type="radio" name ="selectType"  ng-click = "selectedInvoice()"/>&nbsp;&nbsp;Invoice
+			  				<input  id="accountId" type="radio" name="selectType"  ng-click="selectedAccount()"/>&nbsp;&nbsp;Account&nbsp;&nbsp;
+						  	<input  id="invoiceId" type="radio" name="selectType"  ng-click="selectedInvoice()"/>&nbsp;&nbsp;Invoice
 
 						  	</div>
 						  	</div>
@@ -122,11 +122,6 @@
            					 	<label class="control-label" for="receiptNo">{{ 'label.receiptno' | translate }}<span class="required">*</span></label>
             					<div class="controls">
              					 <input type="text" id="receiptNo" name="receiptno" ng-model="formData.receiptNo">
-             					  <!-- <span  ng-show="paymentForm.receiptno.$invalid">
-                                  <small class="error" ng-show="paymentForm.receiptno.$error.req">
-                                    Required Field
-                                  </small>
-                                 </span> -->
            						</div>
          						</div>
 							</td>
@@ -182,17 +177,18 @@
          						</div>
 							</td>
 							
-				</tr>
-				</table>
-				</div>
+						</tr>
+					</table>
+				  </div>
 				</td>
-			</tr>
+			  </tr>
 			
 			</table>
-			<div class="offset3" ng-show = "selectAccount">
-            <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
-          <button id="submit" type="submit" class="btn btn-primary" ng-click = "submitAccount()">{{'button.save'| translate}}</button>
-          </div>
+			<br>
+			 <div class="offset3" ng-show = "selectAccount">
+           		 <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
+          		 <button id="submit" type="submit" class="btn btn-primary" ng-click = "submitAccount()">{{'button.save'| translate}}</button>
+          	</div>
 			<br>
 			<div class="control-group" ng-show = "selectInvoice">
           		<label class="control-label">Show Invoice Details</label>
@@ -205,7 +201,7 @@
         	</div>
 			<br>
 
-<div collapse = "(!showInvoiceDetails)" ng-show = "selectInvoice">
+<div collapse = "!showInvoiceDetails">
 
 			<table class="table" >
         <thead>
@@ -228,12 +224,11 @@
                  <td>{{invoiceData.amount}}</td>
                 <td>{{invoiceData.dueAmount}}</td>
                 <td>
-
-             		<span style = "color : green;" ng-show = "paidRow = (invoiceData.dueAmount == 0) && (value == invoiceData.id)">Paid</span>
-             		<input ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
+             		<span style="color:green;" ng-show="(invoiceData.dueAmount == 0) && (value == invoiceData.id)">Paid</span>
+             		<input ng-show="(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="input-small" type="text" ng-model ="formData.amount" ng-change="amountField(formData.amount,invoiceData.dueAmount)">
            		</td>
                  <td>
-                    <button ng-show = "(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submitInvoice()">Pay</button>
+                    <button ng-show="(value == invoiceData.id) && (invoiceData.dueAmount != 0)" class="btn btn-primary"  ng-click="submitInvoice()">Pay</button>
            		</td >
 
             </tr>

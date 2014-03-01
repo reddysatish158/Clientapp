@@ -5,6 +5,8 @@
       scope.leftnav = false;
 
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
+    	  scope.permissionsArray = data.permissions;
+    	  console.log(scope.permissionsArray);
         scope.currentSession = sessionManager.get(data);
         location.path('/home').replace();
         scope.unreadMessage=data.unReadMessages;
