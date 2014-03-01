@@ -11,7 +11,8 @@ define(['underscore', 'mifosX'], function() {
       'AuthenticationService',
       'SessionManager',
       'Paginator',
-      'HTValidationServiceProvider'
+      'HTValidationServiceProvider',
+      'PermissionService'
     ],
     controllers: [
       'main/MainController',

@@ -18,7 +18,7 @@
       scope.$on("UserAuthenticationFailureEvent", function(data) {
         scope.authenticationFailed = true;
       });
-
+     
     }
   });
   mifosX.ng.application.controller('LoginFormController', ['$scope','webStorage','ResourceFactory', 'AuthenticationService', mifosX.controllers.LoginFormController]).run(function($log) {
