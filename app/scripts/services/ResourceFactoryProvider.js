@@ -793,6 +793,10 @@
         	  get: { method: 'POST', params: {}}
          	  
           }),
+          orderExtensionResource: defineResource(apiVer + "/orders/extension/:orderId", {orderId:'@orderId'}, {
+             get: {method: 'GET', params: {}},
+             update: { method: 'PUT' }
+          }),
         };
       }];
     }

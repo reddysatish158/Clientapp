@@ -2269,7 +2269,10 @@
 "table.heading.StateName" : "State Name",
 "table.heading.cityName" : "City Name",
 "button.payInvoice" : "Pay Invoice",
-"button.distribution" : "Distribute"
+"button.distribution" : "Distribute",
+"label.extensionperiod":"Extension Period",
+"label.extensionreason":"Extension Reason",
+"label.extension":"Extension"
    
 
 }
