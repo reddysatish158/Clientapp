@@ -305,6 +305,10 @@
     	  getAllOrders: {method: 'GET', params: {}},
         }),
 
+        EventActionResource: defineResource(apiVer + "/eventactions/:clientId", {clientId:'@clientId'}, {
+      	  get: {method: 'GET', params: {}},
+          }),
+          
         getSingleOrderResource: defineResource(apiVer + "/orders/:orderId/orderprice", {orderId:'@orderId'}, {
      	  get: {method: 'GET', params: {}},
      	  update: { method: 'PUT' }

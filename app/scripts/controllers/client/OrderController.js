@@ -159,12 +159,18 @@
 	        });
        	$scope.accept = function(){
        		$scope.flagExtension=true;
-       		resourceFactory.orderExtensionResource.update({'orderId': routeParams.id},this.formData,		
-     		function(data) {},function(errData){
-     			    	$scope.flagExtension=false;
-         		});
-       		    route.reload();
-			 $modalInstance.close('delete');
+       		resourceFactory.orderExtensionResource.update({orderId: routeParams.id} ,this.formData, function(data) {  
+                
+                /*resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                          scope.orderPriceDatas= data.orderPriceData;
+                          scope.orderHistorydata=data.orderHistory;
+                          scope.orderData=data.orderData;
+                      });*/
+                route.reload();
+                      $modalInstance.close('delete');
+                  },function(errData){
+                $scope.flagApproveReconnect = false;
+                 });
        	};  
   		$scope.rejectExtension = function(){
   			$modalInstance.dismiss('cancel');

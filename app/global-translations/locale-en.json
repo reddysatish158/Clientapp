@@ -2274,7 +2274,7 @@
 "table.heading.distributionDate":"Distribution Date",
 "table.heading.paymentId":"Payment Id",
 "table.heading.invoiceId":"Invoice Id",
-"table.heading.amount":"Amount"
+"table.heading.amount":"Amount",
 
 "label.extensionperiod":"Extension Period",
 "label.extensionreason":"Extension Reason",

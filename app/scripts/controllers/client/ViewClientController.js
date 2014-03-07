@@ -204,6 +204,9 @@
                   resourceFactory.getOrderResource.getAllOrders({clientId: routeParams.id} , function(data) {
                       scope.orders = data.clientOrders;
                   });
+                  resourceFactory.EventActionResource.get({clientId: routeParams.id} , function(data) {
+                      scope.orders = data.clientOrders;
+                  });
                 });
         };
         getDetails();
