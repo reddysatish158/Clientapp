@@ -14,6 +14,7 @@
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
          webStorage.add("orderId",routeParams.id);
+         scope.hwSerialNumber=clientData.hwSerialNumber;
          scope.displayName=clientData.displayName;
          scope.statusActive=clientData.statusActive;
          scope.accountNo=clientData.accountNo;

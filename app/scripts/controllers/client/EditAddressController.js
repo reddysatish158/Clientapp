@@ -6,6 +6,7 @@
 							scope.addressTypeData=[];
 							 var clientData = webStorage.get('clientData');
 					            scope.displayName=clientData.displayName;
+					            scope.hwSerialNumber=clientData.hwSerialNumber;
 					            scope.statusActive=clientData.statusActive;
 					            scope.accountNo=clientData.accountNo;
 					            scope.officeName=clientData.officeName;

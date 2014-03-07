@@ -63,7 +63,7 @@
         		<td><small>Cell Phone {{client.phone}}</small></td>
         	</tr>
         	<tr>
-        		<td><small>Mail him {{client.email}}</small></td>
+        		<td><small>Device # {{client.hwSerialNumber}}</small></td>
         	</tr>
         </table>
         </td>
@@ -147,11 +147,7 @@
                       <div class="span5">
                               
                         <table  width="100%" >
-                             <tr>
-
-                               <td >{{'label.Device' | translate}}</td>
-                               <td>{{client.hwSerialNumber}}</td>
-                             </tr>
+                             
                             <tr>
                               <td width="35%">{{'label.Address' | translate}}</td>
                               <td width="65%"> {{client.addressNo}}<strong>,</strong>{{client.street}}</td>
@@ -1001,7 +997,40 @@
     			</ul>
 	</div>
 </tab>
-
+<tab heading="Distribution" select="getClientDistribution()">
+     <div class="pull-right">
+		         <a href="#/creditDistribution/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Distribute</a>
+	        </div>
+    <div>
+     <form ng-submit="searchTransactionHistory()">
+		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
+	 </form>
+		<table class="table">
+			<thead>
+				<tr class="graybg">
+				 	<th>{{'table.heading.id' | translate}}</th>
+					<th>{{'table.heading.distributionDate' | translate}}</th>
+					<th style="width:125px;">{{'table.heading.paymentId' | translate}}</th>
+					<th>{{'table.heading.invoiceId' | translate}}</th>
+					<th>{{'table.heading.amount' | translate}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="clientDistribution in clientDistribution.currentPageItems  | filter:filterText">
+					<td>{{clientDistribution.id}}</td>
+					<td>{{clientDistribution.distributionDate | DateFormat}}</td>
+				    <td>{{clientDistribution.paymentId}}</td>
+					<td>{{clientDistribution.invoiceId}}</td>
+					<td>{{clientDistribution.amount}}</td> 
+				</tr>
+			</tbody>
+		</table>
+		<ul class="pager">
+        			<li class="previous"><a ng-click="transactionhistory.previous()" href="" ng-disabled="!transactionhistory.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="transactionhistory.next()" href="" ng-disabled="!transactionhistory.hasNext()">Next &rarr;</a></li>
+    			</ul>
+	</div>
+</tab>
    <!-- ************************ start of InVenture code ************************ -->
     <!--      <tab class="inventureTabTitle" heading="InVenture Score" select="fetchInventureScore()">
 

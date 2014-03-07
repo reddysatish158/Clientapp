@@ -291,6 +291,11 @@
            update: { method: 'PUT' }
           
         }),
+        OrderSchedulingResource: defineResource(apiVer + "/orders/scheduling/:clientId", {clientId:'@clientId'}, {
+            get: {method: 'GET', params: {}},
+            update: { method: 'PUT' }
+           
+         }),
         changeOrderResource: defineResource(apiVer + "/orders/changePlan/:orderId", {orderId:'@orderId'}, {
             get: {method: 'GET', params: {}},
             update: { method: 'PUT' }
@@ -393,6 +398,7 @@
        transactionHistoryResource: defineResource(apiVer + "/transactionhistory/template/:clientId", {clientId:'@clientId'}, {
        	getTransactionHistory: {method: 'GET', params: {clientId:'@clientId'}, }
           }),
+     
           serviceResource: defineResource(apiVer + "/servicemasters/:serviceId", {serviceId:"@serviceId"}, {
         	  getAllServices: {method: 'GET', params: {}, isArray: true},
         	  update: {method: 'PUT'}
@@ -790,7 +796,7 @@
         	  get: { method: 'GET', params: {}}
           }),
           creditDistributionResource: defineResource(apiVer + "/creditdistributions/:clientId",{clientId:'@clientId'}, {
-        	  get: { method: 'POST', params: {}}
+        	  get: { method: 'GET', params: {}}
          	  
           }),
         };

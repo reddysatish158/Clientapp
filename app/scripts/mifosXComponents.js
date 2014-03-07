@@ -48,7 +48,6 @@ define(['underscore', 'mifosX'], function() {
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
       'client/CreateClientControllerwizard',
-     
       'user/UserController',
       'user/UserFormController',
       'user/UserSettingController',
@@ -110,8 +109,6 @@ define(['underscore', 'mifosX'], function() {
       'reports/ViewReportsController',
       'reports/RunReportsController',
       'private/SuperuserController',
-      'groups/GroupController',
-      'groups/ViewGroupController',
       'configurations/GlobalConfigurationController',
       'system/AuditController',
       'system/ViewAuditController',

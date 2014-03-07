@@ -5,11 +5,13 @@
 			  scope.clientId=routeParams.id;
 			  scope.formData = {};
 			  var clientData = webStorage.get('clientData');
+			  scope.hwSerialNumber=clientData.hwSerialNumber;
 			    scope.displayName=clientData.displayName;
 			    scope.statusActive=clientData.statusActive;
 			    scope.accountNo=clientData.accountNo;
 			    scope.officeName=clientData.officeName;
 			    scope.balanceAmount=clientData.balanceAmount;
+			    scope.hwSerialNumber=clientData.hwSerialNumber;
 			    scope.currency=clientData.currency;
 			    scope.imagePresent=clientData.imagePresent;
 			    scope.categoryType=clientData.categoryType;

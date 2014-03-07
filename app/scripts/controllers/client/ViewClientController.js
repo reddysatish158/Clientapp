@@ -88,7 +88,7 @@
                     scope.client = data;
                     scope.statusActive=scope.client.status.code;
                                 
-                    webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,
+                    webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,hwSerialNumber: data.hwSerialNumber,
                      statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent,phone:data.phone,email:data.email,categoryType:data.categoryType });
                     
@@ -123,24 +123,24 @@
                                           icon :"icon-flag"
                                         },
                                         
-                                        {
+                                        /*{
 
                                             name:"button.payments",
                                             href:"#/payments",
                                             icon :"icon-usd"
-                                         },
+                                         },*/
                                          {
 
-                                             name:"button.payInvoice",
+                                             name:"button.payments",
                                              href:"#/payinvoice",
                                              icon :"icon-usd"
                                           },
-                                          {
+                                         /* {
 
                                               name:"button.distribution",
                                               href:"#/creditDistribution",
                                               icon :"icon-usd"
-                                           },
+                                           },*/
                                           
                                          {
                                              name:"button.adjustments",
@@ -386,10 +386,17 @@
         scope.getTransactionHistoryFetchFunction = function(offset, limit, callback) {
   			resourceFactory.transactionHistoryResource.getTransactionHistory({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
+  			
+  		  scope.getClientDistributionFetchFunction = function(offset, limit, callback) {
+    			resourceFactory.creditDistributionResource.get({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
+    			};		
           scope.getTransactionHistory = function () {
           	scope.transactionhistory = paginatorService.paginate(scope.getTransactionHistoryFetchFunction, 14);
           };
-  
+      
+          scope.getClientDistribution =function(){
+        		scope.clientDistribution = paginatorService.paginate(scope.getClientDistributionFetchFunction, 14);
+          }
           scope.searchTransactionHistory123 = function(offset, limit, callback) {
 	    	  resourceFactory.transactionHistoryResource.getTransactionHistory({ clientId: routeParams.id ,
 	    		  offset: offset, limit: limit ,sqlSearch: scope.filterText } , callback); 

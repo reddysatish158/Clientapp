@@ -5,6 +5,7 @@
 		  
 		    scope.start = {};
 		    var clientData = webStorage.get('clientData');
+		    scope.hwSerialNumber=clientData.hwSerialNumber;
 	        scope.displayName=clientData.displayName;
 	        scope.statusActive=clientData.statusActive;
 	        scope.accountNo=clientData.accountNo;

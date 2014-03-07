@@ -30,7 +30,7 @@
         		<td><small>Cell Phone {{phone}}</small></td>
         	</tr>
         	<tr>
-        		<td><small>Mail him {{email}}</small></td>
+        		<td><small>Device # {{hwSerialNumber}}</small></td>
         	</tr>
         </table>
         </td>
@@ -74,7 +74,7 @@
 			 			 <div class="control-group">
 			 			  	<div class="controls">
 
-			  				<input  id="accountId" type="radio" name="selectType"  ng-click="selectedAccount()"/>&nbsp;&nbsp;Account&nbsp;&nbsp;
+			  				<input  id="accountId" type="radio" name="selectType"  ng-click="selectedAccount()" checked/>&nbsp;&nbsp;Account&nbsp;&nbsp;
 						  	<input  id="invoiceId" type="radio" name="selectType"  ng-click="selectedInvoice()"/>&nbsp;&nbsp;Invoice
 
 						  	</div>
@@ -185,7 +185,7 @@
 			
 			</table>
 			<br>
-			 <div class="offset3" ng-show = "selectAccount">
+			 <div class="offset3" ng-hide= "selectInvoice">
            		 <a href='#/viewclient/{{clientId}}' class="btn">Cancel</a>
           		 <button id="submit" type="submit" class="btn btn-primary" ng-click = "submitAccount()">{{'button.save'| translate}}</button>
           	</div>

@@ -21,6 +21,7 @@
         var clientData = webStorage.get('clientData');
         scope.displayName=clientData.displayName;
         scope.statusActive=clientData.statusActive;
+	    scope.hwSerialNumber=clientData.hwSerialNumber;
         scope.accountNo=clientData.accountNo;
         scope.officeName=clientData.officeName;
         scope.balanceAmount=clientData.balanceAmount;
@@ -272,6 +273,46 @@
                   });
             	
             }
+            
+
+        };
+        scope.submitschedule = function() {   
+        	this.formData.isNewplan =false;
+        	if(routeParams.planId == 0){
+        		this.formData.isNewplan =true;
+        	}
+        	scope.flag = true;
+        	this.formData.locale = 'en';
+           	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
+            this.formData.dateFormat = 'dd MMMM yyyy';
+            this.formData.start_date = reqDate;
+            if(this.formData.isPrepaid == 'Y'){
+            this.formData.paytermCode='Monthly';
+            }
+            delete this.formData.planId;
+            delete this.formData.id;
+            delete this.formData.isPrepaid;
+
+            var orderId = webStorage.get('orderId');
+            
+            if(routeParams.planId == 0){
+
+            	resourceFactory.OrderSchedulingResource.save({'clientId': routeParams.id},this.formData,function(data){
+                    location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
+                  },function(errData){
+                	  scope.flag = false;
+                  });
+            
+            }else{/*
+            	this.formData.disconnectionDate= reqDate;
+            	this.formData.disconnectReason= "Not Interested";
+            	resourceFactory.changeOrderResource.update({'orderId':orderId},this.formData,function(data){
+                    location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
+                  },function(errData){
+                	  scope.flag = false;
+                  });
+            	
+            */}
             
 
         };
