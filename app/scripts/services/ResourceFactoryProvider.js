@@ -306,7 +306,7 @@
         }),
 
         EventActionResource: defineResource(apiVer + "/eventactions/:clientId", {clientId:'@clientId'}, {
-      	  get: {method: 'GET', params: {}},
+      	  get: {method: 'GET', params: {},isArray: true},
           }),
           
         getSingleOrderResource: defineResource(apiVer + "/orders/:orderId/orderprice", {orderId:'@orderId'}, {

@@ -202,14 +202,16 @@
 			            <strong> </strong><a href="#/editAddress/{{client.id}}">Edit Address</a><strong> </strong>
 			         </div>	 -->
                   </div>
-                  <div class="row-fluid">
+                 
+                
+                 <div class="row-fluid">
                   <p>
-                     <b><h4>Orders Overview</h4></b>
+                      <b><h4>Orders Overview</h4></b>
                    </p>
                    
                     <table class="table">
                         <tr class="graybg">
-                              <th>Order NO</th>
+                            
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Activation Date</th>
@@ -217,6 +219,7 @@
                             <th>End Date</th>
                             <th>Price</th>
                             <th>Status</th>
+                             <th>&nbsp;</th>
                         </tr>
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
@@ -235,34 +238,32 @@
                 
                  <div class="row-fluid">
                   <p>
-                     <b><h4>Schedule Orders</h4></b>
+                
+                         <b><h4>Schedule Orders</h4></b>
                    </p>
                    
                     <table class="table">
                         <tr class="graybg">
-                              <th>Order NO</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Activation Date</th>
-                            <th>Start/Renwal Date</th>
-                            <th>End Date</th>
-                            <th>Price</th>
-                            <th>Status</th>
+                            <th>Charge Code</th>
+                            <th>&nbsp;</th>
+                          
                         </tr>
-                          <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.activeDate | DateFormat}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
-                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
+                          <tr class="pointer-main" ng-repeat="scheduleorder in scheduleorders | filter:filterText" >
+                          <td class="pointer">{{scheduleorder.planDesc}}</td>
+                          <td class="pointer" >{{scheduleorder.contractPeriod}}</td>
+                           <td class="pointer" >{{scheduleorder.startDate | DateFormat}}</td>
+                          <td class="pointer" >{{scheduleorder.billingFreq}}</td>
+                          <td><a ng-click="cancelScheduleOrder(scheduleorder.id)" class="btn btn-primary"><i class="icon-remove-circle icon-white"></i> Cancel</a></td>
+                          
                         </tr>
                         <tr><td colspan="8">&nbsp;</td></tr>
                        
                     </table>
                 </div>
+                
           </div>
       </tab>
       <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab">

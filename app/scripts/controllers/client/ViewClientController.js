@@ -8,6 +8,7 @@
          scope.clientdocuments = [];
          scope.staffData = {};
          scope.orders = [];
+         scope.scheduleorders=[];
          scope.formData = {};
  		 scope.start = {};
          scope.start.date = new Date();
@@ -205,7 +206,8 @@
                       scope.orders = data.clientOrders;
                   });
                   resourceFactory.EventActionResource.get({clientId: routeParams.id} , function(data) {
-                      scope.orders = data.clientOrders;
+                      scope.scheduleorders = data;
+                      
                   });
                 });
         };
@@ -444,6 +446,15 @@
          scope.downloadFile = function (statementId){
               window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
+         
+         scope.cancelScheduleOrder =function(id){
+        	 resourceFactory.OrderSchedulingResource.delete({'clientId':id},{},function(data){
+        		
+        		 location.path('/viewclient/' + routeParams.id);
+     	    	
+             });
+         }
+       
          scope.getAllTickets=function(){      
                resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
    	            scope.tickets = data;
