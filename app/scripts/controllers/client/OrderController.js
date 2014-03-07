@@ -138,6 +138,37 @@
   		$modalInstance.dismiss('cancel');
   	};
       };
+      
+      scope.extension= function(){
+    	  scope.errorStatus=[];
+    	  scope.errorDetails=[];
+      	  $modal.open({
+              templateUrl: 'extension.html',
+              controller:extensionController ,
+              resolve:{}
+          });
+      	
+      };
+      
+      var extensionController=function($scope,$modalInstance){
+    	  
+    	  resourceFactory.orderExtensionResource.get(function(data) {
+	            $scope.extensionReasonDatas = data.extensionReasonDatas;
+	            $scope.extensionPeriodDatas = data.extensionPeriodDatas;
+	        });
+       	$scope.accept = function(){
+       		$scope.flagExtension=true;
+       		resourceFactory.orderExtensionResource.update({'orderId': routeParams.id},this.formData,		
+     		function(data) {},function(errData){
+     			    	$scope.flagExtension=false;
+         		});
+       		    route.reload();
+			 $modalInstance.close('delete');
+       	};  
+  		$scope.rejectExtension = function(){
+  			$modalInstance.dismiss('cancel');
+  		};
+      };
        		
      var ProvisioningSystemPopController = function($scope,$modalInstance){
          	 resourceFactory.provisioningMappingResource.getprovisiongData(function(data) {
