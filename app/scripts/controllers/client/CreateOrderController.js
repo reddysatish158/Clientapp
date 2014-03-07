@@ -32,6 +32,15 @@
         scope.phone=clientData.phone;
         scope.minDate=scope.start.date;
         
+        scope.$watch('start.date', function() {
+    	    scope.doSomething();  
+    	});
+       scope.doSomething =function(){
+    	   scope.todayDate=new Date().toDateString();
+    	   scope.selectedDate=scope.start.date.toDateString();
+    	   console.log("todayDate:"+scope.todayDate);
+    	   console.log("selectedDate:"+scope.selectedDate);
+       };
         resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
         	 
           scope.plandatas = data.plandata;
