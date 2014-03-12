@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  PaymentGatewayController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
+	  PaymentGatewayController: function(scope,webStorage,route,$modal,routeParams,location, resourceFactory, paginatorService) {
 		  
         scope.paymentgatewaydatas = [];
 	        
@@ -103,10 +103,53 @@
 			scope.searchInvalidPaymentId = function(filterText) {
 				  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchInvalidPaymentData, 14);
 				  		};
+				  		
+		// edit popup
+				  		
+				  		scope.edit= function(id){
+				      	  scope.errorStatus=[];
+				      	  scope.errorDetails=[];
+				      	  scope.editId=id;
+				        	  $modal.open({
+				                templateUrl: 'editpaymentgateway.html',
+				                controller:editpaymentgatewayController ,
+				                resolve:{}
+				            });
+				        	
+				        };
+				        
+				        
+				        var editpaymentgatewayController=function($scope,$modalInstance){
+				      	  
+				        	$scope.formData = {}; 
+				            $scope.statusData=[];
+				            $scope.updateData={};
+				            //console.log(scope.editId);
+				            resourceFactory.paymentGatewayResource.getData({'id': scope.editId},this.formData,function(data){
+				            	 $scope.formData=data;
+				            	 $scope.statusData=data.statusData;
+				            	 $scope.formData.paymentdata=data.statusData[0].code;
+				             });
+				         	$scope.accept = function(){
+				         		$scope.flag=true;
+				         		this.updateData.status=this.formData.paymentdata;
+				            	this.updateData.remarks=this.formData.remarks;
+				         		resourceFactory.paymentGatewayResource.update({'id': scope.editId},this.updateData,function(data){ 
+				                  route.reload();
+				                 // location.path('/paymentGateway');
+				                        $modalInstance.close('delete');
+				                    },function(errData){
+				                  $scope.flag = false;
+				                   });
+				         	};  
+				    		$scope.reject = function(){
+				    			$modalInstance.dismiss('cancel');
+				    		};
+				        };
           
     }
   });
-  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
+  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage','$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
     $log.info("PaymentGatewayController initialized");
   });
 }(mifosX.controllers || {}));
