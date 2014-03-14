@@ -7,6 +7,7 @@
             resourceFactory.paymentGatewayResource.getData({'id': routeParams.id},this.formData,function(data){
             	 scope.formData=data;
             	 scope.statusData=data.statusData;
+            	 scope.formData.paymentdata=data.statusData[0].code;
              });
             
             
