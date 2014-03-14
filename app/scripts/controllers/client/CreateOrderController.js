@@ -307,7 +307,7 @@
             if(routeParams.planId == 0){
 
             	resourceFactory.OrderSchedulingResource.save({'clientId': routeParams.id},this.formData,function(data){
-                    location.path('/vieworder/' + data.resourceId+'/'+routeParams.id);
+                    location.path('/viewclient/'+routeParams.id);
                   },function(errData){
                 	  scope.flag = false;
                   });

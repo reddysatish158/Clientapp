@@ -449,8 +449,8 @@
          
          scope.cancelScheduleOrder =function(id){
         	 resourceFactory.OrderSchedulingResource.delete({'clientId':id},{},function(data){
-        		
-        		 location.path('/viewclient/' + routeParams.id);
+        		// location.path('/viewclient/' + routeParams.id);
+        		 route.reload();
      	    	
              });
          }

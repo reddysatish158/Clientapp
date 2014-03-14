@@ -11,6 +11,7 @@
         scope.start = {};
         scope.start.date = new Date();
         var orderId=routeParams.id;
+        scope.isextensionEnable=false;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
          webStorage.add("orderId",routeParams.id);
@@ -34,12 +35,19 @@
             scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
+      
 	    if(data.orderData.isPrepaid == 'Y'){
             	scope.formData.isPrepaid="Pre Paid";
             }else{
             	scope.formData.isPrepaid="Post Paid";
             }
-          
+	    var endDate = new Date(scope.orderData.endDate);
+        var curDate = new Date(scope.orderData.currentDate);
+        if((dateFilter(endDate.setDate(endDate.getDate()))<=dateFilter(curDate.setDate(curDate.getDate())))&&
+                (dateFilter(endDate.setDate(endDate.getDate()+1))>=dateFilter(curDate.setDate(curDate.getDate()))))
+        	scope.isextensionEnable=true;
+        else scope.isextensionEnable=false;
+        
         });
         
         resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {

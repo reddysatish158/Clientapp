@@ -128,6 +128,7 @@
   "validation.msg.user.firstname.cannot.be.blank":"First Name cannot be blank",
   "validation.msg.user.lastname.cannot.be.blank":"Last Name cannot be blank",
   "validation.msg.user.email.cannot.be.blank":"Email cannot be blank",
+  "error.msg.client.duplicate.login":"Login name is already exist",
   "validation.msg.user.roles.cannot.be.empty":"Please select atleast one role",
   "error.msg.user.email.invalid":"Email address is invalid",
   "validation.msg.user.repeatPassword.not.equal.to.password":"Password and repeat password do not match.",
@@ -2244,6 +2245,7 @@
 "validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank",
 
 "label.anchor.help" : "Help",
+"label.anchor.shortcuts" : "Shortcuts",
 "label.heading.keyboarshortcuts":"Keyboard Shortcuts",
 "label.heading.navigation":"Navigation Page",
 "label.heading.tasks":"Checker Inbox & Pending Tasks",

@@ -211,7 +211,7 @@
                    
                     <table class="table">
                         <tr class="graybg">
-                            
+                            <th>Order No</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Activation Date</th>
@@ -224,7 +224,7 @@
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
-                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
+                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.activeDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
@@ -615,7 +615,7 @@
                 				<th>Transaction Category</th>
                 				<th>Credit Amount</th>
                 				<th>Debit Amount</th>
-                 				<th></th>
+                 				<th>&nbsp;</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -641,6 +641,9 @@
               					</td>
                					<td class="pointer"  data-ng-click="routeTofinancial(financialtransaction.transactionId,financialtransaction.transactionType,client.id)">
                  					{{financialtransaction.amount}}
+              					</td>
+              					<td>
+                					<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
               					</td>
            					</tr>
            					

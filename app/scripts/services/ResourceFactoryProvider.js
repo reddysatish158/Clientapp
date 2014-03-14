@@ -37,6 +37,9 @@
           clientIdentifierResource: defineResource(apiVer + "/client_identifiers/:clientIdentityId/documents", {clientIdentityId:'@clientIdentityId'}, {
             get: {method: 'GET', params: {}, isArray:true}
           }),
+          groupTemplateResource: defineResource(apiVer + "/groups/template", {}, {
+              get: {method: 'GET', params: {}}
+          }),
           clientDocumentsResource: defineResource(apiVer + "/clients/:clientId/documents/:documentId", {clientId:'@clientId',documentId:'@documentId'}, {
             getAllClientDocuments: {method: 'GET', params: {}, isArray: true}
           }),
