@@ -41,7 +41,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-                <td><a href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -83,7 +83,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-                <td><a href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -126,7 +126,7 @@
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.paymentId}}</td>              
                 <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
-               <td><a href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+               <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -218,4 +218,53 @@
    
     </tabset>
     </div>
-  </div>
+    
+ <script type="text/ng-template" id="editpaymentgateway.html">
+
+	<form class="form-horizontal well" ng-submit="submit()">
+	 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+	<fieldset>
+		<legend>{{'label.editpaymentgateway' | translate}}</legend>
+		<table width="100%">
+		 
+		 <tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="status">{{ 'label.paymentgateway.status' | translate }}</label>
+						<div class="controls">
+							<select ng-model="formData.paymentdata"
+								ng-options="statusdata.code as statusdata.value for statusdata in statusData"
+								value="{{statusdata.code}}" >
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="remarks"> {{ 'label.paymentgateway.remarks' | translate }} </label>
+						<div class="controls">
+							<select ng-model="formData.remarks">
+								<option>Active</option>
+								<option>Done</option>
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	</form>
+   <div class="modal-footer">
+         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
+   </div>
+
+</script> 
+    
+</div>
