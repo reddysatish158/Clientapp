@@ -146,6 +146,26 @@
 				    			$modalInstance.dismiss('cancel');
 				    		};
 				        };
+				        
+				        
+				     // for Processed Tab
+
+                        scope.paymentGatewayProcessedData = function(offset, limit, callback) {
+                                                 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Processed'} , callback);
+                                        };
+
+                        scope.getProcessedPaymentGateway = function () {
+                                        scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayProcessedData, 14);
+                                };
+
+                        scope.searchProcessedPaymentData = function(offset, limit, callback) {
+                                          resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,
+                                                  sqlSearch: scope.filterText, tabType: 'Processed'} , callback);
+                                          };
+
+                        scope.searchProcessedPaymentId = function(filterText) {
+                                                        scope.paymentgatewaydatas = paginatorService.paginate(scope.searchProcessedPaymentData, 14);
+                                                };
           
     }
   });

@@ -7,7 +7,7 @@
               hasNextVar: false,
               next: function() {
                 if (this.hasNextVar) {
-                  this.currentOffset += pageSize;
+                  this.currentOffset += pageSize+1;
                   this._load();
                 }
               },
@@ -15,7 +15,7 @@
                   var self = this;
                   fetchFunction(this.currentOffset, pageSize + 1, function(items) {
                   self.currentPageItems = items.pageItems;
-                  self.hasNextVar = items.pageItems.length === pageSize + 1;;
+                  self.hasNextVar = items.pageItems.length === pageSize + 1;
               });
               },
               hasNext: function() {

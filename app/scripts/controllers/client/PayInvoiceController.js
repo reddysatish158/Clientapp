@@ -92,7 +92,8 @@
             delete this.formData.invoiceId;
             var res1 = validator.validateZipCode(scope.formData.receiptNo);
             resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
-          	  route.reload();
+              location.path('/viewclient/'+routeParams.id);
+          	  //route.reload();
             });
          };
             
@@ -106,7 +107,8 @@
           this.formData.invoiceId =	 scope.invoiceId ; 
           delete this.formData.amount;
           resourceFactory.paymentsResource.save({clientId : routeParams.id}, this.formData, function(data){
-        	  route.reload();
+        	  //route.reload();
+        	  location.path('/viewclient/'+routeParams.id);
           });
         };
     }
