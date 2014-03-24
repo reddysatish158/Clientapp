@@ -69,7 +69,7 @@
           }),
           reportsResource: defineResource(apiVer + "/reports/:id/:resourceType", {id:'@id', resourceType:'@resourceType'}, {
             get: {method: 'GET', params: {id:'@id'}},
-            getReport: {method: 'GET', params: {id:'@id'}, isArray:true},
+            getReport: {method: 'GET', params: {id:'@id'}},
             getReportDetails: {method: 'GET', params: {id:'@id'}},
             update: {method: 'PUT', params: {}}
           }),

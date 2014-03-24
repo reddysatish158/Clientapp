@@ -1,8 +1,21 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    UploadClientIdentifierDocumentController: function(scope, location, http, routeParams,API_VERSION,$rootScope) {
+    UploadClientIdentifierDocumentController: function(scope,webStorage, location, http, routeParams,API_VERSION,$rootScope) {
       scope.clientId = routeParams.clientId;
       
+      var clientData = webStorage.get('clientData');
+	  scope.hwSerialNumber=clientData.hwSerialNumber;
+	    scope.displayName=clientData.displayName;
+	    scope.statusActive=clientData.statusActive;
+	    scope.accountNo=clientData.accountNo;
+	    scope.officeName=clientData.officeName;
+	    scope.balanceAmount=clientData.balanceAmount;
+	    scope.hwSerialNumber=clientData.hwSerialNumber;
+	    scope.currency=clientData.currency;
+	    scope.imagePresent=clientData.imagePresent;
+	    scope.categoryType=clientData.categoryType;
+        scope.email=clientData.email;
+        scope.phone=clientData.phone;
       
       scope.onFileSelect = function($files) {
         scope.file = $files[0];
@@ -23,7 +36,7 @@
       };
     }
   });
-  mifosX.ng.application.controller('UploadClientIdentifierDocumentController', ['$scope', '$location', '$http', '$routeParams','API_VERSION','$rootScope', mifosX.controllers.UploadClientIdentifierDocumentController]).run(function($log) {
+  mifosX.ng.application.controller('UploadClientIdentifierDocumentController', ['$scope','webStorage', '$location', '$http', '$routeParams','API_VERSION','$rootScope', mifosX.controllers.UploadClientIdentifierDocumentController]).run(function($log) {
     $log.info("UploadClientIdentifierDocumentController initialized"); 
   });
 }(mifosX.controllers || {}));
