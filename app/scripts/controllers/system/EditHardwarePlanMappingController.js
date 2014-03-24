@@ -5,6 +5,7 @@
  
         scope.planDatas = [];
         scope.itemDatas = [];
+        scope.hardwareId=routeParams.id;
 
         resourceFactory.hardwareMappingResource.getDetails({hardwaremapId: routeParams.id, template : 'true'}, function(data) {
           
