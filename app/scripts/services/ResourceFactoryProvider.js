@@ -176,7 +176,7 @@
             get: {method: 'GET', params: {}}
           }),
          
-          configurationResource:defineResource(apiVer + "/configurations",{}, {
+          configurationResource:defineResource(apiVer + "/configurations/:configId",{configId : '@configId'}, {
             get: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}}
           }),

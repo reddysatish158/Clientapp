@@ -1,6 +1,6 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        GlobalConfigurationController: function(scope,$modal,resourceFactory , location,route) {
+        GlobalConfigurationController: function(scope,$modal,routeParams,resourceFactory , location,route) {
             scope.configs = [];
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
@@ -39,12 +39,15 @@
 		            
 		            
 		           // DATA GET
-		            
+		            resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
+		                $scope.formData = data;//{value: data.value};
+		                $scope.formData.value=data.value;
+		            });
 		            
 		         	$scope.accept = function(){
 		         		$scope.flag=true;
 		         		this.updateData.value=this.formData.value;
-		         		resourceFactory.pe.update({'id': scope.editId},this.updateData,function(data){ 
+		         		resourceFactory.configurationResource.update({configId: scope.editId},this.updateData,function(data){ 
 		                  route.reload();
 		                 // location.path('/paymentGateway');
 		                        $modalInstance.close('delete');
@@ -95,7 +98,7 @@
 
         }
     });
-    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope','$modal', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
+    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope','$modal', '$routeParams', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
         $log.info("GlobalConfigurationController initialized");
     });
 }(mifosX.controllers || {}));

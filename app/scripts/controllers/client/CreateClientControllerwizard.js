@@ -135,7 +135,9 @@
           scope.offices = [];
           scope.staffs = [];
           scope.first = {};
+          scope.allocation={};
           scope.first.date = new Date();
+          scope.allocation.date=new Date();
           scope.formData1 = {};
           scope.clientCategoryDatas=[];
           scope.configurationProperty=[];
