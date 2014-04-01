@@ -1,10 +1,10 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        GlobalConfigurationController: function(scope, resourceFactory , location,route) {
+        GlobalConfigurationController: function(scope,$modal,resourceFactory , location,route) {
             scope.configs = [];
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
-                    scope.configs.push(data.globalConfiguration[i])
+                    scope.configs.push(data.globalConfiguration[i]);
                 }
                 resourceFactory.cacheResource.get(function(data) {
                     for(var i in data ){
@@ -17,7 +17,47 @@
                     scope.configs.push(cache);
                 });
             });
-
+            
+            scope.edit= function(id){
+		      	  scope.errorStatus=[];
+		      	  scope.errorDetails=[];
+		      	  scope.editId=id;
+		        	  $modal.open({
+		                templateUrl: 'editglobal.html',
+		                controller:editGlobalController ,
+		                resolve:{}
+		            });
+		        	
+		        };
+		        
+		        var editGlobalController=function($scope,$modalInstance){
+			      	  
+		        	$scope.formData = {}; 
+		            $scope.statusData=[];
+		            $scope.updateData={};
+		            //console.log(scope.editId);
+		            
+		            
+		           // DATA GET
+		            
+		            
+		         	$scope.accept = function(){
+		         		$scope.flag=true;
+		         		this.updateData.value=this.formData.value;
+		         		resourceFactory.pe.update({'id': scope.editId},this.updateData,function(data){ 
+		                  route.reload();
+		                 // location.path('/paymentGateway');
+		                        $modalInstance.close('delete');
+		                    },function(errData){
+		                  $scope.flag = false;
+		                   });
+		         	};  
+		    		$scope.reject = function(){
+		    			$modalInstance.dismiss('cancel');
+		    		};
+		        };
+		        
+            
             scope.enable = function(name) {
                 if(name=='Is Cache Enabled'){
                     var temp = {};
@@ -55,7 +95,7 @@
 
         }
     });
-    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
+    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope','$modal', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
         $log.info("GlobalConfigurationController initialized");
     });
 }(mifosX.controllers || {}));
