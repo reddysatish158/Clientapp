@@ -29,9 +29,6 @@
             <div class="controls">
               <input type="text" id="serviceIdentification"   ng-model="formData.serviceIdentification">
               
-                <select ng-model="formData.serviceIdentification"  ng-options="sp.parameterName as sp.parameterName for sp in serviceParameters"  value="{{serviceParameter.id}}">
-              <option value="">{{'label.select.one' | translate}}</option>
-              </select>
             </div>
           </div>
 
