@@ -23,7 +23,7 @@
         			scope.serviceType=scope.serviceCodes[i].serviceType;
         		}
         	}
-        alert(scope.serviceType);
+        
            };  
         scope.submit = function() {
         	delete this.formData.serviceCodeData;
