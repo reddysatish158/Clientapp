@@ -23,7 +23,7 @@
               },
               previous: function() {
               if(this.hasPrevious()) {
-              this.currentOffset -= pageSize;
+              this.currentOffset -= pageSize+1;
               this._load();
               }
               },

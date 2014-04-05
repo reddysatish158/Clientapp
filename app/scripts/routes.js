@@ -780,6 +780,12 @@
       })
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
+      })
+      .when('/ipPooling', {
+        templateUrl : 'views/system/ipPooling.html'
+      })      
+      .when('/createippooling', {
+        templateUrl : 'views/system/createIpPooling.html'
       });
 
     $locationProvider.html5Mode(false);

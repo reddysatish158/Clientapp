@@ -2282,8 +2282,19 @@
 
 "label.extensionperiod":"Extension Period",
 "label.extensionreason":"Extension Reason",
-"label.extension":"Extension"
+"label.extension":"Extension",
 
+"#IpPooling Details":"....",
+"label.manageippooling":"IpPool Management",
+"table.ippooling.id":"id",
+"table.ippooling.ipaddress":"ipAddress",
+"table.ippooling.ippooldescription":"Description",
+"table.ippooling.clientId":"ClientId",
+"table.ippooling.status":"Status",
+"label.ippooling.createippool":"Create IpPool",
+"label.ippooling.description":"Description",
+"label.ippooling.ipaddress":"ipAddress",
+"label.ippooling.subnet":"Subnet"
    
 
 }
