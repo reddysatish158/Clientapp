@@ -48,6 +48,8 @@ define(['underscore', 'mifosX'], function() {
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
       'client/CreateClientControllerwizard',
+      'client/CreateProvisioningController',
+      'client/CreateActivationController',
       'user/UserController',
       'user/UserFormController',
       'user/UserSettingController',

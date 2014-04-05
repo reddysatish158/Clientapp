@@ -2282,7 +2282,24 @@
 
 "label.extensionperiod":"Extension Period",
 "label.extensionreason":"Extension Reason",
-"label.extension":"Extension"
+"label.extension":"Extension",
+
+"#Provisioning":"........",
+"link.provision":"Provision",
+"label.provisioning.New":"New Provision",
+"label.provisioning.clientname":"Name",
+"label.provisioning.device":"Device",
+"label.provisioning.service":"Service",
+"label.provisioning.servicename":"Service Name",
+"label.provisioning.group":"Group Name",
+"label.provisioning.ipaddress":"Ip Address",
+"label.provisioning.vlan":"VLAN",
+"button.provisioning":"Provision",
+
+"#Simple Activation":"............",
+"label.name":"Name",
+"label.activation.plan":"Plan",
+"label.activation.phone":"Phone"
 
    
 
