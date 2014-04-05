@@ -1,135 +1,19 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  CreateClientControllerwizard: function(scope,webStorage,routeParams, resourceFactory, location, http,filter, dateFilter) {
+	  CreateActivationController: function(scope,webStorage,routeParams, resourceFactory, location, http,filter, dateFilter) {
 		 
-		  scope.nextcount=0;
-		  scope.next=true;
-		  scope.step1=true;
-		  scope.step2=false;
-		  scope.step3=false;
-		  scope.step4=false;
-		  scope.previous=false;
+		
 		  scope.ActivationData = {};
 		  scope.ActivationData.client = [];
 		  scope.ActivationData.sale = [];
 		  scope.ActivationData.allocate = [];
 		  scope.ActivationData.bookorder = [];
 		  scope.ActivationData.owndevice = [];
+		  scope.data=[];
 		  var config = webStorage.get('CPE_TYPE');
-		  scope.nextStepmain=function(){
-			  if(scope.nextcount<2){
-			    scope.nextcount=scope.nextcount+1;
-			    scope.previouscount=scope.nextcount;
-			  }
-			  if(scope.nextcount==1){
-				  scope.previous=true;
-				  scope.step1=false;
-				  scope.step2=true;
-				  //scope.step3=false;
-				  scope.step4=false;
-				 // var config = webStorage.get('CPE_TYPE');
-				  
-				  if(config == "OWN"){
-					  scope.template2="views/clients/createownedharwarewizard.html"; 
-				  }else{
-				      scope.template2="views/clients/addonetimesalewizard.html";
-				  }
-			  	$('#active1').html('1.Client Information');
-			  	$('#active2').html('2.Device Info');
-			  //	$('#active3').html('3.Assign Device');
-			  	$('#active4').html('3.Order');
-			  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-			  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
-			  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-			   
-			  }
-			 /* if(scope.nextcount==2){
-				  scope.step1=false;
-				  scope.step2=false;
-				  scope.step3=true;
-				  scope.step4=false;
-				  scope.template3="views/clients/allocatehardwareonetimesalewizard.html";
-				  	$('#active1').html('1.Client Information');
-				  	$('#active2').html('2.Item Sale');
-				  	$('#active3').html('3.Assign Device');
-				  	$('#active4').html('4.Order');
-				  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				  
-				}*/
-			  if(scope.nextcount==2){
-				  scope.step1=false;
-				  scope.step2=false;
-				  //scope.step3=false;
-				  scope.step4=true;
-				  scope.template4="views/clients/createorderwizard.html";
-				  	$('#active1').html('1.Client Information');
-				  	$('#active2').html('2.Device Info');
-				  	//$('#active3').html('3.Assign Device');
-				  	$('#active4').html('3.Order');
-				  	$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #FFA500"});
-						 scope.next=false;
-						 scope.finish=true;
-						 
-				}
-          };
-		  
+		  scope.config=config;
+		
           
-          scope.previousStepmain=function(){
-				scope.next=true;
-				scope.finish=false;
-				
-				if(scope.previouscount>=0){
-				   scope.previouscount=scope.previouscount-1;
-				   scope.nextcount=scope.nextcount-1;
-				}
-				
-				if(scope.previouscount==1){
-					scope.step4=false;
-					scope.step2=true;
-					$('#active1').html('1.Client Information');
-				  	$('#active2').html('2.Device Info');
-				 // 	$('#active3').html('3.Assign Device');
-				  	$('#active4').html('3.Order');
-					$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  	//$("#progress3").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				}
-				
-				/*if(scope.previouscount==1){
-					scope.step3=false;
-					scope.step2=true;
-					$('#active1').html('1.Client Information');
-				  	$('#active2').html('2.Item Sale');
-				 // 	$('#active3').html('3.Assign Device');
-				  	$('#active4').html('3.Order');
-					$("#progress1").css({"background":"none repeat scroll 0% 0% #90EE90"});
-				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-					
-				}*/
-				if(scope.previouscount==0){
-					scope.step2=false;
-					scope.step1=true;
-					$('#active1').html('1.Client Information');
-				  	$('#active2').html('2.Device Info');
-				  	//$('#active3').html('3.Assign Device');
-				  	$('#active4').html('3.Order');
-					$("#progress1").css({"background":"none repeat scroll 0% 0% #FFA500"});
-				  	$("#progress2").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				  	$("#progress3").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-				  	$("#progress4").css({"background":"none repeat scroll 0% 0% #E5E4E2"});
-					scope.previous=false;
-				}
-			};
 		  
 //create client controller
           scope.offices = [];
@@ -170,6 +54,7 @@
           });
           });*/
           scope.getStateAndCountry=function(city){
+        	 
         	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
             		scope.formData1.state = data.state;
             		scope.formData1.country = data.country;
@@ -190,8 +75,6 @@
         	  
           };
           
-          
-        
   
 //addonetimsale controller
       	
@@ -216,7 +99,6 @@
 	          }else{
 	        	  scope.itemtypes=[];
 	              resourceFactory.itemResourceTemplate.getAll(function(data){
-	         		 
 	            	  scope.itemtypes=data.itemDatas;
 	            	  
 	    	 
@@ -231,13 +113,26 @@
 	        		scope.formData2.itemId=itemId;
 	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
+	        		scope.data.unitPrice=scope.formData2.unitPrice;
+	        		scope.data.locale="en";
+	        		scope.data.quantity=1;
+	        		
+	        		resourceFactory.oneTimeSaleQuantityResource.get({quantity:1,itemId:itemId},scope.data, function(data) {
+		        		//scope.formData2=data;
+		        		scope.formData2.quantity=1;
+		        		scope.formData2.totalPrice=data.totalPrice;
+		        		scope.formData2.itemId=itemId;
+		        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
+		        		
+			        });	
+	        		
 	        		
 		        });	
 	        };
 	        scope.itemDataQuantity=function(quantity,itemId){
 	        	this.data.unitPrice=this.formData2.unitPrice;
 	        	this.data.locale="en";
-	        	this.data.quantity=quantity;
+	        	this.data.quantity=1;
 	        	
 	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleQuantityResource.get({quantity: quantity,itemId:itemId},this.data, function(data) {
@@ -317,35 +212,10 @@
 	            		
 	                  };
 	     	   
-	            scope.filteredItems = filter('filter')(scope.items, function (item) {
-	                for(var attr in item) {
-	                    if (searchMatch(item[attr], scope.query))
-	                        return true;
-	                }
-	                return false;
-	            });
-	            
-	            scope.prepaidPalnfilteredItems = filter('filter')(scope.prepaidPlansitems, function (prepaidPlansitem) {
-	                for(var attr in prepaidPlansitem) {
-	                	
-	                    if (searchMatch1(prepaidPlansitem[attr], scope.query))
-	                        return true;
-	                }
-	                
-	                return false;
-	               
-	            });
-	            
-	            if (scope.sortingOrder !== '') {
-	                scope.filteredItems =filter('orderBy')(scope.filteredItems, scope.sortingOrder, scope.reverse);
-	           }
-	            
-	            if (scope.sortingOrder !== '') {
-	                scope.filteredItems =filter('orderBy')(scope.prepaidPalnfilteredItems, scope.sortingOrder, scope.reverse);
-	           }
+	        
+	           
 	            scope.currentPage = 0;
-	            scope.groupToPages();
-	            scope.groupToprepaidPages();
+	           
 	            scope.pagedItems = [];
 	            for (var i = 0; i < scope.filteredItems.length; i++) {
 	                if (i % scope.itemsPerPage === 0) {
@@ -388,116 +258,7 @@
 	             });
 	       };
 	        
-	       var searchMatch = function (haystack, needle) {
-	           if (!needle) {
-	               return true;
-	           }
-	          
-	           return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-	       };
-	       
-	       var searchMatch1 = function (haystack, needle) {
-	           if (!needle) {
-	               return true;
-	           }
-	          
-	           return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-	       };
-
-	       // init the filtered items
-	       scope.search = function () {
-	    	   
-	           scope.filteredItems = filter('filter')(scope.items, function (item) {
-	        	   
-	               for(var attr in item) {
-	            	  
-	                   if (searchMatch(item[attr], scope.query))
-	                       return true;
-	               }
-	               return false;
-	           });
-	           // take care of the sorting order
-	         //  if (scope.sortingOrder !== '') {
-	               scope.filteredItems =filter('orderBy')(scope.filteredItems, scope.sortingOrder, scope.reverse);
-	          // }
-	           scope.currentPage = 0;
-	           // now group by pages
-	           scope.groupToPages();
-	       };
-	       
-	       // calculate page in place
-	       scope.groupToPages = function () {
-	           scope.pagedItems = [];
-	           
-	           for (var i = 0; i < scope.filteredItems.length; i++) {
-	               if (i % scope.itemsPerPage === 0) {
-	                   scope.pagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.filteredItems[i] ];
-	               } else {
-	                   scope.pagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.filteredItems[i]);
-	               }
-	           }
-	       };
-	       
-	       scope.groupToprepaidPages = function () {
-	           scope.prepaidPlanspagedItems = [];
-	           
-	           for (var i = 0; i < scope.prepaidPalnfilteredItems.length; i++) {
-	               if (i % scope.itemsPerPage === 0) {
-	                   scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.prepaidPalnfilteredItems[i] ];
-	               } else {
-	                   scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.prepaidPalnfilteredItems[i]);
-	               }
-	           }
-	       };
-	       
-	       scope.range = function (start, end) {
-	           var ret = [];
-	           if (!end) {
-	               end = start;
-	               start = 0;
-	           }
-	           for (var i = start; i < end; i++) {
-	               ret.push(i);
-	           }
-	           return ret;
-	       };
-	       
-	       scope.prevPage = function () {
-	           if (scope.currentPage > 0) {
-	               scope.currentPage--;
-	           }
-	       };
-	       
-	       scope.nextPage = function () {
-	           if (scope.currentPage < scope.pagedItems.length - 1) {
-	               scope.currentPage++;
-	           }
-	       };
-	       
-	       scope.setPage = function () {
-	           scope.currentPage = this.n;
-	       };
-
-	       // functions have been describe process the data for display
-	       scope.search();
-
-	       // change sorting order
-	       scope.sort_by = function(newSortingOrder) {
-	           if (scope.sortingOrder == newSortingOrder)
-	               scope.reverse = !scope.reverse;
-
-	           scope.sortingOrder = newSortingOrder;
-
-	           // icon setup
-	           $('th i').each(function(){
-	               // icon reset
-	               $(this).removeClass().addClass('icon-sort');
-	           });
-	           if (scope.reverse)
-	               $('th.'+'planCode'+' i').removeClass().addClass('icon-chevron-up');
-	           else
-	               $('th.'+'planCode'+' i').removeClass().addClass('icon-chevron-down');
-	       };
+	      
 	       scope.dbClick = function(){
 	        	console.log("dbclick");
 	        	return false;
@@ -511,6 +272,7 @@
 	        	var reqDate = dateFilter(scope.start.date,'dd MMMM yyyy');
 	            this.formData4.dateFormat = 'dd MMMM yyyy';
 	            this.formData4.start_date = reqDate;
+	         //   alert(this.formData4.contractPeriod);
 	            if(this.formData4.isPrepaid == 'Y'){
 	            this.formData4.paytermCode='Monthly';
 	            }
@@ -518,15 +280,6 @@
 	            delete this.formData4.id;
 	            delete this.formData4.isPrepaid;
 	           
-	            
-	            
-
-	         
-	        
-	            	
-	        
-	        
-	        
 	            	scope.ActivationData = {};
 	      		  scope.ActivationData.client = [];
 	      		  scope.ActivationData.sale = [];
@@ -539,11 +292,35 @@
 	                  this.formData1.active = true;
 	                  this.formData1.dateFormat = 'dd MMMM yyyy';
 	                  this.formData1.activationDate = reqDate;
+	                this.formData1.state=scope.formData1.state;
+	                
+	                
+	                  this.formData1.country=scope.formData1.country;
+	                  this.formData1.addressNo="Addr1";
+	                  /*if(this.formData1.lastname == null){
+	                	  this.formData1.firstname="";
+	                  }*/
+	                  var name= this.formData1.middlename;
+	                  
+	                      var mesage_array = new Array();
+	                      mesage_array = (name.split(" "));
+	                   
+	                   this.formData1.firstname=mesage_array[0];
+	                   this.formData1.lastname=mesage_array[1];
+	                   if(this.formData1.lastname == null){
+	                	   this.formData1.lastname="Mr.";
+	                   }
+	                   
 	                  this.formData1.flag=scope.configurationProperty;
+	                  
+	                //  delete this.formData1.name;
 	                  
 	                if(config =='SALE'){  
 	 	        	 this.formData2.locale = "en";
 	 	             this.formData2.dateFormat = "dd MMMM yyyy";
+	 	            this.formData2.quantity=1;
+	 	            
+	        		this.formData2.totalPrice=scope.formData2.totalPrice;
 	 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
 	 	             this.formData2.saleDate=actDate;
 	 	             delete this.formData2.discountMasterDatas;   
@@ -552,7 +329,7 @@
 	 	             delete this.formData2.units;
 	 	             delete this.formData2.itemCode;
 	 	             delete this.formData2.id;
-	               
+	               delete this.formData2.itemDetail;
 	                }else{
 	                	
 	                	  scope.formData5.locale = 'en';
@@ -560,6 +337,9 @@
 	  		            scope.formData5.dateFormat = 'dd MMMM yyyy';
 	  		            scope.formData5.allocationDate = reqDate;
 	  		            scope.formData5.status = "ACTIVE";
+	  		          scope.formData5.serialNumber=scope.formData5.provisioningSerialNumber;
+	  		            
+	  		            
 	                }
 	 	            
 	 	        	
@@ -608,7 +388,7 @@
 	
     }
   });
-  mifosX.ng.application.controller('CreateClientControllerwizard', ['$scope','webStorage', '$routeParams','ResourceFactory', '$location', '$http','$filter', 'dateFilter', mifosX.controllers.CreateClientControllerwizard]).run(function($log) {
-    $log.info("CreateClientControllerwizard initialized");
+  mifosX.ng.application.controller('CreateActivationController', ['$scope','webStorage', '$routeParams','ResourceFactory', '$location', '$http','$filter', 'dateFilter', mifosX.controllers.CreateActivationController]).run(function($log) {
+    $log.info("CreateActivationController initialized");
   });
 }(mifosX.controllers || {}));

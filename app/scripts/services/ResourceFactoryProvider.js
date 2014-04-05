@@ -176,7 +176,7 @@
             get: {method: 'GET', params: {}}
           }),
          
-          configurationResource:defineResource(apiVer + "/configurations",{}, {
+          configurationResource:defineResource(apiVer + "/configurations/:configId",{configId : '@configId'}, {
             get: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}}
           }),
@@ -738,10 +738,18 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
            }),
+           provisioningResource: defineResource(apiVer + "/provisionings/:clientId", {clientId: '@clientId'}, {
+          	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+             get: {method: 'GET', params: {}},
+             update: { method: 'PUT' }
+        }),
            provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),
-
+           
+           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+         	  get: {method: 'GET', params: {}}
+           }),
 	       EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
                get: {method: 'GET', params: {}, isArray: true},
                getDetails: {method: 'GET', params: {}},
