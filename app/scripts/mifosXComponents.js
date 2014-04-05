@@ -3,7 +3,8 @@ define(['underscore', 'mifosX'], function() {
     models: [
       'LoggedInUser',
       'roleMap',
-      'Langs'
+      'Langs',
+      'paypalUser'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -232,6 +233,8 @@ define(['underscore', 'mifosX'], function() {
       'organization/AddressTreeviewController',
       'client/PayInvoiceController',
       'client/CreditDistributionController',
+      'system/IpPoolingController',
+      'system/CreateIpPoolingController',
 
     ],
     filters: [

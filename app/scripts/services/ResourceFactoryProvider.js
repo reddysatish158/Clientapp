@@ -818,6 +818,11 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
+          ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
+         	 get: {method: 'GET', params: {}},
+         	 getData: {method: 'GET', params: {id:'@id'}},
+         	 update: { method: 'PUT' }
+          }) ,
         };
       }];
     }
