@@ -27,6 +27,7 @@
          scope.email=clientData.email;
          scope.phone=clientData.phone;
          webStorage.add("orderId",routeParams.id);
+      
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
            
         	scope.orderPriceDatas= data.orderPriceData;
@@ -35,6 +36,7 @@
             scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
+            webStorage.add("orderData", {groupName: data.orderData.groupName,orderNo:data.orderData.orderNo,planName: data.orderData.planCode });
       
 	    if(data.orderData.isPrepaid == 'Y'){
             	scope.formData.isPrepaid="Pre Paid";
