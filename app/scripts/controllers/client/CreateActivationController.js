@@ -312,7 +312,7 @@
 	                   }
 	                   
 	                  this.formData1.flag=scope.configurationProperty;
-	                  
+	                  delete this.formData1.middlename;
 	                //  delete this.formData1.name;
 	                  
 	                if(config =='SALE'){  
