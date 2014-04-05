@@ -787,8 +787,16 @@
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
       })
+<<<<<<< HEAD
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
+=======
+      .when('/ipPooling', {
+        templateUrl : 'views/system/ipPooling.html'
+      })      
+      .when('/createippooling', {
+        templateUrl : 'views/system/createIpPooling.html'
+>>>>>>> 722143a7b39bc326f8ca7019138853f397983b0b
       });
 
     $locationProvider.html5Mode(false);

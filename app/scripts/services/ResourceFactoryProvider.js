@@ -812,10 +812,18 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
+
           groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
         	  getDetails: {method: 'GET', params: {}},
         	  postDetails: { method: 'POST', params: {}}
            }),
+
+          ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
+         	 get: {method: 'GET', params: {}},
+         	 getData: {method: 'GET', params: {id:'@id'}},
+         	 update: { method: 'PUT' }
+          }) ,
+
         };
       }];
     }
