@@ -3,6 +3,7 @@
 	  AddressTreeviewController: function(scope, resourceFactory,$modal,route) {
      
       var idToNodeMap = {};
+        var str = "new";
         
         scope.elementSelect = function(id,nodeName,nodeCode){
         	scope.nodeId = id;
@@ -115,7 +116,7 @@
         	  $scope.submit = function (newCode,newName) {
         		  this.formData.entityCode = newCode;
         		  this.formData.entityName=newName;
-        		  resourceFactory.addCountryResource.get(this.formData,function(data){
+        		  resourceFactory.countryResource.get({add : str},this.formData,function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -134,7 +135,7 @@
         		  	$scope.formData.entityCode = newCode;
         		  	$scope.formData.entityName=newName;
         		  var countryId=scope.elementId[1];
-        		  resourceFactory.editCountryResource.update({id:countryId},$scope.formData,function(data){
+        		  resourceFactory.countryResource.update({id:countryId},$scope.formData,function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -148,7 +149,7 @@
         	  	
         	  $scope.approveDeleteCountry = function () {
         		  $scope.countryId=scope.elementId[1];
-        		  resourceFactory.editCountryResource.delete({id:$scope.countryId},{},function(data){
+        		  resourceFactory.countryResource.delete({id:$scope.countryId},{},function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -172,7 +173,7 @@
 	        		  this.formData.entityCode = newCode;
 	        		  this.formData.entityName=newName;
 	        		  this.formData.parentEntityId = scope.elementId[1];
-	        		  resourceFactory.addStateResource.get(this.formData,function(data){
+	        		  resourceFactory.stateResource.get({add  : str},this.formData,function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -191,7 +192,7 @@
 	        		  $scope.formData.entityCode = newCode;
 	        		  $scope.formData.entityName=newName;
 	        		  var stateId=scope.elementId[1];
-	        		  resourceFactory.editStateResource.update({id:stateId},$scope.formData,function(data){
+	        		  resourceFactory.stateResource.update({id:stateId},$scope.formData,function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -204,7 +205,7 @@
 	        var deleteStateController = function ($scope, $modalInstance) {
 	        	  $scope.approveDeleteState = function () {
 	        		  $scope.stateId=scope.elementId[1];
-	        		  resourceFactory.editStateResource.delete({id:$scope.stateId},{},function(data){
+	        		  resourceFactory.stateResource.delete({id:$scope.stateId},{},function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -227,7 +228,7 @@
 		        		  this.formData.entityCode = newCode;
 		        		  this.formData.entityName=newName;
 		        		  this.formData.parentEntityId = scope.elementId[1];
-		        		  resourceFactory.addCityResource.get(this.formData,function(data){
+		        		  resourceFactory.cityResource.get({add : str},this.formData,function(data){
 		        			  route.reload();
 		        	        },function(errData){
 				          });
@@ -246,7 +247,7 @@
 			        		  $scope.formData.entityCode = newCode;
 			        		  $scope.formData.entityName=newName;
 			        		  var cityId=scope.elementId[1];
-			        		  resourceFactory.editCityResource.update({id:cityId},$scope.formData,function(data){
+			        		  resourceFactory.cityResource.update({id:cityId},$scope.formData,function(data){
 			        			  route.reload();
 			        	        },function(errData){
 					          });
@@ -259,7 +260,7 @@
 			   var deleteCityController = function ($scope, $modalInstance) {
 			        	  $scope.approveDeleteCity = function () {
 			        		  $scope.cityId=scope.elementId[1];
-			        		  resourceFactory.editCityResource.delete({id:$scope.cityId},{},function(data){
+			        		  resourceFactory.cityResource.delete({id:$scope.cityId},{},function(data){
 			        			  route.reload();
 			        	        },function(errData){
 					          });

@@ -773,26 +773,20 @@
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
           }),
-          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
-        	  get: {method: 'POST', params: {}}
+          countryResource: defineResource(apiVer + "/address/country/:id/:add",{id: '@id',add: '@add'},  {
+        	  get: {method: 'POST', params: {add : '@add'}},
+        	  update: { method: 'PUT',params : {id: '@id'}}
          }),
-         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
-        	 update: { method: 'PUT' }
-         }),
-         addStateResource: defineResource(apiVer + "/address/state/new",{},  {
-       	  get: {method: 'POST', params: {}}
+         
+         stateResource: defineResource(apiVer + "/address/state/:id/:add",{id : '@id',add : '@add'},  {
+       	  get: {method: 'POST', params: {add : '@add'}},
+       	  update: { method: 'PUT',param : {id : '@id'} }
        	  
         }),
-        editStateResource: defineResource(apiVer + "/address/state/:id",{id: '@id'},  {
-        	update: { method: 'PUT' }
-         	  
-         }),
-        addCityResource: defineResource(apiVer + "/address/city/new",{},  {
-         	  get: {method: 'POST', params: {}}
-         	  
-          }),
-          editCityResource: defineResource(apiVer + "/address/city/:id",{id: '@id'},  {
-        	  update: { method: 'PUT' }
+        
+        cityResource: defineResource(apiVer + "/address/city/:id/:add",{id : '@id',add : '@add'},  {
+         	  get: {method: 'POST', params: {add : '@add'}},
+         	  update: { method: 'PUT',param : {id : '@id'}}
          	  
           }),
           payInvoiceTemplateResource: defineResource(apiVer + "/invoice/:invoiceId",{invoiceId: '@invoiceId'},  {
@@ -810,6 +804,10 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
+          groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
+        	  getDetails: {method: 'GET', params: {}},
+        	  postDetails: { method: 'POST', params: {}}
+           }),
         };
       }];
     }

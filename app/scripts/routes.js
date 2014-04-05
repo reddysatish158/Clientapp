@@ -780,6 +780,9 @@
       })
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
+      })
+      .when('/groupsDetails', {
+        templateUrl : 'views/organization/groupsDetails.html'
       });
 
     $locationProvider.html5Mode(false);
