@@ -2282,7 +2282,12 @@
 
 "label.extensionperiod":"Extension Period",
 "label.extensionreason":"Extension Reason",
-"label.extension":"Extension"
+"label.extension":"Extension",
+"#Simple Activation":"............",
+"label.name":"Name",
+"label.activation.plan":"Plan",
+"label.activation.phone":"Phone"
+
 
    
 
