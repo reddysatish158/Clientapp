@@ -789,6 +789,12 @@
       })
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
+      })
+      .when('/ipPooling', {
+        templateUrl : 'views/system/ipPooling.html'
+      })      
+      .when('/createippooling', {
+        templateUrl : 'views/system/createIpPooling.html'
       });
 
     $locationProvider.html5Mode(false);

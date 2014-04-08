@@ -15,6 +15,8 @@
          scope.payment="PAYMENT";
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
+         scope.url = mifosX.models.url;
+         scope.mail = mifosX.models.mail;
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
