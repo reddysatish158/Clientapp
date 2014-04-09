@@ -23,6 +23,7 @@
           scope.first.date = new Date();
           scope.allocation.date=new Date();
           scope.formData1 = {};
+          scope.formData={};
           scope.clientCategoryDatas=[];
           scope.configurationProperty=[];
           
