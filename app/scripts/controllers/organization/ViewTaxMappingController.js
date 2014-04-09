@@ -1,13 +1,14 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewTaxMappingController: function(scope, routeParams , resourceFactory ) {
+	  ViewTaxMappingController: function(scope, routeParams , resourceFactory,PermissionService ) {
         scope.taxmapping = [];
+        scope.PermissionService = PermissionService;
         resourceFactory.getTaxmappingResource.get({taxId: routeParams.id}, function(data) {
             scope.taxmapping = data;
         });
     }
   });
-  mifosX.ng.application.controller('ViewTaxMappingController', ['$scope', '$routeParams','ResourceFactory', mifosX.controllers.ViewTaxMappingController]).run(function($log) {
+  mifosX.ng.application.controller('ViewTaxMappingController', ['$scope', '$routeParams','ResourceFactory','PermissionService', mifosX.controllers.ViewTaxMappingController]).run(function($log) {
     $log.info("ViewTaxMappingController initialized");
   });
 }(mifosX.controllers || {}));

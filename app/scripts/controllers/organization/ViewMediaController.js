@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewMediaController: function(scope, routeParams , location,resourceFactory ) {
+	  ViewMediaController: function(scope, routeParams , location,resourceFactory,PermissionService ) {
         scope.media = [];
         scope.mediaDetails = [];
+        scope.PermissionService = PermissionService;
         resourceFactory.saveMediaResource.get({mediaId: routeParams.id} , function(data) {
             scope.media = data.mediaAssetData;
             scope.mediaDetails=data.mediaassetAttributes;
@@ -24,7 +25,7 @@
     
     }
   });
-  mifosX.ng.application.controller('ViewMediaController', ['$scope', '$routeParams', '$location','ResourceFactory', mifosX.controllers.ViewMediaController]).run(function($log) {
+  mifosX.ng.application.controller('ViewMediaController', ['$scope', '$routeParams', '$location','ResourceFactory','PermissionService', mifosX.controllers.ViewMediaController]).run(function($log) {
     $log.info("ViewMediaController initialized");
   });
 }(mifosX.controllers || {}));

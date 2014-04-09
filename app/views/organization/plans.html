@@ -1,3 +1,4 @@
+<div  ng-controller="PlanController" >
 <div>
 
     <ul class="breadcrumb">
@@ -5,10 +6,10 @@
         <li class="active">{{'label.plans' | translate}}&nbsp;&nbsp;</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createPlan" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.plan' | translate }}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_PLAN')" href="#/createPlan" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.plan' | translate }}</a>
     </div>
 </div>
-<div class="row-fluid" ng-controller="PlanController">
+<div class="row-fluid">
    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by plan Code/plan Description/status">
 	<table class="table">
         <thead>
@@ -26,4 +27,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

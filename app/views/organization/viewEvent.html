@@ -8,10 +8,11 @@
 		</ul>
 		 <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editEvent/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>	        
-	          <a ng-click="deleteEvent()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>	
-	          <a href="#/addEventPrice/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> AddPrice</a>
-	          <a href="#/viewEventPrices/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> ViewPrice</a>  
+	          <a ng-show="PermissionService.showMenu('UPDATE_EVENT')" href="#/editEvent/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>	        
+	          <a ng-show="PermissionService.showMenu('DELETE_EVENT')" ng-click="deleteEvent()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>	
+	          <a ng-show="PermissionService.showMenu('CREATE_EVENTPRICE') &&
+	          			 PermissionService.showMenu('READ_EVENTPRICE')" href="#/addEventPrice/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> AddPrice</a>
+	          <a  ng-show="PermissionService.showMenu('READ_EVENTPRICE')" href="#/viewEventPrices/{{event.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> ViewPrice</a>  
 	      </div>
 	    </div>
 	</div>

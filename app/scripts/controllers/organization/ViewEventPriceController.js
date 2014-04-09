@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewEventPriceController: function(scope, routeParams , location,resourceFactory ) {		
-        scope.pricedata = [];          
+	  ViewEventPriceController: function(scope, routeParams , location,resourceFactory,PermissionService ) {		
+        scope.pricedata = [];     
+        scope.PermissionService = PermissionService;
         resourceFactory.eventPriceEditResource.geteventpricedetail({id: routeParams.id} , function(data) {
         	scope.eventId=data.eventId;
             scope.pricedata = data;  
@@ -15,7 +16,7 @@
     
     }
   });
-  mifosX.ng.application.controller('ViewEventPriceController', ['$scope', '$routeParams', '$location','ResourceFactory', mifosX.controllers.ViewEventPriceController]).run(function($log) {
+  mifosX.ng.application.controller('ViewEventPriceController', ['$scope', '$routeParams', '$location','ResourceFactory','PermissionService', mifosX.controllers.ViewEventPriceController]).run(function($log) {
     $log.info("ViewEventPriceController initialized");
   });
 }(mifosX.controllers || {}));

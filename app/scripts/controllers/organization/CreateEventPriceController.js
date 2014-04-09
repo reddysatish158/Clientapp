@@ -1,6 +1,6 @@
 (function(module) {
 	mifosX.controllers = _.extend(module, {
-		CreateEventPriceController : function(scope, routeParams, resourceFactory, location) {
+		CreateEventPriceController : function(scope, routeParams, resourceFactory, location,PermissionService) {
 		
 			scope.optTypes=[];
 			scope.clientTypes=[]; 
@@ -10,6 +10,7 @@
 			scope.hideForGame = true;
 			resourceFactory.eventPriceTemplateResource.getpriceDetails({eventId: routeParams.id} ,function(data) {
 				
+				scope.eventId=data.eventId;
 				scope.catId = data.categoryId;
 				scope.formData=data;
 				if(scope.catId == '999991'){
@@ -32,12 +33,15 @@
 				 this.formData.locale = 'en';
 				resourceFactory.eventpriceResource.save({'eventId': routeParams.id}, this.formData,
 						function(data) {
+						if(PermissionService.showMenu('READ_EVENTPRICE'))
 							location.path('/viewEventPrice/'+ data.resourceId);
+						else
+							location.path('/viewEvent'+scope.eventId);							
 						});
 			};
 		}
 	});
-	mifosX.ng.application.controller('CreateEventPriceController', ['$scope', '$routeParams', 'ResourceFactory', '$location', mifosX.controllers.CreateEventPriceController]).run(function($log) {
+	mifosX.ng.application.controller('CreateEventPriceController', ['$scope', '$routeParams', 'ResourceFactory', '$location','PermissionService', mifosX.controllers.CreateEventPriceController]).run(function($log) {
 	    $log.info("CreateEventPriceController initialized");
 	  });
 }(mifosX.controllers || {}));

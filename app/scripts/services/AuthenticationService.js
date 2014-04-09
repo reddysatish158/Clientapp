@@ -9,7 +9,7 @@
         webStorage.add("userData",data);
         
         if(localStorageService.get('Location')){
-            scope.activityQueue = localStorageService.get('Location');
+        scope.activityQueue = localStorageService.get('Location');
         }
         scope.setDf = function(){
 
@@ -23,13 +23,13 @@
                         	  webStorage.add("CPE_TYPE",data.globalConfiguration[i].value);
                         }
                     }
-                   
                 });
-                
-            
-            scope.df = scope.dateformat;
+       
+        scope.df = scope.dateformat;
         };
-        scope.setDf();
+        scope.setDf();	
+        
+        
       };
 
       var onFailure = function(data) {
@@ -58,3 +58,17 @@
     $log.info("AuthenticationService initialized");
   });
 }(mifosX.services || {}));
+
+
+/*resourceFactory.configurationResource.get(function(data) {
+for(var i in data.globalConfiguration){
+	if(data.globalConfiguration[i].name=="DateFormat"){
+		localStorageService.add('dateformat',data.globalConfiguration[i].value);
+		scope.dateformat = data.globalConfiguration[i].value;
+		console.log(scope.dateformat);
+	}
+}
+
+});*/
+
+

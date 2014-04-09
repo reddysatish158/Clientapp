@@ -57,8 +57,8 @@
     <div class="paddedbottom10">
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editownhardware/{{id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>	        
-	          <a ng-click="deletemessage()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_OWNEDHARDWARE')" href="#/editownhardware/{{id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>	        
+	          <a ng-show="PermissionService.showMenu('DELETE_OWNEDHARDWARE')" ng-click="deletemessage()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
 	      </div>
 	    </div>
 	</div>

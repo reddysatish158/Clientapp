@@ -3,7 +3,7 @@
         AuditController: function(scope, resourceFactory,dateFilter,location) {
             scope.formData = [];
             scope.isCollapsed = true;
-            
+           
             scope.routeTo = function(id){
                 location.path('/viewaudit/'+ id);
               };

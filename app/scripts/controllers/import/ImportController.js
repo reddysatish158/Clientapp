@@ -1,14 +1,14 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ImportController: function(scope, resourceFactory,route,API_VERSION,$rootScope) {
+	  ImportController: function(scope, resourceFactory,route,API_VERSION,$rootScope,PermissionService) {
         scope.imports = [];
-        
-        
+        scope.PermissionService = PermissionService;
         
         var getAllFiles = function(){
-        	resourceFactory.importResource.getAllimportfiles(function(data) {
-                scope.imports= data;
-            });
+        	if(PermissionService.showMenu('READ_UPLOADSTATUS'))
+        		resourceFactory.importResource.getAllimportfiles(function(data) {
+        			scope.imports= data;
+        		});
         };
         
         getAllFiles();
@@ -46,7 +46,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ImportController', ['$scope', 'ResourceFactory','$route','API_VERSION','$rootScope', mifosX.controllers.ImportController]).run(function($log) {
+  mifosX.ng.application.controller('ImportController', ['$scope', 'ResourceFactory','$route','API_VERSION','$rootScope','PermissionService', mifosX.controllers.ImportController]).run(function($log) {
     $log.info("ImportController initialized");
   });
 }(mifosX.controllers || {}));

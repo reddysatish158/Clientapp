@@ -1,14 +1,16 @@
+<div ng-controller="ClientController">
 <div>
     <ul class="breadcrumb">
         <li class="active">{{'link.clients' | translate}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createclient" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Client</a>
-        <a href="#/createclientnewwizard" class="btn btn-primary"><i class="icon-plus icon-white"></i> New Activation</a>
-        <a href="#/createsimpleActivation" class="btn btn-primary"><i class="icon-plus icon-white"></i>Simple Activation</a>
+        <a  ng-show="PermissionService.showMenu('CREATE_CLIENT')" href="#/createclient" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Client</a>
+          <a href="#/createclientnewwizard" class="btn btn-primary"
+          		ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')"><i class="icon-plus icon-white"></i> New Activation</a>
+        <a ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" href="#/createsimpleActivation" class="btn btn-primary"><i class="icon-plus icon-white"></i>Simple Activation</a>
     </div>
 </div>
-<div class="row-fluid" ng-controller="ClientController">
+<div class="row-fluid" ng-show="PermissionService.showMenu('READ_CLIENT')">
 <form ng-submit="search(filterText)">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by Account#/Name/Phone/email/Identity/Device#">
 
@@ -41,4 +43,5 @@
         <li class="next" ><a  ng-click="clients.lastPage()" href="" ng-disabled="!clients.hasLastPage()">Last</a></li>
         <li class="next" ><a  id="next"   ng-click="clients.next()" href="" ng-hide="!clients.hasNext()">Next &rarr;</a></li>
     </ul>
+</div>
 </div>

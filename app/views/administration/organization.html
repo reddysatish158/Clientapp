@@ -1,7 +1,7 @@
-<div class="row paddedleft paddedtop">
+<div class="row paddedleft paddedtop" ng-controller="OfficesModuleController">
   <div class="span6">
 	  <div class="list-group">
-	    <a class="list-group-item" href="#/offices">
+	    <a class="list-group-item" href="#/offices" ng-show="PermissionService.showMenu('READ_OFFICE')">
 	      <h4 class="list-group-item-heading"><i class="icon-building icon-large"></i>&nbsp;&nbsp;Manage Offices</h4>
 	      <p class="list-group-item-text">Add new office or modify or inactivate office or modify office heirarchy</p>
 	    </a>
@@ -9,35 +9,35 @@
 	      <h4 class="list-group-item-heading"><i class="icon-calendar icon-large"></i>&nbsp;&nbsp;Manage Holidays</h4>
 	      <p class="list-group-item-text">Define holidys for offices</p>
 	    </a> -->
-	    <a class="list-group-item" href="#/employees">
+	    <a class="list-group-item" href="#/employees" ng-show="PermissionService.showMenu('READ_STAFF')">
 	      <h4 class="list-group-item-heading"><i class="icon-user icon-large"></i>&nbsp;&nbsp;Manage Employees</h4>
 	      <p class="list-group-item-text"></p>
 	    </a>
 	    
-	     <a class="list-group-item" href="#/contract">
+	     <a class="list-group-item" href="#/contract" ng-show="PermissionService.showMenu('READ_CONTRACT')">
 	      <h4 class="list-group-item-heading"><i class="icon-calendar icon-large"></i>&nbsp;&nbsp;Contract Details</h4>
 	      <p class="list-group-item-text">Define Contracts for Plan</p>
 	    </a>
-	     <a class="list-group-item" href="#/media">
+	     <a class="list-group-item" href="#/media" ng-show="PermissionService.showMenu('READ_MEDIAASSET')">
 	      <h4 class="list-group-item-heading"><i class="icon-film icon-large"></i>&nbsp;&nbsp;Media Details</h4>
 	      <p class="list-group-item-text">Define Media Details</p>
 	    </a>
-	    <a class="list-group-item" href="#/event">
+	    <a class="list-group-item" href="#/event" ng-show="PermissionService.showMenu('READ_EVENT')">
 	      <h4 class="list-group-item-heading"><i class="icon-eye-open icon-large"></i>&nbsp;&nbsp;Event Price</h4>
 	      <p class="list-group-item-text">Event Price</p>
 	    </a>
 	    
-	     <a class="list-group-item" href="#/discounts">
+	     <a class="list-group-item" href="#/discounts" ng-show="PermissionService.showMenu('READ_DISCOUNT','READ_PROMOTIONCODE')">
 	      <h4 class="list-group-item-heading"><i class="icon-tags icon-large"></i>&nbsp;&nbsp;Discounts</h4>
 	      <p class="list-group-item-text">A Discounts</p>
 	    </a>
 	    
 	    </a>
-	      <a class="list-group-item" href="#/currencydetails">
+	      <a class="list-group-item" href="#/currencydetails" ng-show="PermissionService.showMenu('READ_COUNTRYCURRENCY')">
 	      <h4 class="list-group-item-heading"><i class="icon-briefcase icon-large"></i>&nbsp;&nbsp;Currency Details</h4>
 	      <p class="list-group-item-text">A Currency Details</p>
 	    </a>
-	    <a class="list-group-item" href="#/addressmanage">
+	    <a class="list-group-item" href="#/addressmanage" ng-show="PermissionService.showMenu('READ_LOCATION')">
 	      <h4 class="list-group-item-heading"><i class="icon-list icon-large"></i>&nbsp;&nbsp;Manage Addresses</h4>
 	      <p class="list-group-item-text">For Country,State,and City</p>
 	    </a>
@@ -46,7 +46,7 @@
   </div>
   <div class="span6">
 	  <div class="list-group">
-	    <a class="list-group-item" href="#/currconfig">
+	    <a class="list-group-item" href="#/currconfig" ng-show="PermissionService.showMenu('READ_CURRENCY')">
 	      <h4 class="list-group-item-heading"><i class="icon-large icon-cogs"></i>&nbsp;&nbsp;Currency Configuration</h4>
 	      <p class="list-group-item-text">Currencies available across organization for different products</p>
 	    </a>
@@ -58,30 +58,37 @@
 	      <h4 class="list-group-item-heading"><i class="icon-large icon-double-angle-right"></i>&nbsp;&nbsp;Bulk Loan Reassignment </h4>
 	      <p class="list-group-item-text">Easy way to ressign all the loan from one LO to another LO</p>
 	    </a> -->
-	     <a class="list-group-item" href="#/services">
+	     <a class="list-group-item" href="#/services" ng-show="PermissionService.showMenu('READ_SERVICE')">
 	      <h4 class="list-group-item-heading"><i class="icon-large icon-cogs"></i>&nbsp;&nbsp;Services</h4>
 	      <p class="list-group-item-text">Different Services for Plans</p>
 	    </a>
-	     <a class="list-group-item" href="#/plans">
+	     <a class="list-group-item" href="#/plans" ng-show="PermissionService.showMenu('READ_PLAN')">
 	      <h4 class="list-group-item-heading"><i class="icon-certificate icon-large"></i>&nbsp;&nbsp;Plan & Pricing</h4>
 	      <p class="list-group-item-text">Define Plans for customers service</p>
 	       </a>
-	         <a class="list-group-item" href="#/regions">
+	         <a class="list-group-item" href="#/regions" ng-show="PermissionService.showMenu('READ_REGION')">
 	      <h4 class="list-group-item-heading"><i class="icon-globe icon-large"></i>&nbsp;&nbsp;Regions</h4>
 	      <p class="list-group-item-text">Regions</p>
 	      </a>
-	      <a class="list-group-item" href="#/voucherpins">
+	      <a class="list-group-item" href="#/voucherpins" ng-show="PermissionService.showMenu('READ_RANDAMGENERATOR')">
 	      <h4 class="list-group-item-heading"><i class="icon-gift icon-large"></i>&nbsp;&nbsp;Voucher Pins</h4>
 	      <p class="list-group-item-text">A Vocher pins</p>
 	    </a>
-	    <a class="list-group-item" href="#/chargecode">
+	    <a class="list-group-item" href="#/chargecode" ng-show="PermissionService.showMenu('READ_CHARGECODE')">
 	      <h4 class="list-group-item-heading"><i class=" icon-th-list icon-large"></i>&nbsp;&nbsp;Charge Code</h4>
 	      <p class="list-group-item-text">Charge Code Details	</p>
-	       <a class="list-group-item" href="#/message">
+	      </a>
+	       <a class="list-group-item" href="#/message" ng-show="PermissionService.showMenu('READ_MESSAGE')">
 	      <h4 class="list-group-item-heading"><i class="icon-book icon-large"></i>&nbsp;&nbsp;Message</h4>
 	      <p class="list-group-item-text">A Message</p>
 	    </a>
 	    </a>
+
+	    <a class="list-group-item" href="#/groupsDetails" ng-show="PermissionService.showMenu('READ_GROUPS')">
+	      <h4 class="list-group-item-heading"><i class="icon-gift icon-large"></i>&nbsp;&nbsp;Groups</h4>
+	      <p class="list-group-item-text">Groups</p>
+	    </a>
+
 	    
 	  </div>
   </div>

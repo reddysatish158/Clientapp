@@ -4,7 +4,7 @@
 	        scope.tickets = [];
 	        
 	        scope.routeTo = function(clientId,ticketId){
-	            location.path('/viewTicket/'+clientId+'/'+ticketId);
+	        		location.path('/viewTicket/'+clientId+'/'+ticketId);
 	        };
 	        resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
 	            scope.tickets = data;
@@ -12,7 +12,7 @@
 	        });
 	    }
   });
-  mifosX.ng.application.controller('TicketController', ['$scope', 'ResourceFactory', '$routeParams', '$location' , mifosX.controllers.TicketController]).run(function($log) {
+  mifosX.ng.application.controller('TicketController', ['$scope', 'ResourceFactory', '$routeParams', '$location', mifosX.controllers.TicketController]).run(function($log) {
     $log.info("TicketController initialized");
   });
 }(mifosX.controllers || {}));

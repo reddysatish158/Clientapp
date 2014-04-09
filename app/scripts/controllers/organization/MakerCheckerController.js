@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MakerCheckerController: function(scope, route, resourceFactory) {
-      
+    MakerCheckerController: function(scope, route, resourceFactory,PermissionService) {
+    	
+    	scope.PermissionService = PermissionService;
       scope.permissions = [];
       scope.groupings = [];
       scope.formData = {};
@@ -73,7 +74,7 @@
       };
     }
   });
-  mifosX.ng.application.controller('MakerCheckerController', ['$scope', '$route', 'ResourceFactory', mifosX.controllers.MakerCheckerController]).run(function($log) {
+  mifosX.ng.application.controller('MakerCheckerController', ['$scope', '$route', 'ResourceFactory','PermissionService', mifosX.controllers.MakerCheckerController]).run(function($log) {
     $log.info("MakerCheckerController initialized"); 
   });
 }(mifosX.controllers || {}));

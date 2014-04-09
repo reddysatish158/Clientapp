@@ -1,8 +1,12 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  AddressTreeviewController: function(scope, resourceFactory,$modal,route) {
+	  AddressTreeviewController: function(scope, resourceFactory,$modal,route,PermissionService) {
      
       var idToNodeMap = {};
+
+       scope.PermissionService = PermissionService;
+        var str = "new";
+
         
         scope.elementSelect = function(id,nodeName,nodeCode){
         	scope.nodeId = id;
@@ -344,7 +348,7 @@
         
      }
   });
-  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$modal','$route', mifosX.controllers.AddressTreeviewController]).run(function($log) {
+  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$modal','$route','PermissionService', mifosX.controllers.AddressTreeviewController]).run(function($log) {
     $log.info("AddressTreeviewController initialized");
   });
 }(mifosX.controllers || {}));

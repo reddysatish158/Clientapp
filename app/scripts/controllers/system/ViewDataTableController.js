@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewDataTableController: function(scope, routeParams, resourceFactory, location,$modal) {
-
+    ViewDataTableController: function(scope, routeParams, resourceFactory, location,$modal,PermissionService) {
+    	
+    	scope.PermissionService = PermissionService;
         resourceFactory.DataTablesResource.getTableDetails({datatablename: routeParams.tableName} , function(data) {
           
           var temp=[];
@@ -42,7 +43,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewDataTableController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal', mifosX.controllers.ViewDataTableController]).run(function($log) {
+  mifosX.ng.application.controller('ViewDataTableController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal','PermissionService', mifosX.controllers.ViewDataTableController]).run(function($log) {
     $log.info("ViewDataTableController initialized");
   });
 }(mifosX.controllers || {}));

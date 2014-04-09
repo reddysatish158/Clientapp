@@ -11,8 +11,8 @@
 			<div class="btn-group">
 				<a ng-hide="glaccount.disabled" class="btn btn-primary" ng-click="changeState(glaccount.disabled)"><i class="icon-lock icon-white"></i>{{'label.disable' | translate}}</a>
 				<a ng-show="glaccount.disabled" class="btn btn-primary" ng-click="changeState(glaccount.disabled)"><i class="icon-unlock icon-white"></i>{{'label.enable' | translate}}</a>
-				<a href="#/editglaccount/{{glaccount.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>{{'label.edit' | translate}}</a>
-				<button class="btn btn-primary" ng-click="deleteGLAccount()"><i class="icon-trash icon-white"></i>{{'label.delete' | translate}}</button>
+				<a ng-show="PermissionService.showMenu('UPDATE_GLACCOUNT')" href="#/editglaccount/{{glaccount.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>{{'label.edit' | translate}}</a>
+				<button ng-show="PermissionService.showMenu('DELETE_GLACCOUNT')" class="btn btn-primary" ng-click="deleteGLAccount()"><i class="icon-trash icon-white"></i>{{'label.delete' | translate}}</button>
 			</div>
 		</div>
 	</div>

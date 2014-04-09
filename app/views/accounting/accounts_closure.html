@@ -1,13 +1,14 @@
+<div ng-controller="AccountingClosureController">
 <div>
     <ul class="breadcrumb">
         <li><a href="#/accounting">{{'link.accounting' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.accountsclosure' | translate}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createclosure" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'label.createclosure' | translate}}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_GLCLOSURE')" href="#/createclosure" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'label.createclosure' | translate}}</a>
     </div>
 </div>
-<div ng-controller="AccountingClosureController" >
+<div >
     <legend>{{ 'label.closed.accounting.details' | translate }}</legend>
 
     <div class="pull-left">
@@ -35,4 +36,5 @@
         </tr>
         </tbody>
     </table>
+</div>
 </div>

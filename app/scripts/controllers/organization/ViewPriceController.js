@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewPriceController: function(scope, routeParams , location,resourceFactory ) {
+	  ViewPriceController: function(scope, routeParams , location,resourceFactory,PermissionService) {
         scope.chargevariants = [];
         scope.planId=routeParams.planId;
+        scope.PermissionService = PermissionService;
         resourceFactory.getPriceResource.get({priceId: routeParams.id} , function(data) {
             scope.chargevariants = data.chargevariant;
             scope.serviceDatas =data.serviceData;
@@ -22,7 +23,7 @@
     
     }
   });
-  mifosX.ng.application.controller('ViewPriceController', ['$scope', '$routeParams', '$location','ResourceFactory', mifosX.controllers.ViewPriceController]).run(function($log) {
+  mifosX.ng.application.controller('ViewPriceController', ['$scope', '$routeParams', '$location','ResourceFactory','PermissionService', mifosX.controllers.ViewPriceController]).run(function($log) {
     $log.info("ViewPriceController initialized");
   });
 }(mifosX.controllers || {}));

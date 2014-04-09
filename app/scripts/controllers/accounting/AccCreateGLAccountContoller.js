@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AccCreateGLAccountController: function(scope, resourceFactory, location) {
+    AccCreateGLAccountController: function(scope, resourceFactory, location,PermissionService) {
         scope.coadata = [];
         scope.accountTypes = [];
         scope.usageTypes = [];
@@ -46,12 +46,12 @@
 
         scope.submit = function() {   
             resourceFactory.accountCoaResource.save(this.formData,function(data){
-            location.path('/viewglaccount/' + data.resourceId);
+            	location.path('/viewglaccount/' + data.resourceId);
           });
         };
     }
   });
-  mifosX.ng.application.controller('AccCreateGLAccountController', ['$scope', 'ResourceFactory', '$location', mifosX.controllers.AccCreateGLAccountController]).run(function($log) {
+  mifosX.ng.application.controller('AccCreateGLAccountController', ['$scope', 'ResourceFactory', '$location','PermissionService', mifosX.controllers.AccCreateGLAccountController]).run(function($log) {
     $log.info("AccCreateGLAccountController initialized");
   });
 }(mifosX.controllers || {}));
