@@ -13,17 +13,18 @@
         }
         scope.setDf = function(){
 
-        	resourceFactory.configurationResource.get(function(data) {
-            	for(var i in data.globalConfiguration){
-                    if(data.globalConfiguration[i].name=="DateFormat"){
-                    	localStorageService.add('dateformat',data.globalConfiguration[i].value);
-                    	scope.dateformat = data.globalConfiguration[i].value;
+            	resourceFactory.configurationResource.get(function(data) {
+                	for(var i in data.globalConfiguration){
+                        if(data.globalConfiguration[i].name=="DateFormat"){
+                        	localStorageService.add('dateformat',data.globalConfiguration[i].value);
+                        	scope.dateformat = data.globalConfiguration[i].value;
+                        	
+                        }if(data.globalConfiguration[i].name=="CPE_TYPE"){
+                        	  webStorage.add("CPE_TYPE",data.globalConfiguration[i].value);
+                        }
                     }
-                }
-               
-            });
-            
-
+                });
+       
         scope.df = scope.dateformat;
         };
         scope.setDf();	

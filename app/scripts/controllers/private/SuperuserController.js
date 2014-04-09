@@ -160,12 +160,14 @@
                     scope.getLcount(scope.formattedDate,scope.ltempDate,data);
                     scope.getBarData(scope.formattedDate,scope.fcount,scope.lcount);
                 });
+                
+                resourceFactory.groupTemplateResource.get(function(data) {
+                    scope.offices = data.officeOptions;
+                });
             });
 
           
-/*            resourceFactory.groupTemplateResource.get(function(data) {
-                scope.offices = data.officeOptions;
-            });*/
+         
 
             resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:1, genericResultSet:false} , function(data) {
             	

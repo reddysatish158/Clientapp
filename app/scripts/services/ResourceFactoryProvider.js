@@ -37,6 +37,9 @@
           clientIdentifierResource: defineResource(apiVer + "/client_identifiers/:clientIdentityId/documents", {clientIdentityId:'@clientIdentityId'}, {
             get: {method: 'GET', params: {}, isArray:true}
           }),
+          groupTemplateResource: defineResource(apiVer + "/groups/template", {}, {
+              get: {method: 'GET', params: {}}
+          }),
           clientDocumentsResource: defineResource(apiVer + "/clients/:clientId/documents/:documentId", {clientId:'@clientId',documentId:'@documentId'}, {
             getAllClientDocuments: {method: 'GET', params: {}, isArray: true}
           }),
@@ -173,7 +176,7 @@
             get: {method: 'GET', params: {}}
           }),
          
-          configurationResource:defineResource(apiVer + "/configurations",{}, {
+          configurationResource:defineResource(apiVer + "/configurations/:configId",{configId : '@configId'}, {
             get: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}}
           }),
@@ -291,6 +294,11 @@
            update: { method: 'PUT' }
           
         }),
+        OrderSchedulingResource: defineResource(apiVer + "/orders/scheduling/:clientId", {clientId:'@clientId'}, {
+            get: {method: 'GET', params: {}},
+            update: { method: 'PUT' }
+           
+         }),
         changeOrderResource: defineResource(apiVer + "/orders/changePlan/:orderId", {orderId:'@orderId'}, {
             get: {method: 'GET', params: {}},
             update: { method: 'PUT' }
@@ -300,6 +308,10 @@
     	  getAllOrders: {method: 'GET', params: {}},
         }),
 
+        EventActionResource: defineResource(apiVer + "/eventactions/:clientId", {clientId:'@clientId'}, {
+      	  get: {method: 'GET', params: {},isArray: true},
+          }),
+          
         getSingleOrderResource: defineResource(apiVer + "/orders/:orderId/orderprice", {orderId:'@orderId'}, {
      	  get: {method: 'GET', params: {}},
      	  update: { method: 'PUT' }
@@ -393,6 +405,7 @@
        transactionHistoryResource: defineResource(apiVer + "/transactionhistory/template/:clientId", {clientId:'@clientId'}, {
        	getTransactionHistory: {method: 'GET', params: {clientId:'@clientId'}, }
           }),
+     
           serviceResource: defineResource(apiVer + "/servicemasters/:serviceId", {serviceId:"@serviceId"}, {
         	  getAllServices: {method: 'GET', params: {}, isArray: true},
         	  update: {method: 'PUT'}
@@ -725,10 +738,18 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
            }),
+           provisioningResource: defineResource(apiVer + "/provisionings/:clientId", {clientId: '@clientId'}, {
+          	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+             get: {method: 'GET', params: {}},
+             update: { method: 'PUT' }
+        }),
            provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),
-
+           
+           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+         	  get: {method: 'GET', params: {}}
+           }),
 	       EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
                get: {method: 'GET', params: {}, isArray: true},
                getDetails: {method: 'GET', params: {}},
@@ -760,26 +781,20 @@
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
           }),
-          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
-        	  get: {method: 'POST', params: {}}
+          countryResource: defineResource(apiVer + "/address/country/:id/:add",{id: '@id',add: '@add'},  {
+        	  get: {method: 'POST', params: {add : '@add'}},
+        	  update: { method: 'PUT',params : {id: '@id'}}
          }),
-         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
-        	 update: { method: 'PUT' }
-         }),
-         addStateResource: defineResource(apiVer + "/address/state/new",{},  {
-       	  get: {method: 'POST', params: {}}
+         
+         stateResource: defineResource(apiVer + "/address/state/:id/:add",{id : '@id',add : '@add'},  {
+       	  get: {method: 'POST', params: {add : '@add'}},
+       	  update: { method: 'PUT',param : {id : '@id'} }
        	  
         }),
-        editStateResource: defineResource(apiVer + "/address/state/:id",{id: '@id'},  {
-        	update: { method: 'PUT' }
-         	  
-         }),
-        addCityResource: defineResource(apiVer + "/address/city/new",{},  {
-         	  get: {method: 'POST', params: {}}
-         	  
-          }),
-          editCityResource: defineResource(apiVer + "/address/city/:id",{id: '@id'},  {
-        	  update: { method: 'PUT' }
+        
+        cityResource: defineResource(apiVer + "/address/city/:id/:add",{id : '@id',add : '@add'},  {
+         	  get: {method: 'POST', params: {add : '@add'}},
+         	  update: { method: 'PUT',param : {id : '@id'}}
          	  
           }),
           payInvoiceTemplateResource: defineResource(apiVer + "/invoice/:invoiceId",{invoiceId: '@invoiceId'},  {
@@ -790,9 +805,22 @@
         	  get: { method: 'GET', params: {}}
           }),
           creditDistributionResource: defineResource(apiVer + "/creditdistributions/:clientId",{clientId:'@clientId'}, {
-        	  get: { method: 'POST', params: {}}
+        	  get: { method: 'GET', params: {}}
          	  
           }),
+          orderExtensionResource: defineResource(apiVer + "/orders/extension/:orderId", {orderId:'@orderId'}, {
+             get: {method: 'GET', params: {}},
+             update: { method: 'PUT' }
+          }),
+          groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
+        	  getDetails: {method: 'GET', params: {}},
+        	  postDetails: { method: 'POST', params: {}}
+           }),
+          ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
+         	 get: {method: 'GET', params: {}},
+         	 getData: {method: 'GET', params: {id:'@id'}},
+         	 update: { method: 'PUT' }
+          }) ,
         };
       }];
     }

@@ -8,6 +8,7 @@
          scope.clientdocuments = [];
          scope.staffData = {};
          scope.orders = [];
+         scope.scheduleorders=[];
          scope.formData = {};
  		 scope.start = {};
          scope.start.date = new Date();
@@ -15,6 +16,7 @@
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
          scope.PermissionService = PermissionService;
+         
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
@@ -101,7 +103,7 @@
                     scope.client = data;
                     scope.statusActive=scope.client.status.code;
                                 
-                    webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,
+                    webStorage.add("clientData", {clientId:routeParams.id,balanceAmount: data.balanceAmount, displayName: data.displayName,hwSerialNumber: data.hwSerialNumber,
                      statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent,phone:data.phone,email:data.email,categoryType:data.categoryType });
                     
@@ -139,27 +141,31 @@
                                           ngShow : riseTicket
                                         },
                                         
-                                        {
+                                        /*{
 
                                             name:"button.payments",
                                             href:"#/payments",
                                             icon :"icon-usd",
                                             ngShow : makePayment
                                          },
+                                            icon :"icon-usd"
+                                         },*/
                                          {
 
-                                             name:"button.payInvoice",
+                                             name:"button.payments",
                                              href:"#/payinvoice",
                                              icon :"icon-usd",
                                              ngShow : payInvoice
                                           },
-                                          {
+                                         /* {
 
                                               name:"button.distribution",
                                               href:"#/creditDistribution",
                                               icon :"icon-usd",
                                               ngShow : distribute
                                            },
+                                              icon :"icon-usd"
+                                           },*/
                                           
                                          {
                                              name:"button.adjustments",
@@ -231,6 +237,10 @@
                 if(PermissionService.showMenu('READ_ORDER'))
                   resourceFactory.getOrderResource.getAllOrders({clientId: routeParams.id} , function(data) {
                       scope.orders = data.clientOrders;
+                  });
+                  resourceFactory.EventActionResource.get({clientId: routeParams.id} , function(data) {
+                      scope.scheduleorders = data;
+                      
                   });
                 });
         };
@@ -417,10 +427,17 @@
         scope.getTransactionHistoryFetchFunction = function(offset, limit, callback) {
   			resourceFactory.transactionHistoryResource.getTransactionHistory({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
   			};
+  			
+  		  scope.getClientDistributionFetchFunction = function(offset, limit, callback) {
+    			resourceFactory.creditDistributionResource.get({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
+    			};		
           scope.getTransactionHistory = function () {
           	scope.transactionhistory = paginatorService.paginate(scope.getTransactionHistoryFetchFunction, 14);
           };
-  
+      
+          scope.getClientDistribution =function(){
+        		scope.clientDistribution = paginatorService.paginate(scope.getClientDistributionFetchFunction, 14);
+          }
           scope.searchTransactionHistory123 = function(offset, limit, callback) {
 	    	  resourceFactory.transactionHistoryResource.getTransactionHistory({ clientId: routeParams.id ,
 	    		  offset: offset, limit: limit ,sqlSearch: scope.filterText } , callback); 
@@ -450,13 +467,8 @@
         scope.getClientStatements = function () {
             resourceFactory.statementResource.get({clientId: routeParams.id} , function(data) {	
                    scope.states = data;
-                   
-                 //for statement paypal values: email and url
-                   scope.email = mifosX.models.email;
-                   console.log("email::"+scope.email);
                    scope.url = mifosX.models.url;
-                   console.log("url::"+scope.url);
-                  
+                   scope.mail = mifosX.models.mail;
                  });
                };
                
@@ -471,11 +483,20 @@
          scope.downloadFile = function (statementId){
               window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
-         scope.getAllTickets=function(){ 
-        		 resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
-        			 scope.tickets = data;
-        			 scope.clientId= routeParams.id;	  
-        		 });
+         
+         scope.cancelScheduleOrder =function(id){
+        	 resourceFactory.OrderSchedulingResource.delete({'clientId':id},{},function(data){
+        		// location.path('/viewclient/' + routeParams.id);
+        		 route.reload();
+     	    	
+             });
+         }
+       
+         scope.getAllTickets=function(){      
+               resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
+   	            scope.tickets = data;
+   	            scope.clientId= routeParams.id;	  
+   	        });
          };
 	
 	scope.financialsummeryTab = function(){

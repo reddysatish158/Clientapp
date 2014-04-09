@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  PaymentGatewayController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService,PermissionService) {
+	  PaymentGatewayController: function(scope,webStorage,route,$modal, routeParams,location, resourceFactory, paginatorService,PermissionService) {
 		 scope.PermissionService = PermissionService;
         scope.paymentgatewaydatas = [];
 	        
@@ -103,10 +103,73 @@
 			scope.searchInvalidPaymentId = function(filterText) {
 				  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchInvalidPaymentData, 14);
 				  		};
+				  		
+		// edit popup
+				  		
+				  		scope.edit= function(id){
+				      	  scope.errorStatus=[];
+				      	  scope.errorDetails=[];
+				      	  scope.editId=id;
+				        	  $modal.open({
+				                templateUrl: 'editpaymentgateway.html',
+				                controller:editpaymentgatewayController ,
+				                resolve:{}
+				            });
+				        	
+				        };
+				        
+				        
+				        var editpaymentgatewayController=function($scope,$modalInstance){
+				      	  
+				        	$scope.formData = {}; 
+				            $scope.statusData=[];
+				            $scope.updateData={};
+				            //console.log(scope.editId);
+				            resourceFactory.paymentGatewayResource.getData({'id': scope.editId},this.formData,function(data){
+				            	 $scope.formData=data;
+				            	 $scope.statusData=data.statusData;
+				            	 $scope.formData.paymentdata=data.statusData[0].code;
+				             });
+				         	$scope.accept = function(){
+				         		$scope.flag=true;
+				         		this.updateData.status=this.formData.paymentdata;
+				            	this.updateData.remarks=this.formData.remarks;
+				         		resourceFactory.paymentGatewayResource.update({'id': scope.editId},this.updateData,function(data){ 
+				                  route.reload();
+				                 // location.path('/paymentGateway');
+				                        $modalInstance.close('delete');
+				                    },function(errData){
+				                  $scope.flag = false;
+				                   });
+				         	};  
+				    		$scope.reject = function(){
+				    			$modalInstance.dismiss('cancel');
+				    		};
+				        };
+				        
+				        
+				     // for Processed Tab
+
+                        scope.paymentGatewayProcessedData = function(offset, limit, callback) {
+                                                 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Processed'} , callback);
+                                        };
+
+                        scope.getProcessedPaymentGateway = function () {
+                                        scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayProcessedData, 14);
+                                };
+
+                        scope.searchProcessedPaymentData = function(offset, limit, callback) {
+                                          resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,
+                                                  sqlSearch: scope.filterText, tabType: 'Processed'} , callback);
+                                          };
+
+                        scope.searchProcessedPaymentId = function(filterText) {
+                                                        scope.paymentgatewaydatas = paginatorService.paginate(scope.searchProcessedPaymentData, 14);
+                                                };
           
     }
   });
-  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
+  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
     $log.info("PaymentGatewayController initialized");
   });
 }(mifosX.controllers || {}));

@@ -19,7 +19,8 @@
             scope.cities=data.addressTemplateData.cityData;
             scope.configurationProperty=data.configurationProperty.enabled;
             scope.formData.clientCategory=scope.clientCategoryDatas[0].id;
-            scope.formData.groupNameId = scope.groupNameDatas[0].id;
+            scope.groupNameDatas = data.groupNameDatas;
+            scope.formData.groupName = scope.groupNameDatas[0].groupName;
         });
         
        

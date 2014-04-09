@@ -11,9 +11,11 @@
         scope.start = {};
         scope.start.date = new Date();
         var orderId=routeParams.id;
+        scope.isextensionEnable=false;
          scope.clientId=routeParams.clientId;
          var clientData = webStorage.get('clientData');
          webStorage.add("orderId",routeParams.id);
+         scope.hwSerialNumber=clientData.hwSerialNumber;
          scope.displayName=clientData.displayName;
          scope.statusActive=clientData.statusActive;
          scope.accountNo=clientData.accountNo;
@@ -26,6 +28,7 @@
          scope.phone=clientData.phone;
          webStorage.add("orderId",routeParams.id);
          scope.PermissionService = PermissionService;
+      
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
            
         	scope.orderPriceDatas= data.orderPriceData;
@@ -40,12 +43,20 @@
             scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
+            webStorage.add("orderData", {groupName: data.orderData.groupName,orderNo:data.orderData.orderNo,planName: data.orderData.planCode });
+      
 	    if(data.orderData.isPrepaid == 'Y'){
             	scope.formData.isPrepaid="Pre Paid";
             }else{
             	scope.formData.isPrepaid="Post Paid";
             }
-          
+	    var endDate = new Date(scope.orderData.endDate);
+        var curDate = new Date(scope.orderData.currentDate);
+        if((dateFilter(endDate.setDate(endDate.getDate()))<=dateFilter(curDate.setDate(curDate.getDate())))&&
+                (dateFilter(endDate.setDate(endDate.getDate()+1))>=dateFilter(curDate.setDate(curDate.getDate()))))
+        	scope.isextensionEnable=true;
+        else scope.isextensionEnable=false;
+        
         });
         
        if(PermissionService.showMenu('READ_ASSOCIATION')){ 
@@ -146,6 +157,43 @@
   	$scope.rejectProvisioning = function(){
   		$modalInstance.dismiss('cancel');
   	};
+      };
+      
+      scope.extension= function(){
+    	  scope.errorStatus=[];
+    	  scope.errorDetails=[];
+      	  $modal.open({
+              templateUrl: 'extension.html',
+              controller:extensionController ,
+              resolve:{}
+          });
+      	
+      };
+      
+      var extensionController=function($scope,$modalInstance){
+    	  
+    	  resourceFactory.orderExtensionResource.get(function(data) {
+	            $scope.extensionReasonDatas = data.extensionReasonDatas;
+	            $scope.extensionPeriodDatas = data.extensionPeriodDatas;
+	        });
+       	$scope.accept = function(){
+       		$scope.flagExtension=true;
+       		resourceFactory.orderExtensionResource.update({orderId: routeParams.id} ,this.formData, function(data) {  
+                
+                /*resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                          scope.orderPriceDatas= data.orderPriceData;
+                          scope.orderHistorydata=data.orderHistory;
+                          scope.orderData=data.orderData;
+                      });*/
+                route.reload();
+                      $modalInstance.close('delete');
+                  },function(errData){
+                $scope.flagApproveReconnect = false;
+                 });
+       	};  
+  		$scope.rejectExtension = function(){
+  			$modalInstance.dismiss('cancel');
+  		};
       };
        		
      var ProvisioningSystemPopController = function($scope,$modalInstance){

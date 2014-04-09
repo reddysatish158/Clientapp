@@ -6,6 +6,7 @@
         scope.clientId = routeParams.id;
         var clientData = webStorage.get('clientData');
 	    scope.displayName=clientData.displayName;
+	    scope.hwSerialNumber=clientData.hwSerialNumber;
 	    scope.statusActive=clientData.statusActive;
 	    scope.accountNo=clientData.accountNo;
 	    scope.officeName=clientData.officeName;
@@ -136,7 +137,7 @@
         	scope.formData.locale= "en",
         	scope.formData.creditdistributions = scope.creditdistributions;
         	scope.avialableAmount=null;
-        	resourceFactory.creditDistributionResource.get({clientId : routeParams.id},scope.formData,function(data){
+        	resourceFactory.creditDistributionResource.save({clientId : routeParams.id},scope.formData,function(data){
         		location.path('/viewclient/'+routeParams.id);
         	});
         };

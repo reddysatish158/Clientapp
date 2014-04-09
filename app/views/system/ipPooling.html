@@ -1,0 +1,134 @@
+<div>
+    <ul class="breadcrumb">
+        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+        <li class="active">{{'label.manageippooling' | translate}}</li>
+    </ul>
+</div>
+<div class="pull-right">
+        <a href="#/createippooling" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create IpPooling</a>
+</div>
+
+<div ng-controller="IpPoolingController">
+ 
+   <!--  <div>
+      <tabset  style="margin-bottom: 0px;">
+      
+      <tab heading="All" select="getIpPooling()">
+        <div class="row-fluid"> -->                
+           <form ng-submit="searchIpPool(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+         <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.ippooling.id' | translate}}</th>    
+                <th>{{'table.ippooling.ipaddress' | translate}}</th>  
+                <th>{{'table.ippooling.ippooldescription' | translate}}</th>
+                <th>{{'table.ippooling.clientId' | translate}}</th>
+                <th>{{'table.ippooling.status' | translate}}</th>
+                <th>&nbsp;</th>          
+              </tr>
+            </thead>
+            <tbody>
+            <!--  -->
+             <tr class="pointer-main" ng-repeat="ippoolingdata in ippoolingdatas.currentPageItems  | filter:filterText">         
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.ipAddress}}</td> 
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.ipPoolDescription}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.clientId}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.status}}</td>                                     
+
+               <!--  <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>        -->
+
+   			</tr>
+     		 </tbody>
+          </table>
+          <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="ippoolingdatas.previous()" href="" ng-disabled="!ippoolingdatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="ippoolingdatas.next()" href="" ng-disabled="!ippoolingdatas.hasNext()">Next &rarr;</a></li>
+         </ul>
+         </div>
+      </tab>	
+      
+     <!--  <tab heading="Failed" select="getIpPoolStatusFail()">
+        <div class="row-fluid">                
+           <form ng-submit="searchFailedPaymentId(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+         <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.ippooling.id' | translate}}</th>    
+                <th>{{'table.ippooling.ipaddress' | translate}}</th>  
+                <th>{{'table.ippooling.ippooldescription' | translate}}</th>
+                <th>{{'table.ippooling.clientId' | translate}}</th>
+                <th>{{'table.paymentgateway.status' | translate}}</th>
+                <th>&nbsp;</th>          
+              </tr>
+            </thead>
+            <tbody>
+            
+              <tr ng-repeat="ippoolingdata in ippoolingdatas.currentPageItems  | filter:filterText">
+                
+                <td>{{ippoolingdata.id}}</td>
+                <td>{{ippoolingdata.ipAddress}}</td> 
+                <td>{{ippoolingdata.ipPoolDescription}}</td>
+                <td>{{ippoolingdata.clientId}}</td>
+                <td>{{ippoolingdata.status}}</td>                                     
+
+                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
+
+   			</tr>
+     		 </tbody>
+          </table>
+          <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="ippoolingdatas.previous()" href="" ng-disabled="!ippoolingdatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="ippoolingdatas.next()" href="" ng-disabled="!ippoolingdatas.hasNext()">Next &rarr;</a></li>
+         </ul>
+         </div>
+      </tab>	
+      
+      <tab heading="Success" select="getIpPoolStatusSuccess()">
+       <div class="row-fluid">
+           <form ng-submit="searchSuccessPaymentId(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+       <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.ippooling.id' | translate}}</th>    
+                <th>{{'table.ippooling.ipaddress' | translate}}</th>  
+                <th>{{'table.ippooling.ippooldescription' | translate}}</th>
+                <th>{{'table.ippooling.clientId' | translate}}</th>
+                <th>{{'table.paymentgateway.status' | translate}}</th>
+                <th>&nbsp;</th>          
+              </tr>
+            </thead>
+            <tbody>
+             <tr ng-repeat="ippoolingdata in ippoolingdatas.currentPageItems  | filter:filterText">
+                
+                <td>{{ippoolingdata.id}}</td>
+                <td>{{ippoolingdata.ipAddress}}</td> 
+                <td>{{ippoolingdata.ipPoolDescription}}</td>
+                <td>{{ippoolingdata.clientId}}</td>
+                <td>{{ippoolingdata.status}}</td>                                     
+
+                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
+
+   			</tr>
+     		 </tbody>
+          </table>
+            <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="ippoolingdatas.previous()" href="" ng-disabled="!ippoolingdatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="ippoolingdatas.next()" href="" ng-disabled="!ippoolingdatas.hasNext()">Next &rarr;</a></li>
+         </ul>
+         </div>
+      </tab> -->
+      
+      
+   
+   <!--  </tabset>
+    </div> -->
+    
+    
+</div>

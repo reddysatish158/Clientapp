@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewImportController: function(scope, routeParams , location,resourceFactory ) {
+	  ViewImportController: function(scope, routeParams , location,resourceFactory,API_VERSION,$rootScope ) {
         scope.import = [];
         resourceFactory.importviewResource.get({uploadfileId: routeParams.id}, function(data) {
             scope.import = data;
@@ -29,16 +29,16 @@
             }; 
             
             scope.downloadFile = function (){ 
-           	 window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
+           	 window.open($rootScope.hostUrl+ API_VERSION +'/uploadstatus/'+routeParams.id+'/print?tenantIdentifier=default');
             };
             
             scope.logFile = function (){ 
-	         window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/uploadstatus/'+routeParams.id+'/printlog?tenantIdentifier=default');
+	         window.open($rootScope.hostUrl+ API_VERSION +'/uploadstatus/'+routeParams.id+'/printlog?tenantIdentifier=default');
 	    };
            
     }
   });
-  mifosX.ng.application.controller('ViewImportController', ['$scope', '$routeParams', '$location','ResourceFactory', mifosX.controllers.ViewImportController]).run(function($log) {
+  mifosX.ng.application.controller('ViewImportController', ['$scope', '$routeParams', '$location','ResourceFactory','API_VERSION','$rootScope', mifosX.controllers.ViewImportController]).run(function($log) {
     $log.info("ViewImportController initialized");
   });
 }(mifosX.controllers || {}));

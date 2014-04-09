@@ -41,7 +41,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-                <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+                <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -83,7 +83,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-                <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+                <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -126,7 +126,7 @@
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.paymentId}}</td>              
                 <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
-               <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" href="#/editPaymentGateway/{{paymentgatewaydata.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i></a></td>       
+               <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -214,8 +214,95 @@
            </ul>
          </div>
       </tab>
-
+		
+			  <tab heading="Processed" select="getProcessedPaymentGateway()">
+       <div class="row-fluid">
+           <form ng-submit="searchProcessedPaymentId(filterText)">
+               <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+           </form>
+       <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.paymentgateway.id' | translate}}</th> 
+                <th>{{'table.paymentgateway.receiptNo' | translate}}</th>     
+                <th>{{'table.paymentgateway.serialNo' | translate}}</th>
+                <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
+                <th>{{'table.paymentgateway.phoneno' | translate}}</th>             
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>   
+                <th>{{'table.paymentgateway.status' | translate}}</th>  
+                                           
+              </tr>
+            </thead>
+            <tbody>
+             <tr ng-repeat="paymentgatewaydata in paymentgatewaydatas.currentPageItems  | filter:filterText" ng-show="paymentgatewaydata.status=='Processed'">
+                
+                <td>{{paymentgatewaydata.id}}</td>
+                 <td>{{paymentgatewaydata.receiptNo}}</td>       
+                <td>{{paymentgatewaydata.serialNo}}</td>
+                <td>{{paymentgatewaydata.amountPaid}}</td>
+                <td>{{paymentgatewaydata.phoneNo}}</td>
+                <td>{{paymentgatewaydata.remarks}}</td> 
+                <td>{{paymentgatewaydata.status}}</td>
+                             
+   			</tr>
+     		 </tbody>
+          </table>
+           <ul class="pager">
+              <li class="previous"><a  id="prev" ng-click="paymentgatewaydatas.previous()" href="" ng-disabled="!paymentgatewaydatas.hasPrevious()">&larr; Prev</a></li>
+              <li class="next" ><a  id="next"   ng-click="paymentgatewaydatas.next()" href="" ng-disabled="!paymentgatewaydatas.hasNext()">Next &rarr;</a></li>
+           </ul>
+         </div>
+      </tab>
    
     </tabset>
     </div>
-  </div>
+    
+ <script type="text/ng-template" id="editpaymentgateway.html">
+
+	<form class="form-horizontal well" ng-submit="submit()">
+	 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+	<fieldset>
+		<legend>{{'label.editpaymentgateway' | translate}}</legend>
+		<table width="100%">
+		 
+		 <tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="status">{{ 'label.paymentgateway.status' | translate }}</label>
+						<div class="controls">
+							<select ng-model="formData.paymentdata"
+								ng-options="statusdata.code as statusdata.value for statusdata in statusData"
+								value="{{statusdata.code}}" >
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="remarks"> {{ 'label.paymentgateway.remarks' | translate }} </label>
+						<div class="controls">
+							<select ng-model="formData.remarks">
+								<option>Active</option>
+								<option>Done</option>
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	</form>
+   <div class="modal-footer">
+         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
+   </div>
+
+</script> 
+    
+</div>

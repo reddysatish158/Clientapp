@@ -4,7 +4,7 @@ define(['underscore', 'mifosX'], function() {
       'LoggedInUser',
       'roleMap',
       'Langs',
-      'StatementVals'
+      'paypalUser'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -49,7 +49,8 @@ define(['underscore', 'mifosX'], function() {
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
       'client/CreateClientControllerwizard',
-     
+      'client/CreateProvisioningController',
+      'client/CreateActivationController',
       'user/UserController',
       'user/UserFormController',
       'user/UserSettingController',
@@ -73,6 +74,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/EmployeeController',
       'organization/CreateEmployeeController',
       'accounting/AccountModuleController',
+      'organization/GroupsDetailsController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
       'accounting/AccCreateGLAccountContoller',
@@ -114,8 +116,6 @@ define(['underscore', 'mifosX'], function() {
       'reports/ViewReportsController',
       'reports/RunReportsController',
       'private/SuperuserController',
-      'groups/GroupController',
-      'groups/ViewGroupController',
       'configurations/GlobalConfigurationController',
       'system/AuditController',
       'system/ViewAuditController',
@@ -237,6 +237,8 @@ define(['underscore', 'mifosX'], function() {
       'organization/AddressTreeviewController',
       'client/PayInvoiceController',
       'client/CreditDistributionController',
+      'system/IpPoolingController',
+      'system/CreateIpPoolingController',
 
     ],
     filters: [
@@ -260,7 +262,6 @@ define(['underscore', 'mifosX'], function() {
       'ApiValidationDirective',
       'RightClickDirective',
       'ContextMenuDirective',
-      'NGShowDirective',
       'AutofocusDirective'
     ]
   };

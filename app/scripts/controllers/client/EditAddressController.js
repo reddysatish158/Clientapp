@@ -6,12 +6,16 @@
 							scope.addressTypeData=[];
 							 var clientData = webStorage.get('clientData');
 					            scope.displayName=clientData.displayName;
+					            scope.hwSerialNumber=clientData.hwSerialNumber;
 					            scope.statusActive=clientData.statusActive;
 					            scope.accountNo=clientData.accountNo;
 					            scope.officeName=clientData.officeName;
 					            scope.balanceAmount=clientData.balanceAmount;
 					            scope.currency=clientData.currency;
 					            scope.imagePresent=clientData.imagePresent;
+					            scope.categoryType=clientData.categoryType;
+						        scope.email=clientData.email;
+						        scope.phone=clientData.phone;
 							resourceFactory.addressEditResource.getAll({clientId: routeParams.id} , function(data) {	
                                 scope.formData=data; 
                                 scope.addressTypeData=data.addressOptionsData;

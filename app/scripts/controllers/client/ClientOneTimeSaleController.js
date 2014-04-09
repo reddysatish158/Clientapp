@@ -5,16 +5,19 @@
 			  scope.clientId=routeParams.id;
 			  scope.formData = {};
 			  var clientData = webStorage.get('clientData');
+			  scope.hwSerialNumber=clientData.hwSerialNumber;
 			    scope.displayName=clientData.displayName;
 			    scope.statusActive=clientData.statusActive;
 			    scope.accountNo=clientData.accountNo;
 			    scope.officeName=clientData.officeName;
 			    scope.balanceAmount=clientData.balanceAmount;
+			    scope.hwSerialNumber=clientData.hwSerialNumber;
 			    scope.currency=clientData.currency;
 			    scope.imagePresent=clientData.imagePresent;
 			    scope.categoryType=clientData.categoryType;
 		        scope.email=clientData.email;
 		        scope.phone=clientData.phone;
+		        scope.itemId=null;
 	          scope.data={};
 	          scope.maxDate = new Date();
 	          
@@ -30,7 +33,6 @@
 	        });
 	        
 	        scope.itemData=function(itemId){
-	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
 	        		
 	        		scope.formData=data;
@@ -38,13 +40,12 @@
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 		        });	
-	        }
+	        };
 	        
 	        scope.itemDataQuantity=function(quantity,itemId){
 	        	this.data.unitPrice=this.formData.unitPrice;
 	        	this.data.locale="en";
 	        	this.data.quantity=quantity;
-	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleQuantityResource.get({quantity: quantity,itemId:itemId},this.data, function(data) {
 	        		
 	        		scope.formData=data;
@@ -52,10 +53,27 @@
 	        		scope.formData.itemId=itemId;
 	        		 scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 		        });	
-	        }
+	        };
 	        
+	       
+	        scope.getData = function(query){
+	        	if(query.length>0){
+	        		
+	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData.itemId,query: query}, function(data) { 	        	
+	     	            scope.itemDetails = data.serials;
+	     	        }); 
+	        	}else{
+	            	
+	        	}
+            };
 	        
-	        
+            scope.getNumber = function(num) {
+	        	
+	             return new Array(parseInt(num));
+	        	
+	         };
+	         
+	         
 	        scope.reset123 = function(){
 	        	   webStorage.add("callingTab", {someString: "Sale" });
 	           };
@@ -71,12 +89,40 @@
 	             delete this.formData.units;
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
+	             
+	             var temp1 = new Array();
+		        	
+		        	$("input[name='serialNumber']").each(function(){
+		        		var temp = {};
+		    			temp["serialNumber"] = $(this).val();
+		    			temp["orderId"] = routeParams.id;
+		    			temp["clientId"] = routeParams.id;
+		    			temp["status"] = "allocated";
+		    			temp["itemMasterId"] = scope.formData.itemId;
+		    			temp["isNewHw"]="Y";
+		    			temp1.push(temp);
+		        	});
+		        
+		        	
+		            this.formData.serialNumber=temp1;
+		            delete this.formData.serials;
 	            resourceFactory.oneTimeSaleResource.save({clientId:routeParams.id},this.formData,function(data){
 	            	 location.path('/viewclient/' + routeParams.id);
 	          },function(errData){
 	        	  scope.flag = false;
 	          });
 	            webStorage.add("callingTab", {someString: "Sale" });
+	            
+	        	
+	           
+	         /*   resourceFactory.allocateHardwareResource.save(this.formData,function(data){
+	            	//temp1 = undefined; 
+	            	location.path('/viewclient/' + routeParams.clientId);
+	            });
+	           // temp1 = undefined;
+	            console.log("asjhj");*/
+	            
+	        
 	        };
 	    }
 	  });

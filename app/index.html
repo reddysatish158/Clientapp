@@ -58,6 +58,7 @@
   </div>  
 </div>
 <!-- Navbar  -->
+
 <div ng-class="{fullscreen:true,blockui:blockUI==true}" id="main"  data-ng-hide="currentSession.user == null">
        <div class="loading-widget-div" data-ng-show="blockUI">
         <div id="circularG">
@@ -78,7 +79,9 @@
             <div id="circularG_8" class="circularG">
             </div>
         </div>
-    </div>  
+
+    </div>   
+
     <nav>
         <ul class="margin-nav nav-list ext-sidenav" ng-show="office||prospect||createclient||activation">
             <li><a ng-show="office=PermissionService.showMenu('READ_OFFICE')" href="#/nav/offices"><i class="icon-compass icon-large"></i> Navigation</a></li>
@@ -91,8 +94,9 @@
             <li><a ng-show="activation=PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')"
             href="#/createclientnewwizard"><i class="icon-tasks icon-large"></i>  + New Activation</a></li>
             <li ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" class="divider"></li>
-          			
-            <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="bolder black" href="#/help"><i class="icon-question-sign icon-large"></i>&nbsp;&nbsp;&nbsp;{{ 'label.anchor.help' | translate }}</a></li>
+          	<li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="bolder black" href="#/help"><i class="icon-hand-right icon-large"></i>&nbsp;&nbsp;&nbsp;{{ 'label.anchor.shortcuts' | translate }}</a></li>
+            <li ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="divider"></li>
+            <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" target="http://help.openbillingsystem.com" href="http://help.openbillingsystem.com"><i class=" icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
             <!-- <li class="divider"></li>
             <li><a href="#/creategroup"><i class="icon-group icon-large"></i> + Group </a></li>
             <li class="divider"></li>
@@ -123,7 +127,7 @@
                             </ul>
                         </li>
                          
-                        <li class="dropdown" id="preview-menu" ng-show="user||organization||system||upload||jobs||accounting||smartsearch||paymentGetWay">
+                        <li class="dropdown" id="preview-menu" ng-show="user||organization||system||upload||jobs||accounting||smartsearch||paymentGetWay||pooling">
                             <a class="dropdown-toggle" data-toggle="dropdown" ng-class="{ activate: isActive('admin') }" href="#"><i class="icon-wrench"></i>{{ 'link.admin' | translate }}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a ng-show="user=PermissionService.showMenu('READ_USER')" href="#/users">{{ 'link.admin.users' | translate }}</a></li>
@@ -138,6 +142,7 @@
                                 <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
                                  <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">smartSearch</a></li>
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
+                                 <li><a ng-show="pooling=PermissionService.showMenu('READ_IPPOOLMANAGEMENT') href="#/ipPooling">IpPooling</a></li>
                             </ul>
                         </li>
                     </ul>
