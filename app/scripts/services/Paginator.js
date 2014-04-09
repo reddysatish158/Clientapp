@@ -5,32 +5,23 @@
       this.paginate = function(fetchFunction, pageSize) {
               var paginator = {
               hasNextVar: false,
-              nextVal : true,
               next: function() {
                 if (this.hasNextVar) {
-                  if(!(this.totalFilteredRecords % 15))
-                	  if(this.currentOffset == (this.totalFilteredRecords -30))
-                		  this.nextVal = false;
                   this.currentOffset += pageSize+1;
                   this._load();
                 }
               },
               firstPage : function(){
             	  if(this.hasPrevious()) {
-            		  this.nextVal = true;
             		  this.currentOffset = 0;
             		  this._load();
             	  }
               },
               lastPage :function(){
             	  if (this.hasNextVar) {
-            		  if(this.totalFilteredRecords % 15){
-            			  this.currentOffset = this.totalFilteredRecords - this.totalFilteredRecords % 15;
-            		  }
-            		  else{
-            			  this.currentOffset = (this.totalFilteredRecords - this.totalFilteredRecords % 15)-15;
-            			  this.nextVal = false;
-            		  }
+            		  this.currentOffset = this.totalFilteredRecords - this.totalFilteredRecords % 15;
+            		  if(this.currentOffset == this.totalFilteredRecords)
+            			  this.currentOffset = this.totalFilteredRecords -15;
             		  this._load();
             	  }
               },
@@ -39,10 +30,8 @@
                   fetchFunction(this.currentOffset, pageSize + 1, function(items) {
                   self.totalFilteredRecords = items.totalFilteredRecords;
                   self.currentPageItems = items.pageItems;
-                  if(self.nextVal)
-                	  self.hasNextVar = items.pageItems.length === pageSize + 1;
-                  else
-                	  self.hasNextVar = false;
+                  self.hasNextVar = (items.pageItems.length === pageSize + 1)&&
+                  					(!(self.currentOffset == self.totalFilteredRecords));
               });
               },
               hasNext: function() {
@@ -56,7 +45,6 @@
               },
               previous: function() {
               if(this.hasPrevious()) {
-              this.nextVal = true;
               this.currentOffset -= pageSize+1;
               this._load();
               }
@@ -64,8 +52,10 @@
               hasPrevious: function() {
               return this.currentOffset !== 0;
               },
+              
               currentPageItems: [],
-              currentOffset: 0
+              currentOffset: 0,
+              
               };
               // Load the first page
               paginator._load();
