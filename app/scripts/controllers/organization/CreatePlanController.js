@@ -91,7 +91,7 @@
              
              
             resourceFactory.planResource.save(this.formData,function(data){
-            location.path('/viewplan/' + data.resourceId);
+            		location.path('/viewplan/' + data.resourceId);
           });
         };
     }

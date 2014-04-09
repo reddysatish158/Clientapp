@@ -6,9 +6,9 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-          	<a href="#/edituser/{{user.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>{{'label.edit' | translate}}</a>
-	        <button type="button" ng-click="deleteuser()" class="btn btn-primary"><i class="icon-trash icon-white"></i>{{'label.delete' | translate}}</button>
-            <button type="button" class="btn btn-primary" data-ng-click="open()"><i class="icon-cog icon-white"></i>{{'label.changepassword' | translate}}</button>
+          	<a ng-show="PermissionService.showMenu('UPDATE_USER')" href="#/edituser/{{user.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>{{'label.edit' | translate}}</a>
+	        <button ng-show="PermissionService.showMenu('DELETE_USER')" type="button" ng-click="deleteuser()" class="btn btn-primary"><i class="icon-trash icon-white"></i>{{'label.delete' | translate}}</button>
+            <button ng-show="PermissionService.showMenu('UPDATE_USER')" type="button" class="btn btn-primary" data-ng-click="open()"><i class="icon-cog icon-white"></i>{{'label.changepassword' | translate}}</button>
 	      </div>
 	    </div>
 	</div>

@@ -1,14 +1,15 @@
+<div ng-controller="ProspectsController">
 <div>
     <ul class="breadcrumb">
         
         <li class="active">{{'label.prospects' | translate}}&nbsp;&nbsp;{{employee.lastname}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createprospects" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.prospect' | translate }}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_PROSPECT')"  href="#/createprospects" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.prospect' | translate }}</a>
     </div>
 </div>
 
-<div class="row-fluid" ng-controller="ProspectsController">
+<div class="row-fluid">
 <form ng-submit="search(filterText)">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
 </form>	
@@ -41,4 +42,5 @@
         			<li class="previous"><a ng-click="prospects.previous()" href="" ng-disabled="!prospects.hasPrevious()">&larr; Prev</a></li>
         			<li class="next" ><a ng-click="prospects.next()" href="" ng-disabled="!prospects.hasNext()">Next &rarr;</a></li>
 	</ul>
+</div>
 </div>

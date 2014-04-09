@@ -3,7 +3,8 @@ define(['underscore', 'mifosX'], function() {
     models: [
       'LoggedInUser',
       'roleMap',
-      'Langs'
+      'Langs',
+      'StatementVals'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -54,6 +55,7 @@ define(['underscore', 'mifosX'], function() {
       'user/UserSettingController',
       'user/UserListController',
       'user/ViewUserController',
+      'organization/OfficesModuleController',
       'organization/RoleController',
       'organization/ViewRoleController',
       'organization/CreateRoleController',
@@ -70,6 +72,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/EditEmployeeController',
       'organization/EmployeeController',
       'organization/CreateEmployeeController',
+      'accounting/AccountModuleController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
       'accounting/AccCreateGLAccountContoller',
@@ -84,6 +87,7 @@ define(['underscore', 'mifosX'], function() {
       'accounting/AccCreateRuleController',
       'accounting/AccEditRuleController',
       'accounting/ViewAccRuleController',
+      'system/SystemModuleController',
       'system/CodeController',
       'system/MappingController',
       'system/EditCodeController',
@@ -255,7 +259,9 @@ define(['underscore', 'mifosX'], function() {
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
-      'ContextMenuDirective'
+      'ContextMenuDirective',
+      'NGShowDirective',
+      'AutofocusDirective'
     ]
   };
 

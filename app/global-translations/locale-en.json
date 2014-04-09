@@ -2243,7 +2243,7 @@
 "validation.msg.promotioncodes.discounttype.cannot.be.blank" : "Discount Type cannot be blank",
 "validation.msg.promotioncodes.discountRate.cannot.be.blank" : "Discount Rate cannot be blank",
 
-"label.anchor.help" : "Help",
+"label.anchor.help" : "Shortcuts",
 "label.heading.keyboarshortcuts":"Keyboard Shortcuts",
 "label.heading.navigation":"Navigation Page",
 "label.heading.tasks":"Checker Inbox & Pending Tasks",

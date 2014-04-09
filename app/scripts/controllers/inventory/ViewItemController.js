@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewItemController: function(scope, routeParams , resourceFactory ,location,$modal) {
+	  ViewItemController: function(scope, routeParams , resourceFactory ,location,$modal,PermissionService) {
         scope.item = [];
+        scope.PermissionService = PermissionService;
         resourceFactory.itemResource.get({itemId: routeParams.id} , function(data) {
         	scope.item = data;
         });
@@ -30,7 +31,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewItemController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal',mifosX.controllers.ViewItemController]).run(function($log) {
+  mifosX.ng.application.controller('ViewItemController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal','PermissionService',mifosX.controllers.ViewItemController]).run(function($log) {
     $log.info("ViewItemController initialized");
   });
 }(mifosX.controllers || {}));

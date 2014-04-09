@@ -1,3 +1,4 @@
+<div ng-controller="ChargeCodeController">
 <div>
     <ul class="breadcrumb">
         <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
@@ -5,10 +6,10 @@
     </ul>
 
     <div class="pull-right">
-        <a href="#/createchargecode" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'label.create.new.chargecode' | translate}}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_CHARGECODE')" href="#/createchargecode" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'label.create.new.chargecode' | translate}}</a>
     </div>
 </div>
-<div class="row-fluid" ng-controller="ChargeCodeController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
 	<table class="table">
         <thead>
@@ -38,4 +39,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

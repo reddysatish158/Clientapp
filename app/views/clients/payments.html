@@ -77,7 +77,7 @@
 			<li class="active">{{'label.payments' | translate}}</li>
 		</ul>
 	</div>
-      <form name="paymentForm" class="form-horizontal well" ng-submit="submit()">
+      <form name="paymentForm" novalidate="" class="form-horizontal well" ng-submit="submit()">
 	  
 	     <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
@@ -121,7 +121,8 @@
 								<div class="control-group">
            					 	<label class="control-label" for="amountPaid">{{ 'label.amount' | translate }}</label>
             					<div class="controls">
-             					 <input type="text" id="amountPaid" ng-model="formData.amountPaid">
+             					 <input name="amount" type="text" id="amountPaid" ng-pattern="/^\d*\.?\d*$/" ng-model="formData.amountPaid" required  late-Validate/>
+             					 <form-validate formName="paymentForm"  fieldName="amount" patternMsg="only integer values"/>
            						</div>
          						</div>
 							</td>

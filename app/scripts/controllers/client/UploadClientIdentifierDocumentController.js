@@ -3,7 +3,6 @@
     UploadClientIdentifierDocumentController: function(scope, location, http, routeParams,API_VERSION,$rootScope) {
       scope.clientId = routeParams.clientId;
       
-      
       scope.onFileSelect = function($files) {
         scope.file = $files[0];
       };

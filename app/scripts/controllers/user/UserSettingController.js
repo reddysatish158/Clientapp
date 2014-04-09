@@ -4,8 +4,7 @@
       
       scope.langs = mifosX.models.Langs;
 
-      scope.optlang = scope.langs[0];                       
-
+      scope.optlang = scope.langs[0]; 
       scope.changeLang = function (lang) {
           translate.uses(lang.code);
           scope.optlang = lang;

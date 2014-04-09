@@ -24,7 +24,7 @@
         	
         	this.formData.locale = 'en';
             resourceFactory.chargecodeResource.save(this.formData,function(data){
-            location.path('/viewchargecode/' + data.resourceId);
+            		location.path('/viewchargecode/' + data.resourceId);
           });
         };
     }

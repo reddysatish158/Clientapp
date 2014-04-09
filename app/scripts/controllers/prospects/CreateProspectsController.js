@@ -57,7 +57,7 @@
 	        	 this.formData.cityDistrict=this.formData.city;
 	        	 this.formData.city;
 	            resourceFactory.prospectResource.save(this.formData,function(data){
-	            	location.path('/viewprospects/'+data.commandId);
+	            		location.path('/viewprospects/'+data.commandId);
 	          });
 	        };
 	    }

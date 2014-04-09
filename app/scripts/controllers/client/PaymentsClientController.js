@@ -35,7 +35,6 @@
         //  scope.formData.destinationOfficeId = scope.offices[0].id;  
         });
 
-  
         scope.dbClick = function(){
         	return false;
         };

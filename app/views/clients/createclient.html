@@ -1,10 +1,10 @@
       <form name="createclientform" novalidate="" class="form-horizontal well" ng-controller="CreateClientController" ng-submit="submit()">
        
         <div class="error" ng-show="errorStatus || errorDetails">
-		<label>{{'label.error' | translate}}</label>
-		<label ng-show="errorStatus">{{errorStatus}}</label>
-		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	</div>
+			<label>{{'label.error' | translate}}</label>
+			<label ng-show="errorStatus">{{errorStatus}}</label>
+			<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+		</div>
      
         <fieldset>
           <legend>Create client</legend>
@@ -104,6 +104,12 @@
             </div>
            </td>
            <td>
+           <div class="control-group">
+              <label class="control-label">CGU<span class="required">*</span></label>
+              <div class="controls">
+                <select ng-model="formData.groupNameId"  ng-options="groupNameData.id as groupNameData.groupName for groupNameData in groupNameDatas" value="{{groupNameDatas.id}}"></select>
+              </div>
+            </div>
             <div class="control-group">
               <label class="control-label">{{'label.address1' | translate}}<span class="required">*</span></label>
               <div class="controls">

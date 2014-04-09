@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewTicketController: function(scope,webStorage, routeParams , route, location, resourceFactory, http) {
-        scope.ticket = [];   
+	  ViewTicketController: function(scope,webStorage, routeParams , route, location, resourceFactory, http,PermissionService) {
+        scope.ticket = []; 
+        scope.PermissionService = PermissionService;
         var clientData = webStorage.get('clientData');
         scope.displayName=clientData.displayName;
         scope.statusActive=clientData.statusActive;
@@ -35,7 +36,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('ViewTicketController', ['$scope', 'webStorage','$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewTicketController]).run(function($log) {
+  mifosX.ng.application.controller('ViewTicketController', ['$scope', 'webStorage','$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewTicketController]).run(function($log) {
     $log.info("ViewTicketController initialized");
   });
 }(mifosX.controllers || {}));

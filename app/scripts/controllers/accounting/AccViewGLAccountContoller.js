@@ -1,9 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AccViewGLAccountContoller: function(scope, routeParams , location, resourceFactory, route,$modal) {
+    AccViewGLAccountContoller: function(scope, routeParams , location, resourceFactory, route,$modal,PermissionService) {
         scope.glaccountdata = [];
         scope.accountOptions = [];
-
+        scope.PermissionService=PermissionService;
+        
         resourceFactory.accountCoaResource.get({glAccountId: routeParams.id , template: 'true'} , function(data) {
            
            //to display parent name
@@ -70,7 +71,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('AccViewGLAccountContoller', ['$scope', '$routeParams', '$location', 'ResourceFactory', '$route','$modal', mifosX.controllers.AccViewGLAccountContoller]).run(function($log) {
+  mifosX.ng.application.controller('AccViewGLAccountContoller', ['$scope', '$routeParams', '$location', 'ResourceFactory', '$route','$modal','PermissionService', mifosX.controllers.AccViewGLAccountContoller]).run(function($log) {
     $log.info("AccViewGLAccountContoller initialized");
   });
 }(mifosX.controllers || {}));

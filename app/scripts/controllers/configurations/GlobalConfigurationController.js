@@ -1,7 +1,10 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        GlobalConfigurationController: function(scope, resourceFactory , location,route) {
+        GlobalConfigurationController: function(scope, resourceFactory , location,route,PermissionService) {
             scope.configs = [];
+            scope.PermissionService=PermissionService;
+            
+         if(PermissionService.showMenu('READ_CONFIGURATION')){
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
                     scope.configs.push(data.globalConfiguration[i])
@@ -17,6 +20,7 @@
                     scope.configs.push(cache);
                 });
             });
+         }
 
             scope.enable = function(name) {
                 if(name=='Is Cache Enabled'){
@@ -55,7 +59,7 @@
 
         }
     });
-    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
+    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope', 'ResourceFactory', '$location','$route','PermissionService', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
         $log.info("GlobalConfigurationController initialized");
     });
 }(mifosX.controllers || {}));

@@ -1,14 +1,15 @@
+<div ng-controller="MessageController" >
 <div>
     <ul class="breadcrumb">
         <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.managemessage' | translate}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createMessage" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Message</a>
+        <a ng-show="PermissionService.showMenu('CREATE_BILLINGMESSAGE')" href="#/createMessage" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Message</a>
     </div>
 </div>
 
-<div class="row-fluid" ng-controller="MessageController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/externalId">
 	<table class="table">
          <thead>
@@ -39,3 +40,4 @@
         </tbody>
     </table>
 </div> 
+</div>

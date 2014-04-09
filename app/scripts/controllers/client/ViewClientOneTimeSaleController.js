@@ -1,8 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewClientOneTimeSaleController: function(scope,webStorage, routeParams , route, location, resourceFactory, http) {
+	  ViewClientOneTimeSaleController: function(scope,webStorage, routeParams , route, location, resourceFactory, http,PermissionService) {
 		 // alert("hh");
         scope.onetimesales = [];    
+        scope.readAllocation = PermissionService.showMenu("READ_ALLOCATION");
+        scope.createAllocation = PermissionService.showMenu("CREATE_ALLOCATION");
         scope.id=routeParams.id;
         scope.clientId=routeParams.clientId;
         var clientData = webStorage.get('clientData');
@@ -27,7 +29,7 @@
        
     }
   });
-  mifosX.ng.application.controller('ViewClientOneTimeSaleController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewClientOneTimeSaleController]).run(function($log) {
+  mifosX.ng.application.controller('ViewClientOneTimeSaleController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewClientOneTimeSaleController]).run(function($log) {
     $log.info("ViewClientOneTimeSaleController initialized");
   });
 }(mifosX.controllers || {}));

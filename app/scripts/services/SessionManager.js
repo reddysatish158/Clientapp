@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.services = _.extend(module, {
-    SessionManager: function(webStorage, httpService, resourceFactory) {
+    SessionManager: function(webStorage, httpService, resourceFactory,localStorageService) {
       var EMPTY_SESSION = {};
 
       this.get = function(data) {
@@ -33,6 +33,7 @@
     'webStorage',
     'HttpService',
     'ResourceFactory',
+    'localStorageService',
     mifosX.services.SessionManager
   ]).run(function($log) {
     $log.info("SessionManager initialized");

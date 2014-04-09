@@ -1,13 +1,14 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AccountingClosureController: function(scope, resourceFactory, location, translate, routeParams,dateFilter) {
+    AccountingClosureController: function(scope, resourceFactory, location, translate, routeParams,dateFilter,PermissionService) {
             scope.first = {};
             scope.first.date = new Date();
             scope.accountClosures=[];
-            resourceFactory.officeResource.getAllOffices(function(data){
-              scope.offices = data;
-            });
-            
+            scope.PermissionService=PermissionService;
+            	resourceFactory.officeResource.getAllOffices(function(data){
+            		scope.offices = data;
+            	});
+           
             scope.routeTo = function(id){
                 location.path('/view_close_accounting/'+ id);
               };
@@ -16,10 +17,9 @@
             if (routeParams.officeId != undefined) {
               params.officeId = routeParams.officeId;
             }
-
-            resourceFactory.accountingClosureResource.get(params, function(data){
-              scope.accountClosures = data;
-            });
+        	   resourceFactory.accountingClosureResource.get(params, function(data){
+        		   scope.accountClosures = data;
+        	   });
 
             scope.submit = function() {
                   var reqDate = dateFilter(scope.first.date,'dd MMMM yyyy');
@@ -27,7 +27,7 @@
                   this.formData.dateFormat = 'dd MMMM yyyy';
                   this.formData.closingDate = reqDate;
                   resourceFactory.accountingClosureResource.save(this.formData,function(data){
-                    location.path('/view_close_accounting/'+data.resourceId);
+                		location.path('/view_close_accounting/'+data.resourceId);
                   });
             }
 
@@ -47,7 +47,7 @@
             }
     }
   });
-  mifosX.ng.application.controller('AccountingClosureController', ['$scope', 'ResourceFactory', '$location', '$translate', '$routeParams','dateFilter', mifosX.controllers.AccountingClosureController]).run(function($log) {
+  mifosX.ng.application.controller('AccountingClosureController', ['$scope', 'ResourceFactory', '$location', '$translate', '$routeParams','dateFilter','PermissionService', mifosX.controllers.AccountingClosureController]).run(function($log) {
     $log.info("AccountingClosureController initialized");
   });
 }(mifosX.controllers || {}));

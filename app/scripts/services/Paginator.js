@@ -14,7 +14,9 @@
               _load: function() {
                   var self = this;
                   fetchFunction(this.currentOffset, pageSize + 1, function(items) {
+                	  
                   self.currentPageItems = items.pageItems;
+                  
                   self.hasNextVar = items.pageItems.length === pageSize + 1;;
               });
               },

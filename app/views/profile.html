@@ -1,6 +1,7 @@
 <div data-ng-controller="ProfileController">
+
     <h3 class="paddedleft"><strong>{{ 'label.heading.userprofile' | translate }}</strong></h3>
-    <a href="#/admin/roles" style="margin-right: 10px" class="btn pull-right btn-primary">{{ 'label.button.viewpermissions' | translate }}</a>
+    <a ng-show="PermissionService.showMenu('create_role','read_role')" href="#/admin/roles" style="margin-right: 10px" class="btn pull-right btn-primary">{{ 'label.button.viewpermissions' | translate }}</a>
     <div class="span6">
         <table class="table view-table table-bordered">
             <tr>
@@ -35,5 +36,6 @@
         </table>
     </div>
     <br/>
+    
 
 </div>

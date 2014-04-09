@@ -7,8 +7,8 @@
 
 <div class="row-fluid" ng-controller="AddressTreeviewController">
 	<div class="pull-right">
-		<a href="#/addressmanage" class="btn btn-primary"><i class="icon-list icon-white"></i>List View</a>
-		<button type="button" class="btn btn-primary" ng-click="addCountry()" ><i class="icon-plus icon-white"></i>Add Country</button>
+		<a  href="#/addressmanage" class="btn btn-primary"><i class="icon-list icon-white"></i>List View</a>
+		<button ng-show="PermissionService.showMenu('CREATE_LOCATION')" type="button" class="btn btn-primary" ng-click="addCountry()" ><i class="icon-plus icon-white"></i>Add Country</button>
 	</div>
  	<div>
  	<br>
@@ -22,18 +22,18 @@
 		</div>
   
        <ul id="context1" class="dropdown-menu">
-            <li><a ng-click="addState()">Add State</a></li>
-            <li><a ng-click="editCountry()">Edit Country</a></li>
-            <li><a ng-click="deleteCountry()">Delete Country</a></li>
+            <li ng-show="PermissionService.showMenu('CREATE_LOCATION')"><a ng-click="addState()">Add State</a></li>
+            <li ng-show="PermissionService.showMenu('UPDATE_LOCATION')"><a ng-click="editCountry()">Edit Country</a></li>
+            <li ng-show="PermissionService.showMenu('DELETE_LOCATION')"><a ng-click="deleteCountry()">Delete Country</a></li>
        </ul>
         <ul id="context2" class="dropdown-menu">
-            <li><a ng-click="addCity()">Add City</a></li>
-            <li><a ng-click="editState()">Edit State</a></li>
-            <li><a ng-click="deleteState()">Delete State</a></li>
+            <li ng-show="PermissionService.showMenu('CREATE_LOCATION')"><a ng-click="addCity()">Add City</a></li>
+            <li ng-show="PermissionService.showMenu('UPDATE_LOCATION')"><a ng-click="editState()">Edit State</a></li>
+            <li ng-show="PermissionService.showMenu('DELETE_LOCATION')"><a ng-click="deleteState()">Delete State</a></li>
        </ul>
         <ul id="context3" class="dropdown-menu">
-            <li><a ng-click="editCity()">Edit City</a></li>
-            <li><a ng-click="deleteCity()">Delete City</a></li>
+            <li ng-show="PermissionService.showMenu('UPDATE_LOCATION')"><a ng-click="editCity()">Edit City</a></li>
+            <li ng-show="PermissionService.showMenu('DELETE_LOCATION')"><a ng-click="deleteCity()">Delete City</a></li>
        </ul>
     </div>
     

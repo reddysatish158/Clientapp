@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewProvisioningMappingController: function(scope, routeParams , route, location, resourceFactory, http) {
+	  ViewProvisioningMappingController: function(scope, routeParams , route, location, resourceFactory, http,PermissionService) {
 		  
-        scope.provisiongdata = {};              
+        scope.provisiongdata = {}; 
+        scope.PermissionService =  PermissionService;
         resourceFactory.provisioningMappingResource.get({provisioningId: routeParams.id} , function(data) {
             scope.provisiongdata = data;                                                
         });     
@@ -16,7 +17,7 @@
   
   
   });
-  mifosX.ng.application.controller('ViewProvisioningMappingController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewProvisioningMappingController]).run(function($log) {
+  mifosX.ng.application.controller('ViewProvisioningMappingController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewProvisioningMappingController]).run(function($log) {
     $log.info("ViewProvisioningMappingController initialized");
   });
 }(mifosX.controllers || {}));

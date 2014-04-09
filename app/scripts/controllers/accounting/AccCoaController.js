@@ -1,9 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    AccCoaController: function(scope, resourceFactory,location) {
+    AccCoaController: function(scope, resourceFactory,location,PermissionService) {
       scope.coadata = [];
       scope.isTreeView = false;
-
+      
+      scope.PermissionService=PermissionService;
       scope.deepCopy = function (obj) {
          if (Object.prototype.toString.call(obj) === '[object Array]') {
              var out = [], i = 0, len = obj.length;
@@ -25,7 +26,7 @@
       scope.routeTo = function(id){
           location.path('/viewglaccount/'+ id);
         };
-
+    
       resourceFactory.accountCoaResource.getAllAccountCoas(function(data) {
           scope.coadatas = scope.deepCopy(data);
 
@@ -92,7 +93,7 @@
       });
     }
   });
-  mifosX.ng.application.controller('AccCoaController', ['$scope', 'ResourceFactory','$location', mifosX.controllers.AccCoaController]).run(function($log) {
+  mifosX.ng.application.controller('AccCoaController', ['$scope', 'ResourceFactory','$location','PermissionService', mifosX.controllers.AccCoaController]).run(function($log) {
     $log.info("AccCoaController initialized");
   });
 }(mifosX.controllers || {}));

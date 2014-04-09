@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope) {
+    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope,PermissionService) {
     	 scope.client = [];
          scope.error = {};
          scope.identitydocuments = [];
@@ -14,6 +14,7 @@
          scope.payment="PAYMENT";
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
+         scope.PermissionService = PermissionService;
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
@@ -80,7 +81,19 @@
         scope.routeToItemSale = function(onetimesaleid,clientid){
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
-       
+        
+        var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
+        var riseTicket = PermissionService.showMenu('CREATE_TICKET')&&PermissionService.showMenu('READ_TICKET');
+        var makePayment = PermissionService.showMenu('CREATE_PAYMENT')&&PermissionService.showMenu('READ_GETPAYMENT');
+        var payInvoice = PermissionService.showMenu('CREATE_PAYMENT')&&PermissionService.showMenu('READ_GETPAYMENT')&&PermissionService.showMenu('READ_INVOICEMAP');
+        var distribute =  PermissionService.showMenu('CREATE_CREDITDISTRIBUTION')&&PermissionService.showMenu('READ_CREDITDISTRIBUTION');
+        var postAdjustment =  PermissionService.showMenu('CREATE_ADJUSTMENT')&&PermissionService.showMenu('READ_ADJUSTMENT');
+        var doInvoice = PermissionService.showMenu('CREATE_INVOICE');
+        var statement = PermissionService.showMenu('READ_BILLMASTER');
+        var edit = PermissionService.showMenu('UPDATE_CLIENT');
+        var acceptTransfer = PermissionService.showMenu('ACCEPTTRANSFER_CLIENT');
+        var rejectTransfer = PermissionService.showMenu('REJECTTRANSFER_CLIENT');
+        var undoTransfer = PermissionService.showMenu('WITHDRAWTRANSFER_CLIENT');
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
@@ -107,7 +120,9 @@
                       scope.buttons = [{
                                           name:"button.neworder",
                                           href:"#/neworder/0",
-                                          icon :"icon-plus-sign"
+                                          icon :"icon-plus-sign",
+                                          ngShow : bookOrder
+                                        	 
                                         },
 
 
@@ -120,52 +135,61 @@
                                         {
                                           name:"button.newTicket",
                                           href:"#/newTicket",
-                                          icon :"icon-flag"
+                                          icon :"icon-flag",
+                                          ngShow : riseTicket
                                         },
                                         
                                         {
 
                                             name:"button.payments",
                                             href:"#/payments",
-                                            icon :"icon-usd"
+                                            icon :"icon-usd",
+                                            ngShow : makePayment
                                          },
                                          {
 
                                              name:"button.payInvoice",
                                              href:"#/payinvoice",
-                                             icon :"icon-usd"
+                                             icon :"icon-usd",
+                                             ngShow : payInvoice
                                           },
                                           {
 
                                               name:"button.distribution",
                                               href:"#/creditDistribution",
-                                              icon :"icon-usd"
+                                              icon :"icon-usd",
+                                              ngShow : distribute
                                            },
                                           
                                          {
                                              name:"button.adjustments",
                                              href:"#/adjustments",
-                                             icon :"icon-adjust"
+                                             icon :"icon-adjust",
+                                             ngShow : postAdjustment
                                          },
                                          {
                                              name:"button.invoice",
                                              href:"#/clientinvoice",
-                                             icon :"icon-play"
+                                             icon :"icon-play",
+                                             ngShow : doInvoice
                                           },
                                           {
                                              name:"button.statement",
                                              href:"#/statement",
-                                             icon :"icon-file"
+                                             icon :"icon-file",
+                                             ngShow : statement
                                          },                                                                              
                                          {
 	                                        name:"button.edit",
 	                                        href:"#/editclient",
-	                                        icon :"icon-edit"
+	                                        icon :"icon-edit",
+	                                        ngShow : edit
                                         },
                                         {
 	                                          name:"",	
 	                                          href:"#/viewclient",
-	                                          icon :"icon-refresh"
+	                                          icon :"icon-refresh",
+	                                          ngShow : "true"
                                         }
                                       ]
 
@@ -176,19 +200,22 @@
                                         name:"button.accept.transfer",
                                         href:"#/client",
                                         subhref:"acceptclienttransfer",
-                                        icon :"icon-check-sign"
+                                        icon :"icon-check-sign",
+                                        ngShow : acceptTransfer
                                       },
                                       {
                                         name:"button.reject.transfer",
                                         href:"#/client",
                                         subhref:"rejecttransfer",
-                                        icon :"icon-remove"
+                                        icon :"icon-remove",
+                                        ngShow : rejectTransfer
                                       },
                                       {
                                         name:"button.undo.transfer",
                                         href:"#/client",
                                         subhref:"undotransfer",
-                                        icon :"icon-undo"
+                                        icon :"icon-undo",
+                                        ngShow : undoTransfer
                                       }]
                     }
 
@@ -197,10 +224,11 @@
                                         name:"button.undo.transfer",
                                         href:"#/client",
                                         subhref:"undotransfer",
-                                        icon :"icon-undo"
+                                        icon :"icon-undo",
+                                        ngShow : undoTransfer
                                       }]
                     }
-                  
+                if(PermissionService.showMenu('READ_ORDER'))
                   resourceFactory.getOrderResource.getAllOrders({clientId: routeParams.id} , function(data) {
                       scope.orders = data.clientOrders;
                   });
@@ -351,10 +379,13 @@
                 $modalInstance.dismiss('cancel');
             };
         };
-
-        resourceFactory.clientNotesResource.getAllNotes({clientId: routeParams.id} , function(data) {
-            scope.clientNotes = data;
-        });
+        scope.getClientNotes = function(){
+        	if(PermissionService.showMenu('READ_CLIENTNOTE')){
+        		resourceFactory.clientNotesResource.getAllNotes({clientId: routeParams.id} , function(data) {
+        			scope.clientNotes = data;
+        		});
+        	}
+        }
         scope.getClientIdentityDocuments = function () {
           resourceFactory.clientResource.getAllClientDocuments({clientId: routeParams.id, anotherresource: 'identifiers'} , function(data) {
               scope.identitydocuments = data;
@@ -419,6 +450,12 @@
         scope.getClientStatements = function () {
             resourceFactory.statementResource.get({clientId: routeParams.id} , function(data) {	
                    scope.states = data;
+                   
+                 //for statement paypal values: email and url
+                   scope.email = mifosX.models.email;
+                   console.log("email::"+scope.email);
+                   scope.url = mifosX.models.url;
+                   console.log("url::"+scope.url);
                   
                  });
                };
@@ -434,11 +471,11 @@
          scope.downloadFile = function (statementId){
               window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
-         scope.getAllTickets=function(){      
-               resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
-   	            scope.tickets = data;
-   	            scope.clientId= routeParams.id;	  
-   	        });
+         scope.getAllTickets=function(){ 
+        		 resourceFactory.ticketResource.getAll({clientId: routeParams.id},function(data) {	        
+        			 scope.tickets = data;
+        			 scope.clientId= routeParams.id;	  
+        		 });
          };
 	
 	scope.financialsummeryTab = function(){
@@ -518,9 +555,11 @@
         };
 
         scope.getClientDocuments = function () {
-          resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
-            scope.clientdocuments = data;
-          });
+        	if(PermissionService.showMenu('READ_DOCUMENT')){
+        		resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
+        				scope.clientdocuments = data;
+        		});
+        	}
         };
 
         scope.deleteDocument = function (documentId, index) {
@@ -529,10 +568,11 @@
           });
         };
 
-        scope.downloadDocument = function(documentId) {
-            resourceFactory.clientDocumentsResource.get({clientId: routeParams.id, documentId: documentId}, '', function(data) {
+        scope.downloadDocument = function(documentId,index) {
+        	window.open($rootScope.hostUrl+ API_VERSION +'/clients/'+routeParams.id+'/documents/'+documentId+'?tenantIdentifier=default');
+            /*resourceFactory.clientDocumentsResource.get({clientId: routeParams.id, documentId: documentId}, '', function(data) {
                 scope.clientdocuments.splice(index,1);
-            });
+            });*/
         };
         scope.isNotClosed = function(loanaccount) {
           if(loanaccount.status.code === "loanStatusType.closed.written.off" || 
@@ -731,7 +771,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope', mifosX.controllers.ViewClientController]).run(function($log) {
+  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.ViewClientController]).run(function($log) {
     $log.info("ViewClientController initialized");
   });
 }(mifosX.controllers || {}));

@@ -13,7 +13,7 @@ CreateServiceController: function(scope, resourceFactory, location) {
         
         scope.submit = function() {   
           resourceFactory.serviceResource.save(this.formData,function(data){
-            location.path('/viewservice/' + data.resourceId);
+        		  location.path('/viewservice/' + data.resourceId);
           });
         };
     }

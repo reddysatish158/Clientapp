@@ -4,7 +4,7 @@
     ViewReportsController: function(scope, routeParams, resourceFactory, location) {
 
       scope.reports = [];
-
+      
       if (routeParams.type == 'all') {
         resourceFactory.runReportsResource.get({reportSource: 'FullReportList', parameterType : true, genericResultSet : false}, function(data){
           scope.reports = scope.getReports(data);

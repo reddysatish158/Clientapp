@@ -9,9 +9,9 @@
 </div>
 <div  ng-controller="DiscountsController">
 <tabset  style="margin-bottom: 0px;">
-     <tab heading="{{'tab.discount' | translate}}" select="getDicounts()">
+     <tab heading="{{'tab.discount' | translate}}" select="getDicounts()" ng-show="$parent.PermissionService.showMenu('READ_DISCOUNT')">
         <div class="pull-right">
-          <a href="#/creatediscounts" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.discount' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_DISCOUNT')" href="#/creatediscounts" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.discount' | translate }}</a>
        </div> 
        <div>
            <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -42,9 +42,9 @@
          </table>
         </div>
       </tab>
-      <tab heading="{{'tab.PromotionCode' | translate}}" select="getPromotionCodes()" active="PromotionCodeTab">
+      <tab heading="{{'tab.PromotionCode' | translate}}" select="getPromotionCodes()" active="PromotionCodeTab" ng-show="$parent.PermissionService.showMenu('READ_PROMOTIONCODE')">
         <div class="pull-right">
-           <a href="#/createpromotion" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'link.create.new.PromotionCode' | translate }}</a>
+           <a ng-show="PermissionService.showMenu('CREATE_PROMOTIONCODE')" href="#/createpromotion" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'link.create.new.PromotionCode' | translate }}</a>
         </div> 
         <div>
             <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">

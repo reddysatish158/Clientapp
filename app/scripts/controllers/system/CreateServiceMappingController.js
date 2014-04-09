@@ -19,7 +19,7 @@
         	//scope.formData.serviceId=scope.formData.id;
   	
             resourceFactory.serviceMappingResource.save(this.formData,function(data){
-            location.path('/viewServiceMapping/' + data.resourceId);
+            		location.path('/viewServiceMapping/' + data.resourceId);
           });
         };
     }
