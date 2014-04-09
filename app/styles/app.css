@@ -187,6 +187,10 @@ a.list-group-item.active .list-group-item-text {
     color: #FF0000;
 }
 
+.close{
+	color: #FF0000;
+}
+
 .statusgood {
     color: #008000;
 }

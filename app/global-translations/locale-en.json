@@ -132,6 +132,7 @@
   "validation.msg.user.roles.cannot.be.empty":"Please select atleast one role",
   "error.msg.user.email.invalid":"Email address is invalid",
   "validation.msg.user.repeatPassword.not.equal.to.password":"Password and repeat password do not match.",
+  "error.msg.close.active.plans.found.for.client.close":"Client cannot be closed because of Active plans.",
 
   "#common button name":"",
   "button.edit":"Edit",

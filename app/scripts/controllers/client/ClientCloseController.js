@@ -40,7 +40,7 @@ this.formData.dateFormat = 'dd MMMM yyyy';
 
                 resourceFactory.clientResource.save({'clientId': routeParams.id,command:'close'},this.formData,function(data){
                 
-                 location.path('/viewTicket/'+ routeParams.id);
+                 location.path('/clients/');
                });
          };
     }
