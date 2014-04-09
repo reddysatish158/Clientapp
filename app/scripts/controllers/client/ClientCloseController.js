@@ -26,7 +26,7 @@ scope.phone=clientData.phone;
 
 
 // TEMPLATE DATA
-resourceFactory.clientTemplateResource.get({commandParma:'close'} ,function(data) {
+resourceFactory.clientTemplateResource.get({commandParam:'close'} ,function(data) {
     scope.closureReasons = data.closureReasons;
     
 });
