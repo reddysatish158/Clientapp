@@ -787,6 +787,9 @@
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
       })
+      .when('/groupsDetails', {
+        templateUrl : 'views/organization/groupsDetails.html'
+      })
       .when('/ipPooling', {
         templateUrl : 'views/system/ipPooling.html'
       })      

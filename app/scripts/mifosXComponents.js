@@ -72,6 +72,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/EditEmployeeController',
       'organization/EmployeeController',
       'organization/CreateEmployeeController',
+      'organization/GroupsDetailsController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
       'accounting/AccCreateGLAccountContoller',
@@ -257,7 +258,8 @@ define(['underscore', 'mifosX'], function() {
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
-      'ContextMenuDirective'
+      'ContextMenuDirective',
+      'AutofocusDirective'
     ]
   };
 

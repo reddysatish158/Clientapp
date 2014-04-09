@@ -11,15 +11,37 @@
                   this._load();
                 }
               },
+              firstPage : function(){
+            	  if(this.hasPrevious()) {
+            		  this.currentOffset = 0;
+            		  this._load();
+            	  }
+              },
+              lastPage :function(){
+            	  if (this.hasNextVar) {
+            		  this.currentOffset = this.totalFilteredRecords - this.totalFilteredRecords % 15;
+            		  if(this.currentOffset == this.totalFilteredRecords)
+            			  this.currentOffset = this.totalFilteredRecords -15;
+            		  this._load();
+            	  }
+              },
               _load: function() {
                   var self = this;
                   fetchFunction(this.currentOffset, pageSize + 1, function(items) {
+                  self.totalFilteredRecords = items.totalFilteredRecords;
                   self.currentPageItems = items.pageItems;
-                  self.hasNextVar = items.pageItems.length === pageSize + 1;
+                  self.hasNextVar = (items.pageItems.length === pageSize + 1)&&
+                  					(!(self.currentOffset == self.totalFilteredRecords));
               });
               },
               hasNext: function() {
               return this.hasNextVar;
+              },
+              hasLastPage :function(){
+            	  return this.hasNextVar;
+              },
+              hasFirstPage : function(){
+            	  return this.currentOffset !==0;
               },
               previous: function() {
               if(this.hasPrevious()) {
@@ -30,8 +52,10 @@
               hasPrevious: function() {
               return this.currentOffset !== 0;
               },
+              
               currentPageItems: [],
-              currentOffset: 0
+              currentOffset: 0,
+              
               };
               // Load the first page
               paginator._load();
