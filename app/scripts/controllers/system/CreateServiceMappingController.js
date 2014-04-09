@@ -23,11 +23,7 @@
         			scope.serviceType=scope.serviceCodes[i].serviceType;
         		}
         	}
-<<<<<<< HEAD
-        
-=======
-    
->>>>>>> upstream/master
+
            };  
         scope.submit = function() {
         	delete this.formData.serviceCodeData;

@@ -49,10 +49,7 @@ define(['underscore', 'mifosX'], function() {
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
       'client/CreateClientControllerwizard',
-<<<<<<< HEAD
-=======
       'client/CreateProvisioningController',
->>>>>>> upstream/master
       'client/CreateActivationController',
       'user/UserController',
       'user/UserFormController',
@@ -75,7 +72,6 @@ define(['underscore', 'mifosX'], function() {
       'organization/EditEmployeeController',
       'organization/EmployeeController',
       'organization/CreateEmployeeController',
-      'organization/GroupsDetailsController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
       'accounting/AccCreateGLAccountContoller',
@@ -237,12 +233,11 @@ define(['underscore', 'mifosX'], function() {
       'organization/AddressTreeviewController',
       'client/PayInvoiceController',
       'client/CreditDistributionController',
-<<<<<<< HEAD
+
       'client/ClientCloseController',
-=======
+
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
->>>>>>> upstream/master
 
     ],
     filters: [
@@ -265,8 +260,7 @@ define(['underscore', 'mifosX'], function() {
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
-      'ContextMenuDirective',
-      'AutofocusDirective'
+      'ContextMenuDirective'
     ]
   };
 

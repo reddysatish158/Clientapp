@@ -790,19 +790,21 @@
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
       })
-<<<<<<< HEAD
+
       .when('/closeclient/:id', {
         templateUrl : 'views/clients/closeclient.html'
-=======
+      })
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
       })
+
+
       .when('/ipPooling', {
         templateUrl : 'views/system/ipPooling.html'
       })      
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
->>>>>>> upstream/master
+    
       });
 
     $locationProvider.html5Mode(false);

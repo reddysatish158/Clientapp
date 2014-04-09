@@ -18,11 +18,9 @@
            <div class="control-group">
             <label class="control-label" for="serviceCode">{{'label.serviceCode' | translate }}</label>
             <div class="controls">
-<<<<<<< HEAD
+
               <select ng-model="formData.serviceId"  ng-options="sc.id as sc.serviceCode for sc in serviceCodes"  value="{{serviceCode.id}}">
-=======
-              <select ng-model="formData.serviceId"  ng-options="sc.id as sc.serviceCode for sc in serviceCodes" ng-change="changeServiceType(formData.serviceId)" value="{{serviceCode.id}}">
->>>>>>> upstream/master
+
               <option value="">{{'label.select.one' | translate}}</option>
               </select>
             </div>
@@ -31,11 +29,9 @@
           <div class="control-group">
             <label class="control-label" for="serviceIdentification">{{'label.serviceIdentification' | translate }}</label>
             <div class="controls">
-<<<<<<< HEAD
+
               <input type="text" id="serviceIdentification"   ng-model="formData.serviceIdentification">
-=======
-              <input type="text" id="serviceIdentification" ng-hide ="serviceType =='BB'"  ng-model="formData.serviceIdentification">
->>>>>>> upstream/master
+
               
                 <select ng-model="formData.serviceIdentification"  ng-show ="serviceType =='BB'" ng-options="sp.parameterName as sp.parameterName for sp in serviceParameters"  value="{{serviceParameter.id}}">
               <option value="">{{'label.select.one' | translate}}</option>
