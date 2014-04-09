@@ -194,7 +194,8 @@
                                         {
                                         	name:"Close",
                                         	href:"#/closeclient",
-                                        	icon:"icon-remove"
+                                        	icon:"icon-remove",
+                                        	 ngShow : "true"
                                         },
                                         {
 	                                          name:"",	
