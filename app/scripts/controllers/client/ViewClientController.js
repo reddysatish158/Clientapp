@@ -15,6 +15,8 @@
          scope.payment="PAYMENT";
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
+         scope.url = mifosX.models.url;
+         scope.mail = mifosX.models.mail;
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
          	callingTab="";
@@ -89,7 +91,7 @@
                     scope.client = data;
                     scope.statusActive=scope.client.status.code;
                                 
-                    webStorage.add("clientData", {balanceAmount: data.balanceAmount, displayName: data.displayName,hwSerialNumber: data.hwSerialNumber,
+                    webStorage.add("clientData", {clientId:routeParams.id,balanceAmount: data.balanceAmount, displayName: data.displayName,hwSerialNumber: data.hwSerialNumber,
                      statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent,phone:data.phone,email:data.email,categoryType:data.categoryType });
                     

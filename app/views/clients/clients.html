@@ -36,7 +36,9 @@
         </tbody>
     </table>
     <ul class="pager">
-        <li class="previous"><a  id="prev" ng-click="clients.previous()" href="" ng-disabled="!clients.hasPrevious()">&larr; Prev</a></li>
-        <li class="next" ><a  id="next"   ng-click="clients.next()" href="" ng-disabled="!clients.hasNext()">Next &rarr;</a></li>
+    	<li class="previous"><a  ng-click="clients.firstPage()" href="" ng-disabled="!clients.hasFirstPage()">First</a></li>
+        <li class="previous"><a  id="prev" ng-click="clients.previous()" href="" ng-hide="!clients.hasPrevious()">&larr; Prev</a></li>
+        <li class="next" ><a  ng-click="clients.lastPage()" href="" ng-disabled="!clients.hasLastPage()">Last</a></li>
+        <li class="next" ><a  id="next"   ng-click="clients.next()" href="" ng-hide="!clients.hasNext()">Next &rarr;</a></li>
     </ul>
 </div>

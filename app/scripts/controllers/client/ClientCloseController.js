@@ -8,6 +8,7 @@ scope.formData={};
 scope.close = {};
 scope.close.date = new Date();
 scope.minDate= scope.close.date;
+scope.closureReasons =[];
 
 scope.clientId=routeParams.id;
 var clientData = webStorage.get('clientData');
@@ -25,19 +26,19 @@ scope.phone=clientData.phone;
 
 
 // TEMPLATE DATA
-resourceFactory.clientResource.get({clientId: routeParams.id}, function (data) {
-                    
-//data
-                });
+resourceFactory.clientTemplateResource.get({commandParma:'close'} ,function(data) {
+    scope.closureReasons = data.closureReasons;
+    
+});
             
            
 scope.submit = function() {
 this.formData.locale = 'en';
 var reqDate = dateFilter(scope.close.date,'dd MMMM yyyy');
-this.formData.closeDate = reqDate;
+this.formData.closureDate = reqDate;
 this.formData.dateFormat = 'dd MMMM yyyy';
 
-                resourceFactory.clientResource.save({'clientId': routeParams.id},this.formData,function(data){
+                resourceFactory.clientResource.save({'clientId': routeParams.id,command:'close'},this.formData,function(data){
                 
                  location.path('/viewTicket/'+ routeParams.id);
                });

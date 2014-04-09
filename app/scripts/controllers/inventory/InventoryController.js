@@ -48,8 +48,7 @@
         	if(id != 0){
             location.path('/viewclient/'+ parseInt(id));
         	}else{
-        		 location.path('/createclient');
-        		
+        		 location.path('/createclient');		
         	}
           };
         scope.routeTogrn = function(id){

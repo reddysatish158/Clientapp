@@ -79,7 +79,7 @@ date-disabled="disabled(date, mode)" required late-Validate style="background-co
            <div class="control-group">
                 <label class="control-label"> Closure reason*<span class="required">*</span></label>
                 <div class="controls">
-                  <select ng-model="clientCategory" ng-options="clientCategoryData.id as clientCategoryData.categoryType for clientCategoryData in clientCategoryDatas" value="{{clientCategoryData.id}}">
+                  <select ng-model="formData.closureReasonId" ng-options="closureReason.id as closureReason.name for closureReason in closureReasons" value="{{closureReason.id}}">
                 </select>
                 </div>
               </div>

@@ -2284,11 +2284,43 @@
 "label.extensionperiod":"Extension Period",
 "label.extensionreason":"Extension Reason",
 "label.extension":"Extension",
+<<<<<<< HEAD
 "#Simple Activation":"............",
 "label.name":"Name",
 "label.activation.plan":"Plan",
 "label.activation.phone":"Phone"
 
+=======
+
+"#Provisioning":"........",
+"link.provision":"Provision",
+"label.provisioning.New":"New Provision",
+"label.provisioning.clientname":"Name",
+"label.provisioning.device":"Device",
+"label.provisioning.service":"Service",
+"label.provisioning.servicename":"Service Name",
+"label.provisioning.group":"Group Name",
+"label.provisioning.ipaddress":"Ip Address",
+"label.provisioning.vlan":"VLAN",
+"button.provisioning":"Provision",
+
+"#Simple Activation":"............",
+"label.name":"Name",
+"label.activation.plan":"Plan",
+"label.activation.phone":"Phone",
+
+"#IpPooling Details":"....",
+"label.manageippooling":"IpPool Management",
+"table.ippooling.id":"id",
+"table.ippooling.ipaddress":"ipAddress",
+"table.ippooling.ippooldescription":"Description",
+"table.ippooling.clientId":"ClientId",
+"table.ippooling.status":"Status",
+"label.ippooling.createippool":"Create IpPool",
+"label.ippooling.description":"Description",
+"label.ippooling.ipaddress":"ipAddress",
+"label.ippooling.subnet":"Subnet"
+>>>>>>> upstream/master
 
    
 
