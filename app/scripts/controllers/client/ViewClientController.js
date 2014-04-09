@@ -164,6 +164,11 @@
 	                                        icon :"icon-edit"
                                         },
                                         {
+                                        	name:"Close",
+                                        	href:"#/closeclient",
+                                        	icon:"icon-remove"
+                                        },
+                                        {
 	                                          name:"",	
 	                                          href:"#/viewclient",
 	                                          icon :"icon-refresh"

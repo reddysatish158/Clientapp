@@ -783,6 +783,9 @@
       })
       .when('/creditDistribution/:id', {
         templateUrl : 'views/clients/creditDistribution.html'
+      })
+      .when('/closeclient/:id', {
+        templateUrl : 'views/clients/closeclient.html'
       });
 
     $locationProvider.html5Mode(false);

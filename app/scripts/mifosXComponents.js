@@ -231,6 +231,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/AddressTreeviewController',
       'client/PayInvoiceController',
       'client/CreditDistributionController',
+      'client/ClientCloseController',
 
     ],
     filters: [
