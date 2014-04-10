@@ -20,7 +20,7 @@
             	<div class="control-group">
              		 <label class="control-label">{{'label.office' | translate}}<span class="required">*</span></label>
               		<div class="controls">
-                		<select ng-model="formData.officeId"  ng-options="office.id as office.name for office in offices" value="{{office.id}}" ng-change="changeOffice(formData.officeId)"></select>
+                		<select ng-model="formData1.officeId"  ng-options="office.id as office.name for office in offices" value="{{office.id}}" ng-change="changeOffice(formData.officeId)"></select>
               		</div>
            		 </div>
             </td>
@@ -28,7 +28,7 @@
             	<div class="control-group">
              	 	<label class="control-label">{{'label.clientcategeory' | translate}}<span class="required">*</span></label>
               		<div class="controls">
-               		 <select ng-model="formData.clientCategory"  ng-options="clientCategoryData.id as clientCategoryData.categoryType for clientCategoryData in clientCategoryDatas" value="{{clientCategoryDatas.id}}"></select>
+               		 <select ng-model="formData1.clientCategory"  ng-options="clientCategoryData.id as clientCategoryData.categoryType for clientCategoryData in clientCategoryDatas" value="{{clientCategoryDatas.id}}"></select>
               		</div>
            		 </div>
            	</td>
@@ -36,7 +36,7 @@
            	<tr>
            	<td>
   		      	<div class="control-group">
-              		<label class="control-label" for="firstname">{{'label.middlename' | translate}}<span class="required">*</span></label>
+              		<label class="control-label" for="firstname">{{'label.name' | translate}}<span class="required">*</span></label>
               		<div class="controls">
                 		<input type="text" id="firstname" name="firstname" ng-model="formData1.middlename" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
                 		<span  ng-show="createclientform.firstname.$invalid">
@@ -91,7 +91,7 @@
            </tr>
             <tr>
             <td>
-         <strong>Device Info</strong>
+         <strong>Device Info({{config}})</strong>
          </td><td></td>
          </tr>
            	<tr>
@@ -162,15 +162,19 @@
              	  <div class="control-group" ng-hide="configurationProperty==false">
              		 <label class="control-label">Login<span class="required">*</span></label>
               		<div class="controls">
-               			 <input type="text" id="login" name="login" ng-model="formData.login"/>
+               			 <input type="text" id="login" name="login" ng-model="formData1.login"/>
               		</div>
             	</div>
             </td>
-            <td>
-            	<datalist id="citylist">
-                   <option  data-ng-repeat="city in cities" value="{{city}}">
-             	</datalist>
-             </td>
+            	 <td>
+            	<div class="control-group" ng-hide="configurationProperty==false">
+              		<label class="control-label">Password<span class="required">*</span></label>
+             		 <div class="controls">
+               			 <input type="password"  ng-model="formData1.password"/>
+              		</div>
+            	</div>
+           	</td>
+           
              </tr>
              <tr>
              <td>
@@ -181,14 +185,11 @@
               		</div>
             	</div>
            	</td>
-           	 <td>
-            	<div class="control-group" ng-hide="configurationProperty==false">
-              		<label class="control-label">Password<span class="required">*</span></label>
-             		 <div class="controls">
-               			 <input type="password"  ng-model="formData.password"/>
-              		</div>
-            	</div>
-           	</td>
+            <td>
+            	<datalist id="citylist">
+                   <option  data-ng-repeat="city in cities" value="{{city}}">
+             	</datalist>
+             </td>
            </tr>
            </table> 
             <div class="pull-right">
