@@ -1,10 +1,7 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        GlobalConfigurationController: function(scope, $modal,routeParams,resourceFactory , location,route,PermissionService) {
+        GlobalConfigurationController: function(scope,$modal,routeParams,resourceFactory , location,route) {
             scope.configs = [];
-            scope.PermissionService=PermissionService;
-            
-         if(PermissionService.showMenu('READ_CONFIGURATION')){
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
                     scope.configs.push(data.globalConfiguration[i]);
@@ -20,8 +17,6 @@
                     scope.configs.push(cache);
                 });
             });
-         }
-
             
             scope.edit= function(id){
 		      	  scope.errorStatus=[];
@@ -66,44 +61,44 @@
 		        };
 		        
             
-            scope.enable = function(name) {
-                if(name=='Is Cache Enabled'){
-                    var temp = {};
-                    temp.cacheType = 2;
-                    resourceFactory.cacheResource.update(temp,function(data) {
-                     route.reload();
-                    });
-                }
-                else
-                {
-                var temp = {};
-                temp[name] = 'true';
-                resourceFactory.configurationResource.update(temp,'',function(data) {
-                    route.reload();
-                });
-                }
-            };
-            scope.disable = function(name) {
-                if(name=='Is Cache Enabled'){
-                    var temp = {};
-                    temp.cacheType = 1;
-                    resourceFactory.cacheResource.update(temp,function(data) {
-                        route.reload();
-                    });
-                }
-                else
-                {
-                var temp = {};
-                temp[name] = 'false';
-                resourceFactory.configurationResource.update(temp,'',function(data) {
-                    route.reload();
-                });
-                }
-            };
+		        scope.enable = function (id, name) {
+	                if (name == 'Is Cache Enabled') {
+	                    var temp = {};
+	                    temp.cacheType = 2;
+	                    resourceFactory.cacheResource.update(temp, function (data) {
+	                        route.reload();
+	                    });
+	                }
+	                else {
+	                    var temp = {'enabled': 'true'};
+	                    resourceFactory.configurationResource.update({'configId': id}, temp, function (data) {
+	                        route.reload();
+	                    });
+	                }
+	            };
+	            
+	            scope.disable = function (id, name) {
+	                if (name == 'Is Cache Enabled') {
+	                    var temp = {};
+	                    temp.cacheType = 1;
+	                    resourceFactory.cacheResource.update(temp, function (data) {
+	                        route.reload();
+	                    });
+	                }
+	                else {
+	                    var temp = {'enabled': 'false'};
+	                    resourceFactory.configurationResource.update({'configId': id}, temp, function (data) {
+	                        route.reload();
+	                    });
+	                }
+	            };
 
-        }
-    });
-    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope','$modal', '$routeParams', 'ResourceFactory', '$location','$route','PermissionService', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
+	        }
+	    });
+
+       
+   
+    mifosX.ng.application.controller('GlobalConfigurationController', ['$scope','$modal', '$routeParams', 'ResourceFactory', '$location','$route', mifosX.controllers.GlobalConfigurationController]).run(function($log) {
         $log.info("GlobalConfigurationController initialized");
     });
 }(mifosX.controllers || {}));
