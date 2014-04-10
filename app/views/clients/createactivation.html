@@ -131,7 +131,7 @@
            		</div>
            	</td>
            	<td>
-           		<div class="control-group" ng-hide="formData4.isPrepaid == 'Y'">
+           		<div class="control-group">
                    <label class="control-label" for="paytermCode">{{ 'label.activation.plan' | translate }}</label>
                      <div class="controls">
                         <select ng-model="formData4.planId"  ng-options="plandata.id as plandata.planCode for plandata in plandatas" ng-change='setBillingFrequency(formData4.planId)' value="{{plandata.id}}"></select>

@@ -311,6 +311,8 @@
 	                	   this.formData1.lastname="Mr.";
 	                   }
 	                   
+	                   delete this.formData1.middlename;
+	                   
 	                  this.formData1.flag=scope.configurationProperty;
 	                  
 	                //  delete this.formData1.name;
