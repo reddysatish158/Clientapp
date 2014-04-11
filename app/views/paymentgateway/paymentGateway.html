@@ -230,7 +230,7 @@
                 <th>{{'table.paymentgateway.serialNo' | translate}}</th>
                 <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
                 <th>{{'table.paymentgateway.phoneno' | translate}}</th>             
-                <th>{{'table.paymentgateway.remarks' | translate}}</th>   
+                <th>Process Date</th>   
                 <th>{{'table.paymentgateway.status' | translate}}</th>  
                                            
               </tr>
@@ -243,7 +243,7 @@
                 <td>{{paymentgatewaydata.serialNo}}</td>
                 <td>{{paymentgatewaydata.amountPaid}}</td>
                 <td>{{paymentgatewaydata.phoneNo}}</td>
-                <td>{{paymentgatewaydata.remarks}}</td> 
+                <td>{{paymentgatewaydata.paymentDate|DateFormat}}</td> 
                 <td>{{paymentgatewaydata.status}}</td>
                              
    			</tr>
@@ -291,7 +291,8 @@
 						<div class="controls">
 							<select ng-model="formData.remarks">
 								<option>Active</option>
-								<option>Done</option>
+								<option>Posted</option>
+								<option>Wrong Entry</option>
 							</select>
 						</div>
 					</div>
