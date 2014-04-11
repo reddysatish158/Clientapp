@@ -161,11 +161,6 @@
                                              icon :"icon-file"
                                          }, 
                                          {
-                                         	name:"Event Provision",
-                                         	href:"#/eventprovison",
-                                         	icon :"icon-file"
-                                     	 },
-                                         {
 	                                        name:"button.edit",
 	                                        href:"#/editclient",
 	                                        icon :"icon-edit"
@@ -289,12 +284,6 @@
                     controller: StatementPopController,
                     resolve:{}
                 });
-        	}else if(href=="#/eventprovison"){
-            		$modal.open({
-                        templateUrl: 'eventProvison.html',
-                        controller: EventProvisonController,
-                        resolve:{}
-                    });	
         	}else if(href=="#/viewclient"){
         		route.reload();
         	}else{
@@ -332,18 +321,6 @@
         		$modalInstance.dismiss('cancel');
         	};
         };
-        
-var EventProvisonController = function($scope,$modalInstance){
-					$scope.parameterDatas = [];
-	 	resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.id}, function(data) {
-                   $scope.parameterDatas = data.parameterDatas
-                });
-        	
-	 		$scope.cancel = function(){
-        		$modalInstance.dismiss('cancel');
-        	};
-        };
-        
         
         scope.deleteClient = function () {
             $modal.open({
@@ -398,7 +375,13 @@ var EventProvisonController = function($scope,$modalInstance){
               }
           });
         };
-
+//leftside orderMenu function
+     /*   scope.selectedOrder = function(status){
+        	if(status="ACTIVE")
+        		scope.orderMenu = true;
+        }*/
+        
+        
         scope.getClientTemplateDocuments = function() {
           resourceFactory.templateResource.get({entityId : 0, typeId : 0}, function(data) {
             scope.clientTemplateData = data;
