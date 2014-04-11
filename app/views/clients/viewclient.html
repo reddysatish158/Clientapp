@@ -224,18 +224,23 @@
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.planCode}}</td>
-                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.contractPeriod}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.activeDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.startDate | DateFormat}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
-                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
-                        </tr>
+                          <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
+                         </tr>
                         <tr><td colspan="8">&nbsp;</td></tr>
                        
                     </table>
                 </div>
-                
+                <ul id=orderMenu ng-show="menu">
+					<li><a style = "color:#FFFFFF" href="">Section 1</a></li>
+					<li><a style = "color:#FFFFFF" href="">Section 2</a></li>
+					<li><a style = "color:#FFFFFF" href="">Section 3</a></li>
+				</ul>
+				
                  <div class="row-fluid">
                   <p>
                 
@@ -263,7 +268,6 @@
                        
                     </table>
                 </div>
-                
           </div>
       </tab>
       <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab">
@@ -1246,6 +1250,33 @@
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
                         <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)" ng-disabled="flagcancelpayment">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>
+       <script type="text/ng-template" id="eventProvison.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">Parameter Details</h3>
+                    </div>
+                    <div class="modal-body modal-medium">
+                      <table class="table">
+            			<thead>
+              				<tr class="graybg">
+               					 <th>Id</th>
+                				 <th>Param Name</th>
+              					 <th>Param Value</th>
+              				</tr>
+            			</thead>
+            			<tbody>
+              				<tr ng-repeat="parameterData in parameterDatas">
+                				<td>{{parameterData.id}}</td>
+               					<td>{{parameterData.paramName}}</td>
+             					<td>{{parameterData.paramValue}}</td>
+            				 </tr>
+           			    </tbody>
+                     </table>
+						
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cancel" class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
                     </div>
       </script>
 </div>

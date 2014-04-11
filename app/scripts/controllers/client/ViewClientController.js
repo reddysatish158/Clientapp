@@ -159,7 +159,12 @@
                                              name:"button.statement",
                                              href:"#/statement",
                                              icon :"icon-file"
-                                         },                                                                              
+                                         }, 
+                                         {
+                                         	name:"Event Provision",
+                                         	href:"#/eventprovison",
+                                         	icon :"icon-file"
+                                     	 },
                                          {
 	                                        name:"button.edit",
 	                                        href:"#/editclient",
@@ -284,6 +289,12 @@
                     controller: StatementPopController,
                     resolve:{}
                 });
+        	}else if(href=="#/eventprovison"){
+            		$modal.open({
+                        templateUrl: 'eventProvison.html',
+                        controller: EventProvisonController,
+                        resolve:{}
+                    });	
         	}else if(href=="#/viewclient"){
         		route.reload();
         	}else{
@@ -322,6 +333,16 @@
         	};
         };
         
+var EventProvisonController = function($scope,$modalInstance){
+					$scope.parameterDatas = [];
+	 	resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.id}, function(data) {
+                   $scope.parameterDatas = data.parameterDatas
+                });
+        	
+	 		$scope.cancel = function(){
+        		$modalInstance.dismiss('cancel');
+        	};
+        };
         
         
         scope.deleteClient = function () {
