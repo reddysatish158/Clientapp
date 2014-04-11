@@ -926,6 +926,30 @@ nav:hover:after{
     cursor: text;
 }
 
+#orderMenu {
+    position: fixed;
+    background: none repeat scroll 0 0 rgba(165, 159, 153, 1);/* rgba(132, 193, 10, 0.698) rgba(17, 22, 6, 0.64) */
+    border-color: rgba(155, 140, 140, 0) -moz-use-text-color rgba(155, 140, 140, 0) rgba(155, 140, 140, 0);
+    border-image: none;/* rgba(155, 140, 140, 0) rgba(132, 193, 10, 0.5)*/
+    /* border-radius: 3em 0.5em 0.5em 3em; */
+    border-radius:0.5em 5em 5em 0.5em;
+    border-style: solid none solid solid;
+    border-width: medium;
+    box-shadow: 0 1px 3px #000000;
+    color: #FFFFFF;
+    font-size: large;
+    font-weight: bold;
+    margin: -2.5em 0 0;
+    padding: 0.5em 0.5em 0.5em 2.5em;
+    position: fixed;
+    left: 0;
+    text-align: left;
+    top: 52.5%;
+    width: 8em;
+    z-index: 5;
+/* margin-top: -2.5em; */
+}
+
 .hotkey{
     font-weight: bold;
     color: red;

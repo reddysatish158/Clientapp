@@ -20,6 +20,7 @@
               lastPage :function(){
             	  if (this.hasNextVar) {
             		  this.currentOffset = this.totalFilteredRecords - this.totalFilteredRecords % 15;
+            		  this.totalCount = this.currentOffset;
             		  if(this.currentOffset == this.totalFilteredRecords)
             			  this.currentOffset = this.totalFilteredRecords -15;
             		  this._load();
@@ -31,7 +32,8 @@
                   self.totalFilteredRecords = items.totalFilteredRecords;
                   self.currentPageItems = items.pageItems;
                   self.hasNextVar = (items.pageItems.length === pageSize + 1)&&
-                  					(!(self.currentOffset == self.totalFilteredRecords));
+                  					(!(self.totalCount == self.totalFilteredRecords));
+                  self.totalCount = 0;
               });
               },
               hasNext: function() {
