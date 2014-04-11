@@ -2300,6 +2300,8 @@
 "label.name":"Name",
 "label.activation.plan":"Plan",
 "label.activation.phone":"Phone",
+"label.activation.recieptno":"Reciept No",
+"label.activation.amount":"Amount",
 
 "#IpPooling Details":"....",
 "label.manageippooling":"IpPool Management",

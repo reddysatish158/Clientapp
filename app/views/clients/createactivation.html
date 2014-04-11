@@ -158,6 +158,29 @@
               </td>
               </tr>
               <tr>
+            <td>
+         <strong>Payment Info</strong>
+         </td><td></td>
+         </tr>
+           	<tr>
+           	<td>
+          		  <div class="control-group">
+             		 <label class="control-label" for="amountPaid">{{'label.activation.amount' | translate}}<span class="required">*</span></label>
+             		<div class="controls">
+               		 <input type="text" id="amountPaid" ng-model="formData6.amountPaid"/>
+              		</div>
+              		</div>
+          	</td>
+          	<td>
+          		<div class="control-group">
+             		 <label class="control-label" for="receiptNo">{{'label.activation.recieptno' | translate}}<span class="required">*</span></label>
+             		<div class="controls">
+               		 <input type="text" id="receiptNo" ng-model="formData6.receiptNo"/>
+              		</div>
+              		</div>
+             </td>
+             </tr>
+              <tr>
               <td>
              	  <div class="control-group" ng-hide="configurationProperty==false">
              		 <label class="control-label">Login<span class="required">*</span></label>

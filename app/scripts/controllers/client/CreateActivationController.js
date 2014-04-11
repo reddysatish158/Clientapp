@@ -198,6 +198,7 @@
 	        scope.items =[];
 	        scope.formData4 =[];
 	        scope.formData5 ={};
+	        scope.formData6=[];
 	       
 	        resourceFactory.orderTemplateResource.get({planId:'0'},function(data) {
 	        	 
@@ -361,10 +362,7 @@
 	 	        	 scope.formData3.itemMasterId=scope.formData2.itemId;
 	 	            this.formData2.serialNumber=temp1;
 
-	 	            
-	 	           
-		          
-		            
+	 	            var clientId=null;
 	 	            // temp1 = undefined;
 	 	            
 		            scope.ActivationData.owndevice.push(this.formData5);
@@ -376,13 +374,32 @@
 	 	            delete this.formData3.serials;
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
+	 	           
+	 	           
+	 	          /* this.formData6.paymentCode=23;
+	           	  this.formData6.locale='en';
+	           	  this.formData6.dateFormat = 'dd MMMM yyyy';
+	           	  this.formData6.paymentDate=reqDate;*/
+	           	var resourceId=null;
+	           	var paymentData=[];
+	           	paymentData=this.formData6;
 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
-	            	  location.path('/viewclient/' + data.resourceId);
+	            	 // location.path('/viewclient/' + data.resourceId);
+	            	resourceId=data.resourceId;
 	            },function(errData){
 	          	  scope.flag = false;
 	            });
-
 	           
+	               this.formData6.paymentCode=23;
+	           	  this.formData6.locale='en';
+	           	  this.formData6.dateFormat = 'dd MMMM yyyy';
+	           	  this.formData6.paymentDate=reqDate;
+	           	  
+          	 resourceFactory.paymentsResource.save({clientId :resourceId}, this.formData6,function(data){
+	                location.path('/viewclient/'+ resourceId);
+	              },function(errData){
+	            	  scope.flag = false;
+	              });
 	        };
     	  
 		  
