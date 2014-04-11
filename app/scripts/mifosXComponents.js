@@ -51,6 +51,7 @@ define(['underscore', 'mifosX'], function() {
       'client/CreateClientControllerwizard',
       'client/CreateProvisioningController',
       'client/CreateActivationController',
+      'client/EditProvisioningController',
       'user/UserController',
       'user/UserFormController',
       'user/UserSettingController',

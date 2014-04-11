@@ -444,6 +444,10 @@
       .when('/provision/:orderId', {
         templateUrl: 'views/clients/createprovisioning.html'
       })
+      
+      .when('/editprovision/:orderId', {
+          templateUrl: 'views/clients/editserviceparameters.html'
+        })
       .when('/voucherpins', {
         templateUrl: 'views/organization/voucherpins.html'
       })

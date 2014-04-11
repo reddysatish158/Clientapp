@@ -750,6 +750,11 @@
            provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
          	  get: {method: 'GET', params: {}}
            }),
+           
+           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/serviceparmas/:orderId", {orderId:'@orderId'}, {
+          	  get: {method: 'GET', params: {}}
+            }),
+            
 	       EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
                get: {method: 'GET', params: {}, isArray: true},
                getDetails: {method: 'GET', params: {}},

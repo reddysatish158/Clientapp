@@ -1068,6 +1068,7 @@
   "label.plan.plancode":"Plan Code",
   "label.plan.planname":"Plan Name",
   "table.order.endDate":"End Date",
+  "table.order.user":"User",
   "label.plan.status":"Status",
   "table.order.pairing":"Pairing",
   "label.plan.plandescription":"Plan Description",
