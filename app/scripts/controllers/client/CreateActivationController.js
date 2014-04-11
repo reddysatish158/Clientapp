@@ -393,11 +393,9 @@
 	            	
 	            	resourceFactory.paymentsResource.save({clientId :resourceId}, scope.formData6,function(data){
 	            		location.path('/viewclient/'+ resourceId);
-	            	},function(errData){
-	            		scope.flag = false;
+
 	            	});
-	            },function(errData){
-	          	  scope.flag = false;
+
 	            });
 	           
 	        };
