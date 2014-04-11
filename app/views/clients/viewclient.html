@@ -211,6 +211,7 @@
                    
                     <table class="table">
                         <tr class="graybg">
+                        	<th>Select</th>
                             <th>Order No</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
@@ -218,8 +219,8 @@
                             <th>Start/Renwal Date</th>
                             <th>End Date</th>
                             <th>Price</th>
-                            <th>Status</th>
-                             <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <!-- <th>Status</th> -->
                         </tr>
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
@@ -230,15 +231,21 @@
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.endDate | DateFormat}}</td> 
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.price}}</td>
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)"><i class="icon-stop {{order.status | StatusLookup}}"></i>&nbsp;{{order.status}}</td>
+                          <!-- <td><input type="radio" name="select" ng-click="selectedOrder(order.status)"/></td> -->
                          </tr>
                         <tr><td colspan="8">&nbsp;</td></tr>
                        
                     </table>
                 </div>
-                <ul id=orderMenu ng-show="menu">
-					<li><a style = "color:#FFFFFF" href="">Section 1</a></li>
-					<li><a style = "color:#FFFFFF" href="">Section 2</a></li>
-					<li><a style = "color:#FFFFFF" href="">Section 3</a></li>
+                <ul id=orderMenu style="list-style: none;" ng-show="orderMenu">
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-remove icon-white"></i>Disconnect</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-arrow-up icon-white"></i>Topup</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-plus icon-white"></i>Paring</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-move"></i>Device Swap</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-gift"></i>Apply Promo</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-cog"></i>Extension</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href=""><i class="icon-cog"></i>Change Plan</a></li>
+					<li><a style = "text-decoration:none ;color:#FFFFFF" href="">Command Center</a></li>
 				</ul>
 				
                  <div class="row-fluid">
@@ -1250,33 +1257,6 @@
                     <div class="modal-footer">
                         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
                         <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)" ng-disabled="flagcancelpayment">{{'label.confirm' | translate}}</button>
-                    </div>
-      </script>
-       <script type="text/ng-template" id="eventProvison.html">
-                    <div class="modal-header silver">
-                        <h3 class="bolder">Parameter Details</h3>
-                    </div>
-                    <div class="modal-body modal-medium">
-                      <table class="table">
-            			<thead>
-              				<tr class="graybg">
-               					 <th>Id</th>
-                				 <th>Param Name</th>
-              					 <th>Param Value</th>
-              				</tr>
-            			</thead>
-            			<tbody>
-              				<tr ng-repeat="parameterData in parameterDatas">
-                				<td>{{parameterData.id}}</td>
-               					<td>{{parameterData.paramName}}</td>
-             					<td>{{parameterData.paramValue}}</td>
-            				 </tr>
-           			    </tbody>
-                     </table>
-						
-                    </div>
-                    <div class="modal-footer">
-                        <button id="cancel" class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
                     </div>
       </script>
 </div>

@@ -160,6 +160,24 @@
           });
       	
       };
+      scope.provision = function(){
+    	  $modal.open({
+              templateUrl: 'editProvision.html',
+              controller: EditProvisionController,
+              resolve:{}
+          });	
+      }
+      
+      var EditProvisionController = function($scope,$modalInstance){
+			$scope.parameterDatas = [];
+			resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.id}, function(data) {
+					$scope.parameterDatas = data.parameterDatas
+			});
+	
+			$scope.cancel = function(){
+				$modalInstance.dismiss('cancel');
+			};
+      };
       
       var extensionController=function($scope,$modalInstance){
     	  

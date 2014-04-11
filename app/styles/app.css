@@ -944,8 +944,8 @@ nav:hover:after{
     position: fixed;
     left: 0;
     text-align: left;
-    top: 52.5%;
-    width: 8em;
+    top: 52%;
+    width: 11em;
     z-index: 5;
 /* margin-top: -2.5em; */
 }

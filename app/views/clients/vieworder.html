@@ -101,7 +101,8 @@
 		     <a ng-show ="orderData.status != 'PENDING'" ng-click="extension()" class="btn btn-primary"><i class="icon-cog"></i>Extension</a>
 		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
 		     <a ng-show ="orderData.status == 'PENDING'" href="#/provision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Provision It</a>
-		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/editprovision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Edit Provision</a>
+		     <!-- <a ng-show ="orderData.status == 'ACTIVE'" href="#/editprovision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Edit Provision</a> -->
+		     <a ng-show ="orderData.status == 'ACTIVE'" href="" ng-click="provision()" class="btn btn-primary"><i class="icon-cog"></i>Edit Provision</a>
 		    
 	      
 	        <span  class="btn-group">
@@ -585,5 +586,32 @@
          <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flagExtension">{{'label.confirm' | translate}}</button>
    </div>
 </script> 
+<script type="text/ng-template" id="editProvision.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">Parameter Details</h3>
+                    </div>
+                    <div class="modal-body modal-medium">
+                      <table class="table">
+            			<thead>
+              				<tr class="graybg">
+               					 <th>Id</th>
+                				 <th>Param Name</th>
+              					 <th>Param Value</th>
+              				</tr>
+            			</thead>
+            			<tbody>
+              				<tr ng-repeat="parameterData in parameterDatas">
+                				<td>{{parameterData.id}}</td>
+               					<td>{{parameterData.paramName}}</td>
+             					<td>{{parameterData.paramValue}}</td>
+            				 </tr>
+           			    </tbody>
+                     </table>
+						
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cancel" class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
+                    </div>
+      </script>
       
 </div>
