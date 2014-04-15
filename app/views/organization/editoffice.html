@@ -23,6 +23,17 @@
                 </div>
               </td>
             </tr>
+             <tr>
+              <td>
+                <div class="control-group">
+                  <label class="control-label">{{ 'label.officetype' | translate }}</label>
+                  <div class="controls">
+                     <select ng-model="formData.officeType"  ng-options="officeType.id as officeType.name for officeType in officeTypes" value="{{office.officeType}}">
+                     </select>
+                  </div>
+                </div>
+              </td>
+            </tr>
             <tr>
               <td>
                 <div class="control-group">

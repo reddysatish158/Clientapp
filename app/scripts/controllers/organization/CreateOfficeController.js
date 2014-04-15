@@ -2,13 +2,16 @@
   mifosX.controllers = _.extend(module, {
     CreateOfficeController: function(scope, resourceFactory, location,dateFilter) {
         scope.offices = [];
+        scope.officeTypes = [];
         scope.first = {};
         scope.first.date = new Date();
-        resourceFactory.officeResource.getAllOffices(function(data) {
-            scope.offices = data;
+        
+        	 resourceFactory.officeResource.get({template: 'true'} , function(data) {
+            scope.offices = data.allowedParents;
+            scope.officeTypes = data.officeTypes;
             scope.formData = {
               parentId : scope.offices[0].id
-            }
+            };
         });
         
         scope.submit = function() {   
