@@ -1037,9 +1037,9 @@
     			</ul>
 	</div>
 </tab>
-<tab heading="Distribution" select="getClientDistribution()">
+<tab heading="Distribution" select="getClientDistribution()" ng-show="$parent.PermissionService.showMenu('READ_CREDITDISTRIBUTION')">
      <div class="pull-right">
-		         <a href="#/creditDistribution/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Distribute</a>
+		         <a ng-show="PermissionService.showMenu('CREATE_CREDITDISTRIBUTION')" href="#/creditDistribution/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Distribute</a>
 	        </div>
     <div>
      <form ng-submit="searchTransactionHistory()">

@@ -138,7 +138,7 @@
                                <!--  <li><a href="#/products">{{ 'link.admin.products' | translate }}</a></li>
                                 <li><a href="#/templates">{{ 'link.admin.templates' | translate }}</a></li> -->
                                   <li><a ng-show="upload=PermissionService.showMenu('READ_UPLOADSTATUS')" href="#/importing">{{'link.import' | translate }}</a></li>
-                                    <li><a ng-show="jobs=PermissionService.showMenu('READ_SCHEDULER')" href="#/jobs">Scheduler Jobs</a></li>
+                                    <li><a ng-show="jobs=PermissionService.showMenu('READ_SCHEDULERJOB')" href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
                                  <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">smartSearch</a></li>
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
@@ -156,13 +156,13 @@
                             <ul class="dropdown-menu">
                                 <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" id="help" href="#/help"><i class="icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
                                 <li><a href="#/profile"><i class="icon-user"></i>{{ 'link.profile' | translate }}</a></li>
-                                 <li><a ng-show="PermissionService.showMenu('READ_USERCHAT')" href="#/messanger"><i class="icon-envelope"></i>{{ 'link.messanger' | translate }}</a></li>
+                                 <li><a ng-show="PermissionService.showMenu('READ_USERCHATMESSAGE')" href="#/messanger"><i class="icon-envelope"></i>{{ 'link.messanger' | translate }}</a></li>
                                 <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" href="#/usersetting"><i class="icon-cog"></i>{{ 'link.settings' | translate }}</a></li>
                                 <li><a id="logout" data-ng-click="logout()"><i class="icon-off"></i>{{ 'link.logout' | translate }}</a></li>
                             </ul>
                         </li>
                     </ul>
-                    <form ng-show="PermissionService.showMenu('ALL_FUNCTIONS','ALL_FUNCTIONS_READ')" ng-submit="search()" class="navbar-search pull-left ng-pristine ng-valid">
+                    <form ng-show="PermissionService.showMenu('READ_SEARCH')" ng-submit="search()" class="navbar-search pull-left ng-pristine ng-valid">
                     <input id="search" data-ng-model="search.query" type="text" placeholder="{{ 'label.searchorpress' | translate }}" class="search-query span3">
                     </form>
                 </div>

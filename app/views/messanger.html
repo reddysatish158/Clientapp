@@ -12,7 +12,7 @@
       <tab heading="Inbox" select="updateRead()">
       
        <div class="pull-right btn-group">
-          <a ng-show="PermissionService.showMenu('CREATE_USERCHAT')" href="#/addnewmesage" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.addmessage' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_USERCHATMESSAGE')" href="#/addnewmesage" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.addmessage' | translate }}</a>
         </div>
         <div ng-repeat="userChatData in userChatDatas | orderBy:predicate:reverse" >
           <div>
