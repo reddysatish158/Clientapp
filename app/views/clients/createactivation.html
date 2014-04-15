@@ -159,12 +159,13 @@
                  </div>
               </td>
               </tr>
-              <tr>
+              <tr ng-show="'payment' | ConfigLookup">
             <td>
          <strong>Payment Info</strong>
          </td><td></td>
          </tr>
-           	<tr>
+         
+           	<tr ng-show="'payment' | ConfigLookup">
            	<td>
           		  <div class="control-group">
              		 <label class="control-label" for="amountPaid">{{'label.activation.amount' | translate}}<span class="required">*</span></label>

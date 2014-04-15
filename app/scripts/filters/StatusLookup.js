@@ -2,6 +2,7 @@
   mifosX.filters = _.extend(module, {
     StatusLookup: function () {
                     return function(input) {
+                    	
 
                       var  cssClassNameLookup = {
                         "true" : "statusactive" ,
@@ -31,6 +32,7 @@
                         "groupingStatusType.approved":"statusApproved"
                      }
 
+                      
                       return cssClassNameLookup[input];
                   }
                 }
