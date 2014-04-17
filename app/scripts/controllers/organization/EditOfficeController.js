@@ -22,7 +22,7 @@
               officeType : scope.formData.officeType
               
           }
-            alert(officeType);
+           
         });
         
         scope.submit = function() {

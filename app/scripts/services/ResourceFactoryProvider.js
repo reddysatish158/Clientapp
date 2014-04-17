@@ -28,6 +28,11 @@
             getAllOffices: {method: 'GET', params: {}, isArray: true},
             update: { method: 'PUT'}
           }),
+          
+          officeTemplateResource: defineResource(apiVer + "/offices/template", {}, {
+              get: {method: 'GET', params: {}},
+              
+            }),
           clientResource: defineResource(apiVer + "/clients/:clientId/:anotherresource", {clientId:'@clientId',anotherresource:'@anotherresource'}, {
             getAllClients: {method: 'GET', params: {}},
             getClientClosureReasons: {method: 'GET', params: {}},
@@ -743,6 +748,12 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
+        
+        provisioningserviceResource: defineResource(apiVer + "/provisionings/serviceparams/:orderId", {orderId: '@orderId'}, {
+        	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+           get: {method: 'GET', params: {}},
+           update: { method: 'PUT' }
+      }),
            provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),

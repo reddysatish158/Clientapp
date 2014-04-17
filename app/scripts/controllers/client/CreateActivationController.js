@@ -375,6 +375,9 @@
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
 	 	           
+	 	    
+	 	            //console.log("aa"+resp);
+	 	          
 	 	           
 	 	          /* this.formData6.paymentCode=23;
 	           	  this.formData6.locale='en';
@@ -383,19 +386,26 @@
 	           	var resourceId=null;
 	           	var paymentData=[];
 	           	paymentData=scope.formData6;
+	            
 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
 	            	 // location.path('/viewclient/' + data.resourceId);
 	            	resourceId=data.resourceId;
+	            	var resp = filter('ConfigLookup')('payment');
+	          alert(resp);
+	            	if(resp){
+	            	
 	            	scope.formData6.paymentCode=23;
 	            	scope.formData6.locale='en';
 	            	scope.formData6.dateFormat = 'dd MMMM yyyy';
 	            	scope.formData6.paymentDate=reqDate;
 	            	
+	            	scope.formData6.receiptNo="SA_"+scope.formData6.receiptNo;
 	            	resourceFactory.paymentsResource.save({clientId :resourceId}, scope.formData6,function(data){
-	            		location.path('/viewclient/'+ resourceId);
+	            		
 
 	            	});
-
+	            	}
+	            	location.path('/viewclient/'+ resourceId);
 	            });
 	           
 	        };

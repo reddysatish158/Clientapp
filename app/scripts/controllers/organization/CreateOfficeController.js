@@ -6,7 +6,7 @@
         scope.first = {};
         scope.first.date = new Date();
         
-        	 resourceFactory.officeResource.get({template: 'true'} , function(data) {
+        	 resourceFactory.officeTemplateResource.get({} , function(data) {
             scope.offices = data.allowedParents;
             scope.officeTypes = data.officeTypes;
             scope.formData = {
