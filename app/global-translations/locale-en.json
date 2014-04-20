@@ -1220,6 +1220,8 @@
   "table.order.discountdescription":"Discount Description",
   "table.order.discountType":"Discount Type",
   "table.order.discountAmount":"Discount Amount",
+  "table.order.discountstartdate":"Start Date",
+  "table.order.discountenddate":"End Date",
   "table.order.servicecode":"Service Code",
   "table.order.serviceDescription":"Service Description",
   "table.order.serviceType":"Service Type",
