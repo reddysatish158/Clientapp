@@ -2206,7 +2206,11 @@
 "table.paymentgateway.phoneno":"Phone MSISDN",
 "table.paymentgateway.remarks":"Remarks",
 "validation.msg.client.homePhoneNumber.exceeds.max.length" : "Home Phone Number exceeds maximum length",
-"invalid.serial.no" : "Invalid Serial Number"
+"invalid.serial.no" : "Invalid Serial Number",
+"error.message.paymenttypeval.required" : "Please Select Payment Type",
+"error.message.amountval.required" : "Amount cannot be blank",
+"error.message.receiptNo.required" : "Receipt Number cannot be blank",
+"error.message.futuredate.required" : "Future dated transactions are not allowed"
 
 
 }

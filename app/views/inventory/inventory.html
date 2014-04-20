@@ -39,7 +39,7 @@
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.status}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="itemdetail.clientId">{{itemdetail.accountNumber}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="!itemdetail.clientId">Unallocated</td>
-		<td ng-show="!itemdetail.clientId"><a ng-click="editQuality(itemdetail.id)"><i class="icon-edit icon-white" ></i>edit</a></td>
+		<td ng-show="!itemdetail.clientId"><a ng-click="editQuality(itemdetail.id,itemdetail.quality)"><i class="icon-edit icon-white" ></i>edit</a></td>
                 <!-- <td>
                 	<span ng-if="itemdetails.clientId > '0'">
                 	Yes
@@ -293,7 +293,7 @@
        <div class="control-group">
 			<label class="control-label" for="quality">{{'label.itemdetail.quality' | translate }}<span class="required">*</span></label>
 			<div class="controls">
-              <select ng-model="formData.quality"  ng-options="q.mCodeValue as q.mCodeValue for q in quality" value="{{q.mCodeValue}}" required>
+              <select ng-model="quality"  ng-options="q.mCodeValue as q.mCodeValue for q in qualityData" value="{{q.mCodeValue}}" required>
               </select>
             </div>
 	   </div>
@@ -302,7 +302,7 @@
     </div>
      <div class="modal-footer">
         <button class="btn btn-warning" ng-click="cancelQuality()">{{'button.cancel' | translate}}</button>
-     	<button class="btn btn-primary" ng-click="approveQuality()">{{'label.confirm' | translate}}</button>
+     	<button class="btn btn-primary" ng-click="approveQuality(quality)">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>

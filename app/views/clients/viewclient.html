@@ -620,6 +620,10 @@
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialPayments.previous()" href="" ng-disabled="!financialPayments.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialPayments.next()" href="" ng-disabled="!financialPayments.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -643,7 +647,7 @@
 						</thead>
 						<tbody>
 						
-							<tr ng-repeat="financialtransaction in financialtransactions1.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
+							<tr ng-repeat="financialtransaction in financialInvoices.currentPageItems  | filter:filterText" ng-show="financialtransaction.transactionType =='INVOICE'"> 
                					<td>
                   					<any>{{financialtransaction.userName}}</any>
               					</td>
@@ -666,6 +670,10 @@
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialInvoices.previous()" href="" ng-disabled="!financialInvoices.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialInvoices.next()" href="" ng-disabled="!financialInvoices.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -713,6 +721,10 @@
             				</tr>
 						</tbody>
 					</table>
+					<ul class="pager">
+        				<li class="previous"><a ng-click="financialAdjustments.previous()" href="" ng-disabled="!financialAdjustments.hasPrevious()">&larr; Prev</a></li>
+        				<li class="next" ><a ng-click="financialAdjustments.next()" href="" ng-disabled="!financialAdjustments.hasNext()">Next &rarr;</a></li>
+    				</ul>
 					</div>
 			    </div>
 			    
@@ -1039,7 +1051,7 @@
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.invoice.title.message' | translate}}</h3>
                     </div>
-                    <div class="modal-body modal-big" style="height:270px;">
+                    <div class="modal-body" style="height:285px;">
                        	<div class="control-group">
 							<div class="controls">
 						 	 <label class="control-label" style="color:red;" ng-show="error.length>0">{{error | translate}}</label>
@@ -1062,7 +1074,7 @@
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.statement.title.message' | translate}}</h3>
                     </div>
-                    <div class="modal-body modal-big" style="height:270px;">
+                    <div class="modal-body" style="height:255px;">
             			<div class="control-group">
        						<div class="controls">
 								<span class="control-label" style="color:red;" ng-show="stmError.length>0">{{stmError | translate}}</span>
