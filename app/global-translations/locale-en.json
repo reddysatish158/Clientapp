@@ -2203,6 +2203,7 @@
 "label.searchorpress":"Click to focus or press alt+x",
 
 "#PaymentGatewayCommands":"...",
+"label.paymentgateway.source":"Source",
 "link.paymentgateway":"PaymentGateway",
 "label.managepaymentgateway":"Payment Gateway",
 "label.editpaymentgateway":"Edit PaymentGateway",
