@@ -5,9 +5,15 @@
         scope.paymentgatewaydatas = [];
         scope.formData={};
 	      //for All tab
-        scope.formData.source='all';
+        
+        scope.formData.source ='all';
 			 scope.paymentGatewayAllData = function(offset, limit, callback) {
-	 			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
+				 if(scope.formData.source == 'all'){
+						 resourceFactory.paymentGatewayResource.get({offset: offset,limit: limit} , callback);
+					}else{
+						resourceFactory.paymentGatewayResource.get({offset: offset,source: scope.formData.source, limit: limit} , callback);
+					}
+	 			
 			};
 	 		
 	 		scope.getPaymentGateway = function () {
@@ -20,9 +26,19 @@
 				 scope.paymentgatewaydatas = paginatorService.paginate(scope.changeSourceData, 14);
 			};
 			
-			scope.changeSourceData = function(offset, limit, callback) { 
-		    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
-		    		  source: scope.formData.source} , callback);
+			scope.changeSourceData = function(offset, limit, callback) {
+				
+				if(scope.formData.source == 'all'){
+					
+					 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit 
+			    		  } , callback);
+				}else{
+					
+					
+					 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+			    		  source: scope.formData.source} , callback);
+				}
+		    	 
 		          };
 			
 			scope.searchAllPaymentData = function(offset, limit, callback) { 
@@ -106,7 +122,7 @@
 			        };
 			        
 			scope.searchInvalidPaymentData = function(offset, limit, callback) { 
-				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, 
 				    		  sqlSearch: scope.filterText, tabType: 'Invalid'} , callback);
 				          };
 				  		
