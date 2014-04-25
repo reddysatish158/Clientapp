@@ -23,6 +23,7 @@
           scope.first.date = new Date();
           scope.allocation.date=new Date();
           scope.formData1 = {};
+          scope.formData={};
           scope.clientCategoryDatas=[];
           scope.configurationProperty=[];
           
@@ -45,14 +46,7 @@
             });
           };
         
-          /*$("#city").change(function(){
-        	 
-          	resourceFactory.AddressTemplateResource.get({city : scope.formData1.city}, function(data) {
-          		scope.formData1.state = data.state;
-          		scope.formData1.country = data.country;
-           
-          });
-          });*/
+         
           scope.getStateAndCountry=function(city){
         	 
         	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
@@ -60,22 +54,7 @@
             		scope.formData1.country = data.country;
         	  });
           };
-          scope.onFileSelect = function($files) {
-            scope.file = $files[0];
-          };
-          scope.setChoice = function(){
-              if(this.formData1.active){
-                  scope.choice = 1;
-              }
-              else if(!this.formData1.active){
-                  scope.choice = 0;
-              }
-          };
-          scope.submit1 = function() {
-        	  
-          };
-          
-  
+        
 //addonetimsale controller
       	
 			  scope.clientId=routeParams.id;
@@ -197,6 +176,7 @@
 	        scope.items =[];
 	        scope.formData4 =[];
 	        scope.formData5 ={};
+	        scope.formData6={};
 	       
 	        resourceFactory.orderTemplateResource.get({planId:'0'},function(data) {
 	        	 
@@ -211,32 +191,6 @@
 	            		billAlign: false,
 	            		
 	                  };
-	     	   
-	        
-	           
-	            scope.currentPage = 0;
-	           
-	            scope.pagedItems = [];
-	            for (var i = 0; i < scope.filteredItems.length; i++) {
-	                if (i % scope.itemsPerPage === 0) {
-	                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.filteredItems[i] ];
-	                } else {
-	                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.filteredItems[i]);
-	                }
-	            }
-	            
-	            scope.prepaidPlanspagedItems = [];
-	            
-	            for (var i = 0; i < scope.prepaidPalnfilteredItems.length; i++) {
-	            	
-	            	
-	                if (i % scope.itemsPerPage === 0) {
-	                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.prepaidPalnfilteredItems[i] ];
-	                } else {
-	                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.prepaidPalnfilteredItems[i]);
-	                }
-	            }
-	           
 	        });
 	        
 	        scope.setBillingFrequency = function(value) {
@@ -258,12 +212,21 @@
 	             });
 	       };
 	        
+	       scope.formName=function(name){
+	    	  
+	    	 // var name= this.middlename;
+               
+               var mesage_array = new Array();
+               mesage_array = (name.split(" "));
+            
+            this.formData1.firstname=mesage_array[0];
+            this.formData1.lastname=mesage_array[1];
+            if(this.formData1.lastname == null){
+         	   this.formData1.lastname="Mr.";
+            }
+         	  
+           };
 	      
-	       scope.dbClick = function(){
-	        	console.log("dbclick");
-	        	return false;
-	        };
-
 	        scope.submit4 = function() {   
 	        	scope.flag = true;
 
@@ -292,29 +255,13 @@
 	                  this.formData1.active = true;
 	                  this.formData1.dateFormat = 'dd MMMM yyyy';
 	                  this.formData1.activationDate = reqDate;
-	                this.formData1.state=scope.formData1.state;
-	                
-	                
+	                  this.formData1.state=scope.formData1.state;
 	                  this.formData1.country=scope.formData1.country;
 	                  this.formData1.addressNo="Addr1";
-	                  /*if(this.formData1.lastname == null){
-	                	  this.formData1.firstname="";
-	                  }*/
-	                  var name= this.formData1.middlename;
-	                  
-	                      var mesage_array = new Array();
-	                      mesage_array = (name.split(" "));
-	                   
-	                   this.formData1.firstname=mesage_array[0];
-	                   this.formData1.lastname=mesage_array[1];
-	                   if(this.formData1.lastname == null){
-	                	   this.formData1.lastname="Mr.";
-	                   }
-	                   
-	                   delete this.formData1.middlename;
-	                   
+	                
+	               
 	                  this.formData1.flag=scope.configurationProperty;
-	                  
+	                  delete this.formData1.middlename;
 	                //  delete this.formData1.name;
 	                  
 	                if(config =='SALE'){  
@@ -331,7 +278,7 @@
 	 	             delete this.formData2.units;
 	 	             delete this.formData2.itemCode;
 	 	             delete this.formData2.id;
-	               delete this.formData2.itemDetail;
+	            //   delete this.formData2.itemDetail;
 	                }else{
 	                	
 	                	  scope.formData5.locale = 'en';
@@ -347,7 +294,7 @@
 	 	        	
 	 	        	var temp1 = new Array();
 	 	        
-	 	        	$("input[name='serialNumber']").each(function(){
+	 	        	$("input[name='serial']").each(function(){
 	 	        		var temp = {};
 	 	    			temp["serialNumber"] = $(this).val();
 	 	    			temp["orderId"] = routeParams.id;
@@ -362,10 +309,7 @@
 	 	        	 scope.formData3.itemMasterId=scope.formData2.itemId;
 	 	            this.formData2.serialNumber=temp1;
 
-	 	            
-	 	           
-		          
-		            
+	 	            var clientId=null;
 	 	            // temp1 = undefined;
 	 	            
 		            scope.ActivationData.owndevice.push(this.formData5);
@@ -377,12 +321,10 @@
 	 	            delete this.formData3.serials;
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
-	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
-	            	  location.path('/viewclient/' + data.resourceId);
-	            },function(errData){
-	          	  scope.flag = false;
-	            });
 
+	 	            resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
+	            	 location.path('/viewclient/' + data.resourceId);
+	            });
 	           
 	        };
     	  
