@@ -46,14 +46,7 @@
             });
           };
         
-          /*$("#city").change(function(){
-        	 
-          	resourceFactory.AddressTemplateResource.get({city : scope.formData1.city}, function(data) {
-          		scope.formData1.state = data.state;
-          		scope.formData1.country = data.country;
-           
-          });
-          });*/
+         
           scope.getStateAndCountry=function(city){
         	 
         	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
@@ -61,22 +54,7 @@
             		scope.formData1.country = data.country;
         	  });
           };
-          scope.onFileSelect = function($files) {
-            scope.file = $files[0];
-          };
-          scope.setChoice = function(){
-              if(this.formData1.active){
-                  scope.choice = 1;
-              }
-              else if(!this.formData1.active){
-                  scope.choice = 0;
-              }
-          };
-          scope.submit1 = function() {
-        	  
-          };
-          
-  
+        
 //addonetimsale controller
       	
 			  scope.clientId=routeParams.id;
@@ -213,32 +191,6 @@
 	            		billAlign: false,
 	            		
 	                  };
-	     	   
-	        
-	           
-	            scope.currentPage = 0;
-	           
-	            scope.pagedItems = [];
-	            for (var i = 0; i < scope.filteredItems.length; i++) {
-	                if (i % scope.itemsPerPage === 0) {
-	                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.filteredItems[i] ];
-	                } else {
-	                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.filteredItems[i]);
-	                }
-	            }
-	            
-	            scope.prepaidPlanspagedItems = [];
-	            
-	            for (var i = 0; i < scope.prepaidPalnfilteredItems.length; i++) {
-	            	
-	            	
-	                if (i % scope.itemsPerPage === 0) {
-	                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.prepaidPalnfilteredItems[i] ];
-	                } else {
-	                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.prepaidPalnfilteredItems[i]);
-	                }
-	            }
-	           
 	        });
 	        
 	        scope.setBillingFrequency = function(value) {
@@ -260,12 +212,21 @@
 	             });
 	       };
 	        
+	       scope.formName=function(name){
+	    	  
+	    	 // var name= this.middlename;
+               
+               var mesage_array = new Array();
+               mesage_array = (name.split(" "));
+            
+            this.formData1.firstname=mesage_array[0];
+            this.formData1.lastname=mesage_array[1];
+            if(this.formData1.lastname == null){
+         	   this.formData1.lastname="Mr.";
+            }
+         	  
+           };
 	      
-	       scope.dbClick = function(){
-	        	console.log("dbclick");
-	        	return false;
-	        };
-
 	        scope.submit4 = function() {   
 	        	scope.flag = true;
 
@@ -294,15 +255,12 @@
 	                  this.formData1.active = true;
 	                  this.formData1.dateFormat = 'dd MMMM yyyy';
 	                  this.formData1.activationDate = reqDate;
-	                this.formData1.state=scope.formData1.state;
-	                
-	                
+	                  this.formData1.state=scope.formData1.state;
 	                  this.formData1.country=scope.formData1.country;
 	                  this.formData1.addressNo="Addr1";
-	                  /*if(this.formData1.lastname == null){
-	                	  this.formData1.firstname="";
-	                  }*/
-	                  var name= this.formData1.middlename;
+	                
+	                
+	                  /* var name= this.middlename;
 	                  
 	                      var mesage_array = new Array();
 	                      mesage_array = (name.split(" "));
@@ -311,7 +269,7 @@
 	                   this.formData1.lastname=mesage_array[1];
 	                   if(this.formData1.lastname == null){
 	                	   this.formData1.lastname="Mr.";
-	                   }
+	                   }*/
 	                   
 	                  this.formData1.flag=scope.configurationProperty;
 	                  delete this.formData1.middlename;
@@ -331,7 +289,7 @@
 	 	             delete this.formData2.units;
 	 	             delete this.formData2.itemCode;
 	 	             delete this.formData2.id;
-	               delete this.formData2.itemDetail;
+	            //   delete this.formData2.itemDetail;
 	                }else{
 	                	
 	                	  scope.formData5.locale = 'en';
@@ -347,7 +305,7 @@
 	 	        	
 	 	        	var temp1 = new Array();
 	 	        
-	 	        	$("input[name='serialNumber']").each(function(){
+	 	        	$("input[name='serial']").each(function(){
 	 	        		var temp = {};
 	 	    			temp["serialNumber"] = $(this).val();
 	 	    			temp["orderId"] = routeParams.id;
@@ -376,13 +334,6 @@
 	 	            delete this.formData2.totalFilteredRecords;
 	 	           
 	 	    
-	 	            //console.log("aa"+resp);
-	 	          
-	 	           
-	 	          /* this.formData6.paymentCode=23;
-	           	  this.formData6.locale='en';
-	           	  this.formData6.dateFormat = 'dd MMMM yyyy';
-	           	  this.formData6.paymentDate=reqDate;*/
 	           	var resourceId=null;
 	           	var paymentData=[];
 	           	paymentData=scope.formData6;
@@ -391,15 +342,15 @@
 	            	 // location.path('/viewclient/' + data.resourceId);
 	            	resourceId=data.resourceId;
 	            	var resp = filter('ConfigLookup')('payment');
-	          alert(resp);
+	          
 	            	if(resp){
 	            	
 	            	scope.formData6.paymentCode=23;
 	            	scope.formData6.locale='en';
 	            	scope.formData6.dateFormat = 'dd MMMM yyyy';
 	            	scope.formData6.paymentDate=reqDate;
-	            	
-	            	scope.formData6.receiptNo="SA_"+scope.formData6.receiptNo;
+	            	var num=Math.floor((Math.random()*900)+100);
+	            	scope.formData6.receiptNo="SA"+num+"_"+scope.formData6.receiptNo;
 	            	resourceFactory.paymentsResource.save({clientId :resourceId}, scope.formData6,function(data){
 	            		
 
