@@ -205,11 +205,12 @@
 					                  $scope.qualityData = data.quality;
 					                  $scope.quality=scope.valueQuality;
 					              });
-					        	  $scope.approveQuality = function (value) {
+					        	  $scope.approveQuality = function (value,provserialnum) {
 					        		  
 					        		  $scope.flagEditQuality=true;
 					        		  //if(this.formData == undefined || this.formData == null){
 					        			  this.formData = {"quality":value};
+					        			  this.formData = {"provserialnum":provserialnum};
 					        		  //}
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      

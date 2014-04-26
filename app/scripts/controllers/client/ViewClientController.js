@@ -623,6 +623,8 @@
             resourceFactory.HardwareResource.getAllOwnHardware({clientId: routeParams.id} , function(data) {
               scope.ownhardwares = data;
             });
+            
+           
         };
         
         scope.cancelSale = function(otsId,index){

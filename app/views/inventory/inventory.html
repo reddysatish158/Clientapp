@@ -297,12 +297,19 @@
               </select>
             </div>
 	   </div>
+
+ <div class="control-group">
+			<label class="control-label" for="quality">{{'label.itemdetail.provisionserialnum' | translate }}</label>
+			<div class="controls">
+             <input type="text" id="serialnum" ng-model="provserialnum">
+            </div>
+	   </div>
  
     </fieldset>
     </div>
      <div class="modal-footer">
         <button id="cancel" class="btn btn-warning" ng-click="cancelQuality()">{{'button.cancel' | translate}}</button>
-     	<button id="submit" class="btn btn-primary" ng-click="approveQuality(quality)" ng-disabled="flagEditQuality">{{'label.confirm' | translate}}</button>
+     	<button id="submit" class="btn btn-primary" ng-click="approveQuality(quality,provserialnum)" ng-disabled="flagEditQuality">{{'label.confirm' | translate}}</button>
      </div>
 
 </script>

@@ -805,6 +805,9 @@
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
     
+      })
+      .when('/editProvison/:id', {
+        templateUrl: 'views/clients/editProvisioning.html'
       });
 
     $locationProvider.html5Mode(false);

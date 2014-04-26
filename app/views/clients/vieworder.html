@@ -267,7 +267,6 @@
     </div>
         </tab>
 
-
 	<tab heading="Order Transaction">
 	<div class="row-fluid ">
     
@@ -289,6 +288,34 @@
                 
                 
             </tr>
+        </tbody>
+    </table>
+</div>
+	</tab>
+		<tab heading="Provisioning Details"  select="getAllProvisioningDetails()">
+	<div class="row-fluid ">
+	<table class="table">
+        <thead>
+           <tr class="graybg">
+				 	<th>{{'table.heading.id' | translate}}</th>
+					<th>Order Id</th>
+					<th>Request Type</th>
+					<th>Status</th>
+					<th>Recieved Message</th>
+					<th></th>
+				</tr>
+        </thead>
+        <tbody>
+          <tr class="pointer-main" ng-repeat="provisioningdata in provisioningdatas  | filter:filterText">
+					<td class="pointer" >{{provisioningdata.id}}</td>
+					<td class="pointer" >{{provisioningdata.orderId}}</td>  
+					<td class="pointer" >{{provisioningdata.requestType}}</td>
+					<td ng-show="provisioningdata.isProcessed == 'F'" class="pointer" >Failure</td>
+					<td ng-show="provisioningdata.isProcessed == 'Y'" class="pointer" >Success</td>
+					<td ng-show="provisioningdata.isProcessed == 'N'" class="pointer" >Processing</td>
+					<td class="pointer" >{{provisioningdata.receiveMessage}}</td>
+					  <td><a ng-show="provisioningdata.isProcessed == 'F' " ng-click="reProcess(provisioningdata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>
+				</tr>
         </tbody>
     </table>
 </div>

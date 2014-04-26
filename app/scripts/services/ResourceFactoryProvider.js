@@ -733,19 +733,28 @@
            	  getAllserviceMapping: {method: 'GET', params: {}}
              }),
              
-             provisioningMappingResource: defineResource(apiVer + "/provisionings/:provisioningId", {provisioningId: '@provisioningId'}, {
+             provisioningMappingResource: defineResource(apiVer + "/provisioning/:provisioningId", {provisioningId: '@provisioningId'}, {
              	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
            }),
-           provisioningResource: defineResource(apiVer + "/provisionings/:clientId", {clientId: '@clientId'}, {
+           
+           updateProvisioningMappingResource: defineResource(apiVer + "/provisioning/updateprovisiondetails/:provisioningId", {provisioningId: '@provisioningId'}, {
+          	  
+             update: { method: 'PUT' }
+        }),
+           provisioningResource: defineResource(apiVer + "/provisioning/:clientId", {clientId: '@clientId'}, {
           	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
-           provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
-            	  get: {method: 'GET', params: {}}
+           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:clientId", {clientId: '@clientId'}, {
+            	  get: {method: 'GET', params: {},isArray: true}
            }),
+           
+         processRequestResource: defineResource(apiVer + "/provisioning/processRequest/:id", {id: '@id'}, {
+         	  get: {method: 'GET', params: {}}
+          }),
            
            provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
          	  get: {method: 'GET', params: {}}
