@@ -382,7 +382,9 @@
       scope.reProcess=function(processId){
     	  
     	  resourceFactory.updateProvisioningMappingResource.update({'provisioningId':processId},{},function(data){
-          	location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
+          	/*location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
+          	location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);*/
+    		  route.reload();
 	           
 	          });
     	  

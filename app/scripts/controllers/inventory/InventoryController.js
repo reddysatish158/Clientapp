@@ -199,6 +199,16 @@
 					                  resolve:{}
 					              });
 					          };
+					          scope.editProvSerial= function(itemId,valueQuality){
+						            scope.itemid=itemId;
+						            scope.valueQuality=valueQuality;
+						        	  scope.errorStatus=[];scope.errorDetails=[];
+						        	  $modal.open({
+						                  templateUrl: 'EditProvSerial.html',
+						                  controller: EditQualityController,
+						                  resolve:{}
+						              });
+						          };
 					          var EditQualityController = function ($scope, $modalInstance) {
 
 					          	resourceFactory.itemQualityResource.get(function(data) {
@@ -206,11 +216,11 @@
 					                  $scope.quality=scope.valueQuality;
 					              });
 					        	  $scope.approveQuality = function (value,provserialnum) {
-					        		  
+					        		//  alert(value);
 					        		  $scope.flagEditQuality=true;
 					        		  //if(this.formData == undefined || this.formData == null){
 					        			  this.formData = {"quality":value};
-					        			  this.formData = {"provserialnum":provserialnum};
+					        			  this.formData = {"quality":value,"provisioningSerialNumber":provserialnum};
 					        		  //}
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      

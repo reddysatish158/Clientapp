@@ -788,6 +788,7 @@
   "link.create.add.item":"Add Item",
   "label.item.chargecode":"Charge Code",
   "label.item.itemclass":"Item Class",
+  "label.itemdetail.provisionserialnum":"Provisioning Serialnumber",
   "validation.msg.item.chargeCode.cannot.be.blank":"Charge Code cannot be blank",
   "validation.msg.item.itemClass.cannot.be.blank":"Item Class cannot be blank",
   "validation.msg.item.itemCode.cannot.be.blank":"Item Code cannot be blank",
@@ -1052,6 +1053,7 @@
   "validation.msg.adjustment.adjustment_type.cannot.be.blank":"Adjustment Type cannot be blank",
   "error.msg.payments.duplicate.receiptNo":"Receipt is Already exist with this number",
   "error.msg.billing.active.plans.found":"Active Plans are Paired with this device",
+  "error.msg.close.active.plans.found.for.hardWare":"Active Plans are Paired with this device",
   
    "#service ":"....",
   "label.manageservices":"Manage Services",
