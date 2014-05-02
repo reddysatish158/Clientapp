@@ -290,6 +290,11 @@
         <h3 class="bolder">Edit Quality</h3>
     </div>
     <div class="modal-body" style="height:160px;">
+ <div class="error" ng-show="errorStatus || errorDetails">
+		                 <label>{{'label.contract.error' | translate}}</label>
+		                 <label ng-show="errorStatus">{{errorStatus}}</label>
+		                 <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	                     </div>
        <fieldset>
        <div class="control-group">
 			<label class="control-label" for="quality">{{'label.itemdetail.quality' | translate }}<span class="required">*</span></label>
@@ -318,6 +323,11 @@
         <h3 class="bolder">Edit Provisioning SerialNumber</h3>
     </div>
     <div class="modal-body" style="height:160px;">
+ <div class="error" ng-show="errorStatus || errorDetails">
+		                 <label>{{'label.contract.error' | translate}}</label>
+		                 <label ng-show="errorStatus">{{errorStatus}}</label>
+		                 <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	                     </div>
        <fieldset>
  <div class="control-group">
 			<label class="control-label" for="quality">{{'label.itemdetail.provisionserialnum' | translate }}</label>
