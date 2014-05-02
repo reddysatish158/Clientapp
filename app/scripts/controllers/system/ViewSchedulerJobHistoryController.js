@@ -8,7 +8,7 @@
         };
         scope.logFile = function (id){ 
 	         //window.open('https://spark.openbillingsystem.com/obsplatform/api/v1/jobs/printlog/'+id+'?tenantIdentifier=default');
-	         window.open($rootScope.hostUrl+ API_VERSION +'/jobs/printlog/'+routeParams.id+'?tenantIdentifier=default');
+	         window.open($rootScope.hostUrl+ API_VERSION +'/jobs/printlog/'+id+'?tenantIdentifier=default');
 	    };
         scope.jobhistory = paginatorService.paginate(fetchFunction, 14);
     }
