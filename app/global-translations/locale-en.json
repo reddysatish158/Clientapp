@@ -55,6 +55,7 @@
   "label.email":"Email",
   "label.enable":"Enable",
   "label.disable":"Disable",
+   "label.select.one":"--Select one--",
   "validation.msg.office.name.cannot.be.blank":"Office Name cannot be blank",
   "error.msg.not.authorized":"Insufficient privileges to perform this action.",
  
