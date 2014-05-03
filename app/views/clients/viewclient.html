@@ -211,16 +211,14 @@
                    
                     <table class="table">
                         <tr class="graybg">
-                        	<th>Select</th>
-                            <th>Order No</th>
+                        	<th>Order No</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Activation Date</th>
                             <th>Start/Renwal Date</th>
                             <th>End Date</th>
                             <th>Price</th>
-                            <th>&nbsp;</th>
-                            <!-- <th>Status</th> -->
+                            <th>Status</th> 
                         </tr>
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
