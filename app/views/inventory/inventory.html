@@ -39,8 +39,8 @@
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)">{{itemdetail.status}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="itemdetail.clientId">{{itemdetail.accountNumber}}</td>
                 <td class="pointer" data-ng-click="routeTo(itemdetail.clientId)" ng-show="!itemdetail.clientId">Unallocated</td>
-           <td ng-show="(itemdetail.clientId)&&PermissionService.showMenu('UPDATE_INVENTORY')"><a ng-click="editProvSerial(itemdetail.id,itemdetail.quality)"><i class="icon-edit icon-white" ></i>edit Provisioning</a></td>
-		  <td ng-show="(!itemdetail.clientId)&&PermissionService.showMenu('UPDATE_INVENTORY')"><a ng-click="editQuality(itemdetail.id,itemdetail.quality)"><i class="icon-edit icon-white" ></i>edit</a></td>
+           <td ng-show="(itemdetail.clientId)&&PermissionService.showMenu('UPDATE_INVENTORY')"><a ng-click="editProvSerial(itemdetail.id,itemdetail.quality,itemdetail.provisioningSerialNumber)"><i class="icon-edit icon-white" ></i>edit Provisioning</a></td>
+		  <td ng-show="(!itemdetail.clientId)&&PermissionService.showMenu('UPDATE_INVENTORY')"><a ng-click="editQuality(itemdetail.id,itemdetail.quality,itemdetail.provisioningSerialNumber)"><i class="icon-edit icon-white" ></i>edit</a></td>
                 <!-- <td>
                 	<span ng-if="itemdetails.clientId > '0'">
                 	Yes

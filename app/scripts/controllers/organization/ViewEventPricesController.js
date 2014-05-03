@@ -6,7 +6,9 @@
             scope.pricing = data; 
             scope.eventId=routeParams.id;
         });
-
+        scope.routeTo = function(id){
+    		location.path('/viewEventPrice/'+ id);
+        };
         scope.deleteEvent = function (){
             resourceFactory.eventResource.delete({eventId: routeParams.id} , {} , function(data) {
                   location.path('/viewEvent/'+routeParams.id);

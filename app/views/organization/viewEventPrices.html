@@ -27,15 +27,18 @@
 	      
         </thead>
         <tbody>
-            <tr ng-repeat="pricedata in pricing  | filter:filterText">
-                <td><a href="#/viewEventPrice/{{pricedata.id}}">{{pricedata.id}}</a></td>
-                <td><a href="#/viewEventPrice/{{pricedata.id}}">{{pricedata.eventName}}</a></td>  
-                <td>{{pricedata.formatType}}</td>
-                <td>{{pricedata.optType}}</td>
-                <td>{{pricedata.clientType}}</td>
-                <td>{{pricedata.discount}}</td>              
-                <td>{{pricedata.price}}</td>
-            </tr>
+           
+            <tr class="pointer-main" ng-repeat="pricedata in pricing | filter:filterText">
+			    <td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.id}}</td>
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.eventName}}</td>
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.formatType}}</td>				
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.optType}}</td>
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.clientType}}</td>
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.discount}}</td>				
+				<td class="pointer" data-ng-click="routeTo(pricedata.id)">{{pricedata.price}}</td>
+			</tr>
+            
+            
         </tbody>
     </table>
 	</div>
