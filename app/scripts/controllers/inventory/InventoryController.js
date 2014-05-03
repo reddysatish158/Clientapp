@@ -189,9 +189,10 @@
 					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
 					  			}
 					  		};
-							scope.editQuality = function(itemId,valueQuality){
+							scope.editQuality = function(itemId,valueQuality,provisionalserialNum){
 					            scope.itemid=itemId;
 					            scope.valueQuality=valueQuality;
+					            scope.provisionalserialNum=provisionalserialNum;
 					        	  scope.errorStatus=[];scope.errorDetails=[];
 					        	  $modal.open({
 					                  templateUrl: 'EditQuality.html',
@@ -199,9 +200,10 @@
 					                  resolve:{}
 					              });
 					          };
-					          scope.editProvSerial= function(itemId,valueQuality){
+					          scope.editProvSerial= function(itemId,valueQuality,provisionalserialNum){
 						            scope.itemid=itemId;
 						            scope.valueQuality=valueQuality;
+						            scope.provisionalserialNum=provisionalserialNum;
 						        	  scope.errorStatus=[];scope.errorDetails=[];
 						        	  $modal.open({
 						                  templateUrl: 'EditProvSerial.html',
@@ -214,6 +216,7 @@
 					          	resourceFactory.itemQualityResource.get(function(data) {
 					                  $scope.qualityData = data.quality;
 					                  $scope.quality=scope.valueQuality;
+					                  $scope.provserialnum=scope.provisionalserialNum;
 					              });
 					        	  $scope.approveQuality = function (value,provserialnum) {
 					        		//  alert(value);
