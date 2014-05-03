@@ -31,15 +31,16 @@
     	   scope.services=data.services;
     	   scope.ipPoolDatas=data.ipPoolDatas;
     	   scope.vlanDatas=data.vlanDatas;
+    	   
     	   for(var param in scope.parameterDatas){
        		
 
      		  var temp = {};
      		  temp.paramName = scope.parameterDatas[param].paramName;
-     		  
+     		  temp.paramValue = scope.parameterDatas[param].paramValue;
      		if(temp.paramName == "SERVICE"){
      			
-                 temp.paramValue = scope.parameterDatas[param].paramValue;
+     			scope.formData.serviceName=temp.paramValue;
      			
      		}else if(temp.paramName == "GROUP_NAME"){
                    
@@ -53,6 +54,7 @@
      		}else if(temp.paramName == "VLAN_ID"){
      			
                  scope.formData.vLan=temp.paramValue;
+                 
      		}
      		
      		
@@ -61,6 +63,8 @@
             });
         	
         scope.submit = function() {
+        	
+        	scope.serviceParameters=[];
         	this.formData.clientId=scope.clientId;
         	this.formData.orderId=routeParams.orderId;
         	this.formData.planName=scope.planName;
@@ -96,7 +100,7 @@
         	}
         	   this.formData.serviceParameters = scope.serviceParameters;
            
-           resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
+           resourceFactory.provisioningserviceResource.update({'orderId':routeParams.orderId},this.formData,function(data){
         	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);
           });
         };

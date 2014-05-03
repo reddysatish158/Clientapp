@@ -6,12 +6,23 @@
         resourceFactory.officeResource.get({officeId: routeParams.id, template: 'true'} , function(data) {
             if(data.openingDate){
             var editDate = dateFilter(data.openingDate,'dd MMMM yyyy');
+            scope.officeTypes = data.officeTypes;
             scope.first.date = new Date(editDate); }
+            
+            for(var i in data.officeTypes){
+            	if(data.officeTypes[i].name == data.officeType){
+            		//alert(1);
+            		scope.formData.officeType = data.officeTypes[i].id;
+            	}
+            }
             scope.formData =
           {
               name : data.name,
-              externalId : data.externalId
+              externalId : data.externalId,
+              officeType : scope.formData.officeType
+              
           }
+           
         });
         
         scope.submit = function() {

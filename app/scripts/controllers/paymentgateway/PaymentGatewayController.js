@@ -3,20 +3,46 @@
 	  PaymentGatewayController: function(scope,webStorage,route,$modal,routeParams,location, resourceFactory, paginatorService) {
 		  
         scope.paymentgatewaydatas = [];
-	        
+        scope.formData={};
 	      //for All tab
-
+        
+        scope.formData.source ='all';
 			 scope.paymentGatewayAllData = function(offset, limit, callback) {
-	 			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit} , callback);
+				 if(scope.formData.source == 'all'){
+						 resourceFactory.paymentGatewayResource.get({offset: offset,limit: limit} , callback);
+					}else{
+						resourceFactory.paymentGatewayResource.get({offset: offset,source: scope.formData.source, limit: limit} , callback);
+					}
+	 			
 			};
 	 		
 	 		scope.getPaymentGateway = function () {
 	       	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayAllData, 14);
 	       };
 			
+			scope.changeSource=function(source){
+				
+				// resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source:source} , callback);
+				 scope.paymentgatewaydatas = paginatorService.paginate(scope.changeSourceData, 14);
+			};
+			
+			scope.changeSourceData = function(offset, limit, callback) {
+				
+				if(scope.formData.source == 'all'){
+					
+					 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit 
+			    		  } , callback);
+				}else{
+					
+					
+					 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+			    		  source: scope.formData.source} , callback);
+				}
+		    	 
+		          };
 			
 			scope.searchAllPaymentData = function(offset, limit, callback) { 
-		    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+		    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, 
 		    		  sqlSearch: scope.filterText} , callback);
 		          };
 		  		
@@ -28,7 +54,12 @@
 	 		//for Failure tab
 		  		
 	 		 scope.paymentGatewayFailureData = function(offset, limit, callback) {
-	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Failure'} , callback);
+	 			if(scope.formData.source == 'all'){
+	 				resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Failure'} , callback);
+	 			}
+	 			else{
+	  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source,tabType: 'Failure'} , callback);
+	 			}
 	 		};
 	  		
 	  		scope.getPaymentGatewayFailure = function () {
@@ -49,7 +80,11 @@
 		  	// for success Tab       
 		   
 		    scope.paymentGatewaySuccessData = function(offset, limit, callback) {
+		    	if(scope.formData.source == 'all'){
 		  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Success'} , callback);
+		    	}else{
+		  			resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, tabType: 'Success'} , callback);
+		    	}
 		 		};
 		 		
 		 	scope.getPaymentGatewaySuccess = function () {
@@ -57,8 +92,13 @@
 			        };
 			        
 		  	scope.searchSuccessPaymentData = function(offset, limit, callback) {
-			    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+		  		if(scope.formData.source == 'all'){
+			    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,
 			    		  sqlSearch: scope.filterText, tabType: 'Success'} , callback);
+		  		}else{
+			    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, source: scope.formData.source,
+			    		  sqlSearch: scope.filterText, tabType: 'Success'} , callback);
+		  		}
 			          };
 			  		
 		    scope.searchSuccessPaymentId = function(filterText) {
@@ -68,7 +108,11 @@
 		   // for Finished Tab
 			  		
 		    scope.paymentGatewayFinishedData = function(offset, limit, callback) {
+		    	if(scope.formData.source == 'all'){
 			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Finished'} , callback);
+		    	}else{
+			  			resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, tabType: 'Finished'} , callback);
+		    	}
 			 		};
 			  		
 		    scope.getFinishedPaymentGateway = function () {
@@ -76,9 +120,14 @@
 			        };
 			        
 			        
-			scope.searchFinishedPaymentData = function(offset, limit, callback) { 
+			scope.searchFinishedPaymentData = function(offset, limit, callback) {
+				if(scope.formData.source == 'all'){
 				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
 				    		  sqlSearch: scope.filterText, tabType: 'Finished'} , callback);
+				}else{
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, source: scope.formData.source,
+				    		  sqlSearch: scope.filterText, tabType: 'Finished'} , callback);
+				}
 				          };
 				  		
 			scope.searchFinishedPaymentId = function(filterText) {
@@ -88,16 +137,25 @@
 		  // for Invalid Tab
 			        
 			scope.paymentGatewayInvalidData = function(offset, limit, callback) {
-			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Invalid'} , callback);
+				if(scope.formData.source == 'all'){
+			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Invalid'} , callback);
+			  	}else{
+			  			 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, tabType: 'Invalid'} , callback);
+			  	}
 			 		};  
 			 		
 			scope.getInvalidPaymentGateway = function () {
 			        	scope.paymentgatewaydatas = paginatorService.paginate(scope.paymentGatewayInvalidData, 14);
 			        };
 			        
-			scope.searchInvalidPaymentData = function(offset, limit, callback) { 
-				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, 
+			scope.searchInvalidPaymentData = function(offset, limit, callback) {
+				if(scope.formData.source == 'all'){
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, 
 				    		  sqlSearch: scope.filterText, tabType: 'Invalid'} , callback);
+				}else{
+				    	  resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, 
+				    		  sqlSearch: scope.filterText, tabType: 'Invalid'} , callback);
+				}
 				          };
 				  		
 			scope.searchInvalidPaymentId = function(filterText) {
@@ -151,7 +209,11 @@
 				     // for Processed Tab
 
                         scope.paymentGatewayProcessedData = function(offset, limit, callback) {
-                                                 resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit, tabType: 'Processed'} , callback);
+                        	if(scope.formData.source == 'all'){
+                             resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,tabType: 'Processed'} , callback);
+                        	}else{
+                             resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source, tabType: 'Processed'} , callback);
+                        	}
                                         };
 
                         scope.getProcessedPaymentGateway = function () {
@@ -159,8 +221,13 @@
                                 };
 
                         scope.searchProcessedPaymentData = function(offset, limit, callback) {
+                        	if(scope.formData.source == 'all'){
                                           resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,
                                                   sqlSearch: scope.filterText, tabType: 'Processed'} , callback);
+                        	}else{
+                                          resourceFactory.paymentGatewayResource.get({offset: offset, limit: limit,source: scope.formData.source,
+                                              sqlSearch: scope.filterText, tabType: 'Processed'} , callback);
+                        	}
                                           };
 
                         scope.searchProcessedPaymentId = function(filterText) {

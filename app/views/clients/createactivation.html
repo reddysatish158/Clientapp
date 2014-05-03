@@ -40,7 +40,7 @@
               		<label class="control-label" for="firstname">{{'lable.fullname' | translate}}<span class="required">*</span></label>
 
               		<div class="controls">
-                		<input type="text" id="firstname" name="firstname" ng-model="formData1.middlename" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
+                		<input type="text" id="firstname" name="firstname" ng-model="fullname" ng-change="formName(fullname)" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
                 		<span  ng-show="createclientform.firstname.$invalid">
                 			<small class="error" ng-show="createclientform.firstname.$error.pattern">alphanumeric and spaces only!</small>
                    			 <small class="error" ng-show="createclientform.firstname.$error.req">
@@ -111,7 +111,7 @@
           		<div class="control-group"  ng-repeat="item in getNumber(formData2.quantity)" name="serialNumberDiv">
                     <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
                     <div class="controls">
-             	    <input type="text" ng-show="config == 'SALE'" ng-model="formData2.itemDetail" name="serialNumber" ng-change="getData(formData2.itemDetail)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
+             	    <input type="text" ng-show="config == 'SALE'" ng-model="serial" name="serial" ng-change="getData(serial)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
              	     <input type="text" ng-show="config == 'OWN'" name="provisioningserialnumber" ng-model="formData5.provisioningSerialNumber" required late-Validate>
                     </div>
                </div>
@@ -136,7 +136,7 @@
            		<div class="control-group" >
                    <label class="control-label" for="paytermCode">{{ 'label.activation.plan' | translate }}</label>
                      <div class="controls">
-                        <select ng-model="formData4.planId"  ng-options="plandata.id as plandata.planCode for plandata in plandatas" ng-change='setBillingFrequency(formData4.planId)' value="{{plandata.id}}"></select>
+                        <select ng-model="formData4.planCode"  ng-options="plandata.id as plandata.planCode for plandata in plandatas" ng-change='setBillingFrequency(formData4.planCode)' value="{{plandata.id}}"></select>
                     </div>
                  </div>	
              </td>
@@ -159,12 +159,13 @@
                  </div>
               </td>
               </tr>
-              <tr>
+              <tr ng-show="'payment' | ConfigLookup">
             <td>
          <strong>Payment Info</strong>
          </td><td></td>
          </tr>
-           	<tr>
+         
+           	<tr ng-show="'payment' | ConfigLookup">
            	<td>
           		  <div class="control-group">
              		 <label class="control-label" for="amountPaid">{{'label.activation.amount' | translate}}<span class="required">*</span></label>

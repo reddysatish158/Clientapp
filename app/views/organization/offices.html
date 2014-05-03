@@ -19,6 +19,7 @@
 					<th>Name</th>
 					<th>External Id</th>
 					<th>Parent Office</th>
+				    <th>Office Type</th>
 					<th>Opened On</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.name}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.externalId}}</td>  
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.parentName}}</td>
+					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.officeType}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.openingDate | DateFormat}}</td>
 				</tr>
 			</tbody>

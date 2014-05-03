@@ -9,7 +9,18 @@
  
     <div>
       <tabset  style="margin-bottom: 0px;">
-      
+       <div class="pull-right" style = "margin-top : 10px;">
+       <div class="control-group">
+            <!-- <label class="control-label" for="status">{{ 'label.paymentgateway.source' | translate }}</label> -->
+           
+          <select ng-model="formData.source" ng-change="changeSource(formData.source)">
+              <option value="all">All</option>
+              <option value="mpesa">Mpesa</option>
+              <option value="tigo">Tigo</option>
+              </select>
+            </div>
+          </div>
+ 
       <tab heading="All" select="getPaymentGateway()">
         <div class="row-fluid">                
            <form ng-submit="searchPaymentId(filterText)">
@@ -41,9 +52,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-
-                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
-
+                <td><a  ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -85,7 +94,7 @@
                 <td>{{paymentgatewaydata.phoneNo}}</td>
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.status}}</td>                                     
-                <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
+                <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -128,7 +137,7 @@
                 <td>{{paymentgatewaydata.remarks}}</td>
                 <td>{{paymentgatewaydata.paymentId}}</td>              
                 <td>{{paymentgatewaydata.paymentDate | DateFormat}}</td>   
-               <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
+               <td><a ng-show="PermissionService.showMenu('UPDATE_PAYMENTGATEWAY')" ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
    			</tr>
      		 </tbody>
           </table>
@@ -230,7 +239,7 @@
                 <th>{{'table.paymentgateway.serialNo' | translate}}</th>
                 <th>{{'table.paymentgateway.amountPaid' | translate}}</th>
                 <th>{{'table.paymentgateway.phoneno' | translate}}</th>             
-                <th>Process Date</th>   
+                <th>{{'table.paymentgateway.remarks' | translate}}</th>   
                 <th>{{'table.paymentgateway.status' | translate}}</th>  
                                            
               </tr>
@@ -243,7 +252,7 @@
                 <td>{{paymentgatewaydata.serialNo}}</td>
                 <td>{{paymentgatewaydata.amountPaid}}</td>
                 <td>{{paymentgatewaydata.phoneNo}}</td>
-                <td>{{paymentgatewaydata.paymentDate|DateFormat}}</td> 
+                <td>{{paymentgatewaydata.remarks}}</td> 
                 <td>{{paymentgatewaydata.status}}</td>
                              
    			</tr>
@@ -258,7 +267,7 @@
    
     </tabset>
     </div>
-    
+   
  <script type="text/ng-template" id="editpaymentgateway.html">
 
 	<form class="form-horizontal well" ng-submit="submit()">
@@ -291,8 +300,7 @@
 						<div class="controls">
 							<select ng-model="formData.remarks">
 								<option>Active</option>
-								<option>Posted</option>
-								<option>Wrong Entry</option>
+								<option>Done</option>
 							</select>
 						</div>
 					</div>
