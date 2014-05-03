@@ -801,6 +801,9 @@
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
 
+      })
+      .when('/itemsale',{
+    	  templateUrl: 'views/inventory/itemSale.html'
       });
 
     $locationProvider.html5Mode(false);

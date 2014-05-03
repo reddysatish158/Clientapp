@@ -1,0 +1,92 @@
+ <div ng-controller="ItemSaleController">
+   <div>
+        <ul class="breadcrumb">
+          <li><a href="#/inventory" ng-click="selectedMRN()">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
+          <li class="active">Item Sale </li>
+        </ul>
+   </div>
+      <form name="itemSaleForm" novalidate="" class="form-horizontal well" ng-submit="submit()">
+       <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+        <fieldset>
+          <legend>Create Item Sale</legend>
+
+<table width="100%">
+		  <tr>
+			<td width="50%">
+					<div class="control-group">
+						<label class="control-label"> Request By&nbsp;:</label>
+						<div class="controls">
+							<select ng-model="formData.officeData"
+							   ng-options="officeData.id as officeData.name for officeData in officeDatas">
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>	
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+                          <label class="control-label" for="purchaseDate">Purchase Date&nbsp;:</label>
+                            <div class="controls">
+                          <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="purchase.date" is-open="opened" min="minDate" max="maxDate" 
+                          date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+                          </div>
+                     </div>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+            			<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}</label>
+            			<div class="controls">
+             				<select ng-model="formData.itemId" ng-change="itemData(formData.itemId)" 
+             				  ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
+             				</select>
+            			</div>
+          			</div>
+				</td>
+			</tr>
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label">Order Quantity&nbsp;:</label>
+						<div class="controls">
+							<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId)" ng-model="formData.quantity">
+						</div>
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label">Item Price&nbsp;:</label>
+						<div class="controls">
+							<input type="text" id="itemPrice"  ng-model="formData.itemPrice" disabled>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				 <td width="50%">
+					<div class="control-group">
+					   <label class="control-label">Tax&nbsp;:</label>
+					   <div class="controls">
+							<input class="input-small" type="text" ng-model="formData.tax">%
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="offset3">
+            <a href="#/inventory"><button id="cancel" type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+            <button id="save" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+          </div>
+          
+        </fieldset>
+      </form>
+ </div>
