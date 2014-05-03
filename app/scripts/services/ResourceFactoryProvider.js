@@ -839,6 +839,9 @@
          	 getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
+          itemSaleTemplateResource: defineResource(apiVer + "/agents/template", {}, {
+          	 get: {method: 'GET', params: {}}
+           }) ,
 
         };
       }];
