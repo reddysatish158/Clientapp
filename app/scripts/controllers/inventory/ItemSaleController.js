@@ -26,9 +26,9 @@
         	scope.data.locale="en";
         	scope.data.quantity=quantity;
         	resourceFactory.oneTimeSaleQuantityResource.get({quantity: quantity,itemId:itemId},scope.data, function(data) {
-        		scope.formData.quantity=quantity;
+        		
         		scope.formData.itemId=itemId;
-        		scope.formData.itemPrice = data.totalPrice;
+        		scope.formData.chargeAmount = data.totalPrice;
 	        });	
         };
      
@@ -43,11 +43,11 @@
         	scope.formData.locale = 'en';
            	var reqDate = dateFilter(scope.purchase.date,'dd MMMM yyyy');
             scope.formData.dateFormat = 'dd MMMM yyyy';
-            scope.formData.purchase_date = reqDate;
+            scope.formData.purchaseDate = reqDate;
 
-            /*resourceFactory.mrnResource.save(scope.formData,function(data){
-        		//location.path('/viewmrn/'+data.resourceId);
-          });*/
+            resourceFactory.itemSaleResource.save(scope.formData,function(data){
+        	location.path('/viewmrn/'+data.resourceId);
+          });
         };
     }
   });

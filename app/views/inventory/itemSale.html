@@ -20,7 +20,7 @@
 					<div class="control-group">
 						<label class="control-label"> Request By&nbsp;:</label>
 						<div class="controls">
-							<select ng-model="formData.officeData"
+							<select ng-model="formData.agentId"
 							   ng-options="officeData.id as officeData.name for officeData in officeDatas">
 							</select>
 						</div>
@@ -55,7 +55,7 @@
 					<div class="control-group">
 						<label class="control-label">Order Quantity&nbsp;:</label>
 						<div class="controls">
-							<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId)" ng-model="formData.quantity">
+							<input type="text" id="orderQuantity" ng-model="formData.orderQuantity" ng-change="itemDataQuantity(formData.orderQuantity,formData.itemId)" ng-model="formData.quantity">
 						</div>
 					</div>
 				</td>
@@ -66,7 +66,7 @@
 					<div class="control-group">
 						<label class="control-label">Item Price&nbsp;:</label>
 						<div class="controls">
-							<input type="text" id="itemPrice"  ng-model="formData.itemPrice" disabled>
+							<input type="text" id="itemPrice"  ng-model="formData.chargeAmount" disabled>
 						</div>
 					</div>
 				</td>
@@ -76,7 +76,7 @@
 					<div class="control-group">
 					   <label class="control-label">Tax&nbsp;:</label>
 					   <div class="controls">
-							<input class="input-small" type="text" ng-model="formData.tax">%
+							<input class="input-small" type="text" ng-model="formData.taxPercantage">%
 						</div>
 					</div>
 				</td>
