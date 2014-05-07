@@ -1,6 +1,7 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
     ViewReportController: function(scope, routeParams , resourceFactory,location,$modal) {
+    	console.log(routeParams);
       resourceFactory.reportsResource.getReportDetails({id: routeParams.id} , function(data) {
           scope.report = data;
           scope.noncoreReport = data.coreReport==true ? false : true;

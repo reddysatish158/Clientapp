@@ -262,7 +262,8 @@ define(['underscore', 'mifosX'], function() {
       'ApiValidationDirective',
       'RightClickDirective',
       'ContextMenuDirective',
-      'AutofocusDirective'
+      'AutofocusDirective',
+      'ChosenComboboxDirective'
     ]
   };
 

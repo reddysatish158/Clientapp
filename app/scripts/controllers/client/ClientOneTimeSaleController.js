@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  ClientOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory,dateFilter) {
+		  ClientOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory,dateFilter,$rootScope,API_VERSION,http) {
 		  
 			  scope.clientId=routeParams.id;
 			  scope.formData = {};
@@ -57,14 +57,27 @@
 	        
 	       
 	        scope.getData = function(query){
-	        	if(query.length>0){
+/*	        	if(query.length>0){
 	        		
 	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData.itemId,query: query}, function(data) { 	        	
 	     	            scope.itemDetails = data.serials;
 	     	        }); 
 	        	}else{
 	            	
-	        	}
+	        	}*/
+	        	return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemId, {
+	        	      params: {
+	        	    	  query: query
+	        	      }
+	        	    }).then(function(res){
+	        	    	itemDetails = [];
+	        	      for(var i in res.data.serials){
+	        	    	  itemDetails.push(res.data.serials[i]);
+	        	    	  if(i == 7)
+	        	    		  break;
+	        	      }
+	        	      return itemDetails;
+	        	    });
             };
 	        
             scope.getNumber = function(num) {
@@ -126,7 +139,7 @@
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('ClientOneTimeSaleController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','dateFilter', mifosX.controllers.ClientOneTimeSaleController]).run(function($log) {
+	  mifosX.ng.application.controller('ClientOneTimeSaleController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','dateFilter','$rootScope','API_VERSION','$http', mifosX.controllers.ClientOneTimeSaleController]).run(function($log) {
         $log.info("ClientOneTimeSaleController initialized");
     });
 }(mifosX.controllers || {}));
