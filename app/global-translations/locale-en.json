@@ -1719,6 +1719,8 @@
  "table.servicemapping.serviceidentification":"Service Identification",
  "table.servicemapping.status":"Status",
  "table.servicemapping.image":"Image",
+ "label.category":"Category",
+ "label.subcategory":"Sub Category",
  "table.heading.id":"Id",
   "table.heading.serviceCode":"Service Code",
   "table.heading.serviceIndentification":"Service Identification",
