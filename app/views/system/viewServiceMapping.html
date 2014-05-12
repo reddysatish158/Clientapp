@@ -3,7 +3,7 @@
 		<ul class="breadcrumb">
 	        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
 	        <li><a href="#/mappingconfig">{{'label.serviceMapping' | translate}}</a> <span class="divider">/</span></li>
-	        <li class="active">{{sm.id}}&nbsp;&nbsp;</li>
+	        <li class="active">{{sm.serviceCode}}&nbsp;&nbsp;</li>
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
@@ -31,7 +31,14 @@
 				<td>{{'label.image' | translate }}</td>
 				<td>{{sm.image}}</td>
 			</tr>
-			
+			<tr>
+				<td>{{'label.category' | translate }}</td>
+				<td>{{sm.category}}</td>
+			</tr>
+			<tr>
+				<td>{{'label.subcategory' | translate }}</td>
+				<td>{{sm.subCategory}}</td>
+			</tr>
 			
 		</table>
 	</div>

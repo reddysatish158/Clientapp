@@ -9,7 +9,8 @@
            scope.statusDatas=data.statusData;
             scope.formData=data;
             scope.serviceMappingId=routeParams.id;
-
+            scope.categories=data.categories;
+            scope.subCategories=data.subCategories;
         });
         
         scope.submit = function() {	
@@ -18,7 +19,9 @@
                delete this.formData.serviceCodeData;
                delete this.formData.serviceCode;
                delete this.formData.id;
-             delete this.formData.statusData;
+               delete this.formData.statusData;
+               delete this.formData.categories;
+               delete this.formData.subCategories;
                resourceFactory.serviceMappingResource.update({'serviceMappingId': routeParams.id},this.formData,function(data){
              location.path('/viewServiceMapping/' + data.resourceId);
           });

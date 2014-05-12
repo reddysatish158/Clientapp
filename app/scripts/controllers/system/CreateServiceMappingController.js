@@ -11,6 +11,8 @@
             scope.formData = data;
             scope.statusDatas=data.statusData;
             scope.serviceParameters=data.serviceParameters;
+            scope.categories=data.categories;
+            scope.subCategories=data.subCategories;
           
         
         });
@@ -29,6 +31,8 @@
         	delete this.formData.serviceCodeData;
         	delete this.formData.statusData;
         	delete this.formData.serviceParameters;
+        	delete this.formData.categories;
+        	delete this.formData.subCategories;
         	//scope.formData.serviceId=scope.formData.id;
   	
             resourceFactory.serviceMappingResource.save(this.formData,function(data){
