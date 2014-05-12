@@ -24,6 +24,8 @@
                 <th>{{'table.servicemapping.serviceidentification' | translate}}</th>
                 <th>{{'table.servicemapping.status' | translate}}</th>
                 <th>{{'table.servicemapping.image' | translate}}</th>
+                <th>Category</th>
+                <th>Sub Category</th>
               </tr>
             </thead>
             <tbody>
@@ -33,6 +35,8 @@
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceIdentification}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.status}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.image}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.category}}</td>
+                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.subCategory}}</td>
    			</tr>
      		 </tbody>
           </table>
