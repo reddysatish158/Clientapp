@@ -1,6 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ItemSaleController: function(scope,webStorage, resourceFactory, location,dateFilter,$rootScope) {
+	  ItemSaleController: function(scope, resourceFactory, location,dateFilter,routeParams) {
+		  
+		   scope.officeId = routeParams.officeId;
     	   scope.officeDatas = [];
     	   scope.itemDatas = [];
     	   scope.purchase = {};
@@ -32,12 +34,6 @@
 	        });	
         };
      
-        scope.selectedMRN=function(){
-        	webStorage.add("callingTab", {someString: "mrn" });
-        };
-        scope.reset123 = function(){
-	    	   webStorage.add("callingTab", {someString: "mrn" });
-	       };
         scope.submit = function() {
         	
         	scope.formData.locale = 'en';
@@ -45,13 +41,13 @@
             scope.formData.dateFormat = 'dd MMMM yyyy';
             scope.formData.purchase_date = reqDate;
 
-            /*resourceFactory.mrnResource.save(scope.formData,function(data){
-        		//location.path('/viewmrn/'+data.resourceId);
-          });*/
+            resourceFactory.agentsResource.postAgent(scope.formData,function(data){
+        		location.path('/viewoffice/'+routeParams.officeId);
+          });
         };
     }
   });
-  mifosX.ng.application.controller('ItemSaleController', ['$scope','webStorage', 'ResourceFactory', '$location','dateFilter','$rootScope', mifosX.controllers.ItemSaleController]).run(function($log) {
+  mifosX.ng.application.controller('ItemSaleController', ['$scope', 'ResourceFactory', '$location','dateFilter','$routeParams', mifosX.controllers.ItemSaleController]).run(function($log) {
     $log.info("ItemSaleController initialized");
   });
 }(mifosX.controllers || {}));

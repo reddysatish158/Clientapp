@@ -55,7 +55,7 @@
         }
         scope.treedata = root;
       });
-
+    	  
      }
   });
   mifosX.ng.application.controller('OfficesController', ['$scope', 'ResourceFactory','$location', mifosX.controllers.OfficesController]).run(function($log) {
