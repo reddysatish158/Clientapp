@@ -748,7 +748,7 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
-           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:clientId", {clientId: '@clientId'}, {
+           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderId", {orderId: '@orderId'}, {
             	  get: {method: 'GET', params: {},isArray: true}
            }),
            

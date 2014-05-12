@@ -174,7 +174,7 @@
       scope.getAllProvisioningDetails = function () {
           
           
-          resourceFactory.provisioningtemplateMappingResource.get({clientId: routeParams.clientId} , function(data) {
+          resourceFactory.provisioningtemplateMappingResource.get({orderId: routeParams.id} , function(data) {
               scope.provisioningdatas = data;
             });
       };
