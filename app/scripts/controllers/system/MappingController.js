@@ -1,9 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  MappingController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService) {
+	  MappingController: function(scope,webStorage, routeParams,location, resourceFactory, paginatorService,PermissionService) {
         scope.servicemappingdatas = [];
         scope.hardwaremappingdatas= [];
         scope.provisiongsystemData= [];
+        scope.PermissionService = PermissionService;
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
@@ -49,7 +50,7 @@
               });
           };
           scope.routeToservice = function(id){
-              location.path('/viewServiceMapping/'+ id);
+        		location.path('/viewServiceMapping/'+ id);
             };
          scope.routeTohardware = function(id){
              location.path('/viewhardwareplanmapping/'+ id);
@@ -59,7 +60,7 @@
            };
     }
   });
-  mifosX.ng.application.controller('MappingController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.MappingController]).run(function($log) {
+  mifosX.ng.application.controller('MappingController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.MappingController]).run(function($log) {
     $log.info("MappingController initialized");
   });
 }(mifosX.controllers || {}));

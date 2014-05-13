@@ -742,6 +742,9 @@
          .when('/createProvisioningmapping', {
              templateUrl: 'views/system/createProvisioningmapping.html'
          })  
+          .when('/createsimpleActivation', {
+        templateUrl: 'views/clients/createactivation.html'  
+      })
          .when('/viewprovisioningmapping/:id', {
              templateUrl: 'views/system/viewprovisioningmapping.html'
          })  
@@ -792,18 +795,32 @@
         templateUrl : 'views/clients/creditDistribution.html'
       })
 
+
+      .when('/closeclient/:id', {
+        templateUrl : 'views/clients/closeclient.html'
+      })
+
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
       })
+
+
       .when('/ipPooling', {
         templateUrl : 'views/system/ipPooling.html'
       })      
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
 
+
       })
       .when('/itemsale',{
     	  templateUrl: 'views/inventory/itemSale.html'
+
+    
+      })
+      .when('/editProvison/:id', {
+        templateUrl: 'views/clients/editProvisioning.html'
+
       });
 
     $locationProvider.html5Mode(false);

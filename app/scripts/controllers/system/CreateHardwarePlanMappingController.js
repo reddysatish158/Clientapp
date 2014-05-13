@@ -20,7 +20,7 @@
 	        	
 	        	webStorage.add("callingTab", {someString: "hardwarePlanMapping" });
 	            resourceFactory.hardwareMappingResource.save(this.formData,function(data){
-	            	location.path('/mappingconfig');
+	            		location.path('/mappingconfig');
 	            	
 	          });
 	        };

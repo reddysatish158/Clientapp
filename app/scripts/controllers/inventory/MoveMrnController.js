@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-	    MoveMrnController: function(scope,webStorage, resourceFactory, location,dateFilter) {
+	    MoveMrnController: function(scope,webStorage, resourceFactory, location,dateFilter,PermissionService) {
 	    	 scope.mrnIds = [];
 	    	 scope.first = {};
 	    	 scope.first.date = new Date();
@@ -29,13 +29,16 @@
 	        	scope.formData.movedDate = reqDate;
 	        	resourceFactory.moveMrnSaveResource.save(this.formData,function(data){
 	        		/*location.path('/viewmovemrn/'+data.resourceId);*/
-	        		location.path('/viewmovedmrn/'+data.resourceId);
+	        		if(PermissionService.showMenu('READ_MRN'))
+	        			location.path('/viewmovedmrn/'+data.resourceId);
+	        		else
+	        			location.path('/inventory');
 	          });
 	        	
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('MoveMrnController', ['$scope','webStorage', 'ResourceFactory','$location','dateFilter', mifosX.controllers.MoveMrnController]).run(function($log) {
+	  mifosX.ng.application.controller('MoveMrnController', ['$scope','webStorage', 'ResourceFactory','$location','dateFilter','PermissionService', mifosX.controllers.MoveMrnController]).run(function($log) {
 	    $log.info("MoveMrnController initialized");
 	  });
 	}(mifosX.controllers || {}));

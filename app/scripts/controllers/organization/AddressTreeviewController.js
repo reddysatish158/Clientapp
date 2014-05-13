@@ -1,9 +1,12 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  AddressTreeviewController: function(scope, resourceFactory,$modal,route) {
+	  AddressTreeviewController: function(scope, resourceFactory,$modal,route,PermissionService) {
      
       var idToNodeMap = {};
+
+       scope.PermissionService = PermissionService;
         var str = "new";
+
         
         scope.elementSelect = function(id,nodeName,nodeCode){
         	scope.nodeId = id;
@@ -116,7 +119,7 @@
         	  $scope.submit = function (newCode,newName) {
         		  this.formData.entityCode = newCode;
         		  this.formData.entityName=newName;
-        		  resourceFactory.countryResource.get({add : str},this.formData,function(data){
+        		  resourceFactory.addCountryResource.get(this.formData,function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -135,7 +138,7 @@
         		  	$scope.formData.entityCode = newCode;
         		  	$scope.formData.entityName=newName;
         		  var countryId=scope.elementId[1];
-        		  resourceFactory.countryResource.update({id:countryId},$scope.formData,function(data){
+        		  resourceFactory.editCountryResource.update({id:countryId},$scope.formData,function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -149,7 +152,7 @@
         	  	
         	  $scope.approveDeleteCountry = function () {
         		  $scope.countryId=scope.elementId[1];
-        		  resourceFactory.countryResource.delete({id:$scope.countryId},{},function(data){
+        		  resourceFactory.editCountryResource.delete({id:$scope.countryId},{},function(data){
         			  route.reload();
         	        },function(errData){
 		          });
@@ -173,7 +176,7 @@
 	        		  this.formData.entityCode = newCode;
 	        		  this.formData.entityName=newName;
 	        		  this.formData.parentEntityId = scope.elementId[1];
-	        		  resourceFactory.stateResource.get({add  : str},this.formData,function(data){
+	        		  resourceFactory.addStateResource.get(this.formData,function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -192,7 +195,7 @@
 	        		  $scope.formData.entityCode = newCode;
 	        		  $scope.formData.entityName=newName;
 	        		  var stateId=scope.elementId[1];
-	        		  resourceFactory.stateResource.update({id:stateId},$scope.formData,function(data){
+	        		  resourceFactory.editStateResource.update({id:stateId},$scope.formData,function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -205,7 +208,7 @@
 	        var deleteStateController = function ($scope, $modalInstance) {
 	        	  $scope.approveDeleteState = function () {
 	        		  $scope.stateId=scope.elementId[1];
-	        		  resourceFactory.stateResource.delete({id:$scope.stateId},{},function(data){
+	        		  resourceFactory.editStateResource.delete({id:$scope.stateId},{},function(data){
 	        			  route.reload();
 	        	        },function(errData){
 			          });
@@ -228,7 +231,7 @@
 		        		  this.formData.entityCode = newCode;
 		        		  this.formData.entityName=newName;
 		        		  this.formData.parentEntityId = scope.elementId[1];
-		        		  resourceFactory.cityResource.get({add : str},this.formData,function(data){
+		        		  resourceFactory.addCityResource.get(this.formData,function(data){
 		        			  route.reload();
 		        	        },function(errData){
 				          });
@@ -247,7 +250,7 @@
 			        		  $scope.formData.entityCode = newCode;
 			        		  $scope.formData.entityName=newName;
 			        		  var cityId=scope.elementId[1];
-			        		  resourceFactory.cityResource.update({id:cityId},$scope.formData,function(data){
+			        		  resourceFactory.editCityResource.update({id:cityId},$scope.formData,function(data){
 			        			  route.reload();
 			        	        },function(errData){
 					          });
@@ -260,7 +263,7 @@
 			   var deleteCityController = function ($scope, $modalInstance) {
 			        	  $scope.approveDeleteCity = function () {
 			        		  $scope.cityId=scope.elementId[1];
-			        		  resourceFactory.cityResource.delete({id:$scope.cityId},{},function(data){
+			        		  resourceFactory.editCityResource.delete({id:$scope.cityId},{},function(data){
 			        			  route.reload();
 			        	        },function(errData){
 					          });
@@ -345,7 +348,7 @@
         
      }
   });
-  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$modal','$route', mifosX.controllers.AddressTreeviewController]).run(function($log) {
+  mifosX.ng.application.controller('AddressTreeviewController', ['$scope', 'ResourceFactory','$modal','$route','PermissionService', mifosX.controllers.AddressTreeviewController]).run(function($log) {
     $log.info("AddressTreeviewController initialized");
   });
 }(mifosX.controllers || {}));

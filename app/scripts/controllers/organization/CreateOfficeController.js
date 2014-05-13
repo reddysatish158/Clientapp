@@ -20,7 +20,7 @@
           this.formData.dateFormat = 'dd MMMM yyyy';
           this.formData.openingDate = reqDate;
           resourceFactory.officeResource.save(this.formData,function(data){
-            location.path('/viewoffice/' + data.resourceId);
+        		 location.path('/viewoffice/' + data.resourceId);
           });
         };
     }

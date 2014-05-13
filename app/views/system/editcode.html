@@ -20,7 +20,7 @@
       </form>
     <div data-ng-repeat="codevalue in codevalues">
         <input disabled="" placeholder={{codevalue.name}} type="text"/>&nbsp;&nbsp;<input disabled="" placeholder={{codevalue.position}}
-         type="text"/>&nbsp;&nbsp;<a ng-click='deleteCv(codevalue.id)'><i class="icon-remove"></i></a>
+         type="text"/>&nbsp;&nbsp;<a ng-show="PermissionService.showMenu('DELETE_CODEVALUE')" ng-click='deleteCv(codevalue.id)'><i class="icon-remove"></i></a>
     </div>
     <div class="pull-right" data-ng-show="stat">
         <p>{{ 'error.delete.failed' | translate }}</p>

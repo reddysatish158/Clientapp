@@ -1,9 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewCurrencyDetailsController: function(scope, routeParams , route, location, resourceFactory, http) {
+	  ViewCurrencyDetailsController: function(scope, routeParams , route, location, resourceFactory, http,PermissionService) {
 		 // alert("hh");
         
         scope.viewcurrencydetails=[];
+        scope.PermissionService = PermissionService;
         resourceFactory.currencyResource.getCurrencyDetails({id: routeParams.id,template: 'true'} , function(data) {
         	//alert('discountController,' +data);
             scope.viewcurrencydetails = data; 
@@ -18,7 +19,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('ViewCurrencyDetailsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewCurrencyDetailsController]).run(function($log) {
+  mifosX.ng.application.controller('ViewCurrencyDetailsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewCurrencyDetailsController]).run(function($log) {
     $log.info("ViewCurrencyDetailsController initialized");
   });
 }(mifosX.controllers || {}));

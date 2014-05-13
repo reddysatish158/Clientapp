@@ -1,17 +1,18 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,localStorageService) {
+    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,webStorage,PermissionService,localStorageService) {
 
       scope.leftnav = false;
 
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
-    	  scope.permissionsArray = data.permissions;
-    	  console.log(scope.permissionsArray);
+    	  localStorageService.add("permissionsArray",data.permissions);
+    	  console.log(localStorageService.get("permissionsArray"));
         scope.currentSession = sessionManager.get(data);
+        if(PermissionService.showMenu('REPORTING_SUPER_USER'))
         location.path('/home').replace();
         scope.unreadMessage=data.unReadMessages;
       });
-
+     
       scope.search = function(){
           location.path('/search/' + scope.search.query );
       };
@@ -23,7 +24,7 @@
       };
 
       scope.langs = mifosX.models.Langs;
-      
+      scope.PermissionService=PermissionService;
       scope.optlang = scope.langs[0];
 
       scope.isActive = function (route) {
@@ -137,6 +138,8 @@
     '$translate',
     'keyboardManager',
     '$rootScope',
+    'webStorage',
+    'PermissionService',
     'localStorageService',
     mifosX.controllers.MainController
   ]).run(function($log) {

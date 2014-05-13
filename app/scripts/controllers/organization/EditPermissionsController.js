@@ -55,6 +55,79 @@
       
       scope.submit = function() {
         var permissionData = {};
+      /*For Accounting permissions and inventory mrn and billingmaster MEDIAASSET,region,PLANMAPPING,EVENTACTIONMAP 
+        and billing RANDAMGENERATOR,BILLINGMESSAGE and ordering PROVISIONINGSYSTEM 
+        if(this.formData.CREATE_ACCOUNTINGRULE||this.formData.CREATE_GLACCOUNT||
+        		this.formData.CREATE_GLCLOSURE||this.formData.CREATE_JOURNALENTRY||
+        		this.formData.CREATE_MRN||this.formData.CREATE_MEDIAASSET||
+        		this.formData.CREATE_REGION||this.formData.CREATE_RANDAMGENERATOR||
+        		this.formData.CREATE_BILLINGMESSAGE||this.formData.CREATE_PLANMAPPING||
+        		this.formData.CREATE_PROVISIONINGSYSTEM||this.formData.CREATE_EVENTACTIONMAP||
+        		this.formData.CREATE_PAYMENT||this.formData.CREATE_CREDITDISTRIBUTION||
+        		this.formData.CREATE_INVOICE||this.formData.CREATE_EVENTORDER)
+        	this.formData.ALL_FUNCTIONS_READ = true;
+        	
+        //In Authorisation permissions
+        if(this.formData.CREATE_USER)
+        	this.formData.READ_USER = true;
+        //In organization permissions
+        if(this.formData.CREATE_OFFICE)
+        	this.formData.READ_OFFICE = true;
+        if(this.formData.CREATE_STAFF)
+        	this.formData.READ_STAFF = true;
+        //for Inventory permissions
+        if(this.formData.CREATE_INVENTORY)
+        	this.formData.READ_INVENTORY = true;
+        if(this.formData.CREATE_ITEM)
+        	this.formData.READ_ITEM = true;
+        	 //for configuration permissions
+        if(this.formData.CREATE_REPORT)
+        	this.formData.READ_REPORT = true;
+        
+        //for billing master permissions
+        if(this.formData.CREATE_CONTRACT)
+        	this.formData.READ_CONTRACT = true;
+        
+        if(this.formData.CREATE_COUNTRYCURRENCY)
+        	this.formData.READ_COUNTRYCURRENCY = true;
+       
+        if(this.formData.CREATE_SERVICE)
+        	this.formData.READ_SERVICE = true;
+        
+        if(this.formData.CREATE_PLAN)
+        	this.formData.READ_PLAN = true;
+        	
+        	if(this.formData.CREATE_ORDER)
+        	this.formData.READ_ORDER = true;
+        if(this.formData.CREATE_ADJUSTMENT)
+        	this.formData.READ_ADJUSTMENT = true;
+        if(this.formData.CREATE_BILLMASTER)
+        	this.formData.READ_BILLMASTER = true;
+        if(this.formData.CREATE_ONETIMESALE)
+        	this.formData.READ_ONETIMESALE = true;
+        	*/
+        
+        //for prospects permissions
+        if(this.formData.CREATE_PROSPECT)
+        	this.formData.READ_PROSPECT = this.formData.READ_ADDRESS = true;
+        
+        if(this.formData.EDIT_PROSPECT)
+        	this.formData.READ_ADDRESS = true;
+        
+        if(this.formData.CONVERT_PROSPECT)
+        	this.formData.CREATE_CLIENT = true;
+        
+       
+        
+        //for portfolio permissions
+        if(this.formData.CREATE_CLIENT)
+        	this.formData.READ_ADDRESS = this.formData.READ_CLIENT = true;
+        
+        //for odering permissions
+        if(this.formData.ACTIVATIONPROCESS_ACTIVATE)
+        	this.formData.READ_ADDRESS = this.formData.READ_ALLOCATION =this.formData.READ_ORDER =
+        		this.formData.READ_ONETIMESALE =this.formData.READ_CLIENT= true;
+        
         permissionData.permissions = this.formData;
         resourceFactory.rolePermissionResource.update({roleId:routeParams.id},permissionData,function(data){
           location.path('/admin/viewrole/' + data.resourceId);

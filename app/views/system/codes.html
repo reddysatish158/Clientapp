@@ -1,13 +1,14 @@
+<div data-ng-controller="CodeController">
 <div>
     <ul class="breadcrumb">
         <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.managecodes' | translate}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/addcode" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Code</a>
+        <a ng-show="PermissionService.showMenu('CREATE_CODE')" href="#/addcode" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Code</a>
     </div>
 </div>
-<div class="row-fluid" data-ng-controller="CodeController">
+<div class="row-fluid" ng-show="PermissionService.showMenu('READ_CODE')">
     <table class="table">
         <thead>
         <tr class="graybg">
@@ -23,6 +24,7 @@
 
         </tbody>
     </table>
+</div>
 </div>
 
 

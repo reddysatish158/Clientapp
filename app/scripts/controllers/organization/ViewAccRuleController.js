@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
     ViewAccRuleController: function(scope, resourceFactory, routeParams, location) {
-
+    	
+    	
     resourceFactory.accountingRulesResource.getById({accountingRuleId:routeParams.id}, function(data){
       scope.rule = data;
     });

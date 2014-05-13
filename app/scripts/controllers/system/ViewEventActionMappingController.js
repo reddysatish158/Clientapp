@@ -1,8 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewEventActionMappingController: function(scope, routeParams , route, location, resourceFactory, http) {
+	  ViewEventActionMappingController: function(scope, routeParams , route, location, resourceFactory, http,PermissionService) {
 		 // alert("hh");
-        scope.eventactions = [];              
+        scope.eventactions = [];      
+        scope.PermissionService =  PermissionService; 
+
         resourceFactory.EventActionMappingResource.getDetails({id: routeParams.id} , function(data) {
         	//alert('view' +data);
             scope.eventactions = data;                                                
@@ -17,7 +19,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('ViewEventActionMappingController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewEventActionMappingController]).run(function($log) {
+  mifosX.ng.application.controller('ViewEventActionMappingController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewEventActionMappingController]).run(function($log) {
     $log.info("ViewEventActionMappingController initialized");
   });
 }(mifosX.controllers || {}));

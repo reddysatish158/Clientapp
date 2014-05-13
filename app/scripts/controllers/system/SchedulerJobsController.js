@@ -1,12 +1,14 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    SchedulerJobsController: function(scope, resourceFactory, route,location,$modal) {
+    SchedulerJobsController: function(scope, resourceFactory, route,location,$modal,PermissionService) {
       var jobIdArray = [];
       var jobNameArray = [];
+      scope.PermissionService = PermissionService;
       scope.formData={};
       resourceFactory.jobsResource.get(function(data) {
           scope.jobs = data;
       });
+     
       scope.routeTo = function(jobid){
           location.path('/viewschedulerjob/'+ jobid);
         };
@@ -140,7 +142,7 @@
 		};
     }
   });
-  mifosX.ng.application.controller('SchedulerJobsController', ['$scope', 'ResourceFactory', '$route', '$location','$modal', mifosX.controllers.SchedulerJobsController]).run(function($log) {
+  mifosX.ng.application.controller('SchedulerJobsController', ['$scope', 'ResourceFactory', '$route', '$location','$modal','PermissionService', mifosX.controllers.SchedulerJobsController]).run(function($log) {
     $log.info("SchedulerJobsController initialized");
   });
 }(mifosX.controllers || {}));

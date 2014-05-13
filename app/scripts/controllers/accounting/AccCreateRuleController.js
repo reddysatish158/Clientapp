@@ -77,7 +77,7 @@
             }
 
             resourceFactory.accountingRulesResource.save(accountingRule,function(data){
-              location.path('/viewaccrule/'+data.resourceId);
+            		location.path('/viewaccrule/'+data.resourceId);
             });
       }
 

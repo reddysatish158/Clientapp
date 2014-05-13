@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    CreateClientController: function(scope, resourceFactory, location, http, dateFilter,API_VERSION,$rootScope) {
+    CreateClientController: function(scope, resourceFactory, location, http, dateFilter,API_VERSION,$rootScope,PermissionService) {
         scope.offices = [];
         scope.staffs = [];
         scope.first = {};
@@ -15,11 +15,12 @@
             scope.staffs = data.staffOptions;
             scope.formData.officeId = scope.offices[0].id;
             scope.clientCategoryDatas=data.clientCategoryDatas;
+            scope.groupNameDatas = data.groupNameDatas;
             scope.cities=data.addressTemplateData.cityData;
             scope.configurationProperty=data.configurationProperty.enabled;
             scope.formData.clientCategory=scope.clientCategoryDatas[0].id;
             scope.groupNameDatas = data.groupNameDatas;
-            //scope.formData.groupName = scope.groupNameDatas[0].groupName;
+
         });
         
        
@@ -84,10 +85,16 @@
                   if (!scope.$$phase) {
                     scope.$apply();
                   }
-                  location.path('/viewclient/'+data.resourceId);
+                  if(PermissionService.showMenu('READ_CLIENT'))
+                	  location.path('/viewclient/'+data.resourceId);
+                  else
+                	  location.path('/clients');
                 });
               } else{
-                location.path('/viewclient/' + data.resourceId);
+            	  if(PermissionService.showMenu('READ_CLIENT'))
+            		  location.path('/viewclient/' + data.resourceId);
+            	  else
+            		  location.path('/clients');
               }
             },function(errData){
           	  scope.flag = false;
@@ -95,7 +102,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('CreateClientController', ['$scope', 'ResourceFactory', '$location', '$http', 'dateFilter','API_VERSION','$rootScope', mifosX.controllers.CreateClientController]).run(function($log) {
+  mifosX.ng.application.controller('CreateClientController', ['$scope', 'ResourceFactory', '$location', '$http', 'dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.CreateClientController]).run(function($log) {
     $log.info("CreateClientController initialized");
   });
 }(mifosX.controllers || {}));
