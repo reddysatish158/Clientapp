@@ -23,9 +23,10 @@
                 <th>{{'table.servicemapping.servicecode' | translate}}</th>
                 <th>{{'table.servicemapping.serviceidentification' | translate}}</th>
                 <th>{{'table.servicemapping.status' | translate}}</th>
-                <th>{{'table.servicemapping.image' | translate}}</th>
-                <th>Category</th>
-                <th>Sub Category</th>
+                <th style="width:125px;">{{'table.servicemapping.image' | translate}}</th>
+                <th  ng-show="'IPTV'| ConfigLookup">Category</th>
+                <th  ng-show="'IPTV'| ConfigLookup">Sub Category</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -35,8 +36,8 @@
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceIdentification}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.status}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.image}}</td>
-                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.category}}</td>
-                <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.subCategory}}</td>
+                <td  ng-show="'IPTV'| ConfigLookup" class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.category}}</td>
+                <td   ng-show="'IPTV'| ConfigLookup" class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.subCategory}}</td>
    			</tr>
      		 </tbody>
           </table>

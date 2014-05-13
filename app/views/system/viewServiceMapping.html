@@ -31,15 +31,14 @@
 				<td>{{'label.image' | translate }}</td>
 				<td>{{sm.image}}</td>
 			</tr>
-			<tr>
+			<tr  ng-show="'IPTV'| ConfigLookup">
 				<td>{{'label.category' | translate }}</td>
 				<td>{{sm.category}}</td>
 			</tr>
-			<tr>
+			<tr  ng-show="'IPTV'| ConfigLookup">
 				<td>{{'label.subcategory' | translate }}</td>
 				<td>{{sm.subCategory}}</td>
 			</tr>
-			
 		</table>
 	</div>
 </div>
