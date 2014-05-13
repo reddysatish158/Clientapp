@@ -2325,7 +2325,8 @@
 "validation.msg.officepayment.paymentCode.cannot.be.blank":"Payment Type can not be blank",
 "validation.msg.officepayment.amountPaid.cannot.be.blank":" Amount can not be blank",
 "validation.msg.officeadjustment.adjustment_code.cannot.be.blank":" Adjustment Code can not be blank",
-"validation.msg.officeadjustment.amount_paid.cannot.be.blank":"Adjustment Amount can not be blank"
+"validation.msg.officeadjustment.amount_paid.cannot.be.blank":"Adjustment Amount can not be blank",
+"error.msg.officePayment_receiptNo.duplicate.name":"Receipt Number is Already Exist"
 
    
 
