@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ItemSaleController: function(scope, resourceFactory, location,dateFilter,routeParams) {
+	  ItemSaleController: function(scope, resourceFactory, location,dateFilter,routeParams,webStorage) {
 		  
 		   scope.officeId = routeParams.officeId;
+		   scope.officeName = webStorage.get("officeName");
     	   scope.officeDatas = [];
     	   scope.itemDatas = [];
     	   scope.purchase = {};
@@ -47,7 +48,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ItemSaleController', ['$scope', 'ResourceFactory', '$location','dateFilter','$routeParams', mifosX.controllers.ItemSaleController]).run(function($log) {
+  mifosX.ng.application.controller('ItemSaleController', ['$scope', 'ResourceFactory', '$location','dateFilter','$routeParams','webStorage', mifosX.controllers.ItemSaleController]).run(function($log) {
     $log.info("ItemSaleController initialized");
   });
 }(mifosX.controllers || {}));

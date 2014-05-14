@@ -3,7 +3,7 @@
         <ul class="breadcrumb">
           <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
           <li><a href="#/offices">{{'label.manageoffices' | translate}}</a> <span class="divider">/</span></li>
-          <li><a href="#/viewoffice/{{officeId}}">{{office_name}}</a> <span class="divider">/</span></li>
+          <li><a href="#/viewoffice/{{officeId}}">{{officeName}}</a> <span class="divider">/</span></li>
           <li class="active">Create Adjustment</li>
         </ul>
       </div>
@@ -44,7 +44,7 @@
 			  <div class="control-group">
                  <label class="control-label">{{ 'label.adjustmentamount' | translate }}</label>
             	 <div class="controls">
-              		<input id="amount_paid" class="input-medium" type="text" ng-model="formData.amount_paid">
+              		<input id="amount_paid" style="width:112px;" type="text" ng-model="formData.amount_paid">
               		<select class="input-small" ng-model="formData.adjustment_type" 
               			ng-options="discountOpt.discountType as discountOpt.discountType for discountOpt in discountOptions">
 	               	 </select>
