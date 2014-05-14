@@ -1,10 +1,12 @@
  <div ng-controller="ItemSaleController">
    <div>
         <ul class="breadcrumb">
-          <li><a href="#/inventory" ng-click="selectedMRN()">{{'link.inventory' | translate}}</a> <span class="divider">/</span></li>
-          <li class="active">Item Sale </li>
+          <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
+          <li><a href="#/offices">{{'label.manageoffices' | translate}}</a> <span class="divider">/</span></li>
+           <li><a href="#/viewoffice/{{officeId}}">{{office_name}}</a> <span class="divider">/</span></li>
+          <li class="active">Item Sale</li>
         </ul>
-   </div>
+      </div>
       <form name="itemSaleForm" novalidate="" class="form-horizontal well" ng-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
@@ -83,7 +85,7 @@
 			</tr>
 		</table>
 		<div class="offset3">
-            <a href="#/inventory"><button id="cancel" type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+            <a href="#/viewoffice/{{officeId}}"><button id="cancel" type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
             <button id="save" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
           </div>
           

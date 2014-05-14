@@ -802,8 +802,14 @@
         templateUrl : 'views/system/createIpPooling.html'
 
       })
-      .when('/itemsale',{
-    	  templateUrl: 'views/inventory/itemSale.html'
+      .when('/itemsale/:officeId',{
+    	  templateUrl: 'views/organization/itemSale.html'
+      })
+      .when('/officeadjustments/:officeId',{
+    	  templateUrl: 'views/organization/officeadjustments.html'
+      })
+      .when('/officepayments/:officeId',{
+    	  templateUrl: 'views/organization/officepayments.html'
       });
 
     $locationProvider.html5Mode(false);

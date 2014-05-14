@@ -21,6 +21,7 @@
 					<th>Parent Office</th>
 				    <th>Office Type</th>
 					<th>Opened On</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,7 @@
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.parentName}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.officeType}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.openingDate | DateFormat}}</td>
+					<td><a href="#/editoffice/{{office.id}}" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>
 				</tr>
 			</tbody>
 		</table>

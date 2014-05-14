@@ -842,6 +842,24 @@
           itemSaleTemplateResource: defineResource(apiVer + "/agents/template", {}, {
           	 get: {method: 'GET', params: {}}
            }) ,
+           officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
+               getPayments: {method: 'GET', params: {}}
+           }),
+           officePaymentsResource: defineResource(apiVer + "/officepayments/:officeId", {officeId:'@officeId'}, {
+               postPayments: {method: 'POST', params: {officeId:'@officeId'}}
+           }),
+           officeAdjustmentsTemplateResource: defineResource(apiVer + "/officeadjustments/template", {}, {
+               getAdjustments: {method: 'GET', params: {}}
+           }),
+           officeAdjustmentsResource: defineResource(apiVer + "/officeadjustments/:officeId", {officeId:'@officeId'}, {
+               postAdjustments: {method: 'POST', params: {officeId:'@officeId'}}
+           }),
+           officeFinancialTransactionResource: defineResource(apiVer + "/officefinancialtransactions/:officeId", {officeId:'@officeId'}, {
+               get: {method: 'GET', params: {officeId:'@officeId'},isArray: true}
+           }),
+           agentsResource: defineResource(apiVer + "/agents", {}, {
+               postAgent: {method: 'POST', params: {}}
+           }),
 
         };
       }];
