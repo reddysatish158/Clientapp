@@ -41,12 +41,13 @@
             scope.formData.dateFormat = 'dd MMMM yyyy';
             scope.formData.purchaseDate = reqDate;
 
-/*
+
             resourceFactory.itemSaleResource.save(scope.formData,function(data){
-        	location.path('/viewmrn/'+data.resourceId);
-*/
-            resourceFactory.agentsResource.postAgent(scope.formData,function(data){
-        		location.path('/viewoffice/'+routeParams.officeId);
+//        	location.path('/viewmrn/'+data.resourceId);
+        	location.path('/viewoffice/'+routeParams.officeId);
+
+            /*resourceFactory.agentsResource.postAgent(scope.formData,function(data){
+        		location.path('/viewoffice/'+routeParams.officeId);*/
 
           });
         };

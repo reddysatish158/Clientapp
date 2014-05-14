@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewOfficeController: function(scope, routeParams , resourceFactory ,PermissionService) {
+	  ViewOfficeController: function(scope, routeParams , rootScope,resourceFactory,webStorage) {
         scope.charges = [];
         scope.PermissionService = PermissionService;
     	scope.officeFinanceTrans=[];
@@ -16,7 +16,7 @@
         });
     }
   });
-  mifosX.ng.application.controller('ViewOfficeController', ['$scope', '$routeParams','ResourceFactory','PermissionService', mifosX.controllers.ViewOfficeController]).run(function($log) {
+  mifosX.ng.application.controller('ViewOfficeController', ['$scope', '$routeParams','$rootScope','ResourceFactory','webStorage', mifosX.controllers.ViewOfficeController]).run(function($log) {
 
     $log.info("ViewOfficeController initialized");
   });
