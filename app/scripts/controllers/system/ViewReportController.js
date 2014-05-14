@@ -2,7 +2,7 @@
   mifosX.controllers = _.extend(module, {
     ViewReportController: function(scope, routeParams , resourceFactory,location,$modal,PermissionService) {
     	scope.PermissionService = PermissionService; 
-    	
+
       resourceFactory.reportsResource.getReportDetails({id: routeParams.id} , function(data) {
           scope.report = data;
           scope.noncoreReport = data.coreReport==true ? false : true;

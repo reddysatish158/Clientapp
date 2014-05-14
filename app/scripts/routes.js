@@ -820,7 +820,16 @@
       })
       .when('/editProvison/:id', {
         templateUrl: 'views/clients/editProvisioning.html'
+      })
 
+      .when('/itemsale/:officeId',{
+    	  templateUrl: 'views/organization/itemSale.html'
+      })
+      .when('/officeadjustments/:officeId',{
+    	  templateUrl: 'views/organization/officeadjustments.html'
+      })
+      .when('/officepayments/:officeId',{
+    	  templateUrl: 'views/organization/officepayments.html'
       });
 
     $locationProvider.html5Mode(false);

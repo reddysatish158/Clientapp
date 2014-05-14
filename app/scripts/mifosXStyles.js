@@ -9,7 +9,8 @@ define(['underscore'], function() {
       'style',
       'bootstrap-timepicker',
       'jquery-ui',
-      'jquery.jWizard.min'
+      'jquery.jWizard.min',
+      'chosen.min'
     ],
     less: [
       'mifosX'

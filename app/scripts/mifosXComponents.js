@@ -245,7 +245,9 @@ define(['underscore', 'mifosX'], function() {
 
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
-      'inventory/ItemSaleController',
+      'organization/ItemSaleController',
+      'organization/OfficeAdjustmentsController',
+      'organization/OfficePaymentsController'
 
     ],
     filters: [
@@ -269,7 +271,9 @@ define(['underscore', 'mifosX'], function() {
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
-      'ContextMenuDirective'
+      'ContextMenuDirective',
+      'AutofocusDirective',
+      'ChosenComboboxDirective'
     ]
   };
 
