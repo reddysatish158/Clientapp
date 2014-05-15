@@ -760,11 +760,11 @@
            get: {method: 'GET', params: {}},
            update: { method: 'PUT' }
       }),*/
-           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template", {}, {
+           /*provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),
 //=======
-        provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderId", {orderId: '@orderId'}, {
+*/        provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderNo", {orderNo: '@orderNo'}, {
             	  get: {method: 'GET', params: {},isArray: true}
 //>>>>>>> obsplatform-1.01
            }),
