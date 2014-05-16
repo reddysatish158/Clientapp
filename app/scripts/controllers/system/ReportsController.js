@@ -19,7 +19,7 @@
         scope.reports = PaginatorService.paginate(scope.fetchReports, 14);
         
         scope.routeToreport = function(id){
-        	alert(id);
+        	//alert(id);
         	location.path('/system/viewreport/'+ id);
           };
     }

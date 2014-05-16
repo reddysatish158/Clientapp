@@ -8,7 +8,7 @@
             	var  configNameLookup = {
 
                    "payment":"true",
-                   "IPTV":"false"
+                   "IPTV":"true"
                 	   //Segment
                  };
 

@@ -2,7 +2,7 @@
   mifosX.controllers = _.extend(module, {
 	  ViewOfficeController: function(scope, routeParams , rootScope,resourceFactory,webStorage) {
         scope.charges = [];
-        scope.PermissionService = PermissionService;
+        //scope.PermissionService = PermissionService;
     	scope.officeFinanceTrans=[];
 
         resourceFactory.officeResource.get({officeId: routeParams.id} , function(data) {
