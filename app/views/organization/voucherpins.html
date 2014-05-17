@@ -25,6 +25,7 @@
                 <th>{{ 'table.heading.pinType' | translate }}</th>
                 <th>{{ 'table.heading.pinValue' | translate }}</th>
                 <th>{{ 'table.heading.expiryDate' | translate }}</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,8 @@
                 <td>{{voucherpin.serialNo}}</td>  
                 <td>{{voucherpin.pinType}}</td>        
                 <td>{{voucherpin.pinValue}}</td>  
-                <td>{{voucherpin.expiryDate|DateFormat}}</td>                
+                <td>{{voucherpin.expiryDate|DateFormat}}</td>              
+                <td><a  ng-click="downloadFile(voucherpin.id)" popover="Download Voucher File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a></td>  
             </tr>
         </tbody>
     </table>
