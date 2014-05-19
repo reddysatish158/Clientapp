@@ -5,7 +5,6 @@
 
       scope.reports = [];
       scope.type = routeParams.type;
-      
       scope.routeToviewreport = function(name,id,type){
     	  
           location.url('/run_report/'+name+'?reportId='+id+'&type='+type);

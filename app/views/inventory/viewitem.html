@@ -6,8 +6,8 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/edititem/{{item.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-	          <a data-ng-click="deleteItem()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_ITEM')" href="#/edititem/{{item.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	          <a ng-show="PermissionService.showMenu('DELETE_ITEM')"  data-ng-click="deleteItem()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
 	      </div>
 	    </div>
 	</div>

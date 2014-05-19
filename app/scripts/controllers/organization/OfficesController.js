@@ -1,10 +1,13 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    OfficesController: function(scope, resourceFactory,location) {
+    OfficesController: function(scope, resourceFactory,location,PermissionService) {
 
       scope.offices = [];
       scope.isTreeView = false;
+     
       var idToNodeMap = {};
+      
+      scope.PermissionService = PermissionService;
       
       scope.routeTo = function(id){
           location.path('/viewoffice/'+id);
@@ -58,7 +61,7 @@
     	  
      }
   });
-  mifosX.ng.application.controller('OfficesController', ['$scope', 'ResourceFactory','$location', mifosX.controllers.OfficesController]).run(function($log) {
+  mifosX.ng.application.controller('OfficesController', ['$scope', 'ResourceFactory','$location','PermissionService', mifosX.controllers.OfficesController]).run(function($log) {
     $log.info("OfficesController initialized");
   });
 }(mifosX.controllers || {}));

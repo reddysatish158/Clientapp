@@ -39,7 +39,7 @@
         	this.formData.itemMasterId = scope.itemDetailsData.itemMasterId;
             delete this.formData.purchaseDate;
         	resourceFactory.itemDetailsResource.save(this.formData,function(data){
-        		location.path("/viewitemdetails/"+data.resourceId);
+        		location.path("/inventory");
           });
         };
     }

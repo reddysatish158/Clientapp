@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    InventoryController: function(scope,webStorage, routeParams, location,$modal, resourceFactory, paginatorService) {
+    InventoryController: function(scope,webStorage, routeParams, location,$modal, resourceFactory, paginatorService,PermissionService) {
         scope.items = [];
         scope.grn = [];
         scope.itemdetails = [];
@@ -8,7 +8,7 @@
         scope.itemhistory = [];
         scope.supplier = [];
         scope.call={status:""}; 
-        
+        scope.PermissionService = PermissionService;
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
@@ -46,9 +46,11 @@
         
         scope.routeTo = function(id){
         	if(id != 0){
-            location.path('/viewclient/'+ parseInt(id));
+        		if(PermissionService.showMenu('READ_CLIENT'))
+        			location.path('/viewclient/'+ parseInt(id));
         	}else{
-        		 location.path('/createclient');		
+        		if(PermissionService.showMenu('CREATE_CLIENT')&&PermissionService.showMenu('READ_ADDRESS'))
+        				location.path('/createclient');
         	}
           };
         scope.routeTogrn = function(id){
@@ -60,6 +62,7 @@
         scope.routeToitem = function(id){
             location.path('/viewitem/'+ parseInt(id));
           };
+         
         
         scope.itemFetchFunction = function(offset, limit, callback) {
 			resourceFactory.itemResource.getAllItems({offset: offset, limit: limit} , callback);
@@ -98,11 +101,12 @@
         
         
         scope.getItemdetails = function () {
-        	scope.itemdetails = paginatorService.paginate(scope.itemDetailsFetchFunction, 14);
+        		scope.itemdetails = paginatorService.paginate(scope.itemDetailsFetchFunction, 14);
         };
                 
         scope.getMRNdetails = function () {
-        	scope.mrn = paginatorService.paginate(scope.mrnDetailsFetchFunction, 14);
+        	if(PermissionService.showMenu('READ_MRN'))
+        		scope.mrn = paginatorService.paginate(scope.mrnDetailsFetchFunction, 14);
         };
         
         /*scope.getitemhistorydetails = function () {
@@ -110,6 +114,7 @@
         };*/
         
         scope.getsupplierdetails = function () {
+        	if(PermissionService.showMenu('READ_SUPPLIER'))
                 scope.supplier = paginatorService.paginate(scope.supplierFetchFunction, 14);          
         };
 
@@ -184,9 +189,10 @@
 					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
 					  			}
 					  		};
-							scope.editQuality = function(itemId,valueQuality){
+							scope.editQuality = function(itemId,valueQuality,provisionalserialNum){
 					            scope.itemid=itemId;
 					            scope.valueQuality=valueQuality;
+					            scope.provisionalserialNum=provisionalserialNum;
 					        	  scope.errorStatus=[];scope.errorDetails=[];
 					        	  $modal.open({
 					                  templateUrl: 'EditQuality.html',
@@ -194,17 +200,30 @@
 					                  resolve:{}
 					              });
 					          };
+					          scope.editProvSerial= function(itemId,valueQuality,provisionalserialNum){
+						            scope.itemid=itemId;
+						            scope.valueQuality=valueQuality;
+						            scope.provisionalserialNum=provisionalserialNum;
+						        	  scope.errorStatus=[];scope.errorDetails=[];
+						        	  $modal.open({
+						                  templateUrl: 'EditProvSerial.html',
+						                  controller: EditQualityController,
+						                  resolve:{}
+						              });
+						          };
 					          var EditQualityController = function ($scope, $modalInstance) {
 
 					          	resourceFactory.itemQualityResource.get(function(data) {
 					                  $scope.qualityData = data.quality;
 					                  $scope.quality=scope.valueQuality;
+					                  $scope.provserialnum=scope.provisionalserialNum;
 					              });
-					        	  $scope.approveQuality = function (value) {
-					        		  
+					        	  $scope.approveQuality = function (value,provserialnum) {
+					        		//  alert(value);
 					        		  $scope.flagEditQuality=true;
 					        		  //if(this.formData == undefined || this.formData == null){
 					        			  this.formData = {"quality":value};
+					        			  this.formData = {"quality":value,"provisioningSerialNumber":provserialnum};
 					        		  //}
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      
@@ -225,157 +244,10 @@
        
     }
   });
-  mifosX.ng.application.controller('InventoryController', ['$scope','webStorage', '$routeParams', '$location','$modal', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
+  mifosX.ng.application.controller('InventoryController', ['$scope','webStorage', '$routeParams', '$location','$modal', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.InventoryController]).run(function($log) {
     $log.info("InventoryController initialized");
   });
 }(mifosX.controllers || {}));
 
 
-/*(function(module) {
-  mifosX.controllers = _.extend(module, {
-    InventoryController: function(scope, routeParams, location, resourceFactory, paginatorService) {
-        scope.items = [];
-        scope.grn = [];
-        scope.itemdetails = [];
-        scope.mrn = [];
-        scope.itemhistory = [];
-        scope.supplier = [];
-        scope.call={status:""}; 
-        
-       
-        resourceFactory.itemResource.getAllItems(function(data) {
-            scope.items= data;
-         
-        });
-
-
-       
-        scope.getGRNdetails = function () {
-          resourceFactory.grnResource.getAlldetails(function(data) {
-              scope.grn= data;
-          });
-        };
-        
-        
-        scope.getMRNdetails = function () {
-            resourceFactory.mrnResource.getAlldetails(function(data) {
-                scope.mrn= data;
-                
-            });
-        };
-        scope.getitemhistorydetails = function () {
-            resourceFactory.itemhistoryResource.getAlldetails(function(data) {
-                scope.itemhistory= data;
-                
-            });
-        };
-        scope.getsupplierdetails = function () {
-            resourceFactory.supplierResource.getAllDetails(function(data) {
-                scope.supplier= data;
-                
-            });
-        };
-
-        
-        scope.itemDetailsFetchFunction = function(offset, limit, callback) {
-			resourceFactory.itemDetailsResource.getAlldetails({offset: offset, limit: limit} , callback);
-		};
-            
-        
-        scope.getItemdetails = function () {
-        	scope.itemdetails = paginatorService.paginate(scope.itemDetailsFetchFunction, 3);
-        };
-                
-        
-
-       
-        
-        
-        
-        scope.whatClassIsIt = function(someValue){
-             if(someValue>0)
-                 scope.call={status:"Yes"};
-            else
-                 scope.call={status:"No"};
-        };
-        
-        
-       
-    }
-  });
-  mifosX.ng.application.controller('InventoryController', ['$scope', '$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.InventoryController]).run(function($log) {
-    $log.info("InventoryController initialized");
-  });
-}(mifosX.controllers || {}));
-
-
-(function(module) {
-  mifosX.controllers = _.extend(module, {
-    InventoryController: function(scope, routeParams , route, location, resourceFactory, http) {
-        scope.items = [];
-        scope.grn = [];
-        scope.itemdetails = [];
-        scope.mrn = [];
-        scope.itemhistory = [];
-        scope.supplier = [];
-        scope.call={status:""}; 
-
-        resourceFactory.itemResource.getAllItems(function(data) {
-            scope.items= data;
-         
-        });
-
-
-       
-        scope.getGRNdetails = function () {
-          resourceFactory.grnResource.getAlldetails(function(data) {
-              scope.grn= data;
-          });
-        };
-        
-        scope.getItemdetails = function () {
-            resourceFactory.itemDetailsResource.getAlldetails(function(data) {
-                scope.itemdetails= data;
-                
-            });
-        };
-        
-        
-        
-        scope.getMRNdetails = function () {
-            resourceFactory.mrnResource.getAlldetails(function(data) {
-                scope.mrn= data;
-                
-            });
-        };
-        scope.getitemhistorydetails = function () {
-            resourceFactory.itemhistoryResource.getAlldetails(function(data) {
-                scope.itemhistory= data;
-                
-            });
-        };
-        scope.getsupplierdetails = function () {
-            resourceFactory.supplierResource.getAllDetails(function(data) {
-                scope.supplier= data;
-                
-            });
-        };
-
-       
-        
-        
-        
-        scope.whatClassIsIt = function(someValue){
-             if(someValue>0)
-                 scope.call={status:"Yes"};
-            else
-                 scope.call={status:"No"};
-        };
-       
-    }
-  });
-  mifosX.ng.application.controller('InventoryController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.InventoryController]).run(function($log) {
-    $log.info("InventoryController initialized");
-  });
-}(mifosX.controllers || {}));
-*/
+	

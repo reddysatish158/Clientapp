@@ -13,11 +13,13 @@
 		</ul>
 	</div>
 	<h3>{{'label.makerchecker.tasks' | translate}}</h3>
-	<div class="pull-right" ng-show="isDisabled">
-		<div class="btn-group">
-			<a class="btn btn-primary" ng-click="editMCTasks();"><i class="icon-edit icon-white"></i>{{ 'button.edit' | translate }}</a>
+	<span ng-show="PermissionService.showMenu('PERMISSION_ROLE')">
+		<div class="pull-right" ng-show="isDisabled">
+			<div class="btn-group">
+				<a class="btn btn-primary" ng-click="editMCTasks();"><i class="icon-edit icon-white"></i>{{ 'button.edit' | translate }}</a>
+			</div>
 		</div>
-	</div>
+	</span>
 	<table width="100%">
 		<tr>
 			<td width="15%"  valign="top">

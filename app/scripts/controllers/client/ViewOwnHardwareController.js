@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewOwnHardwareController: function(scope,webStorage,routeParams , route, location, resourceFactory, http) {
+	  ViewOwnHardwareController: function(scope,webStorage,routeParams , route, location, resourceFactory, http,PermissionService) {
 		  //alert(routeParams.id);
 		  var clientData = webStorage.get('clientData');
 		  scope.hwSerialNumber=clientData.hwSerialNumber;
@@ -17,6 +17,7 @@
 
         scope.ownhardwaredatas = []; 
         scope.itemdatas=[];
+        scope.PermissionService = PermissionService;
         resourceFactory.ownHardwareResource.getSingleOwnHardware({id: routeParams.id} , function(data) {
         	//alert('discountController,' +data);
             scope.ownhardwaredatas = data.ownedHardwareDatas[0];
@@ -34,7 +35,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('ViewOwnHardwareController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewOwnHardwareController]).run(function($log) {
+  mifosX.ng.application.controller('ViewOwnHardwareController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewOwnHardwareController]).run(function($log) {
     $log.info("ViewOwnHardwareController initialized");
   });
 }(mifosX.controllers || {}));

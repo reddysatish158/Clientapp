@@ -1,9 +1,10 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  ViewProspectsController: function(scope, routeParams , route, location, resourceFactory, http) {
+		  ViewProspectsController: function(scope, routeParams , route, location, resourceFactory, httpk,PermissionService) {
 			 // alert("hh");
 	        scope.prospects = [];   
 	        scope.prospectDetailData=[];
+	        scope.PermissionService = PermissionService;
 	        resourceFactory.prospectViewResource.getViewProspects({id: routeParams.id} , function(data) {
 	        	//alert('discountController,' +data);
 	            scope.prospects = data;                                                
@@ -33,12 +34,15 @@
 	        scope.convertProspect = function() {  
 	        	
 		            resourceFactory.prospectConvertResource.save({deleteProspectId: routeParams.id} , {} ,function(data){
+		              if(PermissionService.showMenu('READ_CLIENT'))
 		            	location.path('/viewclient/'+data.resourceId);
+		              else
+		            	  route.reload(); 
 		          });
 		        };
 	    }
 	  });
-	  mifosX.ng.application.controller('ViewProspectsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewProspectsController]).run(function($log) {
+	  mifosX.ng.application.controller('ViewProspectsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewProspectsController]).run(function($log) {
 	    $log.info("ViewProspectsController initialized");
 	  });
 	}(mifosX.controllers || {}));

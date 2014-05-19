@@ -8,12 +8,10 @@
 	    
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/followprospects/{{prospects.id}}" ng-show="getVal(prospects.status)" class="btn btn-primary"><i class="icon-edit icon-white"></i> FollowUp</a>
-	          <a ng-click="convertProspect()" ng-show="getVal(prospects.status)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Convert</a>
-	          <a href="#/editprospects/{{prospects.id}}" ng-show="getVal(prospects.status)" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-	          <a href="#/cancelprospects/{{prospects.id}}" ng-show="getVal(prospects.status)" class="btn btn-primary"><i class="icon-trash icon-white"></i> Cancel</a>	        
-	          
-	          
+	          <a href="#/followprospects/{{prospects.id}}" ng-show="getVal(prospects.status)&&PermissionService.showMenu('UPDATE_PROSPECT')" class="btn btn-primary"><i class="icon-edit icon-white"></i> FollowUp</a>
+	          <a ng-click="convertProspect()" ng-show="(getVal(prospects.status))&&(PermissionService.showMenu('CONVERT_PROSPECT')&&PermissionService.showMenu('CREATE_CLIENT'))" class="btn btn-primary"><i class="icon-edit icon-white"></i> Convert</a>
+	          <a href="#/editprospects/{{prospects.id}}" ng-show="getVal(prospects.status)&&(PermissionService.showMenu('EDIT_PROSPECT'))" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	          <a href="#/cancelprospects/{{prospects.id}}" ng-show="getVal(prospects.status)&&(PermissionService.showMenu('DELETE_PROSPECT'))" class="btn btn-primary"><i class="icon-trash icon-white"></i> Cancel</a>	        
 	      </div>
 	    </div>
 	</div>

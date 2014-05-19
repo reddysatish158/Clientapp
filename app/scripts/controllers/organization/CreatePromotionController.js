@@ -13,7 +13,7 @@
 	      scope.reset123 = function(){
 	        	   webStorage.add("callingTab", {someString: "Promotioncode" });
 	           };
-	        
+	           
 	        scope.submit = function() {  
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
@@ -21,7 +21,7 @@
 	         //    this.formData.paymentDate= startDate;
 	             this.formData.startDate=startdate;
 	            resourceFactory.promotionResource.save(this.formData,function(data){
-	            	location.path('/discounts');
+	            		location.path('/viewpromotioncode/'+data.resourceId);
 	          });
 	           
 	            webStorage.add("callingTab", {someString: "Promotioncode" });

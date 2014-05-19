@@ -187,6 +187,10 @@ a.list-group-item.active .list-group-item-text {
     color: #FF0000;
 }
 
+.close{
+	color: #FF0000;
+}
+
 .statusgood {
     color: #008000;
 }
@@ -802,7 +806,7 @@ nav ul
 
 nav:hover
 {
-    left: 0;
+    left : 0;
     -webkit-transition: all .30s ease-in-out;
     -moz-transition: all .30s ease-in-out;
     -ms-transition: all .30s ease-in-out;

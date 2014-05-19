@@ -7,10 +7,10 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editplan/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-	         <a data-ng-click="deleteplan()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
-	         <a href="#/prices/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> View Price</a>
-	         <a href="#/createprice/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Add Price</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_PLAN')" href="#/editplan/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	         <a ng-show="PermissionService.showMenu('DELETE_PLAN')" data-ng-click="deleteplan()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
+	         <a ng-show="PermissionService.showMenu('READ_PRICE')" href="#/prices/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> View Price</a>
+	         <a ng-show="PermissionService.showMenu('CREATE_PRICE')&&PermissionService.showMenu('READ_PRICE')" href="#/createprice/{{plan.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Add Price</a>
 	      </div>
 	    </div>
 	</div>

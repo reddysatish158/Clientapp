@@ -1,8 +1,9 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-    	MessangerController: function(scope,webStorage,route,resourceFactory,dateFilter,location) {
+    	MessangerController: function(scope,webStorage,route,resourceFactory,dateFilter,location,PermissionService) {
     		scope.userChatDatas=[];
     		 scope.first = {};
+    		 scope.PermissionService = PermissionService;
    		  scope.first.date = new Date();
    		  scope.appUserDatas=[];
    		scope.userSentmessageDatas=[];
@@ -69,7 +70,7 @@
             
         }
     });
-    mifosX.ng.application.controller('MessangerController', ['$scope', 'webStorage','$route','ResourceFactory','dateFilter','$location', mifosX.controllers.MessangerController]).run(function($log) {
+    mifosX.ng.application.controller('MessangerController', ['$scope', 'webStorage','$route','ResourceFactory','dateFilter','$location','PermissionService', mifosX.controllers.MessangerController]).run(function($log) {
         $log.info("MessangerController initialized");
     });
 }(mifosX.controllers || {}));

@@ -1,7 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewPlanController: function(scope, routeParams , location,resourceFactory,$modal ) {
+	  ViewPlanController: function(scope, routeParams , location,resourceFactory,$modal ,PermissionService) {
         scope.plan = [];
+        
+        scope.PermissionService = PermissionService;
+        
         resourceFactory.planResource.get({planId: routeParams.id} , function(data) {
             scope.plan = data;
            
@@ -31,7 +34,7 @@
         
     }
   });
-  mifosX.ng.application.controller('ViewPlanController', ['$scope', '$routeParams', '$location','ResourceFactory','$modal', mifosX.controllers.ViewPlanController]).run(function($log) {
+  mifosX.ng.application.controller('ViewPlanController', ['$scope', '$routeParams', '$location','ResourceFactory','$modal','PermissionService', mifosX.controllers.ViewPlanController]).run(function($log) {
     $log.info("ViewPlanController initialized");
   });
 }(mifosX.controllers || {}));

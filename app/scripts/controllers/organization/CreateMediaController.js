@@ -196,7 +196,7 @@
                }
              
             resourceFactory.saveMediaResource.save(this.formData,function(data){
-            location.path('/viewmedia/' + data.resourceId);
+            		location.path('/viewmedia/' + data.resourceId);
           });
         };
     }

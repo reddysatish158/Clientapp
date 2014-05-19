@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewDiscountsController: function(scope, routeParams , route, location, resourceFactory, http) {
+	  ViewDiscountsController: function(scope, routeParams , route, location, resourceFactory, http,PermissionService) {
 		 // alert("hh");
-        scope.discounting = [];              
+        scope.discounting = [];   
+        scope.PermissionService =  PermissionService; 
         resourceFactory.discountsResource.getDiscountDetails({discountId: routeParams.id,template: 'true'} , function(data) {
         	//alert('discountController,' +data);
             scope.discounting = data;                                                
@@ -16,7 +17,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('ViewDiscountsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http', mifosX.controllers.ViewDiscountsController]).run(function($log) {
+  mifosX.ng.application.controller('ViewDiscountsController', ['$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$http','PermissionService', mifosX.controllers.ViewDiscountsController]).run(function($log) {
     $log.info("ViewDiscountsController initialized");
   });
 }(mifosX.controllers || {}));

@@ -1,8 +1,9 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        ViewAccountingClosureController: function(scope, resourceFactory, location, routeParams,$modal) {
+        ViewAccountingClosureController: function(scope, resourceFactory, location, routeParams,$modal,PermissionService) {
             scope.accountClosure = {};
             scope.choice = 0;
+            scope.PermissionService=PermissionService;
             resourceFactory.accountingClosureResource.getView({accId:routeParams.id}, function(data){
                 scope.accountClosure = data;
             });
@@ -26,7 +27,7 @@
 
         }
     });
-    mifosX.ng.application.controller('ViewAccountingClosureController', ['$scope', 'ResourceFactory', '$location','$routeParams','$modal', mifosX.controllers.ViewAccountingClosureController]).run(function($log) {
+    mifosX.ng.application.controller('ViewAccountingClosureController', ['$scope', 'ResourceFactory', '$location','$routeParams','$modal','PermissionService', mifosX.controllers.ViewAccountingClosureController]).run(function($log) {
         $log.info("ViewAccountingClosureController initialized");
     });
 }(mifosX.controllers || {}));

@@ -1,14 +1,15 @@
+<div ng-controller="VoucherpinController" >
 <div>
     <ul class="breadcrumb">
         <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.ManageVoucherpins' | translate}}&nbsp;&nbsp;{{employee.lastname}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createvoucherpin" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.voucherpin' | translate }}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_RANDAMGENERATOR')" href="#/createvoucherpin" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.voucherpin' | translate }}</a>
     </div>
 </div>
 
-<div class="row-fluid" ng-controller="VoucherpinController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
 	<table class="table">
         <thead>
@@ -43,4 +44,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

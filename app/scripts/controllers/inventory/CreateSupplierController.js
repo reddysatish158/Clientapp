@@ -9,7 +9,7 @@
            
         scope.submit = function() {   
             resourceFactory.supplierResource.save(this.formData,function(data){
-            	  location.path('/inventory');
+            		location.path('/inventory');
           });
         };
     }

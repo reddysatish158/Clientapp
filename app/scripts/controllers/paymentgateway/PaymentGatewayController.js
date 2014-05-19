@@ -1,7 +1,7 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  PaymentGatewayController: function(scope,webStorage,route,$modal,routeParams,location, resourceFactory, paginatorService) {
-		  
+	  PaymentGatewayController: function(scope,webStorage,route,$modal, routeParams,location, resourceFactory, paginatorService,PermissionService) {
+		 scope.PermissionService = PermissionService;
         scope.paymentgatewaydatas = [];
         scope.formData={};
 	      //for All tab
@@ -236,7 +236,7 @@
           
     }
   });
-  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage','$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
+  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
     $log.info("PaymentGatewayController initialized");
   });
 }(mifosX.controllers || {}));

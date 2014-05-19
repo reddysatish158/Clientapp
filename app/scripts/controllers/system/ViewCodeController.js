@@ -1,7 +1,8 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
-        ViewCodeController: function(scope, routeParams , resourceFactory, location,$modal ) {
+        ViewCodeController: function(scope, routeParams , resourceFactory, location,$modal,PermissionService) {
                    scope.codevalues = [];
+                   scope.PermissionService=PermissionService;
              resourceFactory.codeResources.get({codeId: routeParams.id} , function(data) {
                 scope.code = data;
             });
@@ -28,7 +29,7 @@
 
         }
     });
-    mifosX.ng.application.controller('ViewCodeController', ['$scope', '$routeParams','ResourceFactory','$location','$modal', mifosX.controllers.ViewCodeController]).run(function($log) {
+    mifosX.ng.application.controller('ViewCodeController', ['$scope', '$routeParams','ResourceFactory','$location','$modal','PermissionService', mifosX.controllers.ViewCodeController]).run(function($log) {
         $log.info("ViewCodeController initialized");
     });
 }(mifosX.controllers || {}));

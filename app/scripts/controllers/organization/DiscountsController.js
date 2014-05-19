@@ -1,10 +1,11 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  DiscountsController: function(scope, resourceFactory,location,webStorage) {
+	  DiscountsController: function(scope, resourceFactory,location,webStorage,PermissionService) {
 		  
 		
         scope.discounts = [];
         scope.promotiondatas=[];
+        scope.PermissionService =  PermissionService;
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
@@ -41,7 +42,7 @@
         };
 	  }
   });
-  mifosX.ng.application.controller('DiscountsController', ['$scope', 'ResourceFactory','$location','webStorage', mifosX.controllers.DiscountsController]).run(function($log) {
+  mifosX.ng.application.controller('DiscountsController', ['$scope', 'ResourceFactory','$location','webStorage','PermissionService', mifosX.controllers.DiscountsController]).run(function($log) {
     $log.info("DiscountsController initialized");
   });
 }(mifosX.controllers || {}));

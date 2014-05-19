@@ -1,8 +1,9 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
 
-    ViewTransactionController: function(scope, routeParams, resourceFactory, location) {
-
+    ViewTransactionController: function(scope, routeParams, resourceFactory, location,PermissionService) {
+    	
+    	scope.PermissionService=PermissionService;
       resourceFactory.journalEntriesResource.get({transactionId : routeParams.transactionId}, function(data){
         scope.transactionNumber = routeParams.transactionId;
         scope.transactions = data.pageItems;
@@ -17,7 +18,7 @@
 
     }
   });
-  mifosX.ng.application.controller('ViewTransactionController', ['$scope', '$routeParams', 'ResourceFactory', '$location', mifosX.controllers.ViewTransactionController]).run(function($log) {
+  mifosX.ng.application.controller('ViewTransactionController', ['$scope', '$routeParams', 'ResourceFactory', '$location','PermissionService', mifosX.controllers.ViewTransactionController]).run(function($log) {
     $log.info("ViewTransactionController initialized");
   });
 }(mifosX.controllers || {}));

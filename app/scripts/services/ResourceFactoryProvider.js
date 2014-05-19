@@ -738,31 +738,46 @@
            	  getAllserviceMapping: {method: 'GET', params: {}}
              }),
              
-             provisioningMappingResource: defineResource(apiVer + "/provisionings/:provisioningId", {provisioningId: '@provisioningId'}, {
+             provisioningMappingResource: defineResource(apiVer + "/provisioning/:provisioningId", {provisioningId: '@provisioningId'}, {
              	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
            }),
-           provisioningResource: defineResource(apiVer + "/provisionings/:clientId", {clientId: '@clientId'}, {
+           
+           updateProvisioningMappingResource: defineResource(apiVer + "/provisioning/updateprovisiondetails/:provisioningId", {provisioningId: '@provisioningId'}, {
+          	  
+             update: { method: 'PUT' }
+        }),
+           provisioningResource: defineResource(apiVer + "/provisioning/:clientId", {clientId: '@clientId'}, {
           	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
+//<<<<<<< HEAD
         
-        provisioningserviceResource: defineResource(apiVer + "/provisionings/serviceparams/:orderId", {orderId: '@orderId'}, {
+     /*   provisioningserviceResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId: '@orderId'}, {
         	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
            get: {method: 'GET', params: {}},
            update: { method: 'PUT' }
-      }),
-           provisioningtemplateMappingResource: defineResource(apiVer + "/provisionings/template", {}, {
+      }),*/
+           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template", {}, {
             	  get: {method: 'GET', params: {}}
            }),
+//=======
+        provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderId", {orderId: '@orderId'}, {
+            	  get: {method: 'GET', params: {},isArray: true}
+//>>>>>>> obsplatform-1.01
+           }),
            
-           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+         processRequestResource: defineResource(apiVer + "/provisioning/processRequest/:id", {id: '@id'}, {
+         	  get: {method: 'GET', params: {}}
+          }),
+           
+           provisioningtemplateDataResource: defineResource(apiVer + "/provisioning/provisiontemplate/:orderId", {orderId:'@orderId'}, {
          	  get: {method: 'GET', params: {}}
            }),
            
-           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/serviceparmas/:orderId", {orderId:'@orderId'}, {
+           provisioningtemplateDataResource: defineResource(apiVer + "/provisioning/serviceparmas/:orderId", {orderId:'@orderId'}, {
           	  get: {method: 'GET', params: {}}
             }),
             
@@ -797,20 +812,26 @@
           promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
           }),
-          countryResource: defineResource(apiVer + "/address/country/:id/:add",{id: '@id',add: '@add'},  {
-        	  get: {method: 'POST', params: {add : '@add'}},
-        	  update: { method: 'PUT',params : {id: '@id'}}
+          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
+        	  get: {method: 'POST', params: {}}
          }),
-         
-         stateResource: defineResource(apiVer + "/address/state/:id/:add",{id : '@id',add : '@add'},  {
-       	  get: {method: 'POST', params: {add : '@add'}},
-       	  update: { method: 'PUT',param : {id : '@id'} }
+         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
+        	 update: { method: 'PUT' }
+         }),
+         addStateResource: defineResource(apiVer + "/address/state/new",{},  {
+       	  get: {method: 'POST', params: {}}
        	  
         }),
-        
-        cityResource: defineResource(apiVer + "/address/city/:id/:add",{id : '@id',add : '@add'},  {
-         	  get: {method: 'POST', params: {add : '@add'}},
-         	  update: { method: 'PUT',param : {id : '@id'}}
+        editStateResource: defineResource(apiVer + "/address/state/:id",{id: '@id'},  {
+        	update: { method: 'PUT' }
+         	  
+         }),
+        addCityResource: defineResource(apiVer + "/address/city/new",{},  {
+         	  get: {method: 'POST', params: {}}
+         	  
+          }),
+          editCityResource: defineResource(apiVer + "/address/city/:id",{id: '@id'},  {
+        	  update: { method: 'PUT' }
          	  
           }),
           payInvoiceTemplateResource: defineResource(apiVer + "/invoice/:invoiceId",{invoiceId: '@invoiceId'},  {
@@ -829,6 +850,7 @@
              update: { method: 'PUT' }
           }),
 
+
           groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
         	  getDetails: {method: 'GET', params: {}},
         	  postDetails: { method: 'POST', params: {}}
@@ -839,9 +861,14 @@
          	 getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
-          itemSaleTemplateResource: defineResource(apiVer + "/agents/template", {}, {
+          itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
           	 get: {method: 'GET', params: {}}
            }) ,
+
+           itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
+            	 get: {method: 'GET', params: {}}
+             }) ,
+
            officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
                getPayments: {method: 'GET', params: {}}
            }),
@@ -859,6 +886,9 @@
            }),
            agentsResource: defineResource(apiVer + "/agents", {}, {
                postAgent: {method: 'POST', params: {}}
+           }),
+           redemptionResource: defineResource(apiVer + "/redemption/:clientId/:pinValue", {clientId : '@clientId',pinValue : '@pinValue'}, {
+               postRedemption: {method: 'POST', params: {clientId : '@clientId',pinValue : '@pinValue'}}
            }),
 
         };
