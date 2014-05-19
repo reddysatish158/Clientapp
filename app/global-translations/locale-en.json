@@ -1252,6 +1252,7 @@
   "validation.msg.null.orderdQuantity.cannot.be.blank":"OrderQuantity cannot be blank",
   "validation.msg.null.itemDescription.cannot.be.blank":"Item cannot be blank",
   "validation.msg.null.mrnId.cannot.be.blank":"Please select Mrn Id",
+  "validation.msg.null.itemId.cannot.be.blank":"Please select Item Id",
   
   
   "table.itemhistory.id":"Id",

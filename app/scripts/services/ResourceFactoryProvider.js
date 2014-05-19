@@ -573,6 +573,9 @@
                      get: {method: 'GET', params: {}},
                  	 getMovedMrnResource: {method: 'GET', params: {mrnId:'@mrnId'}}
                  }),
+                 moveItemSaleSaveResource: defineResource(apiVer + "/mrn/moveitemsale", {}, {
+                     get: {method: 'GET', params: {}},
+                 }),
                  viewMrnResource: defineResource(apiVer + "/mrn/view/", {},{
                	  getAlldetails: {method: 'GET', params: {}},
                      get: {method: 'GET', params: {}}
