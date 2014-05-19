@@ -1,9 +1,10 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OfficeAdjustmentsController: function(scope, resourceFactory, routeParams, location,dateFilter) {
+	  OfficeAdjustmentsController: function(scope, resourceFactory, routeParams, location,dateFilter,webStorage) {
 
         scope.formData = {};
         scope.officeId = routeParams.officeId;
+        scope.officeName = webStorage.get("officeName");
         scope.start={};
         scope.start.date = new Date();
         
@@ -26,7 +27,7 @@
 
     }
   });
-  mifosX.ng.application.controller('OfficeAdjustmentsController', ['$scope', 'ResourceFactory', '$routeParams', '$location','dateFilter', mifosX.controllers.OfficeAdjustmentsController]).run(function($log) {
+  mifosX.ng.application.controller('OfficeAdjustmentsController', ['$scope', 'ResourceFactory', '$routeParams', '$location','dateFilter','webStorage', mifosX.controllers.OfficeAdjustmentsController]).run(function($log) {
     $log.info("OfficeAdjustmentsController initialized");
   });
 }(mifosX.controllers || {}));

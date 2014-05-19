@@ -100,6 +100,7 @@
 <!-- Navbar  -->
 
 <div ng-class="{fullscreen:true,blockui:blockUI==true}" id="main"  data-ng-hide="currentSession.user == null">
+
        <div class="loading-widget-div" data-ng-show="blockUI">
         <div id="circularG">
             <div id="circularG_1" class="circularG">
@@ -120,7 +121,7 @@
             </div>
         </div>
 
-      </div>    
+      </div>      
 
 
     <nav>
@@ -171,7 +172,7 @@
                         <li class="dropdown" id="preview-menu" ng-show="user||organization||system||upload||jobs||accounting||smartsearch||paymentGetWay||pooling">
                             <a class="dropdown-toggle" data-toggle="dropdown" ng-class="{ activate: isActive('admin') }" href="#"><i class="icon-wrench"></i>{{ 'link.admin' | translate }}<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-<!-- <<<<<<< HEAD
+<!-- 
                                 <li><a href="#/organization">{{ 'link.admin.organisation' | translate }}</a></li>
                                 <li><a href="#/system">{{ 'link.admin.system' | translate }}</a></li>
                                 <li><a href="#/products">{{ 'link.admin.products' | translate }}</a></li>
@@ -182,7 +183,7 @@
                                  <li><a href="#/smartSearch">Smart Search</a></li>
                                 <li><a href="#/paymentGateway">Payment Gateway</a></li>
                                 
-======= -->
+ -->
                                 <li><a ng-show="user=PermissionService.showMenu('READ_USER')" href="#/users">{{ 'link.admin.users' | translate }}</a></li>
                                 <li><a ng-show="organization=PermissionService.showMenu('READ_OFFICE','READ_STAFF','READ_CONTRACT','READ_MEDIAASSET','READ_EVENT','READ_DISCOUNT','READ_PROMOTIONCODE','READ_COUNTRYCURRENCY','READ_LOCATION',
                                 							'READ_CURRENCY','READ_SERVICE','READ_PLAN','READ_REGION','READ_RANDAMGENERATOR','READ_CHARGECODE','READ_MESSAGE')" href="#/organization">{{ 'link.admin.organisation' | translate }}</a></li>

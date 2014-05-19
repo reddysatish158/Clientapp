@@ -247,7 +247,8 @@ define(['underscore', 'mifosX'], function() {
       'system/CreateIpPoolingController',
       'organization/ItemSaleController',
       'organization/OfficeAdjustmentsController',
-      'organization/OfficePaymentsController'
+      'organization/OfficePaymentsController',
+      'organization/RedemptionController'
 
     ],
     filters: [

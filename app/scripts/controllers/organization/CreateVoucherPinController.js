@@ -3,15 +3,21 @@
 	    CreateVoucherPinController: function(scope, resourceFactory, location,dateFilter) {
 	        scope.pinCategoryDatas = [];
 	        scope.pinTypeDatas = [];
+	        scope.plandatas = [];
 	        scope.start={};
 	        scope.start.date = new Date();
 	        resourceFactory.voucherpinTemplateResource.get(function(data) {
 	            scope.pinCategoryDatas = data.pinCategoryData;
-	            scope.pinTypeDatas = data.pinTypeData;
+	            //scope.pinTypeDatas = data.pinTypeData;
+	            scope.pinTypeDatas.push({"value":"VALUE"},{"value":"PRODUCT"});
 	            scope.formData = {
 	            		
 	            };
 	        });
+	        resourceFactory.orderTemplateResource.get({'planId': 0},function(data) {
+	        	 
+	            scope.planDatas = data.plandata;
+	       });
 	        
 	        scope.submit = function() {  
 	        	 this.formData.locale = "en";
