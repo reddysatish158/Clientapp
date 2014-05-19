@@ -26,12 +26,12 @@
         </thead>
         <tbody>
             <tr class="pointer-main" ng-repeat="report in reports.currentPageItems | filter:filterText">
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.reportName}}</td>
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.reportType}}</td>
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.reportSubType}}</td>
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.reportCategory}}</td>
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.coreReport}}</td>
-                <td class="pointer" data-ng-click="routeToreport(report.id)">{{report.useReport}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.reportName}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.reportType}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.reportSubType}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.reportCategory}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.coreReport}}</td>
+                <td class="pointer" data-ng-click="routeToreport(report.reportId)">{{report.useReport}}</td>
             </tr>
         </tbody>
     </table>

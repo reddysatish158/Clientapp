@@ -814,7 +814,7 @@
 
       })
       .when('/itemsale',{
-    	  templateUrl: 'views/inventory/itemSale.html'
+    	  templateUrl: 'views/organization/itemSale.html'
 
     
       })

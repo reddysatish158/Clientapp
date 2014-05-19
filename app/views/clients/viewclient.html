@@ -471,12 +471,12 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Item Sale" select="getOneTimeSale()" active="SaleTab"
+      <tab heading="Device Sale" select="getOneTimeSale()" active="SaleTab"
       ng-show="$parent.PermissionService.showMenu('READ_ONETIMESALE')">
       <hr>
  		<div class="tabbable">
   			<ul class="nav nav-tabs">
-				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Item Sale</a></li>
+				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Device Sale</a></li>
     				<li ng-show="PermissionService.showMenu('CREATE_EVENTORDER')&&PermissionService.showMenu('READ_EVENTORDER')" class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li>
     				<!-- <li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li> -->
 			    </ul>
