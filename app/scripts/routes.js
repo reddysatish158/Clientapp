@@ -830,6 +830,9 @@
       })
       .when('/officepayments/:officeId',{
     	  templateUrl: 'views/organization/officepayments.html'
+      })
+      .when('/redemption',{
+    	  templateUrl: 'views/organization/redemption.html'
       });
 
     $locationProvider.html5Mode(false);
