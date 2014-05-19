@@ -15,13 +15,10 @@
             scope.discountdatas = data.discountdata;
             scope.priceRegionDatas = data.priceRegionData;
             scope.serviceDatas = data.serviceData;
-           
+            scope.serviceDatas.push({"id":0,"serviceCode":"none","serviceDescription":"None"});
+            
             
         });
-        
-    	
-        
-        
         scope.submit = function() {
              
         	 delete this.formData.serviceData;
