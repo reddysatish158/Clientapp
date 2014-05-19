@@ -180,6 +180,9 @@
             get: {method: 'GET', params: {}},
             update: {method: 'PUT', params: {}}
           }),
+          configurationSMTPResource:defineResource(apiVer + "/configurations/smtp",{}, {
+              get: {method: 'GET', params: {}}
+            }),
           cacheResource:defineResource(apiVer + "/caches",{}, {
             get: {method: 'GET', params: {}, isArray:true},
             update: {method: 'PUT', params: {}}
