@@ -890,8 +890,8 @@
            agentsResource: defineResource(apiVer + "/agents", {}, {
                postAgent: {method: 'POST', params: {}}
            }),
-           redemptionResource: defineResource(apiVer + "/redemption/:clientId/:pinValue", {clientId : '@clientId',pinValue : '@pinValue'}, {
-               postRedemption: {method: 'POST', params: {clientId : '@clientId',pinValue : '@pinValue'}}
+           redemptionResource: defineResource(apiVer + "/redemption", {}, {
+               postRedemption: {method: 'POST', params: {}}
            }),
 
         };
