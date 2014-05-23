@@ -3,6 +3,9 @@
         <li class="active">{{'label.globalconfigurations' | translate}}</li>
     </ul>
 </div>
+<div class="pull-right">
+        <a href="#/createsmtp" class="btn btn-primary"><i class="icon-plus icon-white"></i>Create SMTP</a>
+</div>
 <div class="row-fluid" ng-controller="GlobalConfigurationController">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="{{'label.filterbyname' | translate}}">
     <table class="table">
@@ -25,7 +28,7 @@
                 <button type="button" class="btn btn-danger flag" data-ng-show="config.enabled" data-ng-click="disable(config.id,config.name)"><i class="icon-remove"></i></button>
             </td>
             <td></td>
-            <td><a ng-click="edit(config.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td> 
+            <td ng-hide="config.name=='SMTP'"><a ng-click="edit(config.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td> 
         </tr>
         </tbody>
     </table>

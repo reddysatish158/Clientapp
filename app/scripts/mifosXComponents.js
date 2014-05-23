@@ -119,6 +119,7 @@ define(['underscore', 'mifosX'], function() {
       'reports/RunReportsController',
       'private/SuperuserController',
       'configurations/GlobalConfigurationController',
+      'configurations/CreateSmtpController',
       'system/AuditController',
       'system/ViewAuditController',
       'organization/PlanController',
