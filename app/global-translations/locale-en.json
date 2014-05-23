@@ -1957,7 +1957,12 @@
 "validation.msg.officepayment.amountPaid.cannot.be.blank":" Amount can not be blank",
 "validation.msg.officeadjustment.adjustment_code.cannot.be.blank":" Adjustment Code can not be blank",
 "validation.msg.officeadjustment.amount_paid.cannot.be.blank":"Adjustment Amount can not be blank",
-"error.msg.officePayment_receiptNo.duplicate.name":"Receipt Number is Already Exist"
+"error.msg.officePayment_receiptNo.duplicate.name":"Receipt Number is Already Exist",
+
+"#Redemption":".......",
+"validation.msg.redemption.clientId.cannot.be.blank":"Client id cannot be blank",
+"validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
+"error.msg.client.id.invalid":"Invalid Client Id"
 
 
    

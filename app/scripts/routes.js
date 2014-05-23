@@ -444,10 +444,6 @@
       .when('/provision/:orderId', {
         templateUrl: 'views/clients/createprovisioning.html'
       })
-      
-      .when('/editprovision/:orderId', {
-          templateUrl: 'views/clients/editserviceparameters.html'
-        })
       .when('/voucherpins', {
         templateUrl: 'views/organization/voucherpins.html'
       })
@@ -795,11 +791,9 @@
         templateUrl : 'views/clients/creditDistribution.html'
       })
 
-
       .when('/closeclient/:id', {
         templateUrl : 'views/clients/closeclient.html'
       })
-
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
       })
@@ -810,30 +804,24 @@
       })      
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
-
-
-      })
-      .when('/itemsale',{
-    	  templateUrl: 'views/organization/itemSale.html'
-
     
+      })
+        .when('/itemsale/:officeId',{
+     templateUrl: 'views/organization/itemSale.html'
+      })
+      .when('/officeadjustments/:officeId',{
+     templateUrl: 'views/organization/officeadjustments.html'
+      })
+      .when('/officepayments/:officeId',{
+     templateUrl: 'views/organization/officepayments.html'
+      })
+      .when('/redemption',{
+     templateUrl: 'views/organization/redemption.html'
       })
       .when('/editProvison/:id', {
         templateUrl: 'views/clients/editProvisioning.html'
-      })
-
-      .when('/itemsale/:officeId',{
-    	  templateUrl: 'views/organization/itemSale.html'
-      })
-      .when('/officeadjustments/:officeId',{
-    	  templateUrl: 'views/organization/officeadjustments.html'
-      })
-      .when('/officepayments/:officeId',{
-    	  templateUrl: 'views/organization/officepayments.html'
-      })
-      .when('/redemption',{
-    	  templateUrl: 'views/organization/redemption.html'
       });
+    
 
     $locationProvider.html5Mode(false);
   };
