@@ -246,18 +246,15 @@ define(['underscore', 'mifosX'], function() {
 
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
-<<<<<<< HEAD
+      'organization/ItemSaleController',
+      'organization/OfficeAdjustmentsController',
+      'organization/OfficePaymentsController',
+      'organization/RedemptionController',
       'client/AddCreditCardController',
       'client/AddACHController',
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
-=======
-      'organization/ItemSaleController',
-      'organization/OfficeAdjustmentsController',
-      'organization/OfficePaymentsController',
-      'organization/RedemptionController'
 
->>>>>>> upstream/master
     ],
     filters: [
       'StatusLookup',

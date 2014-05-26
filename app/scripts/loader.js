@@ -31,11 +31,8 @@
             'ckEditor':         '../bower_components/ckeditor/ckeditor',
             'LocalStorageModule':'../scripts/modules/localstorage',
             'configurations':'../scripts/modules/configurations',
-<<<<<<< HEAD
+            'chosen.jquery.min': "../scripts/modules/chosen.jquery.min",
             'aes':'../scripts/CryptoJS/rollups/aes'
-=======
-            'chosen.jquery.min': "../scripts/modules/chosen.jquery.min"
->>>>>>> upstream/master
         },
         shim: {
             'angular': { exports: 'angular' },
@@ -59,11 +56,9 @@
             'ckEditor':{deps:['jquery']},
             'LocalStorageModule':{deps:['angular']},
             'configurations':{deps: ['angular']},
-<<<<<<< HEAD
-            'aes':{deps: ['jquery']},
-=======
             'chosen.jquery.min': {deps: ['jquery']},
->>>>>>> upstream/master
+            'aes':{deps: ['jquery']},
+
             'mifosX': {
                 deps: [
                     'angular',
@@ -87,11 +82,8 @@
                     'frAngular',
                     'LocalStorageModule',
                     'configurations',
-<<<<<<< HEAD
-                    'aes'
-=======
-                    'chosen.jquery.min'
->>>>>>> upstream/master
+                    'chosen.jquery.min',
+                    'aes'                
                 ],
                 exports: 'mifosX'
             }
