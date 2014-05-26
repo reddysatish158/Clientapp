@@ -28,6 +28,7 @@
          scope.phone=clientData.phone;
          webStorage.add("orderId",routeParams.id);
          scope.PermissionService = PermissionService;
+         scope.provisioningdatas =[];
       
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
            
@@ -168,6 +169,14 @@
               resolve:{}
           });
       	
+      };
+      
+      scope.getAllProvisioningDetails = function () {
+          
+          
+          resourceFactory.provisioningtemplateMappingResource.get({clientId: routeParams.clientId} , function(data) {
+              scope.provisioningdatas = data;
+            });
       };
       
       var extensionController=function($scope,$modalInstance){
@@ -370,7 +379,16 @@
             });
         };
         
-      
+      scope.reProcess=function(processId){
+    	  
+    	  resourceFactory.updateProvisioningMappingResource.update({'provisioningId':processId},{},function(data){
+          	/*location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
+          	location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);*/
+    		  route.reload();
+	           
+	          });
+    	  
+      }
           scope.updatePrice = function (id,price){
         	  scope.orderData.locale="en";
         	  scope.orderData.price=price;

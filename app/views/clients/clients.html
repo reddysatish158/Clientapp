@@ -28,12 +28,12 @@
         </thead>
         <tbody>
             <tr class="pointer-main" ng-repeat="client in clients.currentPageItems  | filter:filterText" >
-                <td class="pointer" data-ng-click="routeTo(client.id)">{{client.displayName}}</td>
-                 <td class="pointer" data-ng-click="routeTo(client.id)"><i class="icon-stop {{client.status.value | StatusLookup}}"></i>&nbsp;{{client.status.value}}</td>
-                <td class="pointer" data-ng-click="routeTo(client.id)">{{client.accountNo}}</td>
-                <td class="pointer" data-ng-click="routeTo(client.id)">{{client.officeName}}</td>
-                <td class="pointer" data-ng-click="routeTo(client.id)">{{client.hwSerialNumber}}</td>
-                <td class="pointer" data-ng-click="routeTo(client.id)">{{client.balanceAmount}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.displayName}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" ><i class="icon-stop {{client.status.value | StatusLookup}}"></i>&nbsp;{{client.status.value}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.accountNo}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.officeName}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.hwSerialNumber}}</td>
+                <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.balanceAmount}}</td>
             </tr>
         </tbody>
     </table>

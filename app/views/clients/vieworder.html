@@ -100,9 +100,9 @@
 		     <a ng-show ="(orderData.status == 'ACTIVE')&&PermissionService.showMenu('APPLYPROMO_ORDER')" ng-click="applyPromo()" class="btn btn-primary"><i class="icon-gift"></i>Apply Promo</a>
 		     <a ng-show ="orderData.status != 'PENDING'" ng-click="extension()" class="btn btn-primary"><i class="icon-cog"></i>Extension</a>
 		     <a ng-show ="(orderData.status == 'ACTIVE')&&PermissionService.showMenu('CHANGEPLAN_ORDER')" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
-		     <a ng-show ="orderData.status == 'PENDING'" href="#/provision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Provision It</a>
+		     <!-- <a ng-show ="orderData.status == 'PENDING'" href="#/provision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Provision It</a> -->
 		    
-	      
+	      	
 	        <span  class="btn-group">
               <a class="btn btn-primary dropdown-toggle" ng-show="(orderData.status == 'ACTIVE')&&PermissionService.showMenu('RETRACKOSDMESSAGE_ORDER')">
                 {{ 'label.button.more' | translate}}
@@ -267,7 +267,6 @@
     </div>
         </tab>
 
-
 	<tab heading="Order Transaction">
 	<div class="row-fluid ">
     
@@ -289,6 +288,34 @@
                 
                 
             </tr>
+        </tbody>
+    </table>
+</div>
+	</tab>
+		<tab heading="Provisioning Details"  select="getAllProvisioningDetails()">
+	<div class="row-fluid ">
+	<table class="table">
+        <thead>
+           <tr class="graybg">
+				 	<th>{{'table.heading.id' | translate}}</th>
+					<th>Order Id</th>
+					<th>Request Type</th>
+					<th>Status</th>
+					<th>Recieved Message</th>
+					<th></th>
+				</tr>
+        </thead>
+        <tbody>
+          <tr class="pointer-main" ng-repeat="provisioningdata in provisioningdatas  | filter:filterText">
+					<td class="pointer" >{{provisioningdata.id}}</td>
+					<td class="pointer" >{{provisioningdata.orderId}}</td>  
+					<td class="pointer" >{{provisioningdata.requestType}}</td>
+					<td ng-show="provisioningdata.isProcessed == 'F'" class="pointer" >Failure</td>
+					<td ng-show="provisioningdata.isProcessed == 'Y'" class="pointer" >Success</td>
+					<td ng-show="provisioningdata.isProcessed == 'N'" class="pointer" >Processing</td>
+					<td class="pointer" >{{provisioningdata.receiveMessage}}</td>
+					  <td><a ng-show="provisioningdata.isProcessed == 'F' " ng-click="reProcess(provisioningdata.id)" popover="Re Process" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a></td>
+				</tr>
         </tbody>
     </table>
 </div>

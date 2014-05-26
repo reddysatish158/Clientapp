@@ -47,6 +47,25 @@
               <input type="text" id="image" ng-model="formData.image">
             </div>
           </div>
+          
+          <div class="control-group" ng-show="'IPTV'| ConfigLookup">
+            	<label class="control-label" for="category">{{'label.category' | translate }}</label>
+            	<div class="controls">
+                <select ng-model="formData.category"  ng-options="c.mCodeValue as c.mCodeValue for c in categories" value="{{c.id}}">
+              	<option value="">{{'label.select.one' | translate}}</option>
+              	</select>
+            	</div>
+           </div>
+            	
+           <div class="control-group" ng-show="'IPTV'| ConfigLookup">
+            	<label class="control-label" for="subcategory">{{'label.subcategory' | translate }}</label>
+            	<div class="controls">
+                <select ng-model="formData.subCategory"  ng-options="sc.mCodeValue as sc.mCodeValue for sc in subCategories" value="{{sc.id}}">
+              	<option value="">{{'label.select.one' | translate}}</option>
+              	</select>
+            	</div>
+          
+          </div>
          
           <div class="offset3">
             <a href="#/viewServiceMapping/{{serviceMappingId}}"><button id="cancel" type="reset" class="btn">{{'label.cancel' | translate}}</button></a>

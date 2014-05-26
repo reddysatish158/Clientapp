@@ -189,9 +189,10 @@
 					  				scope.itemhistory = paginatorService.paginate(scope.searchHistory123, 14);
 					  			}
 					  		};
-							scope.editQuality = function(itemId,valueQuality){
+							scope.editQuality = function(itemId,valueQuality,provisionalserialNum){
 					            scope.itemid=itemId;
 					            scope.valueQuality=valueQuality;
+					            scope.provisionalserialNum=provisionalserialNum;
 					        	  scope.errorStatus=[];scope.errorDetails=[];
 					        	  $modal.open({
 					                  templateUrl: 'EditQuality.html',
@@ -199,17 +200,30 @@
 					                  resolve:{}
 					              });
 					          };
+					          scope.editProvSerial= function(itemId,valueQuality,provisionalserialNum){
+						            scope.itemid=itemId;
+						            scope.valueQuality=valueQuality;
+						            scope.provisionalserialNum=provisionalserialNum;
+						        	  scope.errorStatus=[];scope.errorDetails=[];
+						        	  $modal.open({
+						                  templateUrl: 'EditProvSerial.html',
+						                  controller: EditQualityController,
+						                  resolve:{}
+						              });
+						          };
 					          var EditQualityController = function ($scope, $modalInstance) {
 
 					          	resourceFactory.itemQualityResource.get(function(data) {
 					                  $scope.qualityData = data.quality;
 					                  $scope.quality=scope.valueQuality;
+					                  $scope.provserialnum=scope.provisionalserialNum;
 					              });
-					        	  $scope.approveQuality = function (value) {
-					        		  
+					        	  $scope.approveQuality = function (value,provserialnum) {
+					        		//  alert(value);
 					        		  $scope.flagEditQuality=true;
 					        		  //if(this.formData == undefined || this.formData == null){
 					        			  this.formData = {"quality":value};
+					        			  this.formData = {"quality":value,"provisioningSerialNumber":provserialnum};
 					        		  //}
 					        		  resourceFactory.itemDetailsResource.update({'itemId': scope.itemid},this.formData,function(data){
 					        	      

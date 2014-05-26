@@ -51,7 +51,9 @@ define(['underscore', 'mifosX'], function() {
       'client/CreateClientControllerwizard',
       'client/CreateProvisioningController',
       'client/CreateActivationController',
+      'client/EditProvisioningDetailsController',
       'user/UserController',
+      'system/ViewProvisioningMappingController',
       'user/UserFormController',
       'user/UserSettingController',
       'user/UserListController',
@@ -117,6 +119,7 @@ define(['underscore', 'mifosX'], function() {
       'reports/RunReportsController',
       'private/SuperuserController',
       'configurations/GlobalConfigurationController',
+      'configurations/CreateSmtpController',
       'system/AuditController',
       'system/ViewAuditController',
       'organization/PlanController',
@@ -247,7 +250,8 @@ define(['underscore', 'mifosX'], function() {
     filters: [
       'StatusLookup',
       'YesOrNo',
-      'DateFormat'
+      'DateFormat',
+      'ConfigLookup'
     ],
     directives: [
       'DataTablesDirective',

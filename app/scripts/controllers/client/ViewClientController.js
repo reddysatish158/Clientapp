@@ -194,7 +194,8 @@
                                         {
                                         	name:"Close",
                                         	href:"#/closeclient",
-                                        	icon:"icon-remove"
+                                        	icon:"icon-remove",
+                                        	 ngShow : "true"
                                         },
                                         {
 	                                          name:"",	
@@ -622,6 +623,8 @@
             resourceFactory.HardwareResource.getAllOwnHardware({clientId: routeParams.id} , function(data) {
               scope.ownhardwares = data;
             });
+            
+           
         };
         
         scope.cancelSale = function(otsId,index){

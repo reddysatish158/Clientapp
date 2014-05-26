@@ -1,0 +1,84 @@
+      <div>
+        <ul class="breadcrumb">
+          <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+          <li class="active">{{'label.createvoucherpin' | translate}}</li>
+        </ul>
+      </div>
+      <form name="createsmtp" class="form-horizontal well" ng-controller="CreateSmtpController" ng-submit="submit()">
+       <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+        <fieldset>
+          <legend>Create SMTP</legend>
+			<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td>
+								<div class="control-group">
+           					 	<label class="control-label" for="userName">Name</label>
+            					<div class="controls">
+             					 <input type="text" id="userName" ng-model="formData.userName">
+           						</div>
+         						</div>
+							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="mailId">{{ 'label.emailId' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+              					<input type="email" id="mailId" name="mailId" ng-model="formData.mailId">
+              					<div ng-show="createsmtp.mailId.$dirty && createsmtp.mailId.$invalid">
+              						<small class="error" ng-show="createsmtp.mailId.$error.email">Invalid Email</small>
+              					</div>
+           						 </div>
+          						</div>
+							</td>
+							</tr>
+							<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="password">{{ 'label.password' | translate }}</label>
+            					<div class="controls">
+              					<input type="password" id="password" ng-model="formData.password">
+            					</div>
+          						</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="control-group">
+           					 		<label class="control-label" for="hostName">{{ 'label.hostName' | translate }}</label>
+            						<div class="controls">
+              						<input type="text" id="hostName" ng-model="formData.hostName">
+            						</div>
+          							</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+								<div class="control-group">
+            					<label class="control-label" for="port">{{ 'label.port' | translate }}</label>
+            					<div class="controls">
+              					<input type="text" id="port" ng-model="formData.port">
+            					</div>
+          						</div>
+							</td>
+							</tr>
+					</table>
+			
+				</td>
+			</tr>
+			</table>
+  			
+          <div class="offset3">
+            <a href="#/global"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
+            <button  id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+          </div>
+          
+        </fieldset>
+      </form>

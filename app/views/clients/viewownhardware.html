@@ -54,6 +54,11 @@
 		</ul>
 	</div>
      
+       <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	</div>
     <div class="paddedbottom10">
 	    <div class="pull-right">
 	      <div class="btn-group">
