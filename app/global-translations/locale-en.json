@@ -1963,6 +1963,27 @@
 "validation.msg.redemption.clientId.cannot.be.blank":"Client id cannot be blank",
 "validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
 "error.msg.client.id.invalid":"Invalid Client Id"
+"#Add CreditCard":".....",
+"link.view.creditcard":"CreditCard",
+"label.client.creditcard":"Add CreditCard Details",
+"label.carddetails.id":"id  : ",
+"label.client.creditcard.name":"Name on Card : ",
+"label.client.creditcard.cardnumber":" Card Number : ",
+"label.client.creditcard.expirydate":"Expiry Date : ",
+"label.client.achcard":"ACH Details",
+"label.client.achcard.name":"Name on Customer Account : ",
+"label.client.achcard.routingNumber":"ABA Routing Number : ",
+"label.client.achcard.bankAccountNumber":"Bank Account Number : ",
+"label.client.achcard.bankName":"Bank Name : ",
+"label.client.achcard.accountType":"Account Type : ",
+"table.heading.cardNumber":"Card Number : ",
+"table.heading.cardExpiryDate":"Expiry Date : ",
+"table.heading.routingNumber":"ABA Routing Number : ",
+"table.heading.bankName":"Bank Name",
+"table.heading.bankAccountNumber":"Bank Account Number",
+"table.heading.accountType":"Account Type",
+"label.viewcarddetails":"View Card Details"
+
 
 
    

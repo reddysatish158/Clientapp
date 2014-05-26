@@ -5,9 +5,10 @@
     <link rel="icon" type="image/png" href="./images/favicon.ico" />
     <title>{{ 'label.product.title' | translate }}</title>
     <style>[data-ng-cloak] { display: none !important; }</style>
-    <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+   <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">google.load("visualization", "1", {packages:["corechart"]});
 </script> -->
+
 </head>
 <body  class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80" data-ng-cloak data-ng-controller="MainController">
 <!-- Login Form  -->
@@ -181,6 +182,9 @@
                                     <li><a href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
                                  <li><a href="#/smartSearch">Smart Search</a></li>
+<<<<<<< HEAD
+                                <li><a href="#/paymentGateway">Payment Gateway</a></li>                                         
+=======
                                 <li><a href="#/paymentGateway">Payment Gateway</a></li>
                                 
  -->
@@ -198,6 +202,7 @@
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
                                  <!-- <li><a ng-show="pooling=PermissionService.showMenu('READ_IPPOOLMANAGEMENT') href="#/ipPooling">IpPooling</a></li> -->
 
+>>>>>>> upstream/master
                             </ul>
                         </li>
                     </ul>
