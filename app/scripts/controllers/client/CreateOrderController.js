@@ -246,9 +246,15 @@
          };
 
         scope.submit = function() {   
+        	
         	this.formData.isNewplan =false;
         	if(routeParams.planId == 0){
         		this.formData.isNewplan =true;
+        	}
+        	if(this.formData.isPrepaid == 'Y'){
+        		this.formData.billAlign = false;
+        	}else{
+        		this.formData.billAlign = true;
         	}
         	scope.flag = true;
         	this.formData.locale = 'en';

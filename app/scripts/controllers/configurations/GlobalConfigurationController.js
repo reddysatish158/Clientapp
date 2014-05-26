@@ -30,6 +30,18 @@
 		        	
 		        };
 		        
+		        scope.editPaypal= function(id){
+			      	  scope.errorStatus=[];
+			      	  scope.errorDetails=[];
+			      	  scope.editId=id;
+			        	  $modal.open({
+			                templateUrl: 'editPaypal.html',
+			                controller:editPaypalController ,
+			                resolve:{}
+			            });
+			        	
+			        };
+		        
 		        var editGlobalController=function($scope,$modalInstance){
 			      	  
 		        	$scope.formData = {}; 
@@ -56,6 +68,43 @@
 		                   });
 		         	};  
 		    		$scope.reject = function(){
+		    			$modalInstance.dismiss('cancel');
+		    		};
+		        };
+		        
+		        var editPaypalController=function($scope,$modalInstance){
+
+		        	$scope.formData = {}; 
+		            $scope.statusData=[];
+		            $scope.updateData={};
+		            
+		            
+		            
+		           // DATA GET
+		            resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
+		                 var value=data.value;
+		                 var arr = value.split(",");
+		                 var clientId = arr[0].split(":");
+		                 var secretCode = arr[1].split('"');
+		                 
+		                 $scope.formData.id = clientId[1];
+		                 $scope.formData.code = secretCode[3];
+		            });
+		            
+		         	$scope.submit = function(){
+		         		$scope.paypalFlag=true;
+		         		//consoe.log($scope.clientId);
+		         		$scope.paypalData = {"value":'{"clientId" :'+$scope.formData.id+',"secretCode" : "'+$scope.formData.code+'"}'};
+		         		$scope.updateData.value=$scope.paypalData.value;
+		         		//console.log(this.updateData);
+		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.updateData,function(data){ 
+		         			   $modalInstance.close('delete');
+		                       route.reload();
+		                 },function(errData){
+			                  $scope.paypalFlag = false;
+		                 });
+		         	};  
+		    		$scope.cancel = function(){
 		    			$modalInstance.dismiss('cancel');
 		    		};
 		        };
