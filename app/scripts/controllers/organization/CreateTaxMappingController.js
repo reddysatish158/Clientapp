@@ -25,7 +25,7 @@
             delete this.formData.priceRegionData;
             delete this.formData.taxMapData;
             resourceFactory.getTaxmappingResource.save({'taxId':routeParams.chargeCode},this.formData,function(data){
-            location.path('/viewtaxmapping/' + data.resourceId);
+            		location.path('/viewtaxmapping/' + data.resourceId);
           });
         };
     }

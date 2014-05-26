@@ -1,3 +1,4 @@
+<div ng-controller="ContractController">
 <div>
 
     <ul class="breadcrumb">
@@ -5,10 +6,10 @@
         <li class="active">{{'label.contracts' | translate}}&nbsp;&nbsp;</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createContract" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.contract' | translate }}</a>
+        <a ng-show="PermissionService.showMenu('CREATE_CONTRACT')" href="#/createContract" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.contract' | translate }}</a>
     </div>
 </div>
-<div class="row-fluid" ng-controller="ContractController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by ContractPeriod/ContractType/Units">
 	<table class="table">
         <thead>
@@ -26,4 +27,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

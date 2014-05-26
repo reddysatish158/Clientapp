@@ -6,8 +6,12 @@
             return function(input) {    
             	
             	var  configNameLookup = {
-                   "payment":"true"
-                 }
+
+                   "payment":"true",
+                   "IPTV":"true"
+                	   //Segment
+                 };
+
 
                   
                   return configNameLookup[input];};

@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  AllocateHardwareOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory) {
+		  AllocateHardwareOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory,$rootScope,API_VERSION,http) {
 			  scope.formData = {};
 			  scope.clientId=routeParams.clientId;
 			  var clientData = webStorage.get('clientData');
@@ -16,43 +16,33 @@
 	            scope.email=clientData.email;
 	            scope.phone=clientData.phone;
 			  
-	        /*resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId: routeParams.id}, function(data) {
-	        	
-	            scope.itemDetails = data.serials;
-	            scope.formData=data;
-	            
-	        });*/
-			  
 			  resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId: routeParams.id}, function(data) {
 	 	          scope.formData=data;
 	 	    }); 
 	        
 	        scope.getData = function(query){
-	        	if(query.length>0){
-	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:  scope.formData.itemMasterId,query: query}, function(data) { 	        	
-	     	            scope.itemDetails = data.serials;
-	     	        }); 
-	        	}else{
-	            	
-	        	}
-            }
+	        	  /*resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:  scope.formData.itemMasterId,query: query}, function(data) {
+	        		  scope.itemDetails  = data.serials;
+	     	        }); */
+	        	 return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemMasterId, {
+	        	      params: {
+	        	    	  query: query
+	        	      }
+	        	    }).then(function(res){
+	        	    	itemDetails = [];
+	        	      for(var i in res.data.serials){
+	        	    	  itemDetails.push(res.data.serials[i]);
+	        	    	  if(i == 7)
+	        	    		  break;
+	        	      }
+	        	      return itemDetails;
+	        	    });
+            };
 	        	
 	        scope.getNumber = function(num) {
 	             return new Array(num);   
 	         };
 	         
-	       /*  var temp1=new Array();
-		        scope.selectItem = function(itemDetail){
-		        	var temp = {};
-	    			temp["serialNumber"] =itemDetail;
-	    			temp["orderId"] = routeParams.id;
-	    			temp["clientId"] = routeParams.clientId;
-	    			temp["status"] = "allocated";
-	    			temp["itemMasterId"] = this.formData.itemMasterId;
-	    			temp1.push(temp);
-		        };*/
-	       
-	        
 	        scope.submit = function() {  
 	        	var temp1 = new Array();
 	        	
@@ -66,7 +56,6 @@
 	    			temp["isNewHw"]="Y";
 	    			temp1.push(temp);
 	        	});
-	        
 	        	
 	            this.formData.serialNumber=temp1;
 	            delete this.formData.serials;
@@ -76,12 +65,10 @@
 	            	location.path('/viewclient/' + routeParams.clientId);
 	            });
 	           // temp1 = undefined;
-	            console.log("asjhj");
-	            
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('AllocateHardwareOneTimeSaleController', ['$scope', 'webStorage','$routeParams', '$location', 'ResourceFactory', mifosX.controllers.AllocateHardwareOneTimeSaleController]).run(function($log) {
+	  mifosX.ng.application.controller('AllocateHardwareOneTimeSaleController', ['$scope', 'webStorage','$routeParams', '$location', 'ResourceFactory','$rootScope','API_VERSION','$http', mifosX.controllers.AllocateHardwareOneTimeSaleController]).run(function($log) {
         $log.info("AllocateHardwareOneTimeSaleController initialized");
     });
 }(mifosX.controllers || {}));

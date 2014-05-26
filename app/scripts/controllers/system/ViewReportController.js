@@ -1,6 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewReportController: function(scope, routeParams , resourceFactory,location,$modal) {
+    ViewReportController: function(scope, routeParams , resourceFactory,location,$modal,PermissionService) {
+    	scope.PermissionService = PermissionService; 
+
       resourceFactory.reportsResource.getReportDetails({id: routeParams.id} , function(data) {
           scope.report = data;
           scope.noncoreReport = data.coreReport==true ? false : true;
@@ -24,7 +26,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewReportController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal', mifosX.controllers.ViewReportController]).run(function($log) {
+  mifosX.ng.application.controller('ViewReportController', ['$scope', '$routeParams','ResourceFactory', '$location','$modal','PermissionService', mifosX.controllers.ViewReportController]).run(function($log) {
     $log.info("ViewReportController initialized");
   });
 }(mifosX.controllers || {}));

@@ -7,12 +7,12 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editcontract/{{contractperiod.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-	         <a ng-click="deletecontract()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_CONTRACT')" href="#/editcontract/{{contractperiod.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	         <a ng-show="PermissionService.showMenu('DELETE_CONTRACT')" ng-click="deletecontract()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
 	      </div>
 	    </div>
 	</div>
-	<div class="row paddedleft">
+	<div class="row paddedleft" >
 		<h3>{{contractperiod.name}}</h3>
 		<table width="100%">
 			<tr>

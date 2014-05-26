@@ -53,11 +53,14 @@ define(['underscore', 'mifosX'], function() {
       'client/CreateProvisioningController',
       'client/CreateActivationController',
       'client/EditProvisioningController',
+      'client/EditProvisioningDetailsController',
       'user/UserController',
+      'system/ViewProvisioningMappingController',
       'user/UserFormController',
       'user/UserSettingController',
       'user/UserListController',
       'user/ViewUserController',
+      'organization/OfficesModuleController',
       'organization/RoleController',
       'organization/ViewRoleController',
       'organization/CreateRoleController',
@@ -74,6 +77,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/EditEmployeeController',
       'organization/EmployeeController',
       'organization/CreateEmployeeController',
+      'accounting/AccountModuleController',
       'organization/GroupsDetailsController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
@@ -89,6 +93,7 @@ define(['underscore', 'mifosX'], function() {
       'accounting/AccCreateRuleController',
       'accounting/AccEditRuleController',
       'accounting/ViewAccRuleController',
+      'system/SystemModuleController',
       'system/CodeController',
       'system/MappingController',
       'system/EditCodeController',
@@ -236,12 +241,23 @@ define(['underscore', 'mifosX'], function() {
       'organization/AddressTreeviewController',
       'client/PayInvoiceController',
       'client/CreditDistributionController',
+
+      'client/ClientCloseController',
+
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
+<<<<<<< HEAD
       'client/AddCreditCardController',
       'client/AddACHController',
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
+=======
+      'organization/ItemSaleController',
+      'organization/OfficeAdjustmentsController',
+      'organization/OfficePaymentsController',
+      'organization/RedemptionController'
+
+>>>>>>> upstream/master
     ],
     filters: [
       'StatusLookup',
@@ -265,7 +281,8 @@ define(['underscore', 'mifosX'], function() {
       'ApiValidationDirective',
       'RightClickDirective',
       'ContextMenuDirective',
-      'AutofocusDirective'
+      'AutofocusDirective',
+      'ChosenComboboxDirective'
     ]
   };
 

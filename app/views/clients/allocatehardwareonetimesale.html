@@ -92,7 +92,7 @@
             <div class="controls">
              	<!-- <select ng-model="itemDetail"  name="serialNumber" ng-options="itemDetail as itemDetail for itemDetail in itemDetails" value="{{itemDetail}}" >
              	</select> -->
-             	<input type="text" ng-model="itemDetail" name="serialNumber" ng-change="getData(itemDetail)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
+             	<input type="text" ng-model="itemDetail" name="serialNumber"  typeahead="itemDetail for itemDetail in getData($viewValue)">
             </div>
         </div>	
         <!--  <div class="control-group" ng-repeat="item in getNumber(formData.quantity)">

@@ -9,7 +9,7 @@
 	<div class="pull-right">
 		<a ng-show="isTreeView" ng-click="isTreeView=!isTreeView" class="btn btn-primary"><i class="icon-list icon-white"></i>List View</a>
 		<a ng-hide="isTreeView" ng-click="isTreeView=!isTreeView" class="btn btn-primary"><i class="icon-sitemap icon-white"></i>Tree View</a>
-		<a href="#/createoffice" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Office</a>
+		<a ng-show="PermissionService.showMenu('CREATE_OFFICE')" href="#/createoffice" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Office</a>
 	</div>
 	<div ng-hide="isTreeView">
 		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/externalId">
@@ -21,6 +21,7 @@
 					<th>Parent Office</th>
 				    <th>Office Type</th>
 					<th>Opened On</th>
+					<th>Edit</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,7 @@
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.parentName}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.officeType}}</td>
 					<td class="pointer" data-ng-click="routeTo(office.id)">{{office.openingDate | DateFormat}}</td>
+					<td><a href="#/editoffice/{{office.id}}" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>
 				</tr>
 			</tbody>
 		</table>

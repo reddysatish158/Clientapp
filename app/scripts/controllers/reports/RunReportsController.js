@@ -21,7 +21,6 @@
       scope.reportName = routeParams.name;
       scope.reportType = routeParams.type;
       scope.reportId = routeParams.reportId;
-      scope.exportReportParameters= [];
       scope.type="pie";
       
       scope.highlight = function(id){
@@ -62,13 +61,6 @@
           }
       });
 
-      if (scope.reportType == 'Pentaho'||scope.reportType=='Table') {
-        resourceFactory.reportsResource.get({id:scope.reportId, fields:'reportParameters'}, function(data){
-          scope.exportReportParameters = data.reportParameters || [];
-        });
-      }
-      
-      
       function getSuccuessFunction (paramData) {
         var tempDataObj = new Object();
         var successFunction = function(data) {
@@ -260,19 +252,14 @@ function buildReportParms(){
     	  var paramCount=1;
     	  var reportParams="";
     	  for(var i=0;i< scope.reqFields.length;i++){
-    		  var reqField=scope.reqFields[i];
-    		  for(var j=0;j<scope.exportReportParameters.length;j++){
-    			  var tempParam=scope.exportReportParameters[j];
-    			  if (reqField.name == tempParam.parameterName) {
-    	              var paramName = "R_"+reqField.variable;
-    	              if (paramCount > 1) reportParams += "&"
+    	              var paramName =scope.reqFields[i].inputName;
+    	              if (paramCount > 1) reportParams += "&";
     	              reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.formData[scope.reqFields[i].inputName]);
     	              paramCount = paramCount + 1;
-    	            }
-    		  }
-    	  }
+    	            };
     	  return reportParams;
       }
+
      scope.xFunction = function(){
         return function(d) {
            return d.key;
@@ -416,3 +403,35 @@ function buildReportParms(){
     $log.info("RunReportsController initialized");
   });
 }(mifosX.controllers || {}));
+
+
+
+
+
+
+/*function buildReportParms(){
+console.log(scope.reqFields);
+	  var paramCount=1;
+	  var reportParams="";
+	  for(var i=0;i< scope.reqFields.length;i++){
+		  var reqField=scope.reqFields[i];
+		  for(var j=0;j<scope.exportReportParameters.length;j++){
+			  var tempParam=scope.exportReportParameters[j];
+			  if (reqField.name == tempParam.parameterName) {
+	              var paramName = "R_"+reqField.variable;
+	              if (paramCount > 1) reportParams += "&"
+	              reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.formData[scope.reqFields[i].inputName]);
+	              paramCount = paramCount + 1;
+	            }
+		  }
+	  }
+	  return reportParams;
+  }
+  
+  if (scope.reportType == 'Pentaho'||scope.reportType=='Table') {
+        resourceFactory.reportsResource.get({id:scope.reportId, fields:'reportParameters'}, function(data){
+          scope.exportReportParameters = data.reportParameters || [];
+        });
+      }
+  
+  */

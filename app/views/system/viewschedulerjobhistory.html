@@ -16,13 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="history in jobhistory.currentPageItems  | filter:filterText">
+            <tr  ng-repeat="history in jobhistory.currentPageItems  | filter:filterText">
                 <td>{{history.version}}</td>
-                <td>{{history.jobRunStartTime|DateFormat}}</td>  
+                <td>{{history.jobRunEndTime}}</td>  
                 <td>{{history.status}}</td>
                 <td>{{history.triggerType}}</td>
-                <td><a ng-click="logFile(history.historyId)"><i class=" icon-download-alt icon-white"></i> Download</a></td>
-                <!-- <td>{{history.runFilePath}}</td> -->
+                <td><a ng-show ="history.runFilePath" ng-click="logFile(history.historyId)"><i class=" icon-download-alt icon-white"></i> Download</a></td>
+               <!--  <td>{{history.runFilePath}}</td> -->
+                
             </tr>
         </tbody>
     </table>

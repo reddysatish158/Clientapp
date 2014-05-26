@@ -1,3 +1,4 @@
+<div ng-controller="EventController">
 <div>
 
 	<ul class="breadcrumb">
@@ -5,10 +6,11 @@
 		<li class="active">{{'label.event' | translate}}</li>
 	</ul>
 	<div class="pull-right">
-		<a href="#/createEvent" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'lable.createevent' | translate }}</a>
+		<a ng-show="PermissionService.showMenu('CREATE_EVENT') && 
+					PermissionService.showMenu('READ_EVENT')" href="#/createEvent" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'lable.createevent' | translate }}</a>
 	</div>
 </div>
-<div class="row-fluid" ng-controller="EventController">
+<div class="row-fluid">
 	<input ng-model="filterText" type="text" class="span marginbottom0px">
 	<table class="table">
 		<thead>
@@ -29,5 +31,5 @@
 		</tbody>
 	</table>
 </div>
-	
+</div>
 	

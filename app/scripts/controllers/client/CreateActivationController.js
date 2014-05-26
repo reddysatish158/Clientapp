@@ -68,7 +68,7 @@
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
-	            scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
+	            //scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
                     scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
@@ -259,6 +259,7 @@
 	                  this.formData1.country=scope.formData1.country;
 	                  this.formData1.addressNo="Addr1";
 	                
+
 	                
 	                  /* var name= this.middlename;
 	                  
@@ -271,6 +272,7 @@
 	                	   this.formData1.lastname="Mr.";
 	                   }*/
 	                   
+
 	                  this.formData1.flag=scope.configurationProperty;
 	                  delete this.formData1.middlename;
 	                //  delete this.formData1.name;
@@ -332,6 +334,7 @@
 	 	            delete this.formData3.serials;
 	 	            delete this.formData2.pageItems;
 	 	            delete this.formData2.totalFilteredRecords;
+
 	 	           
 	 	    
 	           	var resourceId=null;
@@ -357,6 +360,11 @@
 	            	});
 	            	}
 	            	location.path('/viewclient/'+ resourceId);
+
+
+	 	         /*   resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
+	            	 location.path('/viewclient/' + data.resourceId);
+>>>>>>> obsplatform-1.01*/
 	            });
 	           
 	        };

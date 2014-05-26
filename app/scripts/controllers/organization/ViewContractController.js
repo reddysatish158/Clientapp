@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  ViewContractController: function(scope, routeParams , location,resourceFactory ) {
+	  ViewContractController: function(scope, routeParams , location,resourceFactory ,PermissionService) {
         scope.contractperiod = [];
+        scope.PermissionService = PermissionService;
         resourceFactory.contractResource.get({subscriptionId: routeParams.id} , function(data) {
             scope.contractperiod = data;
            
@@ -17,7 +18,7 @@
     
     }
   });
-  mifosX.ng.application.controller('ViewContractController', ['$scope', '$routeParams', '$location','ResourceFactory', mifosX.controllers.ViewContractController]).run(function($log) {
+  mifosX.ng.application.controller('ViewContractController', ['$scope', '$routeParams', '$location','ResourceFactory','PermissionService', mifosX.controllers.ViewContractController]).run(function($log) {
     $log.info("ViewContractController initialized");
   });
 }(mifosX.controllers || {}));

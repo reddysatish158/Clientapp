@@ -1,15 +1,18 @@
+<div ng-controller="UserListController">
 <div>
+<<<<<<< HEAD
    
  <ul class="breadcrumb">
         <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
           <li class="active">{{'link.admin.users' | translate}}</li>
 </ul> 
     <div class="pull-right">
-        <a href="#/createuser" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create User</a>
+        <a ng-show="PermissionService.showMenu('CREATE_USER')" href="#/createuser" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create User</a>
+
     </div>
 </div>
 
-<div class="row-fluid" ng-controller="UserListController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
 	<table class="table">
         <thead>
@@ -29,4 +32,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

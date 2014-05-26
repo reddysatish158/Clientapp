@@ -94,10 +94,10 @@
                   <div class="row-fluid primarydiv">
                       <div class="btn-group pull-right">
                         <span ng-repeat="button in buttons">
-                          <a href="" class="btn btn-primary" ng-click="getMe(button.href,client.id,button.subhref)"><i class="{{button.icon}} icon-white" ></i>{{button.name | translate}}</a>
+                          <a href="" class="btn btn-primary" ng-show="button.ngShow" ng-click="getMe(button.href,client.id,button.subhref)"><i class="{{button.icon}} icon-white" ></i>{{button.name | translate}}</a>
                         </span>
-                          <button type="button" class="btn btn-primary" data-ng-click="deleteClient()" data-ng-show="client.status.value=='Pending'"><i class="icon-trash icon-white"></i>{{"label.delete" | translate}}</button>
-                          <button type="button" class="btn btn-primary" data-ng-click="unassignStaffCenter()" data-ng-show="client.staffId"><i class="icon-user icon-white"></i>{{"label.unassignstaff" | translate}}</button>
+                          <button type="button" class="btn btn-primary" data-ng-click="deleteClient()" data-ng-show="(client.status.value=='Pending')&&PermissionService.showMenu('DELETE_CLIENT')"><i class="icon-trash icon-white"></i>{{"label.delete" | translate}}</button>
+                          <button type="button" class="btn btn-primary" data-ng-click="unassignStaffCenter()" data-ng-show="client.staffId&&PermissionService.showMenu('UNASSIGNSTAFF_CLIENT')""><i class="icon-user icon-white"></i>{{"label.unassignstaff" | translate}}</button>
                       </div>
                   </div>
                   <br/>
@@ -162,8 +162,8 @@
                             </tr>
                              <tr>
 
-                            <td colspan="2"><a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-edit icon-white" ></i>Edit Address</button></a>
-                             <a href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Add Other Address</button></a></td>
+                            <td colspan="2"><a ng-show="PermissionService.showMenu('UPDATE_ADDRESS')&&PermissionService.showMenu('READ_ADDRESS')" href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-edit icon-white" ></i>Edit Address</button></a>
+                             <a ng-show="PermissionService.showMenu('UPDATE_ADDRESS')&&PermissionService.showMenu('READ_ADDRESS')" href="#/editAddress/{{client.id}}" class="btn btn-primary"><i class="icon-plus-sign icon-white" ></i>Add Other Address</button></a></td>
                             </tr>
                           </table>
                       </div>
@@ -202,25 +202,21 @@
 			            <strong> </strong><a href="#/editAddress/{{client.id}}">Edit Address</a><strong> </strong>
 			         </div>	 -->
                   </div>
-                 
-                
-                 <div class="row-fluid">
+                  <div class="row-fluid" ng-show="PermissionService.showMenu('READ_ORDER')">
                   <p>
                       <b><h4>Orders Overview</h4></b>
                    </p>
                    
                     <table class="table">
                         <tr class="graybg">
-                        	<th>Select</th>
-                            <th>Order No</th>
+                        	<th>Order No</th>
                             <th>Plan</th>
                             <th>Contract Period</th>
                             <th>Activation Date</th>
                             <th>Start/Renwal Date</th>
                             <th>End Date</th>
                             <th>Price</th>
-                            <th>&nbsp;</th>
-                            <!-- <th>Status</th> -->
+                            <th>Status</th> 
                         </tr>
                           <tr class="pointer-main" ng-repeat="order in orders | filter:filterText" >
                           <td class="pointer" data-ng-click="routeTogeneral(order.id,client.id)">{{order.orderNo}}</td>
@@ -277,12 +273,13 @@
                 </div>
           </div>
       </tab>
-      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab">
+      <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab" 
+      			ng-show="$parent.PermissionService.showMenu('read_CLIENTIDENTIFIER')">
         <div class="pull-right btn-group">
-          <a href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_CLIENTIDENTIFIER')" href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
         <br>
-        <table class="table" ng-show="identitydocuments.length > 0">
+        <table class="table" ng-show="(identitydocuments.length > 0)">
             <thead>
               <tr class="graybg">
                 <th>{{'table.heading.uniqueidentification' | translate}}</th>
@@ -304,7 +301,7 @@
                 </td>
                 <td>
                   <a href="#/addclientidentifierdocument/{{client.id}}/{{document.id}}"><i class="icon-cloud-upload"></i></a>&nbsp;
-                  <a ng-click="deleteClientIdentifierDocument(client.id,document.id,$index)"><i class="icon-remove"></i></a>
+                  <a ng-show="PermissionService.showMenu('DELETE_CLIENTIDENTIFIER')" ng-click="deleteClientIdentifierDocument(client.id,document.id,$index)"><i class="icon-remove"></i></a>
                 </td>
               </tr>
             </tbody>
@@ -328,13 +325,18 @@
           </span>
         </div>
       </tab> -->
+<<<<<<< HEAD
       <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab">
       <div>
+=======
+      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab"
+      				ng-show="$parent.PermissionService.showMenu('CREATE_DOCUMENT','READ_DOCUMENT')">
+>>>>>>> upstream/master
         <div class="pull-right">
-          <a href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
+          <a ng-show=" PermissionService.showMenu('CREATE_DOCUMENT')" href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
         <br>
-        <table class="table" ng-show="clientdocuments.length > 0">
+        <table class="table" ng-show="(clientdocuments.length > 0)&&PermissionService.showMenu('READ_DOCUMENT')">
             <thead>
               <tr class="graybg">
                 <th>{{'table.heading.name' | translate}}</th>
@@ -350,7 +352,7 @@
                 <td>{{clientdocument.fileName}}</td>
                 <td>
                   <a ng-click="downloadDocument(clientdocument.id)"><i class="icon-cloud-download"></i></a>&nbsp;
-                  <a ng-click="deleteDocument(clientdocument.id,$index)"><i class="icon-remove"></i></a>
+                  <a ng-show="PermissionService.showMenu('DELETE_DOCUMENT')" ng-click="deleteDocument(clientdocument.id,$index)"><i class="icon-remove"></i></a>
                 </td>
               </tr>
             </tbody>
@@ -409,12 +411,16 @@
           </table>
           </div>
       </tab>
+<<<<<<< HEAD
      
        <tab heading="Notes">
+=======
+       <tab heading="Notes" select="getClientNotes()" ng-show="$parent.PermissionService.showMenu('CREATE_CLIENTNOTE','READ_CLIENTNOTE')">
+>>>>>>> upstream/master
         <br/>
-        <form>
+        <form ng-show="PermissionService.showMenu('CREATE_CLIENTNOTE')">
             <div class="control-group">
-              <div class="controls">
+              <div class="controls" >
                      <textarea rows="1" class="field span marginbottom0px" id="textarea" placeholder="Enter note" ng-model="formData.note"></textarea>
                      <div class="notewrapper row-fluid">
                         <span class="pull-right noteaddbuttonwrapper">
@@ -424,7 +430,7 @@
               </div>
             </div>  
         </form>
-        <div ng-repeat="clientNote in clientNotes | orderBy:predicate:reverse">
+        <div ng-repeat="clientNote in clientNotes | orderBy:predicate:reverse" ng-show="PermissionService.showMenu('READ_CLIENTNOTE')">
           <div>
             <blockquote>
               <p>{{clientNote.note}}</p>
@@ -436,10 +442,10 @@
         </div>
         </ul>
       </tab>
-       <tab heading="Tickets" select="getAllTickets()" active="TicketsTab">
+       <tab  heading="Tickets" select="getAllTickets()" active="TicketsTab" ng-show="$parent.PermissionService.showMenu('READ_TICKET')">
      <div class="pull-right">
 		
-		<a href="#/newTicket/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
+		<a ng-show="PermissionService.showMenu('CREATE_TICKET')" href="#/newTicket/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
 	</div>
    <div>
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/externalId">
@@ -495,11 +501,11 @@
           </table>
         </div>
       </tab>
-       <tab heading="My Device" select="getAllOwnHardware()" active="hardwareTab">
+       <tab heading="My Device" select="getAllOwnHardware()" active="hardwareTab" ng-show="$parent.PermissionService.showMenu('READ_ownedhardware')">
       
       <div class="pull-right">
 		
-		<a href="#/addownedhardware/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Device</a>
+		<a ng-show="PermissionService.showMenu('CREATE_ownedhardware')" href="#/addownedhardware/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Device</a>
 	</div>
     
     <div>
@@ -528,18 +534,20 @@
 		</table>
 	</div>
       </tab>
-      <tab heading="Item Sale" select="getOneTimeSale()" active="SaleTab">
+      <tab heading="Device Sale" select="getOneTimeSale()" active="SaleTab"
+      ng-show="$parent.PermissionService.showMenu('READ_ONETIMESALE')">
       <hr>
  		<div class="tabbable">
   			<ul class="nav nav-tabs">
-				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Item Sale</a></li>
-    				<li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li>
+				    <li class={{eventsaleC}}><a ng-click="eventsaleTab()" data-toggle="tab" >Device Sale</a></li>
+    				<li ng-show="PermissionService.showMenu('CREATE_EVENTORDER')&&PermissionService.showMenu('READ_EVENTORDER')" class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li>
+    				<!-- <li class={{eventorderC}}><a ng-click="eventorderCTab()" data-toggle="tab">Event Sale</a></li> -->
 			    </ul>
 			<div class="tab-content">
   
 		    <div id="pane1" class="tab-pane" ng-class="{active: eventsaleC}">
 				<div class="pull-right">
-					<a href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
 				</div>
     
 			    <div>
@@ -568,9 +576,9 @@
 								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.quantity}}</td> 
 								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.totalPrice}}</td> 
 								<td class="pointer" data-ng-click="routeToItemSale(onetimesale.id,client.id)">{{onetimesale.hardwareAllocated}}</td>
-							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
-							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="onetimesale.hardwareAllocated == 'UNALLOCATED'" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
-							    <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="onetimesale.hardwareAllocated == 'ALLOCATED'" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>UnAssign Device</a></td>
+							    <td><a href="#/allocatehardwareonetimesale/{{onetimesale.id}}/{{client.id}}" ng-show="(onetimesale.hardwareAllocated == 'UNALLOCATED')&&(PermissionService.showMenu('READ_ALLOCATION') && PermissionService.showMenu('CREATE_ALLOCATION'))" class="btn btn-primary"><i class="icon-move"></i>Assign Device</a></td>
+							    <td><a href="" ng-click="cancelSale(onetimesale.id,$index)" ng-show="(onetimesale.hardwareAllocated == 'UNALLOCATED')&&(PermissionService.showMenu('DELETE_ONETIMESALE'))" class="btn btn-primary" title="Cancel Sale"><i class="icon-remove"></i></a></td> 
+							    <td><a href="" ng-click="unallocateDevice(onetimesale.id,onetimesale.serialNo)" ng-show="(onetimesale.hardwareAllocated == 'ALLOCATED')&&(PermissionService.showMenu('DEALLOCATE_INVENTORY'))" class="btn btn-primary" title="Unallocate Device"><i class="icon-remove"></i>UnAssign Device</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -579,7 +587,7 @@
 			    
 			    
 			    
-			    <div id="pane2" class="tab-pane" ng-class="{active: eventorderC}">
+			    <div id="pane2" class="tab-pane" ng-class="{active: eventorderC}" >
 			    <div class="pull-right">
 
 					<a href="#/eventorder/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Event Order</a>
@@ -654,9 +662,9 @@
 	</div> -->
 </tab>
 
-<tab heading="Financial Summary" select="getAllFineTransactions()">
+<tab heading="Financial Summary" select="getAllFineTransactions()" ng-show="$parent.PermissionService.showMenu('READ_FINANCIALTRANSACTIONS')">
       <hr>
- 		<div class="tabbable">
+ 		<div class="tabbable" >
   				<ul class="nav nav-tabs">
 				    <li class={{financialsummaryC}}><a ng-click="financialsummeryTab()" data-toggle="tab" >Financial summary</a></li>
 				    <li class={{paymentsC}}><a ng-click="paymentsTab()" data-toggle="tab">Payments</a></li>
@@ -765,7 +773,9 @@
                   					<any>{{financialtransaction.amount}}</any>
               					</td>
               						<td>
-                					<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+                					<span ng-show="PermissionService.showMenu('CANCEL_PAYMENT')">
+                						<a ng-hide="financialtransaction.flag==true" ng-click="cancelPayment(financialtransaction.transactionId)" popover="Cancel Payment" popover-trigger="mouseenter"><i class="icon-remove-circle icon-white"></i></a>
+                					</span>
               					</td>
             				</tr>
 						</tbody>
@@ -1008,9 +1018,10 @@
         </div>
       </tab> -->
        
-         <tab heading="Statements" select="getClientStatements()" active="StatementsTab">
+         <tab heading="Statements" select="getClientStatements()" active="StatementsTab"
+         ng-show="$parent.PermissionService.showMenu('READ_BILLMASTER')">
              <div class="pull-right">
-		         <a href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
+		         <a ng-show="PermissionService.showMenu('CREATE_BILLMASTER')" href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
 	        </div>
 	<div class="paddedbottom10">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by id">
@@ -1066,7 +1077,7 @@
 </div>
 </tab> -->
 
-<tab heading="History" select="getTransactionHistory()">
+<tab heading="History" select="getTransactionHistory()" ng-show="$parent.PermissionService.showMenu('READ_TRANSACTIONHISTORY')">
     <div>
      <form ng-submit="searchTransactionHistory()">
 		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
@@ -1098,9 +1109,10 @@
     			</ul>
 	</div>
 </tab>
-<tab heading="CRD" select="getClientDistribution()">
+
+<tab heading="CRD" select="getClientDistribution()" ng-show="$parent.PermissionService.showMenu('READ_CREDITDISTRIBUTION')">
      <div class="pull-right">
-		         <a href="#/creditDistribution/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Distribute</a>
+		         <a ng-show="PermissionService.showMenu('CREATE_CREDITDISTRIBUTION')" href="#/creditDistribution/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Distribute</a>
 	        </div>
     <div>
      <form ng-submit="searchTransactionHistory()">

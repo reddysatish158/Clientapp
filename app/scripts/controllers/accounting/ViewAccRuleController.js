@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewAccRuleController: function(scope, resourceFactory, routeParams, location,$modal) {
-
+    ViewAccRuleController: function(scope, resourceFactory, routeParams, location,$modal,PermissionService) {
+    	
+    	scope.PermissionService = PermissionService;
     resourceFactory.accountingRulesResource.getById({accountingRuleId:routeParams.id}, function(data){
       scope.rule = data;
     });
@@ -25,7 +26,7 @@
 
     }
   });
-  mifosX.ng.application.controller('ViewAccRuleController', ['$scope', 'ResourceFactory', '$routeParams', '$location','$modal', mifosX.controllers.ViewAccRuleController]).run(function($log) {
+  mifosX.ng.application.controller('ViewAccRuleController', ['$scope', 'ResourceFactory', '$routeParams', '$location','$modal','PermissionService', mifosX.controllers.ViewAccRuleController]).run(function($log) {
     $log.info("ViewAccRuleController initialized");
   });
 }(mifosX.controllers || {}));

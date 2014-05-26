@@ -87,8 +87,9 @@
             						<div class="controls">
               						<select ng-model="formData.pinType"  ng-options="pinTypeData.value as pinTypeData.value for pinTypeData in pinTypeDatas" value="{{voucher.id}}">
               						</select>
-              						<input type="text" id="pinValue" ng-model="formData.pinValue">
-              						<input type="text" id="pinExtention" ng-model="formData.pinExtention">
+              						<input ng-show = "formData.pinType=='VALUE'" type="text" id="pinValue" ng-model="formData.pinValue"/>
+              						<select ng-show="formData.pinType=='PRODUCT'" ng-model="formData.pinValue"  ng-options="planData.id as planData.planCode for planData in planDatas" value="{{planData.id}}">
+              						</select>
             						</div>
           							</div>
 								</td>

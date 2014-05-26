@@ -34,7 +34,7 @@
           scope.formData.multiRow = scope.formData.multiRow || false;
           scope.formData.columns = scope.columns;
           resourceFactory.DataTablesResource.save(this.formData,function(data){
-            location.path('/viewdatatable/' + data.resourceIdentifier);
+        		  location.path('/viewdatatable/' + data.resourceIdentifier);
           });
         }
       };

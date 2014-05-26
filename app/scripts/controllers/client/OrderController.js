@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  OrderController: function(scope,webStorage,routeParams,route,resourceFactory,location,$modal,dateFilter,paginatorService) {
+	  OrderController: function(scope,webStorage,routeParams,route,resourceFactory,location,$modal,dateFilter,paginatorService,PermissionService) {
         scope.orderPriceDatas = [];
         scope.orderHistorydata=[];
         scope.orderData=[];
@@ -27,12 +27,20 @@
          scope.email=clientData.email;
          scope.phone=clientData.phone;
          webStorage.add("orderId",routeParams.id);
+         scope.PermissionService = PermissionService;
+         scope.provisioningdatas =[];
       
         resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
            
         	scope.orderPriceDatas= data.orderPriceData;
             scope.orderHistorydata=data.orderHistory;
             scope.orderData=data.orderData;
+           var endDate = new Date(scope.orderData.endDate);
+            var curDate = new Date(scope.orderData.currentDate);
+            if(dateFilter(endDate.setDate(endDate.getDate()))==dateFilter(curDate.setDate(curDate.getDate()))||
+            		dateFilter(endDate.setDate(endDate.getDate()+1))==dateFilter(curDate.setDate(curDate.getDate())))
+            	console.log("true");
+            else console.log("false");
             scope.formData.flag=data.flag;
             scope.orderServicesData=data.orderServices;
             scope.orderDiscountDatas=data.orderDiscountDatas;
@@ -52,14 +60,16 @@
         
         });
         
-        resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
-            scope.association = data;
-            if(data.orderId){
-            	scope.flag=true;
-            }else{
-            	scope.flag=false;
-            }
-        });
+       if(PermissionService.showMenu('READ_ASSOCIATION')){ 
+    	   resourceFactory.associationResource.getAssociation({clientId: routeParams.clientId,id:routeParams.id} , function(data) {
+    		   scope.association = data;
+    		   if(data.orderId){
+    			   scope.flag=true;
+    		   }else{
+    			   scope.flag=false;
+    		   }
+    	   });
+       }
         
         scope.reconnect = function (){
         	scope.errorStatus=[];scope.errorDetails=[];
@@ -177,6 +187,14 @@
 			$scope.cancel = function(){
 				$modalInstance.dismiss('cancel');
 			};
+      };
+      
+      scope.getAllProvisioningDetails = function (orderNo) {
+          
+          
+          resourceFactory.provisioningtemplateMappingResource.get({orderNo:orderNo} , function(data) {
+              scope.provisioningdatas = data;
+            });
       };
       
       var extensionController=function($scope,$modalInstance){
@@ -379,7 +397,16 @@
             });
         };
         
-      
+      scope.reProcess=function(processId){
+    	  
+    	  resourceFactory.updateProvisioningMappingResource.update({'provisioningId':processId},{},function(data){
+          	/*location.path('/vieworder/'+routeParams.id+'/'+scope.orderPriceDatas[0].clientId);
+          	location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);*/
+    		  route.reload();
+	           
+	          });
+    	  
+      }
           scope.updatePrice = function (id,price){
         	  scope.orderData.locale="en";
         	  scope.orderData.price=price;
@@ -399,7 +426,7 @@
   
   });
   
-  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService',mifosX.controllers.OrderController]).run(function($log) {
+  mifosX.ng.application.controller('OrderController', ['$scope','webStorage','$routeParams','$route', 'ResourceFactory','$location','$modal','dateFilter','PaginatorService','PermissionService',mifosX.controllers.OrderController]).run(function($log) {
     $log.info("OrderController initialized");
   });
 }(mifosX.controllers || {}));

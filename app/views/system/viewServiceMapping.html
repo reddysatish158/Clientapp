@@ -3,11 +3,11 @@
 		<ul class="breadcrumb">
 	        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
 	        <li><a href="#/mappingconfig">{{'label.serviceMapping' | translate}}</a> <span class="divider">/</span></li>
-	        <li class="active">{{sm.id}}&nbsp;&nbsp;</li>
+	        <li class="active">{{sm.serviceCode}}&nbsp;&nbsp;</li>
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editServiceMapping/{{id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_SERVICEMAPPING')" href="#/editServiceMapping/{{id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
 	   	  </div>
 	    </div>
 	</div>
@@ -31,8 +31,14 @@
 				<td>{{'label.image' | translate }}</td>
 				<td>{{sm.image}}</td>
 			</tr>
-			
-			
+			<tr  ng-show="'IPTV'| ConfigLookup">
+				<td>{{'label.category' | translate }}</td>
+				<td>{{sm.category}}</td>
+			</tr>
+			<tr  ng-show="'IPTV'| ConfigLookup">
+				<td>{{'label.subcategory' | translate }}</td>
+				<td>{{sm.subCategory}}</td>
+			</tr>
 		</table>
 	</div>
 </div>

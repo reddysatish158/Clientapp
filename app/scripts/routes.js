@@ -742,6 +742,9 @@
          .when('/createProvisioningmapping', {
              templateUrl: 'views/system/createProvisioningmapping.html'
          })  
+          .when('/createsimpleActivation', {
+        templateUrl: 'views/clients/createactivation.html'  
+      })
          .when('/viewprovisioningmapping/:id', {
              templateUrl: 'views/system/viewprovisioningmapping.html'
          })  
@@ -792,15 +795,23 @@
         templateUrl : 'views/clients/creditDistribution.html'
       })
 
+
+      .when('/closeclient/:id', {
+        templateUrl : 'views/clients/closeclient.html'
+      })
+
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
       })
+
+
       .when('/ipPooling', {
         templateUrl : 'views/system/ipPooling.html'
       })      
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
 
+<<<<<<< HEAD
       })
       .when('/addcreditcarddetails/:clientId', {
           templateUrl: 'views/clients/addcreditcarddetails.html'
@@ -813,6 +824,30 @@
       })
       .when('/editcarddetails/:clientId/:id/:cardType', {
         templateUrl: 'views/clients/editcarddetails.html'
+=======
+
+      })
+      .when('/itemsale',{
+    	  templateUrl: 'views/organization/itemSale.html'
+
+    
+      })
+      .when('/editProvison/:id', {
+        templateUrl: 'views/clients/editProvisioning.html'
+      })
+
+      .when('/itemsale/:officeId',{
+    	  templateUrl: 'views/organization/itemSale.html'
+      })
+      .when('/officeadjustments/:officeId',{
+    	  templateUrl: 'views/organization/officeadjustments.html'
+      })
+      .when('/officepayments/:officeId',{
+    	  templateUrl: 'views/organization/officepayments.html'
+      })
+      .when('/redemption',{
+    	  templateUrl: 'views/organization/redemption.html'
+>>>>>>> upstream/master
       });
 
     $locationProvider.html5Mode(false);

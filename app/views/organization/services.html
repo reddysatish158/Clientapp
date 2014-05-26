@@ -1,13 +1,14 @@
+<div ng-controller="ServicesController">
 <div>
     <ul class="breadcrumb">
         <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.manageservices' | translate}}</li>
     </ul>
     <div class="pull-right">
-        <a href="#/createservice" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Service</a>
+        <a ng-show="PermissionService.showMenu('CREATE_SERVICE')" href="#/createservice" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Service</a>
     </div>
 </div>
-<div class="row-fluid" ng-controller="ServicesController">
+<div class="row-fluid">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by serviceCode">
 	<table class="table">
         <thead>
@@ -31,4 +32,5 @@
             </tr>
         </tbody>
     </table>
+</div>
 </div>

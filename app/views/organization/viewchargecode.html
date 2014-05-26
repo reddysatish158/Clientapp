@@ -7,9 +7,9 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
-	          <a href="#/editchargecode/{{chargeId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
-	   	    <a href="#/taxmapping/{{chargecode.chargeCode}}/{{chargeId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> View Tax</a>
-	         <a href="#/createtaxmapping/{{chargecode.chargeCode}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Add Tax</a>
+	          <a ng-show="PermissionService.showMenu('UPDATE_CHARGECODE')" href="#/editchargecode/{{chargeId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	   	    <a ng-show="PermissionService.showMenu('READ_TAXMAPPING')" href="#/taxmapping/{{chargecode.chargeCode}}/{{chargeId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> View Tax</a>
+	         <a ng-show="PermissionService.showMenu('CREATE_TAXMAPPING')&&PermissionService.showMenu('READ_TAXMAPPING')" href="#/createtaxmapping/{{chargecode.chargeCode}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Add Tax</a>
 	      </div>
 	    </div>
 	</div>

@@ -10,9 +10,9 @@
     <div>
       <tabset  style="margin-bottom: 0px;">
       
-      <tab heading="Service Mapping" select="getsupplierdetails()">
+      <tab heading="Service Mapping" select="getsupplierdetails()" ng-show="$parent.PermissionService.showMenu('READ_SERVICEMAPPING')">
        <div class="pull-right btn-group">
-          <a href="#/createServiceMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_SERVICEMAPPING')" href="#/createServiceMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
         <div class="row-fluid">
                    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -23,7 +23,10 @@
                 <th>{{'table.servicemapping.servicecode' | translate}}</th>
                 <th>{{'table.servicemapping.serviceidentification' | translate}}</th>
                 <th>{{'table.servicemapping.status' | translate}}</th>
-                <th>{{'table.servicemapping.image' | translate}}</th>
+                <th style="width:125px;">{{'table.servicemapping.image' | translate}}</th>
+                <th  ng-show="'IPTV'| ConfigLookup">Category</th>
+                <th  ng-show="'IPTV'| ConfigLookup">Sub Category</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -33,6 +36,8 @@
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.serviceIdentification}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.status}}</td>
                 <td class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.image}}</td>
+                <td  ng-show="'IPTV'| ConfigLookup" class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.category}}</td>
+                <td   ng-show="'IPTV'| ConfigLookup" class="pointer" data-ng-click="routeToservice(servicemappingdata.id)">{{servicemappingdata.subCategory}}</td>
    			</tr>
      		 </tbody>
           </table>
@@ -43,9 +48,10 @@
          </div>
       </tab>	
       
-  <tab heading="Hardware Mapping" select="getHardwareMappingData()" active="hardwarePlanMappingTab">
+  <tab heading="Hardware Mapping" select="getHardwareMappingData()" active="hardwarePlanMappingTab"
+  ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')">
         <div class="pull-right btn-group">
-          <a href="#/createhardwareplanmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_PLANMAPPING')" href="#/createhardwareplanmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
         <div class="row-fluid">
                    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -73,9 +79,10 @@
       </tab>
       			
       				
-      	<tab heading="Provisioning Commands" select="getProvisiongCommandData()">
+      	<tab heading="Provisioning Commands" select="getProvisiongCommandData()"
+      		ng-show="$parent.PermissionService.showMenu('READ_PROVISIONINGSYSTEM')">
         <div class="pull-right btn-group">
-          <a href="#/createProvisioningmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_PROVISIONINGSYSTEM')" href="#/createProvisioningmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
         <div class="row-fluid">
                    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -101,9 +108,10 @@
       </tab>	
       	
 
-<tab heading="EventAction Mapping" select="getEventActionMappingData()">
+<tab heading="EventAction Mapping" select="getEventActionMappingData()"
+	ng-show="$parent.PermissionService.showMenu('READ_EVENTACTIONMAP')">
         <div class="pull-right btn-group">
-          <a href="#/createeventactionmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+          <a ng-show="PermissionService.showMenu('CREATE_EVENTACTIONMAP')" href="#/createeventactionmapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
         </div>
         <div class="row-fluid">
                    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
