@@ -134,11 +134,15 @@
 							<td>
 								<div class="control-group" ng-show="parameterData.paramName == 'IP_ADDRESS'">
             					<label class="control-label" for="ipAddress">{{ 'label.provisioning.ipaddress' | translate }}</label>
-            					<div class="controls">
-              					 <select ng-model="formData.ipAddress"  ng-options="ipPoolData.ipAddress as ipPoolData.ipAddress for ipPoolData in ipPoolDatas" value="{{ipPoolData.ipAddress}}">
-             					 </select>
-            					</div>
-          						</div>
+            					<div class="controls">                                  	       
+             					 <input type="text" ng-model="formData.ipAddress" name="ipAddress" ng-change="getData(formData.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
+                                   <a ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
+                                  <div ng-repeat="addipAddress in formData.addIpAddress">
+										<input type="text" class="input-small" ng-model="addipAddress.ipvalue">
+										<a ng-click="deleteAddIpAddress($index)"><i class="icon-remove icon-white"></i></a>							   					        
+						              </div>                            
+                                  </div>                           
+            					</div>                                                               
 							</td>
 							</tr>
 							<tr>

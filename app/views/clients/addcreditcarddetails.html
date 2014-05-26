@@ -1,0 +1,93 @@
+<form name="creditcard" novalidate="" class="form-horizontal" ng-controller="AddCreditCardController" ng-submit="submit()">
+	<div><ul class="breadcrumb">
+        <table>
+        <tr>
+        <td>
+        	 <img ng-hide="imagePresent" src="../app/images/blank_avatar.jpg" alt="Avatar" width="40">
+          <img ng-show="imagePresent" src="{{image}}" alt="Avatar" width="40">
+        </td>
+        <td>
+            <small style="color:black;">{{displayName}}</small>
+            &nbsp;
+            <i class="icon-circle {{statusActive | StatusLookup}}"></i>
+        </td>
+        <td><small style="font-size:30px;">|</small></td>
+        <td>
+        <table>
+        	<tr>
+        		<td><small>Uniquely identified  {{accountNo}}</small></td>
+        	</tr>
+        	<tr>
+        		<td><i class="icon-building"></i><small>Office "{{officeName}}"</small></td>
+        	</tr>
+        </table>
+        </td>
+        <td><small style="font-size:30px;">|</small></td>
+        <td>
+        <table>
+        	<tr>
+        		<td><small>Cell Phone {{phone}}</small></td>
+        	</tr>
+        	<tr>
+        			<td><small>Device # <strong>{{hwSerialNumber}}</strong></small></td>
+        	</tr>
+        </table>
+        </td>
+        <td><small style="font-size:30px;">|</small></td>
+        <td>
+        <table>
+        	<tr>
+        		<td><small>Client Type "{{categoryType}}"</small></td>
+        	</tr>
+        	<tr>
+        		<td><small>Balance&nbsp;{{balanceAmount}}&nbsp;{{currency}} </small></td>
+        	</tr>
+        </table>
+        </td>
+        </tr>
+        </table>
+ </ul>
+		<ul class="breadcrumb">
+			<li><a href="#/clients">{{'link.clients' | translate}}</a> <span class="divider">/</span></li>
+			<li><a href="#/viewclient/{{clientId}}">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
+			<li class="active">{{'link.view.creditcard' | translate}}</li>
+		</ul>
+	</div>
+	 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+	<fieldset>
+		<legend>{{'label.client.creditcard' | translate}}</legend>
+
+		<div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.name' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input type="text" name="name" ng-model="formData.name" required late-Validate/>
+				<!-- <span  ng-show="clientdocument.name.$invalid">
+                    <small class="error" ng-show="clientdocument.name.$error.req">
+                        Required Field
+                    </small>
+                </span> -->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.cardnumber' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input type="text" name="cardNumber" ng-model="formData.cardNumber" required late-Validate/>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.expirydate' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input type="text" name="cardExpiryDate" ng-model="formData.cardExpiryDate" required late-Validate/>
+			</div>
+		</div>
+		
+		<div class="offset3">
+			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+			<button type="submit" class="btn btn-primary">{{'button.save' | translate}}</button>
+		</div>
+	</fieldset>
+</form>

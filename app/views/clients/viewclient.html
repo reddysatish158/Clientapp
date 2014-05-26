@@ -325,8 +325,13 @@
           </span>
         </div>
       </tab> -->
+<<<<<<< HEAD
+      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab">
+      <div>
+=======
       <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab"
       				ng-show="$parent.PermissionService.showMenu('CREATE_DOCUMENT','READ_DOCUMENT')">
+>>>>>>> upstream/master
         <div class="pull-right">
           <a ng-show=" PermissionService.showMenu('CREATE_DOCUMENT')" href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
@@ -352,8 +357,66 @@
               </tr>
             </tbody>
           </table>
+          </div>
+          <div>
+       <div class="pull-left">
+          <a href="#/addcreditcarddetails/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>CreditCard Details</a>
+        </div>
+        <br>
+        <table class="table" ng-show="clientcarddetails.length > 0">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.heading.id' | translate}}</th>
+                <th>{{'table.heading.name' | translate}}</th>
+                <th>{{'table.heading.cardNumber' | translate}}</th>
+                <th>{{'table.heading.cardExpiryDate' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pointer-main" ng-repeat="clientcarddetails1 in clientcarddetails" ng-show="clientcarddetails1.cardType=='CreditCard'">
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails1.clientId,clientcarddetails1.id,clientcarddetails1.cardType)">{{clientcarddetails1.id}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails1.clientId,clientcarddetails1.id,clientcarddetails1.cardType)">{{clientcarddetails1.name}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails1.clientId,clientcarddetails1.id,clientcarddetails1.cardType)">{{clientcarddetails1.cardNumber}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails1.clientId,clientcarddetails1.id,clientcarddetails1.cardType)" placeholder="Enter your Name">{{clientcarddetails1.cardExpiryDate}}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div><br>
+          <div>
+        <div class="pull-left">
+          <a href="#/addachdetails/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>ACH Details</a>
+        </div>
+        <br>
+        <table class="table" ng-show="clientcarddetails.length > 0">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.heading.id' | translate}}</th>
+                <th>{{'table.heading.name' | translate}}</th>
+                <th>{{'table.heading.routingNumber' | translate}}</th>
+                <th>{{'table.heading.bankName' | translate}}</th>
+                <th>{{'table.heading.bankAccountNumber' | translate}}</th>
+                <th>{{'table.heading.accountType' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="pointer-main" ng-repeat="clientcarddetails2 in clientcarddetails" ng-show="clientcarddetails2.cardType=='ACH'">
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.id}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.name}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.routingNumber}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.bankName}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.bankAccountNumber}}</td>
+                <td class="pointer" data-ng-click="routeToCardDetails(clientcarddetails2.clientId,clientcarddetails2.id,clientcarddetails2.cardType)">{{clientcarddetails2.accountType}}</td>               
+              </tr>
+            </tbody>
+          </table>
+          </div>
       </tab>
+<<<<<<< HEAD
+     
+       <tab heading="Notes">
+=======
        <tab heading="Notes" select="getClientNotes()" ng-show="$parent.PermissionService.showMenu('CREATE_CLIENTNOTE','READ_CLIENTNOTE')">
+>>>>>>> upstream/master
         <br/>
         <form ng-show="PermissionService.showMenu('CREATE_CLIENTNOTE')">
             <div class="control-group">
@@ -1081,6 +1144,7 @@
     			</ul>
 	</div>
 </tab>
+
    <!-- ************************ start of InVenture code ************************ -->
     <!--      <tab class="inventureTabTitle" heading="InVenture Score" select="fetchInventureScore()">
 

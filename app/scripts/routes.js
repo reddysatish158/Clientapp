@@ -807,16 +807,12 @@
 
       .when('/ipPooling', {
         templateUrl : 'views/system/ipPooling.html'
-      })      
-      .when('/createippooling', {
+      }) 
+       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
-
-
       })
       .when('/itemsale',{
     	  templateUrl: 'views/organization/itemSale.html'
-
-    
       })
       .when('/editProvison/:id', {
         templateUrl: 'views/clients/editProvisioning.html'
@@ -833,7 +829,21 @@
       })
       .when('/redemption',{
     	  templateUrl: 'views/organization/redemption.html'
-      });
+      })     
+     
+      .when('/addcreditcarddetails/:clientId', {
+          templateUrl: 'views/clients/addcreditcarddetails.html'
+      })
+      .when('/addachdetails/:clientId', {
+          templateUrl: 'views/clients/addachdetails.html'
+      })
+      .when('/viewcarddetails/:clientId/:id/:cardType', {
+        templateUrl: 'views/clients/viewcarddetails.html'
+      })
+      .when('/editcarddetails/:clientId/:id/:cardType', {
+        templateUrl: 'views/clients/editcarddetails.html'
+      })
+      ;
 
     $locationProvider.html5Mode(false);
   };
