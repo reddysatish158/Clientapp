@@ -2,10 +2,11 @@
 	  mifosX.controllers = _.extend(module, {
 		  RedemptionController: function(scope, resourceFactory, location,route) {
 	        
+			  scope.formData = {};
 	        scope.submit = function() {  
 	        	
-	            resourceFactory.redemptionResource.postRedemption({clientId : scope.clientId,pinValue : scope.pinValue},{},function(data){
-	            	route.reload();
+	            resourceFactory.redemptionResource.save(scope.formData,function(data){
+	            	location.path("/viewclient/"+scope.formData.clientId);
 	          });
 	        };
 	    }
