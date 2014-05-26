@@ -598,6 +598,9 @@
   "label.enabled":"Enabled",
   "label.disable":"Disable",
   "label.enable":"Enable",
+  "label.hostName":"Host Name",
+  "label.port":"Port",
+
   "label.filterbyname":"Filter by Name",
 
   "#Roles Management":"....",
