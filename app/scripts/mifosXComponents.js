@@ -4,7 +4,8 @@ define(['underscore', 'mifosX'], function() {
       'LoggedInUser',
       'roleMap',
       'Langs',
-      'paypalUser'
+      'paypalUser',
+      'Encript'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -237,7 +238,10 @@ define(['underscore', 'mifosX'], function() {
       'client/CreditDistributionController',
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
-
+      'client/AddCreditCardController',
+      'client/AddACHController',
+      'client/ViewCardDetailsController',
+      'client/EditCardDetailController',
     ],
     filters: [
       'StatusLookup',

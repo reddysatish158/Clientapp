@@ -758,7 +758,7 @@
             	  get: {method: 'GET', params: {}}
            }),
            
-           provisioningtemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+           provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
          	  get: {method: 'GET', params: {}}
            }),
            
@@ -835,10 +835,21 @@
            }),
 
           ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
-         	 get: {method: 'GET', params: {}},
-         	 getData: {method: 'GET', params: {id:'@id'}},
+         	  get: {method: 'GET', params: {}},
+         	  getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
+          ippoolingDetailsResource: defineResource(apiVer + "/ippooling/search", {query: '@query'}, {
+        	  getIpAddress: {method: 'GET', params: {query: '@query'}}
+         	
+          }) ,
+          creditCardSaveResource: defineResource(apiVer + "/clients/:clientId/carddetails", {clientId:'@clientId'}, {
+              get: {method: 'GET', params: {},isArray: true}
+            }),          
+          creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
+                get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+            }),
 
         };
       }];

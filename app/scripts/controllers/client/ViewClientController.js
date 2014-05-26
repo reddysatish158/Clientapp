@@ -6,6 +6,7 @@
          scope.identitydocuments = [];
          scope.buttons = [];
          scope.clientdocuments = [];
+         scope.clientcarddetails = [];
          scope.staffData = {};
          scope.orders = [];
          scope.scheduleorders=[];
@@ -83,6 +84,10 @@
         scope.routeToItemSale = function(onetimesaleid,clientid){
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
+        
+        scope.routeToCardDetails = function(clientid,id,cardType){
+            location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
+          };
        
         var getDetails = function(){
         	
@@ -545,9 +550,42 @@
         };
 
         scope.getClientDocuments = function () {
+        	
           resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
-            scope.clientdocuments = data;
-          });
+            scope.clientdocuments = data;      
+          });      
+          
+          resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
+              scope.clientcarddetails = data1;
+              for ( var i in scope.clientcarddetails) {	
+
+                  if(scope.clientcarddetails[i].cardType=='CreditCard'){
+                	  
+                	    var decrypted = CryptoJS.AES.decrypt(scope.clientcarddetails[i].name, "Secret Passphrase");
+                	    scope.clientcarddetails[i].name = decrypted.toString(CryptoJS.enc.Utf8);
+                	    
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, "Secret Passphrase");
+				        scope.clientcarddetails[i].cardNumber = decrypted1.toString(CryptoJS.enc.Utf8);
+				        
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate, "Secret Passphrase");
+				        scope.clientcarddetails[i].cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
+				        
+                  }else if(scope.clientcarddetails[i].cardType=='ACH'){
+                	  
+                	    var decrypted = CryptoJS.AES.decrypt(scope.clientcarddetails[i].name, "Secret Passphrase");
+              	        scope.clientcarddetails[i].name = decrypted.toString(CryptoJS.enc.Utf8);
+              	        
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber, "Secret Passphrase");
+				        scope.clientcarddetails[i].routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
+				        
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber, "Secret Passphrase");
+				        scope.clientcarddetails[i].bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
+				        
+				        var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName, "Secret Passphrase");
+				        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
+                  }
+              }
+            });
         };
 
         scope.deleteDocument = function (documentId, index) {

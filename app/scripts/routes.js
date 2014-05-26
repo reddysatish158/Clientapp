@@ -801,6 +801,18 @@
       .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
 
+      })
+      .when('/addcreditcarddetails/:clientId', {
+          templateUrl: 'views/clients/addcreditcarddetails.html'
+      })
+      .when('/addachdetails/:clientId', {
+          templateUrl: 'views/clients/addachdetails.html'
+      })
+      .when('/viewcarddetails/:clientId/:id/:cardType', {
+        templateUrl: 'views/clients/viewcarddetails.html'
+      })
+      .when('/editcarddetails/:clientId/:id/:cardType', {
+        templateUrl: 'views/clients/editcarddetails.html'
       });
 
     $locationProvider.html5Mode(false);
