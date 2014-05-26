@@ -4,7 +4,8 @@ define(['underscore', 'mifosX'], function() {
       'LoggedInUser',
       'roleMap',
       'Langs',
-      'paypalUser'
+      'paypalUser',
+      'Encript'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -248,7 +249,11 @@ define(['underscore', 'mifosX'], function() {
       'organization/ItemSaleController',
       'organization/OfficeAdjustmentsController',
       'organization/OfficePaymentsController',
-      'organization/RedemptionController'
+      'organization/RedemptionController',
+      'client/AddCreditCardController',
+      'client/AddACHController',
+      'client/ViewCardDetailsController',
+      'client/EditCardDetailController',
 
     ],
     filters: [
