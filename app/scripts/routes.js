@@ -817,7 +817,9 @@
       .when('/editProvison/:id', {
         templateUrl: 'views/clients/editProvisioning.html'
       })
-
+       .when('/createsmtp', {
+        templateUrl: 'views/administration/createsmtp.html'
+      })
       .when('/itemsale/:officeId',{
     	  templateUrl: 'views/organization/itemSale.html'
       })
@@ -842,9 +844,8 @@
       })
       .when('/editcarddetails/:clientId/:id/:cardType', {
         templateUrl: 'views/clients/editcarddetails.html'
-      })
-      ;
-
+      });
+    
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {
