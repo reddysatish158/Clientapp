@@ -325,13 +325,9 @@
           </span>
         </div>
       </tab> -->
-<<<<<<< HEAD
-      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab">
-      <div>
-=======
+
       <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab"
       				ng-show="$parent.PermissionService.showMenu('CREATE_DOCUMENT','READ_DOCUMENT')">
->>>>>>> upstream/master
         <div class="pull-right">
           <a ng-show=" PermissionService.showMenu('CREATE_DOCUMENT')" href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
@@ -356,8 +352,7 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-          </div>
+          </table>         
           <div>
        <div class="pull-left">
           <a href="#/addcreditcarddetails/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>CreditCard Details</a>
@@ -411,12 +406,8 @@
           </table>
           </div>
       </tab>
-<<<<<<< HEAD
-     
-       <tab heading="Notes">
-=======
+
        <tab heading="Notes" select="getClientNotes()" ng-show="$parent.PermissionService.showMenu('CREATE_CLIENTNOTE','READ_CLIENTNOTE')">
->>>>>>> upstream/master
         <br/>
         <form ng-show="PermissionService.showMenu('CREATE_CLIENTNOTE')">
             <div class="control-group">

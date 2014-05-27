@@ -18,12 +18,9 @@
             scope.formEncryptedData = {};
 			  scope.submit = function () {
 				    this.formEncryptedData.cardType="CreditCard";
-				    this.formEncryptedData.name = CryptoJS.AES.encrypt(this.formData.name, "Secret Passphrase").toString();
-				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, "Secret Passphrase").toString();			        
-				       /* var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
-				        var plainText = decrypted.toString(CryptoJS.enc.Utf8);
-				        alert('decrypted is : '+plainText);*/
+				    this.formEncryptedData.name = CryptoJS.AES.encrypt(this.formData.name,  mifosX.models.encrptionKey).toString();
+				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber, mifosX.models.encrptionKey).toString();
+				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, mifosX.models.encrptionKey).toString();			        
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){
 	                    location.path('/viewclient/' + data.clientId);
 	                });

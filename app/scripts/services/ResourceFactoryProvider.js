@@ -772,18 +772,13 @@
 //>>>>>>> obsplatform-1.01
            }),
            
-<<<<<<< HEAD
-           provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
-=======
+         provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+        	   get: {method: 'GET', params: {}}
+           }),
          processRequestResource: defineResource(apiVer + "/provisioning/processRequest/:id", {id: '@id'}, {
          	  get: {method: 'GET', params: {}}
           }),
-           
-           provisioningtemplateDataResource: defineResource(apiVer + "/provisioning/provisiontemplate/:orderId", {orderId:'@orderId'}, {
->>>>>>> upstream/master
-         	  get: {method: 'GET', params: {}}
-           }),
-           
+      
            provisioningtemplateDataResource: defineResource(apiVer + "/provisioning/serviceparmas/:orderId", {orderId:'@orderId'}, {
           	  get: {method: 'GET', params: {}}
             }),
@@ -868,50 +863,45 @@
          	  getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
-<<<<<<< HEAD
-          ippoolingDetailsResource: defineResource(apiVer + "/ippooling/search", {query: '@query'}, {
-        	  getIpAddress: {method: 'GET', params: {query: '@query'}}
-         	
-          }) ,
-          creditCardSaveResource: defineResource(apiVer + "/clients/:clientId/carddetails", {clientId:'@clientId'}, {
+          itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
+           	 get: {method: 'GET', params: {}}
+            }) ,
+
+            itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
+             	 get: {method: 'GET', params: {}}
+              }) ,
+
+            officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
+                getPayments: {method: 'GET', params: {}}
+            }),
+            officePaymentsResource: defineResource(apiVer + "/officepayments/:officeId", {officeId:'@officeId'}, {
+                postPayments: {method: 'POST', params: {officeId:'@officeId'}}
+            }),
+            officeAdjustmentsTemplateResource: defineResource(apiVer + "/officeadjustments/template", {}, {
+                getAdjustments: {method: 'GET', params: {}}
+            }),
+            officeAdjustmentsResource: defineResource(apiVer + "/officeadjustments/:officeId", {officeId:'@officeId'}, {
+                postAdjustments: {method: 'POST', params: {officeId:'@officeId'}}
+            }),
+            officeFinancialTransactionResource: defineResource(apiVer + "/officefinancialtransactions/:officeId", {officeId:'@officeId'}, {
+                get: {method: 'GET', params: {officeId:'@officeId'},isArray: true}
+            }),
+            agentsResource: defineResource(apiVer + "/agents", {}, {
+                postAgent: {method: 'POST', params: {}}
+            }),
+            redemptionResource: defineResource(apiVer + "/redemption/:clientId/:pinValue", {clientId : '@clientId',pinValue : '@pinValue'}, {
+                postRedemption: {method: 'POST', params: {clientId : '@clientId',pinValue : '@pinValue'}}
+            }),
+            ippoolingDetailsResource: defineResource(apiVer + "/ippooling/search", {query: '@query'}, {
+        	  getIpAddress: {method: 'GET', params: {query: '@query'}}	
+             }),
+             creditCardSaveResource: defineResource(apiVer + "/clients/:clientId/carddetails", {clientId:'@clientId'}, {
               get: {method: 'GET', params: {},isArray: true}
-            }),          
-          creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
+            }),
+            creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
-=======
-          itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
-          	 get: {method: 'GET', params: {}}
-           }) ,
-
-           itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
-            	 get: {method: 'GET', params: {}}
-             }) ,
-
-           officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
-               getPayments: {method: 'GET', params: {}}
-           }),
-           officePaymentsResource: defineResource(apiVer + "/officepayments/:officeId", {officeId:'@officeId'}, {
-               postPayments: {method: 'POST', params: {officeId:'@officeId'}}
-           }),
-           officeAdjustmentsTemplateResource: defineResource(apiVer + "/officeadjustments/template", {}, {
-               getAdjustments: {method: 'GET', params: {}}
-           }),
-           officeAdjustmentsResource: defineResource(apiVer + "/officeadjustments/:officeId", {officeId:'@officeId'}, {
-               postAdjustments: {method: 'POST', params: {officeId:'@officeId'}}
-           }),
-           officeFinancialTransactionResource: defineResource(apiVer + "/officefinancialtransactions/:officeId", {officeId:'@officeId'}, {
-               get: {method: 'GET', params: {officeId:'@officeId'},isArray: true}
-           }),
-           agentsResource: defineResource(apiVer + "/agents", {}, {
-               postAgent: {method: 'POST', params: {}}
-           }),
-           redemptionResource: defineResource(apiVer + "/redemption/:clientId/:pinValue", {clientId : '@clientId',pinValue : '@pinValue'}, {
-               postRedemption: {method: 'POST', params: {clientId : '@clientId',pinValue : '@pinValue'}}
-           }),
->>>>>>> upstream/master
-
         };
       }];
     }
