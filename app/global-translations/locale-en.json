@@ -1962,7 +1962,7 @@
 "#Redemption":".......",
 "validation.msg.redemption.clientId.cannot.be.blank":"Client id cannot be blank",
 "validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
-"error.msg.client.id.invalid":"Invalid Client Id"
+"error.msg.client.id.invalid":"Invalid Client Id",
 "#Add CreditCard":".....",
 "link.view.creditcard":"CreditCard",
 "label.client.creditcard":"Add CreditCard Details",
