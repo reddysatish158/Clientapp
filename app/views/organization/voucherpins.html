@@ -25,6 +25,7 @@
                 <th>{{ 'table.heading.pinType' | translate }}</th>
                 <th>{{ 'table.heading.pinValue' | translate }}</th>
                 <th>{{ 'table.heading.expiryDate' | translate }}</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,11 @@
                 <td>{{voucherpin.serialNo}}</td>  
                 <td>{{voucherpin.pinType}}</td>        
                 <td>{{voucherpin.pinValue}}</td>  
-                <td>{{voucherpin.expiryDate|DateFormat}}</td>                
+                <td>{{voucherpin.expiryDate|DateFormat}}</td> 
+                <td><a ng-show="(voucherpin.isProcessed == 'N')&&(!processFileLoading)" ng-click="processFile(voucherpin.id)" popover="Process File" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>            
+                   <a  ng-show="voucherpin.isProcessed == 'Y'" ng-click="downloadFile(voucherpin.id)" popover="Download Voucher File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a>
+                   <img alt="Loading"  ng-src="./images/spinner.gif" width="30" height="30" ng-show="processFileLoading&&(voucherpin.isProcessed == 'N')">
+                </td>  
             </tr>
         </tbody>
     </table>
