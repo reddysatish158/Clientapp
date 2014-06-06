@@ -835,6 +835,16 @@
          	 getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
+          creditCardSaveResource: defineResource(apiVer + "/clients/:clientId/carddetails", {clientId:'@clientId'}, {
+              get: {method: 'GET', params: {},isArray: true}
+            }),
+            creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
+                get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+            }),
+            voucherpinProcessResource: defineResource(apiVer + "/randomgenerators/createVoucherpin/:batchId", {batchId:'@batchId'}, {
+            	getVoucherpin: {method: 'GET', params: {}}
+            }),
         };
       }];
     }

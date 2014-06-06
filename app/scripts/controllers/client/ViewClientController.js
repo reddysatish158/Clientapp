@@ -84,6 +84,10 @@
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
         
+        scope.routeToCardDetails = function(clientid,id,type){
+            location.path('/viewcarddetails/'+clientid+'/'+id+'/'+type);
+          };
+        
         var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
         var riseTicket = PermissionService.showMenu('CREATE_TICKET')&&PermissionService.showMenu('READ_TICKET');
         var makePayment = PermissionService.showMenu('CREATE_PAYMENT')&&PermissionService.showMenu('READ_GETPAYMENT');
@@ -587,6 +591,57 @@
         				scope.clientdocuments = data;
         		});
         	}
+        	 resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
+                 scope.clientcarddetails = data1;
+                 for ( var i in scope.clientcarddetails) {	
+
+                     if(scope.clientcarddetails[i].type=='CreditCard'){
+                   	  
+   				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, "Secret Passphrase");
+   				         
+   				         var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
+   				          var stars = "";
+   				         for (var j in cardNum){
+   				        	 if(j>=0&&j<(cardNum.length)-4){
+   				        		 stars += "*";
+   				        	 };
+   				         }
+   				         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
+   				         scope.clientcarddetails[i].cardNumber = cardNum;
+   				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate, "Secret Passphrase");
+   				        scope.clientcarddetails[i].cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
+   				        
+                     }else if(scope.clientcarddetails[i].type=='ACH'){
+                 	        
+   				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber, "Secret Passphrase");
+   				        var routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
+   				          var stars = "";
+   				         for (var j in routingNumber){
+   				        	 if(j>=0&&j<(routingNumber.length)-4){
+   				        		 stars += "*";
+   				        	 };
+   				         }
+   				         routingNumber = stars+routingNumber.substr(routingNumber.length-4,routingNumber.length-1);
+   				         scope.clientcarddetails[i].routingNumber = routingNumber;
+
+   				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber, "Secret Passphrase");
+   				        var bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
+   				          var stars = "";
+   				         for (var j in bankAccountNumber){
+   				        	 if(j>=0&&j<(bankAccountNumber.length)-4){
+   				        		 stars += "*";
+   				        	 };
+   				         }
+   				         bankAccountNumber = stars+bankAccountNumber.substr(bankAccountNumber.length-4,bankAccountNumber.length-1);
+   				         scope.clientcarddetails[i].bankAccountNumber = bankAccountNumber;
+
+   				        
+   				        var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName, "Secret Passphrase");
+   				        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
+                     }
+                 }
+               });
+
         };
 
         scope.deleteDocument = function (documentId, index) {

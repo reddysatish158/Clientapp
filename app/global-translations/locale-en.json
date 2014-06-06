@@ -1940,7 +1940,37 @@
 "label.ippooling.createippool":"Create IpPool",
 "label.ippooling.description":"Description",
 "label.ippooling.ipaddress":"ipAddress",
-"label.ippooling.subnet":"Subnet"
+"label.ippooling.subnet":"Subnet",
+"label.hostName":"Host Name",
+"label.port":"Port",
+"link.view.createsmtp":"Create SMTP",
+
+"#Add CreditCard":".....",
+"link.view.creditcard":"CreditCard",
+"label.client.creditcard":"Add CreditCard Details",
+"label.carddetails.id":"id  : ",
+"label.client.creditcard.name":"Name on Card : ",
+"label.client.creditcard.cardnumber":" Card Number : ",
+"label.client.creditcard.expirydate":"Expiry Date : ",
+"label.client.achcard":"ACH Details",
+"label.client.achcard.name":"Name on Customer Account : ",
+"label.client.achcard.routingNumber":"ABA Routing Number : ",
+"label.client.achcard.bankAccountNumber":"Bank Account Number : ",
+"label.client.achcard.bankName":"Bank Name : ",
+"label.client.achcard.accountType":"Account Type : ",
+"table.heading.cardNumber":"Card Number",
+"table.heading.cardExpiryDate":"Expiry Date",
+"table.heading.routingNumber":"ABA Routing Number",
+"table.heading.bankName":"Bank Name",
+"table.heading.bankAccountNumber":"Bank Account Number",
+"table.heading.accountType":"Account Type",
+"label.viewcarddetails":"View Card Details",
+"link.view.editcarddetails":"Edit Card Details",
+"table.heading.cardType":"Card Type",
+"table.heading.cvvNumber":"Cvv Number",
+"label.client.creditcard.cvvNumber":"Cvv Number",
+"label.client.creditcard.cardType":"Card Type",
+"link.view.achcard":"ACH Details"
 
 
    
