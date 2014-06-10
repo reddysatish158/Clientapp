@@ -4,7 +4,10 @@
             scope.configs = [];
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
-                    scope.configs.push(data.globalConfiguration[i]);
+                	if(data.globalConfiguration[i].name == 'Is_Paypal'){
+                		data.globalConfiguration[i].value = "";
+                	}
+                	scope.configs.push(data.globalConfiguration[i]);
                 }
                 resourceFactory.cacheResource.get(function(data) {
                     for(var i in data ){
@@ -29,6 +32,18 @@
 		            });
 		        	
 		        };
+		        
+		        scope.editPaypal= function(id){
+			      	  scope.errorStatus=[];
+			      	  scope.errorDetails=[];
+			      	  scope.editId=id;
+			        	  $modal.open({
+			                templateUrl: 'editPaypal.html',
+			                controller:editPaypalController ,
+			                resolve:{}
+			            });
+			        	
+			        };
 		        
 		        var editGlobalController=function($scope,$modalInstance){
 			      	  
@@ -56,6 +71,40 @@
 		                   });
 		         	};  
 		    		$scope.reject = function(){
+		    			$modalInstance.dismiss('cancel');
+		    		};
+		        };
+		        
+		        var editPaypalController=function($scope,$modalInstance){
+
+		        	$scope.formData = {}; 
+		            
+		           // DATA GET
+		        	/*resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
+		                  var jsonObj = JSON.parse(data.value);
+		                 
+		                 $scope.formData.id = jsonObj.clientId;
+		                 $scope.formData.code = jsonObj.secretCode;
+		            });*/
+		            
+		         	$scope.submit = function(){
+		         		$scope.paypalFlag=true;
+		         		var jsonData = {};
+		         		jsonData.clientId = $scope.formData.id;
+		         		jsonData.secretCode = $scope.formData.code;
+		         		
+		         		var jsonString = JSON.stringify(jsonData);
+		         		$scope.paypalData = {"value":jsonString};
+		         		
+		         		//console.log($scope.paypalData);
+		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.paypalData,function(data){ 
+		         			$modalInstance.close('delete');
+		                       route.reload();
+		                 },function(errData){
+			                  $scope.paypalFlag = false;
+		                 });
+		         	};  
+		    		$scope.cancel = function(){
 		    			$modalInstance.dismiss('cancel');
 		    		};
 		        };

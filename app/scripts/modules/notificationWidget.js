@@ -104,10 +104,15 @@ angular.module('notificationWidget', [])
     // publish start request notification
     var requestStarted = function() {
         $rootScope.$broadcast(_START_REQUEST_);
-        $rootScope.blockUI = true;
+        //console.log("request start");
+        if($rootScope.voucherPinProcess)
+        	$rootScope.blockUI = false;
+        else
+        	$rootScope.blockUI = true;
     };
     // publish end request notification
     var requestEnded = function() {
+    	//console.log("request end");
         $rootScope.$broadcast(_END_REQUEST_);
         $rootScope.blockUI = false;
     };

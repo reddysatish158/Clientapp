@@ -1,6 +1,7 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
 	    CreateVoucherPinController: function(scope, resourceFactory, location,dateFilter) {
+	    	
 	        scope.pinCategoryDatas = [];
 	        scope.pinTypeDatas = [];
 	        scope.plandatas = [];
@@ -23,6 +24,7 @@
 	        };
 	        
 	        scope.submit = function() {  
+
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
 	             var exipiryDate = dateFilter(scope.start.date,'dd MMMM yyyy');

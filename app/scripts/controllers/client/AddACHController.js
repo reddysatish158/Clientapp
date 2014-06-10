@@ -16,17 +16,23 @@
             scope.phone=clientData.phone;
             scope.formData = {};
             scope.formEncryptedData = {};
+            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+            var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+            
+            scope.reset123 = function(){
+            	webStorage.add("callingTab", {someString: "documents" });
+            };
 			  scope.submit = function () {
-				    this.formEncryptedData.cardType="ACH";
-				    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.bankName = CryptoJS.AES.encrypt(this.formData.bankName, "Secret Passphrase").toString();		
-				    this.formEncryptedData.name = CryptoJS.AES.encrypt(this.formData.name, "Secret Passphrase").toString();
+				    this.formEncryptedData.type="ACH";
+				    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumber, key, {iv: iv}).toString();
+				    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNumber, key, {iv: iv}).toString();
+				    this.formEncryptedData.bankName = CryptoJS.AES.encrypt(this.formData.bankName, key, {iv: iv}).toString();		
+				    this.formEncryptedData.name = this.formData.name;
 				    this.formEncryptedData.accountType=this.formData.accountType;				   
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){
+	                	webStorage.add("callingTab", {someString: "documents" });
 	                    location.path('/viewclient/' + data.clientId);
 	                });
-	                webStorage.add("callingTab", {someString: "creditcard" });
 	            };
 			
 		}

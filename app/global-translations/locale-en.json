@@ -895,7 +895,7 @@
   "label.beginWith":"Begin With:",
   "label.pinCategory":"Pin Category:",
   "label.quantity":"Quantity:",
-  "label.serialNo":"Serial No:",
+  "label.serialNoLength":"Serial No Length:",
   "label.pinType":"PinType:",
   "label.ManageVoucherpins":"Voucherpins",
   
@@ -1972,13 +1972,25 @@
 "label.client.achcard.bankAccountNumber":"Bank Account Number : ",
 "label.client.achcard.bankName":"Bank Name : ",
 "label.client.achcard.accountType":"Account Type : ",
-"table.heading.cardNumber":"Card Number : ",
-"table.heading.cardExpiryDate":"Expiry Date : ",
-"table.heading.routingNumber":"ABA Routing Number : ",
+"table.heading.cardNumber":"Card Number",
+"table.heading.cardExpiryDate":"Expiry Date",
+"table.heading.routingNumber":"ABA Routing Number",
 "table.heading.bankName":"Bank Name",
 "table.heading.bankAccountNumber":"Bank Account Number",
 "table.heading.accountType":"Account Type",
-"label.viewcarddetails":"View Card Details"
+"label.viewcarddetails":"View Card Details",
+"link.view.editcarddetails":"Edit Card Details",
+"validation.msg.groupsdetails.groupName.cannot.be.blank":"Group Name can not be blank",
+"validation.msg.groupsdetails.groupAddress.cannot.be.blank":"Group Address can not be blank",
+"validation.msg.groupsdetails.attribute1.cannot.be.blank":"1.Field can not be blank",
+"validation.msg.groupsdetails.attribute2.cannot.be.blank":"2.Field can not be blank",
+"validation.msg.groupsdetails.attribute3.cannot.be.blank":"3.Field can not be blank",
+"validation.msg.groupsdetails.attribute4.cannot.be.blank":"4.Field can not be blank",
+"table.heading.cardType":"Card Type",
+"table.heading.cvvNumber":"Cvv Number",
+"label.client.creditcard.cvvNumber":"Cvv Number",
+"label.client.creditcard.cardType":"Card Type",
+"link.view.achcard":"ACH Details"
 
 
    

@@ -254,6 +254,7 @@ define(['underscore', 'mifosX'], function() {
       'client/AddACHController',
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
+      'client/AddNewCreditCardController'
 
     ],
     filters: [
@@ -279,7 +280,8 @@ define(['underscore', 'mifosX'], function() {
       'RightClickDirective',
       'ContextMenuDirective',
       'AutofocusDirective',
-      'ChosenComboboxDirective'
+      'ChosenComboboxDirective',
+      'NgAutoFocusFunDirective'
     ]
   };
 

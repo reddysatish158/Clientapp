@@ -837,13 +837,15 @@
       .when('/addachdetails/:clientId', {
           templateUrl: 'views/clients/addachdetails.html'
       })
-      .when('/viewcarddetails/:clientId/:id/:cardType', {
+      .when('/viewcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/viewcarddetails.html'
       })
-      .when('/editcarddetails/:clientId/:id/:cardType', {
+      .when('/editcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/editcarddetails.html'
       })
-      ;
+      .when('/addnewcreditcarddetails/:clientId/:id/:type', {
+        templateUrl: 'views/clients/addnewcreditcarddetails.html'
+      });
 
     $locationProvider.html5Mode(false);
   };
