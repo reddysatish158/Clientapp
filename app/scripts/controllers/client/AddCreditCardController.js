@@ -150,15 +150,17 @@
 					  }
 				  }
 				  
-				/*  var cardCvvNo = $('#cardCvvNo').val();
-				  if(cardCvvNo == ""){
+				  var cardCvvNo = $('#cardCvvNo').val();
+				  /* if(cardCvvNo == ""){
 					  scope.cardCvvNoReq = true;
 					  errors.push({"cardCvvNoReq":'true'});
 				  }
 				  else */
 				  if(cardCvvNo){
+					  console.log("affs");
 					  var match = $('#cardCvvNo').val().match(/^(?!0+$)\d{1,19}$/);
 					  if(!match){
+						  console.log("aafdsdsafsdfsfsfffs");
 						  scope.cardCvvNoDigit = true;
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
@@ -168,6 +170,7 @@
 				    this.formEncryptedData.type="CreditCard";
 					this.formEncryptedData.cardType = scope.formData.cardType;
 				    this.formEncryptedData.name = this.formData.name;
+				    if(scope.formData.cvvNumber)
 				    this.formEncryptedData.cvvNumber = CryptoJS.AES.encrypt(scope.formData.cvvNumber, key, {iv: iv}).toString();
 				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber, key, {iv: iv}).toString();
 				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, key, {iv: iv}).toString();			        

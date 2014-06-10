@@ -1,5 +1,5 @@
 (function(module) {
   mifosX.models = _.extend(module, {
-	  encrptionKey : "Secret Passphrase"	  
+	  encrptionKey : "Hugo Technologies"	  
   });	 
 }(mifosX.models || {}));
