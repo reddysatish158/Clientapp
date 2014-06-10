@@ -85,11 +85,12 @@
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
         
-
+<<<<<<< HEAD
         scope.routeToCardDetails = function(clientid,id,cardType){
             location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
           };
        
+=======
         var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
         var riseTicket = PermissionService.showMenu('CREATE_TICKET')&&PermissionService.showMenu('READ_TICKET');
         var makePayment = PermissionService.showMenu('CREATE_PAYMENT')&&PermissionService.showMenu('READ_GETPAYMENT');
@@ -102,7 +103,7 @@
         var acceptTransfer = PermissionService.showMenu('ACCEPTTRANSFER_CLIENT');
         var rejectTransfer = PermissionService.showMenu('REJECTTRANSFER_CLIENT');
         var undoTransfer = PermissionService.showMenu('WITHDRAWTRANSFER_CLIENT');
-
+>>>>>>> upstream/master
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
@@ -594,6 +595,7 @@
         };
 
         scope.getClientDocuments = function () {
+<<<<<<< HEAD
         	
           resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
             scope.clientdocuments = data;      
@@ -630,13 +632,13 @@
                   }
               }
             });
-
+=======
         	if(PermissionService.showMenu('READ_DOCUMENT')){
         		resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
         				scope.clientdocuments = data;
         		});
         	}
-
+>>>>>>> upstream/master
         };
 
         scope.deleteDocument = function (documentId, index) {
