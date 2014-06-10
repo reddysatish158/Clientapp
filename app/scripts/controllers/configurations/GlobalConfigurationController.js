@@ -4,7 +4,10 @@
             scope.configs = [];
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
-                    scope.configs.push(data.globalConfiguration[i]);
+                	if(data.globalConfiguration[i] == 'Is_Paypal'){
+                		data.globalConfiguration[i].value = "";
+                	}
+                		scope.configs.push(data.globalConfiguration[i]);
                 }
                 resourceFactory.cacheResource.get(function(data) {
                     for(var i in data ){
@@ -77,12 +80,12 @@
 		        	$scope.formData = {}; 
 		            
 		           // DATA GET
-		        	resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
+		        	/*resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
 		                  var jsonObj = JSON.parse(data.value);
 		                 
 		                 $scope.formData.id = jsonObj.clientId;
 		                 $scope.formData.code = jsonObj.secretCode;
-		            });
+		            });*/
 		            
 		         	$scope.submit = function(){
 		         		$scope.paypalFlag=true;
@@ -93,7 +96,7 @@
 		         		var jsonString = JSON.stringify(jsonData);
 		         		$scope.paypalData = {"value":jsonString};
 		         		//console.log(this.updateData);
-		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.updateData,function(data){ 
+		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.paypalData,function(data){ 
 		         			   $modalInstance.close('delete');
 		                       route.reload();
 		                 },function(errData){
