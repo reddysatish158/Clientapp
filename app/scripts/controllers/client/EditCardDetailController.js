@@ -161,10 +161,10 @@
             };
             
             //ACH Validations
-            scope.hideRoutingNumError = function(){
+            /*scope.hideRoutingNumError = function(){
             	scope.routingNumDigit = false;
             	errors = [];
-            };
+            };*/
             scope.hideBankAccountNumError = function(){
             	scope.bankAccountNumDigit = false;
             	errors = [];
@@ -208,14 +208,14 @@
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
 				  }
-			     var routingNum = $('#routingNum').val();
+			     /*var routingNum = $('#routingNum').val();
 				  if(routingNum){
 					  var match = $('#routingNum').val().match(/^(?!0+$)\d{1,30}$/);
 					  if(!match){
 						  scope.routingNumDigit = true;
 						  errors.push({"routingNumDigit":'true'});
 					  }
-				  }
+				  }*/
 				  
 				  var bankAccountNum = $('#bankAccountNum').val();
 				  if(bankAccountNum){
@@ -237,6 +237,7 @@
 						    this.formEncryptedData.accountType=this.formData.accountType;		
 				    }else{
 				    	this.formEncryptedData.type="CreditCard";
+				    	if(this.formData.cvvNum)
 				    	this.formEncryptedData.cvvNumber=CryptoJS.AES.encrypt(this.formData.cvvNum, key, {iv: iv}).toString();
 				    	this.formEncryptedData.cardType=this.formData.cardType;
 					    this.formEncryptedData.name = this.formData.name;
