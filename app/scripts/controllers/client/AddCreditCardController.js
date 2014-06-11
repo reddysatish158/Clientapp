@@ -18,7 +18,6 @@
             scope.formEncryptedData = {};
             scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
             var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
-            var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
@@ -169,9 +168,9 @@
 					this.formEncryptedData.cardType = scope.formData.cardType;
 				    this.formEncryptedData.name = this.formData.name;
 				    if(scope.formData.cvvNumber)
-				    this.formEncryptedData.cvvNumber = CryptoJS.AES.encrypt(scope.formData.cvvNumber,  key, {iv: iv}).toString();
-				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber,  key, {iv: iv}).toString();
-				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate,  key, {iv: iv}).toString();			        
+				    this.formEncryptedData.cvvNumber = CryptoJS.AES.encrypt(scope.formData.cvvNumber,  key).toString();
+				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber,  key).toString();
+				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate,  key).toString();			        
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){
 	                    location.path('/viewclient/' + data.clientId);
 	                });
