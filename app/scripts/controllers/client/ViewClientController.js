@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope,PermissionService) {
+    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope,PermissionService,base64) {
     	 scope.client = [];
          scope.error = {};
          scope.identitydocuments = [];
@@ -600,7 +600,8 @@
         	}    
           
           resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
-        	  var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+        	  var key1 = base64.encode(mifosX.models.encrptionKey);
+              var key  = CryptoJS.enc.Base64.parse(key1);
               var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
               scope.clientcarddetails = data1;
               for ( var i in scope.clientcarddetails) {	
@@ -608,8 +609,8 @@
                   if(scope.clientcarddetails[i].type=='CreditCard'){
                 	  
 				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, key, {iv: iv});
-				         
 				         var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
+				         console.log(decrypted1.toString(CryptoJS.enc.Utf8));
 				          var stars = "";
 				         for (var j in cardNum){
 				        	 if(j>=0&&j<(cardNum.length)-4){
@@ -865,7 +866,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.ViewClientController]).run(function($log) {
+  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService','$base64', mifosX.controllers.ViewClientController]).run(function($log) {
     $log.info("ViewClientController initialized");
   });
 }(mifosX.controllers || {}));

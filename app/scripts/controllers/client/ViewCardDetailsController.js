@@ -2,15 +2,13 @@
   mifosX.controllers = _.extend(module, {
 	  ViewCardDetailsController: function(scope, routeParams , route, location, resourceFactory, http,webStorage,$modal) {
         scope.clientcarddetails = {};
-        var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
-        var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+        var key  = CryptoJS.enc.Base64.parse(mifosX.models.encrptionKey);
 
         resourceFactory.creditCardUpdateResource.get({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type} , function(data) {
             scope.clientcarddetails = data;  
 
             if(scope.clientcarddetails.type=='CreditCard'){
-            	  
-			        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails.cardNumber, key, {iv: iv});
+			        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails.cardNumber, key);
 			        var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
 			         for (var j in cardNum)
@@ -18,12 +16,12 @@
 			         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
 			         
 			         scope.clientcarddetails.cardNumber = cardNum;
-			        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails.cardExpiryDate, key, {iv: iv});
+			        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails.cardExpiryDate, key);
 			        scope.clientcarddetails.cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
 			        
             }else if(scope.clientcarddetails.type=='ACH'){
             	  
-			        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails.routingNumber, key, {iv: iv});
+			        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails.routingNumber, key);
 			        var routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
 			         for (var j in routingNumber)
@@ -32,7 +30,7 @@
 			         
 			         scope.clientcarddetails.routingNumber = routingNumber;
 			        
-			        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails.bankAccountNumber, key, {iv: iv});
+			        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails.bankAccountNumber, key);
 			        var bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
 			         for (var j in bankAccountNumber)
@@ -41,8 +39,6 @@
 			         
 			         scope.clientcarddetails.bankAccountNumber = bankAccountNumber;
 			        
-			        var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails.bankName, key, {iv: iv});
-			        scope.clientcarddetails.bankName = decrypted3.toString(CryptoJS.enc.Utf8);
             }
         });
         

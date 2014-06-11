@@ -32,8 +32,7 @@
             'LocalStorageModule':'../scripts/modules/localstorage',
             'configurations':'../scripts/modules/configurations',
             'chosen.jquery.min': "../scripts/modules/chosen.jquery.min",
-            'aes':'../scripts/CryptoJS/rollups/aes',
-            'enc-base64-min':'../scripts/CryptoJS/components/enc-base64-min'
+            'aes':'../scripts/CryptoJS/rollups/aes'
         },
         shim: {
             'angular': { exports: 'angular' },
@@ -59,7 +58,6 @@
             'configurations':{deps: ['angular']},
             'chosen.jquery.min': {deps: ['jquery']},
             'aes':{deps: ['jquery']},
-            'enc-base64-min':{deps: ['jquery']},
 
             'mifosX': {
                 deps: [
@@ -85,8 +83,7 @@
                     'LocalStorageModule',
                     'configurations',
                     'chosen.jquery.min',
-                    'aes',
-                    'enc-base64-min'
+                    'aes'
                 ],
                 exports: 'mifosX'
             }

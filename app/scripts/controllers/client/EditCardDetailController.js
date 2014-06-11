@@ -19,14 +19,13 @@
             scope.formData = {};
             scope.formEncryptedData = {};
             scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
-            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
-            var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+            var key  = CryptoJS.enc.Base64.parse(mifosX.models.encrptionKey);
             
             resourceFactory.creditCardUpdateResource.get({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type} , function(data) {
                 scope.formData = data;  
                 if(scope.formData.type=='CreditCard'){
               	    
-    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.cardNumber,  key, {iv: iv});
+    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.cardNumber,  key);
        			        scope.cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
        			     var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
@@ -38,9 +37,9 @@
 			         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
 			         scope.formData.crdNumber = cardNum;
     			        
-    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.cardExpiryDate,  key, {iv: iv});
+    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.cardExpiryDate,  key);
     			        scope.formData.cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
-    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.cvvNumber,  key, {iv: iv});
+    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.cvvNumber,  key);
     			        //scope.formData.cvvNumber = decrypted3.toString(CryptoJS.enc.Utf8);
        			     var cvvNum = decrypted3.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
@@ -59,7 +58,7 @@
     			        
                 }else if(scope.formData.type=='ACH'){
                 	  
-    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.routingNumber, key, {iv: iv});
+    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.routingNumber, key);
     			        //scope.formData.routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
     			        var routingNum = decrypted1.toString(CryptoJS.enc.Utf8);
   			          var stars = "";
@@ -72,7 +71,7 @@
   			         scope.formData.routingNum = routingNum;
       			        
     			       
-    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.bankAccountNumber, key, {iv: iv});
+    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.bankAccountNumber, key);
     			       //scope.formData.bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
     			        var bankAccountNum = decrypted2.toString(CryptoJS.enc.Utf8);
     			          var stars = "";
@@ -83,9 +82,6 @@
     			         }
     			         bankAccountNum = stars+bankAccountNum.substr(bankAccountNum.length-4,bankAccountNum.length-1);
     			         scope.formData.bankAccountNum = bankAccountNum;
-    			         
-    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.bankName, key, {iv: iv});
-    			        scope.formData.bankName = decrypted3.toString(CryptoJS.enc.Utf8);
                 }
             });
             
@@ -230,19 +226,19 @@
 				 if(errors.length == 0){
 				    if(this.formData.type=='ACH'){
 				    	    this.formEncryptedData.type='ACH';
-						    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumr, key, {iv: iv}).toString();
-						    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNum, key, {iv: iv}).toString();
-						    this.formEncryptedData.bankName = CryptoJS.AES.encrypt(this.formData.bankName, key, {iv: iv}).toString();		
+						    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumr, key).toString();
+						    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNum, key).toString();
+						    this.formEncryptedData.bankName = this.formData.bankName;		
 						    this.formEncryptedData.name = this.formData.name;
 						    this.formEncryptedData.accountType=this.formData.accountType;		
 				    }else{
 				    	this.formEncryptedData.type="CreditCard";
 				    	if(this.formData.cvvNum)
-				    	this.formEncryptedData.cvvNumber=CryptoJS.AES.encrypt(this.formData.cvvNum, key, {iv: iv}).toString();
+				    	this.formEncryptedData.cvvNumber=CryptoJS.AES.encrypt(this.formData.cvvNum, key).toString();
 				    	this.formEncryptedData.cardType=this.formData.cardType;
 					    this.formEncryptedData.name = this.formData.name;
-					    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.crdNumber, key, {iv: iv}).toString();
-					    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, key, {iv: iv}).toString();			        
+					    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.crdNumber, key).toString();
+					    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, key).toString();			        
 				    }
 				   		   
 	                resourceFactory.creditCardUpdateResource.update({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type},this.formEncryptedData,function(data){
