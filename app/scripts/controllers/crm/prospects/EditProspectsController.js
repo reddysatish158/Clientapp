@@ -32,21 +32,16 @@
 		        scope.cityDatas = data.cityData;
 		        scope.first.date = scope.getDateData(data.preferredCallingTime);
 		        for(var i=0;i<scope.sourceOfPublicityDatas.length;i++){
-		        	console.log(scope.sourceOfPublicityDatas[i]);
-		        	console.log(scope.editprospects.sourceOfPublicityInt);
 		        	if(scope.sourceOfPublicityDatas[i].mCodeValue == scope.editprospects.sourceOfPublicityInt){
 		        		scope.publicityFlag = true;
-		        		console.log(i);
 		        	}
 		        	
 		        }
 		        if(scope.publicityFlag == true){
 		        	scope.editprospects.sourceOfPublicity = scope.editprospects.sourceOfPublicityInt;
-		        	console.log(true);
 		        }else if(scope.publicityFlag == false){
 		        	scope.editprospects.sourceOther = scope.editprospects.sourceOfPublicityInt;
 	        		scope.editprospects.sourceOfPublicity = "Other";
-	        		console.log(false);
 		        }
 	        });
 	        
