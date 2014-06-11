@@ -16,15 +16,16 @@
             scope.phone=clientData.phone;
             scope.formData = {};
             scope.formEncryptedData = {};
+            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
             };
 			  scope.submit = function () {
 				    this.formEncryptedData.type="ACH";
-				    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.bankName = CryptoJS.AES.encrypt(this.formData.bankName, "Secret Passphrase").toString();		
+				    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumber,  key).toString();
+				    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNumber,  key).toString();
+				    this.formEncryptedData.bankName =this.formData.bankName;		
 				    this.formEncryptedData.name = this.formData.name;
 				    this.formEncryptedData.accountType=this.formData.accountType;				   
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){

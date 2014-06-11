@@ -18,13 +18,14 @@
             scope.phone=clientData.phone;
             scope.formData = {};
             scope.formEncryptedData = {};
-            scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','MAESTRO','OTHERS'];
+            scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
+            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
             
             resourceFactory.creditCardUpdateResource.get({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type} , function(data) {
                 scope.formData = data;  
                 if(scope.formData.type=='CreditCard'){
               	    
-    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.cardNumber, "Secret Passphrase");
+    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.cardNumber, key);
        			        scope.cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
        			     var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
@@ -36,9 +37,9 @@
 			         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
 			         scope.formData.crdNumber = cardNum;
     			        
-    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.cardExpiryDate, "Secret Passphrase");
+    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.cardExpiryDate, key);
     			        scope.formData.cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
-    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.cvvNumber, "Secret Passphrase");
+    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.cvvNumber, key);
     			        //scope.formData.cvvNumber = decrypted3.toString(CryptoJS.enc.Utf8);
        			     var cvvNum = decrypted3.toString(CryptoJS.enc.Utf8);
 			          var stars = "";
@@ -57,7 +58,7 @@
     			        
                 }else if(scope.formData.type=='ACH'){
                 	  
-    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.routingNumber, "Secret Passphrase");
+    			        var decrypted1 = CryptoJS.AES.decrypt(scope.formData.routingNumber, key);
     			        //scope.formData.routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
     			        var routingNum = decrypted1.toString(CryptoJS.enc.Utf8);
   			          var stars = "";
@@ -70,7 +71,7 @@
   			         scope.formData.routingNum = routingNum;
       			        
     			       
-    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.bankAccountNumber, "Secret Passphrase");
+    			        var decrypted2 = CryptoJS.AES.decrypt(scope.formData.bankAccountNumber, key);
     			       //scope.formData.bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
     			        var bankAccountNum = decrypted2.toString(CryptoJS.enc.Utf8);
     			          var stars = "";
@@ -81,14 +82,28 @@
     			         }
     			         bankAccountNum = stars+bankAccountNum.substr(bankAccountNum.length-4,bankAccountNum.length-1);
     			         scope.formData.bankAccountNum = bankAccountNum;
-    			         
-    			        var decrypted3 = CryptoJS.AES.decrypt(scope.formData.bankName, "Secret Passphrase");
-    			        scope.formData.bankName = decrypted3.toString(CryptoJS.enc.Utf8);
                 }
             });
             
             var errors = []; 
             
+            scope.selectCardType = function(number){
+                if(number){
+              	var cardNumber = number.replace(/ +/g, "");
+              	var masterCard = cardNumber.match(/^5[1-5][0-9]{5,}$/);
+              	var visaCard = cardNumber.match(/^4[0-9]{6,}$/);
+              	var discoveryCard = cardNumber.match(/^6(?:011|5[0-9]{2})[0-9]{3,}$/);
+              	var americanExpressCard = cardNumber.match(/^3[47][0-9]{5,}$/);
+              	if(masterCard) scope.formData.cardType = 'MASTERCARD';
+              	else if(visaCard) scope.formData.cardType = 'VISA';
+              	else if(discoveryCard) scope.formData.cardType = 'DISCOVERY';
+              	else if(americanExpressCard) scope.formData.cardType = 'AMERICAN EXPRESS';
+              	else  scope.formData.cardType = 'OTHERS';
+                }
+                else{
+              	  delete scope.formData.cardType;
+                }
+             };
             scope.cradNumberErrorHide = function(){
             	 //scope.cardNumberReq = false;
             	 scope.cardNumberDigit = false;
@@ -142,10 +157,10 @@
             };
             
             //ACH Validations
-            scope.hideRoutingNumError = function(){
+            /*scope.hideRoutingNumError = function(){
             	scope.routingNumDigit = false;
             	errors = [];
-            };
+            };*/
             scope.hideBankAccountNumError = function(){
             	scope.bankAccountNumDigit = false;
             	errors = [];
@@ -189,14 +204,14 @@
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
 				  }
-			     var routingNum = $('#routingNum').val();
+			     /*var routingNum = $('#routingNum').val();
 				  if(routingNum){
 					  var match = $('#routingNum').val().match(/^(?!0+$)\d{1,30}$/);
 					  if(!match){
 						  scope.routingNumDigit = true;
 						  errors.push({"routingNumDigit":'true'});
 					  }
-				  }
+				  }*/
 				  
 				  var bankAccountNum = $('#bankAccountNum').val();
 				  if(bankAccountNum){
@@ -211,18 +226,19 @@
 				 if(errors.length == 0){
 				    if(this.formData.type=='ACH'){
 				    	    this.formEncryptedData.type='ACH';
-						    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumr, "Secret Passphrase").toString();
-						    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNum, "Secret Passphrase").toString();
-						    this.formEncryptedData.bankName = CryptoJS.AES.encrypt(this.formData.bankName, "Secret Passphrase").toString();		
+						    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumr, key).toString();
+						    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNum, key).toString();
+						    this.formEncryptedData.bankName = this.formData.bankName;		
 						    this.formEncryptedData.name = this.formData.name;
 						    this.formEncryptedData.accountType=this.formData.accountType;		
 				    }else{
 				    	this.formEncryptedData.type="CreditCard";
-				    	this.formEncryptedData.cvvNumber=CryptoJS.AES.encrypt(this.formData.cvvNum, "Secret Passphrase").toString();
+				    	if(this.formData.cvvNum)
+				    	this.formEncryptedData.cvvNumber=CryptoJS.AES.encrypt(this.formData.cvvNum, key).toString();
 				    	this.formEncryptedData.cardType=this.formData.cardType;
 					    this.formEncryptedData.name = this.formData.name;
-					    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.crdNumber, "Secret Passphrase").toString();
-					    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, "Secret Passphrase").toString();			        
+					    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.crdNumber, key).toString();
+					    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, key).toString();			        
 				    }
 				   		   
 	                resourceFactory.creditCardUpdateResource.update({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type},this.formEncryptedData,function(data){

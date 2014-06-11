@@ -82,6 +82,20 @@
 	  </tr>
 	  <tr>
         <td>
+		<div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.cardnumber' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input id="cardNumber" type="text" name="cardNumber" ng-model="formData.crdNumber" 
+				ng-focus="cradNumberErrorHide()" ng-change="selectCardType(formData.cardNumber)" required late-Validate/>
+				<!-- <span class="error" ng-show="cardNumberReq">This field is required.</span> -->
+				<span class="error" ng-show="cardNumberDigit">Please enter only digits.</span>
+				<span class="error" ng-show="cardNumberValid">Please enter a valid credit card number.</span>
+			</div>
+		</div>
+	   </td>
+	  </tr>
+	   <tr>
+        <td>
 		 <div class="control-group">
 				<label class="control-label" for="name">{{'label.client.creditcard.cardType' | translate}}<span class="required">*</span></label>
 				<div class="controls">
@@ -91,19 +105,6 @@
 				</div>
 		 </div>
 		</td>
-	  </tr>
-	  <tr>
-        <td>
-		<div class="control-group">
-			<label class="control-label" for="name">{{'label.client.creditcard.cardnumber' | translate}}<span class="required">*</span></label>
-			<div class="controls">
-				<input id="cardNumber" type="text" name="cardNumber" ng-model="formData.crdNumber" ng-focus="cradNumberErrorHide()" required late-Validate/>
-				<!-- <span class="error" ng-show="cardNumberReq">This field is required.</span> -->
-				<span class="error" ng-show="cardNumberDigit">Please enter only digits.</span>
-				<span class="error" ng-show="cardNumberValid">Please enter a valid credit card number.</span>
-			</div>
-		</div>
-	   </td>
 	  </tr>
 	  <tr>
         <td>
@@ -151,25 +152,12 @@
 	<fieldset>
 		<legend>{{'link.view.editcarddetails' | translate}}</legend>
     <table>
-      <tr>
-        <td>
-		<div class="control-group">
-			<label class="control-label" for="name">{{'label.client.creditcard.name' | translate}}<span class="required">*</span></label>
-			<div class="controls">
-				<input  type="text" name="name" ng-model="formData.name" required late-Validate/>
-			</div>
-		</div>
-	   </td>
-	  </tr>
 	  <tr>
         <td>
 		<div class="control-group">
 			<label class="control-label" for="routingNumber">{{'label.client.achcard.routingNumber' | translate}}<span class="required">*</span></label>
 			<div class="controls">
-				<input id="routingNum" type="text" name="routingNumber" ng-focus="hideRoutingNumError()" ng-model="formData.routingNum" required late-Validate/>
-				<span class="error" ng-show="routingNumDigit">
-                        Please enter digits only..!
-                </span>
+				<input id="routingNum" type="text" name="routingNumber" ng-model="formData.routingNum" required late-Validate/>
 			</div>
 		</div>
 	   </td>
@@ -193,6 +181,16 @@
 			<label class="control-label" for="bankName">{{'label.client.achcard.bankName' | translate}}<span class="required">*</span></label>
 			<div class="controls">
 				<input type="text" name="bankName" ng-model="formData.bankName" required late-Validate/>
+			</div>
+		</div>
+	   </td>
+	  </tr>
+	   <tr>
+        <td>
+		<div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.name' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input  type="text" name="name" ng-model="formData.name" required late-Validate/>
 			</div>
 		</div>
 	   </td>

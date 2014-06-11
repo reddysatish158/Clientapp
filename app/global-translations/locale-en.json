@@ -891,7 +891,7 @@
   "label.beginWith":"Begin With:",
   "label.pinCategory":"Pin Category:",
   "label.quantity":"Quantity:",
-  "label.serialNo":"Serial No:",
+  "label.serialNoLength":"Serial No Length:",
   "label.pinType":"PinType:",
   "label.ManageVoucherpins":"Voucherpins",
   

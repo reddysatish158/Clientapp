@@ -191,7 +191,7 @@
                  for (var i in scope.mediaAssetLocations) {
                 	
                    scope.formData.mediaAssetLocations.push({languageId:scope.mediaAssetLocations[i].languageId,formatType:scope.mediaAssetLocations[i].formatType, 
-                	   location:scope.mediaAssetLocations[i].location});
+                	   location:CryptoJS.AES.encrypt(scope.mediaAssetLocations[i].location,  "Hugo Technologys").toString()});
                  };
                }
              

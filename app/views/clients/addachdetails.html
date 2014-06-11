@@ -67,12 +67,12 @@
 		<div class="control-group">
 			<label class="control-label" for="routingNumber">{{'label.client.achcard.routingNumber' | translate}}<span class="required">*</span></label>
 			<div class="controls">
-				<input type="text" name="routingNumber" ng-model="formData.routingNumber" ng-pattern="/^(?!0+$)\d{1,30}$/" required late-Validate/>
-				 <span ng-show="achCard.routingNumber.$invalid">
+				<input type="text" name="routingNumber" ng-model="formData.routingNumber" required late-Validate/>
+				 <!-- <span ng-show="achCard.routingNumber.$invalid">
                    <small class="error" ng-show="achCard.routingNumber.$error.pattern">
                         Please enter digits only..!
                    </small>
-                </span>
+                </span> ng-pattern="/^(?!0+$)\d{1,30}$/" -->
 			</div>
 		</div>
 	   </td>
