@@ -288,6 +288,7 @@
   "link.tasks" : "Tasks",
   "link.clients" : "Clients",
   "link.accounting": "Accounting",
+  "link.smartsearch":"Smart Search",
   "link.reports" : "Reports",
   "link.admin" : "Admin",
   "link.clients.clients" : "Clients",
@@ -1493,6 +1494,7 @@
 	"validation.msg.client.prospect.email.cannot.be.blank":"Email Id cannot be blank",
 	"validation.msg.client.prospect.mobileNumber.cannot.be.blank":"Mobile Phone cannot be blank",
 	"validation.msg.client.prospect.prospectType.cannot.be.blank":"Type cannot be blank",
+	"validation.msg.client.prospect.note.exceeds.max.length":"Note should not exceed more then 255 Character's",
 	
 	"#onetimesale":"...",
 	"validation.msg.onetimesale.itemId.cannot.be.blank":"Item Code cannot be blank",
@@ -1959,6 +1961,10 @@
 "validation.msg.officeadjustment.amount_paid.cannot.be.blank":"Adjustment Amount can not be blank",
 "error.msg.officePayment_receiptNo.duplicate.name":"Receipt Number is Already Exist",
 
+"#Redemption":".......",
+"validation.msg.redemption.clientId.cannot.be.blank":"Client id cannot be blank",
+"validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
+"error.msg.client.id.invalid":"Invalid Client Id",
 "#Add CreditCard":".....",
 "link.view.creditcard":"CreditCard",
 "label.client.creditcard":"Add CreditCard Details",
@@ -1991,6 +1997,7 @@
 "label.client.creditcard.cvvNumber":"Cvv Number",
 "label.client.creditcard.cardType":"Card Type",
 "link.view.achcard":"ACH Details"
+
 
 
    

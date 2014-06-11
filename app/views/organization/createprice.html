@@ -37,7 +37,9 @@
           <div class="control-group">
             <label class="control-label" for="servicecode">{{ 'label.plan.servicecode' | translate }}</label>
             <div class="controls">
-               <select ng-model="formData.serviceCode"  ng-options="serviceData.serviceCode as serviceData.serviceDescription for serviceData in serviceDatas" value="{{serviceData.serviceCode}}"></select>
+               <select ng-model="formData.serviceCode"  ng-options="serviceData.serviceCode as serviceData.serviceDescription for serviceData in serviceDatas" value="{{serviceData.serviceCode}}">
+               
+               </select>
             </div>
           </div>
           </td>

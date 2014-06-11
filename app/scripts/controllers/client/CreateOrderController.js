@@ -51,10 +51,10 @@
           scope.paytermdatas=data.paytermdata;
           scope.clientId = routeParams.id;
           
-          
+       //   scope.formData.billAlign=true;
       
           scope.formData = {
-            		billAlign: false,
+            		billAlign: true,
             		
                   };
      	   

@@ -29,7 +29,11 @@
 	             this.formData.dateFormat = "dd MMMM yyyy";
 	             var exipiryDate = dateFilter(scope.start.date,'dd MMMM yyyy');
 	             this.formData.expiryDate=exipiryDate;
+<<<<<<< HEAD
+	           //  this.formData.pinExtention="Rs.";
+=======
 	             //this.formData.pinExtention="Rs.";
+>>>>>>> 48a60ff22a3edd08cfeb7a5082c985a816595100
 	            resourceFactory.voucherpinResource.save(this.formData,function(data){
 	            	location.path('/voucherpins');
 	          });

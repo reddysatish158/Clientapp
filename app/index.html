@@ -182,13 +182,10 @@
                                     <li><a href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
                                  <li><a href="#/smartSearch">Smart Search</a></li>
-<<<<<<< HEAD
-                                <li><a href="#/paymentGateway">Payment Gateway</a></li>                                         
-=======
                                 <li><a href="#/paymentGateway">Payment Gateway</a></li>
                                 
  -->
-                                <li><a ng-show="user=PermissionService.showMenu('READ_USER')" href="#/users">{{ 'link.admin.users' | translate }}</a></li>
+                             
                                 <li><a ng-show="organization=PermissionService.showMenu('READ_OFFICE','READ_STAFF','READ_CONTRACT','READ_MEDIAASSET','READ_EVENT','READ_DISCOUNT','READ_PROMOTIONCODE','READ_COUNTRYCURRENCY','READ_LOCATION',
                                 							'READ_CURRENCY','READ_SERVICE','READ_PLAN','READ_REGION','READ_RANDAMGENERATOR','READ_CHARGECODE','READ_MESSAGE')" href="#/organization">{{ 'link.admin.organisation' | translate }}</a></li>
                                 <li><a ng-show="system=PermissionService.showMenu('READ_DATATABLE','CREATE_CODE','READ_CODE','create_role','READ_role','UPDATE_PERMISSION','read_Audit',
@@ -198,10 +195,9 @@
                                   <li><a ng-show="upload=PermissionService.showMenu('READ_UPLOADSTATUS')" href="#/importing">{{'link.import' | translate }}</a></li>
                                     <li><a ng-show="jobs=PermissionService.showMenu('READ_SCHEDULERJOB')" href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
-                                 <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">smartSearch</a></li>
+                                 <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">{{ 'link.smartsearch' | translate }}</a></li>
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
                                  <!-- <li><a ng-show="pooling=PermissionService.showMenu('READ_IPPOOLMANAGEMENT') href="#/ipPooling">IpPooling</a></li> -->
-
                             </ul>
                         </li>
                     </ul>
