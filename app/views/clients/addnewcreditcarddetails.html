@@ -1,4 +1,4 @@
-<div ng-controller="AddCreditCardController">
+<div ng-controller="AddNewCreditCardController">
 	<div><ul class="breadcrumb">
         <table>
         <tr>
@@ -50,7 +50,7 @@
 		<ul class="breadcrumb">
 			<li><a href="#/clients">{{'link.clients' | translate}}</a> <span class="divider">/</span></li>
 			<li><a href="#/viewclient/{{clientId}}" ng-click="reset123()">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
-			<li class="active">{{'link.view.creditcard' | translate}}</li>
+			<li class="active">New Card Details</li>
 		</ul>
 	</div>
 	<form id="creditcard" name="creditcard" novalidate="" class="form-horizontal" ng-submit="submit()">
@@ -60,7 +60,7 @@
 		   <label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
 	  <fieldset>
-		<legend>{{'label.client.creditcard' | translate}}</legend>
+		<legend>New Card Details</legend>
 	   <table>
 		 <tr>
 		   <td>
@@ -69,20 +69,6 @@
 			<div class="controls">
 				<input type="text" id="cardName" name="cardName" ng-model="formData.name"  required late-Validate/>
 				<!-- <span class="error" ng-show="cardNameReq">This field is required.</span>ng-focus="cradNameErrorHide()"-->
-			</div>
-		  </div>
-		 </td>
-		</tr>
-		<tr>
-		  <td>
-		  <div class="control-group">
-			<label class="control-label" for="name">{{'label.client.creditcard.cardnumber' | translate}}<span class="required">*</span></label>
-			<div class="controls">
-				<input type="text" id="cardNumber" name="cardNumber" ng-model="formData.cardNumber" 
-				    ng-focus="cradNumberErrorHide()" ng-change="selectCardType(formData.cardNumber)" required late-Validate/>
-				<!-- <span class="error" ng-show="cardNumberReq">This field is required.</span> -->
-				<span class="error" ng-show="cardNumberDigit">Please enter only digits.</span>
-				<span class="error" ng-show="cardNumberValid">Please enter a valid credit card number.</span>
 			</div>
 		  </div>
 		 </td>
@@ -98,6 +84,20 @@
 					</div>
 		  		</div>
 			</td>
+		</tr>
+		<tr>
+		  <td>
+		  <div class="control-group">
+			<label class="control-label" for="name">{{'label.client.creditcard.cardnumber' | translate}}<span class="required">*</span></label>
+			<div class="controls">
+				<input type="text" id="cardNumber" name="cardNumber" ng-model="formData.cardNumber" 
+				    ng-focus="cradNumberErrorHide()" required late-Validate/>
+				<!-- <span class="error" ng-show="cardNumberReq">This field is required.</span> -->
+				<span class="error" ng-show="cardNumberDigit">Please enter only digits.</span>
+				<span class="error" ng-show="cardNumberValid">Please enter a valid credit card number.</span>
+			</div>
+		  </div>
+		 </td>
 		</tr>
 		<tr>
 		 <td>
@@ -119,7 +119,7 @@
 					<label class="control-label" for="name">{{'label.client.creditcard.cvvNumber' | translate}}<span class="required">*</span></label>
 					<div class="controls">
 						 <input type="text" id="cardCvvNo" maxlength="3" class="input-small" name="cardCvvNo" 
-								 ng-focus="cardCvvNoErrorHide()" ng-model="formData.cvvNumber"/>
+								 ng-focus="cardCvvNoErrorHide()" ng-model="formData.cvvNumber" required late-Validate/>
 						<!--  <span class="error" ng-show="cardCvvNoReq">This field is required.</span> -->
 						<span class="error" ng-show="cardCvvNoDigit">Please enter only digits.</span>
 					</div>
@@ -128,7 +128,7 @@
 		</tr>
 		</table>
 		 <div class="offset3">
-			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+			<a href="#/editcarddetails/{{clientId}}/{{id}}/{{type}}"><button type="reset" class="btn" >{{'button.cancel' | translate}}</button></a>
 			<button type="submit" class="btn btn-primary" ng-disabled="!creditcard.$valid">{{'button.save' | translate}}</button>
 		</div>
 	  </fieldset>

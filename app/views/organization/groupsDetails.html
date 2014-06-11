@@ -16,10 +16,11 @@
 	<table class="table">
         <thead>
             <tr class="graybg">
-                <th>Id</th>
-                <th>Group Name</th>
-                <th>Group Address</th>
-                <th>Count No's</th>
+                <th style="width:25%">Id</th>
+                <th style="width:25%">Group Name</th>
+                <th style="width:25%">Group Address</th>
+                <th style="width:25%">Count No's</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +28,12 @@
                 <td>{{groups.id}}</td>            
                 <td>{{groups.groupName}}</td>        
                 <td>{{groups.groupAddress}}</td> 
-                <td>{{groups.countNo}}</td>       
-            </tr>
+                <td>{{groups.countNo}}</td>   
+                <td><a ng-click="addProvision(groups.id,groups.groupName,groups.attribute1,groups.attribute2,groups.attribute3,groups.attribute4)" 
+                  ng-show="groups.isProvision == 'N'" class="btn " popover="Provisioning" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>
+                 <a ng-show="groups.isProvision == 'Y'" ng-disabled="groups.isProvision == 'Y'"class="btn "><i class="icon-play icon-white"></i></a>
+                </td>
+                 <!-- <a ng-show="voucherpin.isProcessed == 'N'" ng-click="processFile(voucherpin.id)" popover="Process File" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>   -->
         </tbody>
     </table>
     		<ul class="pager">
@@ -42,12 +47,17 @@
           <h3 class="bolder">Add Group</h3>
         </div>
 	 <form name="addGroupForm" novalidate="" class="form-horizontal well" ng-submit="submit()">
-        <div class="modal-body " style="height : 280px;">
+        <div class="modal-body " style="height : 350px;">
  		  <fieldset>
+			<div class="error" ng-show="errorStatus || errorDetails">
+				<label>{{'label.contract.error' | translate}}</label>
+				<label ng-show="errorStatus">{{errorStatus}}</label>
+				<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	   		 </div>
            	<div class="control-group">
 				<label class="control-label" for="groupName">Group Name<span class="required">*</span> :</label>
 			 	<div class="controls">
-              		<input  type="text" name="groupName" ng-model="formData.groupName" required late-Validate/>
+              		<input  type="text"id="groupName" name="groupName" ng-model="formData.groupName" required late-Validate/>
                     <span  ng-show="addGroupForm.groupName.$invalid">
                     	<small class="error" ng-show="addGroupForm.groupName.$error.req">
                         	Required Field !
@@ -58,7 +68,7 @@
           	<div class="control-group">
             	 <label class="control-label" for="groupAddress">Group Address<span class="required">*</span> :</label>
 			 	 <div class="controls">
-              		<input type="text" name="groupAddress" ng-model="formData.groupAddress" required late-Validate/>
+              		<input type="text" id="groupAddress" name="groupAddress" ng-model="formData.groupAddress" required late-Validate/>
 					<span  ng-show="addGroupForm.groupAddress.$invalid">
                     	<small class="error" ng-show="addGroupForm.groupAddress.$error.req">
                         	Required Field !
@@ -77,24 +87,24 @@
 				<tr>
 				  <td> 
 						<div class="control-group">
-              				1.&nbsp;<input class="input-medium" type="text" ng-model="formData.attribute1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              				1.&nbsp;<input class="input-medium" id="attribute1" type="text" ng-model="formData.attribute1" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						</div>
 				  </td>			
 				  <td> 
 						<div class="control-group">
-              				2.&nbsp;<input class="input-medium" type="text" ng-model="formData.attribute2" />
+              				2.&nbsp;<input class="input-medium" id="attribute2" type="text" ng-model="formData.attribute2" />
 						</div>
 				  </td>
 				</tr>
 				<tr>
 					<td> 
 							<div class="control-group">
-              					3.&nbsp;<input class="input-medium" type="text" ng-model="formData.attribute3" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              					3.&nbsp;<input class="input-medium" id="attribute3" type="text" ng-model="formData.attribute3" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</div>
 				  	</td>				
 					<td> 
 							<div class="control-group">
-              					4.&nbsp;<input class="input-medium" type="text" ng-model="formData.attribute4" />
+              					4.&nbsp;<input class="input-medium" id="attribute4" type="text" ng-model="formData.attribute4" />
 							</div>
 				  	</td>
 				</tr>

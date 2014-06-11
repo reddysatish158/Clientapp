@@ -851,12 +851,12 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
-
-
           groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
-        	  getDetails: {method: 'GET', params: {}},
-        	  postDetails: { method: 'POST', params: {}}
+        	  getDetails: {method: 'GET', params: {}}
            }),
+           groupsDetailsProvisionResource: defineResource(apiVer + "/groupsdetails/provision/:groupId", {groupId:"@groupId"}, {
+         	  
+            }),
 
           ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
          	  get: {method: 'GET', params: {}},
@@ -866,11 +866,9 @@
           itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
            	 get: {method: 'GET', params: {}}
             }) ,
-
-            itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
+          itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
              	 get: {method: 'GET', params: {}}
-              }) ,
-
+            }) ,
             officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
                 getPayments: {method: 'GET', params: {}}
             }),
@@ -901,6 +899,7 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
+
         };
       }];
     }
