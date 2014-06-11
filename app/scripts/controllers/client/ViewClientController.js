@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope,PermissionService,base64) {
+    ViewClientController: function(scope,webStorage, routeParams , route, location, resourceFactory,paginatorService, http,$modal,dateFilter,API_VERSION,$rootScope,PermissionService) {
     	 scope.client = [];
          scope.error = {};
          scope.identitydocuments = [];
@@ -600,17 +600,14 @@
         	}    
           
           resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
-        	  var key1 = base64.encode(mifosX.models.encrptionKey);
-              var key  = CryptoJS.enc.Base64.parse(key1);
-              var iv  = CryptoJS.enc.Base64.parse("#base64IV#");
+              var key  = mifosX.models.encrptionKey;
               scope.clientcarddetails = data1;
               for ( var i in scope.clientcarddetails) {	
 
                   if(scope.clientcarddetails[i].type=='CreditCard'){
                 	  
-				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, key, {iv: iv});
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, key);
 				         var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
-				         console.log(decrypted1.toString(CryptoJS.enc.Utf8));
 				          var stars = "";
 				         for (var j in cardNum){
 				        	 if(j>=0&&j<(cardNum.length)-4){
@@ -619,12 +616,12 @@
 				         }
 				         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
 				         scope.clientcarddetails[i].cardNumber = cardNum;
-				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate,  key, {iv: iv});
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate,  key);
 				        scope.clientcarddetails[i].cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
 				        
                   }else if(scope.clientcarddetails[i].type=='ACH'){
               	        
-				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber,  key, {iv: iv});
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber,  key);
 				        var routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
 				          var stars = "";
 				         for (var j in routingNumber){
@@ -635,7 +632,7 @@
 				         routingNumber = stars+routingNumber.substr(routingNumber.length-4,routingNumber.length-1);
 				         scope.clientcarddetails[i].routingNumber = routingNumber;
 
-				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber,  key, {iv: iv});
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber,  key);
 				        var bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
 				          var stars = "";
 				         for (var j in bankAccountNumber){
@@ -645,10 +642,10 @@
 				         }
 				         bankAccountNumber = stars+bankAccountNumber.substr(bankAccountNumber.length-4,bankAccountNumber.length-1);
 				         scope.clientcarddetails[i].bankAccountNumber = bankAccountNumber;
+				         
+				         var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName,  key);
+					        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
 
-				        
-				        var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName, key, {iv: iv});
-				        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
                   }
               }
             });
@@ -866,7 +863,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService','$base64', mifosX.controllers.ViewClientController]).run(function($log) {
+  mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.ViewClientController]).run(function($log) {
     $log.info("ViewClientController initialized");
   });
 }(mifosX.controllers || {}));

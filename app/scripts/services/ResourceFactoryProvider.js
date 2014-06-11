@@ -899,7 +899,6 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
-
         };
       }];
     }

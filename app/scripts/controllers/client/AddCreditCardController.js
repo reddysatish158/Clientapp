@@ -17,7 +17,8 @@
             scope.formData = {};
             scope.formEncryptedData = {};
             scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
-            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+           // var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+            var key = mifosX.models.encrptionKey;
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
@@ -156,15 +157,12 @@
 				  }
 				  else */
 				  if(cardCvvNo){
-					  console.log("affs");
 					  var match = $('#cardCvvNo').val().match(/^(?!0+$)\d{1,19}$/);
 					  if(!match){
-						  console.log("aafdsdsafsdfsfsfffs");
 						  scope.cardCvvNoDigit = true;
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
 				  }
-				  
 				  if(errors.length == 0){
 				    this.formEncryptedData.type="CreditCard";
 					this.formEncryptedData.cardType = scope.formData.cardType;
