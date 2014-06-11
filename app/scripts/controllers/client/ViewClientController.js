@@ -84,14 +84,9 @@
         scope.routeToItemSale = function(onetimesaleid,clientid){
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
-        
-<<<<<<< HEAD
-        scope.routeToCardDetails = function(clientid,id,cardType){
-            location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
-=======
+
         scope.routeToCardDetails = function(clientid,id,type){
             location.path('/viewcarddetails/'+clientid+'/'+id+'/'+type);
->>>>>>> 48a60ff22a3edd08cfeb7a5082c985a816595100
           };
        
         var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
@@ -106,10 +101,7 @@
         var acceptTransfer = PermissionService.showMenu('ACCEPTTRANSFER_CLIENT');
         var rejectTransfer = PermissionService.showMenu('REJECTTRANSFER_CLIENT');
         var undoTransfer = PermissionService.showMenu('WITHDRAWTRANSFER_CLIENT');
-<<<<<<< HEAD
-=======
-        
->>>>>>> 48a60ff22a3edd08cfeb7a5082c985a816595100
+
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
@@ -660,15 +652,11 @@
                   }
               }
             });
-<<<<<<< HEAD
         	if(PermissionService.showMenu('READ_DOCUMENT')){
         		resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
         				scope.clientdocuments = data;
         		});
         	}
-=======
-
->>>>>>> 48a60ff22a3edd08cfeb7a5082c985a816595100
         };
 
         scope.deleteDocument = function (documentId, index) {
