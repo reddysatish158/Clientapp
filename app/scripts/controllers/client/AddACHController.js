@@ -16,7 +16,8 @@
             scope.phone=clientData.phone;
             scope.formData = {};
             scope.formEncryptedData = {};
-            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+         // var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+            var key = mifosX.models.encrptionKey;
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
@@ -25,7 +26,7 @@
 				    this.formEncryptedData.type="ACH";
 				    this.formEncryptedData.routingNumber = CryptoJS.AES.encrypt(this.formData.routingNumber,  key).toString();
 				    this.formEncryptedData.bankAccountNumber = CryptoJS.AES.encrypt(this.formData.bankAccountNumber,  key).toString();
-				    this.formEncryptedData.bankName =this.formData.bankName;		
+				    this.formEncryptedData.bankName =CryptoJS.AES.encrypt(this.formData.bankName,  key).toString()	
 				    this.formEncryptedData.name = this.formData.name;
 				    this.formEncryptedData.accountType=this.formData.accountType;				   
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){
