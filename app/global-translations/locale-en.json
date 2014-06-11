@@ -288,6 +288,7 @@
   "link.tasks" : "Tasks",
   "link.clients" : "Clients",
   "link.accounting": "Accounting",
+  "link.smartsearch":"Smart Search",
   "link.reports" : "Reports",
   "link.admin" : "Admin",
   "link.clients.clients" : "Clients",
@@ -1493,6 +1494,7 @@
 	"validation.msg.client.prospect.email.cannot.be.blank":"Email Id cannot be blank",
 	"validation.msg.client.prospect.mobileNumber.cannot.be.blank":"Mobile Phone cannot be blank",
 	"validation.msg.client.prospect.prospectType.cannot.be.blank":"Type cannot be blank",
+	"validation.msg.client.prospect.note.exceeds.max.length":"Note should not exceed more then 255 Character's",
 	
 	"#onetimesale":"...",
 	"validation.msg.onetimesale.itemId.cannot.be.blank":"Item Code cannot be blank",

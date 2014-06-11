@@ -325,13 +325,8 @@
           </span>
         </div>
       </tab> -->
-<<<<<<< HEAD
-      <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab">
-      <div>
-=======
       <tab heading="{{'tab.heading.client.documents' | translate}}" select="getClientDocuments()" active="documentsTab"
       				ng-show="$parent.PermissionService.showMenu('CREATE_DOCUMENT','READ_DOCUMENT')">
->>>>>>> upstream/master
         <div class="pull-right">
           <a ng-show=" PermissionService.showMenu('CREATE_DOCUMENT')" href="#/addclientdocument/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{'button.upload' | translate}}</a>
         </div>
