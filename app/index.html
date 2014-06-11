@@ -69,14 +69,14 @@
             </div>
     </div>
     <div class="span4">
-            <div style="border: 1px solid #DDDDDD;padding:15px;">
+            <div style="border: 1px solid #DDDDDD;padding:15px;height:112px">
                 <div style="background-color: #F5F5F5;border-bottom: 1px solid #DDDDDD;padding: 10px 15px;margin: -15px -15px 15px;">
                     <strong>{{ 'label.heading.community' | translate }}</strong>
                 </div>
                 <ul>
-                <li>Email :support@openbillingsystem.com</li>
+                <li>support@openbillingsystem.com</li>
                 <li><a target="http://support.openbillingsystem.com" href="http://support.openbillingsystem.com">{{ 'label.anchor.ticket' | translate }}</a></li>
-                <li>Skype: obscommunity</li>
+                
                    <!--  <li><a target="https://groups.google.com/forum/#!forum/mifosusers" href="https://groups.google.com/forum/#!forum/mifosusers">{{ 'label.anchor.usersgroup' | translate }}</a></li>
                     <li><a target="https://groups.google.com/forum/#!forum/mifosdeveloper" href="https://groups.google.com/forum/#!forum/mifosdeveloper">{{ 'label.anchor.developergroup' | translate }}</a></li>
                     <li><a target="http://mifos.org/community/communications/mifos-irc" href="http://mifos.org/community/communications/mifos-irc">{{ 'label.anchor.irc' | translate }}</a></li> -->
@@ -197,7 +197,7 @@
                                 <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
                                  <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">{{ 'link.smartsearch' | translate }}</a></li>
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
-                                 <!-- <li><a ng-show="pooling=PermissionService.showMenu('READ_IPPOOLMANAGEMENT') href="#/ipPooling">IpPooling</a></li> -->
+                                 <li><a href="#/redemption">Redemption</a></li> 
                             </ul>
                         </li>
                     </ul>
@@ -209,9 +209,9 @@
                             </a>
                           
                             <ul class="dropdown-menu">
-                                <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" id="help" href="#/help"><i class="icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
                                 <li><a href="#/profile"><i class="icon-user"></i>{{ 'link.profile' | translate }}</a></li>
                                  <li><a ng-show="PermissionService.showMenu('READ_USERCHATMESSAGE')" href="#/messanger"><i class="icon-envelope"></i>{{ 'link.messanger' | translate }}</a></li>
+                                 <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" id="help" href="#/help"><i class="icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
                                 <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" href="#/usersetting"><i class="icon-cog"></i>{{ 'link.settings' | translate }}</a></li>
                                 <li><a id="logout" data-ng-click="logout()"><i class="icon-off"></i>{{ 'link.logout' | translate }}</a></li>
                             </ul>
