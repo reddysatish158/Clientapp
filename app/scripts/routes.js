@@ -332,7 +332,10 @@
       .when('/createclosure', {
         templateUrl: 'views/accounting/createclosure.html'
       })
-     
+      
+      .when('/about', {
+        templateUrl: 'views/system/aboutobs.html'
+      })
     
        .when('/contract', {
         templateUrl: 'views/organization/contract.html'
@@ -719,6 +722,9 @@
         })
         .when('/viewServiceMapping/:id', {
         templateUrl: 'views/system/viewServiceMapping.html'
+        })
+         .when('/createCurrencyMapping', {
+        templateUrl: 'views/system/currencyconfig.html'
         })
           .when('/createclientnewwizard', {
         templateUrl: 'views/clients/createclientnewwizard.html'  

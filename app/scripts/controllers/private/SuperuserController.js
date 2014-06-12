@@ -193,17 +193,45 @@
             resourceFactory.runReportsResource.get({reportSource: 'CumulativeCustomersChart',R_officeId:scope.id, genericResultSet:false} , function(data) {
             	
             	scope.showCumCustomerDataerror = false;
+            	var count = 0;
             	scope.cumCustomersPieData = data;
+        		for(var i in data){
+            		if(data[i].clients==0){
+            			count+=1;
+            		}
+            		
+            	}
+            	if(count==data.length)
+        		scope.showCumCustomerDataerror = true;
+        		scope.cumCustomerData = [];
+        		for(var i in data)	{
+        							scope.cumCustomerData.push({key:data[i].status,y:data[i].clients});
+        							console.log(scope.cumCustomerData);
+        					  		}
+        		});
+            	/*scope.cumCustomersPieData = data;
+            	if(data[0].clients == 0 && data[1].clients == 0 && data[2].clients == 0){
+                    scope.showCumCustomerDataerror = true;
+                }
             	scope.cumCustomerData = [
             	                       {key:"Active", y:scope.cumCustomersPieData[0].clients},
             	                       {key:"Disconnected", y:scope.cumCustomersPieData[1].clients},
             	                       {key:"Pending", y:scope.cumCustomersPieData[2].clients}
             	                   ];
-            });
-
+            });*/
 
              resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:1, genericResultSet:false} , function(data) 
              	{scope.disbursedPieData = data;
+             	scope.showDisbursementerror=false;
+             	var count = 0;
+             	for(var i in data){
+            		if(data[i].allocated==0){
+            			count+=1;
+            		}
+            		
+            	}
+            	if(count==data.length)
+            		scope.showDisbursementerror=true;
              	scope.disbursedData = [];
                  for(var i in data){
                 	 console.log(data[i].Item);
@@ -364,9 +392,19 @@
             {   var id = this.officeId || 1;
                 for(var i in scope.offices)	{ if(scope.offices[i].id== id){scope.dOfficeName = scope.offices[i].name;} }
                 scope.id = this.officeId || 1;
+                var count = 0;
+                scope.showCumCustomerDataerror = false;
                 resourceFactory.runReportsResource.get({reportSource: 'CumulativeCustomersChart',R_officeId:scope.id, genericResultSet:false} , function(data) 
             		{
             		scope.cumCustomersPieData = data;
+            		for(var i in data){
+                		if(data[i].clients==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+            		scope.showCumCustomerDataerror = true;
             		scope.cumCustomerData = [];
             		for(var i in data)	{console.log(data[i].status);
             							scope.cumCustomerData.push({key:data[i].status,y:data[i].clients});
