@@ -2,7 +2,7 @@
   mifosX.controllers = _.extend(module, {
 	  ViewCardDetailsController: function(scope, routeParams , route, location, resourceFactory, http,webStorage,$modal) {
         scope.clientcarddetails = {};
-        var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+        var key =  mifosX.models.encrptionKey;
         resourceFactory.creditCardUpdateResource.get({clientId: routeParams.clientId, id: routeParams.id, cardType: routeParams.type} , function(data) {
             scope.clientcarddetails = data;  
 
@@ -38,6 +38,8 @@
 			         bankAccountNumber = stars+bankAccountNumber.substr(bankAccountNumber.length-4,bankAccountNumber.length-1);
 			         
 			         scope.clientcarddetails.bankAccountNumber = bankAccountNumber;
+			         var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails.bankName, key);
+				        scope.clientcarddetails.bankName = decrypted3.toString(CryptoJS.enc.Utf8);
             }
         });
         

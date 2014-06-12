@@ -2,6 +2,8 @@
 	mifosX.controllers = _.extend(module, {
 		AddNewCreditCardController : function(scope,webStorage, routeParams , location, resourceFactory,dateFilter) {
 			scope.clientId = routeParams.clientId;
+			scope.id = routeParams.id;
+			scope.type = routeParams.type;
             var clientData = webStorage.get('clientData');
             scope.hwSerialNumber=clientData.hwSerialNumber;
             scope.displayName=clientData.displayName;
@@ -17,12 +19,21 @@
             scope.formData = {};
             scope.formEncryptedData = {};
             scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
-            var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+           // var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+            var key = mifosX.models.encrptionKey;
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
             };
             var errors = []; 
+           /* scope.cradNameErrorHide = function(){
+            	scope.cardNameReq = false;
+            	errors = []; 
+            };
+            scope.cardTypeErrorHide = function(){
+            	scope.cardTypeReq = false;
+            	errors = []; 
+            };*/
             scope.selectCardType = function(number){
               if(number){
             	var cardNumber = number.replace(/ +/g, "");
@@ -41,17 +52,20 @@
               }
             };
             scope.cradNumberErrorHide = function(){
+            	// scope.cardNumberReq = false;
             	 scope.cardNumberDigit = false;
             	 scope.cardNumberValid = false;
             	 errors = []; 
             };
             scope.cardExpireErrorHide = function(){
+            	// scope.cardExpiryDateReq = false;
            	     scope.patternMatch = false;
            	     scope.cardExpire = false;
            	     errors = []; 
            };
            
            scope.cardCvvNoErrorHide = function(){
+          // 	scope.cardCvvNoReq = false;
            	scope.cardCvvNoDigit = false;
            	errors = []; 
            };
@@ -92,8 +106,23 @@
           
 			  scope.submit = function () {
 				  
+				  /*var cardName = $('#cardName').val();
+				  if(cardName == ""){
+					  scope.cardNameReq = true;
+					  errors.push({"cardNameReq":'true'});
+				  }
+				  
+				  var cardType = $('#cardType').val();
+				  if(cardType == '?'){
+					  scope.cardTypeReq = true;
+					  errors.push({"cardTypeReq":'true'});
+				  }*/
 				  
 				  var cardNumber = $('#cardNumber').val();
+				  /*if(cardNumber == ""){
+					  scope.cardNumberReq = true;
+					  errors.push({"cardNumberReq":'true'});
+				  }else*/
 				  if(cardNumber){
 					 // /^\d+$/.test(value)
 					  cardNumber = cardNumber.replace(/ +/g, "");
@@ -108,6 +137,10 @@
 				  }
 				  
 				  var cardExpiryDate = $('#cardExpiryDate').val();
+				  /*if(cardExpiryDate == ""){
+					  scope.cardExpiryDateReq = true;
+					  errors.push({"cardExpiryDateReq":'true'});
+				  }else */
 				  if(cardExpiryDate){
 					  var match=$('#cardExpiryDate').val().match(/^\s*(0?[1-9]|1[0-2])\/(\d{4})\s*$/);
 					  if (!match){
@@ -120,16 +153,18 @@
 				  }
 				  
 				  var cardCvvNo = $('#cardCvvNo').val();
+				  /* if(cardCvvNo == ""){
+					  scope.cardCvvNoReq = true;
+					  errors.push({"cardCvvNoReq":'true'});
+				  }
+				  else */
 				  if(cardCvvNo){
-					  console.log("affs");
 					  var match = $('#cardCvvNo').val().match(/^(?!0+$)\d{1,19}$/);
 					  if(!match){
-						  console.log("aafdsdsafsdfsfsfffs");
 						  scope.cardCvvNoDigit = true;
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
 				  }
-				  
 				  if(errors.length == 0){
 				    this.formEncryptedData.type="CreditCard";
 					this.formEncryptedData.cardType = scope.formData.cardType;
@@ -150,3 +185,23 @@
 	        $log.info("AddNewCreditCardController initialized");
 	    });
 }(mifosX.controllers || {}));
+
+
+ /*var validator = $("#creditcard").validate({
+		           	   rules: {
+		           		  cardName: {
+		           	            required: true,
+		           	        },
+		           	      cardNumber: {
+		           	    	   required: true,
+		           	    	    digits : true,
+		           	    	   creditcard: true
+		   	              },
+		   	             cardExpiryDate: {
+		   	            	   required: true,
+			              }
+		              }
+		       	   });
+				  
+
+*/
