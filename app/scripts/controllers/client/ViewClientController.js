@@ -601,7 +601,8 @@
         	}    
           
           resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
-        	  var key = mifosX.models.encrptionKey;
+
+              var key  = mifosX.models.encrptionKey;
               scope.clientcarddetails = data1;
               for ( var i in scope.clientcarddetails) {	
 
@@ -609,7 +610,6 @@
                 	  
 				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, key);
 				         var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
-				         console.log(decrypted1.toString(CryptoJS.enc.Utf8));
 				          var stars = "";
 				         for (var j in cardNum){
 				        	 if(j>=0&&j<(cardNum.length)-4){
@@ -644,7 +644,10 @@
 				         }
 				         bankAccountNumber = stars+bankAccountNumber.substr(bankAccountNumber.length-4,bankAccountNumber.length-1);
 				         scope.clientcarddetails[i].bankAccountNumber = bankAccountNumber;
-				        
+				         
+				         var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName,  key);
+					        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
+
                   }
               }
             });
