@@ -601,6 +601,7 @@
         	}    
           
           resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
+
               var key  = mifosX.models.encrptionKey;
               scope.clientcarddetails = data1;
               for ( var i in scope.clientcarddetails) {	
@@ -651,11 +652,6 @@
               }
             });
 
-          if(PermissionService.showMenu('READ_DOCUMENT')){
-        		resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
-        				scope.clientdocuments = data;
-        		});
-        	}
         };
 
         scope.deleteDocument = function (documentId, index) {

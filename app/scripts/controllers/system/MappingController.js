@@ -4,6 +4,10 @@
         scope.servicemappingdatas = [];
         scope.hardwaremappingdatas= [];
         scope.provisiongsystemData= [];
+        scope.selectedCurrOptions = [];
+        scope.allCurrOptions = [];
+        scope.hideview = false;
+        scope.selected = undefined;
         scope.PermissionService = PermissionService;
         
         var callingTab = webStorage.get('callingTab',null);
@@ -35,11 +39,59 @@
         	
         };
         
+        scope.submit = function () {
+            var currencies = [];
+            var curr = {};
+            for(var i=0; i < scope.selectedCurrOptions.length; i++){
+                currencies.push(scope.selectedCurrOptions[i].code);
+            }
+            curr["currencies"] = currencies;
+            resourceFactory.currencyConfigResource.upd(curr , function(data){
+                route.reload();
+            });
+
+    };
+
+    scope.cancel = function() {
+      route.reload();
+    }
+        scope.deleteCur =  function (code){
+            for(var i=0; i<scope.selectedCurrOptions.length; i++){
+                if(scope.selectedCurrOptions[i].code == code){
+                  scope.selectedCurrOptions.splice(i, 1);  //removes 1 element at position i 
+                  break;
+                }
+            }
+      };
+      
+      scope.addCur = function (){
+          if(scope.selected != undefined && scope.selected.hasOwnProperty('code')) {
+            scope.selectedCurrOptions.push(scope.selected);
+              for(var i=0; i<scope.allCurrOptions.length; i++){
+                  if(scope.allCurrOptions[i].code == scope.selected.code){
+                    scope.allCurrOptions.splice(i, 1);  //removes 1 element at position i 
+                    break;
+                  }
+              }
+          }
+          scope.selected = undefined;
+        };
+        
 	scope.getEventActionMappingData=function(data){
         	
         	resourceFactory.EventActionMappingResource.get(function(data) {
            	 scope.datas=data; 
            });
+        	
+        };
+        
+            scope.getCurrencyConfig=function(data){
+            	
+            	 resourceFactory.currencyConfigResource.get(function(data){
+                     scope.selectedCurrOptions = data.selectedCurrencyOptions;
+                     scope.allCurrOptions = data.currencyOptions;
+
+                 });
         	
         };
         
