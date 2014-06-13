@@ -176,16 +176,25 @@
 /* Paymode Collection Chart */
 		 scope.id = this.officeIdCollection || 1;
          resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:scope.id, genericResultSet:false} , function(data) 
-            	{	scope.collectionPieData = data;
-            		scope.showCollectionerror = false;
-            		if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0  && data[3].Collection == 0){
-                    scope.showCollectionerror = true;
-                }
-         scope.collectedData = 		[{key:"Cash", y:scope.collectionPieData[0].Collection},
-                	                 {key:"Cheque", y:scope.collectionPieData[1].Collection},
-                	                 {key:"M-pesa", y:scope.collectionPieData[2].Collection},
-                	                 {key:"Manual Mpesa", y:scope.collectionPieData[3].Collection}
-                	                 ];
+            	{	
+        	 		scope.showCollectionerror = false;
+        	 		var count = 0;
+        	        scope.collectionPieData = data;
+        	        
+        	        for(var i in data){
+                		if(data[i].Collection==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+            		 scope.showCollectionerror = true;
+            		scope.collectedData = [];
+            		for(var i in data){	console.log(data[i].PayMode);
+					scope.collectedData.push({key:data[i].PayMode,y:data[i].Collection});
+					console.log(scope.collectedData);
+				  }
+
             });
             
 /* status wise orders */
@@ -374,13 +383,20 @@
             {	var id = this.officeId || 1;
                 for(var i in scope.offices){if(scope.offices[i].id==id){scope.cOfficeName = scope.offices[i].name;}}
                 scope.id = this.officeId || 1;
+                var count= 0;
                 resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:scope.id, genericResultSet:false},function(data) 
                 	{
                 	scope.showCollectionerror = false;
                 	scope.collectionPieData = data;
+                	for(var i in data){
+                		if(data[i].Collection==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+                	scope.showCollectionerror = true;
                 	scope.collectedData=[];
-                	if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0 && data[3].Collection == 0)
-                	{scope.showCollectionerror = true;}
                 	for(var i in data){	console.log(data[i].PayMode);
                 						scope.collectedData.push({key:data[i].PayMode,y:data[i].Collection});
                 						console.log(scope.collectedData);
