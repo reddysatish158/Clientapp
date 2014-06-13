@@ -275,7 +275,7 @@ define(['underscore', 'mifosX'], function() {
       'NgAutoFocusFunDirective'
     ]
   };
-
+  
   require(_.reduce(_.keys(components), function(list, group) {
     return list.concat(_.map(components[group], function(name) { return group + "/" + name; }));
   }, [
