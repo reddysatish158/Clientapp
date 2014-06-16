@@ -839,6 +839,9 @@
       })
       .when('/addnewcreditcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/addnewcreditcarddetails.html'
+      })
+      .when('/aboutobs', {
+        templateUrl: 'views/system/about_obs.html'
       });
 
     $locationProvider.html5Mode(false);
