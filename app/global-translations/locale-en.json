@@ -804,7 +804,7 @@
   "#Import":"........",
   "label.heading.uploads":"Builk Uploads",
   "label.imports":"Manage Imports",
-  "link.import":"Bulk Upload",
+  "link.import":"Data Uploads",
   "link.create.new.file":"Upload File",
   "table.import.uploadprocess":"Upload Process",
   "table.import.downloads":"Downloads",
