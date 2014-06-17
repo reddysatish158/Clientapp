@@ -344,8 +344,9 @@
         	$scope.acceptStatement = function(){
         		$scope.flagStatementPop = true;
         		console.log("Accept Statement");
-        		
-        		
+        		if($scope.formData == undefined || $scope.formData == null){
+                    $scope.formData = {"message":""};
+                      }
         		this.formData.locale = 'en';
    	         	var reqDate = dateFilter($scope.start.date,'dd MMMM yyyy');
    	         	this.formData.dateFormat = 'dd MMMM yyyy';
