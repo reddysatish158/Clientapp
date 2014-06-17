@@ -12,12 +12,12 @@
        <div class="pull-right" style = "margin-top : 10px;">
        <div class="control-group">
             <!-- <label class="control-label" for="status">{{ 'label.paymentgateway.source' | translate }}</label> -->
-           
+          <button id="download" class="btn btn-min btn-default" ng-click="download()" style = "margin-bottom : 10px;">{{'button.downloadtocsv' | translate}}</button>
           <select ng-model="formData.source" ng-change="changeSource(formData.source)">
               <option value="all">All</option>
               <option value="mpesa">Mpesa</option>
               <option value="tigo">Tigo</option>
-              </select>
+          </select>
             </div>
           </div>
  
@@ -227,8 +227,7 @@
            </ul>
          </div>
       </tab>
-		
-			  <tab heading="Processed" select="getProcessedPaymentGateway()">
+	  <tab heading="Processed" select="getProcessedPaymentGateway()">
        <div class="row-fluid">
            <form ng-submit="searchProcessedPaymentId(filterText)">
                <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
@@ -266,6 +265,7 @@
            </ul>
          </div>
       </tab>
+      
    
     </tabset>
     </div>
@@ -306,6 +306,66 @@
 							</select>
 						</div>
 					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	</form>
+   <div class="modal-footer">
+         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
+   </div>
+
+</script> 
+<script type="text/ng-template" id="downloadpaymentgatewaydata.html">
+
+	<form class="form-horizontal well" ng-submit="download()">
+	 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+	<fieldset>
+		<legend>{{'label.downloadpaymentgateway' | translate}}</legend>
+		<table width="100%">
+		 
+		 <tr>
+				<td width="50%">
+					<div class="control-group">
+						<label class="control-label" for="status">{{ 'label.paymentgateway.category' | translate }}</label>
+						<div class="controls">
+							<select ng-model="formData.source">
+              					<option value="all">All</option>
+              					<option value="mpesa">Mpesa</option>
+              					<option value="tigo">Tigo</option>
+          					</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="status">{{ 'label.paymentgateway.status' | translate }}</label>
+						<div class="controls">
+							<select ng-model="formData.status">
+              					<option value="all">All</option>
+              					<option value="Failure">Failed</option>
+              					<option value="Success">Success</option>
+								<option value="Finished">Finished</option>
+								<option value="Invalid">Invalid</option>
+								<option value="Processed">Processed</option>
+          					</select>
+						</div>
+					</div>
+					<div class="control-group">
+       					<label class="control-label">{{ 'label.fromdate' | translate }}</label>
+       					<div class="controls">
+             				<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened" min="minDate" max="maxDate" date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+                    	</div>
+					</div>
+					<div class="control-group">
+       					<label class="control-label">{{ 'label.todate' | translate }}</label>
+       					<div class="controls">
+             				<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="to.date" is-open="opened" min="minDate" max="maxDate" date-disabled="disabled(date, mode)" required late-Validate style="background-color:#FFFFFF;"  readonly/>
+                    	</div>
+					</div> 
 				</td>
 			</tr>
 		</table>
