@@ -103,11 +103,9 @@
     			</ul>
          </div>
       </tab>
-      <tab heading="MRN/IS" select="getMRNdetails()" active="mrnTab"
+      <tab heading="MRN" select="getMRNdetails()" active="mrnTab"
       ng-show="$parent.PermissionService.showMenu('READ_MRN','MOVE_MRN')">
         <div class="pull-right btn-group">
-
-         <a href="#/itemsale" class="btn btn-primary"><i class="icon-plus icon-white"></i>Item Sale</a>
           <a ng-show="PermissionService.showMenu('CREATE_MRN')" href="#/createmrn" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
           <a ng-show="PermissionService.showMenu('MOVE_MRN')" href="#/movemrn" class="btn btn-primary"><i class="icon-move icon-white"></i>{{ 'button.mrn.move' | translate }}</a>
 
@@ -213,18 +211,18 @@
         <table class="table">
             <thead>
               <tr class="graybg">
-                <th style="text-align: center">{{'table.supplier.id' | translate}}</th>
-                <th style="text-align: center">{{'table.supplier.supplierCode' | translate}}</th>
-                <th style="text-align: center">{{'table.supplier.supplierDescription' | translate}}</th>
-                <th style="text-align: center">{{'table.supplier.supplierAddress' | translate}}</th>
+                <th>{{'table.supplier.id' | translate}}</th>
+                <th>{{'table.supplier.supplierCode' | translate}}</th>
+                <th>{{'table.supplier.supplierDescription' | translate}}</th>
+                <th>{{'table.supplier.supplierAddress' | translate}}</th>
               </tr>
             </thead>
             <tbody>
              <tr ng-repeat="su in supplier.currentPageItems  | filter:filterText">
-                <td style="text-align: center">{{su.id}}</td>
-                <td style="text-align: center">{{su.supplierCode}}</td>
-                <td style="text-align: center">{{su.supplierDescription}}</td>
-                <td style="text-align: center">{{su.supplierAddress}}</td>
+                <td>{{su.id}}</td>
+                <td>{{su.supplierCode}}</td>
+                <td>{{su.supplierDescription}}</td>
+                <td>{{su.supplierAddress}}</td>
    			</tr>
      		 </tbody>
           </table>

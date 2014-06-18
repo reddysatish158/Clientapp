@@ -127,23 +127,37 @@
 
     <nav>
         <ul class="margin-nav nav-list ext-sidenav" ng-show="office||prospect||createclient||activation">
-            <li><a ng-show="office=PermissionService.showMenu('READ_OFFICE')" href="#/nav/offices"><i class="icon-compass icon-large"></i> Navigation</a></li>
+            <li><a ng-show="office=PermissionService.showMenu('READ_OFFICE')" href="#/nav/offices"><i class="icon-compass "></i> Navigation</a></li>
              <li ng-show="PermissionService.showMenu('READ_OFFICE')" class="divider"></li>
-            <li> <a ng-show="prospect=PermissionService.showMenu('CREATE_PROSPECT')" href="#/createprospects"><i class="icon-user icon-large"></i>+ Prospect</a></li> 
+            <li> <a ng-show="prospect=PermissionService.showMenu('CREATE_PROSPECT')" href="#/createprospects"><i class="icon-user "></i>+ Prospect</a></li> 
             <li ng-show="PermissionService.showMenu('CREATE_PROSPECT')" class="divider"></li>
-            <li><a ng-show="createclient=PermissionService.showMenu('CREATE_CLIENT')" href="#/createclient"><i class="icon-user icon-large"></i> + Client </a></li>
+            <li><a ng-show="createclient=PermissionService.showMenu('CREATE_CLIENT')" href="#/createclient"><i class="icon-user "></i> + Client </a></li>
             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
             
-            <li><a ng-show="activation=PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')"
-            href="#/createclientnewwizard"><i class="icon-tasks icon-large"></i>  + New Activation</a></li>
-            <li ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" class="divider"></li>
-          	<li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="bolder black" href="#/help"><i class="icon-hand-right icon-large"></i>&nbsp;&nbsp;&nbsp;{{ 'label.anchor.shortcuts' | translate }}</a></li>
+            <li><a ng-show="activation=PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" 
+            href="#/createclientnewwizard"><i class="icon-tasks "></i>  + New Activation</a></li>
             <li ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="divider"></li>
-            <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" target="http://help.openbillingsystem.com" href="http://help.openbillingsystem.com"><i class=" icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
-            <!-- <li class="divider"></li>
-            <li><a href="#/creategroup"><i class="icon-group icon-large"></i> + Group </a></li>
-            <li class="divider"></li>
-            <li><a href="#/createcenter"><i class="icon-group icon-large"></i> + Center </a></li> -->
+            <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" target="http://help.openbillingsystem.com" href="http://help.openbillingsystem.com"><i class=" icon-question-sign"></i> + {{ 'label.anchor.help' | translate }}</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+            <li><a ng-show="system=PermissionService.showMenu('READ_DATATABLE','CREATE_CODE','READ_CODE','create_role','READ_role','UPDATE_PERMISSION','read_Audit',
+                                						'READ_REPORT','READ_CONFIGURATION','READ_SERVICEMAPPING','READ_PLANMAPPING','READ_PROVISIONINGSYSTEM','READ_EVENTACTIONMAP')" href="#/system"><i class="icon-laptop"></i> + {{ 'link.admin.system' | translate }}</a></li>
+            <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+            <li><a ng-show="organization=PermissionService.showMenu('READ_OFFICE','READ_STAFF','READ_CONTRACT','READ_MEDIAASSET','READ_EVENT','READ_DISCOUNT','READ_PROMOTIONCODE','READ_COUNTRYCURRENCY','READ_LOCATION',
+                                							'READ_CURRENCY','READ_SERVICE','READ_PLAN','READ_REGION','READ_RANDAMGENERATOR','READ_CHARGECODE','READ_MESSAGE')" href="#/organization"><i class="icon-building"></i> + {{ 'link.admin.organisation' | translate }}</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+             <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting"><i class="icon-money"></i> + {{ 'link.accounting' | translate }}</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+             <li><a ng-show="upload=PermissionService.showMenu('READ_UPLOADSTATUS')" href="#/importing"><i class="icon-upload"></i> + {{'link.import' | translate }}</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+             <li><a ng-show="jobs=PermissionService.showMenu('READ_SCHEDULERJOB')" href="#/jobs"><i class="icon-tasks"></i> + Scheduler Jobs</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+             <li><a href="#/redemption"><i class="icon-briefcase"></i> + Redemption</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li> 
+             <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch"><i class="icon-search"></i> + {{ 'link.smartsearch' | translate }}</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>
+             <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway"><i class="icon-money"></i> + PaymentGateway</a></li>
+             <li ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" class="divider"></li>
+          	<li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="bolder black" href="#/help"><i class="icon-hand-right "></i>&nbsp; + {{ 'label.anchor.shortcuts' | translate }}</a></li>
         </ul>
     </nav>
     <div class="navbar navbar-fixed-top">
