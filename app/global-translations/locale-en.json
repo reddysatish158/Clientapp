@@ -1996,10 +1996,8 @@
 "table.heading.cvvNumber":"Cvv Number",
 "label.client.creditcard.cvvNumber":"Cvv Number",
 "label.client.creditcard.cardType":"Card Type",
-"link.view.achcard":"ACH Details"
-
-
-
-   
-
+"link.view.achcard":"ACH Details",
+"label.downloadpaymentgateway":"Download PaymentGateway Data",
+"label.paymentgateway.category":"Select Payment Source",
+"button.downloadtocsv":"Download"
 }

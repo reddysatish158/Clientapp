@@ -802,22 +802,25 @@
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
            }) ,
+           downloadPaymentGatewayData: defineResource(apiVer+"/paymentgateways/download",{},{
+        	   get: {method: 'GET', params: {}, isArray: true}
+           }),
 	       Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
-         }) ,
-         promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
+	       }),
+	       promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
         	  get: {method: 'GET', params: {}, isArray: true},
         	  getPrmotioncodeDetails: {method: 'GET', params: {promotioncodeId:'@promotioncodeId'}},
         	  update: { method: 'PUT' }
-          }),  
+	       }),  
           
-          promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
+	       promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
-          }),
-          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
+	       }),
+	       addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
         	  get: {method: 'POST', params: {}}
-         }),
-         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
+	       }),
+	       editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
         	 update: { method: 'PUT' }
          }),
          addStateResource: defineResource(apiVer + "/address/state/new",{},  {
