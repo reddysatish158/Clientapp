@@ -772,7 +772,7 @@
 //>>>>>>> obsplatform-1.01
            }),
            
-         provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+         provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisioning/provisiontemplate/:orderId", {orderId:'@orderId'}, {
         	   get: {method: 'GET', params: {}}
            }),
          processRequestResource: defineResource(apiVer + "/provisioning/processRequest/:id", {id: '@id'}, {
