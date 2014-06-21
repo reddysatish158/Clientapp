@@ -14,7 +14,7 @@
 	        scope.email=clientData.email;
 	        scope.phone=clientData.phone;
 	        scope.provisioningdata=[];
-	        
+	       
 	        resourceFactory.processRequestResource.get({id: routeParams.id} , function(data) {
 	        	scope.provisioningdata=data;
 	        	

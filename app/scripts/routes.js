@@ -821,7 +821,7 @@
       .when('/redemption',{
      templateUrl: 'views/organization/redemption.html'
       })
-      .when('/editProvison/:id', {
+      .when('/editprovison/:id', {
         templateUrl: 'views/clients/editProvisioning.html'
       })
       .when('/addcreditcarddetails/:clientId', {
