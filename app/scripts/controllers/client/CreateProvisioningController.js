@@ -6,7 +6,7 @@
         scope.ipPoolDatas=[];
         scope.vlanDatas=[];
         scope.formData={};
-        scope.formData.addIpAddress = [];
+        scope.addIpAddress = [];
         
         var clientData = webStorage.get('clientData');
         var orderData = webStorage.get('orderData');
@@ -46,10 +46,11 @@
           	}else{
               	
           	}
-          }
+          };
           
-          scope.addIpAddresses = function() {	
-   		    scope.formData.addIpAddress.push({
+          scope.addIpAddresses = function() {
+        	if(scope.formData.ipAddress)
+   		    scope.addIpAddress.push({
    			ipvalue : scope.formData.ipAddress
    		});
 
@@ -58,7 +59,7 @@
    	};
    	
    	scope.deleteAddIpAddress = function(index) {
-   		scope.formData.addIpAddress.splice(index, 1);
+   		scope.addIpAddress.splice(index, 1);
    	};
    	
    	
@@ -88,37 +89,36 @@
         			 temp.paramName = scope.parameterDatas[param].paramName;
         			temp.paramValue = this.formData.groupName;
         			scope.serviceParameters.push(temp);
-                    delete this.formData.groupName;
+                   // delete this.formData.groupName;
                     
         		}else if(scope.parameterDatas[param].paramName == "VLAN_ID"){
         			
         			 temp.paramName = scope.parameterDatas[param].paramName;
                     temp.paramValue = this.formData.vLan;
                     scope.serviceParameters.push(temp);
-                    delete this.formData.vLan;
+                    //delete this.formData.vLan;
                     
         		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
         			 temp.paramName = scope.parameterDatas[param].paramName;
         			var ipval="";
-        			for(var param in scope.formData.addIpAddress){
+        			for(var param in scope.addIpAddress){
                 		
                 		if(ipval!=""){
                 			ipval= ipval+",";
                 			
                 		}
-                		ipval= ipval+scope.formData.addIpAddress[param].ipvalue;
+                		ipval= ipval+scope.addIpAddress[param].ipvalue;
                 		temp.paramValue =ipval;
                 		
                 	}
         			scope.serviceParameters.push(temp);
-                    delete this.formData.ipAddress;
+                   // delete this.formData.ipAddress;
                     
         		}
         		
         		  
         	}
         	   this.formData.serviceParameters = scope.serviceParameters;
-        	   delete this.formData.addIpAddress;
         	   
            resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
         	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);
