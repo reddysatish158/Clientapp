@@ -146,8 +146,8 @@
             					<div class="controls">                                  	       
              					 <input type="text" ng-model="formData.ipAddress" name="ipAddress" ng-change="getData(formData.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
                                    <a ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
-                                  <div ng-repeat="addipAddress in formData.addIpAddress">
-										<input type="text" class="input-small" ng-model="addipAddress.ipvalue">
+                                  <div ng-repeat="addipAddress in addIpAddress">
+										<input type="text" class="input-small" readonly ng-model="addipAddress.ipvalue">
 										<a ng-click="deleteAddIpAddress($index)"><i class="icon-remove icon-white"></i></a>							   					        
 						              </div>                            
                                   </div>                           
