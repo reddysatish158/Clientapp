@@ -1,7 +1,8 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
 	  CreateProvisioningController: function(scope, webStorage,resourceFactory, routeParams,location,dateFilter) {
-        scope.provisioningdata= [];
+        scope.orderId = routeParams.orderId;
+		scope.provisioningdata= [];
         scope.services= [];
         scope.ipPoolDatas=[];
         scope.vlanDatas=[];
@@ -50,9 +51,7 @@
           
           scope.addIpAddresses = function() {
         	if(scope.formData.ipAddress)
-   		    scope.addIpAddress.push({
-   			ipvalue : scope.formData.ipAddress
-   		});
+   		    scope.addIpAddress.push(scope.formData.ipAddress);
 
    		scope.formData.ipAddress = undefined;
 
@@ -100,7 +99,7 @@
                     
         		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
         			 temp.paramName = scope.parameterDatas[param].paramName;
-        			var ipval="";
+        			/*var ipval="";
         			for(var param in scope.addIpAddress){
                 		
                 		if(ipval!=""){
@@ -110,7 +109,8 @@
                 		ipval= ipval+scope.addIpAddress[param].ipvalue;
                 		temp.paramValue =ipval;
                 		
-                	}
+                	}*/
+        			 temp.paramValue = scope.addIpAddress;
         			scope.serviceParameters.push(temp);
                    // delete this.formData.ipAddress;
                     
