@@ -28,6 +28,7 @@
         scope.formData.groupName=orderData.groupName;
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
+        scope.ipTypeDatas = ["Single","Multiple"];
     
        resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
     	   
@@ -63,10 +64,16 @@
     		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
     			 temp.paramName = scope.parameterDatas[param].paramName;
     			 temp.paramValue = scope.parameterDatas[param].paramValue;
+    			var ipArray =  JSON.parse(temp.paramValue);
     			 
-                 for(var ip in temp.paramValue){              	 
-                	 scope.addIpAddress.push(temp.paramValue[ip]);              	 
-                 }  
+                 for(var ip in ipArray){              	 
+                	 scope.addIpAddress.push(ipArray[ip]);              	 
+                 }
+                 
+                 if(scope.addIpAddress.length > 1)
+             		scope.formData.ipType = "Multiple";
+             	else
+             		scope.formData.ipType = "Single";
     			/*var ipval="";
     			for(var param in scope.addIpAddress){
             		
@@ -104,6 +111,10 @@
           scope.addIpAddresses = function() {
         	if(scope.formData.ipAddress)
    		    scope.addIpAddress.push(scope.formData.ipAddress);
+        	if(scope.addIpAddress.length > 1)
+        		scope.formData.ipType = "Multiple";
+        	else
+        		scope.formData.ipType = "Single";
 
    		scope.formData.ipAddress = undefined;
 
@@ -111,6 +122,12 @@
    	
    	scope.deleteAddIpAddress = function(index) {
    		scope.addIpAddress.splice(index, 1);
+   		if(scope.addIpAddress.length > 1)
+    		scope.formData.ipType = "Multiple";
+    	else if(scope.addIpAddress.length == 1)
+    		scope.formData.ipType = "Single";
+    	else
+    		delete scope.formData.ipType;
    	};
    	
    	

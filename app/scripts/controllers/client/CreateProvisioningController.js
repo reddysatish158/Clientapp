@@ -27,6 +27,7 @@
         scope.formData.groupName=orderData.groupName;
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
+        scope.ipTypeDatas = ["Single","Multiple"];
      
        resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
     	   scope.parameterDatas=data.parameterDatas;
@@ -52,13 +53,25 @@
           scope.addIpAddresses = function() {
         	if(scope.formData.ipAddress)
    		    scope.addIpAddress.push(scope.formData.ipAddress);
-
+        	
+        	if(scope.addIpAddress.length > 1)
+        		scope.formData.ipType = "Multiple";
+        	else
+        		scope.formData.ipType = "Single";
    		scope.formData.ipAddress = undefined;
 
    	};
    	
    	scope.deleteAddIpAddress = function(index) {
    		scope.addIpAddress.splice(index, 1);
+   		
+   		if(scope.addIpAddress.length > 1)
+    		scope.formData.ipType = "Multiple";
+    	else if(scope.addIpAddress.length == 1)
+    		scope.formData.ipType = "Single";
+    	else
+    		delete scope.fromData.ipType ;
+   		
    	};
    	
    	
@@ -115,9 +128,9 @@
                    // delete this.formData.ipAddress;
                     
         		}
-        		
         		  
         	}
+        	
         	   this.formData.serviceParameters = scope.serviceParameters;
         	   
            resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
