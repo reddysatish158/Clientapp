@@ -1922,7 +1922,9 @@
 
 "#Provisioning":"........",
 "link.provision":"Provision",
+"link.provision.edit":"Edit Provision",
 "label.provisioning.New":"New Provision",
+"label.provisioning.edit":"Edit Provision",
 "label.provisioning.clientname":"Name",
 "label.provisioning.device":"Device",
 "label.provisioning.service":"Service",
