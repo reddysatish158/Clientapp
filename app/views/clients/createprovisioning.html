@@ -147,7 +147,7 @@
              					 <input type="text" ng-model="formData.ipAddress" name="ipAddress" ng-change="getData(formData.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
                                    <a ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
                                   <div ng-repeat="addipAddress in addIpAddress">
-										<input type="text" class="input-small" readonly ng-model="addipAddress.ipvalue">
+										<input type="text" class="input-small" readonly ng-model="addipAddress">
 										<a ng-click="deleteAddIpAddress($index)"><i class="icon-remove icon-white"></i></a>							   					        
 						              </div>                            
                                   </div>                           
@@ -176,7 +176,7 @@
 
 
 		<div class="offset3">
-			<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+			<a id="cancel" href="#/vieworder/{{orderId}}/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
 
 				<!-- <button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button> -->
 				<button id="submit" type="submit" class="btn btn-primary">{{'button.provisioning' | translate}}</button>

@@ -902,6 +902,9 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
+            provisioningUpdateResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId:'@orderId'}, {
+                update: { method: 'PUT' }
+            }),
         };
       }];
     }
