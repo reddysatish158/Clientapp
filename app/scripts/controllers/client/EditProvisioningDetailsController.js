@@ -170,9 +170,9 @@
         	}
         	   this.formData.serviceParameters = scope.serviceParameters;
         	   
-           resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
-        	   location.path('/vieworder/' +routeParams.id+'/'+scope.clientId);
-          });
+        	   resourceFactory.provisioningserviceResource.update({'orderId':routeParams.id},this.formData,function(data){
+            	   location.path('/vieworder/' +routeParams.id+'/'+scope.clientId);
+              });
         };
     }
   });
