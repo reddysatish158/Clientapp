@@ -63,9 +63,10 @@
     		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
     			 temp.paramName = scope.parameterDatas[param].paramName;
     			 temp.paramValue = scope.parameterDatas[param].paramValue;
+    			 var ipArray =  JSON.parse(temp.paramValue);
     			 
-                 for(var ip in temp.paramValue){              	 
-                	 scope.addIpAddress.push(temp.paramValue[ip]);              	 
+                 for(var ip in ipArray){              	 
+                	 scope.addIpAddress.push(ipArray[ip]);              	 
                  }  
     			/*var ipval="";
     			for(var param in scope.addIpAddress){
@@ -170,8 +171,8 @@
         	}
         	   this.formData.serviceParameters = scope.serviceParameters;
         	   
-        	   resourceFactory.provisioningserviceResource.update({'orderId':routeParams.id},this.formData,function(data){
-            	   location.path('/vieworder/' +routeParams.id+'/'+scope.clientId);
+        	   resourceFactory.provisioningserviceResource.update({'orderId':routeParams.orderId},this.formData,function(data){
+            	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);
               });
 
         };
