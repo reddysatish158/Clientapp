@@ -7,22 +7,27 @@
             scope.voucherpins = data;
         });
         
-        scope.processFile = function(id){
-        	rootScope.processFileLoading = true;
-        	rootScope.voucherPinProcess = true;
-        	resourceFactory.voucherpinResource.save({batchId:id},function(data) {
-        		rootScope.processFileLoading = false;
-        		rootScope.voucherPinProcess = false;
-        		route.reload();
-            });
+         scope.downloadFile = function (id){
+        	window.open(rootScope.hostUrl+ API_VERSION +'/randomgenerators/'+id+'?tenantIdentifier=default');
         };
         
-        scope.downloadFile = function (id){
-        	
-            window.open(rootScope.hostUrl+ API_VERSION +'/randomgenerators/'+id+'?tenantIdentifier=default');
-       };
+        scope.processFile = function(id){
+         if(!rootScope.voucherPinProcess){
+        	rootScope.dynamicVar = id;
+        	rootScope.voucherPinProcess = true;
+
+        	resourceFactory.voucherpinResource.save({voucherId:id},function(data) {
+        		rootScope.dynamicVar = 0;
+        		rootScope.voucherPinProcess = false;
+        		route.reload();
+            },function(errorData){
+            	rootScope.dynamicVar = 0;
+            	rootScope.voucherPinProcess = false;
+            });
+         };
+        };
+        
     }
-  
   
   });
   mifosX.ng.application.controller('VoucherpinController', ['$scope', 'ResourceFactory','PermissionService','$rootScope','API_VERSION','$route', mifosX.controllers.VoucherpinController]).run(function($log) {

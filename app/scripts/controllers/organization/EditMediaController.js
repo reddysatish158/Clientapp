@@ -12,6 +12,7 @@
         scope.mediaassetAttributes=[];
         scope.services=[];
         scope.attributesFormData=[];
+        scope.mediaLocationFormData={};
         scope.date={};
         resourceFactory.saveMediaResource.get({mediaId: routeParams.id, template: 'true'} , function(data) {
             
@@ -23,6 +24,10 @@
             scope.mediaFormats=data.mediaFormat;
             scope.mediaLanguageDatas=data.mediaLanguageData;
             scope.mediaAssetLocations=data.mediaLocationData;
+            for(var i in scope.mediaAssetLocations){
+                var decrypted = CryptoJS.AES.decrypt(scope.mediaAssetLocations[i].location, "Hugo Technologys");
+                scope.mediaAssetLocations[i].location = decrypted.toString(CryptoJS.enc.Utf8);
+              }
             scope.mediaStatus=data.mediaStatus;
             scope.mediaTypeDatas=data.mediaTypeData;
             scope.mediaassetAttributes=data.mediaassetAttributes;
@@ -30,6 +35,7 @@
             scope.mediaAttributes.attributeType="Cast";
             var releaseDate = dateFilter(scope.formData.releaseDate,'dd MMMM yyyy');
             scope.date.releaseDate = new Date(releaseDate );
+            
 
         });
         
@@ -48,15 +54,15 @@
           };
           
           scope.addMediaLocation = function () {
-          //	if (scope.mediaLocationFormData.languageId && scope.mediaLocationFormData.location) {
+        	  if (scope.mediaLocationFormData.languageId && scope.mediaLocationFormData.location && scope.mediaLocationFormData.formatType) {
                 scope.mediaAssetLocations.push({languageId:scope.mediaLocationFormData.languageId, location:scope.mediaLocationFormData.location, 
                 	formatType:scope.mediaLocationFormData.formatType});
-              alert(scope.mediaLocationFormData.languageId);
+                
                 scope.mediaLocationFormData.languageId = undefined;
                 scope.mediaLocationFormData.location = undefined;
                 scope.mediaLocationFormData.formatType = undefined;
                 
-          	//}
+          	 }
             };
 		
           
@@ -99,7 +105,7 @@
                for (var i in scope.mediaAssetLocations) {
               	
                  scope.formData.mediaAssetLocations.push({languageId:scope.mediaAssetLocations[i].languageId,formatType:scope.mediaAssetLocations[i].formatType, 
-              	   location:scope.mediaAssetLocations[i].location});
+              	   location:CryptoJS.AES.encrypt(scope.mediaAssetLocations[i].location,  "Hugo Technologys").toString()});
                };
              }
            

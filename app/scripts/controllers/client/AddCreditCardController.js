@@ -16,7 +16,9 @@
             scope.phone=clientData.phone;
             scope.formData = {};
             scope.formEncryptedData = {};
-            scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','MAESTRO','OTHERS'];
+            scope.cardTypeDatas = ['MASTERCARD','VISA','DISCOVERY','AMERICAN EXPRESS','OTHERS'];
+           // var key = CryptoJS.enc.Base64.parse( mifosX.models.encrptionKey);
+            var key = mifosX.models.encrptionKey;
             
             scope.reset123 = function(){
             	webStorage.add("callingTab", {someString: "documents" });
@@ -30,6 +32,23 @@
             	scope.cardTypeReq = false;
             	errors = []; 
             };*/
+            scope.selectCardType = function(number){
+              if(number){
+            	var cardNumber = number.replace(/ +/g, "");
+            	var masterCard = cardNumber.match(/^5[1-5][0-9]{5,}$/);
+            	var visaCard = cardNumber.match(/^4[0-9]{6,}$/);
+            	var discoveryCard = cardNumber.match(/^6(?:011|5[0-9]{2})[0-9]{3,}$/);
+            	var americanExpressCard = cardNumber.match(/^3[47][0-9]{5,}$/);
+            	if(masterCard) scope.formData.cardType = 'MASTERCARD';
+            	else if(visaCard) scope.formData.cardType = 'VISA';
+            	else if(discoveryCard) scope.formData.cardType = 'DISCOVERY';
+            	else if(americanExpressCard) scope.formData.cardType = 'AMERICAN EXPRESS';
+            	else  scope.formData.cardType = 'OTHERS';
+              }
+              else{
+            	  delete scope.formData.cardType;
+              }
+            };
             scope.cradNumberErrorHide = function(){
             	// scope.cardNumberReq = false;
             	 scope.cardNumberDigit = false;
@@ -131,8 +150,8 @@
 					  }
 				  }
 				  
-				/*  var cardCvvNo = $('#cardCvvNo').val();
-				  if(cardCvvNo == ""){
+				  var cardCvvNo = $('#cardCvvNo').val();
+				  /* if(cardCvvNo == ""){
 					  scope.cardCvvNoReq = true;
 					  errors.push({"cardCvvNoReq":'true'});
 				  }
@@ -144,14 +163,14 @@
 						  errors.push({"cardCvvNoDigit":'true'});
 					  }
 				  }
-				  
 				  if(errors.length == 0){
 				    this.formEncryptedData.type="CreditCard";
 					this.formEncryptedData.cardType = scope.formData.cardType;
 				    this.formEncryptedData.name = this.formData.name;
-				    this.formEncryptedData.cvvNumber = CryptoJS.AES.encrypt(scope.formData.cvvNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber, "Secret Passphrase").toString();
-				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, "Secret Passphrase").toString();			        
+				    if(scope.formData.cvvNumber)
+				    this.formEncryptedData.cvvNumber = CryptoJS.AES.encrypt(scope.formData.cvvNumber, key).toString();
+				    this.formEncryptedData.cardNumber = CryptoJS.AES.encrypt(this.formData.cardNumber, key).toString();
+				    this.formEncryptedData.cardExpiryDate = CryptoJS.AES.encrypt(this.formData.cardExpiryDate, key).toString();			        
 	                resourceFactory.creditCardSaveResource.save({clientId:scope.clientId},this.formEncryptedData,function(data){
 	                    location.path('/viewclient/' + data.clientId);
 	                });

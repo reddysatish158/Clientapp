@@ -842,9 +842,6 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
-            voucherpinProcessResource: defineResource(apiVer + "/randomgenerators/createVoucherpin/:batchId", {batchId:'@batchId'}, {
-            	getVoucherpin: {method: 'GET', params: {}}
-            }),
         };
       }];
     }
