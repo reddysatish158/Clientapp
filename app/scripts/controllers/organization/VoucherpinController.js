@@ -10,7 +10,7 @@
         scope.processFile = function(id){
         	rootScope.processFileLoading = true;
         	rootScope.voucherPinProcess = true;
-        	resourceFactory.voucherpinProcessResource.getVoucherpin({batchId:id},function(data) {
+        	resourceFactory.voucherpinResource.save({batchId:id},function(data) {
         		rootScope.processFileLoading = false;
         		rootScope.voucherPinProcess = false;
         		route.reload();
