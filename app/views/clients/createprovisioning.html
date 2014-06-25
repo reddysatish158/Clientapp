@@ -96,8 +96,8 @@
 			 			 <div class="control-group">
 			 			  	<div class="controls">
 
-						  	<input  id="ip_address" type="radio" name="selectType"  ng-click="selectedIPAddress()" checked/>&nbsp;&nbsp;IPAddress
-			  				<input  id="subnet" type="radio" name="selectType" ng-click="selectedSubnet()" />&nbsp;&nbsp;Subnet&nbsp;&nbsp;
+						  	<input  id="ip_address" type="radio" name="selectType"  ng-click="selectedIPAddress('ipAddress')" checked/>&nbsp;&nbsp;IPAddress&nbsp;&nbsp;
+			  				<input  id="subnet" type="radio" name="selectType" ng-click="selectedSubnet('subnet')" />&nbsp;&nbsp;Subnet
 
 						  	</div>
 						  	</div>
@@ -153,28 +153,18 @@
           						</div>
 							</td> -->
 							<td>
-								<div class="control-group" ng-show="(parameterData.paramName == 'IP_ADDRESS')&&IPAddress">
+								<div class="control-group" ng-show="(parameterData.paramName == 'IP_ADDRESS')">
             					<label class="control-label" for="ipAddress">{{ 'label.provisioning.ipaddress' | translate }}</label>
             					<div class="controls">                                  	       
-             					 <input type="text" ng-model="formData.ipAddress" name="ipAddress" ng-change="getData(formData.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
-                                   <a ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
-                                  <div ng-repeat="addipAddress in addIpAddress">
-										<input type="text" class="input-small" readonly ng-model="addipAddress">
+             					 <input type="text" ng-model="IPAddressObj.ipAddress" name="ipAddress" ng-change="getData(IPAddressObj.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
+                                  <input ng-show="subnetType" type="text" style="width:20px;" id="subnet" ng-model="formData.subnet" maxlength="2"/>
+                                   <a ng-show="IPAddressType" ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
+                                  <div  ng-show="IPAddressType" ng-repeat="addipAddress in addIpAddress">
+										<input type="text" style="width:110px" readonly ng-model="addipAddress">
 										<a ng-click="deleteAddIpAddress($index)"><i class="icon-remove icon-white"></i></a>							   					        
 						              </div>                            
                                   </div>                           
             					</div>                                                               
-							</td>
-							</tr>
-							<tr>
-							<td >
-								<div class="control-group" ng-show="(parameterData.paramName == 'IP_ADDRESS')&&subnet">
-            					<label class="control-label" >{{ 'label.provisioning.subnetIP' | translate }}</label>
-            					<div class="controls">
-              					 <input type="text" ng-model="formData.subnetIPAddress" ng-change="getData(formData.subnetIPAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0"/>
-              					 <input type="text" style="width:20px;" id="subnet" ng-model="formData.subnet" maxlength="2"/>
-            					</div>
-          						</div>
 							</td>
 							</tr>
 							<tr>
