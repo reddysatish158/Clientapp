@@ -28,6 +28,8 @@
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
         scope.ipTypeDatas = ["Single","Multiple"];
+        scope.IPAddress = true;
+   		scope.subnet = false;
      
        resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
     	   scope.parameterDatas=data.parameterDatas;
@@ -73,9 +75,20 @@
     		delete scope.fromData.ipType ;
    		
    	};
+   	scope.selectedIPAddress  = function(){
+   		scope.IPAddress = true;
+   		scope.subnet = false;
+   		scope.addIpAddress = [];
+   		delete this.formData.subnetIPAddress;
+		delete scope.formData.subnet;
+   	};
    	
+	scope.selectedSubnet  = function(){
+   		scope.subnet = true;
+   		scope.IPAddress = false;
+   		delete scope.addIpAddress;
+   	};
    	
-        	
         scope.submit = function() {
         	this.formData.clientId=scope.clientId;
         	this.formData.orderId=routeParams.orderId;
@@ -112,25 +125,25 @@
                     
         		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
         			 temp.paramName = scope.parameterDatas[param].paramName;
-        			/*var ipval="";
-        			for(var param in scope.addIpAddress){
-                		
-                		if(ipval!=""){
-                			ipval= ipval+",";
-                			
-                		}
-                		ipval= ipval+scope.addIpAddress[param].ipvalue;
-                		temp.paramValue =ipval;
-                		
-                	}*/
+        			if(scope.subnet){
+        				delete scope.addIPAddress;
+        				temp.paramValue = this.formData.subnetIPAddress;
+        				console.log(this.formData.subnetIPAddress);
+        				console.log(temp.paramValue);
+        				this.formData.ipType = "Single";
+        			}
+        			if(scope.IPAddress){
         			 temp.paramValue = scope.addIpAddress;
+        			        			 
+        			 delete this.formData.subnetIPAddress;
+        			 delete scope.formData.subnet;
+        			}
         			scope.serviceParameters.push(temp);
-                   // delete this.formData.ipAddress;
                     
         		}
         		  
         	}
-        	
+        	 delete this.formData.subnetIPAddress;
         	   this.formData.serviceParameters = scope.serviceParameters;
         	   
            resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
