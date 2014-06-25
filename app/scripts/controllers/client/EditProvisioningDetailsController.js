@@ -51,7 +51,7 @@
     		if(scope.parameterDatas[param].paramName == "SERVICE"){
     			
     			 temp.paramName = scope.parameterDatas[param].paramName;
-                temp.paramValue = scope.parameterDatas[param].paramValue;
+    			 scope.formData.serviceName = scope.parameterDatas[param].paramValue;
                // scope.serviceParameters.push(temp);
     		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME"){
     			
@@ -67,6 +67,7 @@
                 
     		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
     			 temp.paramName = scope.parameterDatas[param].paramName;
+
     			 /*temp.paramValue = scope.parameterDatas[param].paramValue;
     			var ipArray =  JSON.parse(temp.paramValue);
     			 
@@ -145,6 +146,7 @@
    	
         	
         scope.submit = function() {
+        	
         	this.formData.clientId=scope.clientId;
         	this.formData.orderId=routeParams.orderId;
         	this.formData.planName=scope.planName;
@@ -171,11 +173,6 @@
         			scope.serviceParameters.push(temp);
                    // delete this.formData.groupName;
                     
-        		}else if(scope.parameterDatas[param].paramName == "VLAN_ID"){
-        			
-        			 temp.paramName = scope.parameterDatas[param].paramName;
-                    scope.formData.vLan=scope.parameterDatas[param].paramValue;
-                    
         		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
         			 temp.paramName = scope.parameterDatas[param].paramName;
         			 if(scope.subnetType){
@@ -191,15 +188,23 @@
         			scope.serviceParameters.push(temp);
                    // delete this.formData.ipAddress;
                     
-        		}
+        		}else if(scope.parameterDatas[param].paramName == "VLAN_ID"){
+        			
+       			 temp.paramName = scope.parameterDatas[param].paramName;
+                   temp.paramValue = this.formData.vLan;
+                   scope.serviceParameters.push(temp);
+                   //delete this.formData.vLan;
+                   
+       		}
         		
         		  
         	}
         	   this.formData.serviceParameters = scope.serviceParameters;
         	   
-           resourceFactory.provisioningUpdateResource.update({'orderId': scope.orderId},this.formData,function(data){
-        	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);
-          });
+        	   resourceFactory.provisioningserviceResource.update({'orderId':routeParams.orderId},this.formData,function(data){
+            	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);
+              });
+
         };
     }
   });

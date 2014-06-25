@@ -756,6 +756,11 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
+        provisioningserviceResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId: '@orderId'}, {
+      	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+         get: {method: 'GET', params: {}},
+         update: { method: 'PUT' }
+    }),
 //<<<<<<< HEAD
         
      /*   provisioningserviceResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId: '@orderId'}, {
