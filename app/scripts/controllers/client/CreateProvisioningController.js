@@ -1,12 +1,13 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
 	  CreateProvisioningController: function(scope, webStorage,resourceFactory, routeParams,location,dateFilter) {
-        scope.provisioningdata= [];
+        scope.orderId = routeParams.orderId;
+		scope.provisioningdata= [];
         scope.services= [];
         scope.ipPoolDatas=[];
         scope.vlanDatas=[];
         scope.formData={};
-        scope.formData.addIpAddress = [];
+        scope.addIpAddress = [];
         
         var clientData = webStorage.get('clientData');
         var orderData = webStorage.get('orderData');
@@ -26,7 +27,10 @@
         scope.formData.groupName=orderData.groupName;
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
-        scope.serviceParameters=[];
+        scope.ipTypeDatas = ["Single","Multiple"];
+        scope.IPAddress = true;
+   		scope.subnet = false;
+     
        resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
     	   scope.parameterDatas=data.parameterDatas;
     	   scope.provisioningdata=data;
@@ -40,29 +44,51 @@
        scope.getData = function(query){
           	if(query.length>0){
           		resourceFactory.ippoolingDetailsResource.getIpAddress({query: query}, function(data) { 
-          		alert(data.ipAddressData);			
+          			
    	            scope.ipPoolDatasData = data.ipAddressData;
    	        });
           	}else{
               	
           	}
-          }
+          };
           
-          scope.addIpAddresses = function() {	
-   		    scope.formData.addIpAddress.push({
-   			ipvalue : scope.formData.ipAddress
-   		});
-
+          scope.addIpAddresses = function() {
+        	if(scope.formData.ipAddress)
+   		    scope.addIpAddress.push(scope.formData.ipAddress);
+        	
+        	if(scope.addIpAddress.length > 1)
+        		scope.formData.ipType = "Multiple";
+        	else
+        		scope.formData.ipType = "Single";
    		scope.formData.ipAddress = undefined;
 
    	};
    	
    	scope.deleteAddIpAddress = function(index) {
-   		scope.formData.addIpAddress.splice(index, 1);
+   		scope.addIpAddress.splice(index, 1);
+   		
+   		if(scope.addIpAddress.length > 1)
+    		scope.formData.ipType = "Multiple";
+    	else if(scope.addIpAddress.length == 1)
+    		scope.formData.ipType = "Single";
+    	else
+    		delete scope.fromData.ipType ;
+   		
+   	};
+   	scope.selectedIPAddress  = function(){
+   		scope.IPAddress = true;
+   		scope.subnet = false;
+   		scope.addIpAddress = [];
+   		delete this.formData.subnetIPAddress;
+		delete scope.formData.subnet;
    	};
    	
+	scope.selectedSubnet  = function(){
+   		scope.subnet = true;
+   		scope.IPAddress = false;
+   		delete scope.addIpAddress;
+   	};
    	
-        	
         scope.submit = function() {
         	this.formData.clientId=scope.clientId;
         	this.formData.orderId=routeParams.orderId;
@@ -71,46 +97,54 @@
         	//delete this.formData.addIpAddress;
         	
         	
-        	
+        	   scope.serviceParameters=[];
         	for(var param in scope.parameterDatas){
         		
 
         		  var temp = {};
-        		  temp.paramName = scope.parameterDatas[param].paramName;
+        		 
         		  
-        		if(temp.paramName == "SERVICE"){
+        		if(scope.parameterDatas[param].paramName == "SERVICE"){
         			
+        			 temp.paramName = scope.parameterDatas[param].paramName;
                     temp.paramValue = scope.parameterDatas[param].paramValue;
+                    scope.serviceParameters.push(temp);
+        		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME"){
         			
-        		}else if(temp.paramName == "GROUP_NAME"){
-         
+        			 temp.paramName = scope.parameterDatas[param].paramName;
         			temp.paramValue = this.formData.groupName;
-                    delete this.formData.groupName;
+        			scope.serviceParameters.push(temp);
+                   // delete this.formData.groupName;
                     
-        		}else if(temp.paramName == "IP_ADDRESS"){
-        			var ipval="";
-        			for(var param in scope.formData.addIpAddress){
-                		
-                		if(ipval!=""){
-                			ipval= ipval+",";
-                			
-                		}
-                		ipval= ipval+scope.formData.addIpAddress[param].ipvalue;
-                		temp.paramValue =ipval;
-                	}
+        		}else if(scope.parameterDatas[param].paramName == "VLAN_ID"){
         			
-                    delete this.formData.ipAddress;
-                    
-        		}else if(temp.paramName == "VLAN_ID"){
-        			
+        			 temp.paramName = scope.parameterDatas[param].paramName;
                     temp.paramValue = this.formData.vLan;
-                    delete this.formData.vLan;
+                    scope.serviceParameters.push(temp);
+                    //delete this.formData.vLan;
+                    
+        		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
+        			 temp.paramName = scope.parameterDatas[param].paramName;
+        			if(scope.subnet){
+        				delete scope.addIPAddress;
+        				temp.paramValue = this.formData.subnetIPAddress;
+        				console.log(this.formData.subnetIPAddress);
+        				console.log(temp.paramValue);
+        				this.formData.ipType = "Single";
+        			}
+        			if(scope.IPAddress){
+        			 temp.paramValue = scope.addIpAddress;
+        			        			 
+        			 delete this.formData.subnetIPAddress;
+        			 delete scope.formData.subnet;
+        			}
+        			scope.serviceParameters.push(temp);
+                    
         		}
-        		
-        		  scope.serviceParameters.push(temp);
+        		  
         	}
+        	 delete this.formData.subnetIPAddress;
         	   this.formData.serviceParameters = scope.serviceParameters;
-        	   delete this.formData.addIpAddress;
         	   
            resourceFactory.provisioningResource.save({'clientId': scope.clientId},this.formData,function(data){
         	   location.path('/vieworder/' +routeParams.orderId+'/'+scope.clientId);

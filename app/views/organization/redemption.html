@@ -11,7 +11,7 @@
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	    </div> 
+	    </div>
 	    
         <fieldset>
           <legend>Create Redemption</legend>
@@ -22,7 +22,7 @@
 					<div class="control-group">
            			    <label class="control-label">Client Id&nbsp;:</label>
             			<div class="controls">
-             			   <input type="text" ng-model="clientId"/>
+             			   <input type="text" ng-model="formData.clientId"/>
            				</div>
          		 	</div>	
 				</td>
@@ -30,11 +30,12 @@
 			<tr>
 				<td>
 					 <div class="control-group">
-            		   <label class="control-label" >Configuration Key&nbsp;:</label>
+            		   <label class="control-label" >Pin Number&nbsp;:</label>
             			<div class="controls">
               			   <!--  <select ng-model="pinType"  ng-options="pinTypeData.value as pinTypeData.value for pinTypeData in pinTypeDatas">
               			   </select> -->
-              			    <input type="text" id="pinValue" ng-model="pinValue">
+              			    <input type="text" id="pinNumber" ng-model="formData.pinNumber">
+
             		     </div>
           			</div>
 				</td>

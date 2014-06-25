@@ -84,7 +84,11 @@
         scope.routeToItemSale = function(onetimesaleid,clientid){
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
-        
+
+        scope.routeToCardDetails = function(clientid,id,cardType){
+            location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
+          };
+       
         var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
         var riseTicket = PermissionService.showMenu('CREATE_TICKET')&&PermissionService.showMenu('READ_TICKET');
         var makePayment = PermissionService.showMenu('CREATE_PAYMENT')&&PermissionService.showMenu('READ_GETPAYMENT');
@@ -98,10 +102,6 @@
         var rejectTransfer = PermissionService.showMenu('REJECTTRANSFER_CLIENT');
         var undoTransfer = PermissionService.showMenu('WITHDRAWTRANSFER_CLIENT');
 
-        scope.routeToCardDetails = function(clientid,id,cardType){
-            location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
-          };
-          
         var getDetails = function(){
         	
         	resourceFactory.clientResource.get({clientId: routeParams.id} , function(data) {
@@ -343,8 +343,9 @@
         	$scope.acceptStatement = function(){
         		$scope.flagStatementPop = true;
         		console.log("Accept Statement");
-        		
-        		
+        		if($scope.formData == undefined || $scope.formData == null){
+                    $scope.formData = {"message":""};
+                      }
         		this.formData.locale = 'en';
    	         	var reqDate = dateFilter($scope.start.date,'dd MMMM yyyy');
    	         	this.formData.dateFormat = 'dd MMMM yyyy';
@@ -591,50 +592,66 @@
             route.reload();
           });
         };
-
         scope.getClientDocuments = function () {
         	
-          resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
-            scope.clientdocuments = data;      
-          });     
-
-          if(PermissionService.showMenu('READ_DOCUMENT')){
-	         resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
-			 scope.clientdocuments = data;
-	         });
-          }
+        	if(PermissionService.showMenu('READ_DOCUMENT')){
+        		resourceFactory.clientDocumentsResource.getAllClientDocuments({clientId: routeParams.id} , function(data) {
+        				scope.clientdocuments = data;
+        		});
+        	}    
           
           resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
+
+              var key  = mifosX.models.encrptionKey;
               scope.clientcarddetails = data1;
               for ( var i in scope.clientcarddetails) {	
 
-                  if(scope.clientcarddetails[i].cardType=='CreditCard'){
+                  if(scope.clientcarddetails[i].type=='CreditCard'){
                 	  
-                	    var decrypted = CryptoJS.AES.decrypt(scope.clientcarddetails[i].name, "Secret Passphrase");
-                	    scope.clientcarddetails[i].name = decrypted.toString(CryptoJS.enc.Utf8);
-                	    
-				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, "Secret Passphrase");
-				        scope.clientcarddetails[i].cardNumber = decrypted1.toString(CryptoJS.enc.Utf8);
-				        
-				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate, "Secret Passphrase");
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardNumber, key);
+				         var cardNum = decrypted1.toString(CryptoJS.enc.Utf8);
+				          var stars = "";
+				         for (var j in cardNum){
+				        	 if(j>=0&&j<(cardNum.length)-4){
+				        		 stars += "*";
+				        	 };
+				         }
+				         cardNum = stars+cardNum.substr(cardNum.length-4,cardNum.length-1);
+				         scope.clientcarddetails[i].cardNumber = cardNum;
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].cardExpiryDate,  key);
 				        scope.clientcarddetails[i].cardExpiryDate = decrypted2.toString(CryptoJS.enc.Utf8);
 				        
-                  }else if(scope.clientcarddetails[i].cardType=='ACH'){
-                	  
-                	    var decrypted = CryptoJS.AES.decrypt(scope.clientcarddetails[i].name, "Secret Passphrase");
-              	        scope.clientcarddetails[i].name = decrypted.toString(CryptoJS.enc.Utf8);
+                  }else if(scope.clientcarddetails[i].type=='ACH'){
               	        
-				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber, "Secret Passphrase");
-				        scope.clientcarddetails[i].routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
-				        
-				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber, "Secret Passphrase");
-				        scope.clientcarddetails[i].bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
-				        
-				        var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName, "Secret Passphrase");
-				        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
+				        var decrypted1 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].routingNumber,  key);
+				        var routingNumber = decrypted1.toString(CryptoJS.enc.Utf8);
+				          var stars = "";
+				         for (var j in routingNumber){
+				        	 if(j>=0&&j<(routingNumber.length)-4){
+				        		 stars += "*";
+				        	 };
+				         }
+				         routingNumber = stars+routingNumber.substr(routingNumber.length-4,routingNumber.length-1);
+				         scope.clientcarddetails[i].routingNumber = routingNumber;
+
+				        var decrypted2 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankAccountNumber,  key);
+				        var bankAccountNumber = decrypted2.toString(CryptoJS.enc.Utf8);
+				          var stars = "";
+				         for (var j in bankAccountNumber){
+				        	 if(j>=0&&j<(bankAccountNumber.length)-4){
+				        		 stars += "*";
+				        	 };
+				         }
+				         bankAccountNumber = stars+bankAccountNumber.substr(bankAccountNumber.length-4,bankAccountNumber.length-1);
+				         scope.clientcarddetails[i].bankAccountNumber = bankAccountNumber;
+				         
+				         var decrypted3 = CryptoJS.AES.decrypt(scope.clientcarddetails[i].bankName,  key);
+					        scope.clientcarddetails[i].bankName = decrypted3.toString(CryptoJS.enc.Utf8);
+
                   }
               }
             });
+
         };
 
         scope.deleteDocument = function (documentId, index) {
@@ -671,7 +688,6 @@
             resourceFactory.HardwareResource.getAllOwnHardware({clientId: routeParams.id} , function(data) {
               scope.ownhardwares = data;
             });
-            
            
         };
         

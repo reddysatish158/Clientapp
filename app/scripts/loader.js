@@ -83,7 +83,7 @@
                     'LocalStorageModule',
                     'configurations',
                     'chosen.jquery.min',
-                    'aes'                
+                    'aes'
                 ],
                 exports: 'mifosX'
             }

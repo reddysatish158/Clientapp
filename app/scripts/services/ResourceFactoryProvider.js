@@ -756,6 +756,11 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
+        provisioningserviceResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId: '@orderId'}, {
+      	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
+         get: {method: 'GET', params: {}},
+         update: { method: 'PUT' }
+    }),
 //<<<<<<< HEAD
         
      /*   provisioningserviceResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId: '@orderId'}, {
@@ -772,7 +777,7 @@
 //>>>>>>> obsplatform-1.01
            }),
            
-         provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisionings/provisiontemplate/:orderId", {orderId:'@orderId'}, {
+         provisioningCreatetemplateDataResource: defineResource(apiVer + "/provisioning/provisiontemplate/:orderId", {orderId:'@orderId'}, {
         	   get: {method: 'GET', params: {}}
            }),
          processRequestResource: defineResource(apiVer + "/provisioning/processRequest/:id", {id: '@id'}, {
@@ -802,22 +807,25 @@
      	   getData: {method: 'GET', params: {id:'@id'}},
      	   update: { method: 'PUT' }
            }) ,
+           downloadPaymentGatewayData: defineResource(apiVer+"/paymentgateways/download",{},{
+        	   get: {method: 'GET', params: {}, isArray: true}
+           }),
 	       Filetrans: defineResource(apiVer + "/financialTransactions/:clientId/type", {clientId:'@clientId'}, {
            	get: {method: 'GET', params: {}, }
-         }) ,
-         promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
+	       }),
+	       promotionResource: defineResource(apiVer + "/promotioncode/:promotioncodeId", {promotioncodeId:'@promotioncodeId'}, {
         	  get: {method: 'GET', params: {}, isArray: true},
         	  getPrmotioncodeDetails: {method: 'GET', params: {promotioncodeId:'@promotioncodeId'}},
         	  update: { method: 'PUT' }
-          }),  
+	       }),  
           
-          promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
+	       promotionTemplateResource: defineResource(apiVer + "/promotioncode/template", {}, {
         	  get: {method: 'GET', params: {}}
-          }),
-          addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
+	       }),
+	       addCountryResource: defineResource(apiVer + "/address/country/new",{},  {
         	  get: {method: 'POST', params: {}}
-         }),
-         editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
+	       }),
+	       editCountryResource: defineResource(apiVer + "/address/country/:id",{id: '@id'},  {
         	 update: { method: 'PUT' }
          }),
          addStateResource: defineResource(apiVer + "/address/state/new",{},  {
@@ -851,12 +859,12 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
           }),
-
-
           groupsDetailsResource: defineResource(apiVer + "/groupsdetails", {}, {
-        	  getDetails: {method: 'GET', params: {}},
-        	  postDetails: { method: 'POST', params: {}}
+        	  getDetails: {method: 'GET', params: {}}
            }),
+           groupsDetailsProvisionResource: defineResource(apiVer + "/groupsdetails/provision/:groupId", {groupId:"@groupId"}, {
+         	  
+            }),
 
           ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
          	  get: {method: 'GET', params: {}},
@@ -866,11 +874,9 @@
           itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
            	 get: {method: 'GET', params: {}}
             }) ,
-
-            itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
+          itemSaleResource: defineResource(apiVer + "/itemsales", {}, {
              	 get: {method: 'GET', params: {}}
-              }) ,
-
+            }) ,
             officePaymentsTemplateResource: defineResource(apiVer + "/officepayments/template", {}, {
                 getPayments: {method: 'GET', params: {}}
             }),
@@ -889,8 +895,7 @@
             agentsResource: defineResource(apiVer + "/agents", {}, {
                 postAgent: {method: 'POST', params: {}}
             }),
-            redemptionResource: defineResource(apiVer + "/redemption/:clientId/:pinValue", {clientId : '@clientId',pinValue : '@pinValue'}, {
-                postRedemption: {method: 'POST', params: {clientId : '@clientId',pinValue : '@pinValue'}}
+            redemptionResource: defineResource(apiVer + "/redemption", {}, {
             }),
             ippoolingDetailsResource: defineResource(apiVer + "/ippooling/search", {query: '@query'}, {
         	  getIpAddress: {method: 'GET', params: {query: '@query'}}	
@@ -900,6 +905,9 @@
             }),
             creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
                 get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+            }),
+            provisioningUpdateResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId:'@orderId'}, {
                 update: { method: 'PUT' }
             }),
         };

@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  PaymentGatewayController: function(scope,webStorage,route,$modal, routeParams,location, resourceFactory, paginatorService,PermissionService) {
+	  PaymentGatewayController: function(scope,webStorage,route,$modal, routeParams,location, resourceFactory, paginatorService,PermissionService,dateFilter,API_VERSION,$rootScope) {
 		 scope.PermissionService = PermissionService;
         scope.paymentgatewaydatas = [];
         scope.formData={};
@@ -161,6 +161,83 @@
 			scope.searchInvalidPaymentId = function(filterText) {
 				  			scope.paymentgatewaydatas = paginatorService.paginate(scope.searchInvalidPaymentData, 14);
 				  		};
+			
+			//Download data into csv file
+				  		
+			scope.download = function(){
+				$modal.open({
+                    templateUrl: 'downloadpaymentgatewaydata.html',
+                    controller: DownloadPaymentGatewayDataController,
+                    resolve:{}
+                });
+			};
+			
+			var DownloadPaymentGatewayDataController = function($scope,$modalInstance){
+				
+				var date = new Date(), y = date.getFullYear(), m = date.getMonth();
+				$scope.formData = {};
+				$scope.start = {};
+				$scope.start.date = new Date(y, m, 1);
+				$scope.to = {};
+				$scope.to.date = new Date();
+				
+				$scope.accept = function(){
+					var fromDate = new Date($scope.start.date).getTime();
+					var toDate = new Date($scope.to.date).getTime();
+					
+					
+					window.open($rootScope.hostUrl+ API_VERSION +'/paymentgateways/download?fromDate='+fromDate+'&source='+$scope.formData.source+'&status='+$scope.formData.status+'&toDate='+toDate+'&tenantIdentifier=default');
+					$modalInstance.close('delete');
+/*	        		resourceFactory.downloadPaymentGatewayData.get({source: $scope.formData.source,fromDate: fromDate ,toDate: toDate},function(data) {	
+	        			
+	        			
+	        			
+	        			var json = data;
+	        		    var csv = $scope.JSON2CSV(json);
+	        		    //window.open("data:text/csv;charset=utf-8," + escape(csv));
+
+	        			
+	                    $modalInstance.close('delete');
+	                },function(errorData){
+	                	$scope.flagStatementPop = false;
+	                	$scope.stmError = errorData.data.errors[0].userMessageGlobalisationCode;
+	                	console.log(errorData);
+	                	console.log($scope.stmError);
+	                });*/
+				};
+				
+				$scope.reject = function(){
+					console.log("dialog closed");
+					$modalInstance.dismiss('cancel');
+				}
+				
+				/*$scope.JSON2CSV = function(objArray) {
+				    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+
+				    var str = '';
+				    var line = '';
+				        
+				        for (var index in array[0]) {
+				            line += index + ',';
+				        }
+				            
+				        line = line.slice(0, -1);
+				        str += line + '\r\n';
+
+				    for (var i = 0; i < array.length; i++) {
+				        var line = '';
+				        
+				            for (var index in array[i]) {
+				                line += array[i][index] + ',';
+				            }
+
+				        line = line.slice(0, -1);
+				        str += line + '\r\n';
+				    }
+				    return str;
+				    
+				};*/
+			};
 				  		
 		// edit popup
 				  		
@@ -236,7 +313,7 @@
           
     }
   });
-  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.PaymentGatewayController]).run(function($log) {
+  mifosX.ng.application.controller('PaymentGatewayController', ['$scope','webStorage', '$route','$modal','$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService','dateFilter','API_VERSION','$rootScope', mifosX.controllers.PaymentGatewayController]).run(function($log) {
     $log.info("PaymentGatewayController initialized");
   });
 }(mifosX.controllers || {}));

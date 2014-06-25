@@ -6,8 +6,13 @@
             scope.cOfficeName = 'Head Office';
             scope.dOfficeName = 'Head Office';
             scope.bOfficeName = 'Head Office';
+            scope.sOfficeName = 'Head Office';
             scope.chartType = 'Days';
             scope.collectionPieData = [];
+            scope.cumCustomersPieData = [];
+            scope.disbursedPieData = [];
+            scope.formData = {};
+            
            
             scope.formatdate = function(){
                 var bardate = new Date();
@@ -125,7 +130,8 @@
                 }
             };
 
-            resourceFactory.runReportsResource.get({reportSource: 'ClientTrendsByDay',R_officeId:1, genericResultSet:false} , function(data) {
+		 scope.id = this.officeId || 1;	
+            resourceFactory.runReportsResource.get({reportSource: 'ClientTrendsByDay',R_officeId:scope.id, genericResultSet:false} , function(data) {
                 scope.client = data;
                 scope.days = [];
                 scope.tempDate = [];
@@ -142,7 +148,8 @@
                     scope.tempDate[i] = tday + "/" + tmonth;
                 }
                 scope.getFcount(scope.formattedDate,scope.tempDate,scope.client);
-                resourceFactory.runReportsResource.get({reportSource: 'OrderTrendsByDay',R_officeId:1, genericResultSet:false} , function(data) {
+		 scope.id = this.officeId || 1;
+                resourceFactory.runReportsResource.get({reportSource: 'OrderTrendsByDay',R_officeId:scope.id, genericResultSet:false} , function(data) {
                     scope.ldays = [];
                     scope.ltempDate = [];
                     scope.lcount = [];
@@ -160,47 +167,95 @@
                     scope.getLcount(scope.formattedDate,scope.ltempDate,data);
                     scope.getBarData(scope.formattedDate,scope.fcount,scope.lcount);
                 });
-                
-                resourceFactory.groupTemplateResource.get(function(data) {
-                    scope.offices = data.officeOptions;
-                });
             });
 
-          
-         
 
-            resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:1, genericResultSet:false} , function(data) {
-            	
-            	scope.collectionPieData = data;
-            	scope.showCollectionerror = false;
-            	if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0){
-                    scope.showCollectionerror = true;
-                }
-            	scope.collectedData = [
-            	                       {key:"Cash", y:scope.collectionPieData[0].Collection},
-            	                       {key:"M-pesa", y:scope.collectionPieData[1].Collection},
-            	                       {key:"Online Payment", y:scope.collectionPieData[2].Collection}
-            	                   ];
+           
+ resourceFactory.groupTemplateResource.get(function(data) {scope.offices = data.officeOptions;});
+
+/* Paymode Collection Chart */
+		 scope.id = this.officeIdCollection || 1;
+         resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:scope.id, genericResultSet:false} , function(data) 
+            	{	
+        	 		scope.showCollectionerror = false;
+        	 		var count = 0;
+        	        scope.collectionPieData = data;
+        	        
+        	        for(var i in data){
+                		if(data[i].Collection==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+            		 scope.showCollectionerror = true;
+            		scope.collectedData = [];
+            		for(var i in data){	console.log(data[i].PayMode);
+					scope.collectedData.push({key:data[i].PayMode,y:data[i].Collection});
+					console.log(scope.collectedData);
+				  }
+
             });
             
-            resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:1, genericResultSet:false} , function(data) {
-                scope.disbursedPieData = data[0];
-                scope.showDisbursementerror = false;
-                if(data[0].disbursedAmount == 0 && data[0].amountToBeDisburse == 0){
-                    scope.showDisbursementerror = true;
+/* status wise orders */
+		 scope.id = this.officeIdCum || 1;
+            resourceFactory.runReportsResource.get({reportSource: 'CumulativeCustomersChart',R_officeId:scope.id, genericResultSet:false} , function(data) {
+            	
+            	scope.showCumCustomerDataerror = false;
+            	var count = 0;
+            	scope.cumCustomersPieData = data;
+        		for(var i in data){
+            		if(data[i].clients==0){
+            			count+=1;
+            		}
+            		
+            	}
+            	if(count==data.length)
+        		scope.showCumCustomerDataerror = true;
+        		scope.cumCustomerData = [];
+        		for(var i in data)	{
+        							scope.cumCustomerData.push({key:data[i].status,y:data[i].clients});
+        							console.log(scope.cumCustomerData);
+        					  		}
+        		});
+            	/*scope.cumCustomersPieData = data;
+            	if(data[0].clients == 0 && data[1].clients == 0 && data[2].clients == 0){
+                    scope.showCumCustomerDataerror = true;
                 }
-                scope.disbursedData = [
-                    {key:"Disbursed", y:scope.disbursedPieData.disbursedAmount},
-                    {key:"Pending", y:scope.disbursedPieData.amountToBeDisburse}
-                ];
+            	scope.cumCustomerData = [
+            	                       {key:"Active", y:scope.cumCustomersPieData[0].clients},
+            	                       {key:"Disconnected", y:scope.cumCustomersPieData[1].clients},
+            	                       {key:"Pending", y:scope.cumCustomersPieData[2].clients}
+            	                   ];
+            });*/
 
-            });
-
+             resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:1, genericResultSet:false} , function(data) 
+             	{scope.disbursedPieData = data;
+             	scope.showDisbursementerror=false;
+             	var count = 0;
+             	for(var i in data){
+            		if(data[i].allocated==0){
+            			count+=1;
+            		}
+            		
+            	}
+            	if(count==data.length)
+            		scope.showDisbursementerror=true;
+             	scope.disbursedData = [];
+                 for(var i in data){
+                	 console.log(data[i].Item);
+                	 scope.disbursedData.push({key:data[i].Item,y:data[i].allocated});
+                 }
+             });
+         
+         
+         
+         /*Daily Data */
             scope.getDailyData = function(){
                 scope.chartType = 'Days';
                 scope.id = this.officeId || 1;
                 resourceFactory.runReportsResource.get({reportSource: 'ClientTrendsByDay',R_officeId:scope.id, genericResultSet:false} , function(data) {
-                    scope.client = data;
+		      scope.client = data;
                     scope.days = [];
                     scope.tempDate = [];
                     scope.fcount = [];
@@ -221,6 +276,7 @@
                         scope.tempDate[i] = tday + "/" + tmonth;
                     }
                     scope.getFcount(scope.formattedDate,scope.tempDate,scope.client);
+			 scope.id = this.officeId || 1;
                     resourceFactory.runReportsResource.get({reportSource: 'OrderTrendsByDay',R_officeId:scope.id, genericResultSet:false} , function(data) {
                         scope.ldays = [];
                         scope.ltempDate = [];
@@ -261,6 +317,7 @@
                     }
 
                     scope.getFcount(scope.formattedWeek,scope.weeks,scope.client);
+			 scope.id = this.officeId || 1;
                     resourceFactory.runReportsResource.get({reportSource: 'OrderTrendsByWeek',R_officeId:scope.id, genericResultSet:false} , function(data) {
                         scope.lweeks = [];
                         scope.lcount = [];
@@ -305,6 +362,7 @@
                         scope.months[i] = scope.client[i].Months;
                     }
                     scope.getFcount(scope.formattedMonth,scope.months,scope.client);
+			 scope.id = this.officeId || 1;
                     resourceFactory.runReportsResource.get({reportSource: 'OrderTrendsByMonth',R_officeId:scope.id, genericResultSet:false} , function(data) {
                         scope.lmonths = [];
                         scope.lcount = [];
@@ -318,48 +376,82 @@
                     });
                 });
             };
-            scope.getCollectionOffice = function () {
-                var id = this.officeIdCollection || 1;
-                for(var i in scope.offices){
-                    if(scope.offices[i].id==id){
-                        scope.cOfficeName = scope.offices[i].name;
-                    }
-                }
-                resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:this.officeIdCollection, genericResultSet:false} , function(data) {
-                    
+
+/* Paymode Collection Chart*/
+
+            scope.getCollectionOffice = function () 
+            {	var id = this.officeId || 1;
+                for(var i in scope.offices){if(scope.offices[i].id==id){scope.cOfficeName = scope.offices[i].name;}}
+                scope.id = this.officeId || 1;
+                var count= 0;
+                resourceFactory.runReportsResource.get({reportSource: 'PaymodeCollection Chart',R_officeId:scope.id, genericResultSet:false},function(data) 
+                	{
                 	scope.showCollectionerror = false;
                 	scope.collectionPieData = data;
-                	if(data[0].Collection == 0 && data[1].Collection == 0 && data[2].Collection == 0){
-                        scope.showCollectionerror = true;
-                    }
-                	scope.collectedData = [
-                                           {key:"Cash", y:scope.collectionPieData[0].Collection},
-                	                       {key:"M-pesa", y:scope.collectionPieData[1].Collection},
-                	                       {key:"Online Payment", y:scope.collectionPieData[2].Collection}
-                	                   ];
-                
-                });
-
+                	for(var i in data){
+                		if(data[i].Collection==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+                	scope.showCollectionerror = true;
+                	scope.collectedData=[];
+                	for(var i in data){	console.log(data[i].PayMode);
+                						scope.collectedData.push({key:data[i].PayMode,y:data[i].Collection});
+                						console.log(scope.collectedData);
+                					  }
+                	});
             };
-            scope.getDisbursementOffice = function () {
-                var id = this.officeIdDisbursed || 1;
-                for(var i in scope.offices){
-                    if(scope.offices[i].id== id){
-                        scope.dOfficeName = scope.offices[i].name;
-                    }
-                }
+/* status wise orders */
+            scope.getCumOffice = function () 
+            {   var id = this.officeId || 1;
+                for(var i in scope.offices)	{ if(scope.offices[i].id== id){scope.dOfficeName = scope.offices[i].name;} }
+                scope.id = this.officeId || 1;
+                var count = 0;
+                scope.showCumCustomerDataerror = false;
+                resourceFactory.runReportsResource.get({reportSource: 'CumulativeCustomersChart',R_officeId:scope.id, genericResultSet:false} , function(data) 
+            		{
+            		scope.cumCustomersPieData = data;
+            		for(var i in data){
+                		if(data[i].clients==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+            		scope.showCumCustomerDataerror = true;
+            		scope.cumCustomerData = [];
+            		for(var i in data)	{console.log(data[i].status);
+            							scope.cumCustomerData.push({key:data[i].status,y:data[i].clients});
+            							console.log(scope.cumCustomerData);
+            					  		}
+            		});
+            };
 
-                resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:this.officeIdDisbursed, genericResultSet:false} , function(data) {
-                    scope.disbursedPieData = data[0];
-                    scope.showDisbursementerror = false;
-                    if(data[0].disbursedAmount == 0 && data[0].amountToBeDisburse == 0){
-                        scope.showDisbursementerror = true;
-                    }
-                    scope.disbursedData = [
-                        {key:"OrdersAdded", y:scope.disbursedPieData.disbursedAmount},
-                        {key:"OrdersDeleted", y:scope.disbursedPieData.amountToBeDisburse}
-                    ];
-                });
+/* Stock Item Details */
+            scope.getStock = function () 
+            {	var id = this.officeId || 1;
+                for(var i in scope.offices){if(scope.offices[i].id== id){scope.sOfficeName = scope.offices[i].name;}}
+                scope.id = this.officeId || 1;
+                var count=0;
+                scope.showDisbursementerror=false;
+                resourceFactory.runReportsResource.get({reportSource: 'Stock_Item_Details',R_officeId:scope.id, genericResultSet:false} , function(data) 
+                	{scope.disbursedPieData = data;
+                	for(var i in data){
+                		if(data[i].allocated==0){
+                			count+=1;
+                		}
+                		
+                	}
+                	if(count==data.length)
+                		scope.showDisbursementerror=true;
+                    scope.disbursedData = [];
+            		for(var i in data)	{
+            							console.log(data[i].Item);
+										scope.disbursedData.push({key:data[i].Item,y:data[i].allocated});
+										console.log(scope.disbursedData);}
+                	});
             };
 
             scope.xFunction = function(){
@@ -397,4 +489,6 @@
 
     
     
+
+
 

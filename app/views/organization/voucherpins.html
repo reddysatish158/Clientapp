@@ -41,8 +41,12 @@
                 <td>{{voucherpin.serialNo}}</td>  
                 <td>{{voucherpin.pinType}}</td>        
                 <td>{{voucherpin.pinValue}}</td>  
-                <td>{{voucherpin.expiryDate|DateFormat}}</td>              
-                <td><a  ng-click="downloadFile(voucherpin.id)" popover="Download Voucher File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a></td>  
+                <td>{{voucherpin.expiryDate|DateFormat}}</td> 
+                <td><a ng-show="(voucherpin.isProcessed == 'N')&&((voucherpin.id)!=dynamicVar)&&(PermissionService.showMenu('PROCESS_RANDAMGENERATOR'))" 
+                		 ng-click="processFile(voucherpin.id)" popover="Process File" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>      
+                   <a  ng-show="voucherpin.isProcessed == 'Y'" ng-click="downloadFile(voucherpin.id)" popover="Download Voucher File" popover-trigger="mouseenter"><i class="icon-cloud-download"></i></a>
+                   <img alt="Loading"  ng-src="./images/spinner.gif" width="30" height="30" ng-show="((voucherpin.id)==dynamicVar)&&(voucherpin.isProcessed == 'N')">
+                </td>  
             </tr>
         </tbody>
     </table>

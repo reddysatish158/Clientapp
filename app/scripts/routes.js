@@ -332,7 +332,10 @@
       .when('/createclosure', {
         templateUrl: 'views/accounting/createclosure.html'
       })
-     
+      
+      .when('/about', {
+        templateUrl: 'views/system/aboutobs.html'
+      })
     
        .when('/contract', {
         templateUrl: 'views/organization/contract.html'
@@ -360,7 +363,7 @@
         templateUrl: 'views/organization/editservice.html'
       })
       .when('/assignedtickets', {
-        templateUrl: 'views/tickets/assignedtickets.html'  
+        templateUrl: 'views/crm/tickets/assignedtickets.html'  
       })
        .when('/clientinvoice/:id', {
         templateUrl : 'views/clients/clientinvoice.html'
@@ -418,10 +421,10 @@
           templateUrl: 'views/organization/editmedia.html'
       })
       .when('/inventory', {
-          templateUrl: 'views/inventory/inventory.html'
+          templateUrl: 'views/logistics/inventory/inventory.html'
       })
       .when('/createitem', {
-          templateUrl: 'views/inventory/createitem.html'
+          templateUrl: 'views/logistics/inventory/item/createitem.html'
       })
         .when('/importing', {
         templateUrl: 'views/import/import.html'
@@ -441,13 +444,9 @@
       .when('/renewalOrder/:id/:clientId', {
         templateUrl: 'views/clients/renewalorder.html'
       })
-      .when('/provision/:orderId', {
+      .when('/provision/:orderId/:clientId', {
         templateUrl: 'views/clients/createprovisioning.html'
       })
-      
-      .when('/editprovision/:orderId', {
-          templateUrl: 'views/clients/editserviceparameters.html'
-        })
       .when('/voucherpins', {
         templateUrl: 'views/organization/voucherpins.html'
       })
@@ -467,22 +466,22 @@
         templateUrl: 'views/organization/editdiscounts.html'
       })
       .when('/prospects', {
-        templateUrl: 'views/prospects/prospects.html'
+        templateUrl: 'views/crm/prospects/prospects.html'
       })
       .when('/viewprospects/:id', {
-        templateUrl: 'views/prospects/viewprospects.html'
+        templateUrl: 'views/crm/prospects/viewprospects.html'
       })
       .when('/createprospects', {
-        templateUrl: 'views/prospects/createprospects.html'
+        templateUrl: 'views/crm/prospects/createprospects.html'
       })
       .when('/cancelprospects/:id', {
-        templateUrl: 'views/prospects/cancelprospects.html'
+        templateUrl: 'views/crm/prospects/cancelprospects.html'
       })
       .when('/editprospects/:id', {
-        templateUrl: 'views/prospects/editprospects.html'
+        templateUrl: 'views/crm/prospects/editprospects.html'
       })
       .when('/followprospects/:id', {
-        templateUrl: 'views/prospects/followprospects.html'
+        templateUrl: 'views/crm/prospects/followprospects.html'
       })
      
       .when('/currencydetails', {
@@ -553,16 +552,16 @@
         templateUrl: 'views/organization/editRegions.html'
       })
       .when('/newTicket/:id', {
-        templateUrl : 'views/clients/newTicket.html'
+        templateUrl : 'views/crm/tickets/newTicket.html'
       })
       .when('/tickets/:id', {
-        templateUrl : 'views/clients/tickets.html'
+        templateUrl : 'views/crm/tickets/tickets.html'
       })
       .when('/viewTicket/:clientId/:id', {
-          templateUrl : 'views/clients/viewTicket.html'
+          templateUrl : 'views/crm/tickets/viewTicket.html'
         })
         .when('/editTicket/:clientId/:id', {
-          templateUrl : 'views/clients/editTicket.html'
+          templateUrl : 'views/crm/tickets/editTicket.html'
         })
          .when('/chargecode', {
         templateUrl: 'views/organization/chargecode.html'
@@ -588,48 +587,42 @@
       .when('/edittaxmapping/:id', {
         templateUrl: 'views/organization/edittaxmapping.html'
       })
-      .when('/inventory', {
-        templateUrl: 'views/inventory/inventory.html'
-      })
-      .when('/createitem', {
-        templateUrl: 'views/inventory/createitem.html'
-      })
       .when('/viewitemdetails/:id', {
-        templateUrl: 'views/inventory/viewitemdetails.html'
+        templateUrl: 'views/logistics/inventory/viewitemdetails.html'
       })
       .when('/addgrndetails', {
-        templateUrl: 'views/inventory/addgrndetails.html'
+        templateUrl: 'views/logistics/inventory/grn/addgrndetails.html'
       })
      .when('/viewgrndetails', {
-        templateUrl: 'views/inventory/viewgrndetails.html'
+        templateUrl: 'views/logistics/inventory/grn/viewgrndetails.html'
       })
       .when('/viewitem/:id',{
-    	  templateUrl: 'views/inventory/viewitem.html'
+    	  templateUrl: 'views/logistics/inventory/item/viewitem.html'
       })
       .when('/edititem/:id',{
-    	  templateUrl: 'views/inventory/edititem.html'
+    	  templateUrl: 'views/logistics/inventory/item/edititem.html'
       })
       .when('/viewgrn/:id',{
-    	  templateUrl: 'views/inventory/viewgrn.html'
+    	  templateUrl: 'views/logistics/inventory/grn/viewgrn.html'
       })
       .when('/createitemdetails/:id',{
-    	  templateUrl: 'views/inventory/createitemdetails.html'
+    	  templateUrl: 'views/logistics/inventory/createitemdetails.html'
       })
       .when('/createmrn',{
-    	  templateUrl: 'views/inventory/createmrn.html'
+    	  templateUrl: 'views/logistics/inventory/mrn/createmrn.html'
       })
        
       .when('/viewmrn/:id',{
-    	  templateUrl: 'views/inventory/viewmrn.html'
+    	  templateUrl: 'views/logistics/inventory/mrn/viewmrn.html'
       })
       .when('/viewmovedmrn/:id',{
-    	  templateUrl: 'views/inventory/viewmovedmrn.html'
+    	  templateUrl: 'views/logistics/inventory/mrn/viewmovedmrn.html'
       })
       .when('/movemrn/',{
-    	  templateUrl: 'views/inventory/movemrn.html'
+    	  templateUrl: 'views/logistics/inventory/mrn/movemrn.html'
       })
        .when('/createsupplier',{
-    	  templateUrl: 'views/inventory/createsupplier.html'
+    	  templateUrl: 'views/logistics/inventory/createsupplier.html'
       })
        .when('/viewfinancialtran/:transactionId/:clientId', {
         templateUrl: 'views/clients/viewfinancialtransaction.html'  
@@ -680,19 +673,19 @@
         templateUrl: 'views/organization/editEventPrice.html'
       })
        .when('/newTicket/:id', {
-        templateUrl : 'views/clients/newTicket.html'
+        templateUrl : 'views/crm/tickets/newTicket.html'
       })
       .when('/tickets/:id', {
-        templateUrl : 'views/clients/tickets.html'
+        templateUrl : 'views/crm/tickets/tickets.html'
       })
       .when('/viewTicket/:clientId/:id', {
-          templateUrl : 'views/clients/viewTicket.html'
+          templateUrl : 'views/crm/tickets/viewTicket.html'
         })
       .when('/editTicket/:clientId/:id', {
-          templateUrl : 'views/clients/editTicket.html'
+          templateUrl : 'views/crm/tickets/editTicket.html'
         })
       .when('/closeTicket/:clientId/:id', {
-          templateUrl : 'views/clients/closeTicket.html'
+          templateUrl : 'views/crm/tickets/closeTicket.html'
         })  
       .when('/editAddress/:id', {
           templateUrl : 'views/clients/editAddress.html'
@@ -729,6 +722,9 @@
         })
         .when('/viewServiceMapping/:id', {
         templateUrl: 'views/system/viewServiceMapping.html'
+        })
+         .when('/createCurrencyMapping', {
+        templateUrl: 'views/system/currencyconfig.html'
         })
           .when('/createclientnewwizard', {
         templateUrl: 'views/clients/createclientnewwizard.html'  
@@ -795,11 +791,9 @@
         templateUrl : 'views/clients/creditDistribution.html'
       })
 
-
       .when('/closeclient/:id', {
         templateUrl : 'views/clients/closeclient.html'
       })
-
       .when('/groupsDetails', {
         templateUrl : 'views/organization/groupsDetails.html'
       })
@@ -810,40 +804,45 @@
       }) 
        .when('/createippooling', {
         templateUrl : 'views/system/createIpPooling.html'
+
       })
       .when('/itemsale',{
     	  templateUrl: 'views/organization/itemSale.html'
       })
-      .when('/editProvison/:id', {
-        templateUrl: 'views/clients/editProvisioning.html'
-      })
-
-      .when('/itemsale/:officeId',{
-    	  templateUrl: 'views/organization/itemSale.html'
+        .when('/itemsale/:officeId',{
+     templateUrl: 'views/organization/itemSale.html'
       })
       .when('/officeadjustments/:officeId',{
-    	  templateUrl: 'views/organization/officeadjustments.html'
+     templateUrl: 'views/organization/officeadjustments.html'
       })
       .when('/officepayments/:officeId',{
-    	  templateUrl: 'views/organization/officepayments.html'
+     templateUrl: 'views/organization/officepayments.html'
       })
       .when('/redemption',{
-    	  templateUrl: 'views/organization/redemption.html'
-      })     
-     
+     templateUrl: 'views/organization/redemption.html'
+      })
+      .when('/editprovison/:orderId/:clientId', {
+        templateUrl: 'views/clients/editProvisioning.html'
+      })
       .when('/addcreditcarddetails/:clientId', {
           templateUrl: 'views/clients/addcreditcarddetails.html'
       })
       .when('/addachdetails/:clientId', {
           templateUrl: 'views/clients/addachdetails.html'
       })
-      .when('/viewcarddetails/:clientId/:id/:cardType', {
+      .when('/viewcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/viewcarddetails.html'
       })
-      .when('/editcarddetails/:clientId/:id/:cardType', {
+      .when('/editcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/editcarddetails.html'
+
       })
-      ;
+      .when('/addnewcreditcarddetails/:clientId/:id/:type', {
+        templateUrl: 'views/clients/addnewcreditcarddetails.html'
+      })
+      .when('/aboutobs', {
+        templateUrl: 'views/system/about_obs.html'
+      });
 
     $locationProvider.html5Mode(false);
   };

@@ -91,6 +91,18 @@
 	</div>			
 	</div>
 			    <table>
+					<tr>
+					<td>
+			 			 <div class="control-group">
+			 			  	<div class="controls">
+
+						  	<input  id="ip_address" type="radio" name="selectType"  ng-click="selectedIPAddress()" checked/>&nbsp;&nbsp;IPAddress
+			  				<input  id="subnet" type="radio" name="selectType" ng-click="selectedSubnet()" />&nbsp;&nbsp;Subnet&nbsp;&nbsp;
+
+						  	</div>
+						  	</div>
+			 			 </td>
+					</tr>
 		              <tr>
 					       <td>
 							 <div class="control-group">
@@ -141,17 +153,28 @@
           						</div>
 							</td> -->
 							<td>
-								<div class="control-group" ng-show="parameterData.paramName == 'IP_ADDRESS'">
+								<div class="control-group" ng-show="(parameterData.paramName == 'IP_ADDRESS')&&IPAddress">
             					<label class="control-label" for="ipAddress">{{ 'label.provisioning.ipaddress' | translate }}</label>
             					<div class="controls">                                  	       
              					 <input type="text" ng-model="formData.ipAddress" name="ipAddress" ng-change="getData(formData.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
                                    <a ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
-                                  <div ng-repeat="addipAddress in formData.addIpAddress">
-										<input type="text" class="input-small" ng-model="addipAddress.ipvalue">
+                                  <div ng-repeat="addipAddress in addIpAddress">
+										<input type="text" class="input-small" readonly ng-model="addipAddress">
 										<a ng-click="deleteAddIpAddress($index)"><i class="icon-remove icon-white"></i></a>							   					        
 						              </div>                            
                                   </div>                           
             					</div>                                                               
+							</td>
+							</tr>
+							<tr>
+							<td >
+								<div class="control-group" ng-show="(parameterData.paramName == 'IP_ADDRESS')&&subnet">
+            					<label class="control-label" >{{ 'label.provisioning.subnetIP' | translate }}</label>
+            					<div class="controls">
+              					 <input type="text" ng-model="formData.subnetIPAddress" ng-change="getData(formData.subnetIPAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0"/>
+              					 <input type="text" style="width:20px;" id="subnet" ng-model="formData.subnet" maxlength="2"/>
+            					</div>
+          						</div>
 							</td>
 							</tr>
 							<tr>
@@ -166,17 +189,17 @@
 							</td>
 							
 							<!-- </tr>
-							</tr>
-					</table>
+										</tr>
+											</table>
 			
-				</td> -->
-			</tr>
+									</td> -->
+							</tr>
+						
 			</table>
 			
 
-
 		<div class="offset3">
-			<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+			<a id="cancel" href="#/vieworder/{{orderId}}/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
 
 				<!-- <button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button> -->
 				<button id="submit" type="submit" class="btn btn-primary">{{'button.provisioning' | translate}}</button>
