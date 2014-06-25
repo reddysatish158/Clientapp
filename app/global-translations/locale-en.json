@@ -1554,15 +1554,16 @@
  
 "validation.msg.randomGenerator.batchName.cannot.be.blank":"Batch Name cannot be blank",
 "validation.msg.randomGenerator.batchDescription.cannot.be.blank":"Batch Description cannot be blank",
-"validation.msg.randomGenerator.length.cannot.be.blank":"length cannot be blank",
+"validation.msg.randomGenerator.length.cannot.be.blank":"Length Of Pin cannot be blank",
 "validation.msg.randomGenerator.beginWith.cannot.be.blank":"Begin With cannot be blank",
 "validation.msg.randomGenerator.pinExtention.cannot.be.blank":"pinExtention cannot be blank",
-"validation.msg.randomGenerator.pinCategory.cannot.be.blank":"pinCategory cannot be blank", 
-"validation.msg.randomGenerator.quantity.cannot.be.blank":"quantity cannot be blank",
-"validation.msg.randomGenerator.serialNo.cannot.be.blank":"SerialNo BeginsWith cannot be blank",
-"validation.msg.randomGenerator.pinValue.cannot.be.blank":"pinValue cannot be blank",
+"validation.msg.randomGenerator.pinCategory.cannot.be.blank":"Pin Category cannot be blank", 
+"validation.msg.randomGenerator.quantity.cannot.be.blank":"Quantity cannot be blank",
+"validation.msg.randomGenerator.serialNo.cannot.be.blank":"Serial No Length BeginsWith cannot be blank",
+"validation.msg.randomGenerator.pinValue.cannot.be.blank":"Pin Value  cannot be blank",
 "validation.msg.randomGenerator.expiryDate.cannot.be.blank":"ExpiryDate cannot be blank", 
-"validation.msg.randomGenerator.pinType.cannot.be.blank":"pinType cannot be blank", 
+"validation.msg.randomGenerator.pinType.cannot.be.blank":"PinType cannot be blank", 
+"validation.msg.randomGenerator.productValue.cannot.be.blank":"Please select plan",
 "error.msg.code.duplicate.batchname":"BatchName is already existed with {0}",
  
  
@@ -2007,5 +2008,6 @@
  "validation.msg.provisioning.GROUP_NAME.cannot.be.blank":"Group Name cannot be blank",
  "validation.msg.provisioning.IP_ADDRESS.cannot.be.blank":"Ip Address cannot be blank",
  "validation.msg.provisioning.SERVICE.cannot.be.blank":"Service cannot be blank",
- "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN"
+ "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN",
+ "label.provisioning.subnetIP":"Subnet IP"
 }
