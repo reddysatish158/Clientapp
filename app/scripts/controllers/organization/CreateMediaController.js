@@ -9,6 +9,7 @@
         scope.mediaTypeDatas = [];
         scope.mediaassetAttributes=[];
         scope.mediaAssetLocations=[];
+        scope.contentProviderDatas=[];
         scope.gameData=[];
         scope.attributesFormData={};
         scope.gameAttributesFormData={};

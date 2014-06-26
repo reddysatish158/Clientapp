@@ -275,9 +275,22 @@
       </tab>
       <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab" 
       			ng-show="$parent.PermissionService.showMenu('read_CLIENTIDENTIFIER')">
-        <div class="pull-right btn-group">
-          <a ng-show="PermissionService.showMenu('CREATE_CLIENTIDENTIFIER')" href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
-        </div>
+     
+     <div class="pull-right "> 
+          TaxExemption 
+          <div class="btn-group">
+            <a id="onbtn" ng-click="onbtn()" class="btn btn-default">ON</a>
+          <a id="offbtn" ng-click="offbtn()" class="btn  btn-primary">OFF</a>
+          </div>
+      <!--  <div  style="float: left;"  class="onoffswitch"> 
+         		<input type="checkbox" name="onoffswitch" ng-model="checkboxVal" class="onoffswitch-checkbox" id="myonoffswitch"  ng-click="tax()" >
+    			<label class="onoffswitch-label" for="myonoffswitch">
+    				<span class="onoffswitch-inner"></span>
+    				<span class="onoffswitch-switch"></span>
+    			</label>
+    	 </div>  -->
+       	<a ng-show="PermissionService.showMenu('CREATE_CLIENTIDENTIFIER')" href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+       </div>
         <br>
         <table class="table" ng-show="(identitydocuments.length > 0)">
             <thead>

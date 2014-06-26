@@ -4,7 +4,7 @@
               <li class="active">{{'label.media.createmedia' | translate}}</li>
           </ul>
       </div>
-      <form class="form-horizontal well" ng-controller="CreateMediaController" ng-submit="submit()">
+      <form class="form-horizontal well" name="createmediaform" novalidate="" ng-controller="CreateMediaController" ng-submit="submit()">
        <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -38,6 +38,7 @@
           <div class="control-group">
             <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             <div class="controls">
+           <!--  <select ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select> -->
             <input type="text" id="contentProvider" ng-model="formData.contentProvider">
             </div>
           </div>
@@ -156,10 +157,19 @@
 				<textarea rows="2" cols="2" ng-model="formData.overview"></textarea>
 			</div>
 		</div>     
-        
-                </td>
-                <td>
-             </td>
+          </td><td></td>
+           <!-- <td width="48%">
+            <div class="control-group">
+			    <label class="control-label" for="cpShareValue">Share value</label>
+			  <div class="controls">
+				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="2"></input>
+				<div ng-show="createmediaform.cpShareValue.$dirty && createmediaform.cpShareValue.$invalid">
+               <span class="error" ng-show="createmediaform.cpShareValue.$error.pattern">digits only !</span>
+               <span class="error" ng-show="createmediaform.cpShareValue.$error.maxlength">Exceeded max limit!</span>
+           </div>
+			</div>
+		</div> 
+             </td> -->
          </tr>
          </table>
          <table ng-show="hideForGame">

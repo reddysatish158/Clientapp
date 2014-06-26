@@ -109,7 +109,9 @@
                 scope.orders = [];
                     scope.client = data;
                     scope.statusActive=scope.client.status.code;
-                                
+                    scope.taxExemption=scope.client.taxExemption;
+                
+                    
                     webStorage.add("clientData", {clientId:routeParams.id,balanceAmount: data.balanceAmount, displayName: data.displayName,hwSerialNumber: data.hwSerialNumber,
                      statusActive: data.status.value, accountNo: data.accountNo, officeName: data.officeName,
                      currency: data.currency, imagePresent: data.imagePresent,phone:data.phone,email:data.email,categoryType:data.categoryType });
@@ -258,6 +260,7 @@
                   });
                 });
         };
+      
         getDetails();
         var Approve = function($scope,$modalInstance){
         	
@@ -410,6 +413,23 @@
         	}
         }
         scope.getClientIdentityDocuments = function () {
+        	
+         //  console.log(scope.taxExemption);
+        	 if(scope.taxExemption=='Y'){
+        	
+        		 $('#onbtn').removeClass("btn-default");
+             	  $('#onbtn').addClass("active btn-primary");
+             	 $('#offbtn').removeClass("active btn-primary");
+             	  $('#offbtn').addClass("btn-default");
+               }
+               else{
+            	   $('#offbtn').removeClass(" btn-default");
+             	  $('#offbtn').addClass("active btn-primary");
+             	 $('#onbtn').removeClass("active btn-primary");
+             	  $('#onbtn').addClass("btn-default");
+               }
+        	
+        	
           resourceFactory.clientResource.getAllClientDocuments({clientId: routeParams.id, anotherresource: 'identifiers'} , function(data) {
               scope.identitydocuments = data;
               for(var i = 0; i<scope.identitydocuments.length; i++) {
@@ -773,6 +793,36 @@
         scope.downloadClientIdentifierDocument=function (identifierId, documentId){
           console.log(identifierId,documentId);
         };
+   /*    scope.tax=function(){
+    	//console.log("hello");
+    	var obj = {"taxExemption":scope.checkboxVal};
+    	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
+    		//console.log("sucess");
+    	});
+      };*/
+        
+       
+        
+      
+      scope.onbtn = function(){
+    	  $('#onbtn').removeClass("btn-default");
+    	  $('#onbtn').addClass("active btn-primary");
+    	  $('#offbtn').removeClass("active btn-primary");
+    	  $('#offbtn').addClass("btn-default");
+    	  var obj = {"taxExemption":true};
+      	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
+      	});
+      		
+      };
+      scope.offbtn = function(){
+    	  $('#offbtn').removeClass("btn-default");
+    	  $('#offbtn').addClass("active btn-primary");
+    	  $('#onbtn').addClass("btn-default");
+    	  $('#onbtn').removeClass("active btn-primary");
+    	  var obj = {"taxExemption":false};
+        	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
+        	});
+      };
 
 		// *********************** InVenture controller ***********************
         scope.fetchInventureScore = function(){
