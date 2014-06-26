@@ -30,6 +30,7 @@
         scope.ipTypeDatas = ["Single","Multiple"];
         scope.IPAddress = true;
    		scope.subnet = false;
+   		scope.formData.ipRange = "ipAddress";
      
        resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
     	   scope.parameterDatas=data.parameterDatas;
@@ -75,17 +76,19 @@
     		delete scope.fromData.ipType ;
    		
    	};
-   	scope.selectedIPAddress  = function(){
+   	scope.selectedIPAddress  = function(data){
    		scope.IPAddress = true;
    		scope.subnet = false;
    		scope.addIpAddress = [];
+   		this.formData.ipRange = data;
    		delete this.formData.subnetIPAddress;
 		delete scope.formData.subnet;
    	};
    	
-	scope.selectedSubnet  = function(){
+	scope.selectedSubnet  = function(data){
    		scope.subnet = true;
    		scope.IPAddress = false;
+   		this.formData.ipRange = data;
    		delete scope.addIpAddress;
    	};
    	
