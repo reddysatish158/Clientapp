@@ -65,7 +65,7 @@
         	else if(scope.addIpAddress.length == 1)
         		scope.formData.ipType = "Single";
         	else
-        		scope.formData.ipType = undefined;
+        		scope.formData.ipType = "Subnet";
         	
         	scope.IPAddressObj.ipAddress = undefined;
 
@@ -105,6 +105,8 @@
         	scope.formData.planName=scope.planName;
         	scope.formData.macId=scope.device;
         	
+        	scope.formData.ipRange
+        	
         	   scope.serviceParameters=[];
         	for(var param in scope.parameterDatas){
         		
@@ -134,7 +136,7 @@
         			 if(scope.subnetType){
         				 temp.paramValue = scope.IPAddressObj.ipAddress;
         				 if(temp.paramValue)
-        				  scope.formData.ipType = "Single";
+        				  scope.formData.ipType = "Subnet";
         				 else
         					 scope.formData.ipType = undefined;
         			 }
