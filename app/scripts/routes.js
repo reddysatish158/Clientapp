@@ -809,8 +809,16 @@
       .when('/itemsale',{
     	  templateUrl: 'views/organization/itemSale.html'
       })
-        .when('/itemsale/:officeId',{
-     templateUrl: 'views/organization/itemSale.html'
+
+      .when('/editProvison/:id', {
+        templateUrl: 'views/clients/editProvisioning.html'
+      })
+       .when('/createsmtp', {
+        templateUrl: 'views/administration/createsmtp.html'
+      })
+      .when('/itemsale/:officeId',{
+    	  templateUrl: 'views/organization/itemSale.html'
+
       })
       .when('/officeadjustments/:officeId',{
      templateUrl: 'views/organization/officeadjustments.html'
@@ -835,7 +843,6 @@
       })
       .when('/editcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/editcarddetails.html'
-
       })
       .when('/addnewcreditcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/addnewcreditcarddetails.html'
