@@ -1955,6 +1955,8 @@
 "label.ippooling.description":"Description",
 "label.ippooling.ipaddress":"ipAddress",
 "label.ippooling.subnet":"Subnet",
+"label.ippooling.editippool":"Edit IpPool",
+"table.ippooling.notes":"Notes",
 
 "office payments,adjustments":"...........",
 "validation.msg.officepayment.receiptNo.cannot.be.blank":"Receipt No can not be blank",

@@ -869,7 +869,7 @@
           ipPoolingResource: defineResource(apiVer + "/ippooling/:id", {id: '@id'}, {
          	  get: {method: 'GET', params: {}},
          	  getData: {method: 'GET', params: {id:'@id'}},
-         	 update: { method: 'PUT' }
+         	  update: { method: 'PUT' }
           }) ,
           itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
            	 get: {method: 'GET', params: {}}

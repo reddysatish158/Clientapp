@@ -842,6 +842,9 @@
       })
       .when('/aboutobs', {
         templateUrl: 'views/system/about_obs.html'
+      })
+      .when('/editippolling/:id', {
+        templateUrl : 'views/system/editippolling.html'
       });
 
     $locationProvider.html5Mode(false);
