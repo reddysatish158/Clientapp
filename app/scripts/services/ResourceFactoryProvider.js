@@ -916,6 +916,9 @@
             provisioningUpdateResource: defineResource(apiVer + "/provisioning/serviceparams/:orderId", {orderId:'@orderId'}, {
                 update: { method: 'PUT' }
             }),
+            taxExemptionResource: defineResource(apiVer + "/taxexemption/:clientId", {clientId:'@clientId'}, {
+                update: { method: 'PUT' }
+            }),
         };
       }];
     }
