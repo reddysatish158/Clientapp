@@ -85,7 +85,6 @@
             location.path('/viewonetimesale/'+onetimesaleid+'/'+clientid);
         };
 
-
         scope.routeToCardDetails = function(clientid,id,cardType){
             location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
           };
