@@ -1,34 +1,218 @@
- <h3>Assigned Tickets</h3>
-    <div class="row-fluid" ng-controller="AssignedTicketController">
-    <form ng-submit="searchTickets()">
-    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
-	</form>
-	<table class="table">
-        <thead>
-            <tr class="graybg">
-               <th>Client Name</th>
-                <th>Created on</th>
-                <th>Category</th>
-                <th>Priority</th>
-                <th>Assigned To</th>
-                <th>Status</th>
-                <th>Time Elapsed</th>
-            </tr>	
-        </thead>
-        <tbody>
-            <tr class="pointer-main" ng-repeat="ticket in tickets.currentPageItems  | filter:filterText">      
-               <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
-                 <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
-                 <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
-                <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
-                   <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
-                <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
-                     <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
-            </tr>
-        </tbody> 
-    </table>
-    <ul class="pager">
-        			<li class="previous"><a ng-click="tickets.previous()" href="" ng-disabled="!tickets.hasPrevious()">&larr; Prev</a></li>
-        			<li class="next" ><a ng-click="tickets.next()" href="" ng-disabled="!tickets.hasNext()">Next &rarr;</a></li>
-	</ul>
-</div>
+<div ng-controller="AssignedTicketController">
+ 
+    <div>
+      	<ul class="breadcrumb">
+       	 
+        	<li><b style="color:black">TICKETS</b> <span class="divider"></span></li>
+        
+    	</ul>
+  	  
+     <tabset  style="margin-bottom: 0px;">
+     
+      	  <div class="pull-right" style = "margin-top : 10px;">
+       			<div class="control-group">
+            		<h4>[ {{openTickets.totalFilteredRecords}} ]</h4>
+            	</div>
+          </div>
+          
+      <tab heading="Open" select="getOpenTickets()">
+        
+        <div class="row-fluid">
+        
+        	<form ng-submit="searchTickets()">
+    			<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
+			</form>
+			
+			<table class="table">
+        	<thead>
+            	<tr class="graybg">
+               		<th>Client Name</th>
+                	<th>Created on</th>
+                	<th>Category</th>
+                	<th>Priority</th>
+                	<th>Assigned To</th>
+                	<th>Status</th>
+                	<th>Time Elapsed</th>
+            	</tr>	
+        	</thead>
+        	<tbody>
+            	<tr class="pointer-main" ng-repeat="ticket in openTickets.currentPageItems  | filter:filterText">      
+               		<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
+            	</tr>
+        	</tbody> 
+   			</table>
+    		<ul class="pager">
+        			<li class="previous"><a ng-click="openTickets.previous()" href="" ng-disabled="!openTickets.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="openTickets.next()" href="" ng-disabled="!openTickets.hasNext()">Next &rarr;</a></li>
+			</ul>
+       			
+         </div>
+      </tab>
+      
+         <tab heading="Working" select="getWorkingTickets()">
+      
+        <div class="row-fluid">
+        
+        	<form ng-submit="searchTickets()">
+    			<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
+			</form>
+			<table class="table">
+        	<thead>
+            	<tr class="graybg">
+               		<th>Client Name</th>
+                	<th>Created on</th>
+                	<th>Category</th>
+                	<th>Priority</th>
+                	<th>Assigned To</th>
+                	<th>Status</th>
+                	<th>Time Elapsed</th>
+            	</tr>	
+        	</thead>
+        	<tbody>
+            	<tr class="pointer-main" ng-repeat="ticket in openTickets.currentPageItems  | filter:filterText">      
+               		<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
+            	</tr>
+        	</tbody> 
+   			</table>
+    		<ul class="pager">
+        			<li class="previous"><a ng-click="openTickets.previous()" href="" ng-disabled="!openTickets.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="openTickets.next()" href="" ng-disabled="!openTickets.hasNext()">Next &rarr;</a></li>
+			</ul>
+       			
+         </div>
+      </tab>
+      
+      <tab heading="Assigned" select="getAssignedTickets()">
+      
+        <div class="row-fluid">
+        
+        	<form ng-submit="searchTickets()">
+    			<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
+			</form>
+			<table class="table">
+        	<thead>
+            	<tr class="graybg">
+               		<th>Client Name</th>
+                	<th>Created on</th>
+                	<th>Category</th>
+                	<th>Priority</th>
+                	<th>Assigned To</th>
+                	<th>Status</th>
+                	<th>Time Elapsed</th>
+            	</tr>	
+        	</thead>
+        	<tbody>
+            	<tr class="pointer-main" ng-repeat="ticket in openTickets.currentPageItems  | filter:filterText">      
+               		<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
+            	</tr>
+        	</tbody> 
+   			</table>
+    		<ul class="pager">
+        			<li class="previous"><a ng-click="openTickets.previous()" href="" ng-disabled="!openTickets.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="openTickets.next()" href="" ng-disabled="!openTickets.hasNext()">Next &rarr;</a></li>
+			</ul>
+       			
+         </div>
+      </tab>
+      
+       <tab heading="Overdue" select="getOverDueTickets()">
+      
+        <div class="row-fluid">
+        
+        	<form ng-submit="searchTickets()">
+    			<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
+			</form>
+			<table class="table">
+        	<thead>
+            	<tr class="graybg">
+               		<th>Client Name</th>
+                	<th>Created on</th>
+                	<th>Category</th>
+                	<th>Priority</th>
+                	<th>Assigned To</th>
+                	<th>Status</th>
+                	<th>Time Elapsed</th>
+            	</tr>	
+        	</thead>
+        	<tbody>
+            	<tr class="pointer-main" ng-repeat="ticket in openTickets.currentPageItems  | filter:filterText">      
+               		<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
+            	</tr>
+        	</tbody> 
+   			</table>
+    		<ul class="pager">
+        			<li class="previous"><a ng-click="openTickets.previous()" href="" ng-disabled="!openTickets.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="openTickets.next()" href="" ng-disabled="!openTickets.hasNext()">Next &rarr;</a></li>
+			</ul>
+       			
+         </div>
+      </tab>
+      
+      <tab heading="Closed" select="getclosedTickets()">
+      
+        <div class="row-fluid">
+        
+        	<form ng-submit="searchTickets()">
+    			<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by clientName">
+			</form>
+			<table class="table">
+        	<thead>
+            	<tr class="graybg">
+               		<th>Client Name</th>
+                	<th>Created on</th>
+                	<th>Category</th>
+                	<th>Priority</th>
+                	<th>Assigned To</th>
+                	<th>Status</th>
+                	<th>Time Elapsed</th>
+            	</tr>	
+        	</thead>
+        	<tbody>
+            	<tr class="pointer-main" ng-repeat="ticket in openTickets.currentPageItems  | filter:filterText">      
+               		<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.clientName}}</td>  
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.ticketDate | DateFormat}}</td> 
+                 	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.problemDescription}}</td>       
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.priority}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.userName}}</td>
+                	<td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.status}}</td>
+                    <td class="pointer" data-ng-click="routeToticket(ticket.clientId)">{{ticket.timeElapsed}}</td>     
+            	</tr>
+        	</tbody> 
+   			</table>
+    		<ul class="pager">
+        			<li class="previous"><a ng-click="openTickets.previous()" href="" ng-disabled="!openTickets.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="openTickets.next()" href="" ng-disabled="!openTickets.hasNext()">Next &rarr;</a></li>
+			</ul>
+       			
+         </div>
+      </tab>
+      
+    </tabset>
+    </div>
+
+  </div>
+
