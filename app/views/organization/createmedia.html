@@ -38,8 +38,8 @@
           <div class="control-group">
             <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             <div class="controls">
-           <!--  <select ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select> -->
-            <input type="text" id="contentProvider" ng-model="formData.contentProvider">
+           <!--  <select  id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select> -->
+             <input type="text" id="contentProvider" ng-model="formData.contentProvider"> 
             </div>
           </div>
           </td>
@@ -57,7 +57,7 @@
           <div class="control-group" >
             <label class="control-label" for="mediaType">{{ 'label.media.mediaType' | translate }}</label>
             <div class="controls">
-               <select ng-model="formData.mediatype"  ng-options="mediaTypeData.id as mediaTypeData.value for mediaTypeData in mediaTypeDatas" value="{{mediaTypeData.id}}"></select>
+               <select  id="mediatype" ng-model="formData.mediatype"   ng-options="mediaTypeData.id as mediaTypeData.value for mediaTypeData in mediaTypeDatas" value="{{mediaTypeData.id}}"></select>
             </div>
           </div>
           </td>
@@ -76,26 +76,30 @@
           <div class="control-group">
             <label class="control-label" for="mediaCategoryId">{{ 'label.media.categeory' | translate }}</label>
             <div class="controls">
-              <select ng-model="formData.catageoryId"  ng-options="mediaCategeorydata.id as mediaCategeorydata.mCodeValue for mediaCategeorydata in mediaCategeorydatas" value="{{mediaCategeorydata.id}}"></select>
+              <select ng-model="formData.catageoryId" id="catageoryId"  ng-options="mediaCategeorydata.id as mediaCategeorydata.mCodeValue for mediaCategeorydata in mediaCategeorydatas" value="{{mediaCategeorydata.id}}"></select>
             </div>
           </div>
           </td>
             
           <td width="50%" ng-show="hideForGame">
           <div class="control-group">
-            <label class="control-label" for="rating">{{ 'label.media.rating' | translate }}</label>
+            <label class="control-label" for="mediaRating">{{ 'label.media.rating' | translate }}</label>
             <div class="controls">
-           <input type="text" id="rating" ng-model="formData.mediaRating">
-            </div>
+           <input type="text" id="mediaRating" name="mediaRating" ng-model="formData.mediaRating" ><!-- ng-pattern="/^[0-9]{1,5}$/" ng-maxlength="5" -->
+           <!-- 	 <div ng-show="createmediaform.mediaRating.$dirty && createmediaform.mediaRating.$invalid">
+               <span class="error" ng-show="createmediaform.mediaRating.$error.pattern">digits only !</span>
+               <span class="error" ng-show="createmediaform.mediaRating.$error.maxlength">Exceeded max limit!</span>
+            </div>  -->
+          </div>
           </div>
           </td>
             </tr>
             <tr>
              <td>
           <div class="control-group" ng-show="hideForGame">
-            <label class="control-label" for="image">{{ 'label.media.poster' | translate }}</label>
+            <label class="control-label" for="mediaImage">{{ 'label.media.poster' | translate }}</label>
             <div class="controls">
-            <input type="text" id="image" ng-model="formData.mediaImage">
+            <input type="text" id="mediaImage" ng-model="formData.mediaImage">
             </div>
           </div>
           </td>
@@ -103,7 +107,7 @@
           <div class="control-group" ng-show="hideForGame">
             <label class="control-label" for="status">{{ 'label.media.status' | translate }}</label>
             <div class="controls">
-           <select ng-model="formData.status"  ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
+           <select ng-model="formData.status" id="status" ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
             </div>
           </div>
           </td>
@@ -146,32 +150,34 @@
           </td>
           </tr>
           </table>
-           
-             <table>
+          
+        <table width="100%">
             <tr>
-              <td> 
+              <td width="50%"> 
               
         <div class="control-group">
 			<label class="control-label" for="overview">{{'label.media.overview' | translate}}</label>
 			<div class="controls">
-				<textarea rows="2" cols="2" ng-model="formData.overview"></textarea>
+			<textarea  rows="2" cols="2" ng-model="formData.overview"></textarea>
 			</div>
 		</div>     
-          </td><td></td>
-           <!-- <td width="48%">
+                </td>
+        <!--     <td width="50%">
             <div class="control-group">
-			    <label class="control-label" for="cpShareValue">Share value</label>
+			    <label class="control-label" for="cpShareValue">Share(%)</label>
 			  <div class="controls">
-				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^(?!0+$)\d{1,19}$/"  ng-maxlength="2"></input>
+				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^\d{0,2}(\.\d{0,2})?$/" ng-maxlength="5"></input>
 				<div ng-show="createmediaform.cpShareValue.$dirty && createmediaform.cpShareValue.$invalid">
-               <span class="error" ng-show="createmediaform.cpShareValue.$error.pattern">digits only !</span>
+               <span class="error" ng-show="createmediaform.cpShareValue.$error.pattern">Numbers below 100 only !</span>
                <span class="error" ng-show="createmediaform.cpShareValue.$error.maxlength">Exceeded max limit!</span>
            </div>
 			</div>
 		</div> 
-             </td> -->
+             </td>        
+ -->          <td></td>              
          </tr>
-         </table>
+         </table>    
+     
          <table ng-show="hideForGame">
           <tr class="control-group">
                 <td>
