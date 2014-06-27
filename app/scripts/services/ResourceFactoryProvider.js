@@ -842,6 +842,8 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
+            redemptionResource: defineResource(apiVer + "/redemption", {}, {
+            }),
         };
       }];
     }
