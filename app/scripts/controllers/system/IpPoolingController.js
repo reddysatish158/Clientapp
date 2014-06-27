@@ -10,10 +10,11 @@
 		  
 		  scope.ippoolingdatas = paginatorService.paginate(scope.ipPoolingAllData, 14);
 		  
-		  scope.routeTo = function(id){
+		  scope.routeTo = function(id,status){
 	        	if(id != 0){
 	            location.path('/viewclient/'+ parseInt(id));
 	        	}else{
+	        		if(status == "F")
 	        		 location.path('/createclient');		
 	        	}
 	          };

@@ -121,6 +121,7 @@ define(['underscore', 'mifosX'], function() {
       'reports/RunReportsController',
       'private/SuperuserController',
       'configurations/GlobalConfigurationController',
+      'configurations/CreateSmtpController',
       'system/AuditController',
       'system/ViewAuditController',
       'organization/PlanController',
@@ -245,7 +246,8 @@ define(['underscore', 'mifosX'], function() {
       'client/AddACHController',
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
-      'client/AddNewCreditCardController'
+      'client/AddNewCreditCardController',
+      'system/EditIpPoolingController'
 
     ],
     filters: [

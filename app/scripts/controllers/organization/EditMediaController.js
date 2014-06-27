@@ -12,6 +12,7 @@
         scope.mediaassetAttributes=[];
         scope.services=[];
         scope.attributesFormData=[];
+        scope.contentProviderDatas=[];
         scope.date={};
         resourceFactory.saveMediaResource.get({mediaId: routeParams.id, template: 'true'} , function(data) {
             
@@ -27,6 +28,7 @@
             scope.mediaTypeDatas=data.mediaTypeData;
             scope.mediaassetAttributes=data.mediaassetAttributes;
             scope.mediaStatus=data.mediaStatus;
+           // scope.contentProviderDatas=data.contentProviderData;
             scope.mediaAttributes.attributeType="Cast";
             var releaseDate = dateFilter(scope.formData.releaseDate,'dd MMMM yyyy');
             scope.date.releaseDate = new Date(releaseDate );
