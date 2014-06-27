@@ -2,8 +2,9 @@
   mifosX.controllers = _.extend(module, {
 	  IpPoolingController: function(scope,route,routeParams,location, resourceFactory, paginatorService) {
 		  
-		  scope.ippoolingdatas = [];
+		  scope.ippoolingdatas = {};
 		  scope.formData=[];
+		  scope.formData.source='all';
 		  scope.ipPoolingAllData = function(offset, limit, callback) {
 	 			 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit} , callback);
 			};
