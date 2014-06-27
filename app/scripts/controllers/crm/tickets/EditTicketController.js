@@ -18,12 +18,20 @@
 							resourceFactory.editTicketResource.get({clientId: routeParams.clientId, id: routeParams.id} , function(data) {	
                                 scope.formData=data;                            
 								scope.statusTypes = data.statusType;
+								 for(var i=0;i<scope.statusTypes.length;i++){
+					                	if(scope.statusTypes[i].statusDescription=='Working'){
+					                		scope.formData.status=scope.statusTypes[i].statusCode;
+					                	}
+					              }
 								scope.usersData = data.usersData;
 								//scope.formData.status=14;
 								scope.clientId=routeParams.clientId;
 								scope.ticketId=routeParams.id;
 							});		
 							
+							scope.reset123 = function(){
+						     	   webStorage.add("callingTab", {someString: "Tickets" });
+						        };
 							scope.onFileSelect = function($files) {
 							        scope.file = $files[0];
 							      };
@@ -40,9 +48,10 @@
 						        	if (!scope.$$phase) {
 						                scope.$apply();
 						              }
-						        	location.path('/viewTicket/'
-											+ routeParams.clientId+'/'+routeParams.id);
-						        });						      				
+						        	location.path('/viewclient/'
+											+ routeParams.clientId);
+						        });	
+						        scope.reset123();
 							};
 						}
 					});

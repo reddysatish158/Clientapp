@@ -51,8 +51,8 @@
 		</ul>
 		<ul class="breadcrumb">
 			<li><a href="#/clients">{{'link.clients' | translate}}</a> <span class="divider">/</span></li>
-			<li><a href="#/viewclient/{{clientId}}">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
-			<li><a href="#/viewTicket/{{clientId}}/{{ticketId}}">{{'label.viewticket' | translate}}</a> <span class="divider">/</span></li>
+			<li><a href="#/viewclient/{{clientId}}" ng-click="reset123()">{{'link.view.client' | translate}}</a> <span class="divider">/</span></li>
+			<!-- <li><a href="#/viewTicket/{{clientId}}/{{ticketId}}">{{'label.viewticket' | translate}}</a> <span class="divider">/</span></li> -->
 			<li class="active">{{'label.editticket' | translate}}</li>
 		</ul>
 	</div>
@@ -77,6 +77,9 @@
 						</div>
 					</div>
 				</td>
+				
+			</tr>
+			<tr>
 				<td width="50%">
 					<div class="control-group">
 						<label class="control-label" for="assignedTo">{{'label.tickethistory.assignto' | translate }}</label>
@@ -88,14 +91,13 @@
 					</div>
 				</td>
 			</tr>
-
      		<tr>
 				<td width="50%">
 					<div class="control-group">
 						<label class="control-label" for="description"> {{
 							'label.ticket.comments' | translate }}</label>
 						<div class="controls">
-							    <textarea ng-model="formData.comments" style="width:245%; height:9em;"></textarea>
+							    <textarea ng-model="formData.comments" style="width:30.5%; height:8em;"></textarea>
 						</div>
 					</div>
 				</td>
@@ -116,7 +118,7 @@
 		</table>
 		
 		<div class="offset3">
-			<a href="#/viewTicket/{{clientId}}/{{ticketId}}"><button type="reset" class="btn">Cancel</button></a>
+			<a href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">Cancel</button></a>
 			<button type="submit" class="btn btn-primary">Save</button>
 		</div>
 	</fieldset>

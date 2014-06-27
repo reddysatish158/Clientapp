@@ -451,7 +451,8 @@
 		        <th>{{ 'label.ticket.status' | translate }}</th>
 		        <th>{{ 'label.ticket.assignto' | translate }}</th>
 		        <th>{{ 'label.ticket.lastcomment' | translate }}</th>
-	
+				<th></th>
+				<th></th>
 	      </tr>
 	      
         </thead>
@@ -463,7 +464,10 @@
                 <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.problemDescription}}</td>
                 <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.status}}</td>
                 <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.userName}}</td>  
-                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.lastComment}}</td>          
+                <td class="pointer" data-ng-click="routeToticket(clientId,ticket.id)">{{ticket.lastComment}}</td>
+                <td><a ng-show="(ticket.status == 'OPEN')&&(PermissionService.showMenu('UPDATE_TICKET'))" data-ng-click="routeToFollowupTicket(clientId,ticket.id)" popover="Comment" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>
+                <td><a ng-show="(ticket.status == 'OPEN')&&(PermissionService.showMenu('CLOSE_TICKET'))" data-ng-click="routeToCloseTicket(clientId,ticket.id)" popover="Close" popover-trigger="mouseenter"><i class="icon-remove icon-white"></i></a></td>
+                         
             </tr>
         </tbody>
     </table>

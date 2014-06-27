@@ -100,7 +100,7 @@
 				</td>
 				<td width="50%">
 					<div class="control-group">
-						<label class="control-label" for="status">{{'label.ticket.priority' | translate }}</label>
+						<label class="control-label" for="priority">{{'label.ticket.priority' | translate }}</label>
 						<div class="controls">
 							<select ng-model="formData.priority"
 								ng-options="priorityType.value as priorityType.value for priorityType in priorityTypes"
@@ -134,12 +134,36 @@
 
 			</tr>
 			<tr>
+				<td>
+					<div class="control-group">
+            			<label class="control-label" for="sourceData">{{ 'label.source' | translate }}</label>
+            			<div class="controls">
+              				<select ng-model="formData.sourceOfTicket"  ng-options="sourcedata.mCodeValue as sourcedata.mCodeValue for sourcedata in sourceData" value="{{sourcedata.mCodeValue}}">
+             				</select>
+             									
+            			</div>
+          			</div>
+				</td>
+				
+				<td>
+					<div class="control-group">
+                        <label class="control-label">Due Time</label>
+                        <div class="controls">
+                            <input type="text" id="preferredCallingTime" min="minDate" datepicker-pop="dd MMMM yyyy" ng-model="first.date"  style="width:130px;background-color:#FFFFFF;" />
+                            		 
+							<input id="timepicker1" type="text" readonly ng-model="first.time" style="width:60px;background-color:#FFFFFF;">
+									
+                        </div>
+          			</div>	
+				</td>
+			</tr>
+			<tr>
 				<td width="50%">
 					<div class="control-group">
 						<label class="control-label" for="description">{{
 							'label.ticket.description' | translate }}</label>
 						<div class="controls">
-							    <textarea ng-model="formData.description"  style="width:245%; height:9em;"></textarea>
+							    <textarea ng-model="formData.description"  style="width:278%; height:8em;"></textarea>
 						</div>
 					</div>
 				</td>

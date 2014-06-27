@@ -72,6 +72,12 @@
          scope.routeToticket = function(clientId,ticketid){
                location.path('/viewTicket/'+clientId+'/'+ticketid);
          };
+         scope.routeToFollowupTicket=function(clientId,ticketid){
+        	 location.path('/editTicket/'+clientId+'/'+ticketid);
+         };
+         scope.routeToCloseTicket=function(clientId,ticketid){
+        	 location.path('/closeTicket/'+clientId+'/'+ticketid);
+         };
          scope.routeTostatement = function(statementid){
              location.path('/viewstatement/'+statementid);
         };
