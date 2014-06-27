@@ -825,7 +825,10 @@
       })
       .when('/addnewcreditcarddetails/:clientId/:id/:type', {
         templateUrl: 'views/clients/addnewcreditcarddetails.html'
-      });;
+      })
+      .when('/redemption',{
+     templateUrl: 'views/organization/redemption.html'
+      });
 
     $locationProvider.html5Mode(false);
   };

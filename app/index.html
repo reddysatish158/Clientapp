@@ -94,6 +94,8 @@
             <li><a ng-show="activation=PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')"
             href="#/createclientnewwizard"><i class="icon-tasks icon-large"></i>  + New Activation</a></li>
             <li ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')" class="divider"></li>
+            <li><a href="#/redemption"><i class="icon-briefcase"></i> + Redemption</a></li>
+             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li> 
           	<li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="bolder black" href="#/help"><i class="icon-hand-right icon-large"></i>&nbsp;&nbsp;&nbsp;{{ 'label.anchor.shortcuts' | translate }}</a></li>
             <li ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" class="divider"></li>
             <li><a ng-show="PermissionService.showMenu('ALL_FUNCTIONS')" target="http://help.openbillingsystem.com" href="http://help.openbillingsystem.com"><i class=" icon-question-sign"></i>{{ 'label.anchor.help' | translate }}</a></li>
@@ -140,6 +142,7 @@
                                   <li><a ng-show="upload=PermissionService.showMenu('READ_UPLOADSTATUS')" href="#/importing">{{'link.import' | translate }}</a></li>
                                     <li><a ng-show="jobs=PermissionService.showMenu('READ_SCHEDULERJOB')" href="#/jobs">Scheduler Jobs</a></li>
                                 <li><a ng-show="accounting=PermissionService.showMenu('READ_JOURNALENTRY','READ_GLACCOUNT','READ_GLCLOSURE','READ_ACCOUNTINGRULE')" href="#/accounting">{{ 'link.accounting' | translate }}</a></li>
+                                <li><a href="#/redemption">Redemption</a></li> 
                                  <li><a ng-show="smartsearch=PermissionService.showMenu('READ_GLACCOUNT')&&PermissionService.showMenu('READ_OFFICE')&&PermissionService.showMenu('READ_SMARTSEARCH')" href="#/smartSearch">smartSearch</a></li>
                                 <li><a ng-show="paymentGetWay=PermissionService.showMenu('READ_PAYMENTGATEWAY')" href="#/paymentGateway">PaymentGateway</a></li>
                                  <!-- <li><a ng-show="pooling=PermissionService.showMenu('READ_IPPOOLMANAGEMENT') href="#/ipPooling">IpPooling</a></li> -->
