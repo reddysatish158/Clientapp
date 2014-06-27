@@ -871,6 +871,12 @@
          	  getData: {method: 'GET', params: {id:'@id'}},
          	 update: { method: 'PUT' }
           }) ,
+          
+          ipPoolingTemplateResource: defineResource(apiVer + "/ippooling/template", {}, {
+         	  get: {method: 'GET', params: {}},
+         	  getData: {method: 'GET', params: {id:'@id'}},
+         	 update: { method: 'PUT' }
+          }) ,
           itemSaleTemplateResource: defineResource(apiVer + "/itemsales/template", {}, {
            	 get: {method: 'GET', params: {}}
             }) ,

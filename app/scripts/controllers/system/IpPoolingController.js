@@ -18,8 +18,27 @@
 	        	}
 	          };
 	          
+	          scope.changeSourceData = function(offset, limit, callback) {
+	        	  if(scope.formData.source =='all' ){
+
+						
+						 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit} , callback);
+			          
+	        	  }else{
+					
+					 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit, 
+						 status: scope.formData.source  } , callback);
+		          };
+	          }
+	scope.changeSource=function(source){
+				
+				// resourceFactory.ipPoolingResource.get({offset: offset, limit: limit,source:source} , callback);
+		scope.ippoolingdatas  = paginatorService.paginate(scope.changeSourceData, 14);
+			};
+			
+
 	      scope.searchIpPoolData = function(offset, limit, callback) { 
-		    	  resourceFactory.ipPoolingResource.get({offset: offset, limit: limit, sqlSearch: scope.filterText} , callback);
+		    	  resourceFactory.ipPoolingResource.get({offset: offset, limit: limit,status: scope.formData.source, sqlSearch: scope.filterText} , callback);
 		          };
 		  		
 		  scope.searchIpPool = function(filterText) {

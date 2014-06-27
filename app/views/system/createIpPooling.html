@@ -1,6 +1,6 @@
       <div>
         <ul class="breadcrumb">
-              <li><a href="#/media">{{'label.media' | translate}}</a> <span class="divider">/</span></li>
+              <li><a href="#/ipPooling">{{'label.manageippooling' | translate}}</a> <span class="divider">/</span></li>
               <li class="active">{{'label.ippooling.createippool' | translate}}</li>
           </ul>
       </div>
@@ -13,7 +13,19 @@
         <fieldset>
         <legend>{{'label.ippooling.createippool' | translate}}</legend>
 		<table width="100%">
-
+           <tr>
+             <td>
+               <div class="control-group">
+                  <label class="control-label" for="serviceCode">{{'label.iptype' | translate }}</label>
+                    <div class="controls">
+                        <select ng-model="formData.type"  ng-options="ipType.id as ipType.mCodeValue for ipType in ipTypes"  value="{{ipType.mCodeValue}}">
+                           <option value="">{{'label.select.one' | translate}}</option>
+                        </select>
+                   </div>
+             </div>
+          
+             </td>
+           </tr>
 			<tr>
 				<td>
 					<div class="control-group">

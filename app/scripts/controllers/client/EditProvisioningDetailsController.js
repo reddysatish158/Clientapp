@@ -178,7 +178,7 @@
         			 if(scope.subnetType){
         				 temp.paramValue = scope.IPAddressObj.ipAddress;
         				 if(temp.paramValue)
-        				  scope.formData.ipType = "Single";
+        				  scope.formData.ipType = "Subnet";
         				 else
         					 scope.formData.ipType = undefined;
         			 }
