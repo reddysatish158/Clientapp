@@ -38,8 +38,8 @@
           <div class="control-group">
             <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             <div class="controls">
-           <!--  <select  id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select> -->
-             <input type="text" id="contentProvider" ng-model="formData.contentProvider"> 
+             <select  id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select>
+           <!--   <input type="text" id="contentProvider" ng-model="formData.contentProvider">  -->
             </div>
           </div>
           </td>
@@ -85,11 +85,11 @@
           <div class="control-group">
             <label class="control-label" for="mediaRating">{{ 'label.media.rating' | translate }}</label>
             <div class="controls">
-           <input type="text" id="mediaRating" name="mediaRating" ng-model="formData.mediaRating" ><!-- ng-pattern="/^[0-9]{1,5}$/" ng-maxlength="5" -->
-           <!-- 	 <div ng-show="createmediaform.mediaRating.$dirty && createmediaform.mediaRating.$invalid">
+           <input type="text" id="mediaRating" name="mediaRating" ng-model="formData.mediaRating"  ng-pattern="/^[0-9]{1,5}$/" ng-maxlength="5">
+           	 <div ng-show="createmediaform.mediaRating.$dirty && createmediaform.mediaRating.$invalid">
                <span class="error" ng-show="createmediaform.mediaRating.$error.pattern">digits only !</span>
                <span class="error" ng-show="createmediaform.mediaRating.$error.maxlength">Exceeded max limit!</span>
-            </div>  -->
+            </div> 
           </div>
           </div>
           </td>
@@ -162,7 +162,7 @@
 			</div>
 		</div>     
                 </td>
-        <!--     <td width="50%">
+             <td width="50%">
             <div class="control-group">
 			    <label class="control-label" for="cpShareValue">Share(%)</label>
 			  <div class="controls">
@@ -174,7 +174,7 @@
 			</div>
 		</div> 
              </td>        
- -->          <td></td>              
+         <td></td>              
          </tr>
          </table>    
      

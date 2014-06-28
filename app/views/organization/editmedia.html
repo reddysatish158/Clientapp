@@ -26,8 +26,8 @@
           <div class="control-group">
             <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             <div class="controls">
-            <input type="text" id="contentProvider" ng-model="formData.contentProvider"> 
-         <!--   <select   id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.id}}"></select> -->
+            <!-- <input type="text" id="contentProvider" ng-model="formData.contentProvider">  -->
+            <select   id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.id}}"></select>
             </div>
           </div>
           </td>
@@ -141,7 +141,7 @@
 			</div>
 		</div>     
                 </td>
-          <!--   <td width="50%">
+            <td width="50%">
             <div class="control-group">
 			    <label class="control-label" for="cpShareValue">Share(%)</label>
 			  <div class="controls">
@@ -152,7 +152,7 @@
            </div>
 			</div>
 		</div> 
-             </td>         -->
+             </td>         
                         
          </tr>
          </table>
