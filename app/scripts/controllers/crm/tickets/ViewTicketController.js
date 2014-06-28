@@ -24,6 +24,9 @@
             scope.problemDescription=data.problemDescription;
         });
         
+        scope.reset123 = function(){
+      	   webStorage.add("callingTab", {someString: "Tickets" });
+         };
         scope.setData= function(){
         	
         };
