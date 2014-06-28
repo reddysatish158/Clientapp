@@ -7,7 +7,12 @@
         scope.routeToticket = function(id){
         	if(PermissionService.showMenu('READ_CLIENT'))
         		location.path('/viewclient/'+id);
+        	webStorage.add("callingTab", {someString: "Tickets" });
         };
+        
+        scope.tabActive = function(){
+      	   webStorage.add("callingTab", {someString: "Tickets" });
+         };
         
         /**
          * functions

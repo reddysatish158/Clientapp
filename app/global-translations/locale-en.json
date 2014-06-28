@@ -1148,6 +1148,7 @@
   "label.ticket.lastComment":"LastComment",
   "label.ticket":"Tickets",
   "link.admin.client":"View Client",
+  "label.ticket.duedate":"Due Date Time",
   
   "#chargecode":"....",
   "label.editchargecode":"Edit Charge Code",
@@ -1426,7 +1427,7 @@
   "label.ticket.category":"Category",
   "label.ticket.status":"Status",
   "label.ticket.assignedtO":"AssignTo",
-  "label.ticket.comments":"Comments",
+  "label.ticket.comments":"Comment",
   "label.ticket.file":"Attachments",
   "label.ticket.resolutiondescription":"Resolution",
   "label.tickethistory":"Ticket History",
