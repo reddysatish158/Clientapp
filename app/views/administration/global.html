@@ -23,7 +23,9 @@
             <td><button type="button" class="btn btn-success flag" data-ng-hide="config.enabled" data-ng-click="enable(config.id,config.name)"><i class="icon-flag-alt"></i></button>
                 <button type="button" class="btn btn-danger flag" data-ng-show="config.enabled" data-ng-click="disable(config.id,config.name)"><i class="icon-remove"></i></button>
             </td>
-            <td><a data-ng-hide="(config.name == 'Is_Paypal')" ng-click="edit(config.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a> 
+
+            <td><a data-ng-hide="config.name == 'Is_Paypal'" ng-click="edit(config.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a> 
+
                 <a data-ng-show="config.enabled && (config.name=='Is_Paypal')" ng-click="editPaypal(config.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td> 
         </tr>
         </tbody>

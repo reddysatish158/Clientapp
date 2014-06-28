@@ -1,0 +1,53 @@
+
+<div ng-controller="EditIpPoolingController">
+	<div>
+		<ul class="breadcrumb">
+			<li><a href="#/ipPooling">{{'label.manageippooling' | translate}}</a> <span class="divider">/</span></li>
+			<li class="active">{{'label.ippooling.editippool' | translate}}</li>
+		</ul>
+	</div>
+
+	<form class="form-horizontal" ng-submit="submit()">
+		<div class="error" ng-show="errorStatus || errorDetails">
+			<label>{{'label.contract.error' | translate}}</label> <label
+				ng-show="errorStatus">{{errorStatus}}</label> <label
+				ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+		</div>
+		
+		<fieldset>
+            <legend>{{'label.ippooling.editippool' | translate}}</legend>
+			<table width="100%">
+				<tr>
+					<td>
+						<div class="control-group">
+							<label class="control-label">{{ 'table.ippooling.status' | translate }}</label>
+							<div class="controls">
+								<select ng-model="formData.statusType"
+									ng-options="status.statusType as status.statusType for status in ippoolstatusType"
+									value="{{status.type}}">
+								</select>
+							</div>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class="control-group">
+							<label class="control-label">{{ 'table.ippooling.notes' | translate }}</label>
+							<div class="controls">
+								<input type="text" ng-model="formData.notes">
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+			<div class="offset3">
+				<a href="#/ipPooling"><button id="cancel" type="reset" class="btn">Cancel</button></a>
+				<button id="submit" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+			</div>
+
+		</fieldset>
+	</form>
+</div>

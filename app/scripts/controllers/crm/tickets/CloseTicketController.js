@@ -20,11 +20,16 @@
         	scope.clientId=routeParams.clientId;
 			scope.ticketId=routeParams.id;               
         });
-
+        
+        scope.reset123 = function(){
+	     	   webStorage.add("callingTab", {someString: "Tickets" });
+	    };
+	        
         scope.submit = function() { 
             resourceFactory.closeTicketResource.update({'id': routeParams.id},this.formData,function(data){
-                location.path('/tickets/'+routeParams.clientId);
+                location.path('/viewclient/'+routeParams.clientId);
              });
+            scope.reset123();
         };
     
     }

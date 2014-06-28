@@ -1,6 +1,6 @@
 <div>
     <ul class="breadcrumb">
-        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+          <li><a href="#/organization">{{'link.admin.organisation' | translate}}</a> <span class="divider">/</span></li>
         <li class="active">{{'label.manageippooling' | translate}}</li>
     </ul>
 </div>
@@ -32,14 +32,14 @@
             <tbody>
             <!--  -->
              <tr class="pointer-main" ng-repeat="ippoolingdata in ippoolingdatas.currentPageItems  | filter:filterText">         
-                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.id}}</td>
-                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.ipAddress}}</td> 
-                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.ipPoolDescription}}</td>
-                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.clientId}}</td>
-                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId)">{{ippoolingdata.status}}</td>                                     
-
-               <!--  <td><a ng-click="edit(paymentgatewaydata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>        -->
-
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId,ippoolingdata.status)">{{ippoolingdata.id}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId,ippoolingdata.status)">{{ippoolingdata.ipAddress}}</td> 
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId,ippoolingdata.status)">{{ippoolingdata.ipPoolDescription}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId,ippoolingdata.status)">{{ippoolingdata.clientId}}</td>
+                <td class="pointer" data-ng-click="routeTo(ippoolingdata.clientId,ippoolingdata.status)">{{ippoolingdata.status}}</td>  
+                 <td><a href="#/editippolling/{{ippoolingdata.id}}" ng-show="ippoolingdata.status =='I'" style='color:#000000' popover="Edit" popover-trigger="mouseenter" ><i class="icon-edit"></i></a></td>                                   
+               <!--  <td><a ng-click="edit(ippoolingdata.id)" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>       
+                   ng-show="PermissionService.showMenu('UPDATE_SCHEDULERJOB')" -->
    			</tr>
      		 </tbody>
           </table>
