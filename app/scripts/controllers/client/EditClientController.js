@@ -21,6 +21,14 @@
             scope.staffs = data.staffOptions; 
             scope.officeId = data.officeId;
 	   // scope.clientCategory=data.categoryType;
+        scope.groupNameDatas=data.groupNameDatas;
+        	
+        for(var i=0;i<scope.groupNameDatas.length;i++){
+	    	if(scope.groupNameDatas[i].groupName==data.groupName){
+	    		scope.groupName=scope.groupNameDatas[i].groupName;
+	    	}
+	    }
+        
 	    scope.clientCategoryDatas=data.clientCategoryDatas;
 
 	    for(var i=0;i<scope.clientCategoryDatas.length;i++){
@@ -57,6 +65,7 @@
         scope.submit = function() {
 	     this.formData.officeId=scope.officeId;
              this.formData.clientCategory=scope.clientCategory;
+             this.formData.groupName=scope.groupName;
              this.formData.locale = 'en';
              this.formData.dateFormat = 'dd MMMM yyyy';
              if(scope.date.activationDate){this.formData.activationDate = dateFilter(scope.date.activationDate,'dd MMMM yyyy');}
