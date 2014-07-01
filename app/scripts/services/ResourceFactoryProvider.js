@@ -875,6 +875,17 @@
          	  update: { method: 'PUT' }
           }) ,
           
+          clientIpPoolingResource: defineResource(apiVer + "/ippooling/:clientId", {clientId: '@clientId'}, {
+         	  get: {method: 'GET', params: {},isArray: true},
+         	 
+          }) ,
+          
+          ipStatusResource: defineResource(apiVer + "/ippooling/ping/:id", {id: '@id'}, {
+         	  get: {method: 'GET', params: {},isArray: true},
+         	  update: { method: 'PUT' }
+         	 
+          }) ,
+          
           ipPoolingTemplateResource: defineResource(apiVer + "/ippooling/template", {}, {
          	  get: {method: 'GET', params: {}},
          	  getData: {method: 'GET', params: {id:'@id'}},
