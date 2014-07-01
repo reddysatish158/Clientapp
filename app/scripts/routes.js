@@ -852,7 +852,11 @@
       })
       .when('/editippolling/:id', {
         templateUrl : 'views/system/editippolling.html'
-      });
+      })
+      .when('/viewgroupdetails/:groupName', {
+        templateUrl : 'views/organization/viewgroupdetails.html'
+      })
+;
 
     $locationProvider.html5Mode(false);
   };
