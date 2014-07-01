@@ -79,6 +79,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/CreateEmployeeController',
       'accounting/AccountModuleController',
       'organization/GroupsDetailsController',
+      'organization/ViewGroupsDetailsController',
       'accounting/AccFreqPostingController',
       'accounting/AccCoaController',
       'accounting/AccCreateGLAccountContoller',
