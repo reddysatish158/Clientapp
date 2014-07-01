@@ -24,11 +24,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="groups in groupDetails.currentPageItems | filter:filterText">
-                <td>{{groups.id}}</td>            
-                <td>{{groups.groupName}}</td>        
-                <td>{{groups.groupAddress}}</td> 
-                <td>{{groups.countNo}}</td>   
+            <tr class="pointer-main" ng-repeat="groups in groupDetails.currentPageItems | filter:filterText">
+            	<td class="pointer" data-ng-click="routeTo(groups.groupName)">{{groups.id}}</td>       
+                <td class="pointer" data-ng-click="routeTo(groups.groupName)">{{groups.groupName}}</td>        
+                <td class="pointer" data-ng-click="routeTo(groups.groupName)">{{groups.groupAddress}}</td> 
+                <td class="pointer" data-ng-click="routeTo(groups.groupName)">{{groups.countNo}}</td>   
                 <td><a ng-click="addProvision(groups.id,groups.groupName,groups.attribute1,groups.attribute2,groups.attribute3,groups.attribute4)" 
                   ng-show="groups.isProvision == 'N'" class="btn " popover="Provisioning" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>
                  <a ng-show="groups.isProvision == 'Y'" ng-disabled="groups.isProvision == 'Y'"class="btn "><i class="icon-play icon-white"></i></a>
