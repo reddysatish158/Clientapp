@@ -444,7 +444,7 @@
       .when('/renewalOrder/:id/:clientId', {
         templateUrl: 'views/clients/renewalorder.html'
       })
-      .when('/provision/:orderId/:clientId', {
+      .when('/provision/:orderId/:clientId/:serviceId', {
         templateUrl: 'views/clients/createprovisioning.html'
       })
       .when('/voucherpins', {
@@ -829,7 +829,7 @@
       .when('/redemption',{
      templateUrl: 'views/organization/redemption.html'
       })
-      .when('/editprovison/:orderId/:clientId', {
+      .when('/editprovison/:orderId/:clientId/:serviceId', {
         templateUrl: 'views/clients/editProvisioning.html'
       })
       .when('/addcreditcarddetails/:clientId', {
