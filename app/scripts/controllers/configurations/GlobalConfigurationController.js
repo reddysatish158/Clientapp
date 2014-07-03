@@ -4,7 +4,10 @@
             scope.configs = [];
             resourceFactory.configurationResource.get(function(data) {
                 for(var i in data.globalConfiguration){
-                    scope.configs.push(data.globalConfiguration[i]);
+                	if(data.globalConfiguration[i] == 'Is_Paypal'){
+                		data.globalConfiguration[i].value = "";
+                	}
+                		scope.configs.push(data.globalConfiguration[i]);
                 }
                 resourceFactory.cacheResource.get(function(data) {
                     for(var i in data ){
@@ -75,29 +78,25 @@
 		        var editPaypalController=function($scope,$modalInstance){
 
 		        	$scope.formData = {}; 
-		            $scope.statusData=[];
-		            $scope.updateData={};
-		            
-		            
 		            
 		           // DATA GET
-		            resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
-		                 var value=data.value;
-		                 var arr = value.split(",");
-		                 var clientId = arr[0].split(":");
-		                 var secretCode = arr[1].split('"');
+		        	/*resourceFactory.configurationResource.get({configId: scope.editId}, function (data) {
+		                  var jsonObj = JSON.parse(data.value);
 		                 
-		                 $scope.formData.id = clientId[1];
-		                 $scope.formData.code = secretCode[3];
-		            });
+		                 $scope.formData.id = jsonObj.clientId;
+		                 $scope.formData.code = jsonObj.secretCode;
+		            });*/
 		            
 		         	$scope.submit = function(){
 		         		$scope.paypalFlag=true;
-		         		//consoe.log($scope.clientId);
-		         		$scope.paypalData = {"value":'{"clientId" :'+$scope.formData.id+',"secretCode" : "'+$scope.formData.code+'"}'};
-		         		$scope.updateData.value=$scope.paypalData.value;
+		         		var jsonData = {};
+		         		jsonData.clientId = $scope.formData.id;
+		         		jsonData.secretCode = $scope.formData.code;
+		         		
+		         		var jsonString = JSON.stringify(jsonData);
+		         		$scope.paypalData = {"value":jsonString};
 		         		//console.log(this.updateData);
-		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.updateData,function(data){ 
+		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.paypalData,function(data){ 
 		         			   $modalInstance.close('delete');
 		                       route.reload();
 		                 },function(errData){

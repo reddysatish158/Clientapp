@@ -8,11 +8,15 @@
             scope.media = data.mediaAssetData;
             scope.mediaDetails=data.mediaassetAttributes;
             scope.mediaLocationDatas=data.mediaLocationData;
+            for(var i in scope.mediaLocationDatas){
+            var decrypted = CryptoJS.AES.decrypt(scope.mediaLocationDatas[i].location, "Hugo Technologys");
+            scope.mediaLocationDatas[i].location = decrypted.toString(CryptoJS.enc.Utf8);
+            }
             scope.mediaAttributes=data.mediaAttributes;
             scope.mediaLanguageDatas=data.mediaLanguageData;
             scope.mediaTypeDatas=data.mediaTypeData;
             scope.mediaCategeorydatas=data.mediaCategeorydata;
-           
+
         });
 
         scope.deletemedia = function (){

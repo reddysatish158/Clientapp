@@ -58,7 +58,7 @@
 								<div class="control-group">
             					<label class="control-label" for="pinCategoryData">{{ 'label.pinCategory' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.pinCategory"  ng-options="pinCategoryData.value as pinCategoryData.value for pinCategoryData in pinCategoryDatas" value="{{voucher.id}}">
+             					 <select ng-model="formData.pinCategory"  id="pinCategory" ng-options="pinCategoryData.value as pinCategoryData.value for pinCategoryData in pinCategoryDatas" value="{{voucher.id}}">
              					 </select>
             					</div>
           						</div>
@@ -71,11 +71,11 @@
             					</div>
           						</div>
 								</td>
-							</tr>
+							</tr>	
 							<tr>
 								<td>
 									<div class="control-group">
-           					 		<label class="control-label" for="serialNo">{{ 'label.serialNo' | translate }}</label>
+           					 		<label class="control-label" for="serialNo">{{ 'label.serialNoLength' | translate }}</label>
             						<div class="controls">
               						<input type="text" id="serialNo" ng-model="formData.serialNo">
             						</div>
@@ -85,28 +85,33 @@
 									<div class="control-group">
             						<label class="control-label" for="pinTypeData">{{ 'label.pinType' | translate }}</label>
             						<div class="controls">
-              						<select ng-model="formData.pinType"  ng-options="pinTypeData.value as pinTypeData.value for pinTypeData in pinTypeDatas" value="{{voucher.id}}">
+              						<select ng-model="formData.pinType" id="pinType" ng-change="setPinValue()" ng-options="pinTypeData.value as pinTypeData.value for pinTypeData in pinTypeDatas" value="{{voucher.id}}">
               						</select>
-              						<input type="text" id="pinValue" ng-model="formData.pinValue">
-              						<input type="text" id="pinExtention" ng-model="formData.pinExtention">
+              						<input ng-show = "formData.pinType=='VALUE'" type="text" id="pinValue" ng-model="formData.pinValue"/>
+              						<select ng-show="formData.pinType=='PRODUCT'" id="productValue" ng-model="formData.pinValue"  ng-options="planData.id as planData.planCode for planData in planDatas" value="{{planData.id}}">
+              						</select>
             						</div>
           							</div>
 								</td>
 							</tr>
+							<tr>
+								<td>
+  									<div class="control-group">
+                        				<label class="control-label">{{ 'label.expiryDate' | translate }}</label>
+                        				<div class="controls">
+                           					 <input type="text" id="expiryDate" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="'2020-06-22'" date-disabled="disabled(date, mode)"  />
+                        				</div>
+          							</div>
+          						</td>
+          					</tr>
 					</table>
 			
 				</td>
 			</tr>
 			</table>
-  			<div class="control-group">
-                        	<label class="control-label">{{ 'label.expiryDate' | translate }}</label>
-                        	<div class="controls">
-                            <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="start.date" is-open="opened2" min="minDate" max="'2020-06-22'" date-disabled="disabled(date, mode)"  />
-                        	</div>
-          	</div>
           <div class="offset3">
             <a href="#/voucherpins"><button id="cancel" type="reset" class="btn">{{'button.cancel'| translate}}</button></a>
-            <button  id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
+            <button  id="submit" type="submit" class="btn btn-primary">{{'button.save'| translate}}</button> 
           </div>
           
         </fieldset>

@@ -4,7 +4,8 @@ define(['underscore', 'mifosX'], function() {
       'LoggedInUser',
       'roleMap',
       'Langs',
-      'paypalUser'
+      'paypalUser',
+      'Encript'
     ],
     services: [
       'ResourceFactoryProvider',
@@ -245,6 +246,12 @@ define(['underscore', 'mifosX'], function() {
 
       'system/IpPoolingController',
       'system/CreateIpPoolingController',
+      'client/AddCreditCardController',
+      'client/AddACHController',
+      'client/ViewCardDetailsController',
+      'client/EditCardDetailController',
+      'client/AddNewCreditCardController',
+      'organization/RedemptionController'
 
     ],
     filters: [
@@ -268,7 +275,9 @@ define(['underscore', 'mifosX'], function() {
       'ScrollbarTopDirective',
       'ApiValidationDirective',
       'RightClickDirective',
-      'ContextMenuDirective'
+      'ContextMenuDirective',
+      'AutofocusDirective',
+      'NgAutoFocusFunDirective'
     ]
   };
 

@@ -811,6 +811,23 @@
       })
       .when('/createsmtp', {
         templateUrl: 'views/administration/createsmtp.html'
+      })  .when('/addcreditcarddetails/:clientId', {
+          templateUrl: 'views/clients/addcreditcarddetails.html'
+      })
+      .when('/addachdetails/:clientId', {
+          templateUrl: 'views/clients/addachdetails.html'
+      })
+      .when('/viewcarddetails/:clientId/:id/:type', {
+        templateUrl: 'views/clients/viewcarddetails.html'
+      })
+      .when('/editcarddetails/:clientId/:id/:type', {
+        templateUrl: 'views/clients/editcarddetails.html'
+      })
+      .when('/addnewcreditcarddetails/:clientId/:id/:type', {
+        templateUrl: 'views/clients/addnewcreditcarddetails.html'
+      })
+      .when('/redemption',{
+     templateUrl: 'views/organization/redemption.html'
       });
 
     $locationProvider.html5Mode(false);
