@@ -33,7 +33,7 @@
           <div class="control-group">
             <label class="control-label" for="serviceType">Service Type</label>
             <div class="controls">
-               <select ng-model="formData.serviceType"ng-options="serviceTypes.value as serviceTypes.value for serviceTypes in services" value="{{serviceTypes.value}}"></select>
+               <select ng-model="formData.serviceType"ng-options="serviceTypes.type as serviceTypes.type for serviceTypes in services" value="{{serviceTypes.value}}"></select>
       		    </select>
             </div>
           </div>
