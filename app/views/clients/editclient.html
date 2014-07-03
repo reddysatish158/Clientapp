@@ -109,7 +109,10 @@
 					<div class="control-group">
               		<label class="control-label">CUG</label>
               		<div class="controls">
-                	<select ng-model="groupName"  ng-options="groupNameData.groupName as groupNameData.groupName for groupNameData in groupNameDatas" value="{{groupNameDatas.groupName}}"></select>
+                	<select ng-model="groupName"  ng-options="groupNameData.groupName as groupNameData.groupName for groupNameData in groupNameDatas" value="{{groupNameDatas.groupName}}">
+                	<option  value="">None</option>
+                	</select>
+                	
               		</div>
             		</div>
 				</td>
@@ -127,14 +130,8 @@
 				 <div class="control-group">
                   <label class="control-label">{{ 'label.lastname' | translate }}<span class="required">*</span></label>
                   <div class="controls">
-                    <input type="text" name="lastname" ng-model="formData.lastname" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
-                    <span  ng-show="editclientform.lastname.$invalid">
-                      <small class="error" ng-show="editclientform.lastname.$error.pattern">alphanumeric and spaces only!</small>
-                      <small class="error" ng-show="editclientform.lastname.$error.req">
-                          Required Field
-                      </small>
-                      <small class="error" ng-show="editclientform.lastname.$error.minlength && !editclientform.lastname.$error.req">Your name is required to be at least 3 characters</small>
-                    </span>
+                    <input type="text" name="lastname" ng-model="formData.lastname"/>
+                   
                   </div>
                 </div>
 				</td>

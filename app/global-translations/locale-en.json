@@ -62,6 +62,9 @@
  
  "# common label headings":"....",
   "label.firstname":"First name:",
+  "label.corporate":"Company Name",
+  "label.corporatedetails":"Company Detail",
+  "label.contactperson":"Contcat Person",
   "label.middlename":"Middle name:",
   "lable.fullname":"Full Name:",
   "label.lastname":"Last name:",
@@ -274,7 +277,7 @@
 
   "#edit client":"",
   "label.individual":"Individual",
-  "label.corporate":"Corporate",
+  "label.corporate":"Company Name",
   "label.externalid":"External Id",
   "label.active":"Active",
   "label.fullname":"Full name or Business name:",
