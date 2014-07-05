@@ -852,7 +852,11 @@
       })
       .when('/editippolling/:id', {
         templateUrl : 'views/system/editippolling.html'
-      });
+      })
+       .when('/addbillmodes/:clientId', {
+         templateUrl: 'views/clients/addbillmodes.html'
+      })
+      ;
 
     $locationProvider.html5Mode(false);
   };

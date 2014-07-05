@@ -32,7 +32,9 @@
             'LocalStorageModule':'../scripts/modules/localstorage',
             'configurations':'../scripts/modules/configurations',
             'chosen.jquery.min': "../scripts/modules/chosen.jquery.min",
-            'aes':'../scripts/CryptoJS/rollups/aes'
+            'aes':'../scripts/CryptoJS/rollups/aes',
+            'multiple':'./modules/jquery.multiple.select'
+            
         },
         shim: {
             'angular': { exports: 'angular' },
@@ -58,6 +60,7 @@
             'configurations':{deps: ['angular']},
             'chosen.jquery.min': {deps: ['jquery']},
             'aes':{deps: ['jquery']},
+            'multiple':{deps: ['jquery']},
 
             'mifosX': {
                 deps: [
@@ -83,7 +86,8 @@
                     'LocalStorageModule',
                     'configurations',
                     'chosen.jquery.min',
-                    'aes'
+                    'aes',
+                    'multiple'
                 ],
                 exports: 'mifosX'
             }

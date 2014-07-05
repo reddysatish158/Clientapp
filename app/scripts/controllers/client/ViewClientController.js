@@ -420,7 +420,7 @@
         scope.getClientIdentityDocuments = function () {
         	
          //  console.log(scope.taxExemption);
-        	 if(scope.taxExemption=='Y'){
+        	 if(scope.taxExemption=='N'){
         	
         		 $('#onbtn').removeClass("btn-default");
              	  $('#onbtn').addClass("active btn-primary");
@@ -440,8 +440,8 @@
            	  $('#onbtn').addClass("active btn-primary");
            	  $('#offbtn').removeClass("active btn-primary");
            	  $('#offbtn').addClass("btn-default");
-           	  var obj = {"taxExemption":true};
-           	  scope.taxExemption='Y';
+           	  var obj = {"taxExemption":false};
+           	  scope.taxExemption='N';
              	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
              	});
              		
@@ -451,8 +451,8 @@
            	  $('#offbtn').addClass("active btn-primary");
            	  $('#onbtn').addClass("btn-default");
            	  $('#onbtn').removeClass("active btn-primary");
-           	  var obj = {"taxExemption":false};
-           	  scope.taxExemption='N';
+           	  var obj = {"taxExemption":true};
+           	  scope.taxExemption='Y';
                	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
                	});
              };
@@ -919,8 +919,15 @@
           // this will be used to display the score on the viewclient.html
           scope.inventureScore = inventureScore;
         };
+ 
+       
+        	 
+        
+        
     }
   });
+  
+  
   mifosX.ng.application.controller('ViewClientController', ['$scope','webStorage', '$routeParams', '$route', '$location', 'ResourceFactory', 'PaginatorService','$http','$modal','dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.ViewClientController]).run(function($log) {
     $log.info("ViewClientController initialized");
   });

@@ -916,6 +916,11 @@
             taxExemptionResource: defineResource(apiVer + "/taxexemption/:clientId", {clientId:'@clientId'}, {
                 update: { method: 'PUT' }
             }),
+            clientBillModeResource: defineResource(apiVer + "/billmodes/:clientId", {clientId:'@clientId'}, {
+            	get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+            }),
+            
         };
       }];
     }

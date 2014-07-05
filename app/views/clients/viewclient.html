@@ -275,6 +275,8 @@
       </tab>
       <tab heading="{{'tab.identities' | translate}}" select="getClientIdentityDocuments()" active="identitiesTab" 
       			ng-show="$parent.PermissionService.showMenu('read_CLIENTIDENTIFIER')">
+    
+     
      
      <div class="pull-right "> 
           Tax Exemption 
@@ -289,6 +291,7 @@
     				<span class="onoffswitch-switch"></span>
     			</label>
     	 </div>  -->
+    	<a  href="#/addbillmodes/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Apply BillModes</a>
        	<a ng-show="PermissionService.showMenu('CREATE_CLIENTIDENTIFIER')" href="#/addclientidentifier/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
        </div>
         <br>
@@ -319,6 +322,9 @@
               </tr>
             </tbody>
           </table>
+   
+          
+          
       </tab>
     <!--   <tab heading="{{'tab.templates' | translate}}" select="getClientTemplateDocuments()">
         <div class="span"></div>
