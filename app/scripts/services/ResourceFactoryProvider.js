@@ -751,7 +751,7 @@
              get: {method: 'GET', params: {}},
              update: { method: 'PUT' }
         }),
-           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:clientId", {clientId: '@clientId'}, {
+           provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderNo", {orderNo: 'orderNo'}, {
             	  get: {method: 'GET', params: {},isArray: true}
            }),
            
@@ -841,6 +841,8 @@
             creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
+            }),
+            redemptionResource: defineResource(apiVer + "/redemption", {}, {
             }),
         };
       }];

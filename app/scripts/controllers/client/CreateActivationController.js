@@ -68,7 +68,7 @@
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
-	            scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
+	           // scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
                     scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
@@ -90,7 +90,7 @@
 	        		
 	        		scope.formData2=data;
 	        		scope.formData2.itemId=itemId;
-	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
+	        		//scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 	        		scope.data.unitPrice=scope.formData2.unitPrice;
 	        		scope.data.locale="en";

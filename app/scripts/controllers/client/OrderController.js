@@ -171,10 +171,10 @@
       	
       };
       
-      scope.getAllProvisioningDetails = function () {
+      scope.getAllProvisioningDetails = function (orderNo) {
           
           
-          resourceFactory.provisioningtemplateMappingResource.get({clientId: routeParams.clientId} , function(data) {
+          resourceFactory.provisioningtemplateMappingResource.get({orderNo:orderNo} , function(data) {
               scope.provisioningdatas = data;
             });
       };

@@ -598,6 +598,9 @@
   "label.enabled":"Enabled",
   "label.disable":"Disable",
   "label.enable":"Enable",
+  "label.hostName":"Host Name",
+  "label.port":"Port",
+
   "label.filterbyname":"Filter by Name",
 
   "#Roles Management":"....",
@@ -1547,15 +1550,16 @@
  
 "validation.msg.randomGenerator.batchName.cannot.be.blank":"Batch Name cannot be blank",
 "validation.msg.randomGenerator.batchDescription.cannot.be.blank":"Batch Description cannot be blank",
-"validation.msg.randomGenerator.length.cannot.be.blank":"length cannot be blank",
+"validation.msg.randomGenerator.length.cannot.be.blank":"Length Of Pin cannot be blank",
 "validation.msg.randomGenerator.beginWith.cannot.be.blank":"Begin With cannot be blank",
 "validation.msg.randomGenerator.pinExtention.cannot.be.blank":"pinExtention cannot be blank",
-"validation.msg.randomGenerator.pinCategory.cannot.be.blank":"pinCategory cannot be blank", 
-"validation.msg.randomGenerator.quantity.cannot.be.blank":"quantity cannot be blank",
-"validation.msg.randomGenerator.serialNo.cannot.be.blank":"SerialNo BeginsWith cannot be blank",
-"validation.msg.randomGenerator.pinValue.cannot.be.blank":"pinValue cannot be blank",
+"validation.msg.randomGenerator.pinCategory.cannot.be.blank":"Pin Category cannot be blank", 
+"validation.msg.randomGenerator.quantity.cannot.be.blank":"Quantity cannot be blank",
+"validation.msg.randomGenerator.serialNo.cannot.be.blank":"Serial No Length cannot be blank",
+"validation.msg.randomGenerator.pinValue.cannot.be.blank":"Pin Value  cannot be blank",
 "validation.msg.randomGenerator.expiryDate.cannot.be.blank":"ExpiryDate cannot be blank", 
-"validation.msg.randomGenerator.pinType.cannot.be.blank":"pinType cannot be blank", 
+"validation.msg.randomGenerator.pinType.cannot.be.blank":"PinType cannot be blank", 
+"validation.msg.randomGenerator.productValue.cannot.be.blank":"Please select plan",
 "error.msg.code.duplicate.batchname":"BatchName is already existed with {0}",
  
  
@@ -1970,7 +1974,13 @@
 "table.heading.cvvNumber":"Cvv Number",
 "label.client.creditcard.cvvNumber":"Cvv Number",
 "label.client.creditcard.cardType":"Card Type",
-"link.view.achcard":"ACH Details"
+"link.view.achcard":"ACH Details",
+
+"#Redemption":".......",
+"validation.msg.redemption.clientId.cannot.be.blank":"Client Id cannot be blank",
+"validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
+"error.msg.client.id.invalid":"Invalid Client Id",
+"error.msg.redemption.pinNumber.invalid":"Invalid Pin Number"
 
 
    
