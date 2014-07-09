@@ -423,7 +423,7 @@
         scope.getClientIdentityDocuments = function () {
         	
          //  console.log(scope.taxExemption);
-        	 if(scope.taxExemption=='Y'){
+        	 if(scope.taxExemption=='N'){
         	
         		 $('#onbtn').removeClass("btn-default");
              	  $('#onbtn').addClass("active btn-primary");
@@ -443,8 +443,8 @@
            	  $('#onbtn').addClass("active btn-primary");
            	  $('#offbtn').removeClass("active btn-primary");
            	  $('#offbtn').addClass("btn-default");
-           	  var obj = {"taxExemption":true};
-           	  scope.taxExemption='Y';
+           	  var obj = {"taxExemption":false};
+           	  scope.taxExemption='N';
              	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
              	});
              		
@@ -454,8 +454,8 @@
            	  $('#offbtn').addClass("active btn-primary");
            	  $('#onbtn').addClass("btn-default");
            	  $('#onbtn').removeClass("active btn-primary");
-           	  var obj = {"taxExemption":false};
-           	  scope.taxExemption='N';
+           	  var obj = {"taxExemption":true};
+           	  scope.taxExemption='Y';
                	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
                	});
              };

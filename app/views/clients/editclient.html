@@ -92,7 +92,9 @@
 			<tr>
 				<td>
 				   <div class="control-group">
-                      <label class="control-label">{{ 'label.firstname' | translate }}<span class="required">*</span></label>
+				 
+            <label ng-hide="entryType =='ORP'" class="control-label" for="firstname">{{'label.firstname' | translate}}<span class="required">*</span></label> 
+             <label ng-show="entryType =='ORP'" class="control-label" for="firstname">{{'label.corporate' | translate}}<span class="required">*</span></label>
                         <div class="controls">
                            <input type="text" name="firstname" ng-model="formData.firstname" ng-pattern="/^[a-zA-Z0-9\s]+$/" required ng-minlength=3 late-Validate/>
                                <span  ng-show="editclientform.firstname.$invalid">
@@ -109,8 +111,8 @@
 					<div class="control-group">
               		<label class="control-label">CUG</label>
               		<div class="controls">
-                	<select ng-model="groupName"  ng-options="groupNameData.groupName as groupNameData.groupName for groupNameData in groupNameDatas" value="{{groupNameDatas.groupName}}">
-                	<option  value="">None</option>
+                	<select ng-model="groupId"  ng-options="groupNameData.id as groupNameData.groupName for groupNameData in groupNameDatas" value="{{groupNameDatas.groupName}}">
+                     <option  value="">None</option> 
                 	</select>
                 	
               		</div>
@@ -120,7 +122,7 @@
 			<tr>
 				<td>
 					<div class="control-group">
-                  <label class="control-label">{{ 'label.middlename' | translate }}</label>
+                  <label class="control-label" for="middlename">{{'label.corporatedetails' | translate}}</label>
                   <div class="controls">
                     <input type="text" ng-model="formData.middlename">
                   </div>
@@ -128,7 +130,8 @@
 				</td>
 				<td>
 				 <div class="control-group">
-                  <label class="control-label">{{ 'label.lastname' | translate }}<span class="required">*</span></label>
+               <label ng-hide="entryType =='ORP'" class="control-label" for="lastname">{{'label.lastname' | translate}}<span class="required">*</span></label>
+              <label ng-show="entryType =='ORP'" class="control-label" for="firstname">{{'label.contactperson' | translate}}</label>
                   <div class="controls">
                     <input type="text" name="lastname" ng-model="formData.lastname"/>
                    

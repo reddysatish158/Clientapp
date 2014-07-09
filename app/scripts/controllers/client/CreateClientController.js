@@ -8,7 +8,7 @@
         scope.formData = {};
         scope.clientCategoryDatas=[];
         scope.configurationProperty=[];
-       scope.type='individual';
+       scope.formData.entryType ='ORP';
         
         resourceFactory.clientTemplateResource.get(function(data) {
             scope.offices = data.officeOptions;

@@ -12,6 +12,11 @@
       scope.routeTo = function(id){
           location.path('/viewclient/'+ id);
         };
+        
+    	scope.routeToGroup = function(name){
+            location.path('/viewgroupdetails/'+ name);
+       };
+       
       if(PermissionService.showMenu('READ_CLIENT'))
     	  scope.clients = paginatorService.paginate(fetchFunction, 14);
       

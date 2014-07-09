@@ -96,21 +96,22 @@
 			 			 <div class="control-group">
 			 			  	<div class="controls">
 
-						  	<input  id="ip_address" type="radio" name="selectType"  ng-click="selectedIPAddress('ipAddress')" checked/>&nbsp;&nbsp;IPAddress&nbsp;&nbsp;
-			  				<input  id="subnet" type="radio" name="selectType" ng-click="selectedSubnet('subnet')" />&nbsp;&nbsp;Subnet
+						  	<input  id="ip_address" type="radio" ng-model="type" name="selectType"  ng-click="selectedIPAddress('ipAddress')" value="ipaddress" checked/>&nbsp;&nbsp;IPAddress&nbsp;&nbsp;
+			  				<input  id="subnet" type="radio" name="selectType" ng-model="type" ng-click="selectedSubnet('subnet')"  value="subnet">&nbsp;&nbsp;Subnet
 
 						  	</div>
 						  	</div>
 			 			 </td>
 				   	</tr>
 		              <tr>
-					       <td>
+					        <td>
 							 <div class="control-group">
                         	  <label class="control-label">{{ 'label.provisioning.servicename' | translate }}</label>
                         		<div class="controls">
                             	 <select ng-model="formData.serviceName" ng-options="service.serviceId as service.servicecode for service in services" 
-                            	    ng-change="selectService(formData.serviceName)"     value="{{itemData.id}}">
+                            	 ng-change="selectService(formData.serviceName)" >
              					 </select>
+             					
                         	</div>
           				  </div>
 					    </td>

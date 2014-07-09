@@ -16,16 +16,23 @@
         scope.categoryType=clientData.categoryType;
         scope.email=clientData.email;
         scope.phone=clientData.phone;
+        scope.formData=[];
+        scope.entryType;
         resourceFactory.clientResource.get({clientId: routeParams.id, template: 'true'} , function(data) {
             scope.offices = data.officeOptions;
             scope.staffs = data.staffOptions; 
             scope.officeId = data.officeId;
 	   // scope.clientCategory=data.categoryType;
+            scope.formData.entryType = data.entryType;
+            scope.entryType=data.entryType;
+            scope.formData.groupName=data.groupName;
+            scope.groupNameDatas=data.groupNameDatas;
         scope.groupNameDatas=data.groupNameDatas;
         	
         for(var i=0;i<scope.groupNameDatas.length;i++){
 	    	if(scope.groupNameDatas[i].groupName==data.groupName){
 	    		scope.groupName=scope.groupNameDatas[i].groupName;
+	    		scope.groupId=scope.groupNameDatas[i].id;
 	    	}
 	    }
         
@@ -46,6 +53,7 @@
               staffId : data.staffId,
               email:data.email,
               phone:data.phone,
+              externalId:data.externalId,
               homePhoneNumber:data.homePhoneNumber
             };
             var actDate = dateFilter(data.activationDate,'dd MMMM yyyy');
@@ -65,7 +73,7 @@
         scope.submit = function() {
 	     this.formData.officeId=scope.officeId;
              this.formData.clientCategory=scope.clientCategory;
-             this.formData.groupName=scope.groupName;
+             this.formData.groupId=scope.groupId;
              this.formData.locale = 'en';
              this.formData.dateFormat = 'dd MMMM yyyy';
              if(scope.date.activationDate){this.formData.activationDate = dateFilter(scope.date.activationDate,'dd MMMM yyyy');}
