@@ -24,8 +24,9 @@
                 <th>{{ 'table.heading.serialNo' | translate }}</th>
                 <th>{{ 'table.heading.pinType' | translate }}</th>
                 <th>{{ 'table.heading.pinValue' | translate }}</th>
+                <th>{{ 'table.heading.product' | translate }}</th>
                 <th>{{ 'table.heading.expiryDate' | translate }}</th>
-                <th>&nbsp;</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -40,7 +41,8 @@
                 <td>{{voucherpin.quantity}}</td>        
                 <td>{{voucherpin.serialNo}}</td>  
                 <td>{{voucherpin.pinType}}</td>        
-                <td>{{voucherpin.pinValue}}</td>  
+                <td>{{voucherpin.pinValue}}</td> 
+                <td>{{voucherpin.planCode}}</td> 
                 <td>{{voucherpin.expiryDate|DateFormat}}</td> 
                 <td><a ng-show="(voucherpin.isProcessed == 'N')&&((voucherpin.id)!=dynamicVar)&&(PermissionService.showMenu('PROCESS_RANDAMGENERATOR'))" 
                 		 ng-click="processFile(voucherpin.id)" popover="Process File" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a>      
