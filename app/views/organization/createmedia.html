@@ -165,7 +165,7 @@
             <div class="control-group">
 			    <label class="control-label" for="cpShareValue">Share(%)</label>
 			  <div class="controls">
-				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^\d{0,2}(\.\d{0,2})?$/" ng-maxlength="5"></input>
+				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^[0-9]{0,2}(\.\d{0,2})?$/" ng-maxlength="5"></input>
 				<div ng-show="createmediaform.cpShareValue.$dirty && createmediaform.cpShareValue.$invalid">
                <span class="error" ng-show="createmediaform.cpShareValue.$error.pattern">Numbers below 100 only !</span>
                <span class="error" ng-show="createmediaform.cpShareValue.$error.maxlength">Exceeded max limit!</span>

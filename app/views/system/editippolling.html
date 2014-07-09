@@ -23,7 +23,7 @@
 							<label class="control-label">{{ 'table.ippooling.status' | translate }}</label>
 							<div class="controls">
 								<select ng-model="formData.statusType"
-									ng-options="status.statusType as status.statusType for status in ippoolstatusType"
+									ng-options="status.statusType as status.status for status in ippoolstatusType"
 									value="{{status.type}}">
 								</select>
 							</div>

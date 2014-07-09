@@ -3,6 +3,12 @@
 	  CreateIpPoolingController: function(scope, resourceFactory, location, http, dateFilter,API_VERSION,$rootScope) {
        
         scope.formData = {};
+        scope.ipTypes=[];
+        resourceFactory.ipPoolingTemplateResource.get(function(data) {
+            
+        	scope.ipTypes = data.codeValueDatas;
+                    
+        });
       
         scope.submit = function() {
 			resourceFactory.ipPoolingResource.save(this.formData, function(data) {

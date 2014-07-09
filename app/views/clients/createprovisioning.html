@@ -95,10 +95,8 @@
 					<td>
 			 			 <div class="control-group">
 			 			  	<div class="controls">
-
 						  	<input  id="ip_address" type="radio" name="selectType"  ng-click="selectedIPAddress('ipAddress')" checked/>&nbsp;&nbsp;IPAddress&nbsp;&nbsp;
 			  				<input  id="subnet" type="radio" name="selectType" ng-click="selectedSubnet('subnet')" />&nbsp;&nbsp;Subnet
-
 						  	</div>
 						  	</div>
 			 			 </td>
@@ -108,8 +106,8 @@
 							 <div class="control-group">
                         	  <label class="control-label">{{ 'label.provisioning.servicename' | translate }}</label>
                         		<div class="controls">
-                            	 <select ng-model="formData.serviceName" ng-options="service.servicecode as service.servicecode for service in services" 
-                            	       value="{{itemData.id}}">
+                            	 <select ng-model="formData.serviceName" ng-options="service.serviceId as service.servicecode for service in services" 
+                            	 ng-change="selectService(formData.serviceName)"  value="{{itemData.id}}">
              					 </select>
                         	</div>
           				  </div>
@@ -127,7 +125,9 @@
 								<div class="control-group" ng-show="parameterData.paramName == 'SERVICE'">
             					<label class="control-label" for="chargeCode">{{ 'label.provisioning.service' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="service" ng-model="parameterData.paramValue" style="background-color:#FFFFFF;" readonly>
+              					<input ng-show="parameterData.type == 'Single'" type="text" id="service" ng-model="parameterData.paramValue" style="background-color:#FFFFFF;" readonly>
+              					 <select ng-hide="parameterData.type == 'Single'" ng-model="parameterData.paramValue"  ng-options="serviceparam.paramValue as serviceparam.paramValue for serviceparam in serviceparams" value="{{vlanData.mCodeValue}}">
+             					 </select>
             					</div>
           						</div>
 							</td>
@@ -137,7 +137,9 @@
 								<div class="control-group" ng-show="parameterData.paramName == 'GROUP_NAME'">
             					<label class="control-label" for="itemId">{{ 'label.provisioning.group' | translate }}</label>
             					<div class="controls">
-             					 <input type="text" id="groupName" ng-model="formData.groupName" style="background-color:#FFFFFF;" readonly>
+             					 <input ng-show ="parameterData.type == 'Single'" type="text" id="groupName" ng-model="formData.groupName" style="background-color:#FFFFFF;" readonly>
+             					  <select ng-hide="parameterData.type == 'Single'" ng-model="formData.groupName"  ng-options="serviceparam.groupName as serviceparam.groupName for serviceparam in groupDatas" value="{{vlanData.mCodeValue}}">
+             					 </select>
             					</div>
           						</div>
 							</td>

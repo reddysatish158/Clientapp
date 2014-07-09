@@ -3,7 +3,7 @@
 	  EditIpPoolingController: function(scope, resourceFactory, routeParams, location, $modal, PermissionService) {
 	        
 	        scope.formData = {};	
-	        scope.ippoolstatusType= [{statusType:"F"}];
+	        scope.ippoolstatusType= [{statusType:"F",status:"Free"},{statusType:"B",status:"Blocked"}];
 	            
 	            scope.submit = function() {        
 	            resourceFactory.ipPoolingResource.update({'id': routeParams.id},this.formData,function(data){

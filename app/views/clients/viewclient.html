@@ -1162,6 +1162,43 @@
 	</div>
 </tab>
 
+
+<tab heading="Network" select="getClientNetworkIpsFetchFunction()" ng-show="$parent.PermissionService.showMenu('READ_CREDITDISTRIBUTION')">
+    <div>
+     <form ng-submit="searchTransactionHistory()">
+		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
+	 </form>
+		<table class="table">
+			<thead>
+				<tr class="graybg">
+				 	<th>{{'table.heading.id' | translate}}</th>
+					<th>{{'label.ippooling.description' | translate}}</th>
+					<th>{{'label.ippooling.ipaddress' | translate}}</th>
+					<th>{{'table.ippooling.notes' | translate}}</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				    <th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="ippoolData in  ippoolDatas | filter:filterText">
+					<td>{{ippoolData.id}}</td>
+					<td>{{ippoolData.ipPoolDescription}}</td>
+					<td>{{ippoolData.ipAddress}}</td>
+				    <td>{{ippoolData.notes}}</td>
+				   <td><a ng-click="sendIp(ippoolData.id)" popover="Check IpStatus" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a></td>
+				   <td ng-show="ipstatus && ipId==ippoolData.id "><i class="icon-stop {{ipstatus | StatusLookup}}"></i>&nbsp;{{ipstatus}}</td>
+				   <td></td>
+				</tr>
+			</tbody>
+		</table>
+		<ul class="pager">
+        			<li class="previous"><a ng-click="transactionhistory.previous()" href="" ng-disabled="!transactionhistory.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="transactionhistory.next()" href="" ng-disabled="!transactionhistory.hasNext()">Next &rarr;</a></li>
+    			</ul>
+	</div>
+</tab>
+
    <!-- ************************ start of InVenture code ************************ -->
     <!--      <tab class="inventureTabTitle" heading="InVenture Score" select="fetchInventureScore()">
 

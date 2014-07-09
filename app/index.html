@@ -129,7 +129,7 @@
         <ul class="margin-nav nav-list ext-sidenav" ng-show="office||prospect||createclient||activation">
             <li><a ng-show="office=PermissionService.showMenu('READ_OFFICE')" href="#/nav/offices"><i class="icon-compass "></i> Navigation</a></li>
              <li ng-show="PermissionService.showMenu('READ_OFFICE')" class="divider"></li>
-            <li> <a ng-show="prospect=PermissionService.showMenu('CREATE_PROSPECT')" href="#/createprospects"><i class="icon-user "></i>+ Prospect</a></li> 
+            <li> <a ng-show="prospect=PermissionService.showMenu('CREATE_PROSPECT')" href="#/createprospects"><i class="icon-user "></i>+ Leads</a></li> 
             <li ng-show="PermissionService.showMenu('CREATE_PROSPECT')" class="divider"></li>
             <li><a ng-show="createclient=PermissionService.showMenu('CREATE_CLIENT')" href="#/createclient"><i class="icon-user "></i> + Client </a></li>
             <li ng-show="PermissionService.showMenu('CREATE_CLIENT')" class="divider"></li>

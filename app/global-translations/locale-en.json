@@ -62,6 +62,9 @@
  
  "# common label headings":"....",
   "label.firstname":"First name:",
+  "label.corporate":"Company Name",
+  "label.corporatedetails":"Company Detail",
+  "label.contactperson":"Contcat Person",
   "label.middlename":"Middle name:",
   "lable.fullname":"Full Name:",
   "label.lastname":"Last name:",
@@ -274,7 +277,7 @@
 
   "#edit client":"",
   "label.individual":"Individual",
-  "label.corporate":"Corporate",
+  "label.corporate":"Company Name",
   "label.externalid":"External Id",
   "label.active":"Active",
   "label.fullname":"Full name or Business name:",
@@ -942,7 +945,7 @@
  "validation.msg.discount.startDate.cannot.be.blank":"StartDate cannot be blank",
   
   "#Prospects":"....",
-  "link.prospects" : "Prospects",
+  "link.prospects" : "Leads",
   "link.viewprospects" : "View Prospects",
   "label.prospects":"Prospects",
   "label.prospect.other":"Other",
@@ -1949,6 +1952,7 @@
 
 "#IpPooling Details":"....",
 "label.manageippooling":"IpPool Management",
+"label.iptype":"Ip Type",
 "table.ippooling.id":"id",
 "table.ippooling.ipaddress":"ipAddress",
 "table.ippooling.ippooldescription":"Description",
@@ -1958,6 +1962,7 @@
 "label.ippooling.description":"Description",
 "label.ippooling.ipaddress":"ipAddress",
 "label.ippooling.subnet":"Subnet",
+"table.ippooling.clientname":"Client Name",
 "label.ippooling.editippool":"Edit IpPool",
 "table.ippooling.notes":"Notes",
 

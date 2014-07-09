@@ -10,6 +10,7 @@
          scope.staffData = {};
          scope.orders = [];
          scope.scheduleorders=[];
+         scope.ippoolDatas = [];
          scope.formData = {};
  		 scope.start = {};
          scope.start.date = new Date();
@@ -17,6 +18,8 @@
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
          scope.PermissionService = PermissionService;
+         scope.ipstatus;
+         scope.ipId;
          
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
@@ -496,7 +499,13 @@
   			
   		  scope.getClientDistributionFetchFunction = function(offset, limit, callback) {
     			resourceFactory.creditDistributionResource.get({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
-    			};		
+    			};
+    			
+    	  scope.getClientNetworkIpsFetchFunction = function() {
+    	   resourceFactory.clientIpPoolingResource.get({clientId: routeParams.id} , function(data) {
+               scope.ippoolDatas = data;
+           });
+    	  };
           scope.getTransactionHistory = function () {
           	scope.transactionhistory = paginatorService.paginate(scope.getTransactionHistoryFetchFunction, 14);
           };
@@ -789,7 +798,16 @@
           	scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
           };
           
-          
+          scope.sendIp = function (id){    	                   
+              resourceFactory.ipStatusResource.update({id: id} , {} , function(data) {
+            	scope.ipstatus=data.resourceIdentifier;
+            	  console.log(data);
+            	 scope.ipId=id;
+              },function(errorData){
+              	
+              });
+                   
+      }; 
           scope.searchFinancialTransactions123 = function(offset, limit, callback) {
 	    	  resourceFactory.FineTransactionResource.getAllFineTransactions({ clientId: routeParams.id ,
 	    		  offset: offset, limit: limit ,sqlSearch: scope.filterText } , callback); 
@@ -908,6 +926,7 @@
             return bullet;
           });
 
+   
           function scoreData() {
             return {
               "title": "",

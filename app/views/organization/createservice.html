@@ -41,7 +41,7 @@
              <div class="control-group">
                   <label class="control-label" for="serviceType">{{ 'label.service.Service Type' | translate }}</label>
                   <div class="controls">
-                    <select ng-model="formData.serviceType"  ng-options="serviceTypes.value as serviceTypes.value for serviceTypes in services" value="{{serviceTypes.value}}" ></select>
+                    <select ng-model="formData.serviceType"  ng-options="serviceTypes.type as serviceTypes.type for serviceTypes in services" value="{{serviceTypes.value}}" ></select>
                   </div>
                 </div>
                 </td>
