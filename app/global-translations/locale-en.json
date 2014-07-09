@@ -915,6 +915,7 @@
   "table.heading.serialNo":"SerialNo",
   "table.heading.pinType":"PinType",
   "table.heading.pinValue":"PinValue",
+  "table.heading.product":"Product",
   "table.heading.expiryDate":"ExpiryDate",
   
   "#Discounts":"....",
