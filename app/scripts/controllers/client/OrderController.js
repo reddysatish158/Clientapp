@@ -80,6 +80,15 @@
              });
           };
           
+          scope.terminate = function (){
+          	scope.errorStatus=[];scope.errorDetails=[];
+          	 $modal.open({
+                   templateUrl: 'ApproveTerminate.html',
+                   controller: ApproveTerminate,
+                   resolve:{}
+               });
+            };
+          
           scope.orderDisconnect = function(orderDisUrl){
         	  scope.errorStatus=[];scope.errorDetails=[];
         	  $modal.open({
@@ -282,6 +291,33 @@
             		this.formData = {};
             	}
             	resourceFactory.OrderreconnectResource.update({orderId: routeParams.id} ,this.formData, function(data) {              	
+            		resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                        scope.orderPriceDatas= data.orderPriceData;
+                        scope.orderHistorydata=data.orderHistory;
+                        scope.orderData=data.orderData;
+                    });
+            		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+                    $modalInstance.close('delete');
+                },function(errData){
+	        		$scope.flagApproveReconnect = false;
+		          });
+            	
+            };
+            $scope.cancelReconnect = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };
+        
+        
+  var ApproveTerminate = function ($scope, $modalInstance) {
+    		
+            $scope.approveTerminate = function () {
+
+            	$scope.flagapproveTerminate=true;
+            	if(this.formData == undefined || this.formData == null){
+            		this.formData = {};
+            	}
+            	resourceFactory.OrderTerminateResource.update({orderId: routeParams.id} ,this.formData, function(data) {              	
             		resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
                         scope.orderPriceDatas= data.orderPriceData;
                         scope.orderHistorydata=data.orderHistory;

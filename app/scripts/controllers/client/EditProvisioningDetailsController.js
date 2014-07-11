@@ -46,6 +46,9 @@
     	   scope.serviceDatas=data.serviceDatas;
     	   scope.formData.serviceName=data.services[0].serviceId;
     	   scope.exit.servicename=data.services[0].servicecode;
+    	   scope.IPAddressType = true;
+      		scope.subnetType = false;
+      		scope.type="ipaddress";
     	   
     	   
     	for(var param in scope.serviceDatas){
@@ -69,10 +72,12 @@
     			
     			 temp.paramName = scope.serviceDatas[param].paramName;
                 scope.formData.vLan=scope.serviceDatas[param].paramValue;
+                scope.exit.vlan=scope.serviceDatas[param].paramValue;
                 
                 
                 
     		}else if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
+    			 scope.exit.ipaddr=undefined;
     			 temp.paramName = scope.serviceDatas[param].paramName;
     			temp.paramValue = scope.serviceDatas[param].paramValue;
     			scope.exit.ipValue=scope.serviceDatas[param].paramValue;
@@ -82,17 +87,19 @@
     			
     			if(found){
     				var params=ipValues.split("/");
-    				scope.subnetType = true;
-    				scope.IPAddressType = false;
-    				scope.type='subnet';	 
+    			//	scope.subnetType = true;
+    			//	scope.IPAddressType = false;
+    				 scope.exit.ipaddr=temp.paramValue;
+    				/*scope.type='subnet';	 
+    				 scope.exit.ipaddr=temp.paramValue;
     				  for(var v in params){              	 
     	                
     	                	 scope.IPAddressObj.ipAddress=params[0];
     	                	 scope.formData.subnet=params[1];
-    	                 }
+    	                 }*/
     			}else{
     			var ipArray =  JSON.parse(temp.paramValue);
-    			 
+    			scope.exitIpAddress=[];
                  for(var ip in ipArray){      	 
                 	 scope.exitIpAddress.push(ipArray[ip]);            	 
                  }
@@ -120,7 +127,7 @@
   	   scope.services=data.services;
   	   scope.ipPoolDatas=data.ipPoolDatas;
   	   scope.vlanDatas=data.vlanDatas;
-  	 
+  	  scope.serviceDatas=data.serviceDatas;
   	   
   	for(var param in scope.serviceDatas){
   		
@@ -144,42 +151,31 @@
   			
   			 temp.paramName = scope.serviceDatas[param].paramName;
               scope.formData.vLan=scope.serviceDatas[param].paramValue;
+              scope.exit.vlan=scope.serviceDatas[param].paramValue;
               
   		}else if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
   			 temp.paramName = scope.serviceDatas[param].paramName;
-
   			 temp.paramValue = scope.serviceDatas[param].paramValue;
-/*<<<<<<< HEAD
-  			var ipArray =  JSON.parse(temp.paramValue);
-  			 
-               for(var ip in ipArray){              	 
-              	 scope.addIpAddress.push(ipArray[ip]);              	 
-               }
-               
-               if(scope.addIpAddress.length > 1)
-           		scope.formData.ipType = "Multiple";
-           	else
-           		scope.formData.ipType = "Single";
-  			
-=======*/
-  			scope.exit.ipValue=scope.serviceDatas[param].paramValue;
+  			  scope.exit.ipValue=scope.serviceDatas[param].paramValue;
   			
   			var ipValues =temp.paramValue;
 			var found = temp.paramValue.match("/");
 			
 			if(found){
 				var params=ipValues.split("/");
-				scope.subnetType = true;
-				scope.IPAddressType = false;
-				scope.type='subnet';	 
-				  for(var v in params){              	 
+				//scope.subnetType = true;
+				//scope.IPAddressType = false;
+				//scope.type='subnet';	 
+				//scope.formData.ipRange = "subnet";
+				/*  for(var v in params){              	 
 	                
 	                	 scope.IPAddressObj.ipAddress=params[0];
 	                	 scope.formData.subnet=params[1];
-	                 }
+	                 }*/
 			}else{
 			var ipArray =  JSON.parse(temp.paramValue);
-			 
+			scope.exitIpAddress=[];
+			scope.formData.ipRange = "ipAddress";
              for(var ip in ipArray){      	 
             	 scope.exitIpAddress.push(ipArray[ip]);           	 
              }

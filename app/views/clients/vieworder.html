@@ -80,7 +80,8 @@
 
 		     <a ng-show ="(orderData.status == 'ACTIVE')&&PermissionService.showMenu('CHANGEPLAN_ORDER')" href="#/neworder/{{orderData.pdid}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
 		     <a ng-show ="orderData.status == 'PENDING'" href="#/provision/{{orderData.id}}/{{clientId}}/{{orderServicesData[0].serviceId}}" class="btn btn-primary"><i class="icon-cog"></i>Provision It</a>
-		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/editprovison/{{orderData.id}}/{{clientId}}/{{orderServicesData[0].serviceId}}" class="btn btn-primary"><i class="icon-cog"></i>Edit Provision</a> 
+		     <a ng-show ="orderData.status == 'ACTIVE'" href="#/editprovison/{{orderData.id}}/{{clientId}}/{{orderServicesData[0].serviceId}}" class="btn btn-primary"><i class="icon-cog"></i>Edit Provision</a>
+		     <a ng-show="(orderData.status == 'DISCONNECTED')&&PermissionService.showMenu('RECONNECT_ORDER')" ng-click="terminate()" class="btn btn-primary"><i class=" icon-repeat icon-white"></i> Terminate</a> 
 		     <!-- <a ng-show ="orderData.status == 'PENDING'" href="#/provision/{{orderData.id}}" class="btn btn-primary"><i class="icon-cog"></i>Provision It</a> -->
 		    
 	      	
@@ -492,6 +493,25 @@
                         <button id="submit" class="btn btn-primary" ng-click="approveReconnect()" ng-disabled="flagApproveReconnect">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
+      
+    <script type="text/ng-template" id="ApproveTerminate.html">
+
+                    <div class="modal-header silver">
+                        <h3 class="bolder">{{'dialog.terminate.title.message' | translate}}</h3>
+                    </div>
+                    <div class="modal-body modal-big">
+       <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+                       <h4>Are you sure?</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
+                        <button id="submit" class="btn btn-primary" ng-click="approveTerminate()" ng-disabled="flagApproveTerminate">{{'label.confirm' | translate}}</button>
+                    </div>
+      </script>  
       
       <script type="text/ng-template" id="ProvisioningSystemPop.html">
                     <div class="modal-header silver">

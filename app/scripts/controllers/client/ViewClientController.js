@@ -137,20 +137,20 @@
 
                     //if (data.status.value == "Active") {
                       scope.buttons = [{
+
+                      	                  name:"button.sale",
+                      	                  href:"#/addonetimesale",
+                      	                  icon:"icon-tag",
+                      	                  ngShow : bookOrder
+                         	            },
+                         	            {
                                           name:"button.neworder",
                                           href:"#/neworder/0",
                                           icon :"icon-plus-sign",
                                           ngShow : bookOrder
                                         	 
                                         },
-
-
-                                        /*{
-
-                                      	  name:"button.eventorder",
-                                      	  href:"#/eventorder",
-                                      	  icon:"icon-barcode"
-                                         	},*/
+                                      
                                         {
                                           name:"button.newTicket",
                                           href:"#/newTicket",

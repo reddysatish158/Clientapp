@@ -184,7 +184,7 @@
 					
 					<td width="1.5" bgcolor="black"><BR></td>
 					
-					<td width="150" valign="top" align="left">
+					<td width="150" valign="top" align="center">
 						<p style="color:black;">&nbsp;&nbsp;&nbsp;Existing Service Parameters</p>
 						
 						<table>
@@ -212,13 +212,14 @@
 								<td>Ip Address:</td>
 								<td>&nbsp;</td>
 								<td style="display: inline-block;" ng-repeat="exitIpAddres in exitIpAddress">{{exitIpAddres}}</td>
+								<td>{{exit.ipaddr}}</td>
 							</tr> 
 							<tr>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
-							<tr>
+							<tr ng-show="formData.paramValue">
 								<td>Service:</td>
 								<td>&nbsp;</td>
 								<td>{{formData.paramValue}}</td>
@@ -228,10 +229,10 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
-							<tr>
+							<tr ng-show="exit.vlan">
 								<td>VLAN:</td>
 								<td>&nbsp;</td>
-								<td>{{formData.vLan}}</td>
+								<td>{{exit.vlan}}</td>
 							</tr>
 						</table>
 						

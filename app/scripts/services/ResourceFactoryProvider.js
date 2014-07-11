@@ -332,6 +332,11 @@
            	update: { method: 'PUT' },
             get: {method: 'GET', params: {}},
         }),
+        
+        OrderTerminateResource: defineResource(apiVer + "/orders/terminate/:orderId", {orderId:'@orderId'},{
+           	update: { method: 'PUT' },
+          
+        }),
         OrderrenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder/:orderId", {orderId:'@orderId'},{
         	 get: {method: 'GET', params: {}},
         	update: { method: 'PUT' }

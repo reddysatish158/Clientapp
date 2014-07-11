@@ -240,6 +240,7 @@
   
   "#view client":"",
   "button.neworder":"Book Order",
+  "button.sale":"New Sale",
   "button.adjustments":"Post Adjustment",
   "button.payments":"Make Payment",
   "button.invoice":"Do Invoice",
@@ -274,6 +275,7 @@
   "error.msg.clientIdentifier.type.duplicate":"Already exists with this document type",
   "validation.msg.client.firstname.cannot.be.blank":"First name cannot be blank",
   "validation.msg.client.lastname.cannot.be.blank":"Last name cannot be blank",
+  "error.msg.unable.to.generate.changegroup.request.because.order.is.not.active":"Unable to generate change group request because order is not in active state",
 
   "#edit client":"",
   "label.individual":"Individual",
@@ -1785,7 +1787,8 @@
 "dialog.statement.title.message":"Prepare Statement",
   
 
-"dialog.reconnect.title.message":"Reconnect",  
+"dialog.reconnect.title.message":"Reconnect",
+"dialog.terminate.title.message":"Terminate",  
 
 "#Profile":"......",
 "label.heading.userid":"User ID",
