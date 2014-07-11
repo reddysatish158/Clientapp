@@ -1377,6 +1377,8 @@
   "label.serialNumber":"Serial Number",
   "validation.msg.onetimesale.discountId.cannot.be.blank":"Please Select Discount",
   "validation.msg.onetimesale.quantity.not.greater.than.zero":"Quantity cannot be less then one",
+  "validation.msg.onetimesale.saleType.cannot.be.blank":"Please Select Sale Type",
+  "validation.msg.onetimesale.officeId.cannot.be.blank":"office Id cannot be blank",
  
   
   "#EventResources":"....",
