@@ -247,7 +247,8 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
       'client/AddNewCreditCardController',
-      'system/EditIpPoolingController'
+      'system/EditIpPoolingController',
+      'system/DalpayDetailsFormController'
 
     ],
     filters: [

@@ -852,6 +852,15 @@
       })
       .when('/editippolling/:id', {
         templateUrl : 'views/system/editippolling.html'
+      })
+      .when('/dalpaybtn', {
+        templateUrl : 'views/system/daypaybutton.html'
+      })
+      .when('/daypaydetailsform', {
+        templateUrl : 'views/system/daypaydetailsform.html'
+      })
+      .when('/dalpaysuccess', {
+        templateUrl : 'views/system/dalpaySuccess.html'
       });
 
     $locationProvider.html5Mode(false);

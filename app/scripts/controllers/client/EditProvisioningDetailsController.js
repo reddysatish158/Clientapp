@@ -68,7 +68,7 @@
     		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
     			 temp.paramName = scope.parameterDatas[param].paramName;
 
-    			 /*temp.paramValue = scope.parameterDatas[param].paramValue;
+    			 temp.paramValue = scope.parameterDatas[param].paramValue;
     			var ipArray =  JSON.parse(temp.paramValue);
     			 
                  for(var ip in ipArray){              	 
@@ -78,7 +78,7 @@
                  if(scope.addIpAddress.length > 1)
              		scope.formData.ipType = "Multiple";
              	else
-             		scope.formData.ipType = "Single";*/
+             		scope.formData.ipType = "Single";
     			
                 
     		}
