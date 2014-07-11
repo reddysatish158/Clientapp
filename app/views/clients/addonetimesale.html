@@ -92,6 +92,17 @@
 						<tr>
 							<td>
 								<div class="control-group">
+            					<label class="control-label" for="saleType">Sale Type</label>
+            					<div class="controls">
+             					 <select ng-model="formData.saleType" ng-change="saleChange(formData.saleType)">
+             					 	<option value="FirstSale" >First Sale</option>
+             					 	<option value="SecondSale">Second Sale</option>
+             					 </select>
+            					</div>
+          						</div>
+							</td>
+							<td>
+								<div class="control-group">
                         		<label class="control-label">{{ 'label.saleDate' | translate }}</label>
                         		<div class="controls">
                             	<input type="text" datepicker-pop="dd MMMM yyyy" ng-model="date.saleDate" is-open="opened2" min="minDate" max="maxDate" 
@@ -99,6 +110,19 @@
                         		</div>
           						</div>
 							</td>
+						
+						</tr>
+						<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="officeId">officeId</label>
+            					<div class="controls">
+             					 <select ng-model="formData.officeId" ng-options="officesData.id as officesData.name for officesData in officesDatas" value="{{itemData.id}}">
+             					 </select>
+            					</div>
+          						</div>
+							</td>
+							
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="chargeCode">{{ 'label.chargeCode' | translate }}</label>
@@ -107,18 +131,19 @@
             					</div>
           						</div>
 							</td>
-							</tr>
-							<tr>
+						
+						</tr>
+						<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.itemId" ng-change="itemData(formData.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
+             					 <select ng-model="formData.itemId" ng-change="itemData(formData.itemId,formData.saleType,formData.officeId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
              					 </select>
             					</div>
           						</div>
 							</td>
-							<td>
+							<td ng-show="formData.saleType=='FirstSale'">
 								<div class="control-group">
             					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
             					<div class="controls">
@@ -126,28 +151,38 @@
             					</div>
           						</div>
 							</td>
-							</tr>
-							<tr>
+							<td ng-show="formData.saleType=='SecondSale'">
+								<div class="control-group">
+            					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
+            					<div class="controls">
+              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" ng-change="totalPriceCal(formData.totalPrice)" style="background-color:#FFFFFF;">
+            					</div>
+          						</div>
+							</td>
+							
+						</tr>
+						<tr>
 							<td>
 								<div class="control-group">
             					<label class="control-label" for="quantity">{{ 'label.quantity' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId)" ng-model="formData.quantity">
+              					<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId,formData.officeId,formData.saleType)" ng-model="formData.quantity">
             					</div>
           						</div>
 							</td>
-							<td>
+							<td ng-show="formData.saleType=='FirstSale'">
 								<div class="control-group">
             					<label class="control-label" for="unitPrice">{{ 'label.unitPrice' | translate }}</label>
             					<div class="controls">
               					<input type="text" id="unitPrice" ng-model="formData.unitPrice" style="background-color:#FFFFFF;" readonly>
             					</div>
           						</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="control-group">
+							</td>
+							
+						</tr>
+						<tr>
+							<td>
+								<div class="control-group" ng-show="formData.saleType=='FirstSale'">
             					<label class="control-label" for="discountId">{{ 'label.discountCode' | translate }}</label>
             					<div class="controls">
              					 <select ng-model="formData.discountId"  ng-options="discountMasterData.discountMasterId as discountMasterData.discountDescription for discountMasterData in discountMasterDatas" value="{{discountMasterData.id}}">
@@ -155,15 +190,16 @@
             					</div>
           						</div>
           					</td>
-								<td>
-									<div class="control-group" ng-show="formData.quantity" ng-repeat="item in getNumber(formData.quantity)" name="serialNumberDiv">
-                                     <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
-                                      <div class="controls">
-             	                        <input type="text" ng-model="itemDetail" name="serialNumber" typeahead="itemDetail for itemDetail in getData($viewValue)">
-                                      </div>
-                                    </div>	
-								</td>
-							</tr>
+          					<td>
+								<div class="control-group" ng-show="formData.quantity" ng-repeat="item in getNumber(formData.quantity)" name="serialNumberDiv">
+                                <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
+                                <div class="controls">
+             	                <input type="text" ng-model="itemDetail" name="serialNumber" typeahead="itemDetail for itemDetail in getData($viewValue)">
+                                </div>
+                                </div>	
+							</td>
+						</tr>
+						
 					</table>
 			
 				</td>

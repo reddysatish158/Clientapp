@@ -18,9 +18,10 @@
 		        scope.email=clientData.email;
 		        scope.phone=clientData.phone;
 		        scope.itemId=null;
-	          scope.data={};
-	          scope.maxDate = new Date();
-	          
+		        scope.data={};
+		        scope.maxDate = new Date();
+		        var previousChargeCode=null;
+		        scope.formData.saleType="FirstSale";
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	            
 	        	scope.itemDatas = data.itemDatas;
@@ -29,20 +30,33 @@
 	            scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
-	            
+	            scope.officesDatas=data.officesData;
 	        });
 	        
-	        scope.itemData=function(itemId){
+	        scope.itemData=function(itemId,saleType,officeId){
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
-	        		
-	        		scope.formData=data;
+	        		if(saleType=='SecondSale'){
+	        			scope.formData.chargeCode="NONE";
+	        		}else{
+	        			scope.formData=data;
+	        			previousChargeCode=data.chargeCode;
+	        		}
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
-	        		
+	        		scope.formData.saleType=saleType;
+	        		scope.formData.officeId=officeId;
 		        });	
 	        };
-	        
-	        scope.itemDataQuantity=function(quantity,itemId){
+	        scope.saleChange=function(type){
+	        	if(type=='SecondSale'){
+	        		scope.formData.chargeCode="NONE";
+	        	}
+	        	else{
+	        		scope.formData.chargeCode=previousChargeCode;
+	        	}
+	        	
+	        };
+	        scope.itemDataQuantity=function(quantity,itemId,officeId,saleType){
 	        	this.data.unitPrice=this.formData.unitPrice;
 	        	this.data.locale="en";
 	        	this.data.quantity=quantity;
@@ -51,10 +65,20 @@
 	        		scope.formData=data;
 	        		scope.formData.quantity=quantity;
 	        		scope.formData.itemId=itemId;
+	        		scope.formData.officeId=officeId;
+	        		scope.formData.saleType=saleType;
+	        		if(saleType=='SecondSale'){
+	        			scope.formData.chargeCode='NONE';
+	        		}
+	        		
 	        		 scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 		        });	
 	        };
-	        
+	        scope.totalPriceCal=function(totalprice){
+	        	
+	        	scope.formData.unitPrice=totalprice;
+	        	
+	        };
 	       
 	        scope.getData = function(query){
 /*	        	if(query.length>0){
@@ -65,7 +89,7 @@
 	        	}else{
 	            	
 	        	}*/
-	        	return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemId, {
+	        	return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemId+'/'+scope.formData.officeId, {
 	        	      params: {
 	        	    	  query: query
 	        	      }
