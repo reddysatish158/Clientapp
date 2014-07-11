@@ -100,9 +100,9 @@
 							</td>
 							<td>
 								<div class="control-group">
-            					<label class="control-label" for="chargeCode">{{ 'label.chargeCode' | translate }}</label>
+            					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="chargeCode" ng-model="formData.chargeCode" style="background-color:#FFFFFF;" readonly>
+              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" ng-change="totalPriceCal(formData.quantity,formData.totalPrice)" style="background-color:#FFFFFF;">
             					</div>
           						</div>
 							</td>
@@ -118,12 +118,12 @@
           						</div>
 							</td>
 							<td>
-								<div class="control-group">
-            					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" ng-change="totalPriceCal(formData.quantity,formData.totalPrice)" style="background-color:#FFFFFF;">
-            					</div>
-          						</div>
+								<div class="control-group" ng-show="formData.quantity" ng-repeat="item in getNumber(formData.quantity)" name="serialNumberDiv">
+                                 <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
+                                 <div class="controls">
+             	                 <input type="text" ng-model="itemDetail" name="serialNumber" typeahead="itemDetail for itemDetail in getData($viewValue)">
+                                 </div>
+                                </div>	
 							</td>
 							
 							</tr>
@@ -136,14 +136,7 @@
 									<button id="submit" type="submit" class="btn btn-primary">{{'button.save' | translate}}</button>
 								</div>
 								</td>
-								<td>
-									<div class="control-group" ng-show="formData.quantity" ng-repeat="item in getNumber(formData.quantity)" name="serialNumberDiv">
-                                     <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
-                                      <div class="controls">
-             	                        <input type="text" ng-model="itemDetail" name="serialNumber" typeahead="itemDetail for itemDetail in getData($viewValue)">
-                                      </div>
-                                    </div>	
-								</td>
+								
 							</tr>
 					</table>
 			
