@@ -2,8 +2,9 @@
   mifosX.controllers = _.extend(module, {
 	  IpPoolingController: function(scope,route,routeParams,location, resourceFactory, paginatorService) {
 		  
-		  scope.ippoolingdatas = [];
-		  
+		  scope.ippoolingdatas = {};
+		  scope.formData=[];
+		  scope.formData.source='all';
 		  scope.ipPoolingAllData = function(offset, limit, callback) {
 	 			 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit} , callback);
 			};
@@ -19,11 +20,31 @@
 	        	}
 	          };
 	          
-	      scope.searchIpPoolData = function(offset, limit, callback) { 
-		    	  resourceFactory.ipPoolingResource.get({offset: offset, limit: limit, sqlSearch: scope.filterText} , callback);
+	          scope.changeSourceData = function(offset, limit, callback) {
+	        	  if(scope.formData.source =='all' ){
+						 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit} , callback);
+	        	  }else{
+					 resourceFactory.ipPoolingResource.get({offset: offset, limit: limit, 
+						 status: scope.formData.source  } , callback);
+		          };
+	          }
+	             scope.changeSource=function(source){
+				
+				// resourceFactory.ipPoolingResource.get({offset: offset, limit: limit,source:source} , callback);
+		          scope.ippoolingdatas  = paginatorService.paginate(scope.changeSourceData, 14);
+			      };
+	      
+			      scope.searchIpPoolData = function(offset, limit, callback) { 
+	    	       if(scope.formData.source =='all' ){
+		    	      resourceFactory.ipPoolingResource.get({offset: offset, limit: limit,sqlSearch: scope.filterText} , callback);
+	    	       }else{
+	    		  resourceFactory.ipPoolingResource.get({offset: offset, limit: limit,status: scope.formData.source, sqlSearch: scope.filterText}, callback);
+	    		  
+	    	       }
 		          };
 		  		
 		  scope.searchIpPool = function(filterText) {
+			  console.log("ippool");
 		  			scope.ippoolingdatas = paginatorService.paginate(scope.searchIpPoolData, 14);
 		  		};    
 		  

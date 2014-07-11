@@ -123,11 +123,11 @@
                       <div class="span7">
                         <table  width="100%" >
                             <tr>
-                              <td width="35%">{{'label.firstname' | translate}}</td>
+                              <td width="35%">{{'label.clinetfirstname' | translate}}</td>
                               <td width="65%">{{client.firstname}}</td>
                             </tr>
                             <tr>
-                              <td>{{'label.lastname' | translate}}</td>
+                              <td>{{'label.clientlastname' | translate}}</td>
                               <td>{{client.lastname}}</td>
                             </tr>
                             <tr>
@@ -558,7 +558,8 @@
   
 		    <div id="pane1" class="tab-pane" ng-class="{active: eventsaleC}">
 				<div class="pull-right">
-					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> New Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addsecondsale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Second Sale</a>
 				</div>
     
 			    <div>
@@ -1146,6 +1147,43 @@
 				    <td>{{clientDistribution.paymentId}}</td>
 					<td>{{clientDistribution.invoiceId}}</td>
 					<td>{{clientDistribution.amount}}</td> 
+				</tr>
+			</tbody>
+		</table>
+		<ul class="pager">
+        			<li class="previous"><a ng-click="transactionhistory.previous()" href="" ng-disabled="!transactionhistory.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="transactionhistory.next()" href="" ng-disabled="!transactionhistory.hasNext()">Next &rarr;</a></li>
+    			</ul>
+	</div>
+</tab>
+
+
+<tab heading="Network" select="getClientNetworkIpsFetchFunction()" ng-show="$parent.PermissionService.showMenu('READ_CREDITDISTRIBUTION')">
+    <div>
+     <form ng-submit="searchTransactionHistory()">
+		<input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name/Serial Number">
+	 </form>
+		<table class="table">
+			<thead>
+				<tr class="graybg">
+				 	<th>{{'table.heading.id' | translate}}</th>
+					<th>{{'label.ippooling.description' | translate}}</th>
+					<th>{{'label.ippooling.ipaddress' | translate}}</th>
+					<th>{{'table.ippooling.notes' | translate}}</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				    <th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="ippoolData in  ippoolDatas | filter:filterText">
+					<td>{{ippoolData.id}}</td>
+					<td>{{ippoolData.ipPoolDescription}}</td>
+					<td>{{ippoolData.ipAddress}}</td>
+				    <td>{{ippoolData.notes}}</td>
+				   <td><a ng-click="sendIp(ippoolData.id)" popover="Check IpStatus" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a></td>
+				   <td ng-show="ipstatus && ipId==ippoolData.id "><i class="icon-stop {{ipstatus | StatusLookup}}"></i>&nbsp;{{ipstatus}}</td>
+				   <td></td>
 				</tr>
 			</tbody>
 		</table>

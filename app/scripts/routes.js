@@ -444,7 +444,7 @@
       .when('/renewalOrder/:id/:clientId', {
         templateUrl: 'views/clients/renewalorder.html'
       })
-      .when('/provision/:orderId/:clientId', {
+      .when('/provision/:orderId/:clientId/:serviceId', {
         templateUrl: 'views/clients/createprovisioning.html'
       })
       .when('/voucherpins', {
@@ -829,7 +829,7 @@
       .when('/redemption',{
      templateUrl: 'views/organization/redemption.html'
       })
-      .when('/editprovison/:orderId/:clientId', {
+      .when('/editprovison/:orderId/:clientId/:serviceId', {
         templateUrl: 'views/clients/editProvisioning.html'
       })
       .when('/addcreditcarddetails/:clientId', {
@@ -853,6 +853,12 @@
       .when('/editippolling/:id', {
         templateUrl : 'views/system/editippolling.html'
       })
+      .when('/viewgroupdetails/:groupName', {
+        templateUrl : 'views/organization/viewgroupdetails.html'
+      })
+      .when('/addsecondsale/:id', {
+        templateUrl: 'views/clients/addsecondsale.html'
+      })
       .when('/dalpaybtn', {
         templateUrl : 'views/system/daypaybutton.html'
       })
@@ -862,7 +868,8 @@
       .when('/dalpaysuccess', {
         templateUrl : 'views/system/dalpaySuccess.html'
       });
-
+      
+    
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

@@ -18,9 +18,10 @@
 	<table class="table">
         <thead>
             <tr class="graybg">
-                <th>Name</th>
+                <th>Client Name</th>
                 <th>Status</th>
                 <th>Account #</th>
+                <th>Group</th>
                 <th>Office</th>
                 <th>Serial No</th>
                 <th>Balance</th>
@@ -31,6 +32,7 @@
                 <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.displayName}}</td>
                 <td class="pointer" data-ng-click="routeTo(client.id)" ><i class="icon-stop {{client.status.value | StatusLookup}}"></i>&nbsp;{{client.status.value}}</td>
                 <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.accountNo}}</td>
+                <td class="pointer" data-ng-click="routeToGroup(client.groupName)" >{{client.groupName}}</td>
                 <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.officeName}}</td>
                 <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.hwSerialNumber}}</td>
                 <td class="pointer" data-ng-click="routeTo(client.id)" >{{client.balanceAmount}}</td>

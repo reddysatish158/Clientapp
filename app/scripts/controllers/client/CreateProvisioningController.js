@@ -4,10 +4,12 @@
         scope.orderId = routeParams.orderId;
 		scope.provisioningdata= [];
         scope.services= [];
+        scope.serviceparams= [];
         scope.ipPoolDatas=[];
         scope.vlanDatas=[];
         scope.formData={};
         scope.addIpAddress = [];
+        scope.groupDatas =[];
         
         var clientData = webStorage.get('clientData');
         var orderData = webStorage.get('orderData');
@@ -28,18 +30,34 @@
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
         scope.ipTypeDatas = ["Single","Multiple"];
+
         scope.IPAddressType = true;
    		scope.subnetType = false;
    		scope.formData.ipRange = "ipAddress";
    		scope.IPAddressObj = {ipAddress:undefined};
+
      
-       resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
+       resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId,serviceId:routeParams.serviceId} , function(data) {
     	   scope.parameterDatas=data.parameterDatas;
     	   scope.provisioningdata=data;
     	   scope.services=data.services;
     	   scope.ipPoolDatas=data.ipPoolDatas;
     	   scope.vlanDatas=data.vlanDatas;
-                
+    	   scope.serviceparams=data.serviceDatas;
+    	   scope.groupDatas=data.groupDatas;
+    	   scope.formData.serviceName=data.services[0].serviceId;
+    	   console.log(scope.parameterDatas);
+      
+    	   for(var param in scope.parameterDatas){
+       		  var temp = {};
+       	
+       		if(scope.parameterDatas[param].paramName == "SERVICE" && scope.parameterDatas[param].type == "Single"){
+       			scope.parameterDatas[param].paramValue = data.serviceDatas[0].paramValue;
+       			
+       		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME" && scope.parameterDatas[param].type == "Single"){
+       			scope.parameterDatas[param].paramValue =data.groupDatas[0].groupName;
+       		}
+       		}
             });
        
        
@@ -63,7 +81,7 @@
         	else if(scope.addIpAddress.length == 1)
         		scope.formData.ipType = "Single";
         	else
-        		scope.formData.ipType = undefined;
+        		scope.formData.ipType = "Subnet";
         	
         	scope.IPAddressObj.ipAddress = undefined;
 
@@ -81,6 +99,7 @@
    		
    	};
    	scope.selectedIPAddress  = function(data){
+
    		scope.IPAddressType = true;
    		scope.subnetType = false;
    		scope.formData.ipRange = data;
@@ -90,10 +109,34 @@
    		scope.formData.ipType = undefined;
    	};
    	scope.selectedSubnet  = function(data){
+   		
    		scope.subnetType = true;
    		scope.IPAddressType = false;
    		scope.formData.ipRange = data;
    		delete scope.addIpAddress;
+   	};
+   	
+   	scope.selectService=function(serviceId){
+
+       resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId,serviceId:serviceId} , function(data) {
+     	   scope.parameterDatas=data.parameterDatas;
+     	   scope.provisioningdata=data;
+     	   scope.services=data.services;
+     	   scope.ipPoolDatas=data.ipPoolDatas;
+     	   scope.vlanDatas=data.vlanDatas;
+     	  	for(var param in scope.parameterDatas){
+         		  var temp = {};
+         		
+         		if(scope.parameterDatas[param].paramName == "SERVICE" && scope.parameterDatas[param].type == "Single"){
+         			scope.parameterDatas[param].paramValue = data.serviceDatas[0].paramValue;
+         		
+         		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME" && scope.parameterDatas[param].type == "Single"){
+         			scope.parameterDatas[param].paramValue =data.groupDatas[0].groupName;
+         		}
+         		}
+                 
+             });
+   		
    	};
    	
         scope.submit = function() {
@@ -101,6 +144,7 @@
         	scope.formData.orderId=routeParams.orderId;
         	scope.formData.planName=scope.planName;
         	scope.formData.macId=scope.device;
+        	scope.formData.ipRange
         	
         	   scope.serviceParameters=[];
         	for(var param in scope.parameterDatas){
@@ -131,7 +175,7 @@
         			 if(scope.subnetType){
         				 temp.paramValue = scope.IPAddressObj.ipAddress;
         				 if(temp.paramValue)
-        				  scope.formData.ipType = "Single";
+        				  scope.formData.ipType = "Subnet";
         				 else
         					 scope.formData.ipType = undefined;
         			 }

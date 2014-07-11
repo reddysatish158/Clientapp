@@ -15,6 +15,37 @@
             	</div>
           </div>
           
+           <tab heading="Dash Board">
+        
+         <h3 class="paddedleft">TicketDashboard</h3>
+    <div data-ng-controller="AssignedTicketController">
+        <div class="row">
+            <div class="span10 paddedleft90">
+                <panelbig title="Tickets from {{bOfficeName}} ({{chartType}})" >
+                    <div style="margin-left:40px;margin-top:40px;">
+                        <nvd3-multi-bar-chart
+                                data="BarData"
+                                id="barchart"
+                                width="770"
+                                height="350"
+                                color="colorFunction()"
+                                showLegend="true">
+                            <svg></svg>
+                        </nvd3-multi-bar-chart>
+                    </div>
+                    <div>
+                        <button type="button" class="btn-silver btn-tooltip" data-ng-click="getWeeklyData()"><i class="icon-table"></i>Week</button>
+                        <button type="button" class="btn-silver btn-tooltip" data-ng-click="getMonthlyData()"><i class="icon-table"></i>Month</button>
+                        <button type="button" class="btn-silver btn-tooltip" data-ng-click="getDailyData()"><i class="icon-table"></i>Days</button>
+                        <select class="input-small-tooltip pull-right" name="office1" ng-change="getDailyData()" id="office1" ng-model="officeId" data-ng-options="office.id as office.name for office in offices" value="{{office.id}}">
+                            <option value="">--Office--</option>
+                        </select>
+                    </div>
+                </panelbig>
+            </div>
+        </div>
+    </div>
+      </tab>
       <tab heading="Open" select="getOpenTickets()">
         
         <div class="row-fluid">
@@ -215,4 +246,6 @@
     </div>
 
   </div>
+  
+
 

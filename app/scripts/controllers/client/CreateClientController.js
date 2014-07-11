@@ -8,7 +8,7 @@
         scope.formData = {};
         scope.clientCategoryDatas=[];
         scope.configurationProperty=[];
-       
+       scope.formData.entryType ='ORP';
         
         resourceFactory.clientTemplateResource.get(function(data) {
             scope.offices = data.officeOptions;
@@ -20,7 +20,7 @@
             scope.configurationProperty=data.configurationProperty.enabled;
             scope.formData.clientCategory=scope.clientCategoryDatas[0].id;
             scope.groupNameDatas = data.groupNameDatas;
-
+            
         });
         
        

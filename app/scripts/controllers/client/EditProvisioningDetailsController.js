@@ -9,7 +9,9 @@
         scope.vlanDatas=[];
         scope.formData={};
         scope.addIpAddress = [];
-        
+        scope.serviceDatas =[];
+        scope.exit={};
+        scope.exitIpAddress = [];
         var clientData = webStorage.get('clientData');
         var orderData = webStorage.get('orderData');
         scope.statusActive=clientData.statusActive;
@@ -34,52 +36,81 @@
    		scope.formData.ipRange = "ipAddress";
    		scope.IPAddressObj = {ipAddress:undefined};
     
-       resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.orderId} , function(data) {
+       resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.orderId,serviceId: routeParams.serviceId} , function(data) {
     	   
     	   scope.parameterDatas=data.parameterDatas;
     	   scope.provisioningdata=data;
     	   scope.services=data.services;
     	   scope.ipPoolDatas=data.ipPoolDatas;
     	   scope.vlanDatas=data.vlanDatas;
+    	   scope.serviceDatas=data.serviceDatas;
+    	   scope.formData.serviceName=data.services[0].serviceId;
+    	   scope.exit.servicename=data.services[0].servicecode;
+    	   scope.IPAddressType = true;
+      		scope.subnetType = false;
+      		scope.type="ipaddress";
     	   
-    	for(var param in scope.parameterDatas){
+    	   
+    	for(var param in scope.serviceDatas){
     		
 
     		  var temp = {};
-    		 
-    		  
-    		if(scope.parameterDatas[param].paramName == "SERVICE"){
+    		
+    		if(scope.serviceDatas[param].paramName == "SERVICE"){
     			
-    			 temp.paramName = scope.parameterDatas[param].paramName;
-    			 scope.formData.serviceName = scope.parameterDatas[param].paramValue;
+    			 temp.paramName = scope.serviceDatas[param].paramName;
+    			 scope.formData.service = scope.serviceDatas[param].paramValue;
+    			  
                // scope.serviceParameters.push(temp);
-    		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME"){
+    		}else if(scope.serviceDatas[param].paramName == "GROUP_NAME"){
     			
-    			 temp.paramName = scope.parameterDatas[param].paramName;
+    			 temp.paramName = scope.serviceDatas[param].paramName;
     			//temp.paramValue = this.formData.groupName;
     			//scope.serviceParameters.push(temp);
                // delete this.formData.groupName;
                 
-    		}else if(scope.parameterDatas[param].paramName == "VLAN_ID"){
+    		}else if(scope.serviceDatas[param].paramName == "VLAN_ID"){
     			
-    			 temp.paramName = scope.parameterDatas[param].paramName;
-                scope.formData.vLan=scope.parameterDatas[param].paramValue;
+    			 temp.paramName = scope.serviceDatas[param].paramName;
+                scope.formData.vLan=scope.serviceDatas[param].paramValue;
+                scope.exit.vlan=scope.serviceDatas[param].paramValue;
                 
-    		}else if(scope.parameterDatas[param].paramName == "IP_ADDRESS"){
-    			 temp.paramName = scope.parameterDatas[param].paramName;
+                
+                
+    		}else if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
+    			 scope.exit.ipaddr=undefined;
+    			 temp.paramName = scope.serviceDatas[param].paramName;
+    			temp.paramValue = scope.serviceDatas[param].paramValue;
+    			scope.exit.ipValue=scope.serviceDatas[param].paramValue;
 
-    			 temp.paramValue = scope.parameterDatas[param].paramValue;
+    			var ipValues =temp.paramValue;
+    			var found = temp.paramValue.match("/");
+    			
+    			if(found){
+    				var params=ipValues.split("/");
+    			//	scope.subnetType = true;
+    			//	scope.IPAddressType = false;
+    				 scope.exit.ipaddr=temp.paramValue;
+    				/*scope.type='subnet';	 
+    				 scope.exit.ipaddr=temp.paramValue;
+    				  for(var v in params){              	 
+    	                
+    	                	 scope.IPAddressObj.ipAddress=params[0];
+    	                	 scope.formData.subnet=params[1];
+    	                 }*/
+    			}else{
     			var ipArray =  JSON.parse(temp.paramValue);
-    			 
-                 for(var ip in ipArray){              	 
-                	 scope.addIpAddress.push(ipArray[ip]);              	 
+    			scope.exitIpAddress=[];
+                 for(var ip in ipArray){      	 
+                	 scope.exitIpAddress.push(ipArray[ip]);            	 
                  }
                  
                  if(scope.addIpAddress.length > 1)
              		scope.formData.ipType = "Multiple";
              	else
              		scope.formData.ipType = "Single";
-    			
+
+    			}
                 
     		}
     		
@@ -89,6 +120,109 @@
             });
        
        
+   	scope.selectService=function(serviceId){
+   		
+   	 resourceFactory.provisioningtemplateDataResource.get({orderId: routeParams.orderId,serviceId:serviceId} , function(data) {
+   	  scope.formData.serviceName=serviceId;
+  	   scope.parameterDatas=data.parameterDatas;
+  	   scope.provisioningdata=data;
+  	   scope.services=data.services;
+  	   scope.ipPoolDatas=data.ipPoolDatas;
+  	   scope.vlanDatas=data.vlanDatas;
+  	  scope.serviceDatas=data.serviceDatas;
+  	   
+  	for(var param in scope.serviceDatas){
+  		
+
+  		  var temp = {};
+  		 
+  		 
+  		if(scope.serviceDatas[param].paramName == "SERVICE"){
+  			
+  			 temp.paramName = scope.serviceDatas[param].paramName;
+  		     scope.formData.service = scope.serviceDatas[param].paramValue;
+  		     
+             // scope.serviceParameters.push(temp);
+  		}else if(scope.serviceDatas[param].paramName == "GROUP_NAME"){
+  			
+  			 temp.paramName = scope.serviceDatas[param].paramName;
+  			//temp.paramValue = this.formData.groupName;
+  			//scope.serviceParameters.push(temp);
+             // delete this.formData.groupName;
+              
+  		}else if(scope.serviceDatas[param].paramName == "VLAN_ID"){
+  			
+  			 temp.paramName = scope.serviceDatas[param].paramName;
+              scope.formData.vLan=scope.serviceDatas[param].paramValue;
+              scope.exit.vlan=scope.serviceDatas[param].paramValue;
+              
+  		}else if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
+  			 temp.paramName = scope.serviceDatas[param].paramName;
+  			 temp.paramValue = scope.serviceDatas[param].paramValue;
+  			  scope.exit.ipValue=scope.serviceDatas[param].paramValue;
+  			
+  			var ipValues =temp.paramValue;
+			var found = temp.paramValue.match("/");
+			
+			if(found){
+				var params=ipValues.split("/");
+				//scope.subnetType = true;
+				//scope.IPAddressType = false;
+				//scope.type='subnet';	 
+				//scope.formData.ipRange = "subnet";
+				/*  for(var v in params){              	 
+	                
+	                	 scope.IPAddressObj.ipAddress=params[0];
+	                	 scope.formData.subnet=params[1];
+	                 }*/
+			}else{
+			var ipArray =  JSON.parse(temp.paramValue);
+			scope.exitIpAddress=[];
+			scope.formData.ipRange = "ipAddress";
+             for(var ip in ipArray){      	 
+            	 scope.exitIpAddress.push(ipArray[ip]);           	 
+             }
+             
+             if(scope.addIpAddress.length > 1)
+         		scope.formData.ipType = "Multiple";
+         	else
+         		scope.formData.ipType = "Single";
+			}
+
+              
+  		}
+  		
+  		  
+  	}
+              
+          });
+     
+   		
+   		/*
+
+        resourceFactory.provisioningCreatetemplateDataResource.get({orderId: routeParams.orderId,serviceId:serviceId} , function(data) {
+      	   scope.parameterDatas=data.parameterDatas;
+      	   scope.provisioningdata=data;
+      	   scope.services=data.services;
+      	   scope.ipPoolDatas=data.ipPoolDatas;
+      	   scope.vlanDatas=data.vlanDatas;
+      	  	for(var param in scope.parameterDatas){
+          		  var temp = {};
+          		
+          		if(scope.parameterDatas[param].paramName == "SERVICE" && scope.parameterDatas[param].type == "Single"){
+          		
+          			scope.parameterDatas[param].paramValue = data.serviceDatas[0].paramValue;
+          			
+          		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME" && scope.parameterDatas[param].type == "Single"){
+          			
+          			scope.parameterDatas[param].paramValue =data.groupDatas[0].groupName;
+          		}
+          		}
+                  
+              });*/
+    		
+    	};
+    	
        scope.getData = function(query){
     	   
           	if(query.length>0){
@@ -164,7 +298,7 @@
         		if(scope.parameterDatas[param].paramName == "SERVICE"){
         			
         			 temp.paramName = scope.parameterDatas[param].paramName;
-                    temp.paramValue = scope.parameterDatas[param].paramValue;
+                    temp.paramValue =this.formData.service;
                     scope.serviceParameters.push(temp);
         		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME"){
         			
@@ -178,7 +312,7 @@
         			 if(scope.subnetType){
         				 temp.paramValue = scope.IPAddressObj.ipAddress;
         				 if(temp.paramValue)
-        				  scope.formData.ipType = "Single";
+        				  scope.formData.ipType = "Subnet";
         				 else
         					 scope.formData.ipType = undefined;
         			 }

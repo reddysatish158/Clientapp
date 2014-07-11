@@ -10,6 +10,7 @@
          scope.staffData = {};
          scope.orders = [];
          scope.scheduleorders=[];
+         scope.ippoolDatas = [];
          scope.formData = {};
  		 scope.start = {};
          scope.start.date = new Date();
@@ -17,6 +18,8 @@
          scope.invoice="INVOICE";
          scope.adjustment="ADJUSTMENT";
          scope.PermissionService = PermissionService;
+         scope.ipstatus;
+         scope.ipId;
          
             var callingTab = webStorage.get('callingTab',null);
          if(callingTab == null){
@@ -134,20 +137,20 @@
 
                     //if (data.status.value == "Active") {
                       scope.buttons = [{
+
+                      	                  name:"button.sale",
+                      	                  href:"#/addonetimesale",
+                      	                  icon:"icon-tag",
+                      	                  ngShow : bookOrder
+                         	            },
+                         	            {
                                           name:"button.neworder",
                                           href:"#/neworder/0",
                                           icon :"icon-plus-sign",
                                           ngShow : bookOrder
                                         	 
                                         },
-
-
-                                        /*{
-
-                                      	  name:"button.eventorder",
-                                      	  href:"#/eventorder",
-                                      	  icon:"icon-barcode"
-                                         	},*/
+                                      
                                         {
                                           name:"button.newTicket",
                                           href:"#/newTicket",
@@ -420,7 +423,7 @@
         scope.getClientIdentityDocuments = function () {
         	
          //  console.log(scope.taxExemption);
-        	 if(scope.taxExemption=='Y'){
+        	 if(scope.taxExemption=='N'){
         	
         		 $('#onbtn').removeClass("btn-default");
              	  $('#onbtn').addClass("active btn-primary");
@@ -440,8 +443,8 @@
            	  $('#onbtn').addClass("active btn-primary");
            	  $('#offbtn').removeClass("active btn-primary");
            	  $('#offbtn').addClass("btn-default");
-           	  var obj = {"taxExemption":true};
-           	  scope.taxExemption='Y';
+           	  var obj = {"taxExemption":false};
+           	  scope.taxExemption='N';
              	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
              	});
              		
@@ -451,8 +454,8 @@
            	  $('#offbtn').addClass("active btn-primary");
            	  $('#onbtn').addClass("btn-default");
            	  $('#onbtn').removeClass("active btn-primary");
-           	  var obj = {"taxExemption":false};
-           	  scope.taxExemption='N';
+           	  var obj = {"taxExemption":true};
+           	  scope.taxExemption='Y';
                	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
                	});
              };
@@ -496,7 +499,13 @@
   			
   		  scope.getClientDistributionFetchFunction = function(offset, limit, callback) {
     			resourceFactory.creditDistributionResource.get({clientId: routeParams.id ,offset: offset, limit: limit} , callback);
-    			};		
+    			};
+    			
+    	  scope.getClientNetworkIpsFetchFunction = function() {
+    	   resourceFactory.clientIpPoolingResource.get({clientId: routeParams.id} , function(data) {
+               scope.ippoolDatas = data;
+           });
+    	  };
           scope.getTransactionHistory = function () {
           	scope.transactionhistory = paginatorService.paginate(scope.getTransactionHistoryFetchFunction, 14);
           };
@@ -789,7 +798,16 @@
           	scope.financialtransactions = paginatorService.paginate(scope.getFinancialTransactionsFetchFunction, 14);
           };
           
-          
+          scope.sendIp = function (id){    	                   
+              resourceFactory.ipStatusResource.update({id: id} , {} , function(data) {
+            	scope.ipstatus=data.resourceIdentifier;
+            	  console.log(data);
+            	 scope.ipId=id;
+              },function(errorData){
+              	
+              });
+                   
+      }; 
           scope.searchFinancialTransactions123 = function(offset, limit, callback) {
 	    	  resourceFactory.FineTransactionResource.getAllFineTransactions({ clientId: routeParams.id ,
 	    		  offset: offset, limit: limit ,sqlSearch: scope.filterText } , callback); 
@@ -908,6 +926,7 @@
             return bullet;
           });
 
+   
           function scoreData() {
             return {
               "title": "",

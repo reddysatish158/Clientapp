@@ -1,28 +1,5 @@
-<div  ng-controller="ClientOneTimeSaleController">
+<div  ng-controller="ClientSecondSaleController">
 	<div><ul class="breadcrumb">
-		<!-- <img ng-hide="imagePresent" src="../app/images/blank_avatar.jpg" alt="Avatar" width="40">
-    	<img ng-show="imagePresent" src="{{image}}" alt="Avatar" width="40">
-    	<li>
-          <h3>
-            &nbsp;
-            {{displayName}}
-            &nbsp;
-            <i class="icon-circle {{statusActive | StatusLookup}}"></i>
-            &nbsp;
-          </h3>
-        </li>
-        <li><span class="divider">|</span>
-          <i class="icon-barcode"></i>
-          <small>Uniquely identified  {{accountNo}}&nbsp;</small>
-        </li>
-        <li><span class="divider">|</span>
-          <i class="icon-building"></i>
-          <small>Office "{{officeName}}" </small>
-        </li>
-         <li><span class="divider">|</span>
-          <i></i>
-          <small>Balance {{balanceAmount}} &nbsp;{{currency}}</small>
-        </li> -->
         <table>
         <tr>
         <td>
@@ -83,7 +60,7 @@
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
 	<fieldset>
-		<legend>New Sale</legend>
+		<legend>Second Sale</legend>
 
 			<table>
 			<tr>
@@ -144,7 +121,7 @@
 								<div class="control-group">
             					<label class="control-label" for="totalPrice">{{ 'label.totalPrice' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" style="background-color:#FFFFFF;" readonly>
+              					<input type="text" id="totalPrice" ng-model="formData.totalPrice" ng-change="totalPriceCal(formData.quantity,formData.totalPrice)" style="background-color:#FFFFFF;">
             					</div>
           						</div>
 							</td>
@@ -152,31 +129,12 @@
 							</tr>
 							<tr>
 								<td>
-									<div class="control-group">
-            					<label class="control-label" for="discountId">{{ 'label.discountCode' | translate }}</label>
-            					<div class="controls">
-             					 <select ng-model="formData.discountId"  ng-options="discountMasterData.discountMasterId as discountMasterData.discountDescription for discountMasterData in discountMasterDatas" value="{{discountMasterData.id}}">
-             					 </select>
-            					</div>
-          						</div>
-          					</td>
-          					<td>
-								<div class="control-group">
-            					<label class="control-label" for="unitPrice">{{ 'label.unitPrice' | translate }}</label>
-            					<div class="controls">
-              					<input type="text" id="unitPrice" ng-model="formData.unitPrice" style="background-color:#FFFFFF;" readonly>
-            					</div>
-          						</div>
-							</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="offset3">
-										<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
+								<div class="offset3">
+									<a id="cancel" href="#/viewclient/{{clientId}}"><button type="reset" class="btn" ng-click="reset123()">{{'button.cancel' | translate}}</button></a>
 
-										<!-- <button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button> -->
-										<button id="submit" type="submit" class="btn btn-primary">{{'button.save' | translate}}</button>
-									</div>
+									<!-- <button id="submit" type="submit" class="btn btn-primary" ng-disabled="flag">{{'button.save' | translate}}</button> -->
+									<button id="submit" type="submit" class="btn btn-primary">{{'button.save' | translate}}</button>
+								</div>
 								</td>
 								<td>
 									<div class="control-group" ng-show="formData.quantity" ng-repeat="item in getNumber(formData.quantity)" name="serialNumberDiv">
@@ -192,7 +150,6 @@
 				</td>
 			</tr>
 			</table>
-			
 	</fieldset>
 </form>
 </div>

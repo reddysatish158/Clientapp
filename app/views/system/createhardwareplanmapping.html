@@ -17,7 +17,7 @@
 								<div class="control-group">
             					<label class="control-label" for="planCode">{{ 'table.plan.code' | translate }}</label>
             					<div class="controls">
-             					 <select ng-model="formData.planCode"  ng-options="planData.planCode as planData.planDescription for planData in planDatas" value="{{planData.planCode}}">
+             					 <select ng-model="formData.planCode"  ng-options="planData.planCode as planData.planCode for planData in planDatas" value="{{planData.planCode}}">
              					 </select>
             					</div>
           						</div>

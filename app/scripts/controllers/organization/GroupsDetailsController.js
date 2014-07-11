@@ -12,6 +12,9 @@
 	  		scope.searchDetails = function(filterText) {
 	  			scope.groupDetails = PaginatorService.paginate(scope.getSearchDetails, 14);
 	  		};
+	  		scope.routeTo = function(name){
+	             location.path('/viewgroupdetails/'+ name);
+	        };
 		
 		scope.groupDetailsFetchFunction = function(offset, limit, callback) {
 			resourceFactory.groupsDetailsResource.getDetails({offset: offset, limit: limit} , callback);

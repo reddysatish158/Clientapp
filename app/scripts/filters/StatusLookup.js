@@ -13,7 +13,7 @@
                         "New" : "statuspending",
                         "DISCONNECTED" :"statusbad",
                         "CLOSE" :"close",
-                        "DeActive" : "statusbad",
+                        "DEActive" : "statusbad",
                         "loanStatusType.submitted.and.pending.approval" : "statuspending",
                         "loanStatusType.approved" : "statusApproved",
                         "loanStatusType.active" : "statusactive",
