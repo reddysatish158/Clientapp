@@ -856,6 +856,9 @@
       .when('/viewgroupdetails/:groupName', {
         templateUrl : 'views/organization/viewgroupdetails.html'
       })
+      .when('/addsecondsale/:id', {
+        templateUrl: 'views/clients/addsecondsale.html'
+      })
 ;
 
     $locationProvider.html5Mode(false);
