@@ -129,8 +129,8 @@
 								<div class="control-group" ng-show="parameterData.paramName == 'SERVICE'">
             					<label class="control-label" for="chargeCode">{{ 'label.provisioning.service' | translate }}</label>
             					<div class="controls">
-              					<input ng-show="parameterData.type == 'Single'" type="text" id="service" ng-model="parameterData.paramValue" style="background-color:#FFFFFF;" readonly>
-              					<select ng-hide="parameterData.type == 'Single'" ng-model="parameterData.paramValue"  ng-options="serviceparam.paramValue as serviceparam.paramValue for serviceparam in serviceparams" value="{{vlanData.mCodeValue}}">
+              					<input ng-show="parameterData.type == 'Single'" type="text" id="service" ng-model="formData.service" style="background-color:#FFFFFF;" readonly>
+              					<select ng-hide="parameterData.type == 'Single'" ng-model="formData.service"  ng-options="serviceparam.paramValue as serviceparam.paramValue for serviceparam in serviceparams" value="{{vlanData.mCodeValue}}">
              					 </select>
             					</div>
           						</div>
@@ -219,10 +219,10 @@
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
-							<tr ng-show="formData.paramValue">
+							<tr ng-show="formData.service">
 								<td>Service:</td>
 								<td>&nbsp;</td>
-								<td>{{formData.paramValue}}</td>
+								<td>{{formData.service}}</td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>

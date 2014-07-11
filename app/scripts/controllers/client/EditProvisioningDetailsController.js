@@ -59,7 +59,8 @@
     		if(scope.serviceDatas[param].paramName == "SERVICE"){
     			
     			 temp.paramName = scope.serviceDatas[param].paramName;
-    			 scope.formData.paramValue = scope.serviceDatas[param].paramValue;
+    			 scope.formData.service = scope.serviceDatas[param].paramValue;
+    			  
                // scope.serviceParameters.push(temp);
     		}else if(scope.serviceDatas[param].paramName == "GROUP_NAME"){
     			
@@ -138,7 +139,8 @@
   		if(scope.serviceDatas[param].paramName == "SERVICE"){
   			
   			 temp.paramName = scope.serviceDatas[param].paramName;
-  			 scope.formData.paramValue = scope.serviceDatas[param].paramValue;
+  		     scope.formData.service = scope.serviceDatas[param].paramValue;
+  		     
              // scope.serviceParameters.push(temp);
   		}else if(scope.serviceDatas[param].paramName == "GROUP_NAME"){
   			
@@ -295,7 +297,7 @@
         		if(scope.parameterDatas[param].paramName == "SERVICE"){
         			
         			 temp.paramName = scope.parameterDatas[param].paramName;
-                    temp.paramValue = scope.parameterDatas[param].paramValue;
+                    temp.paramValue =this.formData.service;
                     scope.serviceParameters.push(temp);
         		}else if(scope.parameterDatas[param].paramName == "GROUP_NAME"){
         			
