@@ -1849,6 +1849,7 @@
 "label.paymentgateway.remarks":"Remarks",
 "label.managepaymentgateway":"Payment Gateway",
 "table.paymentgateway.id":"id",
+"table.paymentgateway.paymentId":"PaymentId",
 "table.paymentgateway.serialNo":"SerialNo",
 "table.paymentgateway.status":"Status",
 "table.paymentgateway.paymentId":"PaymentId",
