@@ -138,6 +138,36 @@
          </div>
       </tab>
 	
+	<tab heading="Plan Mapping" select="getplanMappingdetails()" ng-show="$parent.PermissionService.showMenu('READ_PLANMAPPING')">
+       <div class="pull-right btn-group">
+          <a ng-show="PermissionService.showMenu('CREATE_PLANMAPPING')" href="#/createPlanMapping" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
+        </div>
+        <div class="row-fluid">
+                   <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by name">
+        <table class="table">
+            <thead>
+              <tr class="graybg">
+                <th>{{'table.planmapping.id' | translate}}</th>
+                <th>{{'table.planmapping.planCode' | translate}}</th>
+                <th>{{'table.planmapping.planIdentification' | translate}}</th>
+                <th>{{'table.planmapping.planStatus' | translate}}</th>                    
+              </tr>
+            </thead>
+            <tbody>
+             <tr class="pointer-main" ng-repeat="planmappingdata in planmappingdatas  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToplanmapping(planmappingdata.id)">{{planmappingdata.id}}</td>
+                <td class="pointer" data-ng-click="routeToplanmapping(planmappingdata.id)">{{planmappingdata.planCode}}</td>
+                <td class="pointer" data-ng-click="routeToplanmapping(planmappingdata.id)">{{planmappingdata.planIdentification}}</td>
+                <td class="pointer" data-ng-click="routeToplanmapping(planmappingdata.id)">{{planmappingdata.planStatus}}</td>
+                </tr>
+     		 </tbody>
+          </table>
+        <!--   <ul class="pager">
+        			<li class="previous"><a ng-click="supplier.previous()" href="" ng-disabled="!supplier.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="supplier.next()" href="" ng-disabled="!supplier.hasNext()">Next &rarr;</a></li>
+    			</ul> -->
+         </div>
+      </tab>
     </tabset>
     </div>
   </div>

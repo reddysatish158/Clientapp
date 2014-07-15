@@ -89,12 +89,14 @@
 		            
 		         	$scope.submit = function(){
 		         		$scope.paypalFlag=true;
+
 		         		var jsonData = {};
 		         		jsonData.clientId = $scope.formData.id;
 		         		jsonData.secretCode = $scope.formData.code;
 		         		
 		         		var jsonString = JSON.stringify(jsonData);
 		         		$scope.paypalData = {"value":jsonString};
+
 		         		//console.log(this.updateData);
 		         		resourceFactory.configurationResource.update({configId: scope.editId},$scope.paypalData,function(data){ 
 		         			   $modalInstance.close('delete');

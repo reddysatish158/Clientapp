@@ -837,13 +837,21 @@
           }) ,
           creditCardSaveResource: defineResource(apiVer + "/clients/:clientId/carddetails", {clientId:'@clientId'}, {
               get: {method: 'GET', params: {},isArray: true}
-            }),
-            creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
-                get: {method: 'GET', params: {}},
-                update: { method: 'PUT' }
-            }),
-            redemptionResource: defineResource(apiVer + "/redemption", {}, {
-            }),
+          }),
+          creditCardUpdateResource: defineResource(apiVer + "/clients/:clientId/carddetails/:id/:cardType", {clientId:'@clientId',id:'@id',cardType:'@cardType'}, {
+              get: {method: 'GET', params: {}},
+              update: { method: 'PUT' }
+          }),
+          redemptionResource: defineResource(apiVer + "/redemption", {}, {
+          }),
+          planMappingResource: defineResource(apiVer + "/planmapping/:planMappingId", {planMappingId:'@planMappingId'}, {
+              get: {method: 'GET', params: {}, isArray: true},
+              getPlanMapping: {method: 'GET', params: {planMappingId:'@planMappingId'}},
+              update: { method: 'PUT'}
+          }),  
+          planMappingtemplateResource: defineResource(apiVer + "/planmapping/template", {}, {
+           	  getAllPlanMapping: {method: 'GET', params: {}}
+             }),
         };
       }];
     }

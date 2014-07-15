@@ -15,6 +15,7 @@
          if(!rootScope.voucherPinProcess){
         	rootScope.dynamicVar = id;
         	rootScope.voucherPinProcess = true;
+
         	resourceFactory.voucherpinResource.save({voucherId:id},function(data) {
         		rootScope.dynamicVar = 0;
         		rootScope.voucherPinProcess = false;

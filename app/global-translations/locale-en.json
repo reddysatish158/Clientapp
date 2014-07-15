@@ -1980,7 +1980,26 @@
 "validation.msg.redemption.clientId.cannot.be.blank":"Client Id cannot be blank",
 "validation.msg.redemption.pinNumber.cannot.be.blank":"Pin Number cannot be blank",
 "error.msg.client.id.invalid":"Invalid Client Id",
-"error.msg.redemption.pinNumber.invalid":"Invalid Pin Number"
+"error.msg.redemption.pinNumber.invalid":"Invalid Pin Number",
+
+"#planMapping":"........",
+"table.planmapping.id":"id",
+"table.planmapping.planCode":"Plan Code",
+"table.planmapping.planIdentification":"Plan Identification",
+"table.planmapping.planStatus":"Status",
+"label.planMapping":"Plan Mapping",
+"label.create.new.planMapping":"Create Plan Mapping",
+"label.planCode":"Plan Code",
+"label.planIdentification":"Plan Identification",
+"label.status":"Status",
+"label.viewplanmappingconfigurations":"View Plan Mapping",
+"label.editplanmapping":"Edit Plan Mapping",
+
+"#Validations of PlanMapping":".........",
+"validation.msg.planmapping.status.cannot.be.blank":"Status cannot be blank",
+"validation.msg.planmapping.planIdentification.cannot.be.blank":"Plan Identification cannot be blank",
+"validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank"
+
 
 
    
