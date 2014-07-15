@@ -251,7 +251,12 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
       'client/AddNewCreditCardController',
-      'organization/RedemptionController'
+      'organization/RedemptionController',
+      'system/CreatePlanMappingController',
+      'system/ViewPlanMappingController',
+      'system/EditPlanMappingController',
+      
+      
 
     ],
     filters: [
