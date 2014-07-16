@@ -20,7 +20,7 @@
 		        scope.itemId=null;
 		        scope.data={};
 		        scope.maxDate = new Date();
-		        scope.formData.chargeCode="NONE";
+		        //scope.formData.chargeCode="NONE";
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	            
 	        	scope.itemDatas = data.itemDatas;
@@ -30,6 +30,11 @@
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
 	            scope.officesDatas=data.officesData;
+	            for(var i=0;i<scope.officesDatas.length;i++){
+	            	if(scope.officesDatas[i].id==1){
+	            		scope.formData.officeId=scope.officesDatas[i].id;
+	            	}
+	            }
 	        });
 	        
 	        scope.itemData=function(itemId,officeId){
@@ -54,7 +59,7 @@
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		scope.formData.officeId=officeId;
-	        		scope.formData.chargeCode="NONE";
+	        		//scope.formData.chargeCode="NONE";
 		        });	
 	        };
 	        scope.totalPriceCal=function(quantity,totalPrice){
@@ -100,6 +105,7 @@
 	        	scope.flag = true;
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
+	             this.formData.chargeCode="NONE";
 	             this.formData.saleType = "SecondSale";
 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
 	             this.formData.saleDate=actDate;
@@ -110,7 +116,7 @@
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
 	             
-	             var temp1 = new Array(100);
+	             var temp1 = new Array();
 		        	
 		        	$("input[name='serialNumber']").each(function(){
 		        		var temp = {};

@@ -30,6 +30,11 @@
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
 	            scope.officesDatas=data.officesData;
+	            for(var i=0;i<scope.officesDatas.length;i++){
+	            	if(scope.officesDatas[i].id==1){
+	            		scope.formData.officeId=scope.officesDatas[i].id;
+	            	}
+	            }
 	        });
 	        
 	        scope.itemData=function(itemId,officeId){
@@ -105,7 +110,7 @@
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
 	             
-	             var temp1 = new Array(100);
+	             var temp1 = new Array();
 		        	
 		        	$("input[name='serialNumber']").each(function(){
 		        		var temp = {};

@@ -629,7 +629,7 @@
                 get: {method: 'GET', params: {}}
                  }),
                       
-             allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId", {oneTimeSaleId:'@oneTimeSaleId'}, {
+             allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId/:officeId", {oneTimeSaleId:'@oneTimeSaleId',officeId:'@officeId'}, {
                 getItemDetails: {method: 'GET', params: {}},
                 getSerialNumbers:{method: 'GET', params:{}}
                 }),

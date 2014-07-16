@@ -97,27 +97,16 @@
          </td><td></td>
          </tr>
            	<tr>
-           	<td>
-          		  <div class="control-group">
-           	<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}<span class="required">*</span></label>
-            	<div class="controls">
-             	<select ng-show="config =='SALE'" ng-model="formData2.itemId" name="itemcode" ng-change="itemData(formData2.itemId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
-             	</select>
-             	<select ng-show="config =='OWN'" ng-model="formData5.itemType"  ng-options="itemtypes.id as itemtypes.itemDescription for itemtypes in itemtypes" value="{{itemtypes.id}}" required late-Validate></select>
-              </div>
-           </div>
-          	</td>
           	<td>
-          		<div class="control-group"  ng-repeat="item in getNumber(formData2.quantity)" name="serialNumberDiv">
-                    <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
-                    <div class="controls">
-             	    <input type="text" ng-show="config == 'SALE'" ng-model="serial" name="serial" ng-change="getData(serial)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
-             	     <input type="text" ng-show="config == 'OWN'" name="provisioningserialnumber" ng-model="formData5.provisioningSerialNumber" required late-Validate>
-                    </div>
-               </div>
-             </td>
-             </tr>
-             <td>
+				<div class="control-group">
+            	<label class="control-label" for="officeId">officeId</label>
+            	<div class="controls">
+             	<select ng-model="formData2.officeId" ng-options="officesData.id as officesData.name for officesData in officesDatas" value="{{itemData.id}}">
+             	</select>
+            	</div>
+          		</div>
+			</td>
+          	 <td>
              	<div class="control-group">
             		<label class="control-label" for="discountId">{{ 'label.discountCode' | translate }}</label>
             		   <div class="controls">
@@ -126,6 +115,27 @@
             			</div>
           		</div>
           	</td>
+             </tr>
+             <td>
+          		  <div class="control-group">
+           	<label class="control-label" for="itemId">{{ 'label.itemCode' | translate }}<span class="required">*</span></label>
+            	<div class="controls">
+             	<select ng-show="config =='SALE'" ng-model="formData2.itemId" name="itemcode" ng-change="itemData(formData2.itemId,formData2.officeId)" ng-options="itemData.id as itemData.itemCode for itemData in itemDatas" value="{{itemData.id}}">
+             	</select>
+             	<select ng-show="config =='OWN'" ng-model="formData5.itemType"  ng-options="itemtypes.id as itemtypes.itemDescription for itemtypes in itemtypes" value="{{itemtypes.id}}" required late-Validate></select>
+              </div>
+           </div>
+          	</td>
+             
+          	<td>
+          		<div class="control-group"  ng-repeat="item in getNumber(formData2.quantity)" name="serialNumberDiv">
+                    <label class="control-label" for="serialNumber">{{ 'label.serialNumber' | translate }}&nbsp;<span class="required">*</span></label>
+                    <div class="controls">
+             	    <input type="text" ng-show="config == 'SALE'" ng-model="serial" name="serial" ng-change="getData(serial,formData2.officeId)" typeahead="itemDetail as itemDetail for itemDetail in itemDetails | limitTo:8" typeahead-min-length="0">
+             	     <input type="text" ng-show="config == 'OWN'" name="provisioningserialnumber" ng-model="formData5.provisioningSerialNumber" required late-Validate>
+                    </div>
+               </div>
+             </td>
               <tr>
             <td>
          <strong>Plan Info</strong>
