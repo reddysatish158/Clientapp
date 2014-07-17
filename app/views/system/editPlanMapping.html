@@ -1,0 +1,50 @@
+    <div ng-controller="EditPlanMappingController">
+      <div>
+        <ul class="breadcrumb">
+          <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+          <li><a href="#/viewplanmapping/{{planMappingId}}">{{'label.viewplanmappingconfigurations' | translate}}</a> <span class="divider">/</span></li>
+          <li class="active">{{'label.editplanmapping' | translate}}</li>
+        </ul>
+      </div>
+      <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+   
+      <form class="form-horizontal well" ng-submit="submit()">
+        <fieldset>
+          <legend>Edit Plan Mapping</legend>   
+          
+          <div class="control-group">
+            <label class="control-label" for="planCode">{{'label.planCode' | translate }}</label>
+            <div class="controls">
+              <select ng-model="formData.planId"  ng-options="pc.id as pc.planCode for pc in planCodes"  value="{{pc.id}}">
+              <option value="">{{'label.select.one' | translate}}</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="control-label" for="planIdentification">{{'label.planIdentification' | translate }}</label>
+            <div class="controls">
+              <input type="text" id="planIdentification" ng-model="formData.planIdentification">
+            </div>
+          </div>
+         
+         <div class="control-group">
+            <label class="control-label" for="status">{{'label.status' | translate }}</label>
+            <div class="controls">
+                 <select ng-model="formData.planStatus"  ng-options="statusData.value as statusData.value for statusData in statusDatas" value="{{statusData.value}}">        
+              <option value="">{{'label.select.one' | translate}}</option>
+              </select>
+            </div>
+          </div>
+         
+          <div class="offset3">
+            <a href="#/viewplanmapping/{{planMappingId}}"><button id="cancel" type="reset" class="btn">{{'label.cancel' | translate}}</button></a>
+            <button id="submit" type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>

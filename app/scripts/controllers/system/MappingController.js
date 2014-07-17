@@ -9,6 +9,7 @@
         scope.hideview = false;
         scope.selected = undefined;
         scope.PermissionService = PermissionService;
+        scope.planmappingdatas= [];
         
         var callingTab = webStorage.get('callingTab',null);
         if(callingTab == null){
@@ -101,15 +102,27 @@
               	 scope.provisiongsystemData=data; 
               });
           };
+          
+          scope.getplanMappingdetails = function(data){
+            	
+            	resourceFactory.planMappingResource.get(function(data) {
+               	 scope.planmappingdatas=data; 
+               });
+            	
+            };
+            
           scope.routeToservice = function(id){
         		location.path('/viewServiceMapping/'+ id);
             };
-         scope.routeTohardware = function(id){
+          scope.routeTohardware = function(id){
              location.path('/viewhardwareplanmapping/'+ id);
           };
           scope.routeToprovisioning = function(id){
               location.path('/viewprovisioningmapping/'+ id);
-           };
+          };
+          scope.routeToplanmapping = function(id){
+               location.path('/viewplanmapping/'+ id);
+          };
     }
   });
   mifosX.ng.application.controller('MappingController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','PaginatorService','PermissionService', mifosX.controllers.MappingController]).run(function($log) {
