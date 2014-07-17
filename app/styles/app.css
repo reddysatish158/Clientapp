@@ -954,6 +954,9 @@ nav:hover:after{
 /* margin-top: -2.5em; */
 }
 
+.width450px{
+    width: 450px;
+}
 .hotkey{
     font-weight: bold;
     color: red;

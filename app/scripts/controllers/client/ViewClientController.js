@@ -97,6 +97,11 @@
         scope.routeToCardDetails = function(clientid,id,cardType){
             location.path('/viewcarddetails/'+clientid+'/'+id+'/'+cardType);
           };
+          
+          scope.routeTotable = function(tableName,clientId,cardType){
+              location.path('/viewdatatableentry/'+tableName+'/'+clientId+'/'+cardType);
+            };
+          
        
         var bookOrder = PermissionService.showMenu('CREATE_ORDER')&&PermissionService.showMenu('READ_ORDER');
         var riseTicket = PermissionService.showMenu('CREATE_TICKET')&&PermissionService.showMenu('READ_TICKET');
@@ -265,6 +270,10 @@
                   resourceFactory.EventActionResource.get({clientId: routeParams.id} , function(data) {
                       scope.scheduleorders = data;
                       
+                  });
+                  resourceFactory.DataTablesResource.getAllDataTables({apptable: 'm_client'}, function (data) {
+                      scope.clientdatatables = data;
+                     
                   });
                 });
         };
@@ -622,28 +631,53 @@
                      scope.eventOrders = data.eventOrdersData;
                    });
                  };
+                 
+                 
         scope.dataTableChange = function(clientdatatable) {
           resourceFactory.DataTablesResource.getTableDetails({datatablename: clientdatatable.registeredTableName,
           entityId: routeParams.id, genericResultSet: 'true'} , function(data) {
             scope.datatabledetails = data;
             scope.datatabledetails.isData = data.data.length > 0 ? true : false;
             scope.datatabledetails.isMultirow = data.columnHeaders[0].columnName == "id" ? true : false;
-
+            scope.showDataTableAddButton=false;
+            scope.showDataTableEditButton=false;
+            scope.showDataTableAddButton = (!scope.datatabledetails.isData || scope.datatabledetails.isMultirow);
+            scope.showDataTableEditButton = (scope.datatabledetails.isData && !scope.datatabledetails.isMultirow);
+            scope.singleRow = [];
             for(var i in data.columnHeaders) {
               if (scope.datatabledetails.columnHeaders[i].columnCode) {
                 for (var j in scope.datatabledetails.columnHeaders[i].columnValues){
                   for(var k in data.data) {
+                	  console.log(data.data[k].row[i]);
                     if (data.data[k].row[i] == scope.datatabledetails.columnHeaders[i].columnValues[j].id) {
-                      data.data[k].row[i] = scope.datatabledetails.columnHeaders[i].columnValues[j].value;
+                       data.data[k].row[i] = scope.datatabledetails.columnHeaders[i].columnValues[j].value;
                     }
                   }
                 }
-              } 
+              }
+            }
+            if (scope.datatabledetails.isData) {
+                for (var i in data.columnHeaders) {
+                    if (!scope.datatabledetails.isMultirow) {
+                        var row = {};
+                        row.key = data.columnHeaders[i].columnName;
+                        row.value = data.data[0].row[i];
+                        scope.singleRow.push(row);
+                    }
+                }
             }
 
           });
         };
-
+        scope.viewDataTable = function (registeredTableName, data) {
+        	console.log(data);
+            if (scope.datatabledetails.isMultirow) {
+                location.path("/viewdatatableentry/" + registeredTableName + "/" + scope.client.id + "/" + data.row[0]);
+            } else {
+                location.path("/viewsingledatatableentry/" + registeredTableName + "/" + scope.client.id);
+            }
+        };
+        
         scope.deleteAll = function (apptableName, entityId) {
           resourceFactory.DataTablesResource.delete({datatablename:apptableName, entityId:entityId, genericResultSet:'true'}, {}, function(data){
             route.reload();
