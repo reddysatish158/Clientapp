@@ -2032,6 +2032,16 @@
  "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN",
  "label.provisioning.subnetIP":"Subnet IP",
  
+ "#Billing Modes":"",
+ "validation.msg.billMode.billMode.cannot.be.blank":"Bill Modes cannot be blank",
+ 
+ "#Manage tables":"",
+ "label.columntypeerr": "Type require",
+ "label.columnnameerr": "Column name require",
+ "error.msg.click.on.add.to.add.columns": "Click on '+' to add columns",
+ "validation.msg.datatable.datatableName.cannot.be.blank":"Data tablename cannot be blank",
+ "validation.msg.datatable.apptableName.cannot.be.blank":"Application tablename cannot be blank"
+ 
  "#planMapping":"........",
 "table.planmapping.id":"id",
 "table.planmapping.planCode":"Plan Code",
@@ -2049,4 +2059,5 @@
 "validation.msg.planmapping.status.cannot.be.blank":"Status cannot be blank",
 "validation.msg.planmapping.planIdentification.cannot.be.blank":"Plan Identification cannot be blank",
 "validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank"
+
 }

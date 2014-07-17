@@ -5,6 +5,9 @@
       scope.columns = [];
       scope.dropColumns = [];
       scope.formData = {};
+      scope.columnnameerror = false;
+      scope.columntypeerror = false;
+      scope.datatableTemplate = {};
 
       resourceFactory.codeResources.getAllCodes({}, function(data) {
         scope.codes = data;
@@ -52,10 +55,19 @@
 
       scope.addColumn = function () {
         if (scope.datatableTemplate.columnName && scope.datatableTemplate.columnType) {
-          scope.columns.push({name:scope.datatableTemplate.columnName, type:scope.datatableTemplate.columnType, mandatory:false});
-          scope.datatableTemplate.columnName = undefined;
-          scope.datatableTemplate.columnType = undefined;
+            scope.columnnameerror = false;
+            scope.columntypeerror = false;	
+            scope.columns.push({name:scope.datatableTemplate.columnName, type:scope.datatableTemplate.columnType, mandatory:false});
+            scope.datatableTemplate.columnName = undefined;
+            scope.datatableTemplate.columnType = undefined;
+        }else if (!scope.datatableTemplate.columnName) {
+            scope.columnnameerror = true;
+            scope.labelerror = "columnnameerr";
+        } else if (scope.datatableTemplate.columnName) {
+            scope.columntypeerror = true;
+            scope.labelerror = "columntypeerr";
         }
+        
       };
 
       scope.removeColumn = function (index) {
@@ -96,15 +108,19 @@
             
             delete scope.columns[i].originalName;
             delete scope.columns[i].type;
-            if (scope.columns[i].newName || scope.columns[i].newCode) {
-              if (scope.columns[i].code) {
+            if (scope.columns[i].code) {
                 scope.columns[i].newCode = scope.columns[i].newCode || scope.columns[i].code;
-              }
-              scope.formData.changeColumns.push(scope.columns[i]);
             }
-          } else {
+
+            if (scope.columns[i].name) {
+                scope.columns[i].newName = scope.columns[i].newName || scope.columns[i].name;
+            }
+            scope.formData.changeColumns.push(scope.columns[i]);
+
+        } else {
             scope.formData.addColumns.push(scope.columns[i]);
-          }
+        }
+             
         }
 
         if (scope.formData.addColumns.length == 0) delete scope.formData.addColumns;
