@@ -249,7 +249,10 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
       'client/AddNewCreditCardController',
-      'system/EditIpPoolingController'
+      'system/EditIpPoolingController',
+      'system/CreatePlanMappingController',
+      'system/ViewPlanMappingController',
+      'system/EditPlanMappingController'
 
     ],
     filters: [
