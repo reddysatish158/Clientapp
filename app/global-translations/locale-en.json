@@ -2030,5 +2030,7 @@
  "validation.msg.provisioning.IP_ADDRESS.cannot.be.blank":"Ip Address cannot be blank",
  "validation.msg.provisioning.SERVICE.cannot.be.blank":"Service cannot be blank",
  "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN",
- "label.provisioning.subnetIP":"Subnet IP"
+ "label.provisioning.subnetIP":"Subnet IP",
+ "#Mcodes":"",
+ "validation.msg.code.name.cannot.be.blank":"Name cannot be blank"
 }

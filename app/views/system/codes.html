@@ -14,16 +14,22 @@
         <tr class="graybg">
             <th>CodeName</th>
             <th>System Defined</th>
+            <th>Description</th>
         </tr>
         </thead>
         <tbody>
-            <tr class="pointer-main" data-ng-repeat="code in codes">
+            <tr class="pointer-main" data-ng-repeat="code in codes.currentPageItems">
                 <td class="pointer" data-ng-click="routeTo(code.id)">{{code.name}}</td>
                 <td class="pointer" data-ng-click="routeTo(code.id)">{{code.systemDefined}}</td>
+                <td class="pointer" data-ng-click="routeTo(code.id)">{{code.description}}</td>
             </tr>
 
         </tbody>
     </table>
+    <ul class="pager">
+        			<li class="previous"><a ng-click="codes.previous()" href="" ng-disabled="!codes.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="codes.next()" href="" ng-disabled="!codes.hasNext()">Next &rarr;</a></li>
+	</ul>
 </div>
 </div>
 

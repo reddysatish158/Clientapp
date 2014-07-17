@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="import in imports | filter:filterText">
+            <tr ng-repeat="import in imports.currentPageItems | filter:filterText">
                 <td>{{import.uploadProcess}}</td>            
                 <td>{{import.uploadFilePath}}</td>        
                 <td>{{import.processDate | DateFormat}}</td>         
@@ -38,5 +38,9 @@
             </tr>
         </tbody>
     </table>
+    <ul class="pager">
+        			<li class="previous"><a ng-click="imports.previous()" href="" ng-disabled="!imports.hasPrevious()">&larr; Prev</a></li>
+        			<li class="next" ><a ng-click="imports.next()" href="" ng-disabled="!imports.hasNext()">Next &rarr;</a></li>
+	</ul>
 </div>
 </div>
