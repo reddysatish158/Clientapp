@@ -26,7 +26,7 @@
         scope.device=clientData.hwSerialNumber;
         scope.displayName=clientData.displayName;
         scope.planName=orderData.planName;
-        scope.formData.groupName=orderData.groupName;
+        //scope.formData.groupName=orderData.groupName;
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
         scope.ipTypeDatas = ["Single","Multiple"];
@@ -46,8 +46,9 @@
     	   scope.serviceparams=data.serviceDatas;
     	   scope.groupDatas=data.groupDatas;
     	   scope.formData.serviceName=data.services[0].serviceId;
-    	   console.log(scope.parameterDatas);
-      
+    	   alert(scope.formData.groupName);
+    	   scope.formData.groupName=data.groupDatas[0].groupName;
+    	   alert(scope.formData.groupName);
     	   for(var param in scope.parameterDatas){
        		  var temp = {};
        	
