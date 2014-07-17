@@ -2058,6 +2058,8 @@
 "#Validations of PlanMapping":".........",
 "validation.msg.planmapping.status.cannot.be.blank":"Status cannot be blank",
 "validation.msg.planmapping.planIdentification.cannot.be.blank":"Plan Identification cannot be blank",
-"validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank"
+"validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank",
 
+"#Mcodes":"",
+"validation.msg.code.name.cannot.be.blank":"Name cannot be blank"
 }
