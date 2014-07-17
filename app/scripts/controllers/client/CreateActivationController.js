@@ -68,6 +68,12 @@
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
+	            scope.officesDatas=data.officesData;
+	            for(var i=0;i<scope.officesDatas.length;i++){
+	            	if(scope.officesDatas[i].id==1){
+	            		scope.formData2.officeId=scope.officesDatas[i].id;
+	            	}
+	            }
 	            //scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
                     scope.onetimesales=data;
 	            scope.date= {};
@@ -84,12 +90,13 @@
 	            });	  
 	          }
 	       
-	        scope.itemData=function(itemId){
+	        scope.itemData=function(itemId,officeId){
 	        	//alert(itemId);
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
 	        		
 	        		scope.formData2=data;
 	        		scope.formData2.itemId=itemId;
+	        		scope.formData2.officeId=officeId;
 	        		scope.formData2.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		
 	        		scope.data.unitPrice=scope.formData2.unitPrice;
@@ -133,9 +140,9 @@
 	          scope.formData3 = {};
 			  scope.clientId=routeParams.clientId;
 			 //scope.allocation.date = new Date();
-	        scope.getData = function(query){
+	        scope.getData = function(query,officeId){
 	        	if(query.length>0){
-	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData2.itemId,query: query}, function(data) { 	        	
+	        		resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:scope.formData2.itemId,officeId:officeId,query: query}, function(data) { 	        	
 	     	            scope.itemDetails = data.serials;
 	     	          
 	     	        }); 
@@ -280,6 +287,7 @@
 	                if(config =='SALE'){  
 	 	        	 this.formData2.locale = "en";
 	 	             this.formData2.dateFormat = "dd MMMM yyyy";
+	 	             this.formData2.saleType="FirstSale";
 	 	            this.formData2.quantity=1;
 	 	            
 	        		this.formData2.totalPrice=scope.formData2.totalPrice;

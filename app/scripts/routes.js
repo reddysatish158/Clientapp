@@ -862,9 +862,19 @@
       .when('/viewgroupdetails/:groupName', {
         templateUrl : 'views/organization/viewgroupdetails.html'
       })
-      ;
-
-
+      .when('/addsecondsale/:id', {
+        templateUrl: 'views/clients/addsecondsale.html'
+      })
+      .when('/createPlanMapping',{
+       templateUrl: 'views/system/createPlanMapping.html'
+      })      
+      .when('/viewplanmapping/:id',{
+       templateUrl: 'views/system/viewplanmapping.html'
+      })
+      .when('/editPlanMapping/:id',{
+       templateUrl: 'views/system/editPlanMapping.html'
+      })
+   ;
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

@@ -46,6 +46,7 @@ define(['underscore', 'mifosX'], function() {
       'client/ClientDocumentController',
       'client/ClientIdentifierController',
       'client/ClientOneTimeSaleController',
+      'client/ClientSecondSaleController',
       'client/ViewClientOneTimeSaleController',
       'client/AllocateHardwareOneTimeSaleController',
       'client/UploadClientIdentifierDocumentController',
@@ -248,8 +249,12 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
       'client/AddNewCreditCardController',
+      'client/AddBillModesController',
       'system/EditIpPoolingController',
-      'client/AddBillModesController'
+      'system/CreatePlanMappingController',
+      'system/ViewPlanMappingController',
+      'system/EditPlanMappingController'
+
 
     ],
     filters: [

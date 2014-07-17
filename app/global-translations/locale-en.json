@@ -240,6 +240,7 @@
   
   "#view client":"",
   "button.neworder":"Book Order",
+  "button.sale":"New Sale",
   "button.adjustments":"Post Adjustment",
   "button.payments":"Make Payment",
   "button.invoice":"Do Invoice",
@@ -274,6 +275,7 @@
   "error.msg.clientIdentifier.type.duplicate":"Already exists with this document type",
   "validation.msg.client.firstname.cannot.be.blank":"First name cannot be blank",
   "validation.msg.client.lastname.cannot.be.blank":"Last name cannot be blank",
+  "error.msg.unable.to.generate.changegroup.request.because.order.is.not.active":"Unable to generate change group request because order is not in active state",
 
   "#edit client":"",
   "label.individual":"Individual",
@@ -1375,6 +1377,8 @@
   "label.serialNumber":"Serial Number",
   "validation.msg.onetimesale.discountId.cannot.be.blank":"Please Select Discount",
   "validation.msg.onetimesale.quantity.not.greater.than.zero":"Quantity cannot be less then one",
+  "validation.msg.onetimesale.saleType.cannot.be.blank":"Please Select Sale Type",
+  "validation.msg.onetimesale.officeId.cannot.be.blank":"office Id cannot be blank",
  
   
   "#EventResources":"....",
@@ -1785,7 +1789,8 @@
 "dialog.statement.title.message":"Prepare Statement",
   
 
-"dialog.reconnect.title.message":"Reconnect",  
+"dialog.reconnect.title.message":"Reconnect",
+"dialog.terminate.title.message":"Terminate",  
 
 "#Profile":"......",
 "label.heading.userid":"User ID",
@@ -1844,6 +1849,7 @@
 "label.paymentgateway.remarks":"Remarks",
 "label.managepaymentgateway":"Payment Gateway",
 "table.paymentgateway.id":"id",
+"table.paymentgateway.paymentId":"PaymentId",
 "table.paymentgateway.serialNo":"SerialNo",
 "table.paymentgateway.status":"Status",
 "table.paymentgateway.paymentId":"PaymentId",
@@ -2025,12 +2031,33 @@
  "validation.msg.provisioning.SERVICE.cannot.be.blank":"Service cannot be blank",
  "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN",
  "label.provisioning.subnetIP":"Subnet IP",
+ 
  "#Billing Modes":"",
  "validation.msg.billMode.billMode.cannot.be.blank":"Bill Modes cannot be blank",
+ 
  "#Manage tables":"",
  "label.columntypeerr": "Type require",
  "label.columnnameerr": "Column name require",
  "error.msg.click.on.add.to.add.columns": "Click on '+' to add columns",
  "validation.msg.datatable.datatableName.cannot.be.blank":"Data tablename cannot be blank",
  "validation.msg.datatable.apptableName.cannot.be.blank":"Application tablename cannot be blank"
+ 
+ "#planMapping":"........",
+"table.planmapping.id":"id",
+"table.planmapping.planCode":"Plan Code",
+"table.planmapping.planIdentification":"Plan Identification",
+"table.planmapping.planStatus":"Status",
+"label.planMapping":"Plan Mapping",
+"label.create.new.planMapping":"Create Plan Mapping",
+"label.planCode":"Plan Code",
+"label.planIdentification":"Plan Identification",
+"label.status":"Status",
+"label.viewplanmappingconfigurations":"View Plan Mapping",
+"label.editplanmapping":"Edit Plan Mapping",
+
+"#Validations of PlanMapping":".........",
+"validation.msg.planmapping.status.cannot.be.blank":"Status cannot be blank",
+"validation.msg.planmapping.planIdentification.cannot.be.blank":"Plan Identification cannot be blank",
+"validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank"
+
 }

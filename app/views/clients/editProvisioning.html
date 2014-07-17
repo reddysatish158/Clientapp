@@ -129,8 +129,8 @@
 								<div class="control-group" ng-show="parameterData.paramName == 'SERVICE'">
             					<label class="control-label" for="chargeCode">{{ 'label.provisioning.service' | translate }}</label>
             					<div class="controls">
-              					<input ng-show="parameterData.type == 'Single'" type="text" id="service" ng-model="parameterData.paramValue" style="background-color:#FFFFFF;" readonly>
-              					<select ng-hide="parameterData.type == 'Single'" ng-model="parameterData.paramValue"  ng-options="serviceparam.paramValue as serviceparam.paramValue for serviceparam in serviceparams" value="{{vlanData.mCodeValue}}">
+              					<input ng-show="parameterData.type == 'Single'" type="text" id="service" ng-model="formData.service" style="background-color:#FFFFFF;" readonly>
+              					<select ng-hide="parameterData.type == 'Single'" ng-model="formData.service"  ng-options="serviceparam.paramValue as serviceparam.paramValue for serviceparam in serviceparams" value="{{vlanData.mCodeValue}}">
              					 </select>
             					</div>
           						</div>
@@ -184,7 +184,7 @@
 					
 					<td width="1.5" bgcolor="black"><BR></td>
 					
-					<td width="150" valign="top" align="left">
+					<td width="150" valign="top" align="center">
 						<p style="color:black;">&nbsp;&nbsp;&nbsp;Existing Service Parameters</p>
 						
 						<table>
@@ -212,26 +212,27 @@
 								<td>Ip Address:</td>
 								<td>&nbsp;</td>
 								<td style="display: inline-block;" ng-repeat="exitIpAddres in exitIpAddress">{{exitIpAddres}}</td>
+								<td>{{exit.ipaddr}}</td>
 							</tr> 
 							<tr>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
-							<tr>
+							<tr ng-show="formData.service">
 								<td>Service:</td>
 								<td>&nbsp;</td>
-								<td>{{formData.paramValue}}</td>
+								<td>{{formData.service}}</td>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 								<td>&nbsp;</td>
 							</tr>
-							<tr>
+							<tr ng-show="exit.vlan">
 								<td>VLAN:</td>
 								<td>&nbsp;</td>
-								<td>{{formData.vLan}}</td>
+								<td>{{exit.vlan}}</td>
 							</tr>
 						</table>
 						

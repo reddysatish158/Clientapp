@@ -1,6 +1,6 @@
 (function(module) {
 	  mifosX.controllers = _.extend(module, {
-		  ClientOneTimeSaleController: function(scope, webStorage,routeParams , location, resourceFactory,dateFilter,$rootScope,API_VERSION,http) {
+		  ClientSecondSaleController: function(scope, webStorage,routeParams , location, resourceFactory,dateFilter,$rootScope,API_VERSION,http) {
 		  
 			  scope.clientId=routeParams.id;
 			  scope.formData = {};
@@ -18,9 +18,9 @@
 		        scope.email=clientData.email;
 		        scope.phone=clientData.phone;
 		        scope.itemId=null;
-	          scope.data={};
-	          scope.maxDate = new Date();
-	          
+		        scope.data={};
+		        scope.maxDate = new Date();
+		        //scope.formData.chargeCode="NONE";
 	        resourceFactory.oneTimeSaleTemplateResource.getOnetimes({clientId: routeParams.id}, function(data) {
 	            
 	        	scope.itemDatas = data.itemDatas;
@@ -44,6 +44,7 @@
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		scope.formData.officeId=officeId;
+	        		scope.formData.chargeCode="NONE";
 		        });	
 	        };
 	        
@@ -58,9 +59,13 @@
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		scope.formData.officeId=officeId;
+	        		//scope.formData.chargeCode="NONE";
 		        });	
 	        };
-	        
+	        scope.totalPriceCal=function(quantity,totalPrice){
+	        	var amount=totalPrice/quantity;
+	        	scope.formData.unitPrice=amount;
+	        };
 	       
 	        scope.getData = function(query){
 /*	        	if(query.length>0){
@@ -100,7 +105,8 @@
 	        	scope.flag = true;
 	        	 this.formData.locale = "en";
 	             this.formData.dateFormat = "dd MMMM yyyy";
-	             this.formData.saleType = "FirstSale";
+	             this.formData.chargeCode="NONE";
+	             this.formData.saleType = "SecondSale";
 	             var actDate = dateFilter(scope.date.saleDate,'dd MMMM yyyy');
 	             this.formData.saleDate=actDate;
 	             delete this.formData.discountMasterDatas;   
@@ -146,7 +152,7 @@
 	        };
 	    }
 	  });
-	  mifosX.ng.application.controller('ClientOneTimeSaleController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','dateFilter','$rootScope','API_VERSION','$http', mifosX.controllers.ClientOneTimeSaleController]).run(function($log) {
-        $log.info("ClientOneTimeSaleController initialized");
+	  mifosX.ng.application.controller('ClientSecondSaleController', ['$scope','webStorage', '$routeParams', '$location', 'ResourceFactory','dateFilter','$rootScope','API_VERSION','$http', mifosX.controllers.ClientSecondSaleController]).run(function($log) {
+        $log.info("ClientSecondSaleController initialized");
     });
 }(mifosX.controllers || {}));

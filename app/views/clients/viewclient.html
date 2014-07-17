@@ -580,7 +580,8 @@
   
 		    <div id="pane1" class="tab-pane" ng-class="{active: eventsaleC}">
 				<div class="pull-right">
-					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Add Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> New Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addsecondsale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Second Sale</a>
 				</div>
     
 			    <div>

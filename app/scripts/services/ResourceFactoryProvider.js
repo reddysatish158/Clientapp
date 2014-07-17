@@ -332,6 +332,11 @@
            	update: { method: 'PUT' },
             get: {method: 'GET', params: {}},
         }),
+        
+        OrderTerminateResource: defineResource(apiVer + "/orders/terminate/:orderId", {orderId:'@orderId'},{
+           	update: { method: 'PUT' },
+          
+        }),
         OrderrenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder/:orderId", {orderId:'@orderId'},{
         	 get: {method: 'GET', params: {}},
         	update: { method: 'PUT' }
@@ -624,7 +629,7 @@
                 get: {method: 'GET', params: {}}
                  }),
                       
-             allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId", {oneTimeSaleId:'@oneTimeSaleId'}, {
+             allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId/:officeId", {oneTimeSaleId:'@oneTimeSaleId',officeId:'@officeId'}, {
                 getItemDetails: {method: 'GET', params: {}},
                 getSerialNumbers:{method: 'GET', params:{}}
                 }),
@@ -937,7 +942,15 @@
             	get: {method: 'GET', params: {}},
                 update: { method: 'PUT' }
             }),
-            
+            planMappingResource: defineResource(apiVer + "/planmapping/:planMappingId", {planMappingId:'@planMappingId'}, {
+                get: {method: 'GET', params: {}, isArray: true},
+                getPlanMapping: {method: 'GET', params: {planMappingId:'@planMappingId'}},
+                update: { method: 'PUT'}
+            }),  
+            planMappingtemplateResource: defineResource(apiVer + "/planmapping/template", {}, {
+             	  getAllPlanMapping: {method: 'GET', params: {}}
+            }),
+
         };
       }];
     }
