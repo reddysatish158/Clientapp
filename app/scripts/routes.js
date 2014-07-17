@@ -214,6 +214,9 @@
       .when('/viewdatatableentry/:tableName/:entityId/:resourceId', {
           templateUrl: 'views/system/viewdatatableentry.html'
       })
+       .when('/viewsingledatatableentry/:tableName/:entityId', {
+                templateUrl: 'views/system/viewdatatableentry.html'
+       })
       .when('/addcode', {
           templateUrl: 'views/system/addcode.html'
       })
@@ -853,6 +856,9 @@
       .when('/editippolling/:id', {
         templateUrl : 'views/system/editippolling.html'
       })
+       .when('/addbillmodes/:clientId', {
+         templateUrl: 'views/clients/addbillmodes.html'
+      })
       .when('/viewgroupdetails/:groupName', {
         templateUrl : 'views/organization/viewgroupdetails.html'
       })
@@ -868,8 +874,7 @@
       .when('/editPlanMapping/:id',{
        templateUrl: 'views/system/editPlanMapping.html'
       })
-;
-
+   ;
     $locationProvider.html5Mode(false);
   };
   mifosX.ng.application.config(defineRoutes).run(function($log) {

@@ -5,6 +5,7 @@
       scope.entityId = routeParams.entityId;
       scope.columnHeaders = [];
       scope.formData = {};
+      //console.log(scope.entityId);
 
       resourceFactory.DataTablesResource.getTableDetails({ datatablename:scope.tableName, entityId:scope.entityId, genericResultSet:'true' },function(data) {
 
@@ -42,6 +43,11 @@
           }
           location.path(destination);
         });
+      };
+      
+      
+      scope.cancel=function(){
+    	  location.path('/viewclient/'+ scope.entityId); 
       };
 
     }

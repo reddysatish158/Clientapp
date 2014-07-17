@@ -940,6 +940,10 @@
             taxExemptionResource: defineResource(apiVer + "/taxexemption/:clientId", {clientId:'@clientId'}, {
                 update: { method: 'PUT' }
             }),
+            clientBillModeResource: defineResource(apiVer + "/billmodes/:clientId", {clientId:'@clientId'}, {
+            	get: {method: 'GET', params: {}},
+                update: { method: 'PUT' }
+            }),
             planMappingResource: defineResource(apiVer + "/planmapping/:planMappingId", {planMappingId:'@planMappingId'}, {
                 get: {method: 'GET', params: {}, isArray: true},
                 getPlanMapping: {method: 'GET', params: {planMappingId:'@planMappingId'}},
@@ -947,7 +951,8 @@
             }),  
             planMappingtemplateResource: defineResource(apiVer + "/planmapping/template", {}, {
              	  getAllPlanMapping: {method: 'GET', params: {}}
-               }),
+            }),
+
         };
       }];
     }
