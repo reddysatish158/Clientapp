@@ -281,8 +281,8 @@ iframe {
 .panel {
     border: 1px solid #DDDDDD;
     padding:15px;
-    margin: 15px 15px 15px 15px;
-    height:300px;
+    margin: 15px 15px 15px 175px;
+    height:370px;
     width:310px;
     overflow:hidden;
     z-index: -1;

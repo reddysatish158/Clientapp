@@ -30,7 +30,19 @@
           resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Tickets', parameterType : true, genericResultSet : false}, function(data){
               scope.reports = scope.getReports(data);
             });
-          } else if (routeParams.type == 'accounting') {
+      }
+      else if (routeParams.type == 'inventory') {
+
+          resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Inventory', parameterType : true, genericResultSet : false}, function(data){
+              scope.reports = scope.getReports(data);
+            });
+       }
+      else if (routeParams.type == 'leads') {
+
+          resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Leads', parameterType : true, genericResultSet : false}, function(data){
+              scope.reports = scope.getReports(data);
+            });
+      }else if (routeParams.type == 'accounting') {
 
         resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Accounting', parameterType : true, genericResultSet : false}, function(data){
           scope.reports = scope.getReports(data);
