@@ -978,7 +978,7 @@
   "label.assignedto":"AssignedTo",
   "label.editprospect":"Edit Prospect",
   "label.statusremark":"Status Remark",
-  "link.create.new.prospect":"Make Prospect",
+  "link.create.new.prospect":"New Prospect",
   "table.heading.prospectId":"Prospect Id",
   "table.heading.name":"Name",
   "table.heading.emailId":"Email Id",

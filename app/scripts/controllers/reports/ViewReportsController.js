@@ -2,7 +2,6 @@
   mifosX.controllers = _.extend(module, {
 
     ViewReportsController: function(scope, routeParams, resourceFactory, location) {
-
       scope.reports = [];
       scope.type = routeParams.type;
       scope.routeToviewreport = function(name,id,type){
@@ -22,13 +21,13 @@
         resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Client', parameterType : true, genericResultSet : false}, function(data){
           scope.reports = scope.getReports(data);
         });
-      } else if (routeParams.type == 'orders') {
-        resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Loan', parameterType : true, genericResultSet : false}, function(data){
+      } else if (routeParams.type == 'Orders') {
+        resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Orders', parameterType : true, genericResultSet : false}, function(data){
           scope.reports = scope.getReports(data);
         });
       } else if (routeParams.type == 'tickets') {
 
-          resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Client Ticket', parameterType : true, genericResultSet : false}, function(data){
+          resourceFactory.runReportsResource.get({reportSource: 'reportCategoryList', R_reportCategory:'Tickets', parameterType : true, genericResultSet : false}, function(data){
               scope.reports = scope.getReports(data);
             });
           } else if (routeParams.type == 'accounting') {
