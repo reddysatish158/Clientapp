@@ -28,7 +28,7 @@
                 scope.mediaLanguageDatas = data.mediaLanguageData;
                 scope.mediaStatus = data.mediaStatus;
                 scope.mediaTypeDatas = data.mediaTypeData;
-               // scope.contentProviderDatas=data.contentProviderData;
+                scope.contentProviderDatas=data.contentProviderData;
                 scope.attributesFormData.attributeType="Cast";
                 scope.formData = {
                

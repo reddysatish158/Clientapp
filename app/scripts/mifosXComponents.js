@@ -249,6 +249,11 @@ define(['underscore', 'mifosX'], function() {
       'client/ViewCardDetailsController',
       'client/EditCardDetailController',
       'client/AddNewCreditCardController',
+      'client/AddBillModesController',
+      'system/EditIpPoolingController',
+      'system/CreatePlanMappingController',
+      'system/ViewPlanMappingController',
+      'system/EditPlanMappingController',
       'system/EditIpPoolingController',
       'system/DalpayDetailsFormController',
       'system/DalpayButtonController'

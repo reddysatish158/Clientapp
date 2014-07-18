@@ -1,0 +1,33 @@
+<div  ng-controller="ViewPlanMappingController">
+	<div class="paddedbottom10">
+		<ul class="breadcrumb">
+	        <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
+	        <li><a href="#/mappingconfig">{{'label.managemappingconfigurations' | translate}}</a> <span class="divider">/</span></li>
+	        <li class="active">{{planMappingData.planCode}}&nbsp;&nbsp;</li>
+	    </ul>
+	    <div class="pull-right">
+	      <div class="btn-group">
+	          <a ng-show="PermissionService.showMenu('UPDATE_BPLANMAPPING')" href="#/editPlanMapping/{{id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
+	   	  </div>
+	    </div>
+	</div>
+
+	<div class="row paddedleft">
+		<h3>{{chargecode.id}}</h3>
+		<table width="100%">
+			<tr>
+				<td width="20%">{{'label.planCode' | translate }}</td>
+				<td width="80%">{{planMappingData.planCode}}</td>
+			</tr>
+			<tr>
+				<td>{{'label.planIdentification' | translate }}</td>
+				<td>{{planMappingData.planIdentification}}</td>
+			</tr>
+			<tr>
+				<td>{{'label.status' | translate }}</td>
+				<td>{{planMappingData.planStatus}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+          

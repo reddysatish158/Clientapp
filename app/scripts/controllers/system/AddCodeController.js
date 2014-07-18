@@ -2,7 +2,7 @@
 (function(module) {
     mifosX.controllers = _.extend(module, {
         AddCodeController: function(scope, resourceFactory, location,PermissionService) {
-
+        	scope.formData={};
             scope.submit = function() {
                 resourceFactory.codeResources.save(this.formData,function(data){
                 	if(PermissionService.showMenu('READ_CODE')&&PermissionService.showMenu('READ_CODEVALUE'))
