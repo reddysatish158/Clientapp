@@ -110,6 +110,7 @@
              		scope.formData.ipType = "Multiple";
              	else
              		scope.formData.ipType = "Single";
+
     			}
                 
     		}

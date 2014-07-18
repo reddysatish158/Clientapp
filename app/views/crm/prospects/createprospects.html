@@ -1,15 +1,4 @@
-<!doctype html>
-<html ng-app="myApp" >
-<head>
-  <meta charset="utf-8">
-  <!-- CSS -->
-  <!-- App specific -->
- <!--  
-  <script src="/scripts/datepicker.js"></script>
-   <link href="./styles/datepicker.css" rel="stylesheet" type="text/css"> -->
-  
-</head>
-      <div>
+	   <div>
         <ul class="breadcrumb">
           <li><a href="#/prospects">{{'link.prospects' | translate}}</a> <span class="divider">/</span></li>
           <li class="active">{{'label.createprospect' | translate}}</li>
@@ -21,14 +10,10 @@
 		<label ng-show="errorStatus">{{errorStatus}}</label>
 		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
-        <fieldset>
-          <h3>Personal Details</h3>
+         <strong> Personal Details</strong>
 
 			<table>
-			
-				
-
-						<tr>
+					<tr>
 						<td>
 							<table>
 								<tr>
@@ -144,7 +129,7 @@
 							
 		
 			</table>
-			<h3>Address Details</h3>
+			<strong></>Address Details</strong>
 			<table>
 				<tr>
 					
@@ -297,6 +282,4 @@
             <button type="submit" class="btn btn-primary">{{'button.save'| translate}}</button>
           </div>
           
-        </fieldset>
       </form>
-</html>
