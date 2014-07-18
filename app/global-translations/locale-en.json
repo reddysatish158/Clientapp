@@ -301,6 +301,8 @@
   "link.reports.clients" : "Clients",
   "link.reports.orders":"Orders",
   "link.reports.tickets":"Tickets",
+  "link.reports.inventory" : "Inventory",
+  "link.reports.leads" : "Leads",
   "link.reports.funds" : "Funds",
   "link.reports.accounting" : "Accounting",
   "link.products.charges" : "Charges/Penalties",
@@ -2062,5 +2064,15 @@
 
 "#Mcodes":"",
 "validation.msg.code.name.cannot.be.blank":"Name cannot be blank"
+
+
+
+
+
+
+
+
+
+
 
 }
