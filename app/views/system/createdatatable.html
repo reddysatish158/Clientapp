@@ -1,3 +1,4 @@
+      <div  ng-controller="CreateDataTableController">
       <div>
         <ul class="breadcrumb">
           <li><a href="#/system">{{'link.admin.system' | translate}}</a> <span class="divider">/</span></li>
@@ -5,7 +6,7 @@
           <li class="active">{{'label.create.datatable' | translate}}</li>
         </ul>
       </div>
-      <form  name="createdatatableform" novalidate="" class="form-horizontal well" ng-controller="CreateDataTableController" ng-submit="submit()">
+      <form  name="createdatatableform" novalidate="" class="form-horizontal well" ng-submit="submit()">
       <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
 		<label ng-show="errorStatus">{{errorStatus}}</label>
@@ -98,7 +99,9 @@
                         <input ng-show="column.type == 'String'" ng-model="column.length" type="text" class="input-small"/>
                       </td>
                       <td>
-                        <select ng-show="column.type == 'Dropdown'" ng-model="column.code" ng-options="code.name as code.name for code in codes" value="{{code.name}}" class="input-small">
+                        <select  ng-show="column.type == 'Dropdown'" ng-model="column.code"
+	                                        ng-options="code.name as code.name for code in codes" value="{{code.name}}"
+	                                        class="input-small control"/>
                       </td>
                       <td align="center"><a ng-click="removeColumn($index)"><i class="icon-remove icon-white"></i></a></td>
                     </tr>
@@ -112,4 +115,4 @@
             <button id="submit" type="submit"  ng-disabled="!createdatatableform.$valid"  class="btn btn-primary">{{ 'label.save' | translate }}</button>
           </div>
         </fieldset>
-      </form>
+      </form></div>

@@ -10,7 +10,7 @@
       scope.datatableTemplate = {};
 
       resourceFactory.codeResources.getAllCodes({}, function(data) {
-        scope.codes = data;
+        scope.codes = data.pageItems;
       });
 
       resourceFactory.DataTablesResource.getTableDetails({datatablename: routeParams.tableName} , function(data) {

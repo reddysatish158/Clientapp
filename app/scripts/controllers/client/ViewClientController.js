@@ -648,7 +648,6 @@
               if (scope.datatabledetails.columnHeaders[i].columnCode) {
                 for (var j in scope.datatabledetails.columnHeaders[i].columnValues){
                   for(var k in data.data) {
-                	  console.log(data.data[k].row[i]);
                     if (data.data[k].row[i] == scope.datatabledetails.columnHeaders[i].columnValues[j].id) {
                        data.data[k].row[i] = scope.datatabledetails.columnHeaders[i].columnValues[j].value;
                     }
