@@ -151,7 +151,8 @@
             getView: {method: 'GET', params: {}}
           }) ,
           codeResources: defineResource(apiVer + "/codes/:codeId", {codeId:"@codeId"}, {
-                getAllCodes: {method: 'GET', params: {}}
+                getAllCodes: {method: 'GET', params: {}},
+                getData: {method: 'GET', params: {}}
           }),
           codeValueResource: defineResource(apiVer + "/codes/:codeId/codevalues/:codevalueId", {codeId:'@codeId',codevalueId:'@codevalueId'}, {
             getAllCodeValues: {method: 'GET', params: {}, isArray:true},
@@ -281,6 +282,7 @@
            
            importResource: defineResource(apiVer + "/uploadstatus/getData", {}, {
                getAllimportfiles: {method: 'GET', params: {}, isArray: true},
+               getdata: {method: 'GET', params: {}},
                update: { method: 'PUT' }
            }),
          importProcessResource: defineResource(apiVer + "/uploadstatus/:uploadfileId", {}, {

@@ -27,7 +27,7 @@
         scope.device=clientData.hwSerialNumber;
         scope.displayName=clientData.displayName;
         scope.planName=orderData.planName;
-        scope.formData.groupName=orderData.groupName;
+       // scope.formData.groupName=orderData.groupName;
         scope.orderNo=orderData.orderNo;
         scope.parameterDatas=[];
         scope.ipTypeDatas = ["Single","Multiple"];
@@ -45,6 +45,7 @@
     	   scope.vlanDatas=data.vlanDatas;
     	   scope.serviceDatas=data.serviceDatas;
     	   scope.formData.serviceName=data.services[0].serviceId;
+    	   scope.formData.groupName=data.groupDatas[0].groupName;
     	   scope.exit.servicename=data.services[0].servicecode;
     	   scope.IPAddressType = true;
       		scope.subnetType = false;
@@ -109,6 +110,7 @@
              		scope.formData.ipType = "Multiple";
              	else
              		scope.formData.ipType = "Single";
+
     			}
                 
     		}

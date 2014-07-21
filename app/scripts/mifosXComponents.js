@@ -253,8 +253,10 @@ define(['underscore', 'mifosX'], function() {
       'system/EditIpPoolingController',
       'system/CreatePlanMappingController',
       'system/ViewPlanMappingController',
-      'system/EditPlanMappingController'
-
+      'system/EditPlanMappingController',
+      'system/EditIpPoolingController',
+      'system/DalpayDetailsFormController',
+      'system/DalpayButtonController'
 
     ],
     filters: [
