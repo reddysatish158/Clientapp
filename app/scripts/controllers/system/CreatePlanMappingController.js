@@ -3,6 +3,7 @@
 	  CreatePlanMappingController: function(scope, resourceFactory, location) {
         scope.planCodes = [];
         scope.statusDatas=[];
+        scope.formData ={};
         
         resourceFactory.planMappingtemplateResource.getAllPlanMapping(function(data) {
            
@@ -12,7 +13,7 @@
         
         });
         scope.submit = function() {
-            resourceFactory.planMappingResource.save(this.formData,function(data){
+            resourceFactory.planMappingResource.save(scope.formData,function(data){
             		location.path('/viewplanmapping/' + data.resourceId);
           });
         };
