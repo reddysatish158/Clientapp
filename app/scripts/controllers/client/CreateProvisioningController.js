@@ -46,9 +46,7 @@
     	   scope.serviceparams=data.serviceDatas;
     	   scope.groupDatas=data.groupDatas;
     	   scope.formData.serviceName=data.services[0].serviceId;
-    	   alert(scope.formData.groupName);
     	   scope.formData.groupName=data.groupDatas[0].groupName;
-    	   alert(scope.formData.groupName);
     	   for(var param in scope.parameterDatas){
        		  var temp = {};
        	

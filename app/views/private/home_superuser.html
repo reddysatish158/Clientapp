@@ -115,19 +115,19 @@
 			     <div class="span10 paddedleft90">
                 <panel title="Amount Collected for Current Month ({{cOfficeName}}) " >
                     <h3 class="required panel-error" data-ng-show="showCollectionerror">No Data Available</h3>
-                    <div data-ng-show="!showCollectionerror" style="margin-left:5px;margin-top:10px;">
+                    <div data-ng-show="!showCollectionerror" style="margin-left:5px;margin-top:0px;">
                         <nvd3-pie-chart
                                 data="collectedData"
                                 id="piechart1"
-                                width="380"
-                                height="370"
+                                width="400"
+                                height="400"
                                 x="xFunction()"
                                 y="yFunction()"
                                 tooltips="true"
                                 donut="true"
                                 donutRatio=".015"
                                 color="colorFunctionPie()">
-                             <svg height="230"></svg>
+                             <svg height="270"></svg>
                         </nvd3-pie-chart>
                     </div>
                     <select class="input-small-tooltip pull-right" name="office11" ng-change="getCollectionOffice()" id="office11" ng-model="officeId" data-ng-options="office.id as office.name for office in offices" value="{{office.id}}">
@@ -144,19 +144,19 @@
 			    <div class="span10 paddedleft90">
                 <panel title="Stock Item Details for Current Month ({{sOfficeName}})" >
                     <h3 class="required panel-error" data-ng-show="showDisbursementerror">No Data Available</h3>
-                    <div data-ng-show="!showDisbursementerror" style="margin-left:5px;margin-top:10px;">
+                    <div data-ng-show="!showDisbursementerror" style="margin-left:5px;margin-top:0px;">
                         <nvd3-pie-chart
                                 data="disbursedData"
                                 id="piechart2"
-                                width="380"
-                                height="370"
+                                width="400"
+                                height="400"
                                 x="xFunction()"
                                 y="yFunction()"
                                 tooltips="true"
                                 donut="true"
                                 donutRatio=".015"
                                 color="colorFunctionPie()">
-                            <svg height="230"></svg>
+                            <svg height="270"></svg>
                         </nvd3-pie-chart>
                     </div>
                     <select class="input-small-tooltip pull-right" data-ng-options="office.id as office.name for office in offices" name="office2" data-ng-change="getStock()" value="{{office.id}}" id="office2" ng-model="officeId">
