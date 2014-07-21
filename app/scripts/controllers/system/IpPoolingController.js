@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  IpPoolingController: function(scope,route,routeParams,location, resourceFactory, paginatorService) {
+	  IpPoolingController: function(scope,route,routeParams,location, resourceFactory, paginatorService,$modal) {
 		  
 		  scope.ippoolingdatas = {};
 		  scope.formData=[];
@@ -113,9 +113,45 @@
 				  		};	
 	  		
 	  */
+		  		
+		  		// popup
+		  		scope.edit= function(){
+			      	  scope.errorStatus=[];
+			      	  scope.errorDetails=[];
+			        	  $modal.open({
+			                templateUrl: 'updatedescription.html',
+			                controller:updateDescriptionController ,
+			                resolve:{}
+			            });
+			        	
+			        };
+			   
+			        var updateDescriptionController=function($scope,$modalInstance){
+				      	  
+			        	$scope.formData = {}; 
+			            $scope.statusData=[];
+			            $scope.updateData={};
+			          
+			         	$scope.accept = function(){alert(this.formData.ip);
+			         		$scope.flag=true;
+			         		
+			            	this.updateData.ipAndSubnet=this.formData.ip+"/"+this.formData.subNet;alert(this.updateData.ipAndSubnet);
+			         		resourceFactory.ipPoolingResource.update(this.updateData,function(data){ 
+			                  route.reload();
+			                 // location.path('/paymentGateway');
+			                        $modalInstance.close('delete');
+			                    },function(errData){
+			                  $scope.flag = false;
+			                   });
+			         	};  
+			    		$scope.reject = function(){
+			    			$modalInstance.dismiss('cancel');
+			    		};
+			        };
+			        
 		  }
   });
-  mifosX.ng.application.controller('IpPoolingController', ['$scope','$route','$routeParams', '$location', 'ResourceFactory','PaginatorService', mifosX.controllers.IpPoolingController]).run(function($log) {
+  mifosX.ng.application.controller('IpPoolingController', ['$scope','$route','$routeParams', '$location', 'ResourceFactory','PaginatorService','$modal', mifosX.controllers.IpPoolingController]).run(function($log) {
     $log.info("IpPoolingController initialized");
   });
 }(mifosX.controllers || {}));
