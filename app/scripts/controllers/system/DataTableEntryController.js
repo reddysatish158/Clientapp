@@ -2,31 +2,68 @@
   mifosX.controllers = _.extend(module, {
     DataTableEntryController: function(scope, location, routeParams, route, resourceFactory,$modal) {
 
-      scope.tableName = routeParams.tableName;
-      scope.entityId = routeParams.entityId;
-      scope.resourceId = routeParams.resourceId;
+    	   if (routeParams.tableName) {
+               scope.tableName = routeParams.tableName;
+           }
+           if (routeParams.entityId) {
+               scope.entityId = routeParams.entityId;
+           }
+           if (routeParams.resourceId) {
+               scope.resourceId = routeParams.resourceId;
+           }
+           scope.formDat = {};
+           scope.columnHeaders = [];
+           scope.formData = {};
+           scope.isViewMode = true;
+           if(routeParams.mode && routeParams.mode == 'edit'){
+               scope.isViewMode = false;
+           }
 
-      scope.columnHeaders = [];
-      scope.formData = {};
-      scope.isViewMode = true;
+           var reqparams = {datatablename: scope.tableName, entityId: scope.entityId, genericResultSet: 'true'};
+           if (scope.resourceId) {
+               reqparams.resourceId = scope.resourceId;
+           }
+           
+           resourceFactory.DataTablesResource.getTableDetails(reqparams, function (data) {
+               for (var i in data.columnHeaders) {
+                   if (data.columnHeaders[i].columnCode) {
+                       //logic for display codeValue instead of codeId in view datatable details
+                       for (var j in data.columnHeaders[i].columnValues) {
+                           if(data.columnHeaders[i].columnDisplayType=='CODELOOKUP'){
+                               if (data.data[0].row[i] == data.columnHeaders[i].columnValues[j].id) {
+                                   data.columnHeaders[i].value = data.columnHeaders[i].columnValues[j].value;
+                               }
+                           } else if(data.columnHeaders[i].columnDisplayType=='CODEVALUE'){
+                               if (data.data[0].row[i] == data.columnHeaders[i].columnValues[j].value) {
+                                   data.columnHeaders[i].value = data.columnHeaders[i].columnValues[j].value;
+                               }
+                           }
+                       }
+                   } else {
+                       data.columnHeaders[i].value = data.data[0].row[i];
+                   }
+               }
+               scope.columnHeaders = data.columnHeaders;
+               if(routeParams.mode && routeParams.mode == 'edit'){
+                   scope.editDatatableEntry();
+               }
+           });
 
-      var reqparams = {datatablename:scope.tableName, entityId:scope.entityId, genericResultSet:'true'};
-      if (scope.resourceId) { reqparams.resourceId = scope.resourceId; }
-
-      resourceFactory.DataTablesResource.getTableDetails(reqparams, function(data) {
-        for(var i in data.columnHeaders) {
-          if (data.columnHeaders[i].columnCode) {
-            for (var j in data.columnHeaders[i].columnValues){
-              if (data.data[0].row[i] == data.columnHeaders[i].columnValues[j].id) {
-                data.columnHeaders[i].value = data.columnHeaders[i].columnValues[j].value;
-              }
-            }
-          } else {
-            data.columnHeaders[i].value = data.data[0].row[i];
-          }
-        }
-        scope.columnHeaders = data.columnHeaders;
-      });
+           //return input type
+           scope.fieldType = function (type) {
+               var fieldType = "";
+               if (type) {
+                   if (type == 'STRING' || type == 'INTEGER' || type == 'TEXT' || type == 'DECIMAL') {
+                       fieldType = 'TEXT';
+                   } else if (type == 'CODELOOKUP' || type == 'CODEVALUE') {
+                       fieldType = 'SELECT';
+                   } else if (type == 'DATE') {
+                       fieldType = 'DATE';
+                   }
+               }
+               return fieldType;
+           };
+           
 
       scope.editDatatableEntry = function () {
         scope.isViewMode = false;
@@ -39,15 +76,24 @@
           scope.isCenter = colName ==  'center_id' ? true : false;
         }
 
-        for(var i in scope.columnHeaders) {
-          scope.formData[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].value;
-          if (scope.columnHeaders[i].columnCode) {
-            for (var j in scope.columnHeaders[i].columnValues){
-              if (scope.columnHeaders[i].value == scope.columnHeaders[i].columnValues[j].value) {
-                scope.formData[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].columnValues[j].id;
-              }
+        for (var i in scope.columnHeaders) {
+
+            if (scope.columnHeaders[i].columnDisplayType == 'DATE') {
+                scope.formDat[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].value;
+            } else {
+                scope.formData[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].value;
             }
-          }
+            if (scope.columnHeaders[i].columnCode) {
+                for (var j in scope.columnHeaders[i].columnValues) {
+                    if (scope.columnHeaders[i].value == scope.columnHeaders[i].columnValues[j].value) {
+                        if(scope.columnHeaders[i].columnDisplayType=='CODELOOKUP'){
+                            scope.formData[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].columnValues[j].id;
+                        } else if(scope.columnHeaders[i].columnDisplayType=='CODEVALUE'){
+                            scope.formData[scope.columnHeaders[i].columnName] = scope.columnHeaders[i].columnValues[j].value;
+                        }
+                    }
+                }
+            }
         }
       };
         scope.deleteDatatableEntry = function (){
@@ -84,13 +130,26 @@
             };
         };
 
-      scope.cancel = function () {
-        route.reload();
-      };
+        scope.cancel = function () {
+            if(routeParams.mode){
+                window.history.back();
+            } else{
+                route.reload();
+            }
+
+        };
 
       scope.submit = function () {
         this.formData.locale = 'en';
         this.formData.dateFormat =  'dd MMMM yyyy';
+        for (var i = 0; i < scope.columnHeaders.length; i++) {
+            if (!_.contains(_.keys(this.formData), scope.columnHeaders[i].columnName)) {
+                this.formData[scope.columnHeaders[i].columnName] = "";
+            }
+            if (scope.columnHeaders[i].columnDisplayType == 'DATE') {
+                this.formData[scope.columnHeaders[i].columnName] = dateFilter(this.formDat[scope.columnHeaders[i].columnName], scope.df);
+            };
+        }
         resourceFactory.DataTablesResource.update(reqparams, this.formData, function(data){
           var destination = "";
           if ( data.loanId) {

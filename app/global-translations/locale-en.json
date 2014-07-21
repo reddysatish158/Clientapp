@@ -2043,6 +2043,8 @@
  "error.msg.click.on.add.to.add.columns": "Click on '+' to add columns",
  "validation.msg.datatable.datatableName.cannot.be.blank":"Data tablename cannot be blank",
  "validation.msg.datatable.apptableName.cannot.be.blank":"Application tablename cannot be blank",
+ "error.msg.column.mandatory": "Mandatory field not provided.",
+
  
  "#planMapping":"........",
 "table.planmapping.id":"id",
