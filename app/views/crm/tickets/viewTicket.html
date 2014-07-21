@@ -88,43 +88,50 @@
 
 	<div class="row paddedleft">
 					<h3>{{'label.viewticket' | translate}}</h3>	
-                        <table  width="100%" >                     
-                             <tr>
-                              <td>{{ 'label.ticket.id' | translate}}</td>
-                              <td>{{ticket.id}}</td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'label.ticket.priority' | translate}}</td>
-                              <td>{{ticket.priority}}</td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'label.ticket.ticketdate' | translate }}</td>
-                              <td>{{ticket.ticketDate | DateFormat}}</td>
-                            </tr>
-                             <tr>
-                              <td>{{ 'label.ticket.duedate' | translate }}</td>
-                              <td>{{ticket.dueDate}}</td>
-                            </tr>
-                             <tr>
-                              <td>{{ 'label.source' | translate }}</td>
-                              <td>{{ticket.sourceOfTicket}}</td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'label.ticket.problemcode' | translate}}</td>
-                              <td>{{ticket.problemDescription}}</td>
-                            </tr>
-                             <tr>
-                              <td>{{ 'label.ticket.status' | translate }}</td>
-                              <td>{{ticket.status}}</td>
-                            </tr>
-                            <tr>
-                              <td>{{ 'label.ticket.assignto' | translate }}</td>
-                              <td>{{ticket.userName}}</td>
-                            </tr>                          
-                            <tr>
-                              <td>{{ 'label.ticket.lastcomment' | translate }}</td>
-                              <td>{{ticket.lastComment}}</td>
-                            </tr>                                                                                                 
+                          <table width="100%">
+                          		<tr>
+                          			<td>
+                          				<table>
+                          					<tr>
+                              					<td width="70%">{{ 'label.ticket.id' | translate}}</td>
+                              					<td>{{ticket.id}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.ticket.priority' | translate}}</td>
+                              					<td>{{ticket.priority}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.source' | translate }}</td>
+                              					<td>{{ticket.sourceOfTicket}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.ticket.status' | translate }}</td>
+                              					<td>{{ticket.status}}</td>
+                            				</tr>
+                          				</table>
+                          			</td>
+                          			
+                          			<td>
+                          				<table>
+                          					<tr>
+                              					<td width="50%">{{ 'label.ticket.ticketdate' | translate }}</td>
+                              					<td>{{ticket.ticketDate | DateFormat}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.ticket.duedate' | translate }}</td>
+                              					<td>{{ticket.dueDate}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.ticket.problemcode' | translate}}</td>
+                              					<td>{{ticket.problemDescription}}</td>
+                            				</tr>
+                            				<tr>
+                              					<td>{{ 'label.ticket.assignto' | translate }}</td>
+                              					<td>{{ticket.userName}}</td>
+                            				</tr>
+                          				</table>
+                          			</td>
+                          		</tr>
                           </table>
                       </div>                    
                                      
