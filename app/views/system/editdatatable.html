@@ -61,12 +61,10 @@
             </div>
           </div>
           <table ng-show="columns.length > 0" width="100%">
-            <tr class="control-group">
-              <td width="11%">
-                <label class="control-label"><h4>{{ 'label.heading.columns' | translate }}</h4></label>
-              </td>
-              <td class="blockquoteresult" width="86%">
-                <table ng-show="columns.length > 0" class="table">
+            <tr class="control-group"><td>
+                <label>{{ 'label.heading.columns' | translate }}</label></td>
+              <td class="blockquoteresult" width="80%">
+                <table ng-show="columns.length > 0" class="table" >
                   <thead>
                     <tr class="graybg">
                       <th>{{'table.heading.name' | translate}}</th>

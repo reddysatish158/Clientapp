@@ -19,11 +19,42 @@
         }
         scope.columnHeaders = data.columnHeaders;
       });
+      
+      //return input type
+      scope.fieldType = function (type) {
+          var fieldType = "";
+          if (type) {
+              if (type == 'STRING' || type == 'INTEGER' || type == 'TEXT' || type == 'DECIMAL') {
+                  fieldType = 'TEXT';
+              } else if (type == 'CODELOOKUP' || type == 'CODEVALUE') {
+                  fieldType = 'SELECT';
+              } else if (type == 'DATE') {
+                  fieldType = 'DATE';
+              }
+          }
+          return fieldType;
+      };
 
+     
+      
+      
       scope.submit = function () {
         var params = {datatablename:scope.tableName, entityId:scope.entityId, genericResultSet: 'true'};
         this.formData.locale = 'en';
         this.formData.dateFormat =  'dd MMMM yyyy';
+        
+      //below logic, for the input field if data is not entered, this logic will put "", because
+        //if no data entered in input field , that field name won't send to server side.
+        //console.log(scope.columnHeaders.length);
+        for (var i = 0; i < scope.columnHeaders.length; i++) {
+            if (!_.contains(_.keys(this.formData), scope.columnHeaders[i].columnName)) {
+                this.formData[scope.columnHeaders[i].columnName] = "";
+            }
+            if (scope.columnHeaders[i].columnDisplayType == 'DATE') {
+                this.formData[scope.columnHeaders[i].columnName] = dateFilter(this.formDat[scope.columnHeaders[i].columnName], scope.df);
+            }
+        }
+        
         resourceFactory.DataTablesResource.save(params, this.formData, function(data){
           var destination = "";
           if ( data.loanId) {
