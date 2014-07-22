@@ -18,29 +18,85 @@
             <legend>{{'label.ippooling.editippool' | translate}}</legend>
 			<table width="100%">
 				<tr>
+				
 					<td>
-						<div class="control-group">
-							<label class="control-label">{{ 'table.ippooling.status' | translate }}</label>
-							<div class="controls">
-								<select ng-model="formData.statusType"
-									ng-options="status.statusType as status.status for status in ippoolstatusType"
-									value="{{status.type}}">
-								</select>
-							</div>
-						</div>
+						<table>
+							<tr>
+								<td>
+									<div class="control-group">
+									<label class="control-label" for="ipaddress">{{'label.ippooling.ipaddress' | translate }}</label>
+									<div class="controls">
+									<input type="text" id="ipaddress" ng-model="formData.ipAddress" readonly>
+									</div>
+									</div>
+								</td>
+							</tr>	
+							<tr>
+								<td>
+									<div class="control-group">
+									<label class="control-label">{{ 'table.ippooling.status' | translate }}</label>
+									<div class="controls">
+										<select ng-model="formData.statusType"
+										ng-options="status.statusType as status.status for status in ippoolstatusType"
+										value="{{status.type}}">
+										</select>
+									</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="control-group">
+									<label class="control-label">{{ 'table.ippooling.notes' | translate }}</label>
+										<div class="controls">
+											<input type="text" ng-model="formData.notes">
+										</div>
+									</div>
+								</td>
+							</tr>
+										
+						</table>
+					</td>
+					
+					<td ng-show="typeCodeValue.codeValue=='Private'">
+						<table>
+								<tr>
+					 				<td>
+               							<div class="control-group">
+                  						<label class="control-label" for="serviceCode">{{'label.iptype' | translate }}</label>
+                    					<div class="controls">
+                        					<select ng-model="formData.type"  ng-options="ipType.id as ipType.mCodeValue for ipType in codeValueDatas"  value="{{ipType.mCodeValue}}">
+                           					<option value="">{{'label.select.one' | translate}}</option>
+                        					</select>
+                   						</div>
+             							</div>
+             						</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="control-group">
+										<label class="control-label" for="subnet">{{'label.ippooling.subnet' | translate }}</label>
+										<div class="controls">
+										<input type="text" id="subnet" ng-model="formData.subnet">
+										</div>
+										</div>
+									</td>
+								</tr>	
+								<tr>
+									<td>
+										<div class="control-group">
+										<label class="control-label" for="description">{{'label.ippooling.description' | translate }}</label>
+										<div class="controls">
+										<input type="text" id="description" ng-model="formData.ipPoolDescription">
+										</div>
+										</div>
+									</td>
+								</tr>
+												
+						</table>
 					</td>
 				</tr>
-
-				<tr>
-					<td>
-						<div class="control-group">
-							<label class="control-label">{{ 'table.ippooling.notes' | translate }}</label>
-							<div class="controls">
-								<input type="text" ng-model="formData.notes">
-							</div>
-						</div>
-					</td>
-				</tr>
+		
 			</table>
 
 			<div class="offset3">
