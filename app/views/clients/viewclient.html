@@ -1075,9 +1075,9 @@
                 <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.id}}</td>
                  <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
                    <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.dueDate | DateFormat}}</td>
-                      <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount}}</td>
+                      <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount | number:2}}</td>
                         <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
-                          <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank" 
+                          <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount | number:2}}&custom={{client.id}}" target="_blank" 
                 ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
