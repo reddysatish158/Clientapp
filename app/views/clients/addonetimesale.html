@@ -136,7 +136,7 @@
 								<div class="control-group">
             					<label class="control-label" for="quantity">{{ 'label.quantity' | translate }}</label>
             					<div class="controls">
-              					<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId,formData.officeId)" ng-model="formData.quantity">
+              					<input type="text" id="quantity" ng-model="formData.quantity" ng-change="itemDataQuantity(formData.quantity,formData.itemId,formData.officeId)" ng-readonly="truefalse">
             					</div>
           						</div>
 							</td>
