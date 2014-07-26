@@ -565,6 +565,13 @@
                
 
          scope.downloadFile = function (statementId){
+        	 
+        	 /*http({
+                 method:'PUT',
+                 url: $rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default',
+                 data: {}
+               })*/
+              
               window.open($rootScope.hostUrl+ API_VERSION +'/billmaster/'+statementId+'/print?tenantIdentifier=default');
          };
          
@@ -669,7 +676,7 @@
           });
         };
         scope.viewDataTable = function (registeredTableName, data) {
-        	console.log(data);
+        	
             if (scope.datatabledetails.isMultirow) {
                 location.path("/viewdatatableentry/" + registeredTableName + "/" + scope.client.id + "/" + data.row[0]);
             } else {
