@@ -6,6 +6,8 @@
 	    </ul>
 	    <div class="pull-right">
 	      <div class="btn-group">
+	      	  <a ng-show="showType=='1'" ng-click="showItems()" class="btn btn-primary"><i class="icon-list icon-white"></i>View Item</a>
+	      	  <a ng-hide="showType=='1'" data-ng-click="showAudit()" class="btn btn-primary"><i class="icon-list icon-white"></i> Show Audit</a>
 	          <a ng-show="PermissionService.showMenu('UPDATE_ITEM')" href="#/edititem/{{item.id}}" class="btn btn-primary"><i class="icon-edit icon-white"></i> Edit</a>
 	          <a ng-show="PermissionService.showMenu('DELETE_ITEM')"  data-ng-click="deleteItem()" class="btn btn-primary"><i class="icon-trash icon-white"></i> Delete</a>
 	      </div>
@@ -25,7 +27,7 @@
                     </div>
       </script>
 
-	<div class="row paddedleft">
+	<div ng-hide="showType=='1'"class="row paddedleft">
 		<h3>{{item.id}}</h3>
 		<table width="100%">
 			<tr>
@@ -57,6 +59,28 @@
 				<td>{{item.warranty}}</td>
 			</tr>
 			
+		</table>
+	</div>
+	<div ng-show="showType=='1'">
+	<h4>View Audit</h4>
+		<table class="table">
+			<thead>
+				<tr class="graybg">
+					<th>{{ 'table.heading.id' | translate }}</th>
+					<th>ItemMaster Id</th>
+					<th>{{'label.item.itemcode' | translate }}</th>
+					<th>{{'label.item.unitprice' | translate }}</th>
+					<th>ChangeDate</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="audit in audit">
+				<td>{{audit.id}}</td>
+				<td>{{audit.itemMasterId}}</td>
+				<td>{{audit.itemCode}}</td>
+				<td>{{audit.unitPrice}}</td>
+				<td>{{audit.changedDate|DateFormat}}</td>
+			</tbody>
 		</table>
 	</div>
 </div>

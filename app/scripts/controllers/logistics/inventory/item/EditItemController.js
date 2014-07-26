@@ -19,6 +19,7 @@
         	 delete this.formData.itemClassData;
         	 delete this.formData.unitData;
         	 delete this.formData.chargesData;
+        	 delete this.formData.auditDetails;
         	 this.formData.locale = 'en';
                resourceFactory.itemResource.update({'itemId': routeParams.id},this.formData,function(data){
              location.path('/viewitem/' + data.resourceId);

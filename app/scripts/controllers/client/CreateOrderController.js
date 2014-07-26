@@ -2,6 +2,10 @@
   mifosX.controllers = _.extend(module, {
 	  CreateOrderController: function(scope,webStorage,routeParams, resourceFactory,dateFilter,location,filter) {
         scope.plandatas = [];
+        scope.postpaidPlanDatas = [];
+        scope.prepaidPlanDatas = [];
+       // scope.postAvailableServices = [];
+       // scope.preAvailableServices = [];
         scope.subscriptiondatas=[];
         scope.paytermdatas=[];
         scope.start = {};
@@ -31,6 +35,8 @@
         scope.email=clientData.email;
         scope.phone=clientData.phone;
         scope.minDate=scope.start.date;
+        scope.postpaid  ={};
+        scope.postpaid.open = true;
         
         scope.$watch('start.date', function() {
     	    scope.doSomething();  
@@ -41,74 +47,28 @@
     	   console.log("todayDate:"+scope.todayDate);
     	   console.log("selectedDate:"+scope.selectedDate);
        };
-        resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
-        	 
-          scope.plandatas = data.plandata;
-          scope.items = data.plandata;
-          scope.prepaidPlansitems = data.plandata;
-        //  scope.formData=data;
-          scope.subscriptiondatas=data.subscriptiondata;
-          scope.paytermdatas=data.paytermdata;
-          scope.clientId = routeParams.id;
-          
-       //   scope.formData.billAlign=true;
-      
-          scope.formData = {
-            		billAlign: true,
-            		
-                  };
-     	   
-            scope.filteredItems = filter('filter')(scope.items, function (item) {
-                for(var attr in item) {
-                    if (searchMatch(item[attr], scope.query))
-                        return true;
-                }
-                return false;
-            });
-            
-            scope.prepaidPalnfilteredItems = filter('filter')(scope.prepaidPlansitems, function (prepaidPlansitem) {
-                for(var attr in prepaidPlansitem) {
-                	
-                    if (searchMatch1(prepaidPlansitem[attr], scope.query))
-                        return true;
-                }
-                
-                return false;
-               
-            });
-            
-            if (scope.sortingOrder !== '') {
-                scope.filteredItems =filter('orderBy')(scope.filteredItems, scope.sortingOrder, scope.reverse);
-           }
-            
-            if (scope.sortingOrder !== '') {
-                scope.filteredItems =filter('orderBy')(scope.prepaidPalnfilteredItems, scope.sortingOrder, scope.reverse);
-           }
-            scope.currentPage = 0;
-            scope.groupToPages();
-            scope.groupToprepaidPages();
-            scope.pagedItems = [];
-            for (var i = 0; i < scope.filteredItems.length; i++) {
-                if (i % scope.itemsPerPage === 0) {
-                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.filteredItems[i] ];
-                } else {
-                    scope.pagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.filteredItems[i]);
-                }
-            }
-            
-            scope.prepaidPlanspagedItems = [];
-            
-            for (var i = 0; i < scope.prepaidPalnfilteredItems.length; i++) {
-            	
-            	
-                if (i % scope.itemsPerPage === 0) {
-                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.prepaidPalnfilteredItems[i] ];
-                } else {
-                    scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.prepaidPalnfilteredItems[i]);
-                }
-            }
+       resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
+    	   
+    	   scope.plandatas = data.plandata;	
+    	   for(var plan in scope.plandatas){
+    		   //assinging postpaid plans
+    		   if(scope.plandatas[plan].isPrepaid == 'N')
+    			   scope.postpaidPlanDatas.push(scope.plandatas[plan]);
+    		   //assinging prepaid plans
+    		   else if(scope.plandatas[plan].isPrepaid == 'Y')
+    			   scope.prepaidPlanDatas.push(scope.plandatas[plan]);
+    	   }
+           scope.subscriptiondatas=data.subscriptiondata;
+           scope.paytermdatas=data.paytermdata;
+           scope.clientId = routeParams.id;
            
-        });
+           scope.formData = {
+             		billAlign: true,
+             		
+                   };
+    	   
+       });
+     
         
         scope.setBillingFrequency = function(value) {
         	  $('plancode').css({"color":"red"});
@@ -331,3 +291,77 @@
     $log.info("CreateOrderController initialized");
   });
 }(mifosX.controllers || {}));
+
+
+
+
+//do not delete this code it is important.....
+
+/* resourceFactory.orderTemplateResource.get({'planId': routeParams.planId},function(data) {
+
+scope.plandatas = data.plandata;
+scope.items = data.plandata;
+scope.prepaidPlansitems = data.plandata;
+//  scope.formData=data;
+scope.subscriptiondatas=data.subscriptiondata;
+scope.paytermdatas=data.paytermdata;
+scope.clientId = routeParams.id;
+
+//   scope.formData.billAlign=true;
+
+scope.formData = {
+  		billAlign: true,
+  		
+        };
+  
+  scope.filteredItems = filter('filter')(scope.items, function (item) {
+      for(var attr in item) {
+          if (searchMatch(item[attr], scope.query))
+              return true;
+      }
+      return false;
+  });
+  
+  scope.prepaidPalnfilteredItems = filter('filter')(scope.prepaidPlansitems, function (prepaidPlansitem) {
+      for(var attr in prepaidPlansitem) {
+      	
+          if (searchMatch1(prepaidPlansitem[attr], scope.query))
+              return true;
+      }
+      
+      return false;
+     
+  });
+  
+  if (scope.sortingOrder !== '') {
+      scope.filteredItems =filter('orderBy')(scope.filteredItems, scope.sortingOrder, scope.reverse);
+ }
+  
+  if (scope.sortingOrder !== '') {
+      scope.filteredItems =filter('orderBy')(scope.prepaidPalnfilteredItems, scope.sortingOrder, scope.reverse);
+ }
+  scope.currentPage = 0;
+  scope.groupToPages();
+  scope.groupToprepaidPages();
+  scope.pagedItems = [];
+  for (var i = 0; i < scope.filteredItems.length; i++) {
+      if (i % scope.itemsPerPage === 0) {
+          scope.pagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.filteredItems[i] ];
+      } else {
+          scope.pagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.filteredItems[i]);
+      }
+  }
+  
+  scope.prepaidPlanspagedItems = [];
+  
+  for (var i = 0; i < scope.prepaidPalnfilteredItems.length; i++) {
+  	
+  	
+      if (i % scope.itemsPerPage === 0) {
+          scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)] = [ scope.prepaidPalnfilteredItems[i] ];
+      } else {
+          scope.prepaidPlanspagedItems[Math.floor(i / scope.itemsPerPage)].push(scope.prepaidPalnfilteredItems[i]);
+      }
+  }
+ 
+});*/

@@ -2,9 +2,12 @@
   mifosX.controllers = _.extend(module, {
 	  ViewItemController: function(scope, routeParams , resourceFactory ,location,$modal,PermissionService) {
         scope.item = [];
+        scope.audit = [];
+        scope.showType="";
         scope.PermissionService = PermissionService;
         resourceFactory.itemResource.get({itemId: routeParams.id} , function(data) {
         	scope.item = data;
+        	scope.audit = data.auditDetails;
         });
         
         scope.deleteItem = function(){
@@ -15,6 +18,12 @@
             });
         
     		
+    	};
+    	scope.showAudit = function(){
+    		scope.showType="1";
+    	};
+    	scope.showItems =function(){
+    		scope.showType="";
     	};
     	var Approve = function ($scope, $modalInstance) {
             $scope.approve = function (act) {
