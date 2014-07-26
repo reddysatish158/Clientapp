@@ -6,10 +6,10 @@
     <div class="pull-left">
         <a  ng-show="PermissionService.showMenu('CREATE_CLIENT')" href="#/createclient" class="btn btn-primary"><i class="icon-plus icon-white"></i> Create Client</a>
     </div>
-    <strong style="padding:2em;"><span><i class="icon-group"></i>&nbsp;{{totalClients}}&nbsp;Total</span></strong>
-    <strong style="padding:2em;"><span><img src="./images/circle_plus.png" alt="NewClients" width="28px" height="15px">{{newClients}}&nbsp;New</span></strong>
-    <strong style="padding:2em;"><span><img src="./images/active_check_mark.png" alt="ActiveClients" width="18px" height="15px">&nbsp;{{activeClients}}&nbsp;Active</span></strong>
-    <strong style="padding:2em;"><span><img src="./images/inactive_sign.png" alt="InActiveClients" width="25px" height="15px">&nbsp;{{InActiveClients}}&nbsp;InActive</span></strong>
+    <span style="padding:2em; font-style: oblique;"><img src="./images/Icons-users.png" alt="NewClients" width="28px" height="15px"/>{{totalClients}}&nbsp;Total</span>
+    <span style="padding:2em; font-style: oblique;color:#FFA500;"><img src="./images/Icons-new.png" alt="NewClients" width="28px" height="15px"/>{{newClients}}&nbsp;New</span>
+    <span style="padding:2em; font-style: oblique;color:#228b22;"><img src="./images/Icons-active.png" alt="ActiveClients" width="28px" height="15px"/>&nbsp;{{activeClients}}&nbsp;Active</span>
+    <span style="padding:2em; font-style: oblique;color:#FF0000;"><img src="./images/Icons-inactive.png" alt="InActiveClients" width="28px" height="15px"/>&nbsp;{{InActiveClients}}&nbsp;InActive</span>
     <div class="pull-right">
           <!-- <a href="#/createclientnewwizard" class="btn btn-primary"
           		ng-show="PermissionService.showMenu('ACTIVATIONPROCESS_ACTIVATE')"><i class="icon-plus icon-white"></i> New Activation</a> -->
