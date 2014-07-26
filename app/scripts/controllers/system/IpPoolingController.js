@@ -132,10 +132,10 @@
 			            $scope.statusData=[];
 			            $scope.updateData={};
 			          
-			         	$scope.accept = function(){alert(this.formData.ip);
+			         	$scope.accept = function(){
 			         		$scope.flag=true;
 			         		
-			            	this.updateData.ipAndSubnet=this.formData.ip+"/"+this.formData.subNet;alert(this.updateData.ipAndSubnet);
+			            	this.updateData.ipAndSubnet=this.formData.ip+"/"+this.formData.subNet;
 			         		resourceFactory.ipPoolingResource.update(this.updateData,function(data){ 
 			                  route.reload();
 			                 // location.path('/paymentGateway');
