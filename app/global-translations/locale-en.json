@@ -1216,6 +1216,7 @@
   "label.item.itemclass":"Item Class",
   "label.item.edit":"Edit Item",
   "label.create.new.item":"Add Item",
+  "label.item.reorderlevel":"Reorder level",
 
   
   
@@ -1235,6 +1236,7 @@
   "table.grn.status":"Status",
   "label.grn.itemCode":"Item Code",
   "label.grn.orderedQuantity":"Ordered Quantity",
+  "label.grn.purchaseNo":"Purchase No",
   "table.grn.orderdQuantity":"Ordered Quantity",
   "table.itemdetails.id":"Id",
   "table.itemdetails.officeName":"Office Name",
@@ -1263,6 +1265,7 @@
   "validation.msg.null.itemDescription.cannot.be.blank":"Item cannot be blank",
   "validation.msg.null.mrnId.cannot.be.blank":"Please select Mrn Id",
   "validation.msg.null.itemId.cannot.be.blank":"Please select Item Id",
+  "validation.msg.grn-allocation.purchaseNo.cannot.be.blank":"purchaseNo cannot be blank",
   
   
   "table.itemhistory.id":"Id",

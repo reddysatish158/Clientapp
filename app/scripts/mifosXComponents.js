@@ -183,6 +183,7 @@ define(['underscore', 'mifosX'], function() {
       'organization/ViewTaxMappingController',
       'organization/EditTaxMappingController',
       'logistics/inventory/grn/AddGRNController',
+      'logistics/inventory/grn/EditGRNController',
       'logistics/inventory/grn/ViewGrnController',
       'logistics/inventory/item/ViewItemController',
       'logistics/inventory/item/EditItemController',
@@ -256,7 +257,8 @@ define(['underscore', 'mifosX'], function() {
       'system/EditPlanMappingController',
       'system/EditIpPoolingController',
       'system/DalpayDetailsFormController',
-      'system/DalpayButtonController'
+      'system/DalpayButtonController',
+      'system/CreateEventValidationController'
 
     ],
     filters: [
