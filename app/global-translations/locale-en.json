@@ -1103,7 +1103,7 @@
    "table.statement.amount":"Amount",
    "link.viewstatement":"View statement",
    "error.msg.no.bills.to.generate":"No bills to generate",
-   "error.msg.no.generate.pdf.file.for.this.statement":"Please first generate pdf file for this statement first",
+   "error.msg.no.generate.pdf.file.for.this.statement":"Please first generate pdf file for this statement",
    
     "#messageResources":"....",
   "label.managemessage":"Manage Message",
