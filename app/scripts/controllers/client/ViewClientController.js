@@ -556,6 +556,12 @@
                  });
                };
                
+           scope.routeToEmail = function (statementId) {
+                   resourceFactory.statementEmailResource.update({statementId: statementId} , function(data) {	
+                         
+                        });
+                      };     
+               
                scope.getClientAssociation = function () {
                    resourceFactory.associationResource.get({clientId: routeParams.id} , function(data) {	
                           scope.associations = data;

@@ -956,6 +956,10 @@
             planMappingtemplateResource: defineResource(apiVer + "/planmapping/template", {}, {
              	  getAllPlanMapping: {method: 'GET', params: {}}
             }),
+            statementEmailResource: defineResource(apiVer + "/billmaster/email/:statementId", {statementId:'@statementId'}, {
+                get: {method: 'GET', params: {}, isArray: true},
+                update: { method: 'PUT'}
+            }),
 
         };
       }];

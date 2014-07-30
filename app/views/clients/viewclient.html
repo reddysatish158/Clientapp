@@ -1069,6 +1069,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -1079,6 +1080,7 @@
                 <td>{{statement.amount}}</td>
                 <td><a ng-click="routeTostatement(statement.id)" class="btn btn-primary">HTML</a></td>
                 <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i>PDF</a></td>
+                <td><a ng-click="routeToEmail(statement.id)" class="btn btn-primary">Email</a></td>
                 <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank">
                 <i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
