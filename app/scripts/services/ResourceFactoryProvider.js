@@ -541,6 +541,10 @@
                  grnSingleTemplateResource: defineResource(apiVer + "/itemdetails/template", {grnId: '@grnId'}, {
                        get: {method: 'GET', params: {}}	
                  }),
+                 grnUpdateResource: defineResource(apiVer + "/itemdetails/editgrn/:grnId", {grnId: '@grnId'}, {
+                     get: {method: 'GET', params: {}},
+                     update: {method: 'PUT', params: {}}
+                 }),
                  grnIdResource: defineResource(apiVer + "/itemdetails/grn/template", {}, {
                      get: {method: 'GET', params: {},isArray: true}	
                  }),
@@ -958,6 +962,10 @@
             }),
             statementEmailResource: defineResource(apiVer + "/billmaster/email/:statementId", {statementId:'@statementId'}, {
                 get: {method: 'GET', params: {}, isArray: true},
+            }),
+            EventValidationResource: defineResource(apiVer + "/eventvalidation/:id", {id:'@id'}, {
+                get: {method: 'GET', params: {}, isArray: true},
+                getDetails: {method: 'GET', params: {}},
                 update: { method: 'PUT'}
             }),
 
