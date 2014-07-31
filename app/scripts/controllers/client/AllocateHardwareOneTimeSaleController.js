@@ -15,10 +15,10 @@
 	            scope.categoryType=clientData.categoryType;
 	            scope.email=clientData.email;
 	            scope.phone=clientData.phone;
-			  
-			  resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId: routeParams.id}, function(data) {
-	 	          scope.formData=data;
-	 	    }); 
+	            scope.officeId = clientData.officeId;
+	            resourceFactory.allocateHardwareDetails.getItemDetails({oneTimeSaleId: routeParams.id, officeId:scope.officeId}, function(data) {
+	            	 	          scope.formData=data;
+	            });
 	        
 	        scope.getData = function(query){
 	        	  /*resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:  scope.formData.itemMasterId,query: query}, function(data) {
