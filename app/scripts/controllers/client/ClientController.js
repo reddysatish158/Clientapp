@@ -5,9 +5,22 @@
       scope.clients = [];
       scope.PermissionService = PermissionService;
       scope.pageNo = 1;
-     
+      scope.newClients = 0;
+      scope.activeClients = 0;
+      scope.InActiveClients = 0;
+      scope.PendingClients = 0;
+      scope.totalPages = 1;
+      
       var fetchFunction = function(offset, limit, callback) {
-        resourceFactory.clientResource.getAllClients({offset: offset, limit: limit} , callback);
+        resourceFactory.clientResource.getAllClients({offset: offset, limit: limit} , function(data){
+        	scope.totalClients = data.totalFilteredRecords;
+        	if(scope.totalClients%15 == 0)	
+        		scope.totalPages = scope.totalClients/15;
+        	else
+        		scope.totalPages = Math.floor(scope.totalClients/15)+1;
+        	
+        	callback(data);
+        });
       };
       
       resourceFactory.runReportsResource.get({reportSource: 'ClientCounts',genericResultSet:false} , function(data) {
@@ -21,19 +34,21 @@
     		  if(data[i].status == 'Pending')
     			  scope.PendingClients = data[i].ccounts;
     	  }
-    	  scope.totalClients = scope.newClients+scope.activeClients
+    	  /*scope.totalClients = scope.newClients+scope.activeClients
     	  					   +scope.InActiveClients+scope.PendingClients;
     	  if(scope.totalClients%15 == 0)
     		  scope.totalPages = scope.totalClients/15;
     	  else
-    		  scope.totalPages = Math.floor(scope.totalClients/15)+1;
+    		  scope.totalPages = Math.floor(scope.totalClients/15)+1;*/
       });
       
       scope.nextPageNo = function(){
-    	  scope.pageNo +=1;
+    	  if(scope.pageNo < scope.totalPages)
+    	   scope.pageNo +=1;
       };
       
       scope.previousPageNo = function(){
+    	  if(scope.pageNo >1)
     	  scope.pageNo -=1;
       };
       

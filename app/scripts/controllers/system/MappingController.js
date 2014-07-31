@@ -86,6 +86,14 @@
         	
         };
         
+        scope.getEventValidationData=function(data){
+        	
+        	resourceFactory.EventValidationResource.get(function(data) {
+           	 scope.eventValidationDatas=data; 
+           });
+        	
+        };
+        
             scope.getCurrencyConfig=function(data){
             	
             	 resourceFactory.currencyConfigResource.get(function(data){
@@ -111,6 +119,22 @@
             	
             };
             
+          scope.isDeleted=function(id,value){
+        	  
+        	  resourceFactory.EventActionMappingResource.delete({id: id} , {} , function(data) {
+                  location.path('/mappingconfig');
+                  scope.getEventActionMappingData();
+            });
+          };
+          
+          scope.isDeletedForValidation=function(id,value){
+        	  
+        	  resourceFactory.EventValidationResource.delete({id: id} , {} , function(data) {
+                  location.path('/mappingconfig');
+                  scope.getEventValidationData();
+            });
+          };
+          
           scope.routeToservice = function(id){
         		location.path('/viewServiceMapping/'+ id);
             };

@@ -882,6 +882,12 @@
       })
       .when('/dalpaysuccess', {
         templateUrl : 'views/system/dalpaySuccess.html'
+      })
+      .when('/createevenvalidation', {
+        templateUrl: 'views/system/createevenvalidation.html'
+      })
+      .when('/editgrn/:id',{
+    	  templateUrl: 'views/logistics/inventory/grn/editgrn.html'
       });
       
     
