@@ -30,6 +30,7 @@
     	   scope.provisioningdata=data;
     	   scope.services=data.services;
     	   scope.ipPoolDatas=data.ipPoolDatas;
+    	   //scope.formData.groupName=data.groupDatas[0].groupName;
     	   scope.vlanDatas=data.vlanDatas;
                 
             });

@@ -13,7 +13,7 @@
         });
         scope.submit = function() {
             resourceFactory.planMappingResource.save(this.formData,function(data){
-            		location.path('/viewPlanMapping/' + data.resourceId);
+            		location.path('/viewplanmapping/' + data.resourceId);
           });
         };
     }
