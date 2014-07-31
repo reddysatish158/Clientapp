@@ -1140,7 +1140,7 @@
          <tab heading="Statements" select="getClientStatements()" active="StatementsTab"
          ng-show="$parent.PermissionService.showMenu('READ_BILLMASTER')">
              <div class="pull-right">
-		         <a ng-show="PermissionService.showMenu('CREATE_BILLMASTER')" href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add</a>
+		         <a ng-show="PermissionService.showMenu('CREATE_BILLMASTER')" href="#/statement/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i>Generate</a>
 	        </div>
 	<div class="paddedbottom10">
     <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by id">
@@ -1153,17 +1153,19 @@
                 <th>amount</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="pointer-main" ng-repeat="statement in states  | filter:filterText">                 
-                <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.id}}</td>
-                 <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.billDate | DateFormat}}</td>
-                   <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.dueDate | DateFormat}}</td>
-                      <td class="pointer" data-ng-click="routeTostatement(statement.id)">{{statement.amount | number:2}}</td>
-                        <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i></a></td>
-                          <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount | number:2}}&custom={{client.id}}" target="_blank" 
-                ><i class=" icon-download-alt icon-white"></i>Paypal</a></td>
+            <tr ng-repeat="statement in states  | filter:filterText">                 
+                <td>{{statement.id}}</td>
+                <td>{{statement.billDate | DateFormat}}</td>
+                <td>{{statement.dueDate | DateFormat}}</td>
+                <td>{{statement.amount}}</td>
+                <td><a ng-click="routeTostatement(statement.id)" class="btn btn-primary">HTML</a></td>
+                <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i>PDF</a></td>
+                <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank">
+                <i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
         </tbody>
     </table>
