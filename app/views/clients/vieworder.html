@@ -287,6 +287,7 @@
 					<th>Status</th>
 					<th>Recieved Message</th>
 					<th></th>
+					<th>Sent Message</th>
 				</tr>
         </thead>
         <tbody>
@@ -299,6 +300,9 @@
 					<td ng-show="provisioningdata.isProcessed == 'N'" class="pointer" >Processing</td>
 					<td class="pointer" >{{provisioningdata.receiveMessage}}</td>
 					  <td><a ng-show="provisioningdata.isProcessed == 'F' " ng-click="reProcess(provisioningdata.id)" popover="Re Process" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a></td>
+					<td><button style="padding:3px 5px;" class="btn btn-primary" ng-hide="provisioningdata.requestType=='RETRACK'"
+								ng-click="sentMessagePopup(provisioningdata.id)" tooltip-placement="top" tooltip="Click Me">
+								<i class="icon-envelope icon-white"></i></button></td> 
 				</tr>
         </tbody>
     </table>
@@ -639,5 +643,21 @@
                         <button id="cancel" class="btn btn-warning" ng-click="cancel()">{{'button.cancel' | translate}}</button>
                     </div>
       </script>
+<script type="text/ng-template" id="sentMessage.html">
+                    <div class="modal-header silver">
+                        <h3 class="bolder">Sent Message Details</h3>
+                    </div>
+                    <div class="modal-body modal-big">
+						<table style="margin-left:50px;">
+							<tr ng-repeat="messageData in messageData">
+								<td width="30%">{{messageData.key}}</td>
+								<td width="80%" style="color:#800080;">:&nbsp;&nbsp;{{messageData.value}}</td>
+							</tr>
+		        		 </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="cancel" class="btn btn-primary" ng-click="cancel()">{{'button.done' | translate}}</button>
+                    </div>
+ </script>
       
 </div>

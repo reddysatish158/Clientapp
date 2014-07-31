@@ -34,7 +34,6 @@
             'chosen.jquery.min': "../scripts/modules/chosen.jquery.min",
             'aes':'../scripts/CryptoJS/rollups/aes',
             'multiple':'./modules/jquery.multiple.select'
-            
         },
         shim: {
             'angular': { exports: 'angular' },
