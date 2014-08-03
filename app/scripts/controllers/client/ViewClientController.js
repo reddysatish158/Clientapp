@@ -1048,8 +1048,36 @@
         };
  
        
-        	 
-        
+        scope.approveUnallocate = function (ipAddress){
+        	scope.ipAddr = ipAddress;
+        	scope.errorStatus=[];scope.errorDetails=[];
+          	 $modal.open({
+                   templateUrl: 'ApproveUnallocate.html',
+                   controller: ApproveUnallocate,
+                   resolve:{}
+               });
+            };
+ 
+var ApproveUnallocate = function ($scope, $modalInstance) {
+        		
+                $scope.approveUnallocate = function () {
+
+                	$scope.flagapproveTerminate=true;
+                	if(this.formData == undefined || this.formData == null){
+                		this.formData = {"ipAddress":scope.ipAddr,"status":'F'};
+                	}
+                	resourceFactory.ipPoolingIpStatusResource.update({} ,this.formData, function(data) {              	
+                		location.path('/viewClient/'+routeParams.id);  
+                        $modalInstance.close('delete');
+                    },function(errData){
+    	        		$scope.flagApproveReconnect = false;
+    		          });
+                	
+                };
+                $scope.cancelReconnect = function () {
+                    $modalInstance.dismiss('cancel');
+                };
+            };
         
     }
   });
