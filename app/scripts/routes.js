@@ -608,7 +608,7 @@
       .when('/viewgrn/:id',{
     	  templateUrl: 'views/logistics/inventory/grn/viewgrn.html'
       })
-      .when('/createitemdetails/:id',{
+      .when('/createitemdetails',{
     	  templateUrl: 'views/logistics/inventory/createitemdetails.html'
       })
       .when('/createmrn',{

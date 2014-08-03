@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    CreateClientController: function(scope, resourceFactory, location, http, dateFilter,API_VERSION,$rootScope,PermissionService) {
+    CreateClientController: function(scope, resourceFactory, location, http, dateFilter,API_VERSION,$rootScope,PermissionService,$upload) {
         scope.offices = [];
         scope.staffs = [];
         scope.first = {};
@@ -74,9 +74,9 @@
             this.formData.activationDate = reqDate;
             this.formData.flag=scope.configurationProperty;
             resourceFactory.clientResource.save(this.formData,function(data){
-
+            	
               if (scope.file) {
-                http.uploadFile({
+            	  $upload.upload({
                   url: $rootScope.hostUrl+ API_VERSION +'/clients/'+data.clientId+'/images', 
                   data: {},
                   file: scope.file
@@ -102,7 +102,7 @@
           };
     }
   });
-  mifosX.ng.application.controller('CreateClientController', ['$scope', 'ResourceFactory', '$location', '$http', 'dateFilter','API_VERSION','$rootScope','PermissionService', mifosX.controllers.CreateClientController]).run(function($log) {
+  mifosX.ng.application.controller('CreateClientController', ['$scope', 'ResourceFactory', '$location', '$http', 'dateFilter','API_VERSION','$rootScope','PermissionService','$upload', mifosX.controllers.CreateClientController]).run(function($log) {
     $log.info("CreateClientController initialized");
   });
 }(mifosX.controllers || {}));
