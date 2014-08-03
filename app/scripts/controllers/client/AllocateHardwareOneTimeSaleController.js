@@ -24,7 +24,7 @@
 	        	  /*resourceFactory.allocateHardwareDetails.getSerialNumbers({oneTimeSaleId:  scope.formData.itemMasterId,query: query}, function(data) {
 	        		  scope.itemDetails  = data.serials;
 	     	        }); */
-	        	 return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemMasterId, {
+	        	 return http.get($rootScope.hostUrl+ API_VERSION+'/itemdetails/'+scope.formData.itemMasterId+'/'+scope.officeId, {
 	        	      params: {
 	        	    	  query: query
 	        	      }
