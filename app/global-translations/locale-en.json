@@ -1991,6 +1991,7 @@
 "error.msg.ipaddress.not.available.to.assign":"Ip Address is not available to assign",
 "error.msg.ipaddress.already.allocated.please.select.another.iprange":"Ip addresses are already allocated.please select another ip range",
 "validation.msg.provisioning.IP_ADDRESS.cannot.be.empty":"Ip Address can not br blank",
+"validation.msg.null.statusType.cannot.be.blank":"Status Type cannot be blank",
 
 "#Redemption":".......",
 "validation.msg.redemption.clientId.cannot.be.blank":"Client id cannot be blank",
