@@ -885,7 +885,11 @@
          	  getData: {method: 'GET', params: {id:'@id'}},
          	  update: { method: 'PUT' }
           }) ,
-          
+
+          ipPoolingIpStatusResource: defineResource(apiVer + "/ippooling/updatestatus", {}, {
+         	  update: { method: 'PUT' }
+          }) ,
+
           clientIpPoolingResource: defineResource(apiVer + "/ippooling/:clientId", {clientId: '@clientId'}, {
          	  get: {method: 'GET', params: {},isArray: true},
          	 

@@ -6,6 +6,7 @@
         scope.first = {};
         scope.first.date = new Date();
         scope.formData = {};
+       
         scope.clientCategoryDatas=[];
         scope.configurationProperty=[];
        scope.formData.entryType ='ORP';
@@ -44,6 +45,7 @@
         	alert(1);
         };*/
       scope.getStateAndCountry=function(city){
+    	  
       	  resourceFactory.AddressTemplateResource.get({city :city}, function(data) {
           		scope.formData.state = data.state;
           		scope.formData.country = data.country;
