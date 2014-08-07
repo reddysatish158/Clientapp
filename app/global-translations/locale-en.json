@@ -711,6 +711,7 @@
   "label.availableservice":"Available Service",
   "label.selectedservice":"Selected Service",
   "label.plan.isprepaid":"Is Prepaid",
+  "label.plan.ishwreq":"Is Device Require:",
   "label.plan.duration":"Duration",
   "label.plan.volume":"Volume",
   "label.plan.units":"Units",
@@ -880,9 +881,14 @@
   "label.order.renewalperiod":"Renewal Period",
   "label.order.description":"Description",
   "label.order.Promotion":"Promotion Code",
+  "label.order.suspensionDate":"Suspension Date",
+  "label.order.suspensionreason":"Suspension Reason",
+  "label.order.suspensiondescription":"Description",
   "label.promo":"Apply Promo",
   "label.button.more":"More",
   "label.order.disconnectionDate":"Disconnection Date",
+  "validation.msg.order.suspensionReason.cannot.be.blank":"Please Select Suspension Reason",
+  "validation.msg.order.suspensionDescription.cannot.be.blank":"Description can not be blank",
   "validation.msg.order.paytermCode.cannot.be.blank":"Please Select Billing frequency",
   "label.osdmessage.message":"message",
   "label.osdMessage":"OSD Message",
@@ -1363,6 +1369,7 @@
   
    "#OnetimeSale":"......",
    "table.heading.saledate":"Sale Date",
+   "link.add.devicerental":"Device Renatal",
   "table.heading.itemcode":"Item Code",
   "table.heading.chargecode":"Charge Code",
   "table.heading.totalprice":"Total Price",
@@ -1372,8 +1379,11 @@
   "label.chargeCode":"Charge Code",
   "label.itemCode":"Item Code",
   "label.totalPrice":"Total Price",
+  "label.price":"Price",
+  "label.contract":"Contract Period",
   "label.unitPrice":"Unit Price",
   "label.saleDate":"Sale Date",
+  "label.rentaleDate":"Rental Date",
   "label.regions":"Regions",
   "link.allocationdetails":"Allocation Details",
   "table.heading.id":"Id",
@@ -1386,6 +1396,7 @@
   "validation.msg.onetimesale.quantity.not.greater.than.zero":"Quantity cannot be less then one",
   "validation.msg.onetimesale.saleType.cannot.be.blank":"Please Select Sale Type",
   "validation.msg.onetimesale.officeId.cannot.be.blank":"office Id cannot be blank",
+  "validation.msg.onetimesale.contractPeriod.cannot.be.blank":"Please Select Contract Period",
  
   
   "#EventResources":"....",
@@ -1797,7 +1808,8 @@
   
 
 "dialog.reconnect.title.message":"Reconnect",
-"dialog.terminate.title.message":"Terminate",  
+"dialog.terminate.title.message":"Terminate",
+"dialog.suspend.title.message":"Suspend",  
 
 "#Profile":"......",
 "label.heading.userid":"User ID",
