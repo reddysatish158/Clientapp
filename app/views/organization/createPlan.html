@@ -107,20 +107,23 @@
                         <option ng-repeat="selectedService in selectedServices" value="{{selectedService.id}}">{{selectedService.name}}</option>
                     </select>
                 </div>
-           
-        </div>
-         
-      
+        	</div>
                 </td>
                 <td>
-                
-           
              </td>
          </tr>
          </table>
            <table>
           <tr>
            <td width="50">
+            <div class="control-group">
+            <label class="control-label" for="isHwReq">{{ 'label.plan.ishwreq' | translate }}</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input type="checkbox" ng-model="formData.isHwReq">
+              </label>
+            </div>
+          </div>
               <div class="control-group">
             <label class="control-label" for="isPrepaid">{{ 'label.plan.isprepaid' | translate }}</label>
             <div class="controls">
@@ -158,8 +161,8 @@
               </div>
             </div>
           </div>
-          
-          
+          </td>
+          <td>
           </td>
           </tr>
           </table>

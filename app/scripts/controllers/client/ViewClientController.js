@@ -217,7 +217,7 @@
 	                                        ngShow : edit
                                         },
                                         {
-                                        	name:"Close",
+                                        	name:"Delete",
                                         	href:"#/closeclient",
                                         	icon:"icon-remove",
                                         	 ngShow : "true"

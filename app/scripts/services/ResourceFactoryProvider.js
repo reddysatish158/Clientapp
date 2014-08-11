@@ -337,7 +337,11 @@
         
         OrderTerminateResource: defineResource(apiVer + "/orders/terminate/:orderId", {orderId:'@orderId'},{
            	update: { method: 'PUT' },
-          
+        }),
+        
+        OrderSuspensionResource: defineResource(apiVer + "/orders/suspend/:orderId", {orderId:'@orderId'},{
+           	update: { method: 'PUT' },
+            get: {method: 'GET', params: {}},
         }),
         OrderrenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder/:orderId", {orderId:'@orderId'},{
         	 get: {method: 'GET', params: {}},
@@ -787,7 +791,7 @@
            }),
 //=======
 */        provisioningtemplateMappingResource: defineResource(apiVer + "/provisioning/template/:orderNo", {orderNo: '@orderNo'}, {
-            	  get: {method: 'GET', params: {}}
+            	  get: {method: 'GET', params: {},isArray: true}
 //>>>>>>> obsplatform-1.01
            }),
            

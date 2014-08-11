@@ -642,6 +642,9 @@
        .when('/addonetimesale/:id', {
         templateUrl: 'views/clients/addonetimesale.html'
       })
+      .when('/devicerental/:id', {
+          templateUrl: 'views/clients/devicerental.html'
+        })
       .when('/viewonetimesale/:id/:clientId', {
         templateUrl: 'views/clients/viewonetimesale.html'
       })
