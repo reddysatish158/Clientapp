@@ -2070,9 +2070,10 @@
 "validation.msg.planmapping.planId.cannot.be.blank":"Plan Code cannot be blank",
 
 "#Mcodes":"",
-"validation.msg.code.name.cannot.be.blank":"Name cannot be blank"
+"validation.msg.code.name.cannot.be.blank":"Name cannot be blank",
 
-
+"#client&parent":"",
+"error.msg.client.Not parent.himself.can.not.be.parent.to his.account":"Himself can not be parent to his account"
 
 
 

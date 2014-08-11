@@ -973,6 +973,11 @@
                 getDetails: {method: 'GET', params: {}},
                 update: { method: 'PUT'}
             }),
+            
+            clientParentResource: defineResource(apiVer + "/parentclient/:clientId", {clientId:'@clientId'}, {
+                get: {method: 'GET', params: {}},
+                update: { method: 'PUT'}
+            }),
 
         };
       }];
