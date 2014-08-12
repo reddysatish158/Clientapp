@@ -367,7 +367,7 @@
 
 	            	});
 	            	}
-	            	location.path('/clients/');
+	            	location.path('/viewclient/'+ resourceId);
 
 
 	 	         /*   resourceFactory.activationProcessResource.save(scope.ActivationData,function(data){
