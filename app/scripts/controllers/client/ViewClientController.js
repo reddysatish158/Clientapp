@@ -544,7 +544,12 @@
                   }
               }
             });
-          
+          //parentClient 
+           resourceFactory.clientParentResource.get({clientId:routeParams.id},function(data) {
+        	  scope.parent = [];
+        	  scope.parent=data;
+        	  
+          });
           
         };
 //leftside orderMenu function
@@ -948,16 +953,53 @@
         scope.downloadClientIdentifierDocument=function (identifierId, documentId){
           console.log(identifierId,documentId);
         };
-   /*    scope.tax=function(){
-    	//console.log("hello");
-    	var obj = {"taxExemption":scope.checkboxVal};
-    	resourceFactory.taxExemptionResource.update({clientId:routeParams.id},obj,function(data){
-    		//console.log("sucess");
-    	});
-      };*/
         
-       
-
+       /* scope.getparent = function(query){
+        	if(query.length>0){
+        		resourceFactory.clientParentResource.get({query: query}, function(data) { 	        	
+     	            scope.parentClients = data;
+     	        }); 
+        	}else{
+            	
+        	}
+        };*/
+        scope.getparent = function(query){
+        	return http.get($rootScope.hostUrl+ '/obsplatform/api/v1/parentclient/', {
+        	      params: {
+        	    	  query: query
+        	      }
+        	    }).then(function(res){
+        	     parentClients = [];
+        	      for(var i in res.data){
+        	    	  parentClients.push(res.data[i]);
+        	    	  if(i == 7)
+        	    		  break;
+        	      }
+        	      return  parentClients;
+        	    });
+          };
+        scope.saveParent = function(displayLabel){
+        if(!displayLabel==""){
+        var firstSplit=displayLabel.split('[');
+        var displayName=firstSplit[0];
+        var array=firstSplit[1].split(']');
+        var accountNo=array[0];
+        var obj = {"accountNo":accountNo,"displayName":displayName};
+        resourceFactory.clientParentResource.update({clientId:routeParams.id}, obj,function(data) { 	
+        	location.path('/viewclient/' +routeParams.id);
+        	route.reload();
+        	});
+      //  webStorage.add("callingTab", {someString: "identities" });
+        }else{
+        	
+        }
+        };
+     scope.routeToParentClient = function(parentId){
+    	 location.path('/viewclient/'+parentId);
+     };
+        
+        
+        
 		// *********************** InVenture controller ***********************
         scope.fetchInventureScore = function(){
           // dummy data for the graph - DEBUG purpose
