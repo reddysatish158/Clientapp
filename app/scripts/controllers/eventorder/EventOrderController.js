@@ -53,7 +53,7 @@
 			 */
 			scope.reset123 = function() {
 				webStorage.add("callingTab", {
-					someString : "eventOrders"
+					someString : "eventordertab"
 				});
 			}
 

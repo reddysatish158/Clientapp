@@ -40,14 +40,14 @@
  			  scope.TicketsTab = true;
  			  webStorage.remove('callingTab');
  		  }
- 		  else if(scope.displayTab == "hardware"){
- 			  scope.hardwareTab =  true;
+ 		  else if(scope.displayTab == "eventordertab"){
+ 			  scope.eventordertab =  true;
  			  webStorage.remove('callingTab');
  		  }
  		  else if(scope.displayTab == "Sale"){
  			  scope.SaleTab =  true;
  			  scope.eventsaleC="active";
- 			  scope.eventorderC="";
+ 			  scope.mydeviceC="";
  			  webStorage.remove('callingTab');
  		  }else if(scope.displayTab == "Statements"){
  			  scope.StatementsTab =  true;
@@ -690,24 +690,31 @@
          }
          scope.eventsaleTab = function(){
         	 scope.eventsaleC="active";
-        	 scope.eventorderC="";
+        	 scope.mydeviceC="";
          }
          scope.eventorderCTab = function(){
         	 scope.eventsaleC="";
-        	 scope.eventorderC="active";
+        	 scope.mydeviceC="active";
          }
                scope.getOneTimeSale = function () {
             	   scope.eventsaleC="active";
-            	   scope.eventorderC="";
+            	   scope.mydeviceC="";
             	   if(scope.displayTab == "eventOrders"){
             		   scope.eventsaleC="";
-                	   scope.eventorderC="active";
+                	   scope.mydeviceC="active";
             	   }
                    resourceFactory.oneTimeSaleResource.getOneTimeSale({clientId: routeParams.id} , function(data) {
                      scope.onetimesales = data.oneTimeSaleData;
                      scope.eventOrders = data.eventOrdersData;
                    });
                  };
+                 
+                 scope.getEventSale = function () {
+              	  
+                     resourceFactory.eventOrderPriceUpdateTemplateResource.get({clientId: routeParams.id} , function(data) {
+                       scope.eventOrders = data;
+                     });
+                   };       
                  
                  
         scope.dataTableChange = function(clientdatatable) {
@@ -852,6 +859,8 @@
         };
         
         scope.getAllOwnHardware = function () {
+        	scope.eventsaleC="";
+       	 scope.mydeviceC="active";
             resourceFactory.HardwareResource.getAllOwnHardware({clientId: routeParams.id} , function(data) {
               scope.ownhardwares = data;
             });

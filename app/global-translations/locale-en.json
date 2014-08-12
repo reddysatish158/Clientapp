@@ -876,6 +876,7 @@
   "label.order.status":"Status",
   "label.order.useraction":"User Action",
   "label.disconnectorder":"Disconnect Order",
+  "dialog.reactive.title.message":"Reactive",
   "label.order.disconnectionreason":"Disconnection Reason",
   "label.renewalorder":"Renewal Order",
   "label.order.renewalperiod":"Renewal Period",
@@ -1810,6 +1811,7 @@
 "dialog.reconnect.title.message":"Reconnect",
 "dialog.terminate.title.message":"Terminate",
 "dialog.suspend.title.message":"Suspend",  
+"dialog.confirm.title.message":"Confirm Request",
 
 "#Profile":"......",
 "label.heading.userid":"User ID",
