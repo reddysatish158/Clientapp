@@ -2086,8 +2086,9 @@
 "validation.msg.code.name.cannot.be.blank":"Name cannot be blank",
 
 "#client&parent":"",
-"error.msg.client.Not parent.himself.can.not.be.parent.to his.account":"Himself can not be parent to his account"
-
+"error.msg.client.Not parent.himself.can.not.be.parent.to his.account":"Himself can not be parent to his account",
+"error.msg.client.Not Parent.he.is. already. a parent.to.some other clients":"He is already a parent to some other clients",
+"error.msg.client.Not Parent.can.not.be.parent.to this.account":"Can not be parent to this account"
 
 
 
