@@ -1,0 +1,105 @@
+<div ng-controller="RegistrationSuccessFormController">
+	<form name="regSuccessForm" novalidate="" class="form-horizontal" ng-submit="submit()">
+		<br>
+		 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+		<fieldset>
+			<h3 style="padding-left:50px;">{{'label.registration.page' | translate}}</h3>
+			<table style="margin-left:50px;">
+	       		<tr>
+	       			<td>
+            			<div class="control-group">
+            				<label class="control-label">{{'label.fullname' | translate}}&nbsp;<span class="required">*</span></label>
+            				<div class="controls">
+            					<input ng-autofocus="true" type="text" data-ng-model="formData.fullName" placeholder= "Full Name" required><br/>
+            				</div>
+        				 </div>
+	         				 
+	       			</td>
+	       		</tr>
+	       		<tr>
+	       			<td>
+            			<div class="control-group">
+            				<label class="control-label">{{'label.mobilenumber' | translate}}&nbsp;<span class="required">*</span></label>
+            				<div class="controls">
+            					<input type="text" data-ng-model="formData.mobileNo" placeholder= "Mobile Number"required><br/>
+            				</div>
+        				 </div>
+	         				 
+	       			</td>
+	       		</tr>
+	       		<tr>
+	       			<td>
+            			<div class="control-group">
+             				 <label class="control-label" for="city">{{'label.city' | translate}}&nbsp;<span class="required">*</span></label>
+				              <div class="controls">
+				              <select ng-model="formData.city"  ng-options="city as city for city in cities" 
+				              		   ng-change="getStateAndCountry(formData.city)" required>
+				              		   <option value="">--select--</option>
+				              </select>
+				               <!--  <input type="text" id="city" name="city" ng-model="formData.city" list ="citylist" placeholder= "Serach for City"
+				                										 ng-change="getStateAndCountry(formData.city)" required /> -->
+		           				 <!-- <datalist id="citylist">
+		                   				<option  data-ng-repeat="city in cities" value="{{city}}">
+		           				 </datalist> -->
+				              </div>
+           				 </div>
+	       			</td>
+	       		</tr>
+	       		<tr>
+	       			<td>
+            			<div class="control-group" ng-show="isDeviceEnabled==true">
+                            <label class="control-label" for="serialNumber">{{ 'label.device' | translate }}&nbsp;<span class="required">*</span></label>
+                             <div class="controls">
+    	                        <input type="text" ng-model="formData.deviceNo" name="serialNumber" placeholder= "Enter Device"  />
+                             </div>
+                        </div>	
+	         				 
+	       			</td>
+	       		</tr>
+	       	</table>
+	    	<table style="margin-left:60px;width:800px;" class="table" ng-show="isRegisteredPlan==false">
+		        <thead>
+		            <tr class="graybg">
+		                <th>Plan Name</th>
+		                <th>Contract Period</th>
+		                <th>Price</th>
+		                <th>Select</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr ng-repeat="plan in plansData">
+		                <td>{{plan.planCode}}</td>
+		                <td>{{plan.contractPeriod}}</td>
+		                <td>{{plan.price}}</td>
+		                <td><input type="radio" name="selectPlan"  ng-click="selectedPLandAm(plan.contractId,plan.planId,plan.chargeCode,plan.price,plan.planCode)"/></td>
+		            </tr>
+		        </tbody>
+		    </table>
+	       		<!-- <tr>
+	       			<td>
+            			<div class="control-group">
+                            <label class="control-label" for="serialNumber">{{ 'label.device' | translate }}&nbsp;<span class="required">*</span></label>
+                             <div class="controls">
+    	                        <input type="text" ng-model="itemDetail" name="serialNumber" placeholder= "Search for Device"
+    	                        				   typeahead="itemDetail for itemDetail in getData($viewValue)" required />
+                             </div>
+                        </div>	
+	         				 
+	       			</td>
+	       		</tr> ng-disabled="!regSuccessForm.$valid"-->
+	       
+			<div>
+				<a id="cancel" href='#' class="btn pull-left">Cancel</a>
+				<a href="#/paymentbuttons" 
+					class="btn btn-primary pull-right" ng-click="savingPlanData()" ng-show="isAmountZero==false&&regSuccessForm.$valid&&nextBtn">Next
+				</a>
+				 <button id="submit" ng-click="sendingRequest()" class="btn btn-primary pull-right" ng-hide="isAmountZero==false"
+				 					ng-disabled="!regSuccessForm.$valid">Finish</button>
+			</div> 
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,29 @@
+<div ng-controller="ActivateUserController">
+ 		<form name="activeForm" novalidate="" class="form-horizontal">
+ 		
+ 			<div class="control-group" ng-show="isActive==true" style="margin-top:50px;">
+				<div class="controls">
+			 	   Your Account is now Active.You may now <a href="#/registrationsuccess">Register</a> 
+				</div>	
+			</div>
+			<div class="control-group" ng-show="isAlreadyActive==true" style="margin-top:50px;">
+				<div class="controls">
+			 	   Your Account is Already in Active.You may now <a ng-click="goToSignInPage()" >Sign In</a> 
+				</div>	
+			</div>
+		</form>
+			        
+<!-- <script type="text/ng-template" id="activepopup.html">
+                    
+                    <div class="modal-body modal-small" style="padding:25px 0px 0px 35px;">
+                       	<div class="control-group">
+							<div class="controls">
+						 	   Your Account is now Active.You may now <a href="#/registrationsuccess" ng-click="closePopup()">Log in</a> 
+							</div>	
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="submit" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</button>
+                    </div>
+      </script>-->
+</div>

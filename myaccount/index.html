@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="./selfcare_module/images/favicon.ico" />
+	<title>{{'title.obs.selfcare' | translate}}</title>
+	<style>[data-ng-cloak] { display: none !important; }</style>
+</head>
+<body  class="preview" id="top" data-spy="scroll" data-target=".subnav" data-offset="80" data-ng-cloak data-ng-controller="SelfCareMainController">
+
+   <div class="container well" style="background-color:#C0C0C0" data-ng-hide="currentSession.user != null">
+      <div class="row form-search ng-pristine ng-valid paddedbottom" data-ng-form="signInForm" data-ng-controller="SignInFormController">
+         <div class="pull-right ">
+            <span class="dropdown">{{ 'label.change.language' | translate }}<a class="dropdown-toggle btn btn-primary">
+            						{{optlang.name}}<i class="icon-sort-down"></i></a>
+	              <ul class="dropdown-menu">
+	                <li ng-repeat="lang in langs"><a ng-click="changeLang(lang)">{{lang.name}}</a></li>
+	              </ul>
+            </span>
+         </div><br/><br/><br/><br/>
+        <table>
+          <tr>
+          	<td colspan="2">
+          	   <div style=padding-left:800px;padding-bottom:5px;>
+		       		<button class="btn btn-success" ng-show="signInFormView" ng-click="signUpBtnFun()">{{'btn.signup' | translate}}</button>
+		       		<button class="btn btn-success" ng-show="signUpFormView" ng-click="signInBtnFun()">{{'btn.signin' | translate}}</button>
+       	      </div>
+          	</td>
+          </tr>
+          <tr>
+            <td>
+            	<table>
+            	  <tr>
+	        		<td><img alt="OBS Self Care" src="./selfcare_module/images/obs_logo.png" width="200px"/></td>
+	        		<td><strong><span style="color:darkblue;font-size:40px;">Self Care</span></strong><br/>
+	        			<span style="color:#ffffff;padding-left:0px;">{{ 'label.product.aboutus1' | translate }}</span><a target="http://www.openbillingsystem.com/" href="http://www.openbillingsystem.com/">{{ 'label.community.name' | translate }}</a>
+	        		</td>
+	        	 </tr>
+	        	</table>
+        	</td>
+        	<td>
+        		<div ng-show="signInFormView">
+	        	  <form name="signInForm" style="background-color:#2c3539" novalidate="" class="form-horizontal well" ng-submit="submit()">
+	        	 	<fieldset>
+	          			<legend><strong style="color:skyblue;">SignIn Form</strong></legend>
+			        	<table  width="50%">
+			        		<tr>
+			        			<td>
+			              			<div class="control-group">
+			              				<label style="color:#ffffff" class="control-label">{{'label.user.name' | translate}}&nbsp;&nbsp;:<span class="required">*</span></label>
+			              				<div class="controls">
+			              					<input ng-autofocus="true" type="text" ng-model="formData.username"   placeholder="{{ 'label.username' | translate }}" class="input-medium" required><br/>
+			              				</div>
+			          				 </div>
+			          				 
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td>
+			              			<div class="control-group">
+			              				<label style="color:#ffffff" class="control-label">{{ 'label.password' | translate }}&nbsp;&nbsp;:<span class="required">*</span></label>
+			              				<div class="controls">
+			              					<input id="pwd"  type="password" ng-model="formData.password"   placeholder="{{ 'label.password' | translate }}" class="input-medium"  required>
+			              				</div>
+			          				 </div>
+			          				 
+			        			</td>
+			        		</tr>
+			        		<tr>
+			        			<td>
+			        				<div class="pull-right">
+							            <span data-ng-show="authenticationFailed" style="color:#ff0000">{{ 'error.login.failed' | translate }}</span>
+			              				<button class="btn btn-primary" ng-click="login()">Sign In</button>
+			          				</div>
+			        			</td>
+			        		</tr>
+			        		
+			        	</table>
+	        		</fieldset>
+	        	  </form>
+        	    </div>
+        	    <div  ng-show="signUpFormView">
+        	   		 <ng-include src="template" ></ng-include>
+        		</div>
+        	</td>
+          </tr>
+       </table>
+         
+	</div>
+	</div>
+	<div ng-class="{fullscreen:true}" id="main" data-ng-hide="currentSession.user == null">
+		 <div class="navbar navbar-fixed-top">
+	        <div class="navbar-inner" style="background-color:#ccbcbc;">
+	            <div class="container">
+	                <a class="brand" ><img src="./selfcare_module/images/obs_logo.png" alt="SelfCare" width="50px;"></a>
+	                <div class="nav-collapse collapse" id="main-menu">
+	                    <ul class="nav" id="main-menu-left">
+	                    </ul>
+	                    <ul class="nav pull-right" id="main-menu-right">
+	                        <li class="dropdown" id="preview-menu">
+	                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:darkblue;">Self Care<b class="caret"></b>
+	                            </a>
+	                            <ul class="dropdown-menu">
+	                                <li><a id="logout" ng-click="signout()"><i class="icon-off"></i>Sign Out</a></li>
+	                            </ul>
+	                        </li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="container whitebg fullscreen">
+	      <div>
+	        <div class="row-fluid whitebg">
+	            <div class="span12 pull-right whitebg">
+	                <div class="whitebg" ng-view></div>
+	            </div>
+	            <hr>
+	        </div>
+	       </div>
+	    </div>
+    </div>
+ 	<script type='text/javascript' data-main="selfcare_module/selfcare_loader.js" src='selfcare_module/bower_components/requirejs/require.js'></script>
+ 	<script type="text/ng-template" id="clientactivepopup.html">
+                    
+                    <div class="modal-body modal-small" style="padding:25px 0px 0px 35px;">
+                       	<div class="control-group">
+							<div class="controls">
+							   Now Client is Activated  Please Sign In..!
+							</div>	
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="submit" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</a>
+                    </div>
+      </script>
+</body>
+</html>

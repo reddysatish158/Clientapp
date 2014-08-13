@@ -8,6 +8,7 @@
     	  localStorageService.add("permissionsArray",data.permissions);
     	  console.log(localStorageService.get("permissionsArray"));
         scope.currentSession = sessionManager.get(data);
+        console.log(scope.currentSession);
         if(PermissionService.showMenu('REPORTING_SUPER_USER'))
         location.path('/home').replace();
         scope.unreadMessage=data.unReadMessages;
@@ -146,7 +147,5 @@
     'PermissionService',
     'localStorageService',
     mifosX.controllers.MainController
-  ]).run(function($log) {
-    $log.info("MainController initialized");
-  });
+  ]);
 }(mifosX.controllers || {}));

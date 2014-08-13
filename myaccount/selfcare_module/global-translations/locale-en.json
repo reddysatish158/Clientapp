@@ -1,0 +1,44 @@
+{
+  "titles" :"----------------------------------------------------",
+ 	"title.obs.selfcare"		: "OBS SelfCare",
+ 	
+ "#buttons"  : "--------------------------",
+ 	"btn.signin"  				: "Sign In",
+ 	"btn.signup"				: "Sign Up",
+ 	"btn.login"					: "Login",
+ 	"btn.register"				: "Register",
+ 	"btn.done"					: "Done",
+ 	
+ "#labels"  :  "--------------------------",
+ 	"label.change.language" 	: "Change language:",
+ 	"label.product.aboutus1" 	: "Designed by ",
+ 	"label.community.name" 		: "OBS Team",
+ 	"label.form.login"			: "Login Form",
+ 	"label.user.name"			: "User Name",
+ 	"label.username" 			: "UserName",
+ 	"label.password" 			: "Password",
+ 	"label.form.registration"	: "Registration From",
+ 	"label.email"				: "Email",
+ 	"label.pleasewait"			: "Please Wait..",
+ 	"label.registration.page"	: "Registration Page",
+ 	"label.fullname"	  		: "Full Name",
+ 	"label.mobilenumber"	  	: "Mobile Number",
+ 	"label.city"	  			: "City",
+ 	"label.device"	  			: "Device",
+ 	
+ 	
+ 	"#errors " : "------------------------------------",
+ 	"label.contract.error"		: "Errors",
+ 	"label.error"				: "Error :",
+ 	"error.login.failed"		: "your credentials are not valid ",
+ 	
+ 	
+ 	"error.msg.billing.address.city.not.found" 			:	"City Not Found"
+ 	
+ 	
+ 	
+	
+  	
+  	
+  
+}

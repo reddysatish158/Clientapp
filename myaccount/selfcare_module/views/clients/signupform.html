@@ -1,0 +1,59 @@
+<div ng-controller="SignUpFormController">
+	<form name="signUpForm" style="background-color:#2c3539" novalidate="" class="form-horizontal well" >
+			<fieldset>
+				  <legend><strong style="color:skyblue;">SignUp Form</strong></legend>
+			       	<table  width="50%">
+			       		<tr>
+			       			<td>
+			             			<div class="control-group">
+			             				<label style="color:#ffffff" class="control-label">{{'label.email' | translate}}&nbsp;&nbsp;:<span class="required">*</span></label>
+			             				<div class="controls">
+			             					<input ng-autofocus="true" type="email" ng-model="formData.userName" placeholder="example@domain.com" class="input-large" required><br/>
+			             				</div>
+			         				 </div>
+			         				 
+			       			</td>
+			       		</tr>
+			       		<tr>
+			       			<td>
+			       				<div class="pull-right">
+			             				<button class="btn btn-primary" ng-click="submitEmail()" ng-hide="isProcessing" ng-disabled="!signUpForm.$valid">{{'btn.register' | translate}}</button>
+			             				<span class="btn" style="color:#000000;padding:5px;" ng-show="isProcessing">{{'label.pleasewait' | translate}}
+			             					<img alt="Loading" ng-show="isProcessing" ng-src="./selfcare_module/images/loader.gif" width="20px"/>
+			             				</span>
+			         				</div>
+			       			</td>
+			       		</tr>
+			       		
+			       	</table>
+			</fieldset>
+	</form>
+	<script type="text/ng-template" id="successpopup.html">
+                    
+                    <div class="modal-body modal-small" style="padding:25px 0px 0px 35px;">
+                       	<div class="control-group">
+							<div class="controls">
+						 	   Thank you for registering! A conformation mail has sent to <a>{{mailId}}</a>.
+								 Please click on the Activation Link <br>to activate your account 
+							</div>	
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="submit" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</a>
+                    </div>
+      </script>
+      <script type="text/ng-template" id="alredyexistpopup.html">
+                    
+                    <div class="modal-body modal-small" style="padding:25px 0px 0px 35px;">
+                       	<div class="control-group">
+							<div class="controls">
+							   Client is already Registered with this <a>{{mailId}}</a>.<br/>
+							   Please Sign In..!
+							</div>	
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <a id="submit" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</a>
+                    </div>
+      </script>
+</div>
