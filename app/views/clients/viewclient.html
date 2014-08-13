@@ -404,11 +404,31 @@
               </tr>
             </tbody>
           </table>
-          </div>
-   
-          
-          
-      </tab>
+          </div><br/>
+          <div class="pull-left">
+          <span class="input-append grpinputicons">
+                <input type="text" ng-model="parentClient" name="parentClient"  placeholder="Search by Parent #" 
+                       typeahead="parentClient.displayLabel as parentClient.displayLabel for parentClient  in getparent($viewValue) | limitTo:8" typeahead-min-length="0" />
+                   <a class="btn btn-primary" type="submit" ng-click="saveParent(parentClient)">save</a>
+        </span>
+        </div>
+          <table class="table" ng-show=parent.id>
+            <thead>
+              <tr class="graybg">
+                <th>ParentID</th>
+                <th>ParentName</th>
+                <th>ParentAccountno</th>
+              </tr>
+            </thead>
+            <tbody>
+             <tr class="pointer-main">
+                <td class="pointer" data-ng-click="routeToParentClient(parent.id)">{{parent.id}}</td>
+                <td class="pointer" data-ng-click="routeToParentClient(parent.id)">{{parent.displayName}}</td>
+                <td class="pointer" data-ng-click="routeToParentClient(parent.id)">{{parent.accountNo}}</td>
+            </tr>
+            </tbody>
+            </table>
+         </tab>
     <!--   <tab heading="{{'tab.templates' | translate}}" select="getClientTemplateDocuments()">
         <div class="span"></div>
         <div class="span2">
@@ -665,6 +685,7 @@
 				<div class="pull-right">
 					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addonetimesale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> New Sale</a>
 					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/addsecondsale/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Second Sale</a>
+					<a ng-show="PermissionService.showMenu('CREATE_ONETIMESALE')" href="#/devicerental/{{client.id}}" class="btn btn-primary"><i class="icon-plus icon-white"></i> Device Rental</a>
 				</div>
     
 			    <div>
@@ -1154,6 +1175,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -1164,6 +1186,7 @@
                 <td>{{statement.amount}}</td>
                 <td><a ng-click="routeTostatement(statement.id)" class="btn btn-primary">HTML</a></td>
                 <td><a ng-click="downloadFile(statement.id)" class="btn btn-primary"><i class=" icon-download-alt icon-white"></i>PDF</a></td>
+                <td><a ng-click="routeToEmail(statement.id)" class="btn btn-primary">Email</a></td>
                 <td><a class="btn btn-primary" href="{{url}}={{mail}}&item_name=first&amount={{statement.amount}}&custom={{client.id}}" target="_blank">
                 <i class=" icon-download-alt icon-white"></i>Paypal</a></td>
             </tr>
@@ -1292,7 +1315,7 @@
 				    <td>{{ippoolData.notes}}</td>
 				   <td><a ng-click="sendIp(ippoolData.id)" popover="Check IpStatus" popover-trigger="mouseenter"><i class="icon-play icon-white"></i></a></td>
 				   <td ng-show="ipstatus && ipId==ippoolData.id "><i class="icon-stop {{ipstatus | StatusLookup}}"></i>&nbsp;{{ipstatus}}</td>
-				   <td></td>
+				   <td><a ng-click="approveUnallocate(ippoolData.ipAddress)"  popover="Unallocate Ip" popover-trigger="mouseenter"><i class=" icon-remove icon-white"></i></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -1432,6 +1455,23 @@
                         <button id="submit" class="btn btn-primary" ng-click="accept(start.date)" ng-disabled="flagapprove1">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
+ <script type="text/ng-template" id="ApproveUnallocate.html">
+        <div class="modal-header silver">
+           <h3 class="bolder">{{'dialog.terminate.title.message' | translate}}</h3>
+       </div>
+       <div class="modal-body modal-big">
+         <div class="error" ng-show="errorStatus || errorDetails">
+		 		<label>{{'label.contract.error' | translate}}</label>
+				<label ng-show="errorStatus">{{errorStatus}}</label>
+				<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	      </div>
+            <h4>Are you sure?</h4>
+      </div>
+        <div class="modal-footer">
+                        <button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
+                       <button id="submit" class="btn btn-primary" ng-click="approveUnallocate()" ng-disabled="flagApproveTerminate">{{'label.confirm' | translate}}</button>
+       </div>
+      </script>  
       <script type="text/ng-template" id="StatementPop.html">
                     <div class="modal-header silver">
                         <h3 class="bolder">{{'dialog.statement.title.message' | translate}}</h3>

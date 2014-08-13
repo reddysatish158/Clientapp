@@ -1,14 +1,33 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,webStorage,PermissionService,localStorageService) {
-
+    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,webStorage,PermissionService,localStorageService,$idle) {
+      
+    	/**
+    	 * Logout the user if Idle
+    	 * 
+    	 * */
+        scope.started = false;
+        scope.$on('$idleTimeout', function () {
+            scope.logout();
+            $idle.unwatch();
+            scope.started = false;
+        });
+        
+        scope.start = function (session) {
+            if (session) {
+                $idle.watch();
+                scope.started = true;
+            }
+        };
+        
       scope.leftnav = false;
 
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
-    	  localStorageService.add("permissionsArray",data.permissions);
-    	  console.log(localStorageService.get("permissionsArray"));
+    	  
+    	localStorageService.add("permissionsArray",data.permissions);
         scope.currentSession = sessionManager.get(data);
-        console.log(scope.currentSession);
+
+        scope.start(scope.currentSession);
         if(PermissionService.showMenu('REPORTING_SUPER_USER'))
         location.path('/home').replace();
         scope.unreadMessage=data.unReadMessages;
@@ -133,6 +152,7 @@
 
       sessionManager.restore(function(session) {
         scope.currentSession = session;
+        scope.start(scope.currentSession);
       });
     }
   });
@@ -146,6 +166,7 @@
     'webStorage',
     'PermissionService',
     'localStorageService',
+    '$idle',
     mifosX.controllers.MainController
   ]);
 }(mifosX.controllers || {}));
