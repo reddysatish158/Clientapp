@@ -1,6 +1,6 @@
 (function(selfcare_module) {
   selfcare.controllers = _.extend(selfcare_module, {
-	  RegistrationSuccessFormController: function(scope,RequestSender,rootScope,http,authenticationService,webStorage,httpService) {
+	  RegistrationSuccessFormController: function(scope,RequestSender,rootScope,http,authenticationService,webStorage,httpService,sessionManager,location) {
 		  //declaration of formData
 		  scope.formData = {};
 		  
@@ -103,15 +103,20 @@
           };
           
           scope.sendingRequest = function(){
+        	  if(scope.formData.deviceNo){
+        		  scope.clientData.device = scope.formData.deviceNo;
+        	  }
         	  scope.clientData.fullname = scope.formData.fullName;
         	  scope.clientData.city = scope.formData.city;
-        	  scope.clientData.phone = parseInt(scope.formData.mobileNo); 
-        	  scope.clientData.email = scope.formData.emailId; 
+        	  scope.clientData.phone = scope.formData.mobileNo; 
+        	  scope.clientData.email = webStorage.get("emailId"); 
         	  scope.clientData.paytermCode = scope.formData.paytermCode; 
         	  scope.clientData.contractPeriod = scope.formData.contractperiod; 
         	  scope.clientData.planCode = scope.formData.planCode; 
         	  RequestSender.clientResource.save(scope.clientData,function(data){
- 				 
+	        		 rootScope.currentSession = sessionManager.clear();
+	 				 location.path('/').replace();
+	 				 rootScope.activetedClientPopup();
  			  });
           };
           //submit functionality
@@ -122,5 +127,5 @@
 		  
     }
   });
-  selfcare.ng.application.controller('RegistrationSuccessFormController', ['$scope','RequestSender','$rootScope','$http','AuthenticationService','webStorage','HttpService', selfcare.controllers.RegistrationSuccessFormController]);
+  selfcare.ng.application.controller('RegistrationSuccessFormController', ['$scope','RequestSender','$rootScope','$http','AuthenticationService','webStorage','HttpService','SessionManager','$location', selfcare.controllers.RegistrationSuccessFormController]);
 }(selfcare.controllers || {}));

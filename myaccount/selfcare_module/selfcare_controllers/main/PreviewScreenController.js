@@ -8,7 +8,9 @@
 		 scope.formData = webStorage.get("planFormData");
 		 
 		 scope.submitTotalData = function(){
-			 console.log(scope.formData);
+			 if(scope.formData.deviceNo){
+       		  scope.clientData.device = scope.formData.deviceNo;
+			 }
 			 scope.clientData.fullname = scope.formData.fullName;
 			 scope.clientData.city = scope.formData.city;
 			 scope.clientData.phone = parseInt(scope.formData.mobileNo); 

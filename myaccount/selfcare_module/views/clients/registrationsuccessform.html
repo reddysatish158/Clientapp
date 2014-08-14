@@ -14,7 +14,11 @@
             			<div class="control-group">
             				<label class="control-label">{{'label.fullname' | translate}}&nbsp;<span class="required">*</span></label>
             				<div class="controls">
-            					<input ng-autofocus="true" type="text" data-ng-model="formData.fullName" placeholder= "Full Name" required><br/>
+            					<input ng-autofocus="true" name="fullName" type="text" data-ng-model="formData.fullName" placeholder= "Full Name" ng-pattern="/^[a-zA-Z0-9\-\&\s]+$/" required ng-minlength=3 late-Validate><br/>
+            					<span  ng-show="regSuccessForm.fullName.$invalid">
+				                	<small class="error" ng-show="regSuccessForm.fullName.$error.pattern">alphanumeric and spaces only!</small>
+				                    <small class="error" ng-show="regSuccessForm.fullName.$error.minlength && !regSuccessForm.fullName.$error.req">Name is required at least 3 characters</small>
+				                </span>
             				</div>
         				 </div>
 	         				 
@@ -25,7 +29,11 @@
             			<div class="control-group">
             				<label class="control-label">{{'label.mobilenumber' | translate}}&nbsp;<span class="required">*</span></label>
             				<div class="controls">
-            					<input type="text" data-ng-model="formData.mobileNo" placeholder= "Mobile Number"required><br/>
+            					<input name="phone" type="text" data-ng-model="formData.mobileNo" placeholder= "Mobile Number"
+            							ng-pattern="/^(?!0+$)(?!1+$)(?!2+$)(?!3+$)(?!4+$)(?!5+$)(?!6+$)(?!7+$)(?!8+$)(?!9+$)\d{1,15}$/" required  late-Validate/><br/>
+            					 <span ng-show="regSuccessForm.phone.$dirty && regSuccessForm.phone.$invalid">
+				        			<small class="error" ng-show="regSuccessForm.phone.$error.pattern">wrong input or accepts only digits !</small>
+				    			</span>
             				</div>
         				 </div>
 	         				 
@@ -54,7 +62,7 @@
             			<div class="control-group" ng-show="isDeviceEnabled==true">
                             <label class="control-label" for="serialNumber">{{ 'label.device' | translate }}&nbsp;<span class="required">*</span></label>
                              <div class="controls">
-    	                        <input type="text" ng-model="formData.deviceNo" name="serialNumber" placeholder= "Enter Device"  />
+    	                        <input type="text" ng-model="formData.deviceNo" name="serialNumber" placeholder= "Enter Device"/>
                              </div>
                         </div>	
 	         				 

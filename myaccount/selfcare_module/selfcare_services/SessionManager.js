@@ -27,6 +27,7 @@
           }else if(formData.username){
         	  RequestSender.loginUser.save(formData,function(successData){
         		  scope.currentSession= {user :'selfcare'};
+        		  scope.authenticationFailed = false;
         		  location.path('/clients/'+successData.clientId);
         	  },function(errorData){
         		  webStorage.remove("sessionData");

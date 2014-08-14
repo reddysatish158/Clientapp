@@ -41,6 +41,7 @@
     	  scope.signUpFormView=scope.signInFormView;
     	  scope.signInFormView=!scope.signUpFormView;
     	  scope.template="selfcare_module/views/clients/signupform.html"; 
+    	  scope.authenticationFailed = false;
       };
       //sign up button fun end
       

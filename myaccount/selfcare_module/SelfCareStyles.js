@@ -9,10 +9,6 @@ define(['underscore'], function() {
       'jquery-ui',
       'nv.d3',
       'style'
-    ],
-    less: [
-      'selfcare'
-
     ]
   };
 

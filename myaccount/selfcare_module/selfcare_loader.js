@@ -17,7 +17,6 @@
             'underscore':       './bower_components/underscore/underscore',
             'webstorage':       './bower_components/angular-webstorage/angular-webstorage',
             'require-css':      './bower_components/require-css/css',
-            'require-less':     './bower_components/require-less/less',
             'd3':               './bower_components/d3/d3',
             'nvd3':             './bower_components/nvd3/nv.d3',
             'ngSanitize':       './bower_components/angular-sanitize/angular-sanitize',
@@ -76,11 +75,6 @@
 		                name: 'css',
 		                location: './bower_components/require-css',
 		                main: 'css'
-		            },
-		            {
-		                name: 'less',
-		                location: './bower_components/require-less',
-		                main: 'less'
 		            }
 		         ]
     });
