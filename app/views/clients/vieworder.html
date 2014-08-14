@@ -88,6 +88,7 @@
                 <li>
                     <a ng-show ="orderData.status == 'ACTIVE'" ng-click="suspend()">Suspend</a>
                     <a ng-click="CommandCenter(orderPriceDatas[0].orderId)">Command Center</a>
+                    <a href="#/ipchange/{{clientId}}/{{orderData.id}}/{{orderServicesData[0].serviceId}}">Ip Change</a>
                 </li>
               </ul>
           </span> 
