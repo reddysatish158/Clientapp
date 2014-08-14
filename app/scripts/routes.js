@@ -891,6 +891,9 @@
       })
       .when('/editgrn/:id',{
     	  templateUrl: 'views/logistics/inventory/grn/editgrn.html'
+      })
+      .when('/ipchange/:clientId/:orderId/:serviceId',{
+    	  templateUrl: 'views/clients/ipchange.html'
       });
       
     
