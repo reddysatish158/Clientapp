@@ -814,6 +814,10 @@
            provisioningtemplateDataResource: defineResource(apiVer + "/provisioning/serviceparmas/:orderId", {orderId:'@orderId'}, {
           	  get: {method: 'GET', params: {}}
             }),
+            provisioningIpChangeResource: defineResource(apiVer + "/provisioning/ipdetails/:orderId", {orderId:'@orderId'}, {
+            	  get: {method: 'GET', params: {}},
+            	  update: { method: 'PUT'}
+              }),
             
 	       EventActionMappingResource: defineResource(apiVer + "/eventactionmapping/:id", {id:'@id'}, {
                get: {method: 'GET', params: {}, isArray: true},
