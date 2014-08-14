@@ -408,8 +408,9 @@
           <div class="pull-left">
           <span class="input-append grpinputicons">
                 <input type="text" ng-model="parentClient" name="parentClient"  placeholder="Search by Parent #" 
-                       typeahead="parentClient.displayLabel as parentClient.displayLabel for parentClient  in getparent($viewValue) | limitTo:8" typeahead-min-length="0" />
-                   <a class="btn btn-primary" type="submit" ng-click="saveParent(parentClient)">save</a>
+                       typeahead="parentClient.displayLabel as parentClient.displayLabel for parentClient  in getparent($viewValue) | limitTo:8" 
+                       typeahead-min-length="0"/>
+                <button class="btn btn-primary" type="submit" disabled ng-click="saveParent(parentClient)">save</button>
         </span>
         </div>
           <table class="table" ng-show=parent.id>
@@ -417,7 +418,7 @@
               <tr class="graybg">
                 <th>ParentID</th>
                 <th>ParentName</th>
-                <th>ParentAccountno</th>
+                <th>AccountNo</th>
               </tr>
             </thead>
             <tbody>
@@ -619,7 +620,7 @@
             </thead>
               <tbody>
                 <tr class="pointer-main" ng-repeat="data in datatabledetails.data">
-                <td class="pointer" ng-repeat="row in data.row"
+                <td class="pointer" ng-repeat="row in data.row track by $index"
 		                            ng-click="viewDataTable(clientdatatable.registeredTableName,data)">{{row}}</td>
                   <!--   <span ng-show="$index == 0">
                       <a class="pointer" data-ng-click="routeTotable(clientdatatable.registeredTableName,client.id,data.row[0])"  ng-show="datatabledetails.isMultirow">{{row}}</a>
