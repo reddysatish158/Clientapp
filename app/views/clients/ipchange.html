@@ -126,7 +126,7 @@
                              <a ng-show="IPAddressType" ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
                               	<div  ng-show="IPAddressType" ng-repeat="addipAddress in addIpAddress">
 									<input type="text" style="width:110px" readonly ng-model="addipAddress">
-									 <a ng-click="deleteAddIpAddress($index,ip)"><i class="icon-remove icon-white"></i></a>					   					        
+									 <a ng-click="deleteAddIpAddress($index,addipAddress)"><i class="icon-remove icon-white"></i></a>					   					        
 								</div>                            
                			</div>                         
             	</div>  
