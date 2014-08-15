@@ -109,7 +109,6 @@
     	
       	scope.deleteAddIpAddress = function(index,ip) {
         		scope.addIpAddress.splice(index, 1);
-        		consol.log(scope.addIpAddress.splice(index, 1));
         		scope.exitIpAddress.splice(index,1);
         		scope.removeIpAddress.push(ip);
 	
