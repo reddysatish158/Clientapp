@@ -12,6 +12,7 @@
         scope.serviceDatas =[];
         scope.exit={};
         scope.exitIpAddress = [];
+        scope.removeIpAddress = [];
         scope.exitIpParamData = [];
         var clientData = webStorage.get('clientData');
         var orderData = webStorage.get('orderData');
@@ -49,19 +50,16 @@
       		scope.subnetType = false;
       		scope.type="ipaddress";
       		for(var param in scope.serviceDatas){
-        		
-
-      		  var temp = {};
-      		
-      		if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
-      			 scope.exit.ipaddr=undefined;
-      			 temp.paramName = scope.serviceDatas[param].paramName;
-      			temp.paramValue = scope.serviceDatas[param].paramValue;
-      			scope.exit.ipValue=scope.serviceDatas[param].paramValue;
+      		     var temp = {};
+      		 if(scope.serviceDatas[param].paramName == "IP_ADDRESS"){
+      			    scope.exit.ipaddr=undefined;
+      			    temp.paramName = scope.serviceDatas[param].paramName;
+      			    temp.paramValue = scope.serviceDatas[param].paramValue;
+      			    scope.exit.ipValue=scope.serviceDatas[param].paramValue;
 
       			var ipValues =temp.paramValue;
       			var found = temp.paramValue.match("/");
-      			
+      		
       			if(found){
       				var params=ipValues.split("/");
       			//	scope.subnetType = true;
@@ -91,11 +89,11 @@
        /**Ip datas start*/
        
        scope.getData = function(query){
-    	   
          	if(query.length>0){
          		resourceFactory.ippoolingDetailsResource.getIpAddress({query: query}, function(data) { 
          			
   	            scope.ipPoolDatasData = data.ipAddressData;
+  	          
   	        });
          	}else{
              	
@@ -105,13 +103,14 @@
          scope.addIpAddresses = function() {
            	if(scope.IPAddressObj.ipAddress)
       		    scope.addIpAddress.push(scope.IPAddressObj.ipAddress);
-           	
-           	scope.IPAddressObj.ipAddress = undefined;
+           	    scope.IPAddressObj.ipAddress = undefined;
 
       	};
     	
-      	scope.deleteAddIpAddress = function(index) {
+      	scope.deleteAddIpAddress = function(index,ip) {
         		scope.addIpAddress.splice(index, 1);
+        		scope.exitIpAddress.splice(index,1);
+        		scope.removeIpAddress.push(ip);
 	
         };
          
@@ -142,17 +141,18 @@
       /**
        * free ip details pop up end
        * */ 
-     scope.existIpData=function(ip){
-    	
-    	 scope.exitIpAddress.pop(ip);
-    	 
+     scope.existIpData=function(ip,index){
+    	 scope.exitIpAddress.splice(index,1);
+    	 scope.addIpAddress.splice(index,1);
+    	 scope.removeIpAddress.push(ip);
+
      };
          	
         scope.submit = function() {
         	
         	this.formData.clientId=parseInt(scope.clientId);
         	this.formData.planName=scope.planName;
-        	this.formData.existIps=scope.exitIpAddress;
+        	this.formData.existIps=scope.removeIpAddress;
         	this.formData.newIps=scope.addIpAddress;
         	
         	resourceFactory.provisioningIpChangeResource.update({'orderId':routeParams.orderId},this.formData,function(data){
