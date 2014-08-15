@@ -120,7 +120,7 @@
     		<td valign="top">
     			
     			<div class="control-group">
-            		<label class="control-label" for="ipAddress">{{ 'label.provisioning.ipaddress' | translate }}</label>
+            		<label class="control-label" for="ipAddress">{{'label.provisioning.ipaddress' | translate}}</label>
                         <div class="controls">                                  	       
              				<input type="text" ng-model="IPAddressObj.ipAddress" name="ipAddress" ng-change="getData(IPAddressObj.ipAddress)"  typeahead="ipPoolData as ipPoolData for ipPoolData in ipPoolDatasData | filter:$viewValue" typeahead-min-length="0">  
                              <a ng-show="IPAddressType" ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;

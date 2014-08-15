@@ -79,7 +79,7 @@
       			scope.exitIpAddress=[];
                    for(var ip in ipArray){      	
                   	 scope.exitIpAddress.push(ipArray[ip]);
-                  	 scope.addIpAddress.push(ipArray[ip]);
+                  	// scope.addIpAddress.push(ipArray[ip]);
                    }
       			}
                   
