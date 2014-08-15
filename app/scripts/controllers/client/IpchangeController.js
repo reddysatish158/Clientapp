@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  IpchangeController: function(scope, webStorage,resourceFactory, routeParams,location,dateFilter,modal) {
+	  IpchangeController: function(scope, webStorage,resourceFactory, routeParams,location,dateFilter,modal,http,$rootScope) {
 		  
 		scope.orderId = routeParams.orderId;
         scope.provisioningdata= [];
@@ -82,13 +82,23 @@
       			}
                   
       		}  
-      	}
+      	   }
                 
             });
        
        /**Ip datas start*/
-       
        scope.getData = function(query){
+       	   return http.get($rootScope.hostUrl+ '/obsplatform/api/v1/ippooling/search/', {
+       	      params: {
+       	    	  query: query
+       	      }
+       	    }).then(function(res){
+       	    	ipPoolData = res.data.ipAddressData;
+       	      return  ipPoolData;
+       	    });
+       
+       };
+     /*  scope.getData = function(query){
          	if(query.length>0){
          		resourceFactory.ippoolingDetailsResource.getIpAddress({query: query}, function(data) { 
          			
@@ -98,7 +108,7 @@
          	}else{
              	
          	}
-         };
+         };*/
          
          scope.addIpAddresses = function() {
            	if(scope.IPAddressObj.ipAddress)
@@ -138,23 +148,16 @@
    				$modalInstance.dismiss('cancel');
    			};
      };
-      /**
-       * free ip details pop up end
-       * */ 
+      
      scope.existIpData=function(ip,index){
-    	 scope.exitIpAddress.splice(index,1);
+     	 scope.exitIpAddress.splice(index,1);
     	 scope.addIpAddress.splice(index,1);
     	 scope.removeIpAddress.push(ip);
 
      };
          	
         scope.submit = function() {
-        	
-        	for(var ip in  scope.exitIpAddress){      	
-             	 scope.addIpAddress.push(scope.exitIpAddress[ip]);
-             	// scope.addIpAddress.push(ipArray[ip]);
-              }
-        	
+
         	this.formData.clientId=parseInt(scope.clientId);
         	this.formData.planName=scope.planName;
         	this.formData.existIps=scope.removeIpAddress;
@@ -167,7 +170,7 @@
         };
     }
   });
-  mifosX.ng.application.controller('IpchangeController', ['$scope','webStorage', 'ResourceFactory','$routeParams', '$location','dateFilter','$modal', mifosX.controllers.IpchangeController]).run(function($log) {
+  mifosX.ng.application.controller('IpchangeController', ['$scope','webStorage', 'ResourceFactory','$routeParams', '$location','dateFilter','$modal','$http','$rootScope', mifosX.controllers.IpchangeController]).run(function($log) {
     $log.info("IpchangeController initialized");
   });
 }(mifosX.controllers || {}));
