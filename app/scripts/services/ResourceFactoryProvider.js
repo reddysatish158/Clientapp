@@ -986,6 +986,9 @@
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT'}
             }),
+            logoutResource: defineResource(apiVer + "/logout", {id:'@id'}, {
+                getAll: {method: 'GET', params: {}}
+            }),
 
         };
       }];
