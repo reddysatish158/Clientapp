@@ -965,10 +965,10 @@
         };*/
        scope.$watch('parentClient', function() {
         	if(scope.parentClient){
-        		$('button').prop('disabled', false);
+        		$('.btn-disabled').prop('disabled', false);
         	}
         	else{
-        		$('button').prop('disabled', true);
+        		$('.btn-disabled').prop('disabled', true);
         	}
          });
         scope.getparent = function(query){
