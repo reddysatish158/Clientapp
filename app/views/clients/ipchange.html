@@ -108,23 +108,20 @@
     	<tr>
     		<td valign="top">
     			<table>
-            			<tr ng-repeat="ip in exitIpAddress | filter:filterText">
-            				
+            			<tr ng-repeat="ip in exitIpAddress track by $index | filter:filterText">
                        		<td>{{ip}}&nbsp;&nbsp;</td>
                 			<td><a ng-click="existIpData(ip,$index)" class="icon-remove"></a></td>        
                			</tr>
     			</table>
-    			
     		</td>
-    		
     		<td valign="top">
     			<div class="control-group">
             		<label class="control-label" for="ipAddress">{{'label.provisioning.ipaddress' | translate}}</label>
                         <div class="controls">                                  	       
              			  <input type="text" ng-model="IPAddressObj.ipAddress" name="ipAddress" typeahead="ipPoolData as ipPoolData for ipPoolData in getData($viewValue) | limitTo:8" typeahead-min-length="0">  
                              <a ng-show="IPAddressType" ng-click="addIpAddresses()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
-                              	<div  ng-show="IPAddressType" ng-repeat="addipAddress in addIpAddress">
-									<input type="text" style="width:110px" readonly ng-model="addipAddress">
+                              	<div  ng-show="IPAddressType" ng-repeat="addipAddress in addIpAddress track by $index">
+									 <input type="text" style="width:110px" readonly ng-model="addipAddress"> 
 									 <a ng-click="deleteAddIpAddress($index,addipAddress)"><i class="icon-remove icon-white"></i></a>					   					        
 								</div>                            
                			</div>                         

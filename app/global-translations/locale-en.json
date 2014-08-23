@@ -206,6 +206,8 @@
   "label.job.url":"Url",
   "label.job.username":"User Name",
   "label.job.password":"Password",
+  "label.job.updateStatus":"Status",
+  "label.job.createticket":"Create Ticket",
   "validation.msg.schedulerjob.Username.cannot.be.blank":"Username cannot be blank",
   "validation.msg.schedulerjob.Password.cannot.be.blank":"Password cannot be blank",
   "validation.msg.schedulerjob.URL.cannot.be.blank":"Url cannot be blank",
@@ -1947,6 +1949,7 @@
  "validation.msg.provisioning.SERVICE.cannot.be.blank":"Service cannot be blank",
  "validation.msg.provisioning.VLAN_ID.cannot.be.blank":"Please Select VLAN",
  "label.provisioning.subnetIP":"Subnet IP",
+ "error.msg.duplicate.ipaddresses.are.not allow.to.assign":"Duplicate ip's are not allow to assign",
  
  "#Billing Modes":"",
  "validation.msg.billMode.billMode.cannot.be.blank":"Bill Modes cannot be blank",

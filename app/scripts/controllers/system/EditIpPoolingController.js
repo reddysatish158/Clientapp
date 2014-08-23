@@ -22,9 +22,10 @@
 	            }
 	        });
 	        
-	            scope.submit = function() {     
-	            	 if(scope.typeCodeValue.status=='Assigned'){
-	            	               scope.formData.statusType='A';
+
+	            scope.submit = function() {   
+	            	if(scope.typeCodeValue.status=='Assigned'){
+	            		scope.formData.statusType='A';
 	            	}
 	            resourceFactory.ipPoolingResource.update({'id': routeParams.id},this.formData,function(data){
 	                location.path('/ipPooling');
