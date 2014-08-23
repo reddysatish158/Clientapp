@@ -157,6 +157,11 @@
      };
          	
         scope.submit = function() {
+        	
+        	for(var ip in  scope.exitIpAddress){      	
+             	 scope.addIpAddress.push(scope.exitIpAddress[ip]);
+             	// scope.addIpAddress.push(ipArray[ip]);
+              }
 
         	this.formData.clientId=parseInt(scope.clientId);
         	this.formData.planName=scope.planName;

@@ -662,7 +662,7 @@
                 eventTemplateResource: defineResource(apiVer + "/eventmaster/template",{},  {
               	  get: {method: 'GET', params: {}}
                 }),
-                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{clientId:'@clientId'},  {
+                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{},  {
                 	  get: {method: 'GET', params: {clientId:'@clientId'}}
                 }),
                 eventOrderPriceTemplateResource: defineResource(apiVer + "/eventorder",{},{
