@@ -80,6 +80,15 @@
              });
           };
           
+          scope.reactive= function (){
+          	scope.errorStatus=[];scope.errorDetails=[];
+          	 $modal.open({
+                   templateUrl: 'ApproveReactive.html',
+                   controller: ApproveReactive,
+                   resolve:{}
+               });
+            };
+          
           scope.terminate = function (){
           	scope.errorStatus=[];scope.errorDetails=[];
           	 $modal.open({
@@ -88,6 +97,17 @@
                    resolve:{}
                });
             };
+            
+            scope.confirmRequest = function (provId){
+              	scope.errorStatus=[];
+              	scope.errorDetails=[];
+              	scope.provId=provId;
+              	 $modal.open({
+                       templateUrl: 'ApproveConfirm.html',
+                       controller: ApproveConfirm,
+                       resolve:{}
+                   });
+                };
             
             scope.suspend = function (){
               	scope.errorStatus=[];scope.errorDetails=[];
@@ -370,6 +390,32 @@
             };
         };
         
+	var ApproveReactive = function ($scope, $modalInstance) {
+    		
+            $scope.approveReactive= function () {
+
+            	$scope.flagApproveReactive=true;
+            	if(this.formData == undefined || this.formData == null){
+            		this.formData = {};
+            	}
+            	resourceFactory.OrderReactiveResource.update({orderId: routeParams.id} ,this.formData, function(data) {              	
+            		resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                        scope.orderPriceDatas= data.orderPriceData;
+                        scope.orderHistorydata=data.orderHistory;
+                        scope.orderData=data.orderData;
+                    });
+            		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+                    $modalInstance.close('delete');
+                },function(errData){
+	        		$scope.flagApproveReconnect = false;
+		          });
+            	
+            };
+            $scope.cancelReconnect = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };
+        
         
   var ApproveTerminate = function ($scope, $modalInstance) {
     		
@@ -396,6 +442,32 @@
                 $modalInstance.dismiss('cancel');
             };
         };
+        
+ var ApproveConfirm= function ($scope, $modalInstance) {
+    		
+            $scope.approveTerminate = function () {
+
+            	$scope.flagapproveTerminate=true;
+            	if(this.formData == undefined || this.formData == null){
+            		this.formData = {};
+            	}
+            	  resourceFactory.confirmProvisioningDetailsResource.update({'provisioningId':scope.provId},{},function(data){
+            		resourceFactory.getSingleOrderResource.get({orderId: routeParams.id} , function(data) {
+                        scope.orderPriceDatas= data.orderPriceData;
+                        scope.orderHistorydata=data.orderHistory;
+                        scope.orderData=data.orderData;
+                    });
+            		location.path('/vieworder/'+routeParams.id+"/"+scope.clientId);
+                    $modalInstance.close('delete');
+                },function(errData){
+	        		$scope.flagApproveReconnect = false;
+		          });
+            	
+            };
+            $scope.cancelReconnect = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        };  
         
  var ApproveSuspend = function ($scope, $modalInstance) {
 	 

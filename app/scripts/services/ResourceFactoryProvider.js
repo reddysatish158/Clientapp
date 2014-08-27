@@ -326,9 +326,15 @@
      	  get: {method: 'GET', params: {}},
      	  update: { method: 'PUT' }
         }),
+        
         OrderDisconnectResource: defineResource(apiVer + "/orders/disconnect", {}, {
        	  get: {method: 'GET', params: {}},
         }),
+        
+        OrderReactiveResource: defineResource(apiVer + "/orders/reactive/:orderId", {orderId:'@orderId'}, {
+         	  get: {method: 'GET', params: {}},
+         	 update: { method: 'PUT' }
+          }),
           
         OrderreconnectResource: defineResource(apiVer + "/orders/reconnect/:orderId", {orderId:'@orderId'},{
            	update: { method: 'PUT' },
@@ -656,14 +662,15 @@
                 eventTemplateResource: defineResource(apiVer + "/eventmaster/template",{},  {
               	  get: {method: 'GET', params: {}}
                 }),
-                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{clientId:'@clientId'},  {
+                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{},  {
                 	  get: {method: 'GET', params: {clientId:'@clientId'}}
                 }),
                 eventOrderPriceTemplateResource: defineResource(apiVer + "/eventorder",{},{
               	  	getEventPrice: {method: 'GET', params: {clientId:'@clientId',ftype:'@ftype',otype:'@otype',eventId:'@eventId'}}
                 }),
                 eventOrderPriceUpdateTemplateResource: defineResource(apiVer + "/eventorder",{},{
-                	update: {method: 'PUT', params: {}}
+                	update: {method: 'PUT', params: {}},
+                    get: {method: 'GET', params: {clientId:'@clientId'},isArray:true }
                 }),
                 
                 eventPriceTemplateResource: defineResource(apiVer + "/eventprice/template/:resourceType",{eventId:'@eventId', resourceType:'@resourceType'},  {
@@ -766,9 +773,11 @@
            }),
            
            updateProvisioningMappingResource: defineResource(apiVer + "/provisioning/updateprovisiondetails/:provisioningId", {provisioningId: '@provisioningId'}, {
-          	  
              update: { method: 'PUT' }
-        }),
+           }),
+           confirmProvisioningDetailsResource: defineResource(apiVer + "/provisioning/confirm/:provisioningId", {provisioningId: '@provisioningId'}, {
+               update: { method: 'PUT' }
+             }),
            provisioningResource: defineResource(apiVer + "/provisioning/:clientId", {clientId: '@clientId'}, {
           	  getprovisiongData: {method: 'GET', params: {}, isArray: true},
              get: {method: 'GET', params: {}},
@@ -985,6 +994,9 @@
             clientParentResource: defineResource(apiVer + "/parentclient/:clientId", {clientId:'@clientId'}, {
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT'}
+            }),
+            logoutResource: defineResource(apiVer + "/logout", {id:'@id'}, {
+                getAll: {method: 'GET', params: {}}
             }),
 
         };
