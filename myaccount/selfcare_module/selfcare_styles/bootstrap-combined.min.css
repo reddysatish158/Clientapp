@@ -1131,9 +1131,10 @@ input[type="color"],
 .uneditable-input {
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  border-radius : 4px;
+  -webkit-box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
+     -moz-box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
+          box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
      -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
        -o-transition: border linear 0.2s, box-shadow linear 0.2s;
@@ -1199,6 +1200,14 @@ select {
   width: 220px;
   background-color: #ffffff;
   border: 1px solid #bbbbbb;
+   border-radius : 4px;
+  -webkit-box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
+     -moz-box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
+          box-shadow:  0 0px 3px rgba(0, 0, 0, 0.35);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
 }
 
 select[multiple],
@@ -3256,13 +3265,14 @@ button.close {
 .btn:focus {
   color: #999999;
   text-decoration: none;
-  background-position: 0 -15px;
+  opacity:0.9;
+  /*  background-position: 0 -15px; */
   -webkit-transition: background-position 0.1s linear;
      -moz-transition: background-position 0.1s linear;
        -o-transition: background-position 0.1s linear;
-          transition: background-position 0.1s linear;
+          transition: background-position 0.1s linear; 
 }
-
+	
 .btn:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
@@ -3369,6 +3379,9 @@ input[type="button"].btn-block {
   background-image: linear-gradient(to bottom, #1a8cff, #0072e6);
   background-repeat: repeat-x;
   border-color: #0072e6 #0072e6 #004c99;
+  -webkit-box-shadow: 0px 1px 16px -5px rgba(54, 52, 107, 0.81);
+  -moz-box-shadow:    0px 1px 16px -5px rgba(54, 52, 107, 0.81);
+  box-shadow:         0px 1px 16px -5px rgba(54, 52, 107, 0.81);
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff1a8cff', endColorstr='#ff0072e6', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
@@ -3469,6 +3482,9 @@ input[type="button"].btn-block {
   background-repeat: repeat-x;
   border-color: #379f15 #379f15 #205c0c;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 1px 16px -5px rgba(50, 192, 50, 0.81);
+  -moz-box-shadow:    0px 1px 16px -5px rgba(50, 192, 50, 0.81);
+  box-shadow:         0px 1px 16px -5px rgba(50, 192, 50, 0.81);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff47cd1b', endColorstr='#ff379f15', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
@@ -4051,10 +4067,10 @@ input[type="submit"].btn.btn-mini {
 
 .nav-tabs > li > a,
 .nav-pills > li > a {
-  padding-right: 10px;
-  padding-left: 10px;
-  margin-right: 2px;
-  line-height: 14px;
+  padding-right: 80px;
+  padding-left: 80px;
+  margin-right: -7px;
+  line-height: 30px;
 }
 
 .nav-tabs {
@@ -4096,6 +4112,7 @@ input[type="submit"].btn.btn-mini {
   padding-bottom: 8px;
   margin-top: 2px;
   margin-bottom: 2px;
+  font-size : 1.2em;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -4104,8 +4121,25 @@ input[type="submit"].btn.btn-mini {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover,
 .nav-pills > .active > a:focus {
-  color: #ffffff;
-  background-color: #007fff;
+  /* background : linear-gradient(to bottom, #0090d9 0%, #0a4e7f 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-color: #0090d9 #0090d9 #085a90;
+  border-width : 1px; */
+  background: #0090d9; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwOTBkOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTRlN2YiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #0090d9 0%, #0a4e7f 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0090d9), color-stop(100%, #0a4e7f)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #0090d9 0%, #0a4e7f 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #0090d9 0%, #0a4e7f 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #0090d9 0%, #0a4e7f 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #0090d9 0%, #0a4e7f 100%); /* W3C */
+ 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0090d9', endColorstr='#0a4e7f', GradientType=0 ); /* IE6-8 */
+	color:#FFF;
+	border: 1px;
+  	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.30);
+		-moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.30);
+		-webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.30);
+  
 }
 
 .nav-stacked > li {
@@ -6379,16 +6413,17 @@ div.subnav-fixed {
 }
 
 .nav-pills > li > a {
-  color: #000000;
-  background-color: #dfdfdf;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
+  color: #666;
+  background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  box-shadow : 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
 }
 
 .nav-pills > li > a:hover {
-  color: #ffffff;
-  background-color: #000000;
+  color: #666;
+ /*  background-color: #000000; */
 }
 
 .nav-pills > .disabled > a,
@@ -6493,12 +6528,12 @@ div.subnav-fixed {
   text-shadow: none;
   background-image: none;
   border: none;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
-  -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0px 1px 6px -5px rgba(50, 49, 50, 0.81);
+  -moz-box-shadow:    0px 1px 6px -5px rgba(50, 49, 50, 0.81);
+   box-shadow:         0px 1px 6px -5px rgba(50, 49, 50, 0.81);
 }
 
 .btn.disabled {

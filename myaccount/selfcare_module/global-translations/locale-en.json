@@ -1,6 +1,12 @@
 {
   "titles" :"----------------------------------------------------",
  	"title.obs.selfcare"		: "OBS SelfCare",
+ 	"label.product.title"       : "Open Billing System",
+ 	"label.product.name"    	: "OBS",
+  	"label.product.version" 	: "Version 1.0.0",
+ 	"label.product.status" 		: "OBS is upto date",
+ 	"label.product.aboutus1" 	: "Designed by ",
+ 	"label.community.name" 		: "OBS Team",
  	
  "#buttons"  : "--------------------------",
  	"btn.signin"  				: "Sign In",
@@ -8,14 +14,12 @@
  	"btn.login"					: "Login",
  	"btn.register"				: "Register",
  	"btn.done"					: "Done",
+ 	"btn.cancel"				: "Cancel",
  	
  "#labels"  :  "--------------------------",
  	"label.change.language" 	: "Change language:",
- 	"label.product.aboutus1" 	: "Designed by ",
- 	"label.community.name" 		: "OBS Team",
  	"label.form.login"			: "Login Form",
- 	"label.user.name"			: "User Name",
- 	"label.username" 			: "UserName",
+ 	"label.username" 			: "User Name",
  	"label.password" 			: "Password",
  	"label.form.registration"	: "Registration From",
  	"label.email"				: "Email",
@@ -25,15 +29,18 @@
  	"label.mobilenumber"	  	: "Mobile Number",
  	"label.city"	  			: "City",
  	"label.device"	  			: "Device",
+ 	"label.confirm"				: "Confirm",
  	
  	
  	"#errors " : "------------------------------------",
  	"label.contract.error"		: "Errors",
  	"label.error"				: "Error :",
- 	"error.login.failed"		: "your credentials are not valid ",
+ 	"error.login.failed"		: "Please try again, your credentials are not valid ",
+ 	"error.msg.selfcare.emailid.not.found" : "Email Id Not Found",
  	
  	
- 	"error.msg.billing.address.city.not.found" 			:	"City Not Found"
+ 	"error.msg.billing.address.city.not.found" 			:	"City Not Found",
+ 	"validation.msg.ticketmaster.description.exceeds.max.length" : "Description exceeds Max length"
  	
  	
  	

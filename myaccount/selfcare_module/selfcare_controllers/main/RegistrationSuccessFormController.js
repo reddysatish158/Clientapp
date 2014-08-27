@@ -12,7 +12,11 @@
 		  scope.clientData = {};
 		  
 		  RequestSender.orderTemplateResource.query(function(data){
-			  scope.plansData = data;
+			  for(var i in data){
+				  if(i<4){
+					  scope.plansData[i] = data[i];
+				  }
+			  }
 		  });
 		  
 		  //getting dalpay Url
@@ -93,7 +97,7 @@
 	    	 // var hostName = "https://localhost:5560/Clientapp/myaccount/index.html#/previewscreen";
 	    	  var email = webStorage.get("emailId");
 	    	  scope.URL = scope.dalpayURL+"&cust_name="+scope.formData.fullName+"&cust_phone="+scope.formData.mobileNo+"&cust_email="+email+"&cust_state="+scope.formData.state+""+
-	    	  				"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1=0&user2="+hostName;
+	    	  				"&cust_address1="+scope.formData.address+"&cust_zip="+scope.formData.zipcode+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1=0&user2="+hostName;
 	      };
 	      
           scope.savingPlanData = function(){
@@ -124,7 +128,12 @@
         	  
         	  console.log(scope.formData);
           };*/
-		  
+          scope.isRegPage = true; 
+	      scope.isOrderPage = false; 
+		  scope.nextBtnFun = function(){
+			  scope.isRegPage = false;
+			  scope.isOrderPage = true;
+		  };
     }
   });
   selfcare.ng.application.controller('RegistrationSuccessFormController', ['$scope','RequestSender','$rootScope','$http','AuthenticationService','webStorage','HttpService','SessionManager','$location', selfcare.controllers.RegistrationSuccessFormController]);

@@ -1,0 +1,35 @@
+<div ng-controller="PaymentsController">
+	<div>
+	    <ul class="breadcrumb">
+	        <li class="active">Payments</li>
+	    </ul>
+    </div>
+ 	<div class="row-fluid">
+		    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by Name">
+		<br/>
+		<table class="table">
+	        <thead>
+	             <tr class="graybg">
+	                <th>Username</th>
+	                <th>Transaction Id</th>
+       				<th>Transaction Date</th>
+       				<th>Transaction Type</th>
+       				<th>Transaction Category</th>
+       				<th>Credit Amount</th>
+       				<th>Debit Amount</th>
+            	</tr>
+	        </thead>
+	        <tbody>
+	            <tr class="pointer-main" ng-repeat="payment in paymentsData.pageItems  | filter:filterText" >
+	                <td class="pointer">{{payment.userName}}</td>
+	                <td class="pointer">{{payment.transactionId}}</td>
+	                <td class="pointer">{{payment.transDate | DateFormat}}</td>
+	                <td class="pointer">{{payment.transactionType}}</td>
+	                <td class="pointer">{{payment.transactionCategory}}</td>
+	                <td class="pointer">{{payment.creditAmount}}</td>
+	                <td class="pointer">{{payment.amount}}</td>
+	            </tr>
+	        </tbody>
+	    </table>
+	</div>
+</div>

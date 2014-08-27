@@ -4,7 +4,7 @@
             return function(input) {
                 if(input){
                     var tDate = new Date(input);
-                    return dateFilter(tDate,'dd MM yyyy');
+                    return dateFilter(tDate,'dd/MMM/yyyy');
                 }
 
             };

@@ -5,26 +5,33 @@
 		  
 		  	scope.isActive=false;
 		  	scope.isAlreadyActive=false;
+		  	scope.isRegPage = false;
+		  	scope.isOrderPage = false;
+		  	scope.isAmountZero = false;
+		  	scope.isPaymentPage = false;
+		  	scope.isRedirectToDalpay = false;
+		  	scope.cities = [];
+		  	scope.plansData = [];
+			scope.clientData = {};
+			scope.contractDetails = [];
+		  	
+		  //declaration of formData
+			  scope.formData = {};
+			  
+		  //getting dalpay Url
+		  scope.dalpayURL = selfcare.models.dalpayURL;
+		  	
 		  //getting the key value form routeParams
 		  var email = routeParams.mailId;
 		  webStorage.add("emailId",email);
 		  var actualKey = routeParams.registrationKey;
 		  var sliceKey = actualKey.slice(0, 27);
 		  
-		  rootScope.registrationKey = {'verificationKey' : sliceKey};
+		  rootScope.registrationKey = {'verificationKey' : sliceKey,
+				  						'uniqueReference' : email};
 		  
-		/*//Active pop-up Controller definition
-		  var ActivePopupController = function($scope,$modalInstance){
-  			$scope.closePopup = function(){
-  				$modalInstance.close('delete');
-  			}
-  			$scope.reject = function(){
-  				$modalInstance.close('delete');
-  			};
-  		};*/
-		  
-  		scope.goToSignInPage = function(){
-  			scope.currentSession = sessionManager.clear();
+  		scope.goToSignInPageFun = function(){
+  			rootScope.currentSession = sessionManager.clear();
   	    	  location.path('/').replace;
   		};
   		
@@ -33,48 +40,101 @@
   		rootScope.activationPopup = function(activationData) {
   			if(activationData =="success"){
   				scope.isActive=true;
-			 /* modal.open({
-     			 templateUrl: 'activepopup.html',
-     			 controller: ActivePopupController,
-     			 resolve:{}
-     		 });*/
   			}
-  			else{
+  			else if(activationData =="failure"){ 
   				scope.isAlreadyActive=true;
   				console.log("activation failure");
   			}
     	  };
-  		//var sessionData = webStorage.get('sessionData');
-  		/*if(sessionData){
-  			 RequestSender.registrationResource.update(scope.registrationKey,function(data) {
-  				  modal.open({
-  	     			 templateUrl: 'activepopup.html',
-  	     			 controller: ActivePopupController,
-  	     			 resolve:{}
-  	     		 });
-  	    	  });
-  		}
-  		else{
-			  		var apiVer = '/obsplatform/api/v1';
-			  	  HttpService.post(apiVer + "/authentication?username=billing&password=password")
-			        .success(function(sessionData) {
-			      	 console.log("success");
-			      	 webStorage.add("sessionData", {userId: sessionData.userId, authenticationKey: sessionData.base64EncodedAuthenticationKey});
-			      	 
-					        	
-					        	 RequestSender.registrationResource.update(scope.registrationKey,function(data) {
-					  				  modal.open({
-					  	     			 templateUrl: 'activepopup.html',
-					  	     			 controller: ActivePopupController,
-					  	     			 resolve:{}
-					  	     		 });
-					  	    	  });
-			        })
-			        .error(function(data) {
-			      	  console.log("failure");
-			        });
-  		}*/
+    	  
+    	  scope.registrationLinkFun =function(){
+    		  scope.isActive=false;
+    		  scope.isAlreadyActive=false;
+    		  scope.isRegPage = true;
+    		  
+    		  if(scope.isRegPage == true){
+    			  
+    			  //getting list of city data
+    			  RequestSender.addressTemplateResource.get(function(data) {
+    				  scope.cities=data.cityData;
+    			  });
+    			  
+    			  //getting state and country
+    			  scope.getStateAndCountry=function(city){
+    				  RequestSender.addressTemplateResource.get({city :city}, function(data) {
+    					  scope.formData.state = data.state;
+    					  scope.formData.country = data.country;
+    				  });
+    			  };
+    			  
+    			  //getting data from c_configuration
+    			  RequestSender.configurationResource.get(function(data){
+    				  for(var i in data.globalConfiguration){
+    					  if(data.globalConfiguration[i].name=="Register_plan"){
+    						  scope.isRegisteredPlan = data.globalConfiguration[i].enabled;
+    					  }if(data.globalConfiguration[i].name=="Registration_requires_device"){
+    						  scope.isDeviceEnabled = data.globalConfiguration[i].enabled;
+    					  }
+    				  }
+    			  });
+    		  }
+    	  };
+    	  
+    	  
+    	  scope.nextBtnFun = function(){
+			  scope.isRegPage = false;
+			  scope.isOrderPage = true;
+			  scope.isPaymentPage = false;
+			  if(scope.isOrderPage == true){
+				  
+				  RequestSender.orderTemplateResource.query(function(data){
+					  	scope.plansData = data;
+				  });
+			  }
+		  };
 		  
+		  
+		  scope.selectedPLandAm = function(contractId,planId,chargeCode,price,planCode,duration){
+		    	 
+			  scope.isOrderPage = false;
+			  scope.isPaymentPage = true;
+			  scope.formData.planAmount = price;
+			  scope.duration = duration;
+	    	  scope.formData.contractperiod = contractId;
+	    	  scope.formData.planCode = planId;
+	    	  scope.formData.paytermCode = chargeCode;
+	    	  scope.formData.planName = planCode;
+	    	  if(price==0){
+	    		  scope.isAmountZero = true;
+	    		  scope.formData.emailId = email;
+	    		  webStorage.add("planFormData",scope.formData);
+	    		  location.path("/previewscreen");
+	    	  }
+	    	  else{
+	    		  scope.isAmountZero = false;
+	    	  }
+	    	  //var href = window.location.href;
+	    	 // var hostName = href.replace("registrationsuccess", "activeclientpreviewscreen");
+	    	   var host = window.location.hostname;
+	    		var portNo = window.location.port;
+	    	  var hostName = "https://"+host+":"+portNo+"/Clientapp/myaccount/index.html";
+	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.fullName+"&cust_phone="+scope.formData.mobileNo+"&cust_email="+email+"&cust_state="+scope.formData.state+""+
+	    	  				"&cust_address1="+scope.formData.address+"&cust_zip="+scope.formData.zipcode+"&cust_city=" +
+	    	  				scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1=0&user2="+hostName+"&user3=activeclientpreviewscreen";
+	    	  
+	      };
+	      
+	      scope.makePaymentFun =function(){
+	    	  scope.formData.emailId = email;
+	    	  webStorage.add('form','orderbook');
+	    	  webStorage.add("planFormData",scope.formData);
+	    	  scope.isRedirectToDalpay = true;
+	      };
+	      
+	      scope.cancelPaymentFun =function(){
+	    	  scope.nextBtnFun();
+	      };
+  		
     }
   });
   selfcare.ng.application.controller('ActivateUserController', 

@@ -28,18 +28,23 @@
         	  RequestSender.loginUser.save(formData,function(successData){
         		  scope.currentSession= {user :'selfcare'};
         		  scope.authenticationFailed = false;
-        		  location.path('/clients/'+successData.clientId);
+        		  webStorage.add("clientTotalData", successData);
+        		  scope.isSignInProcess = true;
+        		  location.path('/home');
         	  },function(errorData){
         		  webStorage.remove("sessionData");
         		  scope.currentSession= {user:null};
         		  scope.$broadcast("UserAuthenticationFailureEvent", data);
         	  });
+          }else if(formData.uniqueReference){
+        	  scope.forgotPwdPopupcontrolling(formData);
           }
         };
 
       this.clear = function() {
         webStorage.remove("sessionData");
         webStorage.remove("clientData");
+        webStorage.remove("clientTotalData");
         httpService.cancelAuthorization();
         return scope.currentSession= {user:null};
       };
@@ -49,6 +54,10 @@
             if (sessionData !== null) {
               httpService.setAuthorization(sessionData.authenticationKey);
               RequestSender.userResource.get({userId: sessionData.userId}, function(userData) {
+            	  var clientData = webStorage.get("clientTotalData");
+            	  if(clientData){
+            		  scope.isSignInProcess = true;
+            	  }
                 handler({user: 'selfcare'});
               });
             } else {

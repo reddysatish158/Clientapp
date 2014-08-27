@@ -20,18 +20,30 @@ define(['underscore', 'selfcare'], function() {
 					      ],
 					    
     selfcare_controllers: [
+                           	  'main/HomeController',
 						      'main/SelfCareMainController',
 						      'main/SignInFormController',
 						      'main/SignUpFormController',
 						      'main/RegistrationSuccessFormController',
 						      'main/ActivateUserController',
 						      'main/PaymentButtonsController',
-						      'main/PreviewScreenController',
-						      'main/ClientsController'
+						      'main/ActiveClientPreviewScreenController',
+						      'main/ProfileController',
+						      'main/PlansController',
+						      'main/StatementsController',
+						      'main/PaymentsController',
+						      'main/TicketsController',
+						      'main/CreateTicketController',
+						      'main/ChangePasswordController',
+						      'main/AdditionalOrdersController',
+						      'main/AdditionalOrdersPreviewScreenController',
+						      'main/EventDetailsPreviewScreenController',
+						      'main/VODEventsController'
 					      ],
 					      
     selfcare_filters:    [
-                       	      'DateFormat'
+                       	      'DateFormat',
+                       	      'StatusLookup'
                          ],
                        
     selfcare_directives: [

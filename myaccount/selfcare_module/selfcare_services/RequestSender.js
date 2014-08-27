@@ -15,12 +15,38 @@
         		update : {method: 'PUT', params: {}}
         	}),
         	configurationResource:defineResource(apiVer + "/configurations",{}, {}),
+        	
         	addressTemplateResource: defineResource(apiVer + "/address/template/:city", {city:'@city'}, {}),
+        	
         	allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId/:quantity", {oneTimeSaleId:'@saleId',quantity:'@quantity'},{}),
+        	
         	clientResource: defineResource(apiVer + "/activationprocess/selfregistration", {}, {}),
+        	
         	orderTemplateResource: defineResource(apiVer + "/prices", {}, {}),
+        	
         	loginUser: defineResource(apiVer + "/selfcare/login", {username:'@username',password:'@password'}, {}),
+        	
         	clients: defineResource(apiVer + "/clients/:clientId", {clientId:'@clientId'}, {}),
+        	
+        	forgotPwdResource: defineResource(apiVer + "/selfcare/forgotpassword", {}, {
+        		update : {method : 'PUT',params : {}}
+        	}),
+        	ticketResourceTemplate: defineResource(apiVer + "/tickets/template",{},  {}),
+        	
+        	ticketResource: defineResource(apiVer + "/tickets/:clientId",{clientId:'@clientId'},  {}),
+        	
+        	changePwdResource: defineResource(apiVer + "/selfcare/changepassword",{},  {
+        		update : {method: 'PUT', params: {}}
+        	}),
+        	vodEventsResource: defineResource(apiVer + "/assets",{},  {}),
+        	
+        	eventsResource: defineResource(apiVer + "/eventorder",{},  {}),
+        	
+        	bookOrderResource: defineResource(apiVer + "/orders/:clientId",{clientId : '@clientId'},  {}),
+        	
+            getOrderResource: defineResource(apiVer + "/orders/:clientId/orders",{clientId : '@clientId'},  {}),
+            
+            FineTransactionResource: defineResource(apiVer + "/financialTransactions/:clientId", {clientId:'@clientId'}, {}),
         };
       }];
     }

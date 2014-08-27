@@ -1,14 +1,18 @@
 define(['underscore'], function() {
   var selfcare_styles = {
     css: [
-      'app',
-      'bootstrap-combined.min',
-      'bootstrap-timepicker',
-      'bootswatch',
-      'font-awesome.min',
-      'jquery-ui',
-      'nv.d3',
-      'style'
+          'bootstrap-combined.min',
+          'bootswatch',
+          'font-awesome.min',
+          'app',
+          'nv.d3',
+          'style',
+          'bootstrap-timepicker',
+          'jquery-ui',
+          'animate'
+          //'demo',
+         // 'style1',
+          //'animate-custom'
     ]
   };
 
