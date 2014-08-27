@@ -25,7 +25,7 @@
 			  if(scope.isOrderPage == true){
 				  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
 					  scope.clientOrdersData = data.clientOrders;
-					  RequestSender.orderTemplateResource.query({clientRegion : scope.formData.state},function(data){
+					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
 						  scope.plansData = data;
 						  
 						  for(var i in scope.plansData){

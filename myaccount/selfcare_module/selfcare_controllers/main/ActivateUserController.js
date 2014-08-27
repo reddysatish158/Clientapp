@@ -87,7 +87,7 @@
 			  scope.isPaymentPage = false;
 			  if(scope.isOrderPage == true){
 				  
-				  RequestSender.orderTemplateResource.query({clientRegion : scope.formData.state},function(data){
+				  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
 					  	scope.plansData = data;
 				  });
 			  }
