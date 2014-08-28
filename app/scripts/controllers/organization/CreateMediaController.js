@@ -172,6 +172,7 @@
          	 var reqDate = dateFilter(scope.release.date,'dd MMMM yyyy');
              this.formData.dateFormat = 'dd MMMM yyyy';
              this.formData.releaseDate = reqDate;
+             this.formData.mediaTypeCheck="CREATEMEDIA";
              scope.formData.mediaAssetLocations =new Array();
              scope.formData.mediaassetAttributes =new Array();
              if (scope.mediaassetAttributes.length > 0) {
@@ -201,6 +202,26 @@
             		location.path('/viewmedia/' + data.resourceId);
           });
         };
+        
+        scope.submitAdvanceMedia = function() {
+        	
+        	if(scope.hideForGame == false){
+        		scope.submitForGame();
+        		return undefined;
+        	}
+        	
+        	 this.formData.locale = 'en';
+         	 var reqDate = dateFilter(scope.release.date,'dd MMMM yyyy');
+             this.formData.dateFormat = 'dd MMMM yyyy';
+             this.formData.releaseDate = reqDate;
+             this.formData.mediaTypeCheck="ADVANCEMEDIA";
+             
+             resourceFactory.saveMediaResource.save(this.formData,function(data){
+            		location.path('/viewmedia/' + data.resourceId);
+             });
+        };
+        
+        
     }
   });
   mifosX.ng.application.controller('CreateMediaController', ['$scope', 'ResourceFactory', '$location','dateFilter', mifosX.controllers.CreateMediaController]).run(function($log) {

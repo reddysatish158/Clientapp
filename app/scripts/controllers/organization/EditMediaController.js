@@ -86,6 +86,7 @@
         //   this.formData.dateFormat = 'dd MMMM yyyy';
            this.formData.locale = 'en';
             this.formData.releaseDate = dateFilter(scope.date.releaseDate,'dd MMMM yyyy');
+            this.formData.mediaTypeCheck="EDITMEDIA";
            if (scope.mediaassetAttributes.length > 0) {
                scope.formData.mediaassetAttributes = [];
                for (var i in scope.mediaassetAttributes) {

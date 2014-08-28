@@ -644,6 +644,7 @@
   "#Media":".....",
   "label.media":"Manage Media Details",
   "link.create.new.media":"Add Media",
+  "link.create.adv.media":"Adv Media",
   "label.media.createmedia":"Add Media",
   "label.media.edimedia":"Edit Media Details",
   "label.media.newmedia":"New Media Details",

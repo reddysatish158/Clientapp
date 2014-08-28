@@ -894,6 +894,9 @@
       })
       .when('/ipchange/:clientId/:orderId/:serviceId',{
     	  templateUrl: 'views/clients/ipchange.html'
+      })
+      .when('/createAdvanceMedia',{
+    	  templateUrl: 'views/organization/createadvancemedia.html'
       });
       
     
