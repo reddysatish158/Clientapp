@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-	  MediaController: function(scope, resourceFactory,location,PermissionService,$modal) {
+	  MediaController: function(scope, resourceFactory,location,PermissionService,$modal,route) {
         scope.media = [];
         scope.PermissionService = PermissionService;
         resourceFactory.mediaResource.getAllMedia(function(data) {
@@ -66,7 +66,7 @@
                  * Submit
                  * */
   				$scope.accept = function(){
-  				  $scope.flag=true;alert(1);
+  				  $scope.flag=true;
   				  $scope.formData.mediaDetailType="LOCATIONS";
   				  $scope.formData.mediaAssetLocations =new Array();
   				  if ($scope.mediaAssetLocations.length > 0) {
@@ -79,7 +79,7 @@
   	               }
   				  
   				  
-  				  resourceFactory.paymentGatewayResource.update({'id': scope.mediaId},this.formData,function(data){ 
+  				  resourceFactory.mediaLocationAttributesResource.save({'id': scope.mediaId},this.formData,function(data){ 
   				      route.reload();
   				      $modalInstance.close('delete');
   				  },function(errData){
@@ -174,7 +174,7 @@
   	  				  }
   	  				  
   	  				  
-  	  				  resourceFactory.paymentGatewayResource.update({'id': scope.mediaId},this.formData,function(data){ 
+  	  				  resourceFactory.mediaLocationAttributesResource.save({'id': scope.mediaId},this.formData,function(data){ 
   	  				      route.reload();
   	  				      $modalInstance.close('delete');
   	  				  },function(errData){
@@ -191,7 +191,7 @@
   				        
     }
   });
-  mifosX.ng.application.controller('MediaController', ['$scope', 'ResourceFactory','$location','PermissionService','$modal', mifosX.controllers.MediaController]).run(function($log) {
+  mifosX.ng.application.controller('MediaController', ['$scope', 'ResourceFactory','$location','PermissionService','$modal','$route', mifosX.controllers.MediaController]).run(function($log) {
     $log.info("MediaController initialized");
   });
 }(mifosX.controllers || {}));

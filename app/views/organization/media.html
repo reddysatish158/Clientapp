@@ -29,8 +29,8 @@
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.releaseDate | DateFormat}}</td>         
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.status}}</td>
                 <td>
-                <a data-ng-click="createMediaLocations(media.mediaId)" popover="Add Location" popover-trigger="mouseenter"><img src="./images/location-circled.svg" width="15px" height="10px"></a>
-                <a data-ng-click="createMediaAttributes(media.mediaId)" popover="Add Attributes" popover-trigger="mouseenter"><i class="icon-th icon-white"></i></a>
+                <a data-ng-click="createMediaLocations(media.mediaId)" popover="Add Location" popover-trigger="mouseenter"><img src="./images/location-circled.svg" width="15px" height="10px"></a>&nbsp;
+                <a data-ng-click="createMediaAttributes(media.mediaId)" popover="Add Attributes" popover-trigger="mouseenter"><img src="./images/attribute.png" width="15px" height="10px"></a>
                 </td>
                 <td><a href="#/editmedia/{{media.mediaId}}" popover="Edit" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a></td>
             </tr>
@@ -38,7 +38,7 @@
     </table>
 </div>
 <script type="text/ng-template" id="medialocation.html">
-<div class="modalNew">
+<div style="width:680px;height:190px;">
 	<form class="form-horizontal well" ng-submit="submit()">
 	 <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
@@ -50,14 +50,12 @@
 		<table>
 			
 				<tr class="control-group">
+                
                 <td>
-                  <label class="control-label"><h4>{{ 'label.media.medialocation' | translate }}<span class="required">*</span></h4></label>
-                </td>
-                <td class="blockquoteresult">
                     <form>
                       <select ng-model="mediaLocationFormData.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaLanguageData.languageId}}">
                       </select>&nbsp;&nbsp;
-                      <select  class="input-medium" ng-model="mediaLocationFormData.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaFormat.mediaName}}">
+                      <select style="width:120px;" ng-model="mediaLocationFormData.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaFormat.mediaName}}">
                       </select>&nbsp;&nbsp;
                       <input type="text" ng-model="mediaLocationFormData.location" placeholder="{{'label.media.location' | translate}}">
                       <a ng-click="addMediaLocation()">&nbsp;<i class="icon-plus icon-white"></i></a>
@@ -71,7 +69,7 @@
                     <tr ng-repeat="mediaAssetLocation in mediaAssetLocations" >
                       <td><select ng-model="mediaAssetLocation.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaAssetLocation.languageId}}">
                       </select></td>
-                      <td><select  class="input-medium" ng-model="mediaAssetLocation.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaAssetLocation.formatType}}">
+                      <td><select style="width:120px;" ng-model="mediaAssetLocation.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaAssetLocation.formatType}}">
                       </select></td>
                       <td> <input type="text" ng-model="mediaAssetLocation.location" placeholder="{{'label.media.location' | translate}}"></td>
                       <td><a ng-click="removeMediaLocation($index)"><i class="icon-remove icon-white"></i></a></td>
@@ -91,7 +89,7 @@
 </script> 
 
 <script type="text/ng-template" id="mediaattribute.html">
-<div class="modalNew">
+<div style="width:650px;height:200px;">
 	<form class="form-horizontal well" ng-submit="submit()">
 	 <div class="error" ng-show="errorStatus || errorDetails">
 		<label>{{'label.contract.error' | translate}}</label>
@@ -103,10 +101,8 @@
 		<table>
 			
 				<tr class="control-group">
+                
                 <td>
-                  <label class="control-label"><h4>{{ 'label.media.mediadetails' | translate }}<span class="required">*</span></h4></label>
-                </td>
-                <td class="blockquoteresult">
                     <form>
                     <input class="input-small" type="text" ng-model="attributesFormData.attributeType" readonly >&nbsp;&nbsp;
                       <select ng-model="attributesFormData.attributeName" ng-options="mediaAttribute.id as mediaAttribute.mediaName for mediaAttribute in mediaAttributes" class="input-small" value="{{mediaAttribute.id}}">
