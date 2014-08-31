@@ -5,8 +5,9 @@
 		  
 		  scope.formData = {};
 		  scope.clientData = {};
+		  webStorage.remove('selfcare_sessionData');
+		  rootScope.isSignInProcess = false;
 		 scope.formData = webStorage.get("planFormData");
-		 console.log(scope.formData);
 		 
 		 if(scope.formData.deviceNo){
 			 scope.clientData.device = scope.formData.deviceNo;
@@ -17,14 +18,28 @@
 		 scope.clientData.email = scope.formData.emailId; 
 		 scope.clientData.paytermCode = scope.formData.paytermCode; 
 		 scope.clientData.contractPeriod = scope.formData.contractperiod; 
-		 scope.clientData.planCode = scope.formData.planCode; 
-	 
-		 RequestSender.clientResource.save(scope.clientData,function(data){
+		 scope.clientData.planCode = scope.formData.planCode;
+		 
+		 httpService.post("/obsplatform/api/v1/authentication?username=billing&password=password")
+	  		.success(function(data){
+	  			 httpService.setAuthorization(data.base64EncodedAuthenticationKey);
+	  			rootScope.currentSession= {user :'selfcare'};
+	  			RequestSender.authenticationClientResource.save(scope.clientData,function(data){
+	  				 webStorage.remove('planFormData');
+	  				 rootScope.currentSession = sessionManager.clear();
+	  				 location.path('/').replace();
+	  				 rootScope.activetedClientPopup();
+	  			 });
+	  		})
+		    .error(function(errordata){
+		    	console.log('authentication failure');
+		    });
+		/* RequestSender.authenticationClientResource.save(scope.clientData,function(data){
 			 webStorage.remove('planFormData');
 			 rootScope.currentSession = sessionManager.clear();
 			 location.path('/').replace();
 			 rootScope.activetedClientPopup();
-		 });
+		 });*/
 		 
 		/* scope.submitTotalData = function(){
 			 if(scope.formData.deviceNo){
@@ -38,7 +53,7 @@
 			 scope.clientData.contractPeriod = scope.formData.contractperiod; 
 			 scope.clientData.planCode = scope.formData.planCode; 
 		 
-			 RequestSender.clientResource.save(scope.clientData,function(data){
+			 RequestSender.authenticationClientResource.save(scope.clientData,function(data){
 				 webStorage.remove('planFormData');
 				 rootScope.currentSession = sessionManager.clear();
 				 location.path('/').replace();
@@ -93,7 +108,7 @@
 				 scope.clientData.contractPeriod = scope.formData.contractperiod; 
 				 scope.clientData.planCode = scope.formData.planCode; 
 			 
-				 RequestSender.clientResource.save(scope.clientData,function(data){
+				 RequestSender.authenticationClientResource.save(scope.clientData,function(data){
 					 webStorage.remove('planFormData');
 					 rootScope.currentSession = sessionManager.clear();
 					 location.path('/').replace();

@@ -128,10 +128,10 @@
 	                <a class="brand" ><img src="./selfcare_module/images/obs_logo.png" alt="SelfCare" width="50px;"></a>
 	                <div class="nav-collapse collapse" id="main-menu">
 	                    <ul class="nav" id="main-menu-left" ng-show="isSignInProcess">
-	                     <li><a href="#/home" ng-class="{ activate: isActive('/home') }"><i class="icon-home icon-white"></i>Home</a></li>
-	                     <li><a href="#/additionalOrders" ng-class="{ activate: isActive('/additionalOrders') }"><i class="icon-plus-sign icon-white"></i>Additional Plans</a></li>
+	                     <li><a href="#/profile" ng-class="{ activate: isActive('/profile') }"><i class="icon-user icon-white"></i>Profile</a></li>
+	                     <li><a href="#/additionalorders/0/0" ng-class="{ activate: isActive('/additionalorders/0/0') }"><i class="icon-plus-sign icon-white"></i>Additional Orders</a></li>
 	                     <li><a href="#/vodevents" ng-class="{ activate: isActive('/vodevents') }"><i class="icon-plus-sign icon-white"></i>VOD</a></li>
-                        <li><a href="#/plans" ng-class="{ activate: isActive('/plans') }"><i class="icon-list"></i>Plans</a></li>
+                        <li><a href="#/orders" ng-class="{ activate: isActive('/orders') }"><i class="icon-list"></i>Orders</a></li>
                         <li><a href="#/statements" ng-class="{ activate: isActive('/statements') }"><i class="icon-file icon-white"></i>Statements</a></li>
                          <li><a href="#/payments"  ng-class="{ activate: isActive('/payments') }"><i class="icon-usd"></i>Payments</a></li>
                          <li><a href="#/tickets"  ng-class="{ activate: isActive('/tickets') }"><i class="icon-money"></i>Tickets</a></li>
@@ -141,7 +141,6 @@
 	                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">My Account<b class="caret"></b>
 	                            </a>
 	                            <ul class="dropdown-menu">
-	                            	<li><a href="#/profile"><i class="icon-user"></i>Profile</a></li>
 	                            	<li><a href="#/changepwd"><i class="icon-cog"></i>Change Password</a></li>
 	                                <li><a id="logout" ng-click="signout()"><i class="icon-off"></i>Sign Out</a></li>
 	                            </ul>
@@ -173,7 +172,7 @@
 						</div>
                     </div>
                     <div class="modal-footer">
-                        <a id="submit" href="http://www.gmail.com" target="_blank" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</a>
+                        <a id="submit" class="btn btn-primary" ng-click="reject()">{{'btn.done' | translate}}</a>
                     </div>
       </script>
       <script type="text/ng-template" id="forgotpwdpopup.html">

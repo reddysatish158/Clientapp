@@ -3,29 +3,29 @@
 <div class="row" ng-show="isRegPage">
 	<span style="margin-left:100px;" class="animated wobble">Registration</span>
 	<span style="margin-left:250px;">Package Selection</span>
-	<span style="margin-left:250px;">Payment</span><br/>
+	<span style="margin-left:240px;">Payment</span><br/>
 	<img class="animated tada"style="margin-left:110px; alt="Registration" src="./selfcare_module/images/registration.jpg" width="50px;">
-	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/packages.jpg" width="50px;">
-	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/payment.png" width="100px;"><br/>
-	<img class="animated pulse" style="margin-left:110px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="50px;">
+	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Subscribe.jpg" width="60px;">
+	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Payment.jpg" width="60px;"><br/>
+	<img class="animated pulse" style="margin-left:110px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="40px;">
 </div>
 <div class="row" ng-show="isOrderPage">
 	<span  style="margin-left:100px;">Registration</span>
 	<span class="animated wobble" style="margin-left:250px;">Package Selection</span>
-	<span style="margin-left:250px;">Payment</span><br/>
+	<span style="margin-left:240px;">Payment</span><br/>
 	<img style="margin-left:110px; alt="Registration" src="./selfcare_module/images/registration.jpg" width="50px;">
-	<img class="animated wobble" style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/packages.jpg" width="50px;">
-	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/payment.png" width="100px;"><br/>
-	<img class="animated pulse" style="margin-left:450px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="50px;">
+	<img class="animated wobble" style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Subscribe.jpg" width="60px;">
+	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Payment.jpg" width="60px;"><br/>
+	<img class="animated pulse" style="margin-left:450px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="40px;">
 </div>
 <div class="row" ng-show="isPaymentPage">
 	<span style="margin-left:100px;">Registration</span>
 	<span style="margin-left:250px;">Package Selection</span>
-	<span class="animated wobble" style="margin-left:250px;">Payment</span><br/>
+	<span class="animated wobble" style="margin-left:240px;">Payment</span><br/>
 	<img style="margin-left:110px; alt="Registration" src="./selfcare_module/images/registration.jpg" width="50px;">
-	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/packages.jpg" width="50px;">
-	<img class="animated wobble" style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/payment.png" width="100px;"><br/>
-	<img class="animated pulse" style="margin-left:800px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="50px;">
+	<img style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Subscribe.jpg" width="60px;">
+	<img class="animated wobble" style="margin-left:280px;" alt="Registration" src="./selfcare_module/images/Payment.jpg" width="60px;"><br/>
+	<img class="animated pulse" style="margin-left:790px;margin-top:-28px" alt="ok" src="./selfcare_module/images/checkbox.png" width="40px;">
 </div>
 <div ng-show="isRedirectToDalpay">
 <div class="alert alert-info animated pulse" role="alert">
@@ -210,6 +210,40 @@
 				<a ng-disabled="isRedirectToDalpay" ng-click="cancelPaymentFun()"  class="btn">Cancel</a> 
 				<a href="{{paymentDalpayURL}}" ng-click="makePaymentFun()" 
 					ng-disabled="isRedirectToDalpay" class="btn btn-primary animated fadeInUp">Make Payment</a>
+				
+			</div> 
+			 
+		</fieldset>
+	</form>
+	<form name="isAmountZeroForm" novalidate="" class="form-horizontal well" ng-show="isAmountZero">
+		<br>
+		 <div class="error" ng-show="errorStatus || errorDetails">
+		<label>{{'label.contract.error' | translate}}</label>
+		<label ng-show="errorStatus">{{errorStatus}}</label>
+		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
+	    </div>
+		<fieldset class="animated bounce">
+			<h3 style="padding-left:50px;">Subscription Page</h3>
+	 	 <div class="row paddedleft" style="margin-left:200px;">
+			<table width="100%">
+				<tr>
+					<td width="30%"><strong>Package Name</strong></td>
+					<td width="70%" class="animated pulse" style="color:#0088cc;font-size:1.5em;">:&nbsp;{{formData.planName}}</td>
+				</tr>
+				<tr>
+					<td><strong>Contract Period<s/trong></td>
+					<td class="animated pulse" style="color:#0088cc;font-size:1.5em;">:&nbsp;{{duration}}</td>
+				</tr>
+				<tr>
+					<td><strong>Price</strong></td>
+					<td class="animated pulse" style="color:#0088cc;font-size:1.5em;">:&nbsp;{{formData.planAmount}}</td>
+				</tr>
+				
+			</table>
+			</div><br/>
+	       <div class="offset3">
+				<a ng-click="cancelPaymentFun()"  class="btn">Cancel</a> 
+				<a ng-click="finishBtnFun()" class="btn btn-primary animated fadeInUp">Subscribe</a>
 			</div> 
 			 
 		</fieldset>

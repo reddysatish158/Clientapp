@@ -2,9 +2,17 @@
   selfcare.controllers = _.extend(selfcare_module, {
 	  ProfileController: function(scope,RequestSender,rootScope,http,authenticationService,webStorage,httpService,sessionManager,location,routeParams) {
 		  
-		  scope.client = [];
-		  var clientDatas = webStorage.get("clientTotalData");
-		  scope.client = clientDatas.clientData;
+		  scope.clientData =[];
+		  
+		  var selfcare_sessionData = webStorage.get("selfcare_sessionData");
+		  if(selfcare_sessionData){		  
+			  var clientTotalData= webStorage.get('clientTotalData');
+			  scope.clientId = clientTotalData.clientId;
+			  RequestSender.clientResource.get({clientId: scope.clientId} , function(data) {
+				  scope.clientData = data;
+			  });
+		  }
+		  
 		  /*RequestSender.clients.get({clientId:routeParams.clientId},function(data){
 			  scope.client = data;
 		  });*/

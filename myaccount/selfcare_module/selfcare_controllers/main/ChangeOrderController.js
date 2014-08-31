@@ -1,6 +1,6 @@
 (function(selfcare_module) {
   selfcare.controllers = _.extend(selfcare_module, {
-	  AdditionalOrdersController: function(scope,RequestSender,rootScope,routeParams,modal,
+	  ChangeOrderController: function(scope,RequestSender,rootScope,routeParams,modal,
 			  							webStorage,HttpService,authenticationService,sessionManager,location) {
 		  
 		  	scope.isOrderPage = true;
@@ -71,8 +71,7 @@
 	    		var portNo = window.location.port;
 	    	  var hostName = "https://"+host+":"+portNo+"/Clientapp/myaccount/index.html";
 	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.displayName+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
-	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"" +
-	    	  				"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen/"+routeParams.orderId+"/"+routeParams.clientId;
+	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen";
 	    	  
 	      };
 	      
@@ -93,12 +92,12 @@
 	      scope.finishBtnFun =function(){
 	    	  
 	    	  webStorage.add("additionalPlanFormData",scope.formData);
-    		  location.path("/additionalorderspreviewscreen/"+routeParams.orderId+"/"+routeParams.clientId);
+    		  location.path("/additionalorderspreviewscreen");
 	      };
   		
     }
   });
-  selfcare.ng.application.controller('AdditionalOrdersController', 
+  selfcare.ng.application.controller('ChangeOrderController', 
  ['$scope','RequestSender','$rootScope','$routeParams','$modal','webStorage','HttpService','AuthenticationService',
-  'SessionManager','$location',selfcare.controllers.AdditionalOrdersController]);
+  'SessionManager','$location',selfcare.controllers.ChangeOrderController]);
 }(selfcare.controllers || {}));

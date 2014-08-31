@@ -8,16 +8,16 @@
     .when('/active/:mailId/:registrationKey', {
         templateUrl: 'selfcare_module/views/clients/activateuser.html'
       })
-      .when('/registrationsuccess', {
+/*      .when('/registrationsuccess', {
         templateUrl: 'selfcare_module/views/clients/registrationsuccessform.html'
       })
       .when('/paymentbuttons', {
         templateUrl: 'selfcare_module/views/clients/paymentbuttons.html'
-      })
+      })*/
       .when('/activeclientpreviewscreen', {
         templateUrl: 'selfcare_module/views/clients/activeclientpreviewscreen.html'
       })
-      .when('/additionalorderspreviewscreen', {
+      .when('/additionalorderspreviewscreen/:orderId/:clientId', {
     	  templateUrl: 'selfcare_module/views/clients/additionalorderspreviewscreen.html'
       })
       .when('/eventdetailspreviewscreen', {
@@ -26,8 +26,8 @@
       .when('/profile', {
         templateUrl: 'selfcare_module/views/clients/profile.html'
       })
-      .when('/plans', {
-        templateUrl: 'selfcare_module/views/clients/plans.html'
+      .when('/orders', {
+        templateUrl: 'selfcare_module/views/clients/orders.html'
       })
       .when('/statements', {
         templateUrl: 'selfcare_module/views/clients/statements.html'
@@ -44,12 +44,21 @@
       .when('/changepwd', {
         templateUrl: 'selfcare_module/views/clients/changepassword.html'
       })
-      .when('/additionalOrders', {
+      .when('/additionalorders/:orderId/:clientId', {
     	templateUrl: 'selfcare_module/views/clients/additionalorders.html'
       })
 	  .when('/vodevents', {
 	     templateUrl: 'selfcare_module/views/clients/vodevents.html'
-	   });
+	   })
+	   .when('/vieworder/:orderId/:clientId', {
+         templateUrl: 'selfcare_module/views/clients/vieworder.html'
+	   })
+	 .when('/changeorder/:orderId/:clientId', {
+	    templateUrl: 'selfcare_module/views/clients/changeorder.html'
+      })
+     .when('/closeclient/:clientId', {
+	  templateUrl: 'selfcare_module/views/clients/closeclient.html'
+     });
       
     
     $locationProvider.html5Mode(false);

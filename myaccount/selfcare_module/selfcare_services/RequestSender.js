@@ -11,6 +11,7 @@
         };
         return {
         	userResource: defineResource(apiVer + "/users/:userId", {userId : '@id'}, {}),
+        	
         	registrationResource: defineResource(apiVer + "/selfcare/register", {}, {
         		update : {method: 'PUT', params: {}}
         	}),
@@ -20,7 +21,7 @@
         	
         	allocateHardwareDetails: defineResource(apiVer + "/itemdetails/:oneTimeSaleId/:quantity", {oneTimeSaleId:'@saleId',quantity:'@quantity'},{}),
         	
-        	clientResource: defineResource(apiVer + "/activationprocess/selfregistration", {}, {}),
+        	authenticationClientResource: defineResource(apiVer + "/activationprocess/selfregistration", {}, {}),
         	
         	orderTemplateResource: defineResource(apiVer + "/prices", {}, {}),
         	
@@ -42,11 +43,35 @@
         	
         	eventsResource: defineResource(apiVer + "/eventorder",{},  {}),
         	
-        	bookOrderResource: defineResource(apiVer + "/orders/:clientId",{clientId : '@clientId'},  {}),
+        	bookOrderResource: defineResource(apiVer + "/orders/:clientId/:orderId",{clientId : '@clientId',orderId : '@orderId'},  {
+        		update: { method: 'PUT' }
+        	}),
         	
             getOrderResource: defineResource(apiVer + "/orders/:clientId/orders",{clientId : '@clientId'},  {}),
             
             FineTransactionResource: defineResource(apiVer + "/financialTransactions/:clientId", {clientId:'@clientId'}, {}),
+            
+            getSingleOrderResource: defineResource(apiVer + "/orders/:orderId/orderprice", {orderId:'@orderId'}, {
+           	  update: { method: 'PUT' }
+            }),
+            
+            OrderDisconnectResource: defineResource(apiVer + "/orders/disconnect", {}, {}),
+            
+            OrderreconnectResource: defineResource(apiVer + "/orders/reconnect/:orderId", {orderId:'@orderId'},{
+               	update: { method: 'PUT' }
+            }),
+            
+            changeOrderResource: defineResource(apiVer + "/orders/changePlan/:orderId", {orderId:'@orderId'}, {
+                update: { method: 'PUT' }
+             }),
+             
+            clientTemplateResource: defineResource(apiVer + "/clients/template", {}, {}),
+            
+            clientResource: defineResource(apiVer + "/clients/:clientId/:anotherresource", {clientId:'@clientId',anotherresource:'@anotherresource'}, {
+                getAllClientDocuments: {method: 'GET', params: {}, isArray: true},
+                update: { method: 'PUT'}
+            }),
+
         };
       }];
     }

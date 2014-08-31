@@ -34,6 +34,7 @@
 		  
 		  //submit functionality
           scope.submitEmail = function(){
+        	  webStorage.remove("clientTotalData");
         	  if(scope.signUpCredentials.userName){
         		  rootScope.emptySignUpCredentials  = false;
 	        	  scope.isProcessing  = true;

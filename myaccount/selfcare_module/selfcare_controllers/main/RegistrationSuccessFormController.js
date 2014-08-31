@@ -23,9 +23,9 @@
 		  scope.dalpayURL = selfcare.models.dalpayURL;
 		  
 		  //authentication data
-		  var sessionData = webStorage.get('sessionData');
-		  if(sessionData){
-			  httpService.setAuthorization(sessionData.authenticationKey);
+		  var selfcare_sessionData = webStorage.get('selfcare_sessionData');
+		  if(selfcare_sessionData){
+			  httpService.setAuthorization(selfcare_sessionData.authenticationKey);
 		  }
 		  rootScope.currentSession= {user :'billing'};
 		  
@@ -117,7 +117,7 @@
         	  scope.clientData.paytermCode = scope.formData.paytermCode; 
         	  scope.clientData.contractPeriod = scope.formData.contractperiod; 
         	  scope.clientData.planCode = scope.formData.planCode; 
-        	  RequestSender.clientResource.save(scope.clientData,function(data){
+        	  RequestSender.authenticationClientResource.save(scope.clientData,function(data){
 	        		 rootScope.currentSession = sessionManager.clear();
 	 				 location.path('/').replace();
 	 				 rootScope.activetedClientPopup();

@@ -8,10 +8,10 @@
 		   scope.isRegistrationSuccess = false;
 		   scope.isRegistrationFailure = false;
 		   scope.emptyCredentials = false;
+		   
 	 //authentication onSuccess this event called  
 	   scope.$on("UserAuthenticationSuccessEvent", function(event, data,formData) {
 		   scope.currentSession = sessionManager.get(data,formData);
-	        console.log(scope.currentSession);
 	    });
 	   
 	  //calling this method every time if session is exit or not
@@ -89,7 +89,8 @@
 			
 		 //isActive Function 
 		 scope.isActive = function (route) {
-			 	var active = route === location.path();
+			
+			 var active = route === location.path();
 			 	return active;
 	      };
 
@@ -101,7 +102,7 @@
 			 scope.forgotPwdPopupcontrolling = function(formData){
 				 
 				 RequestSender.forgotPwdResource.save(formData,function(successData){
-					 webStorage.remove("sessionData");
+					 webStorage.remove("selfcare_sessionData");
 		        	 scope.currentSession= {user :null};
 		        	 $modalInstance.close('delete');
 		        	 modal.open({
@@ -113,7 +114,7 @@
 				 },function(errorData){
 					 $scope.stmError = errorData.data.errors[0].userMessageGlobalisationCode;
 					 $scope.isProcessing = false;
-					 webStorage.remove("sessionData");
+					 webStorage.remove("selfcare_sessionData");
 		        	 scope.currentSession= {user :null};
 				 });
 			 };

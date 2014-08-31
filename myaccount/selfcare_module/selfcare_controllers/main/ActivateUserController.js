@@ -1,7 +1,7 @@
 (function(selfcare_module) {
   selfcare.controllers = _.extend(selfcare_module, {
 	  ActivateUserController: function(scope,RequestSender,rootScope,routeParams,modal,
-			  							webStorage,HttpService,authenticationService,sessionManager,location) {
+			  							webStorage,httpService,authenticationService,sessionManager,location) {
 		  
 		  	scope.isActive=false;
 		  	scope.isAlreadyActive=false;
@@ -14,6 +14,8 @@
 		  	scope.plansData = [];
 			scope.clientData = {};
 			scope.contractDetails = [];
+			webStorage.remove('selfcare_sessionData');
+			rootScope.isSignInProcess = false;
 		  	
 		  //declaration of formData
 			  scope.formData = {};
@@ -27,7 +29,7 @@
 		  var actualKey = routeParams.registrationKey;
 		  var sliceKey = actualKey.slice(0, 27);
 		  
-		  rootScope.registrationKey = {'verificationKey' : sliceKey,
+		  scope.registrationKey = {'verificationKey' : sliceKey,
 				  						'uniqueReference' : email};
 		  
   		scope.goToSignInPageFun = function(){
@@ -35,9 +37,23 @@
   	    	  location.path('/').replace;
   		};
   		
-  		authenticationService.authenticateWithUsernamePassword(rootScope.registrationKey);
+  		httpService.post("/obsplatform/api/v1/authentication?username=billing&password=password")
+  		.success(function(data){
+  			 httpService.setAuthorization(data.base64EncodedAuthenticationKey);
+	  			RequestSender.registrationResource.update(scope.registrationKey,function(successData) {
+	  				scope.isActive=true;
+	  				rootScope.currentSession= {user :'selfcare'};
+		          },function(errorData){
+		        	  scope.isAlreadyActive=true;
+		        	  rootScope.currentSession= {user :'sefcare'};
+		          });
+  		})
+	    .error(function(errordata){
+	    	console.log('authentication failure');
+	    });
+  		//authenticationService.authenticateWithUsernamePassword(rootScope.registrationKey);
   		
-  		rootScope.activationPopup = function(activationData) {
+  		/*rootScope.activationPopup = function(activationData) {
   			if(activationData =="success"){
   				scope.isActive=true;
   			}
@@ -45,7 +61,7 @@
   				scope.isAlreadyActive=true;
   				console.log("activation failure");
   			}
-    	  };
+    	  };*/
     	  
     	  scope.registrationLinkFun =function(){
     		  scope.isActive=false;
@@ -85,6 +101,7 @@
 			  scope.isRegPage = false;
 			  scope.isOrderPage = true;
 			  scope.isPaymentPage = false;
+			  scope.isAmountZero = false;
 			  if(scope.isOrderPage == true){
 				  
 				  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
@@ -97,7 +114,7 @@
 		  scope.selectedPLandAm = function(contractId,planId,chargeCode,price,planCode,duration){
 		    	 
 			  scope.isOrderPage = false;
-			  scope.isPaymentPage = true;
+			  //scope.isPaymentPage = true;
 			  scope.formData.planAmount = price;
 			  scope.duration = duration;
 	    	  scope.formData.contractperiod = contractId;
@@ -106,12 +123,11 @@
 	    	  scope.formData.planName = planCode;
 	    	  if(price==0){
 	    		  scope.isAmountZero = true;
-	    		  scope.formData.emailId = email;
-	    		  webStorage.add("planFormData",scope.formData);
-	    		  location.path("/previewscreen");
+	    		  scope.isPaymentPage = false;
 	    	  }
 	    	  else{
 	    		  scope.isAmountZero = false;
+	    		  scope.isPaymentPage = true;
 	    	  }
 	    	  //var href = window.location.href;
 	    	 // var hostName = href.replace("registrationsuccess", "activeclientpreviewscreen");
@@ -133,6 +149,12 @@
 	      
 	      scope.cancelPaymentFun =function(){
 	    	  scope.nextBtnFun();
+	      };
+	      
+	      scope.finishBtnFun =function(){
+	    	  scope.formData.emailId = email;
+    		  webStorage.add("planFormData",scope.formData);
+    		  location.path("/activeclientpreviewscreen");
 	      };
   		
     }

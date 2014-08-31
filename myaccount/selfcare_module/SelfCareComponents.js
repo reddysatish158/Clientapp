@@ -20,8 +20,7 @@ define(['underscore', 'selfcare'], function() {
 					      ],
 					    
     selfcare_controllers: [
-                           	  'main/HomeController',
-						      'main/SelfCareMainController',
+                           	  'main/SelfCareMainController',
 						      'main/SignInFormController',
 						      'main/SignUpFormController',
 						      'main/RegistrationSuccessFormController',
@@ -29,7 +28,7 @@ define(['underscore', 'selfcare'], function() {
 						      'main/PaymentButtonsController',
 						      'main/ActiveClientPreviewScreenController',
 						      'main/ProfileController',
-						      'main/PlansController',
+						      'main/OrdersController',
 						      'main/StatementsController',
 						      'main/PaymentsController',
 						      'main/TicketsController',
@@ -38,7 +37,11 @@ define(['underscore', 'selfcare'], function() {
 						      'main/AdditionalOrdersController',
 						      'main/AdditionalOrdersPreviewScreenController',
 						      'main/EventDetailsPreviewScreenController',
-						      'main/VODEventsController'
+						      'main/HomeController',
+						      'main/VODEventsController',
+						      'main/ViewOrderController',
+						      'main/ChangeOrderController',
+						      'main/CloseClientController'
 					      ],
 					      
     selfcare_filters:    [
