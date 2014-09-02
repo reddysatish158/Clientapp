@@ -63,7 +63,7 @@
             			  location.path(location.path());
             		  }
             		  else{
-            			  location.path('/home');
+            			  location.path('/profile');
             		  }
             	  }
                 handler({user: 'selfcare'});

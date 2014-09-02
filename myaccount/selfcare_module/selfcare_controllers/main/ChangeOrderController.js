@@ -67,9 +67,9 @@
 	    		  scope.isAmountZero = false;
 	    		  scope.isPaymentPage = true;
 	    	  }
-	    	  	var host = window.location.hostname;
-	    		var portNo = window.location.port;
-	    	  var hostName = "https://"+host+":"+portNo+"/Clientapp/myaccount/index.html";
+	    	  	//var host = window.location.hostname;
+	    		//var portNo = window.location.port;
+	    	  var hostName = selfcare.models.selfcareAppUrl;
 	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.displayName+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
 	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen";
 	    	  

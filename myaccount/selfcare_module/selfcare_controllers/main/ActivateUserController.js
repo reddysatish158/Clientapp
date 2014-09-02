@@ -131,9 +131,10 @@
 	    	  }
 	    	  //var href = window.location.href;
 	    	 // var hostName = href.replace("registrationsuccess", "activeclientpreviewscreen");
-	    	   var host = window.location.hostname;
-	    		var portNo = window.location.port;
-	    	  var hostName = "https://"+host+":"+portNo+"/Clientapp/myaccount/index.html";
+	    	  // var host = window.location.hostname;
+	    		//var portNo = window.location.port;
+	    	 // var hostName = "https://"+host+":"+portNo+"/Clientapp/myaccount/index.html";
+	    	  var hostName = selfcare.models.selfcareAppUrl;
 	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.fullName+"&cust_phone="+scope.formData.mobileNo+"&cust_email="+email+"&cust_state="+scope.formData.state+""+
 	    	  				"&cust_address1="+scope.formData.address+"&cust_zip="+scope.formData.zipcode+"&cust_city=" +
 	    	  				scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1=0&user2="+hostName+"&user3=activeclientpreviewscreen";
