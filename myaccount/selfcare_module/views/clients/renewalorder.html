@@ -1,5 +1,7 @@
-<div ng-controller="AdditionalOrdersController">
+<div ng-controller="RenewalOrderController">
 <br/>
+<br/>
+<h2 style="color:#00ff00;">Renewal Order</h2>
 <div ng-show="isOrderPage">
 	<span class="animated wobble" style="margin-left:250px;">Package Selection</span>
 	<span style="margin-left:240px;">Payment</span><br/>
@@ -25,8 +27,8 @@
 	       	<h3>Packages</h3>
 	      		<div  style="margin-left:50px;">
 		      <tabset  type="pills">
-			    <tab heading="{{plan.planCode}}" ng-repeat="plan in plansData">
-			    <div ng-repeat="contractData in plan.pricingData track by $index" >
+			    <tab heading="{{plansData.planCode}}">
+			    <div ng-repeat="contractData in plansData.pricingData track by $index" >
 			    	<div class="cust-body animated fadeInUp">
 			    		<span style="color:#0088cc;font-size:2.5em;">{{contractData.duration}}</span>
 			    		<span class="pull-right">
@@ -37,24 +39,12 @@
 			    		</span>
 			    	 </div>
 			    </div>
-			    	<!-- <table class="table" ng-repeat="contractData in plan.pricingData track by $index">
-			    		<tbody>
-			    		  <tr>
-			    			 <td class="animated pulse" style="border-bottom:1px solid #dddddd;border-top:0px;padding-top:30px;">
-			    				 <span style="color:#0088cc;font-size:2em;">{{contractData.duration}}</span>
-			    			</td>
-			    			<td style="border-bottom:1px solid #dddddd;border-top:0px;">
-			    				<a class="btn btn-primary cust-btn animated swing" 
-			    				  ng-click="selectedPLandAm(contractData.contractId,plan.planId,contractData.billingFrequency,contractData.price,contractData.planCode,contractData.duration)">Book Order</a>
-			    				<span class="dollars animated pulse">{{contractData.price}}</span>
-			    				<span class="sup animated pulse">Rs.</span>
-			    			</td>
-			    		  </tr>
-			    		</tbody>
-			    	</table> -->
 			    </tab>
 			  </tabset>
 		    </div> 
+		   </div>
+		   <div class="pull-left">
+		    <a id="cancel" href='#/vieworder/{{orderId}}/{{formData.clientId}}'><button type="reset" class="btn">Cancel</button></a>
 		   </div>
 	   </div>
 	<form name="paymentBtnForm" novalidate="" class="form-horizontal well" ng-show="isPaymentPage">

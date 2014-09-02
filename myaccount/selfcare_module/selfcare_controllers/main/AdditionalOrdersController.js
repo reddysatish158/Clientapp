@@ -24,6 +24,21 @@
 		  console.log(scope.formData);
     	  
 			  if(scope.isOrderPage == true){
+				 
+				 if(routeParams.clientId == 0 && routeParams.orderId == 0){
+					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
+						  scope.plansData = data;
+						  
+						  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
+							  scope.clientOrdersData = data.clientOrders;
+							  for(var i in scope.clientOrdersData ){
+								  scope.plansData = _.filter(scope.plansData, function(item) {
+				                      return item.planCode != scope.clientOrdersData[i].planCode;
+				                  });
+							  }
+						  });
+					  });
+				 }else{
 				  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
 					  scope.clientOrdersData = data.clientOrders;
 					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
@@ -46,6 +61,7 @@
 						  
 					  });
 				  });
+				 }
 				  
 			  }
 		  

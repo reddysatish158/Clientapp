@@ -16,7 +16,8 @@ define(['underscore', 'selfcare'], function() {
 						      'HttpServiceProvider',
 						      'AuthenticationService',
 						      'SessionManager',
-						      'NavigationPage'
+						      'NavigationPage',
+						      'Paginator'
 					      ],
 					    
     selfcare_controllers: [
@@ -41,7 +42,8 @@ define(['underscore', 'selfcare'], function() {
 						      'main/VODEventsController',
 						      'main/ViewOrderController',
 						      'main/ChangeOrderController',
-						      'main/CloseClientController'
+						      'main/RenewalOrderController',
+						      'main/RenewalOrderPreviewScreenController'
 					      ],
 					      
     selfcare_filters:    [

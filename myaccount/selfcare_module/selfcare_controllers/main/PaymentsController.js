@@ -1,13 +1,18 @@
 (function(selfcare_module) {
   selfcare.controllers = _.extend(selfcare_module, {
-	  PaymentsController: function(scope,RequestSender,rootScope,http,authenticationService,webStorage,httpService,sessionManager,location,routeParams) {
+	  PaymentsController: function(scope,RequestSender,webStorage,location,routeParams,paginatorService) {
 		  scope.paymentsData = [];
 		  var paymentsData= webStorage.get('clientTotalData');
 		 // scope.paymentsData = paymentsData.paymentsData;
-		  RequestSender.FineTransactionResource.get({clientId: paymentsData.clientId,type:'PAYMENT' } , function(data){
+		  scope.getPayments = function(offset, limit, callback) {
+			  RequestSender.paymentsResource.get({clientId: paymentsData.clientId ,offset: offset, limit: limit,type:'PAYMENT'} , callback);
+	  		};
+	  		
+		  scope.paymentsData = paginatorService.paginate(scope.getPayments, 14);
+		 /* RequestSender.paymentsResource.get({clientId: paymentsData.clientId,type:'PAYMENT' } , function(data){
 			  scope.paymentsData = data;
-		  });
+		  });*/
     }
   });
-  selfcare.ng.application.controller('PaymentsController', ['$scope','RequestSender','$rootScope','$http','AuthenticationService','webStorage','HttpService','SessionManager','$location','$routeParams', selfcare.controllers.PaymentsController]);
+  selfcare.ng.application.controller('PaymentsController', ['$scope','RequestSender','webStorage','$location','$routeParams','PaginatorService', selfcare.controllers.PaymentsController]);
 }(selfcare.controllers || {}));

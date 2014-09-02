@@ -56,9 +56,12 @@
 	 .when('/changeorder/:orderId/:clientId', {
 	    templateUrl: 'selfcare_module/views/clients/changeorder.html'
       })
-     .when('/closeclient/:clientId', {
-	  templateUrl: 'selfcare_module/views/clients/closeclient.html'
-     });
+     .when('/renewalorder/:orderId/:clientId', {
+    	templateUrl: 'selfcare_module/views/clients/renewalorder.html'
+      })
+      .when('/renewalorderpreviewscreen/:orderId/:clientId', {
+    	 templateUrl: 'selfcare_module/views/clients/renewalorderpreviewscreen.html'
+       });
       
     
     $locationProvider.html5Mode(false);

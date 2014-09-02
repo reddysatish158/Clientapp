@@ -1127,7 +1127,7 @@ var ApproveUnallocate = function ($scope, $modalInstance) {
                 		this.formData = {"ipAddress":scope.ipAddr,"status":'F'};
                 	}
                 	resourceFactory.ipPoolingIpStatusResource.update({} ,this.formData, function(data) {              	
-                		location.path('/viewClient/'+routeParams.id);  
+                		location.path('/viewclient/'+routeParams.id);  
                         $modalInstance.close('delete');
                     },function(errData){
     	        		$scope.flagApproveReconnect = false;

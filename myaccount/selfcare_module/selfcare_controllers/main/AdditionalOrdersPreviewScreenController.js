@@ -6,7 +6,7 @@
 		  scope.orderBookingData = {};
 		 scope.formData = webStorage.get("additionalPlanFormData");
 		 
-		 scope.orderBookingData.billAlign = true;
+		 scope.orderBookingData.billAlign = false;
 		 scope.orderBookingData.isNewplan = true;
 		 scope.orderBookingData.locale = 'en'; 
 		 scope.orderBookingData.dateFormat = 'dd MMMM yyyy'; 
@@ -19,7 +19,7 @@
 		 if(routeParams.orderId == 0 && routeParams.clientId == 0){
 				 RequestSender.bookOrderResource.save({clientId : scope.formData.clientId},scope.orderBookingData,function(data){
 					 webStorage.remove('additionalPlanFormData');
-					 location.path('/additionalorders');
+					 location.path('/additionalorders/'+routeParams.orderId+"/"+routeParams.clientId);
 				 });
 			 }else{
 				 scope.orderBookingData.disconnectionDate= reqDate;

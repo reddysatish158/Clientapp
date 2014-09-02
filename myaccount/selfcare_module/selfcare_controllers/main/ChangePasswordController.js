@@ -26,6 +26,7 @@
 				  RequestSender.changePwdResource.update(scope.formData,function(data){
 					  rootScope.currentSession = sessionManager.clear();
 					  rootScope.signInProcessLoading = false;
+					  rootScope.isChangePassword = true;
 			    	  location.path('/').replace;
 				  });
 			  }

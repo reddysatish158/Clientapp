@@ -2,12 +2,12 @@
    selfcare.controllers = _.extend(selfcare_module, {
 	   SelfCareMainController: function(scope, translate,webStorage,sessionManager,RequestSender,authenticationService,location,modal) {
 		   
-		   scope.loginCredentials = {};
 		   scope.currentSession = {};
 		   scope.isSignInProcess = false;
 		   scope.isRegistrationSuccess = false;
 		   scope.isRegistrationFailure = false;
 		   scope.emptyCredentials = false;
+		   scope.isChangePassword = false;
 		   
 	 //authentication onSuccess this event called  
 	   scope.$on("UserAuthenticationSuccessEvent", function(event, data,formData) {
@@ -20,6 +20,8 @@
 	        scope.isRegistrationSuccess = false;
 	        scope.isRegistrationFailure = false;
 	        scope.signInProcessLoading = false;
+	        scope.isChangePassword = false;
+	        
 	    });
 	   
 		   
@@ -39,6 +41,8 @@
        
       //sign up button fun start 
       scope.signUpBtnFun = function(){
+    	  
+    	  scope.isChangePassword = false;
     	  scope.emptySignUpCredentials = false;
     	  scope.signUpFormView=scope.signInFormView;
     	  scope.signInFormView=!scope.signUpFormView;
@@ -62,7 +66,6 @@
       scope.signout = function(){
     	  scope.currentSession = sessionManager.clear();
     	  scope.signInProcessLoading = false;
-    	  delete scope.loginCredentials.password;
     	  location.path('/').replace;
       };
       
@@ -133,6 +136,7 @@
 		 
 		 //for forgot password popup
 		 scope.forgotPwdPopup = function(){
+			 scope.isChangePassword = false;
 			 modal.open({
 				 templateUrl: 'forgotpwdpopup.html',
 				 controller: ForgotPwdPopupController,

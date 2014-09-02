@@ -12,6 +12,8 @@
 		 if(scope.formData.deviceNo){
 			 scope.clientData.device = scope.formData.deviceNo;
 		 }
+		 console.log(scope.formData.zipcode);
+		 scope.clientData.zipCode = scope.formData.zipcode;
 		 scope.clientData.fullname = scope.formData.fullName;
 		 scope.clientData.city = scope.formData.city;
 		 scope.clientData.phone = parseInt(scope.formData.mobileNo); 

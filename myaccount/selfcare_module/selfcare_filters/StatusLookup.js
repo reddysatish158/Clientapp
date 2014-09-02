@@ -32,11 +32,11 @@
                         "groupingStatusType.pending":"statuspending",
                         "groupingStatusType.submitted.and.pending.approval":"statuspending",
                         "groupingStatusType.approved":"statusApproved"
-                     }
+                     };
 
                       
                       return cssClassNameLookup[input];
-                  }
+                  };
                 }
   });
   selfcare.ng.application.filter('StatusLookup', [selfcare.filters.StatusLookup]);

@@ -1,16 +1,37 @@
 <div ng-controller="PaymentsController">
+	 <div class="loading-widget-div" data-ng-show="blockUI">
+        <div id="circularG">
+            <div id="circularG_1" class="circularG">
+            </div>
+            <div id="circularG_2" class="circularG">
+            </div>
+            <div id="circularG_3" class="circularG">
+            </div>
+            <div id="circularG_4" class="circularG">
+            </div>
+            <div id="circularG_5" class="circularG">
+            </div>
+            <div id="circularG_6" class="circularG">
+            </div>
+            <div id="circularG_7" class="circularG">
+            </div>
+            <div id="circularG_8" class="circularG">
+            </div>
+        </div>
+
+      </div>      
+	
 	<div>
 	    <ul class="breadcrumb">
 	        <li class="active">Payments</li>
 	    </ul>
-    </div>
+    </div><br/>
  	<div class="row-fluid">
-		    <input ng-model="filterText" type="text" class="span marginbottom0px" placeholder="Filter by Name">
-		<br/>
+		    <input ng-model="filterText" type="text" ng-autofocus="true" class="span marginbottom0px" placeholder="Filter by username">
+		
 		<table class="table">
 	        <thead>
 	             <tr class="graybg">
-	                <th>Username</th>
 	                <th>Transaction Id</th>
        				<th>Transaction Date</th>
        				<th>Transaction Type</th>
@@ -20,8 +41,7 @@
             	</tr>
 	        </thead>
 	        <tbody>
-	            <tr class="pointer-main" ng-repeat="payment in paymentsData.pageItems  | filter:filterText" >
-	                <td class="pointer">{{payment.userName}}</td>
+	            <tr class="pointer-main" ng-repeat="payment in paymentsData.currentPageItems  | filter:filterText" >
 	                <td class="pointer">{{payment.transactionId}}</td>
 	                <td class="pointer">{{payment.transDate | DateFormat}}</td>
 	                <td class="pointer">{{payment.transactionType}}</td>
@@ -31,5 +51,9 @@
 	            </tr>
 	        </tbody>
 	    </table>
+	    <ul class="pager">
+			<li class="previous"><a ng-click="paymentsData.previous()" href="" ng-disabled="!paymentsData.hasPrevious()">&larr; Prev</a></li>
+			<li class="next" ><a ng-click="paymentsData.next()" href="" ng-disabled="!paymentsData.hasNext()">Next &rarr;</a></li>
+    	</ul>
 	</div>
 </div>

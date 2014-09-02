@@ -30,6 +30,8 @@
         		  scope.authenticationFailed = false;
         		  webStorage.add("clientTotalData", successData);
         		  scope.isSignInProcess = true;
+        		  delete scope.loginCredentials.username;
+        		  delete scope.loginCredentials.password;
         		  location.path('/profile');
         	  },function(errorData){
         		  webStorage.remove("selfcare_sessionData");

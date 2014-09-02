@@ -552,9 +552,9 @@
         	  $scope.disconnectDetails = [];
         	  $scope.start = {};
         	  $scope.start.date = new Date();
-              /*resourceFactory.OrderDisconnectResource.get(function(data) {
+              resourceFactory.OrderDisconnectResource.get(function(data) {
                   $scope.disconnectDetails = data.disconnectDetails;
-              });*/
+              });
         	  console.log($scope.disconnectDetails);
         	  
         	  $scope.approveDisconnection = function () {

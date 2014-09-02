@@ -227,7 +227,8 @@
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.start_date = reqDate;
             if(this.formData.isPrepaid == 'Y'){
-            this.formData.paytermCode='Monthly';
+            	// this.formData.paytermCode='Monthly';
+            	this.formData.paytermCode=scope.paytermdatas[0].paytermtype;
             }
             delete this.formData.planId;
             delete this.formData.id;
@@ -267,7 +268,8 @@
             this.formData.dateFormat = 'dd MMMM yyyy';
             this.formData.start_date = reqDate;
             if(this.formData.isPrepaid == 'Y'){
-            this.formData.paytermCode='Monthly';
+           // this.formData.paytermCode='Monthly';
+               this.formData.paytermCode=scope.paytermdatas[0].paytermtype;
             }
             delete this.formData.planId;
             delete this.formData.id;

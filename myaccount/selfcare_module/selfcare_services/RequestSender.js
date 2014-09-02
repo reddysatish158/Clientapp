@@ -49,7 +49,7 @@
         	
             getOrderResource: defineResource(apiVer + "/orders/:clientId/orders",{clientId : '@clientId'},  {}),
             
-            FineTransactionResource: defineResource(apiVer + "/financialTransactions/:clientId", {clientId:'@clientId'}, {}),
+            paymentsResource: defineResource(apiVer + "/financialTransactions/:clientId", {clientId:'@clientId'}, {}),
             
             getSingleOrderResource: defineResource(apiVer + "/orders/:orderId/orderprice", {orderId:'@orderId'}, {
            	  update: { method: 'PUT' }
@@ -70,6 +70,14 @@
             clientResource: defineResource(apiVer + "/clients/:clientId/:anotherresource", {clientId:'@clientId',anotherresource:'@anotherresource'}, {
                 getAllClientDocuments: {method: 'GET', params: {}, isArray: true},
                 update: { method: 'PUT'}
+            }),
+            
+            orderRenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder/:orderId", {orderId:'@orderId'},{
+            	update: { method: 'PUT' }
+           }),
+           
+           orderRenewalResource: defineResource(apiVer + "/orders/renewal/:orderId", {orderId:'@orderId'},{
+              	update: { method: 'PUT' }
             }),
 
         };

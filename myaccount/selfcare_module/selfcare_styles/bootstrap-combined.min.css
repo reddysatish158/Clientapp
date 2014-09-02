@@ -4278,7 +4278,7 @@ input[type="submit"].btn.btn-mini {
 }
 
 .tab-content {
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .tabs-below > .nav-tabs,
@@ -5193,7 +5193,7 @@ input[type="submit"].btn.btn-mini {
 .pager li > a:hover,
 .pager li > a:focus {
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #eee;
 }
 
 .pager .next > a,
@@ -6486,21 +6486,11 @@ div.subnav-fixed {
   background-color: #eeeeee;
 }
 
-.pager li > a,
-.pager li > span {
-  color: #080808;
-  background-color: #dfdfdf;
-  border: none;
-  -webkit-border-radius: 0;
-     -moz-border-radius: 0;
-          border-radius: 0;
-}
-
-.pager li > a:hover,
+/* .pager li > a:hover,
 .pager li > span:hover {
   color: #ffffff;
   background-color: #080808;
-}
+} */
 
 .pager .disabled > a,
 .pager .disabled > a:hover,
@@ -6528,6 +6518,7 @@ div.subnav-fixed {
   text-shadow: none;
   background-image: none;
   border: none;
+  font-weight : 600;
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;

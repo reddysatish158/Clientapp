@@ -54,7 +54,7 @@
               
           };
           
-          var ApproveReconnectPopupController = function ($scope, $modalInstance) {
+          /*var ApproveReconnectPopupController = function ($scope, $modalInstance) {
         	  $scope.flagApproveReconnect=false;
         	  $scope.formData = {};
         	  
@@ -72,7 +72,7 @@
               $scope.cancelReconnect = function () {
                   $modalInstance.dismiss('cancel');
               };
-          };
+          };*/
 		  
 		  scope.orderDisconnect = function(orderId){
 			  scope.orderDataId = orderId;
@@ -84,14 +84,14 @@
               });
           };
           
-          scope.reconnect = function (){
+          /*scope.reconnect = function (){
           	scope.errorStatus=[];scope.errorDetails=[];
           	 $modal.open({
                    templateUrl: 'ApproveReconnect.html',
                    controller: ApproveReconnectPopupController,
                    resolve:{}
                });
-            };
+            };*/
     }
   });
   selfcare.ng.application.controller('ViewOrderController', ['$scope','RequestSender','$location','$routeParams','$modal','dateFilter','$route', selfcare.controllers.ViewOrderController]);
