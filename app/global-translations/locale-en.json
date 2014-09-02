@@ -295,6 +295,8 @@
   "label.heading.userprofile":"User Profile",
   "link.profile" : "Profile",
   "label.inventory":"Inventory",
+  "label.hostName":"Host Name",
+  "label.port":"Port",
   "link.messanger":"Messanger",
   "link.settings" : "Settings",
   "link.logout" : "LogOut",
