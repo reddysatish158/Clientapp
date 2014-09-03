@@ -322,8 +322,9 @@
             */}
             
 
-        };
-    }
+            };
+        }
+	  }
   });
   mifosX.ng.application.controller('CreateOrderController', ['$scope','webStorage','$routeParams', 'ResourceFactory', 'dateFilter','$location','$filter', mifosX.controllers.CreateOrderController]).run(function($log) {
     $log.info("CreateOrderController initialized");
