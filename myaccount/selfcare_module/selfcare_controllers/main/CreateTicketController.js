@@ -23,7 +23,9 @@
 			 scope.clientId=routeParams.clientId;
 		        
 		        var selfcare_sessionData=webStorage.get('selfcare_sessionData');
-		        scope.formData.assignedTo=selfcare_sessionData.userId;
+		        if(selfcare_sessionData){
+		        	scope.formData.assignedTo=selfcare_sessionData.userId;
+		        }
 		       
 		     RequestSender.ticketResourceTemplate.get(function(data){ 
             	

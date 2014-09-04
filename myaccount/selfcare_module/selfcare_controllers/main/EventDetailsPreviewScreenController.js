@@ -5,8 +5,14 @@
 			 scope.mediaDatas = {};
 			 scope.eventFormData = {};
 			 var clientTotalData = webStorage.get('clientTotalData');
-			 scope.clientId = clientTotalData.clientId;
-			 scope.mediaDatas = webStorage.get('eventData');
+			 if(clientTotalData){
+				 scope.clientId = clientTotalData.clientId;
+			 }
+			 if(webStorage.get('eventData')){
+				 scope.mediaDatas = webStorage.get('eventData');
+			 }
+			 
+			 console.log(webStorage.get("eventData"));
 			 
 			 console.log(scope.mediaDatas);
 			 for(var i in scope.mediaDatas) {

@@ -23,21 +23,21 @@
 	
 	<div>
 	    <ul class="breadcrumb">
-	        <li class="active">Payments</li>
+	        <li class="active">{{'link.paymets'|translate}}</li>
 	    </ul>
     </div><br/>
  	<div class="row-fluid">
-		    <input ng-model="filterText" type="text" ng-autofocus="true" class="span marginbottom0px" placeholder="Filter by username">
+		    <input ng-model="filterText" type="text" ng-autofocus="true" class="span marginbottom0px" placeholder="{{'placeholder.filter.payment'|translate}}">
 		
 		<table class="table">
 	        <thead>
 	             <tr class="graybg">
-	                <th>Transaction Id</th>
-       				<th>Transaction Date</th>
-       				<th>Transaction Type</th>
-       				<th>Transaction Category</th>
-       				<th>Credit Amount</th>
-       				<th>Debit Amount</th>
+	                <th>{{'table.header.payment.transactionid'|translate}}</th>
+	                <th>{{'table.header.payment.transactiondate'|translate}}</th>
+	                <th>{{'table.header.payment.transactiontype'|translate}}</th>
+	                <th>{{'table.header.payment.transactioncategory'|translate}}</th>
+	                <th>{{'table.header.payment.creditamount'|translate}}</th>
+	                <th>{{'table.header.payment.debitamount'|translate}}</th>
             	</tr>
 	        </thead>
 	        <tbody>
@@ -52,8 +52,8 @@
 	        </tbody>
 	    </table>
 	    <ul class="pager">
-			<li class="previous"><a ng-click="paymentsData.previous()" href="" ng-disabled="!paymentsData.hasPrevious()">&larr; Prev</a></li>
-			<li class="next" ><a ng-click="paymentsData.next()" href="" ng-disabled="!paymentsData.hasNext()">Next &rarr;</a></li>
+			<li class="previous"><a ng-click="paymentsData.previous()" href="" ng-disabled="!paymentsData.hasPrevious()">&larr;{{'btn.previous'|translate}}</a></li>
+			<li class="next" ><a ng-click="paymentsData.next()" href="" ng-disabled="!paymentsData.hasNext()">{{'btn.next'|translate}} &rarr;</a></li>
     	</ul>
 	</div>
 </div>

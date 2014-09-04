@@ -7,6 +7,7 @@
 		  	scope.isPaymentPage = false;
 		  	scope.isRedirectToDalpay = false;
 		  	scope.isAmountZero = false;
+		  	scope.totalPlansData = [];
 		  	scope.plansData = [];
 			scope.clientData = {};
 			scope.clientOrdersData = [];
@@ -19,48 +20,28 @@
 		  scope.dalpayURL = selfcare.models.dalpayURL;
 		  	
 		  var clientDatas = webStorage.get("clientTotalData");
-		  scope.formData = clientDatas.clientData;
-		  scope.formData.clientId = clientDatas.clientId;
+		  if(clientDatas){
+			  scope.formData = clientDatas.clientData;
+			  scope.formData.clientId = clientDatas.clientId;
+		  }
 		  console.log(scope.formData);
     	  
 			  if(scope.isOrderPage == true){
 				 
 				 if(routeParams.clientId == 0 && routeParams.orderId == 0){
 					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
-						  scope.plansData = data;
+						  scope.totalPlansData = data;
 						  
 						  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
 							  scope.clientOrdersData = data.clientOrders;
 							  for(var i in scope.clientOrdersData ){
-								  scope.plansData = _.filter(scope.plansData, function(item) {
+								  scope.totalPlansData = _.filter(scope.totalPlansData, function(item) {
 				                      return item.planCode != scope.clientOrdersData[i].planCode;
 				                  });
 							  }
+							  scope.plansData = scope.totalPlansData;
 						  });
 					  });
-				 }else{
-				  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
-					  scope.clientOrdersData = data.clientOrders;
-					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
-						  scope.plansData = data;
-						  
-						  for(var i in scope.plansData){
-							  scope.pricingData = scope.plansData[i].pricingData;
-							  for(var j in scope.clientOrdersData){
-								  for(var k  in scope.pricingData){
-									  if(scope.pricingData[k].planCode == scope.clientOrdersData[j].planCode &&
-											  scope.pricingData[k].duration == scope.clientOrdersData[j].contractPeriod){
-										  //console.log(scope.plansData[i].pricingData[k]);
-										  scope.plansData[i].pricingData = scope.plansData[i].pricingData.filter(function( element ) {
-											    return element.id != scope.plansData[i].pricingData[k].id;
-											});
-									  }
-								  }
-							  }
-						  }
-						  
-					  });
-				  });
 				 }
 				  
 			  }
@@ -86,8 +67,8 @@
 	    	  	//var host = window.location.hostname;
 	    		//var portNo = window.location.port;
 	    	  var hostName = selfcare.models.selfcareAppUrl;
-	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.displayName+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
-	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"" +
+	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.lastname+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
+	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_zip="+scope.formData.zip+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"" +
 	    	  				"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen/"+routeParams.orderId+"/"+routeParams.clientId;
 	    	  
 	      };

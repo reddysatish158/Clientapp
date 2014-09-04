@@ -6,8 +6,12 @@
 		  scope.orderBookingData = {};
 		 scope.formData = webStorage.get("renewalOrderFormData");
 		 
-		 scope.orderBookingData.renewalPeriod = scope.formData.contractperiod; 
-		 scope.orderBookingData.description = 'Renewal the Order'; 
+		 console.log(webStorage.get("renewalOrderFormData"));
+		 
+		 if(webStorage.get("renewalOrderFormData")){
+			 scope.orderBookingData.renewalPeriod = scope.formData.contractperiod; 
+			 scope.orderBookingData.description = 'Renewal the Order'; 
+		 }
 		 
 		 RequestSender.orderRenewalResource.save({orderId :routeParams.orderId},scope.orderBookingData,function(data){
 			 webStorage.remove('renewalOrderFormData');

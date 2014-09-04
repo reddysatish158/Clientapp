@@ -1,11 +1,11 @@
 <div ng-controller="ProfileController">
 	<div style="margin-top:20px;font-size:20px; margin-left:40px;" class="pull-left">
-		<span class="animated pulse" style="color:#0088cc;">Status :&nbsp;</span>
+		<span class="animated pulse" style="color:#0088cc;">{{'label.client.status'|translate}} :&nbsp;</span>
 		<span class="{{clientData.status.value | StatusLookup}} animated fadeInUp"><strong>{{clientData.status.value}}</strong></span>
 	</div>
 	
 	<div style="margin-top:20px;margin-right:60px;" class="pull-right">
-		<span class="animated pulse" style="color:#0088cc;font-size:20px;">Balance :&nbsp;</span>
+		<span class="animated pulse" style="color:#0088cc;font-size:20px;">{{'label.client.balance'|translate}} :&nbsp;</span>
 		<span class="btn btn-success animated fadeInUp" style="font-size:20px;">{{clientData.balanceAmount}}</span>
 	</div>
 	<!-- <div class="breadcrumb">
@@ -63,56 +63,56 @@
 			<div class="row-fluid span">
 			
 				<div class="span6">
-				<strong>Profile:</strong>
+				<strong>{{'link.profile'|translate}}:</strong>
 					<table width="100%" class="table table-striped table-bordered" width="0px">
 						<tr>
-							<td width="50%">Account Number</td>
+							<td width="50%">{{'table.header.profile.accountNumber'|translate}}</td>
 							<td width="50%">{{clientData.accountNo}}</td>
 						</tr>	
 						<tr>
-							<td width="30%">Full Name</td>
+							<td width="30%">{{'table.header.profile.customername'|translate}}</td>
 							<td width="70%">{{clientData.displayName}}</td>
 						</tr>
 						<tr>
-							<td width="30%">Created Date</td>
+							<td width="30%">{{'table.header.profile.createddate'|translate}}</td>
 							<td width="70%">{{clientData.activationDate | DateFormat}}</td>
 						</tr>
 						<tr>
-							<td width="30%">Mobile Number</td>
+							<td width="30%">{{'table.header.profile.mobilenumber'|translate}}</td>
 							<td width="70%">{{clientData.phone}}</td>
 						</tr>
 						<tr>
-							<td width="30%">Email</td>
+							<td width="30%">{{'table.header.profile.email'|translate}}</td>
 							<td width="70%">{{clientData.email}}</td>
 						</tr>
 						<tr>
-							<td width="30%">Auth Pin</td>
+							<td width="30%">{{'table.header.profile.authpin'|translate}}</td>
 							<td width="70%">{{clientData.selfcare.authPin}}</td>
 						</tr>
 				  </table>
 			   </div>	
 			  
 				<div class="span5">
-				 <strong>Address:</strong>
+				 <strong>{{'link.address'|translate}}:</strong>
 					<table width="100%" class="table table-striped table-bordered">
 						<tr>
-							<td width="30%">Address</td>
+							<td width="30%">{{'table.header.profile.address'|translate}}</td>
 							<td width="70%">{{clientData.addressNo}}</td>
 						</tr>
 						<tr>
-							<td width="30%">City</td>
+							<td width="30%">{{'table.header.profile.city'|translate}}</td>
 							<td width="70%">{{clientData.city}}</td>
 						</tr>
 						<tr>
-							<td width="30%">State</td>
+							<td width="30%">{{'table.header.profile.state'|translate}}</td>
 							<td width="70%">{{clientData.state}}</td>
 						</tr>
 						<tr>
-							<td width="30%">Country</td>
+							<td width="30%">{{'table.header.profile.country'|translate}}</td>
 							<td width="70%">{{clientData.country}}</td>
 						</tr>
 						<tr>
-							<td width="30%">ZipCode</td>
+							<td width="30%">{{'table.header.profile.zipcode'|translate}}</td>
 							<td width="70%">{{clientData.zip}}</td>
 						</tr>
 					</table>

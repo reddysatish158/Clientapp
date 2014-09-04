@@ -10,6 +10,8 @@
 			  scope.clientId = clientTotalData.clientId;
 			  RequestSender.clientResource.get({clientId: scope.clientId} , function(data) {
 				  scope.clientData = data;
+				  rootScope.selfcare_userName = data.selfcare.userName;
+				  webStorage.add('selfcareUserName',data.selfcare.userName);
 			  });
 		  }
 		  

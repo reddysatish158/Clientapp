@@ -11,9 +11,11 @@
 		  scope.mediaDetails = [];
 		  scope.mediaDatas = [];
 		  var clientDatas = webStorage.get("clientTotalData");
-		  scope.formData  = clientDatas.clientData;
-		  scope.planData = clientDatas.clientOrdersData;
-		  scope.addressData  = clientDatas.addressData;
+		  if(clientDatas){
+			  scope.formData  = clientDatas.clientData;
+			  scope.planData = clientDatas.clientOrdersData;
+			  scope.addressData  = clientDatas.addressData;
+		  }
 		  scope.totalAmount = 0;
 		  
 		  RequestSender.vodEventsResource.get({'filterType':'ALL','pageNo':0,clientType : scope.formData.categoryType},function(data){
@@ -56,8 +58,8 @@
 				    //var host = window.location.hostname;
 		    		//var portNo = window.location.port;
 		    	  var hostName = selfcare.models.selfcareAppUrl;
-				  scope.URLForDalpay = selfcare.models.dalpayURL+"&cust_name="+scope.formData.firstname+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
-	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.planData.planCode+"&item1_price="+scope.totalAmount+"&item1_qty=1&user1="+clientDatas.clientId+"&user2="+hostName+"&user3=eventdetailspreviewscreen";
+				  scope.URLForDalpay = selfcare.models.dalpayURL+"&cust_name="+scope.formData.lastname+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
+	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_zip="+scope.formData.zip+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.planData.planCode+"&item1_price="+scope.totalAmount+"&item1_qty=1&user1="+clientDatas.clientId+"&user2="+hostName+"&user3=eventdetailspreviewscreen";
 			  }
 		  };
 		  

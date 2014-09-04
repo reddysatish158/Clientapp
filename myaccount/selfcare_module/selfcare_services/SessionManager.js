@@ -30,6 +30,7 @@
         		  scope.authenticationFailed = false;
         		  webStorage.add("clientTotalData", successData);
         		  scope.isSignInProcess = true;
+        		  scope.signInProcessLoading = false;
         		  delete scope.loginCredentials.username;
         		  delete scope.loginCredentials.password;
         		  location.path('/profile');
@@ -47,6 +48,7 @@
         webStorage.remove("selfcare_sessionData");
         webStorage.remove("clientData");
         webStorage.remove("clientTotalData");
+        webStorage.remove('selfcareUserName');
         httpService.cancelAuthorization();
         return scope.currentSession= {user:null};
       };
@@ -58,6 +60,7 @@
               RequestSender.userResource.get({userId: selfcare_sessionData.userId}, function(userData) {
             	  var clientData = webStorage.get("clientTotalData");
             	  if(clientData){
+            		  scope.selfcare_userName = webStorage.get('selfcareUserName');
             		  scope.isSignInProcess = true;
             		  if(location.path()){
             			  location.path(location.path());

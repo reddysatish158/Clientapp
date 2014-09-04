@@ -10,9 +10,6 @@
       })
 /*      .when('/registrationsuccess', {
         templateUrl: 'selfcare_module/views/clients/registrationsuccessform.html'
-      })
-      .when('/paymentbuttons', {
-        templateUrl: 'selfcare_module/views/clients/paymentbuttons.html'
       })*/
       .when('/activeclientpreviewscreen', {
         templateUrl: 'selfcare_module/views/clients/activeclientpreviewscreen.html'

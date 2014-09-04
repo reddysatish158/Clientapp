@@ -96,7 +96,6 @@
     		  }
     	  };
     	  
-    	  
     	  scope.nextBtnFun = function(){
 			  scope.isRegPage = false;
 			  scope.isOrderPage = true;
@@ -108,6 +107,17 @@
 					  	scope.plansData = data;
 				  });
 			  }
+		  };
+		  
+		  scope.previousBtnFun = function(){
+  		    
+			  scope.isActive=false;
+    		  scope.isAlreadyActive=false;
+    		  scope.isRegPage = true;
+			  scope.isOrderPage = false;
+			  scope.isPaymentPage = false;
+			  scope.isAmountZero = false;
+			  scope.registrationLinkFun();
 		  };
 		  
 		  

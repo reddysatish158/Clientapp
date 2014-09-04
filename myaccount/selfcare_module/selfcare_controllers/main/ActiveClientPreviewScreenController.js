@@ -9,18 +9,24 @@
 		  rootScope.isSignInProcess = false;
 		 scope.formData = webStorage.get("planFormData");
 		 
-		 if(scope.formData.deviceNo){
-			 scope.clientData.device = scope.formData.deviceNo;
+		 console.log(webStorage.get("planFormData"));
+		 
+		 if(webStorage.get("planFormData")){
+			 
+			 if(scope.formData.deviceNo){
+				 scope.clientData.device = scope.formData.deviceNo;
+			 }
+			 console.log(scope.formData.zipcode);
+			 scope.clientData.firstname = "Mr ";
+			 scope.clientData.zipCode = scope.formData.zipcode;
+			 scope.clientData.fullname = scope.formData.fullName;
+			 scope.clientData.city = scope.formData.city;
+			 scope.clientData.phone = parseInt(scope.formData.mobileNo); 
+			 scope.clientData.email = scope.formData.emailId; 
+			 scope.clientData.paytermCode = scope.formData.paytermCode; 
+			 scope.clientData.contractPeriod = scope.formData.contractperiod; 
+			 scope.clientData.planCode = scope.formData.planCode;
 		 }
-		 console.log(scope.formData.zipcode);
-		 scope.clientData.zipCode = scope.formData.zipcode;
-		 scope.clientData.fullname = scope.formData.fullName;
-		 scope.clientData.city = scope.formData.city;
-		 scope.clientData.phone = parseInt(scope.formData.mobileNo); 
-		 scope.clientData.email = scope.formData.emailId; 
-		 scope.clientData.paytermCode = scope.formData.paytermCode; 
-		 scope.clientData.contractPeriod = scope.formData.contractperiod; 
-		 scope.clientData.planCode = scope.formData.planCode;
 		 
 		 httpService.post("/obsplatform/api/v1/authentication?username=billing&password=password")
 	  		.success(function(data){

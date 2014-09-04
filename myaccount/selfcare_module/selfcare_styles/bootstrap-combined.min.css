@@ -6511,6 +6511,7 @@ div.subnav-fixed {
 .breadcrumb .active {
   color: #080808;
   text-shadow: none;
+  font-weight : bolder;
 }
 
 .btn {

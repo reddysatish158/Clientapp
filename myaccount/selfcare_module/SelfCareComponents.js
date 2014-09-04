@@ -26,7 +26,6 @@ define(['underscore', 'selfcare'], function() {
 						      'main/SignUpFormController',
 						      'main/RegistrationSuccessFormController',
 						      'main/ActivateUserController',
-						      'main/PaymentButtonsController',
 						      'main/ActiveClientPreviewScreenController',
 						      'main/ProfileController',
 						      'main/OrdersController',

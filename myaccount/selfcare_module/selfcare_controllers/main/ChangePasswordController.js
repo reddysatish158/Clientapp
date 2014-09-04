@@ -7,7 +7,9 @@
 		  scope.formData = {};
 		  scope.retype_pwd_valid = false;
 		  var clientDatas = webStorage.get("clientTotalData");
-		  scope.email = clientDatas.clientData.email;
+		  if(clientDatas){
+			  scope.email = clientDatas.clientData.email;
+		  }
 		  
 		  scope.passwordCheck = function(){
 			 if(scope.pwdData.newPassword && scope.pwdData.confirmPassword){
@@ -24,10 +26,9 @@
 				  scope.formData.password = scope.pwdData.newPassword;
 				  scope.formData.uniqueReference = scope.email;
 				  RequestSender.changePwdResource.update(scope.formData,function(data){
-					  rootScope.currentSession = sessionManager.clear();
-					  rootScope.signInProcessLoading = false;
 					  rootScope.isChangePassword = true;
-			    	  location.path('/').replace;
+					  rootScope.currentSession = sessionManager.clear();
+			    	 // location.path('/').replace;
 				  });
 			  }
 		  };

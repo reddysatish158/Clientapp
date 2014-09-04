@@ -23,23 +23,23 @@
 	
 	<div>
 	    <ul class="breadcrumb">
-	        <li class="active">Orders</li>
+	        <li class="active">{{'link.orders'|translate}}</li>
 	    </ul>
     </div><br/>
  	<div class="row-fluid">
-		    <input ng-model="filterText" type="text" ng-autofocus="true" class="span marginbottom0px" placeholder="Filter by Order No">
+		    <input ng-model="filterText" type="text" ng-autofocus="true" class="span marginbottom0px" placeholder="{{'placeholder.filter.order'|translate}}">
 		<br/>
 		<table class="table">
 	        <thead>
 	            <tr class="graybg">
-	                <th>Order No</th>
-	                <th>Plan</th>
-	                <th>Contract Period</th>
-	                <th>Activation Date</th>
-	                <th>Start/Renewal Date</th>
-	                <th>End Date</th>
-	                <th>Price</th>
-	                <th>status</th>
+	                <th>{{'table.header.orderno'|translate}}</th>
+	                <th>{{'table.header.plan'|translate}}</th>
+	                <th>{{'table.header.contractperoid'|translate}}</th>
+	                <th>{{'table.header.activationdate'|translate}}</th>
+	                <th>{{'table.header.start/renewaldate'|translate}}</th>
+	                <th>{{'table.header.enddate'|translate}}</th>
+	                <th>{{'table.header.price'|translate}}</th>
+	                <th>{{'table.header.status'|translate}}</th>
 	            </tr>
 	        </thead>
 	        <tbody>

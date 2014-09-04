@@ -1,16 +1,16 @@
 <div ng-controller="ViewOrderController">
 	<div class="paddedbottom10">
 		<ul class="breadcrumb">
-	        <li><a href="#/orders">Orders</a> <span class="divider">/</span></li>
+	        <li><a href="#/orders">{{'link.orders'|translate}}</a> <span class="divider">/</span></li>
 	        <li class="active">{{orderData.id}}&nbsp;&nbsp;</li>
 	    </ul>
 	    <div class="pull-right">
-	         <a ng-show="(orderData.status == 'DISCONNECTED')" href="#/renewalorder/{{orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>Renewal</a>
-	         <a ng-show ="(orderData.status == 'ACTIVE')" href="#/additionalorders/{{orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>Change Plan</a>
-	         <a ng-show="(orderData.status == 'ACTIVE')||(orderData.status == 'SUSPENDED')" ng-click="orderDisconnect(orderData.id)" class="btn btn-primary"><i class="icon-remove fa-spin icon-white"></i>Disconnect</a>
+	         <a ng-show="(orderData.status == 'DISCONNECTED')" href="#/renewalorder/{{orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-edit icon-white"></i>{{'btn.renewal' | translate}}</a>
+	         <a ng-show ="(orderData.status == 'ACTIVE')" href="#/changeorder/{{orderId}}/{{clientId}}" class="btn btn-primary"><i class="icon-cog"></i>{{'btn.change.plan' | translate}}</a>
+	         <a ng-show="(orderData.status == 'ACTIVE')||(orderData.status == 'SUSPENDED')" ng-click="orderDisconnect(orderData.id)" class="btn btn-primary"><i class="icon-remove fa-spin icon-white"></i>{{'btn.disconnect' | translate}}</a>
 	    </div>
 	</div><br/>
-	<label><h2 style="color:#0088cc" class="animated fadeInUp">Order Information</h2></label>
+	<label><h2 style="color:#0088cc" class="animated fadeInUp">{{ 'label.order.info' | translate }}</h2></label>
  		<div class="row-fluid">
 		<br/>
 			<div class="row-fluid span">
@@ -33,7 +33,7 @@
 							<td width="70%">{{orderData.isPrepaid}}</td>
 						</tr>
 						<tr>
-							<td width="30%">{{ 'table.order.billingcycle' | translate }}</td>
+							<td width="30%">{{ 'label.order.billingcycle' | translate }}</td>
 							<td width="70%">{{orderPriceDatas[0].billingCycle}}</td>
 						</tr>
 				  </table>
@@ -45,11 +45,11 @@
 							<td width="70%">{{orderData.planCode}}</td>
 						</tr>
 						<tr>
-							<td width="30%">{{ 'table.order.status' | translate }}</td>
+							<td width="30%">{{ 'label.order.status' | translate }}</td>
 							<td width="70%">{{orderData.status}}</td>
 						</tr>
 						<tr>
-							<td width="30%">{{ 'table.order.endDate' | translate }}</td>
+							<td width="30%">{{ 'label.order.endDate' | translate }}</td>
 							<td width="70%">{{orderData.endDate | DateFormat}}</td>
 						</tr>
 						<tr>
@@ -57,7 +57,7 @@
 							<td width="70%">{{orderData.userAction}}</td>
 						</tr>
 						<tr>
-							<td width="40%">{{ 'table.order.invoicetilldate' | translate }}</td>
+							<td width="40%">{{ 'label.order.invoicetilldate' | translate }}</td>
 							<td width="60%">{{orderPriceDatas[0].invoiceTillDate| DateFormat}}</td>
 						</tr>
 					</table>
@@ -75,10 +75,10 @@
 			<label ng-show="errorStatus">{{errorStatus}}</label>
 			<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	    </div>
-         <h4>Are you sure?</h4>
+         <h4>{{'dialog.confirm.message' | translate}}</h4>
     </div>
     <div class="modal-footer">
-     		<button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'button.cancel' | translate}}</button>
+     		<button id="cancel" class="btn btn-warning" ng-click="cancelReconnect()">{{'btn.cancel' | translate}}</button>
             <button id="submit" class="btn btn-primary" ng-click="approveReconnect()" ng-disabled="flagApproveReconnect">{{'label.confirm' | translate}}</button>
     </div>
  </script>
@@ -109,7 +109,7 @@
   		  </fieldset>
      </div>
      <div class="modal-footer">
-        <button id="cancel" class="btn btn-warning" ng-click="cancelDisconnection()">{{'button.cancel' | translate}}</button>
+        <button id="cancel" class="btn btn-warning" ng-click="cancelDisconnection()">{{'btn.cancel' | translate}}</button>
      	<button id="submit" class="btn btn-primary" ng-click="approveDisconnection()" ng-disabled="flagOrderDisconnect">{{'label.confirm' | translate}}</button>
       </div>
 </script>

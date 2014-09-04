@@ -11,6 +11,7 @@
 			scope.clientData = {};
 			scope.clientOrdersData = [];
 			scope.pricingData = [];
+			scope.selectedPlanData = {};
 		  	
 		  //declaration of formData
 			  scope.formData = {};
@@ -19,13 +20,21 @@
 		  scope.dalpayURL = selfcare.models.dalpayURL;
 		  	
 		  var clientDatas = webStorage.get("clientTotalData");
-		  scope.formData = clientDatas.clientData;
-		  scope.formData.clientId = clientDatas.clientId;
-		  console.log(scope.formData);
-    	  
+		  if(clientDatas){
+			  scope.formData = clientDatas.clientData;
+			  scope.formData.clientId = clientDatas.clientId;
+		  }
+		  scope.orderId = routeParams.orderId;
+  	  
 			  if(scope.isOrderPage == true){
+				 
 				  RequestSender.getOrderResource.get({clientId:scope.formData.clientId},function(data){
 					  scope.clientOrdersData = data.clientOrders;
+					  for(var plan in scope.clientOrdersData){
+						  if(scope.clientOrdersData[plan].id == routeParams.orderId){
+							  scope.selectedPlanData = scope.clientOrdersData[plan];
+						  }
+					  }
 					  RequestSender.orderTemplateResource.query({region : scope.formData.state},function(data){
 						  scope.plansData = data;
 						  
@@ -70,8 +79,9 @@
 	    	  	//var host = window.location.hostname;
 	    		//var portNo = window.location.port;
 	    	  var hostName = selfcare.models.selfcareAppUrl;
-	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.displayName+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
-	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen";
+	    	  scope.paymentDalpayURL = scope.dalpayURL+"&cust_name="+scope.formData.lastname+"&cust_phone="+scope.formData.phone+"&cust_email="+scope.formData.email+"&cust_state="+scope.formData.state+""+
+	    	  				"&cust_address1="+scope.formData.addressNo+"&cust_zip="+scope.formData.zip+"&cust_city="+scope.formData.city+"&num_items=1&item1_desc="+scope.formData.planName+"&item1_price="+scope.formData.planAmount+"" +
+	    	  				"&item1_qty=1&user1="+scope.formData.id+"&user2="+hostName+"&user3=additionalorderspreviewscreen/"+routeParams.orderId+"/"+routeParams.clientId;
 	    	  
 	      };
 	      
@@ -92,10 +102,10 @@
 	      scope.finishBtnFun =function(){
 	    	  
 	    	  webStorage.add("additionalPlanFormData",scope.formData);
-    		  location.path("/additionalorderspreviewscreen");
+  		  location.path("/additionalorderspreviewscreen/"+routeParams.orderId+"/"+routeParams.clientId);
 	      };
-  		
-    }
+		
+  }
   });
   selfcare.ng.application.controller('ChangeOrderController', 
  ['$scope','RequestSender','$rootScope','$routeParams','$modal','webStorage','HttpService','AuthenticationService',

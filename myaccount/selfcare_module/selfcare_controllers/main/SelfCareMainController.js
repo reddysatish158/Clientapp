@@ -8,6 +8,7 @@
 		   scope.isRegistrationFailure = false;
 		   scope.emptyCredentials = false;
 		   scope.isChangePassword = false;
+		   scope.selfcare_userName = "";
 		   
 	 //authentication onSuccess this event called  
 	   scope.$on("UserAuthenticationSuccessEvent", function(event, data,formData) {

@@ -4,10 +4,12 @@
 		  scope.ordersData = [];
 		  var clientTotalData= webStorage.get('clientTotalData');
 		  //scope.ordersData = orderData.clientOrdersData;
-		  RequestSender.getOrderResource.get({clientId:clientTotalData.clientId},function(data){
-			  scope.clientId = data.clientId;
-			  scope.ordersData = data.clientOrders;
-		  });
+		  if(clientTotalData){
+			  RequestSender.getOrderResource.get({clientId:clientTotalData.clientId},function(data){
+				  scope.clientId = data.clientId;
+				  scope.ordersData = data.clientOrders;
+			  });
+		  }
 		  
 		  scope.routeToOrderView = function(orderid){
 	             location.path('/vieworder/'+orderid+'/'+scope.clientId);

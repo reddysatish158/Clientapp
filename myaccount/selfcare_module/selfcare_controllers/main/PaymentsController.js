@@ -8,7 +8,9 @@
 			  RequestSender.paymentsResource.get({clientId: paymentsData.clientId ,offset: offset, limit: limit,type:'PAYMENT'} , callback);
 	  		};
 	  		
-		  scope.paymentsData = paginatorService.paginate(scope.getPayments, 14);
+	  		if(paymentsData){
+	  			scope.paymentsData = paginatorService.paginate(scope.getPayments, 14);
+	  		}
 		 /* RequestSender.paymentsResource.get({clientId: paymentsData.clientId,type:'PAYMENT' } , function(data){
 			  scope.paymentsData = data;
 		  });*/

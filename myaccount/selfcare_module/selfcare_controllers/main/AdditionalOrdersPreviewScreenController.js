@@ -6,20 +6,24 @@
 		  scope.orderBookingData = {};
 		 scope.formData = webStorage.get("additionalPlanFormData");
 		 
-		 scope.orderBookingData.billAlign = false;
-		 scope.orderBookingData.isNewplan = true;
-		 scope.orderBookingData.locale = 'en'; 
-		 scope.orderBookingData.dateFormat = 'dd MMMM yyyy'; 
-		 var reqDate = dateFilter(new Date(),'dd MMMM yyyy');
-		 scope.orderBookingData.start_date =  reqDate; 
-		 scope.orderBookingData.paytermCode = scope.formData.paytermCode; 
-		 scope.orderBookingData.contractPeriod = scope.formData.contractperiod; 
-		 scope.orderBookingData.planCode = scope.formData.planCode; 
+		 console.log(webStorage.get("additionalPlanFormData"));
+		 
+		 if(webStorage.get("additionalPlanFormData")){
+			 scope.orderBookingData.billAlign = false;
+			 scope.orderBookingData.isNewplan = true;
+			 scope.orderBookingData.locale = 'en'; 
+			 scope.orderBookingData.dateFormat = 'dd MMMM yyyy'; 
+			 var reqDate = dateFilter(new Date(),'dd MMMM yyyy');
+			 scope.orderBookingData.start_date =  reqDate; 
+			 scope.orderBookingData.paytermCode = scope.formData.paytermCode; 
+			 scope.orderBookingData.contractPeriod = scope.formData.contractperiod; 
+			 scope.orderBookingData.planCode = scope.formData.planCode; 
+		 }
 		 
 		 if(routeParams.orderId == 0 && routeParams.clientId == 0){
 				 RequestSender.bookOrderResource.save({clientId : scope.formData.clientId},scope.orderBookingData,function(data){
 					 webStorage.remove('additionalPlanFormData');
-					 location.path('/additionalorders/'+routeParams.orderId+"/"+routeParams.clientId);
+					 location.path('/orders');
 				 });
 			 }else{
 				 scope.orderBookingData.disconnectionDate= reqDate;
