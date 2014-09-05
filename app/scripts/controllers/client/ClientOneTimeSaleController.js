@@ -26,14 +26,13 @@
 	            
 	        	scope.itemDatas = data.itemDatas;
 	            scope.discountMasterDatas = data.discountMasterDatas;
-	            scope.chargecodeDatas=data.chargeCodeDatas;
 	            scope.contractPeriods = data.contractPeriods;
 	            scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	            scope.onetimesales=data;
 	            scope.date= {};
 	            scope.date.saleDate = new Date();
 	            scope.formData.saleType=scope.saleType;
-	            
+
 	            if(scope.saleType == 'RENTAL'){
 	            	scope.formData.totalPrice=0;
 	            }
@@ -44,13 +43,12 @@
 	            	}
 	            }
 	        });
-	       
+	        
 	        scope.itemData=function(itemId,officeId){
 	        	 
 	        	resourceFactory.oneTimeSaleTemplateResourceData.get({itemId: itemId}, function(data) {
 	        		
 	        		scope.formData=data;
-	        		//delete scope.formData.chargeCode;
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		scope.formData.officeId=officeId;
@@ -59,11 +57,6 @@
 	 	            	scope.formData.totalPrice=0;
 	 	            }
 		        });	
-	        };
-	        
-	        scope.priceChange=function(unitPrice,quntity){
-	        	
-	        	scope.formData.totalPrice=unitPrice*quntity;
 	        };
 	        
 	        scope.itemDataQuantity=function(quantity,itemId,officeId){
@@ -77,7 +70,7 @@
 	        		scope.formData.itemId=itemId;
 	        		scope.formData.discountId = scope.discountMasterDatas[0].discountMasterId;
 	        		scope.formData.officeId=officeId;
-	        		
+		            
 	        		 if(scope.saleType == 'RENTAL'){
 	 	            	scope.formData.totalPrice=0;
 	 	            }
