@@ -533,9 +533,10 @@
               	  getAlltaxmapping: {method: 'GET', params: {}}
                 }),
                 
-                supplierResource: defineResource(apiVer + "/suppliers", {}, {
+                supplierResource: defineResource(apiVer + "/suppliers/:id", {id: '@id'}, {
               	  getAlldetails: {method: 'GET', params: {}},
-                    get: {method: 'GET', params: {}}
+                    get: {method: 'GET', params: {},isArray: true},
+                    update: {method: 'PUT', params: {}}
                 }),	
                 grnResource: defineResource(apiVer + "/itemdetails/grn:itemId/:anotherresource", {itemId:'@itemId',anotherresource:'@anotherresource'},{
              	   getAlldetails: {method: 'GET', params: {}},

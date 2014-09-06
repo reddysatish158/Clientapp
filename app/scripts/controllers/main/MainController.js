@@ -46,6 +46,7 @@
                 	location.path('/').replace();
                 });
         scope.currentSession = sessionManager.clear();
+        scope.clearCrendentials();
         
       };
 

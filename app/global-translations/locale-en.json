@@ -657,8 +657,10 @@
   "label.media.type":"Select Media Category",
   "label.media.contentprovider":"Content Provider",
   "label.media.mediaType":"Media Type",
+  "label.media.eventcategory":"Event Category",
+  "label.media.share":"Share(%)",
   "label.media.rated":"Rated",
-  "label.media.categeory":"Category",
+  "label.media.categeory":"Media Category",
   "label.media.rating":"Rating",
   "label.media.poster":"Poster",
   "label.media.status":"Status",
@@ -988,6 +990,7 @@
   
   "#tickets ":"....",
   "link.tickets":"Tickets",
+  "lable.ticket#":"Ticket#",
   
   
   "#invoice":"....",
@@ -1233,6 +1236,7 @@
   "label.mrn.movedto":"Moved To",
   "#Supplier":"...",
   "label.createsupplier":"Create Supplier",
+  "label.editsupplier":"Edit Supplier",
   "label.supplier.code":"Supplier Code",
   "label.supplier.description":"Supplier Description",
   "label.supplier.address":"Supplier Address",
@@ -1362,6 +1366,10 @@
   "label.tickethistory.attachments":"Attachments",
   "label.tickethistory.comments":"Comments",
   "label.tickethistory.problemdescription":"Problem Description",
+  "label.createdBy":"CreatedBy",
+  "label.assignedto":"Assigned To",
+  "label.closedby":"ClosedBy",
+  "label.timelapsed":"Time Elapsed",
   
   "#address":".........",
   "label.viewclient":"View Client",
@@ -1988,7 +1996,16 @@
 "#client&parent":"",
 "error.msg.client.Not parent.himself.can.not.be.parent.to his.account":"Himself can not be parent to his account",
 "error.msg.client.Not Parent.he.is. already. a parent.to.some other clients":"He is already a parent to some other clients",
-"error.msg.client.Not Parent.can.not.be.parent.to this.account":"Can not be parent to this account"
+"error.msg.client.Not Parent.can.not.be.parent.to this.account":"Can not be parent to this account",
+
+"#CUG":"......",
+"label.cug.groupcir":"Group CIR",
+"label.cug.dir":"DIR",
+"label.cug.membercir":"Member CIR",
+"label.cug.additionalinfo":"Additional information",
+"label.cug.addgroup":"Add Group",
+"label.cug.groupaddress":"Group Address",
+"label.options":"Options"
 
 
 
