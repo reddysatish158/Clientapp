@@ -16,6 +16,7 @@
 			scope.contractDetails = [];
 			webStorage.remove('selfcare_sessionData');
 			rootScope.isSignInProcess = false;
+			scope.existedEmail = routeParams.mailId;
 		  	
 		  //declaration of formData
 			  scope.formData = {};
@@ -37,7 +38,7 @@
   	    	  location.path('/').replace;
   		};
   		
-  		httpService.post("/obsplatform/api/v1/authentication?username=billing&password=password")
+  		httpService.post("/obsplatform/api/v1/authentication?username="+selfcare.models.obs_username+"&password="+selfcare.models.obs_password)
   		.success(function(data){
   			 httpService.setAuthorization(data.base64EncodedAuthenticationKey);
 	  			RequestSender.registrationResource.update(scope.registrationKey,function(successData) {

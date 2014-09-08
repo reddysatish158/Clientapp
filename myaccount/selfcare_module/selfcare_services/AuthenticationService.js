@@ -18,7 +18,7 @@
     
       this.authenticateWithUsernamePassword = function(formData) {
     	  scope.singUpFormData = formData;
-	        httpService.post(apiVer + "/authentication?username=billing&password=password")
+	        httpService.post(apiVer + "/authentication?username="+selfcare.models.obs_username+"&password="+selfcare.models.obs_password)
 	          .success(onSuccess)
 	          .error(onFailure);
       };

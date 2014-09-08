@@ -18,6 +18,9 @@
 			 }
 			 console.log(scope.formData.zipcode);
 			 scope.clientData.firstname = "Mr ";
+			 scope.clientData.address = scope.formData.address;
+			 scope.clientData.homePhoneNumber = scope.formData.homePhoneNumber;
+			 scope.clientData.nationalId = scope.formData.nationalId;
 			 scope.clientData.zipCode = scope.formData.zipcode;
 			 scope.clientData.fullname = scope.formData.fullName;
 			 scope.clientData.city = scope.formData.city;
@@ -28,7 +31,7 @@
 			 scope.clientData.planCode = scope.formData.planCode;
 		 }
 		 
-		 httpService.post("/obsplatform/api/v1/authentication?username=billing&password=password")
+		 httpService.post("/obsplatform/api/v1/authentication?username="+selfcare.models.obs_username+"&password="+selfcare.models.obs_password)
 	  		.success(function(data){
 	  			 httpService.setAuthorization(data.base64EncodedAuthenticationKey);
 	  			rootScope.currentSession= {user :'selfcare'};

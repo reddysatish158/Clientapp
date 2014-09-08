@@ -59,6 +59,10 @@
 		
 		<br/><br/><br/><br/><br/>
 		<div class="row-fluid">
+		<div style="margin-top:20px;font-size:20px; margin-left:40px;" class="pull-right">
+		<span class="animated pulse" style="color:#0088cc;">{{'table.header.profile.authpin'|translate}} :&nbsp;</span>
+		<span class="animated fadeInUp"><strong>{{clientData.selfcare.authPin}}</strong></span>
+	</div>
 		<br/>
 			<div class="row-fluid span">
 			
@@ -78,6 +82,10 @@
 							<td width="70%">{{clientData.activationDate | DateFormat}}</td>
 						</tr>
 						<tr>
+							<td width="30%">{{'table.header.profile.telephonenumber'|translate}}</td>
+							<td width="70%">{{clientData.homePhoneNumber}}</td>
+						</tr>
+						<tr>
 							<td width="30%">{{'table.header.profile.mobilenumber'|translate}}</td>
 							<td width="70%">{{clientData.phone}}</td>
 						</tr>
@@ -86,8 +94,8 @@
 							<td width="70%">{{clientData.email}}</td>
 						</tr>
 						<tr>
-							<td width="30%">{{'table.header.profile.authpin'|translate}}</td>
-							<td width="70%">{{clientData.selfcare.authPin}}</td>
+							<td width="30%">{{'table.header.profile.nationalid'|translate}}</td>
+							<td width="70%">{{clientData.selfcare.nationalId}}</td>
 						</tr>
 				  </table>
 			   </div>	

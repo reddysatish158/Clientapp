@@ -8,7 +8,8 @@ define(['underscore', 'selfcare'], function() {
 							  'paypalUser',
 						      'paypalUser',
 						      'returnURL',
-						      'dalpayURL'
+						      'dalpayURL',
+						      'autherization'
 				          ],
 				     
     selfcare_services:    [
