@@ -26,6 +26,7 @@
     	  
     	localStorageService.add("permissionsArray",data.permissions);
         scope.currentSession = sessionManager.get(data);
+
         scope.start(scope.currentSession);
         if(PermissionService.showMenu('REPORTING_SUPER_USER'))
         location.path('/home').replace();
@@ -171,7 +172,5 @@
     '$idle',
     'ResourceFactory',
     mifosX.controllers.MainController
-  ]).run(function($log) {
-    $log.info("MainController initialized");
-  });
+  ]);
 }(mifosX.controllers || {}));
