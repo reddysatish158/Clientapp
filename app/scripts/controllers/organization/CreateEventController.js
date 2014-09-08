@@ -25,7 +25,7 @@
 								scope.availableServices = data.mediaAsset;
 								scope.productmix = data;
 								scope.allowedProducts = data.mediaAsset;
-
+								scope.eventCategeorydatas = data.eventCategeorydata;
 								scope.formData = {
 
 								};
