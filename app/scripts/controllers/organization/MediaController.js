@@ -2,6 +2,7 @@
   mifosX.controllers = _.extend(module, {
 	  MediaController: function(scope, resourceFactory,location,PermissionService,$modal,route) {
         scope.media = [];
+        scope.fromMedia="MEDIA";
         scope.PermissionService = PermissionService;
         resourceFactory.mediaResource.getAllMedia(function(data) {
             scope.media= data;
