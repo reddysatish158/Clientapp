@@ -6,7 +6,7 @@
     </ul>
     <div class="pull-right">
         <a ng-show="PermissionService.showMenu('CREATE_MEDIAASSET')" href="#/createMedia" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.new.media' | translate }}</a>
-        <!-- <a ng-show="PermissionService.showMenu('CREATE_MEDIAASSET')" href="#/createAdvanceMedia" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.adv.media' | translate }}</a> -->
+        <a ng-show="PermissionService.showMenu('CREATE_MEDIAASSET')" href="#/createAdvanceMedia" class="btn btn-primary"><i class="icon-plus icon-white"></i> {{ 'link.create.adv.media' | translate }}</a>
     </div>
 </div>
 <div class="row-fluid" >
@@ -16,7 +16,6 @@
             <tr class="graybg">
                 <th>{{ 'table.media.title' | translate }}</th>
                 <th>{{'label.media.categeory' | translate}}</th>
-           		<th>{{'label.media.eventcategory' | translate}}</th>
                 <th>{{'label.media.contentprovider' | translate}}</th>
                 <th>{{'label.media.share' | translate}}</th>
                 <th>{{ 'table.media.status' | translate }}</th>
@@ -27,17 +26,15 @@
         <tbody>
             <tr class="pointer-main" ng-repeat="media in media | filter:filterText">
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.mediaTitle}}</td>            
-                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.mediaCategory}}</td>    
-                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.EventCategory}}</td>    
+                <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.mediaCategory}}</td>        
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.contentProviderValue}}</td> 
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.cpShareValue}}</td>         
                 <td class="pointer" data-ng-click="routeTo(media.mediaId)">{{media.status}}</td>
-               <!--  <td>
+                <td>
                 <a data-ng-click="createMediaLocations(media.mediaId)" popover="Add Location" popover-trigger="mouseenter"><img src="./images/location-circled.svg" width="15px" height="10px"></a>&nbsp;
-                <a data-ng-click="createMediaAttributes(media.mediaId)" popover="Add Attributes" popover-trigger="mouseenter"><img src="./images/attribute.png" width="15px" height="10px"></a>
-                </td> -->
-                <td><a href="#/editmedia/{{media.mediaId}}" popover="Edit Media" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a>&nbsp;
-                <a href="#/createEvent" ><i class="icon-plus-sign icon-white"></i></a></td> 
+                <a data-ng-click="createMediaAttributes(media.mediaId)" popover="Add Attributes" popover-trigger="mouseenter"><img src="./images/attribute.png" width="15px" height="10px"></a>&nbsp;
+                <a href="#/editmedia/{{media.mediaId}}" popover="Edit Media" popover-trigger="mouseenter"><i class="icon-edit icon-white"></i></a>&nbsp;
+                <a href="#/createEventFromMedia/{{media.mediaId}}/{{media.mediaTitle}}/{{fromMedia}}" ><i class="icon-plus-sign icon-white"></i></a></td> 
             </tr>
         </tbody>
     </table>

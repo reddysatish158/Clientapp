@@ -36,7 +36,7 @@
           
             <td width="50%" ng-show="hideForGame">
           <div class="control-group">
-            <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             <div class="controls">
              <select  id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select>
            <!--   <input type="text" id="contentProvider" ng-model="formData.contentProvider">  -->
@@ -55,7 +55,7 @@
            <tr>
             <td width="50%" ng-show="hideForGame">
           <div class="control-group" >
-            <label class="control-label" for="mediaType">{{ 'label.media.mediaType' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="mediaType">{{ 'label.media.mediaType' | translate }}</label>
             <div class="controls">
                <select  id="mediatype" ng-model="formData.mediatype"   ng-options="mediaTypeData.id as mediaTypeData.value for mediaTypeData in mediaTypeDatas" value="{{mediaTypeData.id}}"></select>
             </div>
@@ -64,7 +64,7 @@
           
           <td width="50%" ng-show="hideForGame">
           <div class="control-group">
-            <label class="control-label" for="rated">{{ 'label.media.rated' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="rated">{{ 'label.media.rated' | translate }}</label>
             <div class="controls">
             <input type="text" id="rated" ng-model="formData.rated">
             </div>
@@ -82,7 +82,7 @@
           </td>
           <td width="50%" ng-show="hideForGame">
           <div class="control-group">
-            <label class="control-label" for="mediaRating">{{ 'label.media.rating' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="mediaRating">{{ 'label.media.rating' | translate }}</label>
             <div class="controls">
            <input type="text" id="mediaRating" name="mediaRating" ng-model="formData.mediaRating"  ng-pattern="/^[0-9]{1,5}$/" ng-maxlength="5">
            	 <div ng-show="createmediaform.mediaRating.$dirty && createmediaform.mediaRating.$invalid">
@@ -96,7 +96,7 @@
             <tr>
              <td>
           <div class="control-group" ng-show="hideForGame">
-            <label class="control-label" for="mediaImage">{{ 'label.media.poster' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="mediaImage">{{ 'label.media.poster' | translate }}</label>
             <div class="controls">
             <input type="text" id="mediaImage" ng-model="formData.mediaImage">
             </div>
@@ -114,7 +114,7 @@
           <tr>
           <td ng-show="hideForGame">
           <div class="control-group">
-            <label class="control-label" for="duration">{{ 'label.media.movieduration' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="duration">{{ 'label.media.movieduration' | translate }}</label>
             <div class="controls">
             <input type="text" id="duration" ng-model="formData.duration">
             </div>
@@ -133,7 +133,7 @@
           <tr>
              <td>
           <div class="control-group">
-            <label class="control-label" for="genre">{{ 'label.media.genre' | translate }}<span class="required">*</span></label>
+            <label class="control-label" for="genre">{{ 'label.media.genre' | translate }}</label>
             <div class="controls">
             <input type="text" id="genre" ng-model="formData.genre">
             </div>
@@ -163,7 +163,7 @@
                 </td>
              <td width="50%">
             <div class="control-group">
-			    <label class="control-label" for="cpShareValue">Share(%)<span class="required">*</span></label>
+			    <label class="control-label" for="cpShareValue">Share(%)</label>
 			  <div class="controls">
 				<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^[0-9]{0,2}(\.\d{0,2})?$/" ng-maxlength="5"></input>
 				<div ng-show="createmediaform.cpShareValue.$dirty && createmediaform.cpShareValue.$invalid">
@@ -176,7 +176,77 @@
          <td></td>              
          </tr>
          </table>    
-    
+    	
+    	<table ng-show="hideForGame">
+          <tr class="control-group">
+                <td>
+                  <label class="control-label"><h4>{{ 'label.media.mediadetails' | translate }}<span class="required">*</span></h4></label>
+                </td>
+                <td class="blockquoteresult">
+                    <form>
+                    <input class="input-small" type="text" ng-model="attributesFormData.attributeType" readonly >&nbsp;&nbsp;
+                      <select ng-model="attributesFormData.attributeName" ng-options="mediaAttribute.id as mediaAttribute.mediaName for mediaAttribute in mediaAttributes" class="input-small" value="{{mediaAttribute.id}}">
+                      </select>&nbsp;&nbsp;
+                      <input class="input-small" type="text" ng-model="attributesFormData.attributevalue"  placeholder="{{'label.media.captionvalue' | translate}}">&nbsp;&nbsp;
+                      <input class="input-small" type="text" ng-model="attributesFormData.attributeNickname"  placeholder="{{'label.media.nickname' | translate}}">&nbsp;&nbsp;
+                      <input class="input-small"  type="text" ng-model="attributesFormData.attributeImage" placeholder="{{'label.media.image' | translate}}">
+                      
+                      <a ng-click="addMedia()">&nbsp;<i class="icon-plus icon-white"></i></a>&nbsp;&nbsp;
+                    </form>
+                    <br><br>
+                  <table class="table" width="100%" ng-show="mediaassetAttributes.length>0">
+                    <tr></tr>
+                    <tr class="graybg">
+                      <th>{{'table.media.cast' | translate}}</th>
+                      <th>{{'table.heading.attributetype' | translate}}</th>
+                      <th>{{'label.media.captionvalue' | translate}}</th>
+                      <th>{{'label.media.nickname' | translate}}</th>
+                       <th>{{'label.media.image' | translate}}</th>
+                    </tr>
+                    <tr ng-repeat="mediaassetAttribute in mediaassetAttributes" >
+                      <td><input type="text" class="input-small"  ng-model="mediaassetAttribute.attributeType" readonly></td>
+                      <td><select ng-model="mediaassetAttribute.attributeName" ng-options="mediaAttribute.id as mediaAttribute.mediaName for mediaAttribute in mediaAttributes" class="input-small" value="{{mediaassetAttribute.attributeName}}"></select></td>
+                      <td><input type="text" class="input-small" ng-model="mediaassetAttribute.attributevalue" placeholder="{{'label.media.captionvalue' | translate}}"></td>
+                      <td><input type="text" class="input-small" ng-model="mediaassetAttribute.attributeNickname" placeholder="{{'label.media.nickname' | translate}}"></td>
+                      <td><input type="text" class="input-small" ng-model="mediaassetAttribute.attributeImage" placeholder="{{'label.media.image' | translate}}"></td>
+                      <td><a ng-click="deleteMedia($index)"><i class="icon-remove icon-white"></i></a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr class="span2"></tr>
+          <tr class="control-group">
+                <td>
+                  <label class="control-label"><h4>{{ 'label.media.medialocation' | translate }}<span class="required">*</span></h4></label>
+                </td>
+                <td class="blockquoteresult">
+                    <form>
+                      <select ng-model="mediaLocationFormData.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaLanguageData.languageId}}">
+                      </select>&nbsp;&nbsp;
+                      <select  class="input-medium" ng-model="mediaLocationFormData.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaFormat.mediaName}}">
+                      </select>&nbsp;&nbsp;
+                      <input type="text" ng-model="mediaLocationFormData.location" placeholder="{{'label.media.location' | translate}}">
+                      <a ng-click="addMediaLocation()">&nbsp;<i class="icon-plus icon-white"></i></a>
+                    </form>
+                  <table class="table" width="100%" ng-show="mediaAssetLocations.length>0">
+                    <tr class="graybg">
+                      <th>{{'table.heading.language' | translate}}</th>
+                      <th>{{'table.heading.format' | translate}}</th>
+                      <th>{{'table.heading.location' | translate}}</th>
+                    </tr>
+                    <tr ng-repeat="mediaAssetLocation in mediaAssetLocations" >
+                      <td><select ng-model="mediaAssetLocation.languageId" ng-options="mediaLanguageData.id as mediaLanguageData.mCodeValue  for mediaLanguageData in mediaLanguageDatas" value="{{mediaAssetLocation.languageId}}">
+                      </select></td>
+                      <td><select  class="input-medium" ng-model="mediaAssetLocation.formatType" ng-options="mediaFormat.mediaName as mediaFormat.mediaName for mediaFormat in mediaFormats" value="{{mediaAssetLocation.formatType}}">
+                      </select></td>
+                      <td> <input type="text" ng-model="mediaAssetLocation.location" placeholder="{{'label.media.location' | translate}}"></td>
+                      <td><a ng-click="removeMediaLocation($index)"><i class="icon-remove icon-white"></i></a></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+           </table>
+    	
            <fieldset ng-show="!hideForGame">
            <legend>Settlement's</legend>
           <table ng-show="!hideForGame" id="gameTable">
@@ -210,7 +280,7 @@
                       <td><input type="text" class="input-small" ng-model="gd.amount" placeholder=""></td>
                       <td><a ng-click="removeGameMedia($index)"><i class="icon-remove icon-white"></i></a></td>
                     </tr>
-                  </table>
+           </table>
            </fieldset>
 
           <div class="offset3">
