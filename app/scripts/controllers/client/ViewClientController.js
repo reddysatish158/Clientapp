@@ -1335,6 +1335,7 @@ var ApproveUnallocate = function ($scope, $modalInstance) {
 				
 				var date = new Date(), y = date.getFullYear(), m = date.getMonth();
 				$scope.formData = {};
+				$scope.formData.downloadType ='csv';
 				$scope.start = {};
 				$scope.start.date = new Date(y, m, 1);
 				$scope.to = {};
@@ -1343,8 +1344,8 @@ var ApproveUnallocate = function ($scope, $modalInstance) {
 				$scope.accept = function(){
 					var fromDate = new Date($scope.start.date).getTime();
 					var toDate = new Date($scope.to.date).getTime();
-					
-					window.open($rootScope.hostUrl+ API_VERSION +'/paymentgateways/download?fromDate='+fromDate+'&toDate='+toDate+'&tenantIdentifier=default');
+					var downloadType = $scope.formData.downloadType;
+					window.open($rootScope.hostUrl+ API_VERSION +'/financialTransactions/download/'+routeParams.id+'?downloadType='+downloadType+'&fromDate='+fromDate+'&toDate='+toDate+'&tenantIdentifier=default');
 					$modalInstance.close('delete');
 
 				};
