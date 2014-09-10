@@ -321,7 +321,7 @@
 						</td> -->
 						<td>
 							<div class="control-group">
-            				<label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}<span class="required">*</span></label>
+            				<label class="control-label" for="contentProvider">{{ 'label.media.contentprovider' | translate }}</label>
             				<div class="controls">
              					<select  id="contentProvider" ng-model="formData.contentProvider" ng-options="contentProviderData.id as contentProviderData.mCodeValue for contentProviderData in contentProviderDatas " value="{{contentProviderData.mCodeValue}}"></select> 
             				</div>
@@ -329,19 +329,8 @@
 						</td>
 						
 						<td>
-							<div class="control-group" ng-show="hideForGame">
-            				<label class="control-label" for="status">{{ 'label.media.status' | translate }}<span class="required">*</span></label>
-            				<div class="controls">
-           						<select ng-model="formData.status" id="status" ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
-           	 				</div>
-          					</div>
-						</td>
-					</tr>
-					
-					<tr>
-						<td>
 							<div class="control-group">
-			    				<label class="control-label" for="cpShareValue">Share(%)<span class="required">*</span></label>
+			    				<label class="control-label" for="cpShareValue">Share(%)</label>
 			 					 <div class="controls">
 									<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^[0-9]{0,2}(\.\d{0,2})?$/" ng-maxlength="5"></input>
 									<div ng-show="createmediaform.cpShareValue.$dirty && createmediaform.cpShareValue.$invalid">
@@ -349,20 +338,33 @@
                						<span class="error" ng-show="createmediaform.cpShareValue.$error.maxlength">Exceeded max limit!</span>
            							</div>
 								</div>
-							</div> 
-						</td>
-						<td>
-							<div class="control-group">
-            					<label class="control-label" for="medialocation">Media Location<span class="required">*</span></label>
-            					<div class="controls">
-              						<input type="text" style="width:290px;" ng-model="formData.location">
-            					</div>
-          					</div>
-							
+								</div> 
 						</td>
 					</tr>
 					</table>
-					
+					<table>
+						<tr>
+							<td>
+								<div class="control-group">
+            					<label class="control-label" for="medialocation">Media Location<span class="required">*</span></label>
+            					<div class="controls">
+              						<input type="text" style="width:610px;" ng-model="formData.location">
+            					</div>
+          						</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="control-group" ng-show="hideForGame">
+            					<label class="control-label" for="status">{{ 'label.media.status' | translate }}<span class="required">*</span></label>
+            					<div class="controls">
+           						<select ng-model="formData.status" id="status" ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
+           	 					</div>
+          						</div>
+							</td>
+						</tr>
+					</table>
+								
           <div class="offset3">
             <a href="#/media"><button id="cancel" type="reset" class="btn">Cancel</button></a>
             <button id="submit" type="submit" class="btn btn-primary">Save</button>
