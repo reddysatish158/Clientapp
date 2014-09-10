@@ -322,7 +322,7 @@
         <div class="tabbable" >
   				<ul class="nav nav-tabs">
 				    <li class={{indentitiesSubTab}}><a ng-click="indentitiesTabFun()" data-toggle="tab" >Indentities</a></li>
-				    <li class={{documnetsUploadsTab}}><a ng-click="documnetsUploadsTabFun()" data-toggle="tab">Documnets Uploads</a></li>
+				    <li class={{documnetsUploadsTab}}><a ng-click="documnetsUploadsTabFun()" data-toggle="tab">Documents Uploads</a></li>
     			 	<li class={{creditCardDetailsTab}}><a ng-click="creditCardDetailsTabFun()" data-toggle="tab">CreditCard Details</a></li>
     			 	<li class={{ACHDetailsTab}}><a ng-click="ACHDetailsTabFun()" data-toggle="tab">ACH Details</a></li>
 			    </ul>
@@ -945,7 +945,7 @@
 				    <li class={{paymentsC}}><a ng-click="paymentsTab()" data-toggle="tab">Payments</a></li>
     			 	<li class={{invoicesC}}><a ng-click="invoicesTab()" data-toggle="tab">Invoices</a></li>
     			 	<li class={{adjustmentsC}}><a ng-click="adjustmentsTab()" data-toggle="tab">Adjustments</a></li>
-			     <!-- <button id="download" class="btn btn-min btn-default pull-right" ng-click="exportFinancialCSV()" style = "margin-bottom : 10px;">{{'button.exportfinancialcsv' | translate}}</button> -->
+			     <button id="download" class="btn btn-min btn-default pull-right" ng-click="exportFinancialCSV()" style = "margin-bottom : 10px;">{{'button.exportfinancialcsv/pdf' | translate}}</button>
 			    </ul>
 			<div class="tab-content">
   
@@ -1661,19 +1661,28 @@
                         <button id="submit" class="btn btn-primary" ng-click="accept(formData.cancelRemark)" ng-disabled="flagcancelpayment">{{'label.confirm' | translate}}</button>
                     </div>
       </script>
-      <script type="text/ng-template" id="downloadCSVFinancialData.html">
+      <script type="text/ng-template" id="downloadCSVFinancialData.html"> 
 
-		<form class="form-horizontal well">
+		<form name="downloadCSVform" novalidate="" class="form-horizontal well">
 	 		<div class="error" ng-show="errorStatus || errorDetails">
 				<label>{{'label.contract.error' | translate}}</label>
 				<label ng-show="errorStatus">{{errorStatus}}</label>
 				<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
 	   		 </div>
 		   <fieldset>
-				<legend>{{'label.downloadfinancialsummaryCSV' | translate}}</legend>
+				<legend>{{'label.downloadfinancialsummary' | translate}}</legend>
 				 <table width="100%">
 					 <tr>
 						<td width="50%">
+						    <div class="control-group">
+								<label class="control-label" for="status">{{ 'label.downloadtype.format' | translate }}<span class="required">*</span></label>
+								<div class="controls">
+									<select ng-model="formData.downloadType" required>
+              							<option value="csv">CSV</option>
+              							<option value="pdf">PDF</option>
+          							</select>
+								</div>
+							</div>
 							<div class="control-group">
 		       					<label class="control-label">{{ 'label.fromdate' | translate }}</label>
 		       					<div class="controls">
@@ -1689,12 +1698,12 @@
 						</td>
 					</tr>
 					</table>
+				   <div class="modal-footer">
+				         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
+				         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="!downloadCSVform.$valid||flag">{{'label.confirm' | translate}}</button>
+				   </div>
 			</fieldset>
 		</form>
-	   <div class="modal-footer">
-	         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-	         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
-	   </div>
 
 	</script> 
 </div>

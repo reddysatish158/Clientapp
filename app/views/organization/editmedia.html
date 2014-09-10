@@ -232,7 +232,7 @@
 				<tr>
 					<td>
 						<div class="control-group">
-            			<label class="control-label" for="mediaTitle">{{ 'label.media.title' | translate }}</label>
+            			<label class="control-label" for="mediaTitle">{{ 'label.media.title' | translate }}<span class="required">*</span></label>
             			<div class="controls">
               			<input type="text" id="mediaTitle" ng-model="formData.mediaTitle">
             			</div>
@@ -241,7 +241,7 @@
 					
 					<td>
 						<div class="control-group">
-            			<label class="control-label" for="mediaCategoryId">{{ 'label.media.categeory' | translate }}</label>
+            			<label class="control-label" for="mediaCategoryId">{{ 'label.media.categeory' | translate }}<span class="required">*</span></label>
             			<div class="controls">
               			<select ng-model="formData.catageoryId" id="catageoryId" ng-options="mediaCategeorydata.id as mediaCategeorydata.mCodeValue for mediaCategeorydata in mediaCategeorydatas" value="{{mediaCategeorydata.id}}"></select>
             			</div>
@@ -268,17 +268,6 @@
 					</td>
 					<td>
 						<div class="control-group">
-            			<label class="control-label" for="status">{{ 'label.media.status' | translate }}</label>
-            			<div class="controls">
-           				<select ng-model="formData.status" id="status" ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
-            			</div>
-          				</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div class="control-group">
 			    		<label class="control-label" for="cpShareValue">Share(%)</label>
 			  			<div class="controls">
 							<input type="text" id="cpShareValue" name="cpShareValue" ng-model="formData.cpShareValue"  ng-pattern="/^\d{0,2}(\.\d{0,2})?$/" ></input>
@@ -287,14 +276,28 @@
                					<span class="error" ng-show="editmediaform.cpShareValue.$error.maxlength">Exceeded max limit!</span>
            					</div>
 						</div>
-						</div> 
+						</div>
 					</td>
+				</tr>
+				</table>
+				<table>
+				<tr>
 					<td>
-           				<div class="control-group">
+						<div class="control-group">
             					<label class="control-label" for="medialocation">Media Location<span class="required">*</span></label>
             					<div class="controls">
-              						<input type="text" style="width:290px;" ng-model="formData.location">
+              						<input type="text" style="width:610px;" ng-model="formData.location">
             					</div>
+          				</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+          				<div class="control-group">
+            			<label class="control-label" for="status">{{ 'label.media.status' | translate }}<span class="required">*</span></label>
+            			<div class="controls">
+           				<select ng-model="formData.status" id="status" ng-options="mediaStatus.value as mediaStatus.value for mediaStatus in mediaStatus" value="{{mediaStatus.value}}"></select>
+            			</div>
           				</div>
            			</td>
 				</tr>    
