@@ -106,7 +106,6 @@
       <tab heading="MRN" select="getMRNdetails()" active="mrnTab"
       ng-show="$parent.PermissionService.showMenu('READ_MRN','MOVE_MRN')">
         <div class="pull-right btn-group">
-          <a href="#/itemsale/0" class="btn btn-primary"><i class="icon-plus icon-white"></i>Add Item Sale</a>
           <a ng-show="PermissionService.showMenu('CREATE_MRN')" href="#/createmrn" class="btn btn-primary"><i class="icon-plus icon-white"></i>{{ 'button.add' | translate }}</a>
           <a ng-show="PermissionService.showMenu('MOVE_MRN')" href="#/movemrn" class="btn btn-primary"><i class="icon-move icon-white"></i>{{ 'button.mrn.move' | translate }}</a>
 
@@ -222,7 +221,6 @@
                 <th>{{'table.supplier.supplierCode' | translate}}</th>
                 <th>{{'table.supplier.supplierDescription' | translate}}</th>
                 <th>{{'table.supplier.supplierAddress' | translate}}</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -231,7 +229,6 @@
                 <td>{{su.supplierCode}}</td>
                 <td>{{su.supplierDescription}}</td>
                 <td>{{su.supplierAddress}}</td>
-                <td><a ng-click="editSupplier(su.id)" popover="Edit" popover-trigger="mouseenter" class="icon-edit"></a></td>
    			</tr>
      		 </tbody>
           </table>
@@ -352,48 +349,5 @@
      </div>
 
 </script>
-
-	<!--
- 		This is for Edit Supplier
- 	-->
- 	 
-<script type="text/ng-template" id="editsuppliers.html">
-
-	<form class="form-horizontal well" ng-submit="submit()">
-	 <div class="error" ng-show="errorStatus || errorDetails">
-		<label>{{'label.contract.error' | translate}}</label>
-		<label ng-show="errorStatus">{{errorStatus}}</label>
-		<label ng-hide="errorStatus" ng-repeat="error in errorDetails">{{error.code | translate}}</label>
-	    </div>
-	<fieldset>
-		<legend>{{'label.editsupplier' | translate}}</legend>
-		  <div class="control-group">
-            <label class="control-label" for="supplierCode">{{ 'label.supplier.code' | translate }}&nbsp;<span class="required">*</span></label>
-            <div class="controls">
-              <input type="text" id="supplierCode" ng-model="formData.supplierCode">
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="supplierDescription">{{ 'label.supplier.description' | translate }}&nbsp;<span class="required">*</span></label>
-            <div class="controls">
-              <input type="text" id="supplierDescription" ng-model="formData.supplierDescription">
-            </div>
-          </div>
-          <div class="control-group">
-			<label class="control-label" for="supplierAddress">{{'label.supplier.address' | translate}}&nbsp;<span class="required">*</span></label>
-			<div class="controls">
-				<textarea rows="2" cols="2" ng-model="formData.supplierAddress"></textarea>
-			</div>
-		  </div>
-
-	</fieldset>
-	</form>
-   <div class="modal-footer">
-         <button id="cancel" class="btn btn-warning" ng-click="reject()">{{'button.cancel' | translate}}</button>
-         <button id="submit" class="btn btn-primary" ng-click="accept()" ng-disabled="flag">{{'label.confirm' | translate}}</button>
-   </div>
-
-</script> 
- 	 
   </div>
 

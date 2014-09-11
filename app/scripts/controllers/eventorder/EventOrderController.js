@@ -18,7 +18,6 @@
 			scope.categoryType = clientData.categoryType;
 			scope.email = clientData.email;
 			scope.phone = clientData.phone;
-			scope.requireDevice = webStorage.get('Registration_requires_device');
 			// scope.datass = {};
 			scope.start = {};
 			scope.start.date = new Date();
@@ -60,7 +59,6 @@
 
 			scope.submit = function() {
 				this.formData.locale = "en";
-				this.formData.clientId =routeParams.id;
 				this.formData.dateFormat = "dd MMMM yyyy";
 				var adjustmentDate = dateFilter(scope.start.date,
 						'dd MMMM yyyy');

@@ -349,7 +349,7 @@
            	update: { method: 'PUT' },
             get: {method: 'GET', params: {}},
         }),
-        OrderrenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder", {},{
+        OrderrenewalResourceTemplate: defineResource(apiVer + "/orders/renewalorder/:orderId", {orderId:'@orderId'},{
         	 get: {method: 'GET', params: {}},
         	update: { method: 'PUT' }
         }),
@@ -533,10 +533,9 @@
               	  getAlltaxmapping: {method: 'GET', params: {}}
                 }),
                 
-                supplierResource: defineResource(apiVer + "/suppliers/:id", {id: '@id'}, {
+                supplierResource: defineResource(apiVer + "/suppliers", {}, {
               	  getAlldetails: {method: 'GET', params: {}},
-                    get: {method: 'GET', params: {},isArray: true},
-                    update: {method: 'PUT', params: {}}
+                    get: {method: 'GET', params: {}}
                 }),	
                 grnResource: defineResource(apiVer + "/itemdetails/grn:itemId/:anotherresource", {itemId:'@itemId',anotherresource:'@anotherresource'},{
              	   getAlldetails: {method: 'GET', params: {}},
@@ -663,7 +662,7 @@
                 eventTemplateResource: defineResource(apiVer + "/eventmaster/template",{},  {
               	  get: {method: 'GET', params: {}}
                 }),
-                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{},  {
+                eventOrderTemplateResource: defineResource(apiVer + "/eventorder/:clientId",{clientId:'@clientId'},  {
                 	  get: {method: 'GET', params: {clientId:'@clientId'}}
                 }),
                 eventOrderPriceTemplateResource: defineResource(apiVer + "/eventorder",{},{
@@ -995,12 +994,6 @@
             clientParentResource: defineResource(apiVer + "/parentclient/:clientId", {clientId:'@clientId'}, {
                 get: {method: 'GET', params: {}},
                 update: { method: 'PUT'}
-            }),
-            logoutResource: defineResource(apiVer + "/logout", {id:'@id'}, {
-                getAll: {method: 'GET', params: {}}
-            }),
-            mediaLocationAttributesResource: defineResource(apiVer + "/assets/locationAttributes/:id", {id:'@id'}, {
-                get: {method: 'GET', params: {}}
             }),
 
         };

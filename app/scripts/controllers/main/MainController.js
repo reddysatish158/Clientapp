@@ -1,6 +1,6 @@
 (function(module) {
   mifosX.controllers = _.extend(module, {
-    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,webStorage,PermissionService,localStorageService,$idle,resourceFactory) {
+    MainController: function(scope, location, sessionManager, translate,keyboardManager,$rootScope,webStorage,PermissionService,localStorageService,$idle) {
       
     	/**
     	 * Logout the user if Idle
@@ -12,7 +12,7 @@
             $idle.unwatch();
             scope.started = false;
         });
-       
+        
         scope.start = function (session) {
             if (session) {
                 $idle.watch();
@@ -21,12 +21,11 @@
         };
         
       scope.leftnav = false;
-      
+
       scope.$on("UserAuthenticationSuccessEvent", function(event, data) {
     	  
     	localStorageService.add("permissionsArray",data.permissions);
         scope.currentSession = sessionManager.get(data);
-
         scope.start(scope.currentSession);
         if(PermissionService.showMenu('REPORTING_SUPER_USER'))
         location.path('/home').replace();
@@ -41,14 +40,10 @@
           location.path('/search/' + scope.search.query );
       };
       
+
       scope.logout = function() {
-        var sessionData = webStorage.get('sessionData');
-        resourceFactory.logoutResource.save({logout:'logout',id:sessionData.loginHistoryId},function(data){
-                	location.path('/').replace();
-                });
         scope.currentSession = sessionManager.clear();
-        scope.clearCrendentials();
-        
+        location.path('/').replace();
       };
 
       scope.langs = mifosX.models.Langs;
@@ -171,7 +166,8 @@
     'PermissionService',
     'localStorageService',
     '$idle',
-    'ResourceFactory',
     mifosX.controllers.MainController
-  ]);
+  ]).run(function($log) {
+    $log.info("MainController initialized");
+  });
 }(mifosX.controllers || {}));

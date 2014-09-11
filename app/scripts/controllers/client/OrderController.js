@@ -48,10 +48,8 @@
       
 	    if(data.orderData.isPrepaid == 'Y'){
             	scope.formData.isPrepaid="Pre Paid";
-            	scope.plantype="prepaid";
             }else{
             	scope.formData.isPrepaid="Post Paid";
-            	scope.plantype="postpaid";
             }
 	    var endDate = new Date(scope.orderData.endDate);
         var curDate = new Date(scope.orderData.currentDate);
@@ -83,6 +81,7 @@
           };
           
           scope.reactive= function (){
+          	scope.errorStatus=[];scope.errorDetails=[];
           	 $modal.open({
                    templateUrl: 'ApproveReactive.html',
                    controller: ApproveReactive,
@@ -514,7 +513,7 @@
           
           var OrderRenewalController = function($scope,$modalInstance){
         	  $scope.subscriptiondatas = [];
-        	  resourceFactory.OrderrenewalResourceTemplate.get({orderId:routeParams.id,planType:scope.plantype},function(data) {
+        	  resourceFactory.OrderrenewalResourceTemplate.get(function(data) {
                   $scope.subscriptiondatas = data.subscriptiondata;
               });
         	  

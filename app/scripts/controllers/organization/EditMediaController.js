@@ -17,18 +17,15 @@
         resourceFactory.saveMediaResource.get({mediaId: routeParams.id, template: 'true'} , function(data) {
             
             scope.planId = data.id;
-            scope.mediaId=routeParams.id;
            // scope.provisioingSystem=data.provisionSystem;
             scope.formData= data.mediaAssetData;
-            scope.formData.mediatype=parseInt(data.mediaAssetData.mediatype);
             scope.mediaAttributes = data.mediaAttributes;
             scope.mediaCategeorydatas = data.mediaCategeorydata;
             scope.mediaFormats=data.mediaFormat;
             scope.mediaLanguageDatas=data.mediaLanguageData;
             scope.mediaAssetLocations=data.mediaLocationData;
-            scope.formData.location=data.mediaLocationData[0].location;
             scope.mediaStatus=data.mediaStatus;
-            scope.eventCategeorydatas=data.eventCategeorydata;
+            scope.mediaTypeDatas=data.mediaTypeData;
             scope.mediaassetAttributes=data.mediaassetAttributes;
             scope.mediaStatus=data.mediaStatus;
             scope.contentProviderDatas=data.contentProviderData;
@@ -56,6 +53,7 @@
           //	if (scope.mediaLocationFormData.languageId && scope.mediaLocationFormData.location) {
                 scope.mediaAssetLocations.push({languageId:scope.mediaLocationFormData.languageId, location:scope.mediaLocationFormData.location, 
                 	formatType:scope.mediaLocationFormData.formatType});
+              alert(scope.mediaLocationFormData.languageId);
                 scope.mediaLocationFormData.languageId = undefined;
                 scope.mediaLocationFormData.location = undefined;
                 scope.mediaLocationFormData.formatType = undefined;
@@ -74,7 +72,7 @@
         
         scope.submit = function() {
         	
-        	this.formData.mediaRating;
+        	this.formData.mediaRating=this.formData.rating;
         	/*this.formData.rating=this.formData.mediaRating;
         	this.formData.mediaType=this.formData.mediatype;
         	this.formData.mediaCategoryId=this.formData.catageoryId;*/
@@ -89,13 +87,6 @@
         //   this.formData.dateFormat = 'dd MMMM yyyy';
            this.formData.locale = 'en';
             this.formData.releaseDate = dateFilter(scope.date.releaseDate,'dd MMMM yyyy');
-            this.formData.mediaTypeCheck="EDITMEDIA";
-            this.formData.formatType="SD";
-            this.formData.languageId="English";
-            scope.formData.mediaAssetLocations =new Array();
-            scope.formData.mediaassetAttributes =new Array();
-            
-            
            if (scope.mediaassetAttributes.length > 0) {
                scope.formData.mediaassetAttributes = [];
                for (var i in scope.mediaassetAttributes) {
