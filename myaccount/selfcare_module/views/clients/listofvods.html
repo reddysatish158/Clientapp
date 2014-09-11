@@ -38,19 +38,17 @@
 	                <th>{{'table.header.listvod.id'|translate}}</th>
 	                <th>{{'table.header.listvod.eventname'|translate}}</th>
 	                <th>{{'table.header.listvod.bookeddate'|translate}}</th>
-	                <th>{{'table.header.listvod.chargecode'|translate}}</th>
 	                <th>{{'table.header.listvod.eventprice'|translate}}</th>
 	                <th>{{'table.header.listvod.status'|translate}}</th>
 	            </tr>
 	        </thead>
 	        <tbody>
 	            <tr class="pointer-main" ng-repeat="vodData in listOfVODSData  | filter:filterText" >
-	                <td>{{vodData.id}}</td>
-	                <td>{{vodData.eventName}}</td>
-	                <td>{{vodData.bookedDate | DateFormat}}</td>
-	                <td>{{vodData.chargeCode}}</td>
-	                <td>{{vodData.eventPrice}}</td>
-	                <td><i class="icon-stop {{vodData.status | StatusLookup}}"></i>&nbsp;{{vodData.status}}</td>
+	                <td class="pointer">{{vodData.id}}</td>
+	                <td class="pointer">{{vodData.eventName}}</td>
+	                <td class="pointer">{{vodData.bookedDate | DateFormat}}</td>
+	                <td class="pointer">{{vodData.eventPrice}}</td>
+	                <td class="pointer"><i class="icon-stop {{vodData.status | StatusLookup}}"></i>&nbsp;{{vodData.status}}</td>
 	            </tr>
 	        </tbody>
 	    </table>

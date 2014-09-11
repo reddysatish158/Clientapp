@@ -35,8 +35,6 @@
 	        <thead>
 	            <tr class="graybg">
 	                <th>{{'table.header.vod.name'|translate}}</th>
-	                <th>{{'table.header.vod.type'|translate}}</th>
-	                <th>{{'table.header.vod.rating'|translate}}</th>
 	                <th>{{'table.header.vod.quality'|translate}}</th>
 	                <th>{{'table.header.vod.price'|translate}}</th>
 	                <th>{{'table.header.vod.select'|translate}}</th>
@@ -45,8 +43,6 @@
 	        <tbody>
 	            <tr class="pointer-main"  ng-repeat="mediaDetail in mediaDetails  | filter:filterText" >
 	                <td class="pointer"><label for="{{mediaDetail.mediaId}}{{mediaDetail.quality}}">{{mediaDetail.mediaTitle}}</label></td>
-	                <td class="pointer"><label for="{{mediaDetail.mediaId}}{{mediaDetail.quality}}">{{mediaDetail.optType}}</label></td>
-	                <td class="pointer"><label for="{{mediaDetail.mediaId}}{{mediaDetail.quality}}">{{mediaDetail.mediaRating}}</label></td>
 	                <td class="pointer"><label for="{{mediaDetail.mediaId}}{{mediaDetail.quality}}">{{mediaDetail.quality}}</label></td>
 	                <td class="pointer"><label for="{{mediaDetail.mediaId}}{{mediaDetail.quality}}">{{mediaDetail.price}}</label></td>
 	               <!--  <td><input type="checkbox" ng-model="active" ng-change="selectedEventsFun(mediaDetail.mediaId,mediaDetail.mediaTitle,mediaDetail.price,mediaDetail.quality,active)"></td> -->
