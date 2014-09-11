@@ -1002,7 +1002,7 @@
             mediaLocationAttributesResource: defineResource(apiVer + "/assets/locationAttributes/:id", {id:'@id'}, {
                 get: {method: 'GET', params: {}}
             }),
-
+           
         };
       }];
     }
