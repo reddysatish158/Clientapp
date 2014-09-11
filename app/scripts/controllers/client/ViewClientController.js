@@ -63,6 +63,9 @@
  		  }else if(scope.displayTab == "ACHDetailsTab"){
  			  scope.moreInfoTab = true;
   			  webStorage.remove('callingTab');
+ 		  }else if(scope.displayTab == "ChildDetailsTab"){
+ 			  scope.identitiesTab = true;
+  			  webStorage.remove('callingTab');
  		  }else
  		  {
  			  webStorage.remove('callingTab');
@@ -439,17 +442,19 @@
         }
         
         scope.getClientIdentityDocuments = function () {
-        	
-	        	scope.indentitiesSubTab = "active";
-	        	scope.documnetsUploadsTab = "";
-	        	scope.creditCardDetailsTab = "";
-	        	scope.ACHDetailsTab = "";
+ 
+        	scope.indentitiesSubTab = "active";
+        	scope.documnetsUploadsTab = "";
+        	scope.creditCardDetailsTab = "";
+        	scope.ACHDetailsTab = "";
+        	scope.ChildDetailsTab="";
         	
         	if(scope.displayTab == "documents"){
         		scope.indentitiesSubTab = "";
             	scope.documnetsUploadsTab = "active";
             	scope.creditCardDetailsTab = "";
             	scope.ACHDetailsTab = "";
+            	scope.ChildDetailsTab="";
             	scope.displayTab = "";
             	scope.documnetsUploadsTabFun();
         		
@@ -458,6 +463,7 @@
             	scope.documnetsUploadsTab = "";
             	scope.creditCardDetailsTab = "active";
             	scope.ACHDetailsTab = "";
+            	scope.ChildDetailsTab="";
             	scope.displayTab = "";
             	scope.creditCardDetailsTabFun();
         	}else if(scope.displayTab == "ACHDetailsTab"){
@@ -465,8 +471,17 @@
             	scope.documnetsUploadsTab = "";
             	scope.creditCardDetailsTab = "";
             	scope.ACHDetailsTab = "active";
+            	scope.ChildDetailsTab="";
             	scope.displayTab = "";
             	scope.ACHDetailsTabFun();
+        	}else if(scope.displayTab == "ChildDetailsTab"){
+        		scope.indentitiesSubTab = "";
+            	scope.documnetsUploadsTab = "";
+            	scope.creditCardDetailsTab = "";
+            	scope.ACHDetailsTab = "";
+            	scope.ChildDetailsTab="active";
+            	scope.displayTab = "";
+            	scope.childsFun();
         	}
          //  console.log(scope.taxExemption);
         	 if(scope.taxExemption=='N'){
@@ -523,7 +538,8 @@
           //parentClient 
            resourceFactory.clientParentResource.get({clientId:routeParams.id},function(data) {
         	  scope.parent = [];
-        	  scope.parent=data;
+        	  scope.parent=data.parentClientData;
+        	  scope.parentCount=data.count;
         	  
           });
           
@@ -536,6 +552,7 @@
         	scope.documnetsUploadsTab = "";
         	scope.creditCardDetailsTab = "";
         	scope.ACHDetailsTab = "";
+        	scope.ChildDetailsTab="";
         	
         	resourceFactory.clientResource.getAllClientDocuments({clientId: routeParams.id, anotherresource: 'identifiers'} , function(data) {
                 scope.identitydocuments = data;
@@ -559,6 +576,7 @@
         	scope.documnetsUploadsTab = "active";
         	scope.creditCardDetailsTab = "";
         	scope.ACHDetailsTab = "";
+        	scope.ChildDetailsTab="";
         	
         	 //documents details
             if(PermissionService.showMenu('READ_DOCUMENT')){
@@ -573,6 +591,7 @@
         	scope.documnetsUploadsTab = "";
         	scope.creditCardDetailsTab = "active";
         	scope.ACHDetailsTab = "";
+        	scope.ChildDetailsTab="";
         	
         	//credit card details
             resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
@@ -633,7 +652,7 @@
         	scope.documnetsUploadsTab = "";
         	scope.creditCardDetailsTab = "";
         	scope.ACHDetailsTab = "active";
-        	
+        	scope.ChildDetailsTab="";
         	//credit card details
             resourceFactory.creditCardSaveResource.get({clientId: routeParams.id} , function(data1) {
 
@@ -687,6 +706,27 @@
                 }
               });
         }
+
+        /**Child Details Function*/ 	
+        scope.childsFun = function(){
+        	
+        	scope.indentitiesSubTab = "";
+        	scope.documnetsUploadsTab = "";
+        	scope.creditCardDetailsTab = "";
+        	scope.ACHDetailsTab = "";
+        	scope.ChildDetailsTab="active";
+        	
+        	/*resourceFactory.clientChildResource.get({clientId:routeParams.id},function(data) {
+                scope.childsDatas = data;
+            });*/
+        	resourceFactory.clientParentResource.get({clientId:routeParams.id},function(data) {
+          	  scope.childsDatas=data.parentClientData;
+          	  scope.parentCount=data.count;
+          	  
+            });
+           
+        };
+        
 //leftside orderMenu function
      /*   scope.selectedOrder = function(status){
         	if(status="ACTIVE")
@@ -1145,8 +1185,10 @@
         	});
       //  webStorage.add("callingTab", {someString: "moreInfo" });
         };
-     scope.routeToParentClient = function(parentId){
-    	 location.path('/viewclient/'+parentId);
+     scope.routeToParentClientOrChildClient = function(id){
+    	 webStorage.add("callingTab", {someString: "identities" });
+    	 webStorage.add("callingTab", {someString: "ChildDetailsTab" });
+    	 location.path('/viewclient/'+id);
      };
         
         
