@@ -37,13 +37,13 @@
         	delete scope.formData.itemPrice;
         	scope.data.unitPrice=scope.formData.unitPrice;
         	scope.data.locale="en";
-        	//if(quantity !=undefined){
+        	if(quantity){
         	scope.data.quantity=quantity;
         	resourceFactory.oneTimeSaleQuantityResource.get({quantity: quantity,itemId:itemId},scope.data, function(data) {
         		scope.formData.itemId=itemId;
         		scope.formData.chargeAmount = data.totalPrice;
 	        });
-        	//}
+        		}
         };
      
         scope.submit = function() {
