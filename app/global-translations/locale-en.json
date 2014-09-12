@@ -1325,7 +1325,7 @@
   "label.active":"Active",
   "label.event.startdate":"Start Date",
   "label.event.enddate":"End Date",
-  "label.event.chargedata":"ChargeData",
+  "label.event.chargedata":"Charge Code",
   "label.event.eventvalidity":"Event Validity",
   "label.availablemedia":"Available Media",
   "label.selectedmedia":"Selected Media Services",
