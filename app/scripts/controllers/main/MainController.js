@@ -43,6 +43,7 @@
 
       scope.logout = function() {
         scope.currentSession = sessionManager.clear();
+        scope.clearCrendentials();
         location.path('/').replace();
       };
 
