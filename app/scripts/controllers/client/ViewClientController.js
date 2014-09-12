@@ -545,11 +545,11 @@
               }
             });
           //parentClient 
-           resourceFactory.clientParentResource.get({clientId:routeParams.id},function(data) {
+           /*resourceFactory.clientParentResource.get({clientId:routeParams.id},function(data) {
         	  scope.parent = [];
         	  scope.parent=data;
         	  
-          });
+          });*/
           
         };
 //leftside orderMenu function
