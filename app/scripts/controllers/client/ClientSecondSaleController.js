@@ -119,6 +119,7 @@
 	             delete this.formData.units;
 	             delete this.formData.itemCode;
 	             delete this.formData.id;
+	             delete this.formData.chargesData;
 	             
 	             var temp1 = new Array();
 		        	

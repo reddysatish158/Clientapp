@@ -406,12 +406,12 @@
           </table>
           </div><br/>
           <div class="pull-left">
-          <span class="input-append grpinputicons">
+         <!--  <span class="input-append grpinputicons">
                 <input type="text" ng-model="parentClient" name="parentClient"  placeholder="Search by Parent #" 
                        typeahead="parentClient.displayLabel as parentClient.displayLabel for parentClient  in getparent($viewValue) | limitTo:8" 
                        typeahead-min-length="0"/>
-                <button class="btn btn-primary" type="submit" disabled ng-click="saveParent(parentClient)">save</button>
-        </span>
+                <button class="btn btn-primary btn-disabled" type="submit" disabled ng-click="saveParent(parentClient)">save</button>
+        </span> -->
         </div>
           <table class="table" ng-show=parent.id>
             <thead>
