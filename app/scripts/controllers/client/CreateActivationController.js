@@ -299,7 +299,7 @@
 	 	             delete this.formData2.units;
 	 	             delete this.formData2.itemCode;
 	 	             delete this.formData2.id;
-	            //   delete this.formData2.itemDetail;
+	                delete this.formData2.chargesData;
 	                }else{
 	                	
 	                	  scope.formData5.locale = 'en';
